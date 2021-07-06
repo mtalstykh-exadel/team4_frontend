@@ -1,16 +1,14 @@
 import React from 'react'
 import logo from './logo.svg';
 import './App.css';
-// импортируем элементы Material-UI
+// importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
-// краткая запись: import {makeStyles, Button} from '@material-ui/core/';
-
-import { classes } from 'istanbul-lib-coverage';
+// brief entry: import {makeStyles, Button} from '@material-ui/core/';
 
 function App() {
 
-  // Для применения стилей к material элементам
+  // To apply styles to material elements
   const useStyles = makeStyles((theme) => ({
   root: {
     '& > *': {
@@ -27,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* Вставляем импортированный элемент */}
+      {/* Adding the imported element */}
       <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
         Пример кнопки Material-UI
       </Button>
