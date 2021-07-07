@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
