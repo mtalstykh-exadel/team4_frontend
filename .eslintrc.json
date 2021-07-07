@@ -70,5 +70,10 @@
         "spaced-comment": "warn",
         "use-isnan": "warn",
         "valid-typeof": "off"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     }
 }
