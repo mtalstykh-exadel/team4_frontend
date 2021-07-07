@@ -1,5 +1,7 @@
 import React from 'react';
-import './App.css';
+
+import './App.scss';
+
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
@@ -29,7 +31,7 @@ function App() {
         Example button Material-UI
       </Button>
       <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 'disabled'
+        Example №2 disabled
       </Button>
     </div>
   );
