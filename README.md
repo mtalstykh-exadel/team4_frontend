@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+### `nvm && nodejs 14.0.0`
+For the correct operation of this project, you need to use Node JS version 14.0.0;
+to install it, you need to install nvm;
+
+nvm for linux: [debian/ubuntu](https://www.hostinger.ru/rukovodstva/kak-ustanovit-node-js-npm-ubuntu)
+
+nvm for windows: [windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
+
+
 ## Available Scripts
 
 In the project directory, you can run:

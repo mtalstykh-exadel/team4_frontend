@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
 //importing login page
 import Login from './Components/Login/Login';
 //importing components from react-router-dom for routing
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.scss';
+
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
