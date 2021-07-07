@@ -27,10 +27,10 @@ function App() {
     <div className="App">
       {/* Adding the imported element */}
       <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-        Пример кнопки Material-UI
+        Example button Material-UI
       </Button>
       <Button variant="contained" disabled className={classes.testButtons}>
-        Пример №2 'disabled'
+        Example №2 'disabled'
       </Button>
     </div>
   );
