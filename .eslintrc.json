@@ -51,6 +51,7 @@
         "no-unsafe-finally": "warn",
         "no-unused-expressions": "off",
         "no-unused-labels": "warn",
+        "react/no-unescaped-entities": 0,
         "no-var": "error",
         "object-shorthand": "warn",
         "one-var": ["warn", "never"],
