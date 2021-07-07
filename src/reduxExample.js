@@ -9,6 +9,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(counter, composeEnhancers(applyMiddleware(thunk)));
 
 function counter(state = 0, action) {
+    // TODO: please remove it (used to avoid no-unused-vars)
+    console.log(action);
     return state;
   }
 
