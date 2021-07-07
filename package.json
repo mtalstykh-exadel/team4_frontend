@@ -67,7 +67,6 @@
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
-    "redux-devtools": "^3.7.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
   }
