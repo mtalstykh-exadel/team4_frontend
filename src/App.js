@@ -4,6 +4,8 @@ import './App.css';
 import Login from './Components/Login/Login';
 //importing components from react-router-dom for routing
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+// import logo from './logo.svg';
+import './App.scss';
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
@@ -38,7 +40,7 @@ function App() {
         Example button Material-UI
       </Button>
       <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 'disabled'
+        Example №2 disabled
       </Button>
       {/* adding routing */}
       <Switch>
