@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './App.scss';
+import './assets/scss/App.scss';
 
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
