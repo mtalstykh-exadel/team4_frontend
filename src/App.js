@@ -1,14 +1,15 @@
 import React from 'react';
 //importing login page
-import Login from './Components/Login/Login';
+import Login from './pages/login/Login';
 //importing components from react-router-dom for routing
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.scss';
 
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
+import Buttons from './pages/buttons/Buttons';
 // brief entry: import {makeStyles, Button} from '@material-ui/core/';
 
 function App() {
@@ -30,30 +31,22 @@ function App() {
 
   return (
     <div className="App">
-      {/* Adding the imported element */}
-      {/* Link to the path login */}
-      <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-        
-        <Link to='/login'>Login</Link>
-      </Button>
-      <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-        Example button Material-UI
-      </Button>
-      <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 disabled
-      </Button>
-      {/* adding routing */}
+      <div className='routingButtons'>
+        <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
+          <Link to='/login'>Login</Link>
+        </Button>
+
+        <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
+          <Link to='/buttons'>Buttons</Link>
+        </Button>
+      </div>
       <Switch>
         <Route path='/login' render={() => <Login />} />
+        <Route path='/buttons' render={() => <Buttons />} />
       </Switch>
     </div>
   );
 }
-// wrapping with container component for routing
-const AppContainer = () => {
-  return <BrowserRouter>
-    <App />
-  </BrowserRouter>
-}
 
-export default AppContainer;
+
+export default App;
