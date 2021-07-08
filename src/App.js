@@ -1,7 +1,7 @@
 import React from 'react';
-//importing login page
+// importing login page
 import Login from './pages/login/Login';
-//importing components from react-router-dom for routing
+// importing components from react-router-dom for routing
 import { Switch, Route, Link } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.scss';
