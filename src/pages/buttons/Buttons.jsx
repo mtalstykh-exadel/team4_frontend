@@ -17,7 +17,7 @@ const Buttons = () => {
     }));
 
     const classes = useStyles();
-    
+
     return <div>
         <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
             Example button Material-UI

@@ -9,9 +9,9 @@ import store from './redux/store';
 
 const AppContainer = () => {
   return <BrowserRouter>
-  <Provider store={store}>
-    <App />
-  </Provider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>;
 };
 
