@@ -5,7 +5,18 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './loginForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuthUserData } from '../../../redux/login-reducer';
+import { setAuthUserData } from '../../../store/login-reducer';
+import * as Yup from 'yup';
+
+
+//filtering and checking what the user has entered into forms
+const validationSchema = Yup.object().shape({
+    email: Yup.string()
+        .email('Invalid email')
+        .required('Required'),
+    password: Yup.string()
+        .required('Required')
+});
 
 const LoginForm = () => {
 
@@ -36,29 +47,12 @@ const LoginForm = () => {
         setSubmitting(false);
     };
 
-    //filtering and checking what the user has entered into forms
-    const validators = (values) => {
-        const errors = {};
-        if (!values.email) {
-            errors.email = 'Required';
-        } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-        ) {
-            errors.email = 'Invalid email address';
-        }
-        if (!values.password) errors.password = 'Required';
-
-        //checking the password for the presence of the Cyrillic alphabet
-        if (/[а-яё]/i.test(values.password)) {
-            errors.password = 'You can use only latin letters(a-z), numbers(0-9), and special symbols';
-        }
-        return errors;
-    };
-
     return <div className='loginForm'>
-        <Formik initialValues={{ email: '', password: '' }} validate={validators}
+        <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema}
             onSubmit={submit} >
+
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, }) => (
+
                 <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
                     {/* form for email */}
                     <div>

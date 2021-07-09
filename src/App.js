@@ -1,10 +1,13 @@
 import React from 'react';
 import Login from './pages/login/Login';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, Redirect } from 'react-router-dom';
 import './App.scss';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 import Buttons from './pages/buttons/Buttons';
+import { useSelector } from 'react-redux';
+import { ReactComponentLike } from 'prop-types';
+
 
 function App() {
 
@@ -29,18 +32,34 @@ function App() {
         <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
           <Link to='/login'>Login</Link>
         </Button>
-
         <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-          <Link to='/buttons'>Buttons</Link>
+          <Link to='/Protected'>protected</Link>
         </Button>
+
       </div>
       <Switch>
+
+
         <Route path='/login' render={() => <Login />} />
-        <Route path='/buttons' render={() => <Buttons />} />
+        <PrivateRoute path="/protected"><Buttons /></PrivateRoute>
+        <Route path="*" render={() => <Login />} />
       </Switch>
     </div>
   );
 }
 
+
+const PrivateRoute = ({ children, ...rest }) => {
+  const auth = useSelector((state) => state.login.isAuth);
+  debugger;
+  return (
+    <Route {...rest} render={({ location }) => auth ? (children) : (
+      <Redirect to={{ pathname: "/login", state: { from: location } }} />
+    )} />
+  );
+};
+PrivateRoute.propTypes = {
+  children: ReactComponentLike,
+};
 
 export default App;

@@ -7,7 +7,6 @@ const Login = () => {
 
     return <div className='login'>
         <img src={logo} alt="" className='logo' />
-        <h2>English level test</h2>
         <LoginForm />
 
     </div>;

@@ -20,5 +20,4 @@ const loginReducer = (state = initialState, action) => {
 
 export const setAuthUserData = (email, password) => ({ type: 'SET_USER_DATA', email, password });
 
-
 export default loginReducer;
