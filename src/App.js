@@ -1,6 +1,9 @@
 import React from 'react';
-
 import './App.scss';
+
+//for Internationalization
+import { Trans } from '@lingui/macro';
+// import { Trans } from '@lingui/react';
 
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
@@ -28,10 +31,10 @@ function App() {
     <div className="App">
       {/* Adding the imported element */}
       <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-        Example button Material-UI
+        <Trans>Example button Material-UI</Trans>
       </Button>
       <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 disabled
+        <Trans>Example №2 disabled</Trans>
       </Button>
     </div>
   );
