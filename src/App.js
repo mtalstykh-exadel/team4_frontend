@@ -1,6 +1,8 @@
 import React from 'react';
 import SimpleCounter from './store/store';
+
 import './App.scss';
+
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
