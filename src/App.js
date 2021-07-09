@@ -1,4 +1,5 @@
 import React from 'react';
+import SimpleCounter from './store/store';
 import './App.scss';
 
 //for Internationalization
@@ -35,6 +36,7 @@ function App() {
       <Button variant="contained" disabled className={classes.testButtons}>
         <Trans>Example №2 disabled</Trans>
       </Button>
+      <SimpleCounter />
     </div>
   );
 }
