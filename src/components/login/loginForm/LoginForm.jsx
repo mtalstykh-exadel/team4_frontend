@@ -5,9 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import './loginForm.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuthUserData } from '../../../store/login-reducer';
+import { setAuthUserData } from '../../../store/reducers/login-reducer';
 import * as Yup from 'yup';
-
 
 //filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({
