@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from './logo.svg';
+import SimpleCounter from './store/store';
 import './App.scss';
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
@@ -32,6 +32,7 @@ function App() {
       <Button variant="contained" disabled className={classes.testButtons}>
         Example №2 disabled
       </Button>
+      <SimpleCounter />
     </div>
   );
 }
