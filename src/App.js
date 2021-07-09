@@ -3,7 +3,6 @@ import './App.scss';
 
 //for Internationalization
 import { Trans } from '@lingui/macro';
-// import { Trans } from '@lingui/react';
 
 // importing the elements Material-UI
 import Button from '@material-ui/core/Button';
