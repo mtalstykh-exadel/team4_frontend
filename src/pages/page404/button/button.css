@@ -1,0 +1,15 @@
+button {
+  background-color: #3e6dd7;
+  border: none;
+  color: white;
+  text-align: center;
+  padding: 13px 39px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.button404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
