@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import preloader from '../../../assets/gif/preloader.gif';
 import { fetchLoginData } from '../../../store/actions/loginActions';
 
-//filtering and checking what the user has entered into forms
+// filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({
     email: Yup.string()
         .email('Invalid email')
@@ -24,7 +24,7 @@ const LoginForm = () => {
 
     const dispatch = useDispatch();
 
-    //styles from material ui
+    // styles from material ui
     const useStyles = makeStyles((theme) => ({
         root: {
             '& > *': {
