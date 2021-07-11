@@ -1,11 +1,7 @@
 import React from 'react';
 import SimpleCounter from './store/store';
 import './App.scss';
-
-//for Internationalization
 import { Trans } from '@lingui/macro';
-
-// importing the elements Material-UI
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core';
 // brief entry: import {makeStyles, Button} from '@material-ui/core/';
@@ -29,7 +25,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* Adding the imported element */}
       <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
         <Trans>Example button Material-UI</Trans>
       </Button>
