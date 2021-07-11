@@ -17,9 +17,7 @@ const Profile = () => {
     }));
     const classes = useStyles();
 
-    return <div>
-
-        <div className='routingButtons'>
+    return <div className='routingButtons'>
             <Button variant="contained" color="primary" disabled className={classes.testButtons}>
                 <Link to='/login'>Login</Link>
             </Button>
@@ -29,8 +27,6 @@ const Profile = () => {
             <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
                 <Link to='/buttons'>Buttons</Link>
             </Button>
-
-        </div>
     </div>;
 };
 

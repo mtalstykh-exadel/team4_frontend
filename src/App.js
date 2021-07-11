@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>
-        <PrivateRoute path="/counter"><Counter/></PrivateRoute>
+        <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/"><Profile /></PrivateRoute>
         <Route path="*" render={() => <div>This page is not defined</div>} />

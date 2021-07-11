@@ -7,8 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 const Login = () => {
     const auth = useSelector((state) => state.login.isAuth);
-    if(auth) return <Redirect to='/profile'/>;
-    debugger;
+    if (auth) return <Redirect to='/profile' />;
     return <div className='login'>
         <img src={logo} alt="" className='logo' />
         <LoginForm />

@@ -1,13 +1,13 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
-import counterReducer from "./reducers/counterReducers";
-import loginReducer from "./reducers/login-reducer";
+import { combineReducers } from 'redux';
+import { counterReducer } from './reducers/counterReducers';
+import { loginReducer } from './reducers/loginReducers';
 
 const rootReducers = combineReducers({
-    login: loginReducer,
-    counter: counterReducer
+  counter: counterReducer,
+  login: loginReducer
 });
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));
 
