@@ -37,7 +37,6 @@ const LoginForm = () => {
 
 	// function 'submit' where will be all actions after submitting
 	const submit = (values, { setSubmitting }) => {
-		alert(values.email, values.password);
 		dispatch(fetchLoginData(values));
 		setSubmitting(false);
 	};

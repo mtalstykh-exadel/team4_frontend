@@ -4,7 +4,6 @@ export const DECREMENT = 'DECREMENT';
 export const RESET = 'RESET';
 
 // login actiontypes
-export const SET_USER_DATA = 'SET_USER_DATA';
 export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';

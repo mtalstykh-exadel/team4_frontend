@@ -1,6 +1,6 @@
 import React from 'react';
-import LoginForm from './loginForm/LoginForm';
-import logo from '../../assets/images/logo/logo.png';
+import LoginForm from '../components/login/loginForm/LoginForm';
+import logo from '../assets/images/logo/logo.png';
 import './login.scss';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
