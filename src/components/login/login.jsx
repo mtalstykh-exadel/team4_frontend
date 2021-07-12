@@ -6,12 +6,12 @@ import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 const Login = () => {
-    const auth = useSelector((state) => state.login.isAuth);
-    if (auth) return <Redirect to='/profile' />;
-    return <div className='login'>
-        <img src={logo} alt="" className='logo' />
-        <LoginForm />
-    </div>;
+	const auth = useSelector((state) => state.login.isAuth);
+	if (auth) return <Redirect to='/profile' />;
+	return <div className='login'>
+		<img src={logo} alt="" className='logo' />
+		<LoginForm />
+	</div>;
 };
 
 export default Login;
