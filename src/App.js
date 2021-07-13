@@ -7,8 +7,9 @@ import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import DemoJWT from './pages/jwt/jwt.jsx';
-function App() {
-  return (
+
+const App = () => {
+    return (
     <div className="App">
       <Switch>
         <Route path='/login' render={() => <Login />} />
@@ -21,7 +22,7 @@ function App() {
       </Switch>
     </div>
   );
-}
+};
 
 
 export default App;
