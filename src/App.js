@@ -6,6 +6,7 @@ import Buttons from './components/buttons/Buttons';
 import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './components/profile/profile';
+import Page404 from "./pages/page404/page404";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/"><Profile /></PrivateRoute>
-        <Route path="*" render={() => <div>This page is not defined</div>} />
+        <Route path="*" render={() => <Page404 />} />
       </Switch>
     </div>
   );
