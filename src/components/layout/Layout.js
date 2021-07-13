@@ -13,5 +13,7 @@ const Layout = ({children}) => {
     </Fragment>
   );
 };
-
+Layout.propTypes = {
+  children: PropTypes.object,
+};
 export default Layout;
