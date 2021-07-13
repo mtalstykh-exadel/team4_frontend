@@ -1,6 +1,5 @@
 import "./Layout.scss";
 import React from "react";
-import { Fragment } from "react";
 
 
 const Layout = ({children}) => {
