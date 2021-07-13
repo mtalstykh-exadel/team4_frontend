@@ -10,9 +10,8 @@
   justify-content: center;
   transform: scale(0);
   transition: 0.5;
-}
-
-.modal.active {
+  
+  .modal.active {
   transform: scale(1);
   pointer-events: all;
 }
@@ -28,3 +27,6 @@
 .modal__content.active {
   transform: scale(1);
 }
+}
+
+
