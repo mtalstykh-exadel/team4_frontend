@@ -1,6 +1,6 @@
 import React from 'react';
 import SimpleCounter from './store/store';
-
+import JWTdemo from "./components/demo-jwt/demo.js";
 import './App.scss';
 
 // importing the elements Material-UI
@@ -35,6 +35,7 @@ function App() {
         Example №2 disabled
       </Button>
       <SimpleCounter />
+      <JWTdemo/>
     </div>
   );
 }
