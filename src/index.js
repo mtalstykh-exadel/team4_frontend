@@ -1,26 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import './index.scss';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store/store';
-
-const AppContainer = () => {
-  return <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>;
-};
+import { i18n } from '@lingui/core';
+import { I18nProvider } from '@lingui/react';
+// Start on eng
+import catalogEn from './locales/en/messages.js';
+i18n.load('en', catalogEn.messages);
+i18n.activate('en');
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppContainer />
-  </React.StrictMode>,
+  <I18nProvider i18n={i18n}>
+    <App />
+  </I18nProvider>,
   document.getElementById('root')
 );
+reportWebVitals();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
