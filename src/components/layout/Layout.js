@@ -3,12 +3,12 @@ import React from "react";
 import { Fragment } from "react";
 import Body from '../body/Body.js';
 
-const Layout = () => {
+const Layout = ({children}) => {
   return (
     <Fragment>
       <main className="main">
         {/* <Header/> */}
-        <Body>Hello it is body</Body>
+          {/*<{children}>*/}
       </main>
     </Fragment>
   );
