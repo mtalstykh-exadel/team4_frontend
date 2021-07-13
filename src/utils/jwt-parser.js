@@ -15,6 +15,9 @@ class JWT{
     get(){
         return JSON.parse(localStorage.getItem(this.jwtKey));
     }
+    remove(){
+        localStorage.removeItem(this.jwtKey);
+    }
 }
 
 export default new JWT();
