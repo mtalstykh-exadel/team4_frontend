@@ -1,19 +1,14 @@
-import React from "react";
 import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import Counter from "../components/counter/counter";
-import reducer from './reducers/counterReducers';
+import { combineReducers } from 'redux';
+import { counterReducer } from './reducers/counterReducers';
+import { loginReducer } from './reducers/loginReducers';
 
+const rootReducers = combineReducers({
+  counter: counterReducer,
+  login: loginReducer
+});
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
+const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));
 
-function SimpleCounter() {
-    return (
-        <Provider store={store}>
-            <Counter/>
-        </Provider>
-    );
-}
-
-export default SimpleCounter;
+export default store;
