@@ -8,18 +8,18 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 
 const AppContainer = () => {
-  return <BrowserRouter>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </BrowserRouter>;
+	return <BrowserRouter>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</BrowserRouter>;
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppContainer />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<React.StrictMode>
+		<AppContainer />
+	</React.StrictMode>,
+	document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
