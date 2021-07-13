@@ -5,12 +5,12 @@ import { Fragment } from "react";
 
 const Layout = ({children}) => {
   return (
-    <Fragment>
+    <div>
       <main className="main">
         {/* <Header/> */}
           {/*<{children}>*/}
       </main>
-    </Fragment>
+    </div>
   );
 };
 Layout.propTypes = {
