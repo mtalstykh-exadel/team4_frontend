@@ -5,9 +5,7 @@ import React from "react";
 const Layout = ({children}) => {
   return (
     <div>
-      <main className="main"> {/* <Header/> */}
-          {/*<{children}>*/}
-      </main>
+      <main className="main"> {/* <Header/> */}{/*<{children}>*/}</main>
     </div>
   );
 };
