@@ -21,3 +21,11 @@ package-lock.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/*eslint-disable*/
+module.exports = {
+  messages: {
+    "Example button Material-UI": "Example button Material-UI",
+    "Example №2 disabled": "Example №2 disabled"
+  }
+};
