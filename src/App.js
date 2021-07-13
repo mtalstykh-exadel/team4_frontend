@@ -1,21 +1,40 @@
-import React,{ useState }  from "react";
+import React from 'react';
+import SimpleCounter from './store/store';
+
 import './App.scss';
-import Modal from "./components/modal/Modal.js";
+
+// importing the elements Material-UI
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core';
+// brief entry: import {makeStyles, Button} from '@material-ui/core/';
 
 function App() {
-  const [modalActive,setModalActive]=useState(true);
+
+  // To apply styles to material elements
+  const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  }, testButtons: {
+        '&': {
+          margin: 40,
+        }
+      },
+  }));
+
+  const classes = useStyles();
+
   return (
     <div className="App">
-      <main>
-        <button className="open-button" onClick={()=>setModalActive(true)}>Открыть модальное окно</button>
-        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </div>
-        <div>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-        <div>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </div>
-        <div>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-      </main>
-      <Modal active={modalActive} setActive={setModalActive}>
-        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </Modal>
+      {/* Adding the imported element */}
+      <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
+        Example button Material-UI
+      </Button>
+      <Button variant="contained" disabled className={classes.testButtons}>
+        Example №2 disabled
+      </Button>
+      <SimpleCounter />
     </div>
   );
 }
