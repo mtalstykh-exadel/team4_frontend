@@ -18,3 +18,4 @@ Modal.propTypes = {
     children: PropTypes.string
 };
 export default Modal;
+
