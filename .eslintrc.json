@@ -27,6 +27,7 @@
         "dot-notation": "warn",
         "eol-last": ["error", "always"],
         "eqeqeq": ["warn", "smart"],
+        "func-style": ["error", "expression"],
         "guard-for-in": "warn",
         "id-blacklist": "off",
         "id-match": "off",
