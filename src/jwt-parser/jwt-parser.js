@@ -9,7 +9,7 @@ class JWT{
         const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c){
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
-        
+
         this.data = JSON.parse(jsonPayload);
         this.save();
     }
@@ -17,7 +17,7 @@ class JWT{
         localStorage.setItem(this.jwtKey, JSON.stringify(this.data));
     }
     get(){
-        return localStorage.getItem(JSON.parse(this.jwtKey));
+        return JSON.parse(localStorage.getItem(this.jwtKey));
     }
 }
 
