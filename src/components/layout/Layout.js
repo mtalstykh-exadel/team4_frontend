@@ -1,6 +1,6 @@
 import "./Layout.scss";
 import React from "react";
-
+import {PropTypes} from "@material-ui/core";
 
 const Layout = ({children}) => {
   return (
