@@ -9,7 +9,8 @@ import Profile from './pages/profile/profile';
 import DemoJWT from './pages/jwt/jwt.jsx';
 
 const App = () => {
-    return (
+
+  return (
     <div className="App">
       <Switch>
         <Route path='/login' render={() => <Login />} />
