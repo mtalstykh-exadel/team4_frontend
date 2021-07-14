@@ -5,7 +5,7 @@ import './App.scss';
 import Buttons from './components/buttons/Buttons';
 import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
-import Profile from './components/profile/profile';
+import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
 
