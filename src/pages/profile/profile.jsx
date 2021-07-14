@@ -27,6 +27,9 @@ const Profile = () => {
 		<Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
 			<Link to='/buttons'>Buttons</Link>
 		</Button>
+		<Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
+			<Link to='/jwt'>JWT</Link>
+		</Button>
 	</div>;
 };
 
