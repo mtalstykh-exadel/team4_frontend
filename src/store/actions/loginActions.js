@@ -6,7 +6,7 @@ export const fetchLoginStart = () => ({ type: LOGIN_START });
 
 export const fetchLoginSuccess = (data) => ({ type: LOGIN_SUCCESS, data });
 
-export const fetchLoginFailure = e => ({ type: LOGIN_FAILURE, error: e.message });
+export const fetchLoginFailure = (e) => ({ type: LOGIN_FAILURE, error: e.message });
 
 export const fetchLoginData = (dt) => (dispatch, getState) => {
 	const auth = getState();
@@ -15,9 +15,9 @@ export const fetchLoginData = (dt) => (dispatch, getState) => {
 	}
 	dispatch(fetchLoginStart(dt));
 	return getLoginData(dt)
-		.then(authData => {
+		.then((authData) => {
 			dispatch(fetchLoginSuccess(authData));
 			dispatch(setProfileData());
 		})
-		.catch(e => dispatch(fetchLoginFailure(e)));
+		.catch((e) => dispatch(fetchLoginFailure(e)));
 };
