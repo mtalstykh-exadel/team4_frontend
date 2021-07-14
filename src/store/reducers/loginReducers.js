@@ -1,8 +1,6 @@
 import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "../actions/actionTypes";
 
 const initialState = {
-	email: '',
-	password: '',
 	isAuth: false,
 	loading: false,
 	error: ''
@@ -17,8 +15,6 @@ const loginReducer = (state = initialState, action) => {
 			});
 		case LOGIN_SUCCESS:
 			return Object.assign({}, state, {
-				email: action.data.email,
-				password: action.data.password,
 				isAuth: true,
 				loading: false,
 				error: false

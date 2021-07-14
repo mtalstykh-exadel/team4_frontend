@@ -1,5 +1,6 @@
 import getLoginData from '../../components/login/dataTunk';
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
+import { setProfileData } from './profileActions';
 
 export const fetchLoginStart = () => ({ type: LOGIN_START });
 
@@ -14,6 +15,9 @@ export const fetchLoginData = (dt) => (dispatch, getState) => {
 	}
 	dispatch(fetchLoginStart(dt));
 	return getLoginData(dt)
-		.then(authData => dispatch(fetchLoginSuccess(authData)))
+		.then(authData => {
+			dispatch(fetchLoginSuccess(authData));
+			dispatch(setProfileData());
+		})
 		.catch(e => dispatch(fetchLoginFailure(e)));
 };
