@@ -4,9 +4,12 @@ import React from "react";
 
 const Layout = ({children}) => {
   return (
-    <div>
-      <main className="main"> {/* <Header/> */}{/*<{children}>*/}</main>
-    </div>
+     <>
+          {/* <Header/> */}
+            <main className="main">
+              {children}
+            </main>
+        </>
   );
 };
 Layout.propTypes = {
