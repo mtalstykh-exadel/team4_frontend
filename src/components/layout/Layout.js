@@ -3,14 +3,14 @@ import React from "react";
 import {PropTypes} from "@material-ui/core";
 
 const Layout = ({children}) => {
-    return (
-        <>
-          {/* <Header/> */}
-            <main className="main">
-              {children}
-            </main>
-        </>
-    );
+  return (
+    <>
+      {/* <Header/> */}
+      <main className="main">
+        {children}
+      </main>
+    </>
+  );
 };
 
 Layout.propTypes = {
