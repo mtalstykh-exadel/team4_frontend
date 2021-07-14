@@ -1,13 +1,11 @@
-export const INCREMENT = 'INCREMENT';
-export const DECREMENT = 'DECREMENT';
-export const RESET = 'RESET';
+import { INCREMENT, DECREMENT, RESET } from '../actions/actionTypes';
 
-export function increment() {
-   return { type: INCREMENT };
-}
-export function decrement() {
-   return { type: DECREMENT };
-}
-export function reset() {
-   return { type: RESET };
-}
+export const increment = () => ({
+  type: INCREMENT
+});
+export const decrement = () => ({
+  type: DECREMENT
+});
+export const reset = () => ({
+  type: RESET
+});
