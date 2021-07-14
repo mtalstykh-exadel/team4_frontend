@@ -9,7 +9,7 @@ const ProfileInfo = () => {
   const email = useSelector((state) => state.profile.email);
 
   return <div>
-    <h2>{avatar ? fullname : <Avatar></Avatar>}</h2>
+    {avatar ? fullname : <Avatar></Avatar>}
     <h2>{fullname ? fullname : 'Fullname'}</h2>
     <h3>{occupation ? occupation : 'Occupation'}</h3>
     <h3>{email ? email : 'Email'}</h3>
