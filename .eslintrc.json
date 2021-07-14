@@ -31,7 +31,7 @@
         "guard-for-in": "warn",
         "id-blacklist": "off",
         "id-match": "off",
-        "indent": ["warn","tab", { "SwitchCase": 1 }],
+        "indent": ["warn", 2, { "SwitchCase": 1 }],
         "import/order": "off",
         "key-spacing": ["error", { "beforeColon": false }],
         "max-classes-per-file": ["warn", 3],
