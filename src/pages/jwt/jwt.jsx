@@ -5,7 +5,6 @@ export default function DemoJWT() {
   return (
     <>
       <div>
-        {" "}
         JWTDATA = <br /> {jwtData}
       </div>
       <button
