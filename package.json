@@ -68,6 +68,7 @@
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@lingui/cli": "^3.10.2",
+    "@lingui/loader": "^3.10.2",
     "@lingui/macro": "^3.10.2",
     "@storybook/addon-actions": "^6.3.2",
     "@storybook/addon-essentials": "^6.3.2",

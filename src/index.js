@@ -6,8 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 // Start on eng
-import catalogEn from './locales/en/messages.js';
-import catalogRu from './locales/ru/messages.js';
+import catalogEn from '@lingui/loader!./locales/en/messages.json';
+import catalogRu from '@lingui/loader!./locales/ru/messages.json';
 
 i18n.load('en', catalogEn.messages);
 i18n.load('ru', catalogRu.messages);
