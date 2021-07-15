@@ -10,8 +10,7 @@ package-lock.json
 
 # production
 /build
-src/locales/en/messages.js
-src/locales/ru/messages.js
+src/locales/*/messages.js
 
 # misc
 .DS_Store
