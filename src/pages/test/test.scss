@@ -1,0 +1,70 @@
+.wrapper1 {
+  width: 100%; /* фиксируем ширину обертки */
+  margin: 0 auto; /* центрируем ее */
+  height: 90px; /* Задаем высоту обертки */
+
+  .wrapper1 :last-child {
+    margin-right: 0; /* Убираем поле последнего div-а */
+  }
+}
+
+.bl {
+  float: left; /* Задаем обтекание */
+  line-height: 100%; /* Высота строки +  верт. центрирования текста */
+  font-size: 20px;
+  color: black;
+  width: 20%;
+  text-align: center;
+  border-bottom: #e2e9f9 solid 2px;
+  padding-bottom: 13px;
+  padding-top: 40px;
+  margin-bottom: 40px;
+}
+
+.bl.active {
+  border-bottom: #3e6dd7 solid 5px;
+}
+
+.bl.time {
+  border: none;
+  font-size: 36px;
+}
+
+.wrapper3 {
+  width: 100%; /* фиксируем ширину обертки */
+  margin: 0 auto; /* центрируем ее */
+  height: 80px; /* Задаем высоту обертки */
+
+  .wrapper3 :last-child {
+    margin-right: 0; /* Убираем поле последнего div-а */
+  }
+}
+
+.testButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prev,
+.next {
+  float: left; /* Задаем обтекание */
+  line-height: 100%; /* Высота строки +  верт. центрирования текста */
+  font-size: 15px;
+  color: black;
+  text-align: center;
+  width: 14%;
+  height: 50%;
+  margin: 15%;
+}
+
+.reportMistake {
+  float: right;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #828282;
+}
+
+.stepDescription {
+  font-size: 18px;
+  color: #828282;
+}
