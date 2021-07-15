@@ -49,12 +49,16 @@
 .next {
   float: left; /* Задаем обтекание */
   line-height: 100%; /* Высота строки +  верт. центрирования текста */
-  font-size: 15px;
   color: black;
   text-align: center;
   width: 14%;
   height: 50%;
   margin: 15%;
+}
+
+.prev.invisible,
+.next.invisible {
+  visibility: hidden;
 }
 
 .reportMistake {

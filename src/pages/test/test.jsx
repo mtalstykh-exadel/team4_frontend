@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import './test.scss';
 import Layout from "../../components/layout/Layout";
 import Speaking from "./speaking/speaking";
-import * as ReactDOM from "react-dom";
 import Essay from "./essay/essay";
 import Grammar from "./grammar/grammar";
 import Listening from "./listening/listening";
@@ -23,10 +22,6 @@ export default class Test extends Component {
       onEssay: false,
       onSpeaking: false
     });
-    ReactDOM.render(
-      <Grammar/>,
-      document.getElementsByClassName('wrapper2')[0]
-    );
   };
 
   onListening = () => {
@@ -36,10 +31,6 @@ export default class Test extends Component {
       onEssay: false,
       onSpeaking: false
     });
-    ReactDOM.render(
-      <Listening/>,
-      document.getElementsByClassName('wrapper2')[0]
-    );
   };
 
   onEssay = () => {
@@ -49,10 +40,6 @@ export default class Test extends Component {
       onEssay: true,
       onSpeaking: false
     });
-    ReactDOM.render(
-      <Essay/>,
-      document.getElementsByClassName('wrapper2')[0]
-    );
   };
 
   onSpeaking = () => {
@@ -62,10 +49,6 @@ export default class Test extends Component {
       onEssay: false,
       onSpeaking: true
     });
-    ReactDOM.render(
-      <Speaking/>,
-      document.getElementsByClassName('wrapper2')[0]
-    );
   };
 
 
@@ -75,17 +58,27 @@ export default class Test extends Component {
     let listening = 'bl';
     let essay = 'bl';
     let speaking = 'bl';
+    let step = <Grammar />;
+    let prev = 'prev';
+    let next = 'Next question';
     if (onGrammar) {
       grammar += ' active';
+      step = <Grammar />;
+      prev += ' invisible';
     }
     if (onListening) {
       listening += ' active';
+      step = <Listening />;
     }
     if (onEssay) {
       essay += ' active';
+      step = <Essay />;
+
     }
     if (onSpeaking) {
       speaking += ' active';
+      step = <Speaking />;
+      next = 'Submit';
     }
     return (
       <Layout>
@@ -96,11 +89,11 @@ export default class Test extends Component {
           <div className={speaking} onClick={this.onSpeaking}>Speaking</div>
           <div className='bl time'>Time</div>
         </div>
-        <div className='wrapper2'><Grammar/></div>
+        <div className='wrapper2'>{ step }</div>
         <div className='wrapper3'>
           <div className='testButtons'>
-            <Button className="prev" color='primary' variant='outlined'>Previous question</Button>
-            <Button className="next" color='primary' variant='contained'>Next question</Button>
+            <Button className={prev} color='primary' variant='outlined'>Previous question</Button>
+            <Button className='next' color='primary' variant='contained'>{next}</Button>
           </div>
           <div className='reportMistake'>Report a mistake</div>
         </div>
