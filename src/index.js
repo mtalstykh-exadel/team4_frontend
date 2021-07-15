@@ -7,7 +7,10 @@ import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 // Start on eng
 import catalogEn from './locales/en/messages.js';
+import catalogRu from './locales/ru/messages.js';
+
 i18n.load('en', catalogEn.messages);
+i18n.load('ru', catalogRu.messages);
 i18n.activate('en');
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
