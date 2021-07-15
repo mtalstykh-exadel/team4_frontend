@@ -8,10 +8,12 @@ import { Redirect } from "react-router-dom";
 const Login = () => {
   const auth = useSelector((state) => state.login.isAuth);
   if (auth) return <Redirect to='/' />;
-  return <div className='login'>
-    <img src={logo} alt="" className='logo' />
-    <LoginForm />
-  </div>;
+  return (
+    <div className='login'>
+      <img src={logo} alt="" className='logo' />
+      <LoginForm />
+    </div>
+  );
 };
 
 export default Login;

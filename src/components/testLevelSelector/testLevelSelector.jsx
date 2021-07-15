@@ -40,7 +40,7 @@ const TestLevelsSelector = () => {
 
   const testLevelsDataArr = testLevelsData.map((level, id) => <TestLevelsSelectorItem title={level.title} description={level.description} key={id}/>);
   return (
-    <div className="level-wrapper">
+    <div className="test-level-selector-wrapper">
       {testLevelsDataArr}
     </div>
   );

@@ -6,15 +6,13 @@ import './testLevelSelectorItem.scss';
 const TestLevelsSelectorItem = ({ title, description }) => {
 
   return (
-    <>
-      <div className='test-level-selector-item'>
-        <div className="title">{title}</div>
-        <div className="description">{description}</div>
-        <Button variant="contained" color="primary" className='btn'>
-          Take test
-        </Button>
-      </div>
-    </>
+    <div className='test-level-selector-item'>
+      <div className="title">{title}</div>
+      <div className="description">{description}</div>
+      <Button variant="contained" color="primary" className='btn'>
+        Take test
+      </Button>
+    </div>
   );
 };
 
