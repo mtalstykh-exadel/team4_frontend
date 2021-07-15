@@ -4,5 +4,5 @@
       "path": "src/locales/{locale}/messages",
       "include": ["src"]
    }],
-   "format": "minimal"
+   "format": "po"
 }
