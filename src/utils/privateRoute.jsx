@@ -1,26 +1,23 @@
 import React from "react";
-import { ReactComponentLike } from "prop-types";
+import propTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = (props) => {
   const auth = useSelector((state) => state.login.isAuth);
   console.log(auth);
   return (
     <Route
-      {...rest}
-      render={({ location }) =>
-        auth ? (
-          children
-        ) : (
-          <Redirect to={{ pathname: "/login", state: { from: location } }} />
-        )
+      {...props}
+      render={({ location }) => auth ? (props.children) : (
+        <Redirect to={{ pathname: "/login", state: { from: location } }} />
+      )
       }
     />
   );
 };
 PrivateRoute.propTypes = {
-  children: ReactComponentLike,
+  children: propTypes.func,
 };
 
 export default PrivateRoute;

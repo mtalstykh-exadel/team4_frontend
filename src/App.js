@@ -18,7 +18,7 @@ const App = () => {
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/jwt"><DemoJWT /></PrivateRoute>
-        <PrivateRoute path="/"><Profile /></PrivateRoute>
+        <Route path="/"><Profile /></Route>
         <Route path="*" render={() => <div>This page is not defined</div>} />
       </Switch>
     </div>
