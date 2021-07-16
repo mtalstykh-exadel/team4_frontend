@@ -39,65 +39,26 @@ const LoginForm = () => {
   return (
     <div className="loginForm">
       {loading && <img src={preloader} />}
-      <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={validationSchema}
-        onSubmit={submit}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => (
-          <form
-            onSubmit={handleSubmit}
-            className={classes.root}
-            noValidate
-            autoComplete="off"
-          >
+      <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={submit} >
+        {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, }) => (
+          <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off" >
             {/* form for email */}
             <div className="fieldsWrapper">
-              <TextField
-                id="outlined-basic"
-                label="Mail"
-                variant="outlined"
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-              />
+              <TextField id="outlined-basic" label="Mail" variant="outlined" type="email" name="email"
+                onChange={handleChange} onBlur={handleBlur} value={values.email} />
             </div>
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
             {/* form for password */}
             <div className="fieldsWrapper">
-              <TextField
-                id="outlined-basic"
-                label="Password"
-                variant="outlined"
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
+              <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password"
+                onChange={handleChange} onBlur={handleBlur} value={values.password} />
             </div>
-            {errors.password && touched.password ? (
-              <div>{errors.password}</div>
-            ) : null}
+            {errors.password && touched.password ? <div>{errors.password}</div> : null}
 
             {/* button for submitting */}
             <div className="fieldsWrapper">
-              <Button variant="contained"
-                color="primary"
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <Button variant="contained" color="primary" type="submit" disabled={isSubmitting} >
                 Log in
               </Button>
             </div>

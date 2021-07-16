@@ -43,7 +43,7 @@ const TestsData = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
+  let keysForComps = 1;
   const testAction = (action) => {
     alert(action);
   };
@@ -65,11 +65,12 @@ const TestsData = (props) => {
             {
               filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.assigned}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
                       const value = row[column.id];
+                      keysForComps++;
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={keysForComps} align={column.align}>
                           {
                             column.id === 'action' ?
                               <Button variant="contained" color="primary"
@@ -87,7 +88,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination rowsPerPageOptions={10} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
+      <TablePagination rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );
