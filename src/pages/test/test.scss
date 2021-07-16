@@ -72,3 +72,15 @@
   font-size: 18px;
   color: #828282;
 }
+
+@media only screen and (max-width: 800px) {
+  .bl {
+    font-size: 18px;
+  }
+
+  .bl.time {
+    border: none;
+    font-size: 30px;
+  }
+
+}

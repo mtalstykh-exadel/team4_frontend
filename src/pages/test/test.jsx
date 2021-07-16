@@ -89,7 +89,7 @@ export default class Test extends Component {
           <div className={speaking} onClick={this.onSpeaking}>Speaking</div>
           <div className='bl time'>Time</div>
         </div>
-        <div className='wrapper2'>{ step }</div>
+        <div className='wrapper2'>{step}</div>
         <div className='wrapper3'>
           <div className='testButtons'>
             <Button className={prev} color='primary' variant='outlined'>Previous question</Button>
