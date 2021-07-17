@@ -7,26 +7,55 @@ import Header from '../../components/header/header';
 const Profile = () => {
   const useStyles = makeStyles((theme) => ({
     root: {
-      '& > *': {
+      "& > *": {
         margin: theme.spacing(1),
       },
-    }, testButtons: {
-      '&': {
+    },
+    testButtons: {
+      "&": {
         margin: 40,
-      }
+      },
     },
   }));
   const classes = useStyles();
 
-  return <div className='routingButtons'>
-    <Header />
-    <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-      <Link to='/counter'>Counter</Link>
-    </Button>
-    <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-      <Link to='/buttons'>Buttons</Link>
-    </Button>
-  </div>;
+  return (
+    <div className="routingButtons">
+      <Header />
+      <Button
+        variant="contained"
+        color="primary"
+        disabled
+        className={classes.testButtons}
+      >
+        <Link to="/login">Login</Link>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={classes.testButtons}
+      >
+        <Link to="/counter">Counter</Link>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={classes.testButtons}
+      >
+        <Link to="/buttons">Buttons</Link>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={classes.testButtons}
+      >
+        <Link to="/jwt">JWT</Link>
+      </Button>
+    </div>
+  );
 };
 
 export default Profile;
