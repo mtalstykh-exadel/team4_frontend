@@ -1,7 +1,7 @@
 import React from 'react';
-import EditTestsInfo from './EditTestsInfo/EditTestsInfo';
+import EditTestsInfo from './editTestsInfo/editTestsInfo';
 import imageSrc from '../../assets/images/goose.svg';
-import './EditTestsSelector.scss';
+import './editTestsSelector.scss';
 
 
 const EditTestsSelector = () => {

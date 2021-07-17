@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../../components/layout/Layout';
-import EditTestsSelector from '../../components/EditTestsSelector/EditTestsSelector';
+import EditTestsSelector from '../../components/editTestsSelector/editTestsSelector';
 
 const EditTests = () => {
   return (
