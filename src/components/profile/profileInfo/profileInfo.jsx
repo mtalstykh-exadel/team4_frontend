@@ -22,11 +22,11 @@ const ProfileInfo = () => {
   const email = useSelector((state) => state.profile.email);
 
   return <div className='profileInfo'>
-    {avatar ? fullname : <Avatar className={classes.large} />}
+    {avatar ? avatar : <Avatar className={classes.large} />}
     <div className='profileData'>
-      <h2 className = 'fullname'>{fullname ? fullname : 'Fullname'}</h2>
-      <p className = 'occupation'>{occupation ? occupation : 'Occupation'}</p>
-      <p className = 'email'><b>Email:</b> {email ? email : 'example@mail.ru'}</p>
+      <h2 className = 'fullname'>{fullname ? fullname : null}</h2>
+      <p className = 'occupation'>{occupation ? occupation : null}</p>
+      <p className = 'email'><b>Email:</b> {email ? email : null}</p>
     </div>
   </div>;
 };
