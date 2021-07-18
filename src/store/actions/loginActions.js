@@ -17,7 +17,6 @@ export const fetchLoginData = (dt) => (dispatch, getState) => {
   return getLoginData(dt)
     .then((authData) => {
       dispatch(fetchLoginSuccess(authData));
-      debugger;
       dispatch(setProfileData(null, 'Ivan Ivanov', 'frontend developer', dt.email));
     })
     .catch((e) => dispatch(fetchLoginFailure(e)));

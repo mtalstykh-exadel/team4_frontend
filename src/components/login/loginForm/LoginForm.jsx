@@ -33,7 +33,6 @@ const LoginForm = () => {
 
   // function 'submit' where will be all actions after submitting
   const submit = (values, { setSubmitting }) => {
-    debugger;
     dispatch(fetchLoginData(values));
     setSubmitting(false);
   };
