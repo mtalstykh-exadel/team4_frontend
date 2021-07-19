@@ -1,11 +1,15 @@
 import React from 'react';
+import TestLevelsSelector from '../../components/testLevelSelector/testLevelSelector';
+import Layout from '../../components/layout/Layout';
+import './main.scss';
 
 const Main = () => {
   return (
-    <>
-      <h2>Testing procedure</h2>
-      <p>Choose a test according to the expected level of English. If you don't know your level, then start with the first test.</p>
-    </>
+    <Layout>
+      <h1>Testing procedure</h1>
+      <p className='subtitle'>Choose a test according to the expected level of English. If you don't know your level, then start with the first test.</p>
+      <TestLevelsSelector />
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 import "./Layout.scss";
 import React from "react";
-import PropTypes from 'prop-types';
+import { PropTypes } from "prop-types";
 
 const Layout = ({children}) => {
   return (
