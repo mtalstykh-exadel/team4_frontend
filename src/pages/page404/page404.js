@@ -8,9 +8,9 @@ const Page404 = () => {
   return (
     <div className='page404'>
       <div className='logo404-wrapper'>
-            <span>4</span>
-            <span><img src={logo} alt='logo' className='logo'/></span>
-            <span>4</span>
+        <span>4</span>
+        <span><img src={logo} alt='logo' className='logo'/></span>
+        <span>4</span>
       </div>
       <div className='message-wrapper'>
         <h1>Oops, this page was not found!</h1>
