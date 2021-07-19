@@ -51,6 +51,59 @@ export default class Test extends Component {
     });
   };
 
+  nextStep = () => {
+    if (this.state.onGrammar === true) {
+      this.setState({
+        onGrammar: false,
+        onListening: true,
+        onEssay: false,
+        onSpeaking: false
+      });
+    }
+    if (this.state.onListening === true) {
+      this.setState({
+        onGrammar: false,
+        onListening: false,
+        onEssay: true,
+        onSpeaking: false
+      });
+    }
+    if (this.state.onEssay === true) {
+      this.setState({
+        onGrammar: false,
+        onListening: false,
+        onEssay: false,
+        onSpeaking: true
+      });
+    }
+  }
+
+  previousStep = () => {
+    if (this.state.onListening === true) {
+      this.setState({
+        onGrammar: true,
+        onListening: false,
+        onEssay: false,
+        onSpeaking: false
+      });
+    }
+    if (this.state.onEssay === true) {
+      this.setState({
+        onGrammar: false,
+        onListening: true,
+        onEssay: false,
+        onSpeaking: false
+      });
+    }
+    if (this.state.onSpeaking === true) {
+      this.setState({
+        onGrammar: false,
+        onListening: false,
+        onEssay: true,
+        onSpeaking: false
+      });
+    }
+  }
 
   render() {
     const {onGrammar, onListening, onEssay, onSpeaking} = this.state;
@@ -60,7 +113,7 @@ export default class Test extends Component {
     let speaking = 'bl';
     let step = <Grammar />;
     let prev = 'prev';
-    let next = 'Next question';
+    let next = 'Next step';
     if (onGrammar) {
       grammar += ' active';
       step = <Grammar />;
@@ -92,8 +145,8 @@ export default class Test extends Component {
         <div className='wrapper2'>{step}</div>
         <div className='wrapper3'>
           <div className='testButtons'>
-            <Button className={prev} color='primary' variant='outlined'>Previous question</Button>
-            <Button className='next' color='primary' variant='contained'>{next}</Button>
+            <Button className={prev} color='primary' variant='outlined' onClick={this.previousStep}>Previous step</Button>
+            <Button className='next' color='primary' variant='contained' onClick={this.nextStep}>{next}</Button>
           </div>
           <div className='reportMistake'>Report a mistake</div>
         </div>
