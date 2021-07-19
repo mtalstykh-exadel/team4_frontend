@@ -8,66 +8,79 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import useStyles from './headerStyles';
+import './headerStyles.scss';
+
 import logo from '../../assets/images/logo/logoText.svg';
 import avatar from '../../assets/images/logo/logoText.svg';
 import AccountMenu from './accountMenu';
 import LogoutModal from './logoutModal';
 import DrawerMenu from './drawerMenu';
 import LanguageMenu from './languageMenu';
-import Notifications from './notifications';
+import Notifications from './notificationsMenu';
+
+import { makeStyles } from '@material-ui/core/styles';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
   const location = useLocation();
-  const classes = useStyles();
 
+
+  const useStyles = makeStyles((theme) => ({
+    avatar: {
+      width: theme.spacing(3),
+      height: theme.spacing(3)
+    },
+    triangle: {
+      fontSize: 15
+    }
+  }));
+  const classes = useStyles();
   const role = useSelector((state) => state.role);
-  const shorthand = useSelector((state) => state.language.short);
+  const shorthand = useSelector((state) => state.language).substring(0,2);
   const [states, setState] = useState({
-    accEl: null,
-    langEl: null,
+    accumulatorEl: null,
+    languageEl: null,
     logoutEl: false,
-    notifEl: null,
-    notifEmpty: false,
-    draEl: false
+    notificationsEl: null,
+    notificationsEmpty: false,
+    drawerEl: false
   });
   const handleCircle = (value) => setState({
-    notifEmpty: value
+    notificationsEmpty: value
   });
   const handleDrawer = (value) => setState({
-    draEl: value
+    drawerEl: value
   });
 
   const handleAccMenu = (event) => setState({
-    accEl: event.currentTarget
+    accumulatorEl: event.currentTarget
   });
   const handleAccClose = () => setState({
-    accEl: null
+    accumulatorEl: null
   });
 
   const handleLangMenu = (event) => setState({
-    langEl: event.currentTarget
+    languageEl: event.currentTarget
   });
 
   const handleLangClose = () => setState({
-    langEl: null
+    languageEl: null
   });
 
   const handleLogoutModal = (value) => setState({
     logoutEl: value
   });
   const handleNotifOpen = (event) => setState({
-    notifEl: event.currentTarget
+    notificationsEl: event.currentTarget
   });
 
   const handleNotifClose = () => setState({
-    notifEl: null
+    notificationsEl: null
   });
   const linkBtn = (path, name) => (
     <Button
       disableElevation
-      className={`${location.pathname === path ? classes.bold : null} ${classes.roleBtns}`}
+      className={`${location.pathname === path ? 'bold' : null} 'roleBtns'`}
       component={Link}
       to={path}>
       {name}
@@ -76,55 +89,55 @@ const Header = () => {
   return (
     <AppBar
       elevation={1}
-      position="static"
-      color="inherit">
-      <Toolbar className={classes.toolbar}>
-        <div className={classes.sideLeft}>
+      position='static'
+      color='inherit'>
+      <Toolbar className='toolbar'>
+        <div className='sideLeft'>
           {!matches && <>
             <IconButton
-              edge="start"
-              color="inherit"
-              aria-haspopup="true"
+              edge='start'
+              color='inherit'
+              aria-haspopup='true'
               onClick={() => handleDrawer(true)}>
               <MenuIcon/>
             </IconButton>
             <Drawer anchor={'left'}
-              open={states.draEl}
+              open={states.drawerEl}
               onClose={() => handleDrawer(false)}>
               {<DrawerMenu
                 handleLogoutModal={handleLogoutModal}
                 handleDrawer={() => handleDrawer(false)}/>}
             </Drawer>
           </>}
-          { matches && <img src={logo} alt="logo" className={classes.logoText}/> }
+          { matches && <img src={logo} alt='logo' className='logoText'/> }
           { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
           { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
           { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
         </div>
-        { !matches && <img src={logo} alt="logo" className={classes.logo}/> }
-        <div className={classes.sideRight}>
+        { !matches && <img src={logo} alt="logo" className={'logo'}/> }
+        <div className='sideRight'>
           <IconButton
-            className={classes.notifBtn}
-            edge="start"
-            color="inherit"
-            aria-haspopup="true"
+            className='notifBtn'
+            edge='start'
+            color='inherit'
+            aria-haspopup='true'
             onClick={handleNotifOpen}>
-            <Badge overlap="circular" variant="dot" color="primary">
+            <Badge overlap='circular' variant='dot' color='primary'>
               <NotificationsNoneIcon/>
             </Badge>
           </IconButton>
           { matches &&
-          <div className={classes.sideBtns}>
+          <div className='sideBtns'>
             <IconButton
-              edge="end"
-              color="inherit"
-              aria-haspopup="true"
+              edge='end'
+              color='inherit'
+              aria-haspopup='true'
               onClick={handleAccMenu}>
               <Avatar className={classes.avatar} src={avatar}/>
               <ArrowDropDownIcon className={classes.triangle}/>
             </IconButton>
             <Button
-              className={classes.bold}
+              className={'bold'}
               onClick={handleLangMenu}>
               {shorthand}
               <ArrowDropDownIcon
@@ -132,23 +145,23 @@ const Header = () => {
             </Button>
           </div>}
         </div>
+        {<AccountMenu
+          accEl={states.accumulatorEl}
+          handleAccClose={handleAccClose}
+          handleLogoutMenu={() => {handleLogoutModal(true);}}/>}
+        {<LogoutModal
+          logoutEl={states.logoutEl}
+          handleAccClose={handleAccClose}
+          handleLogoutClose={() => {handleLogoutModal(false);}}
+          handleLangClose={handleLangClose}/>}
+        {<LanguageMenu
+          langEl={states.languageEl}
+          handleLangClose={handleLangClose}/>}
+        {<Notifications
+          notifEl={states.notificationsEl}
+          handleNotifClose={handleNotifClose}
+          handleCircle={(value) => handleCircle(value)}/>}
       </Toolbar>
-      {<AccountMenu
-        accEl={states.accEl}
-        handleAccClose={handleAccClose}
-        handleLogoutMenu={() => {handleLogoutModal(true);}}/>}
-      {<LogoutModal
-        logoutEl={states.logoutEl}
-        handleAccClose={handleAccClose}
-        handleLogoutClose={() => {handleLogoutModal(false);}}
-        handleLangClose={handleLangClose}/>}
-      {<LanguageMenu
-        langEl={states.langEl}
-        handleLangClose={handleLangClose}/>}
-      {<Notifications
-        notifEl={states.notifEl}
-        handleNotifClose={handleNotifClose}
-        handleCircle={(value) => handleCircle(value)}/>}
     </AppBar>
   );
 };

@@ -5,59 +5,56 @@ import { Link } from 'react-router-dom';
 import { Menu, Typography, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import useStyles from './headerStyles';
 import notificationsData from './dummyData';
 
 const Notifications = (props) => {
-  const classes = useStyles();
-
-  const notifAsign = (item) => (
+  const notificationsAssign = (item) => (
     <>
-      <Typography variant="body1">
+      <Typography variant='body1'>
         {item.body}
       </Typography>
-      <Typography variant="subtitle2" className={classes.bold}>
+      <Typography variant='subtitle2' className='bold'>
         {item.level}
       </Typography>
       <Button
         disableElevation
         component={Link}
         to='/test'
-        color="primary"
-        variant="text"
-        className={classes.seemoreBtn}
+        color='primary'
+        variant='text'
+        className='seemoreBtn'
         onClick={props.handleNotifClose}>
           See More
       </Button>
     </>
   );
 
-  const notifTest = (item) => (
+  const notificationsTest = (item) => (
     <>
-      <Typography variant="body1">
+      <Typography variant='body1'>
         {item.body}
       </Typography>
-      <Typography variant="subtitle2" className={classes.bold}>
+      <Typography variant='subtitle2' className='bold'>
         {item.level}
       </Typography>
-      <Typography variant="subtitle2" className={classes.bold}>
+      <Typography variant='subtitle2' className='bold'>
         {item.expiration}
       </Typography>
       <Button
         component={Link}
         to='/test'
-        color="primary"
-        variant="contained"
-        className={classes.takeTestBtn}
+        color='primary'
+        variant='contained'
+        className='takeTestBtn'
         onClick={props.handleNotifClose}>
           Take Test
       </Button>
     </>
   );
 
-  const notifEmpty = (
+  const notificationsEmpty = (
     <Typography
-      className={classes.notifEmpty}
+      className='notifEmpty'
       variant='caption'>
       No new notificiations for you
     </Typography>
@@ -67,7 +64,7 @@ const Notifications = (props) => {
     <Menu
       elevation={1}
       anchorEl={props.notifEl}
-      className={classes.notifiMenu}
+      className='notifiMenu'
       open={Boolean(props.notifEl)}
       onClose={props.handleNotifClose}
       anchorOrigin={{
@@ -83,19 +80,19 @@ const Notifications = (props) => {
           width: 350,
         }}}>
       {Object.keys(notificationsData).length !== 0 ? notificationsData.map((item, index) => (
-        <div className={classes.notifTest} key={index}>
+        <div className='notifTest' key={index}>
           <Typography variant="caption">
             {item.date}
           </Typography>
           <Button
-            className={classes.closeButton}
+            className='closeButton'
             onClick={props.handleNotifClose}>
             <CloseIcon
-              className={classes.closeIcon}
+              className='closeIcon'
               size='small'> </CloseIcon>
           </Button>
-          {item.type === 'result' ? notifAsign(item) : notifTest(item)}
-        </div>)) : notifEmpty
+          {item.type === 'result' ? notificationsAssign(item) : notificationsTest(item)}
+        </div>)) : notificationsEmpty
       }
     </Menu>);
 };

@@ -10,6 +10,7 @@ const AccountMenu = (props) => {
       elevation={1}
       anchorEl={props.accEl}
       open={Boolean(props.accEl)}
+      keepMounted
       onClose={props.handleAccClose}
       getContentAnchorEl={null}
       anchorOrigin={{

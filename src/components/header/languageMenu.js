@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { changeToRussian, changeToEnglish } from '../../store/actions/headerActions';
+import { languageChange } from '../../store/actions/headerActions';
 
 const LanguageMenu = (props) => {
   const dispatch = useDispatch();
@@ -25,11 +25,11 @@ const LanguageMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(changeToEnglish());}}>
+        onClick={ () => {props.handleLangClose(); dispatch(languageChange('english'));}}>
         English
       </MenuItem>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(changeToRussian());}}>
+        onClick={ () => {props.handleLangClose(); dispatch(languageChange('russian'));}}>
         Russian
       </MenuItem>
     </Menu>);
