@@ -2,41 +2,32 @@ import React from 'react';
 import SimpleCounter from './store/store';
 
 import './App.scss';
+import Buttons from './components/buttons/Buttons';
+import Counter from './components/counter/counter';
+import PrivateRoute from './utils/privateRoute';
+import Profile from './pages/profile/profile';
+import Main from './pages/main/main';
+import DemoJWT from './pages/jwt/jwt.jsx';
 
-// importing the elements Material-UI
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core';
-// brief entry: import {makeStyles, Button} from '@material-ui/core/';
 
-function App() {
-
-  // To apply styles to material elements
-  const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  }, testButtons: {
-        '&': {
-          margin: 40,
-        }
-      },
-  }));
-
-  const classes = useStyles();
+const App = () => {
 
   return (
     <div className="App">
-      {/* Adding the imported element */}
-      <Button variant="contained" color="primary" disableElevation className={classes.testButtons}>
-        Example button Material-UI
-      </Button>
-      <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 disabled
-      </Button>
-      <SimpleCounter />
+      <Switch>
+        <Route path='/login' render={() => <Login />} />
+        <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>
+        <PrivateRoute path="/counter"><Counter /></PrivateRoute>
+        <PrivateRoute path="/profile"><Profile /></PrivateRoute>
+        <PrivateRoute path="/" exact><Main /></PrivateRoute>
+        <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
+
+        <Route path="*" render={() => <div>This page is not defined</div>} />
+      </Switch>
+
     </div>
   );
-}
+};
+
 
 export default App;

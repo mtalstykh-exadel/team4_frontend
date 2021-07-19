@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './App';
+
+import 'normalize.css';
+
 import reportWebVitals from './reportWebVitals';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';

@@ -3,8 +3,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-const Buttons = () => {
-  // To apply styles to material elements
+const Profile = () => {
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -17,21 +16,17 @@ const Buttons = () => {
       },
     },
   }));
-
   const classes = useStyles();
 
   return (
-    <div>
+    <div className="routingButtons">
       <Button
         variant="contained"
         color="primary"
-        disableElevation
+        disabled
         className={classes.testButtons}
       >
-        Example button Material-UI
-      </Button>
-      <Button variant="contained" disabled className={classes.testButtons}>
-        Example №2 disabled
+        <Link to="/login">Login</Link>
       </Button>
       <Button
         variant="contained"
@@ -39,10 +34,26 @@ const Buttons = () => {
         disableElevation
         className={classes.testButtons}
       >
-        <Link to="/profile">Profile</Link>
+        <Link to="/counter">Counter</Link>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={classes.testButtons}
+      >
+        <Link to="/buttons">Buttons</Link>
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={classes.testButtons}
+      >
+        <Link to="/jwt">JWT</Link>
       </Button>
     </div>
   );
 };
 
-export default Buttons;
+export default Profile;
