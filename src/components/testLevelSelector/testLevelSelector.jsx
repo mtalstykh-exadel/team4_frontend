@@ -37,8 +37,8 @@ const TestLevelsSelector = () => {
       description: "I understand almost any oral or written message, I can make a coherent text based on several oral and written sources. I speak spontaneously with a high tempo and a high degree of accuracy, emphasizing the shades of meaning even in the most difficult cases."
     }
   ];
-// check
-  const testLevelsDataArr = testLevelsData.map((level, id) => <TestLevelsSelectorItem title={level.title} description={level.description} key={id}/>);
+  // check
+  const testLevelsDataArr = testLevelsData.map((level, id) => <TestLevelsSelectorItem title={level.title} description={level.description} key={id} />);
   return (
     <div className="test-level-selector-wrapper">
       {testLevelsDataArr}
