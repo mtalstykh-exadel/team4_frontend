@@ -3,13 +3,32 @@
 
   .edit-tests-placeholder {
     display: flex;
-    margin-top: 100px;
+    margin: 20vh 10vh;
   }
 
   .edit-tests-selector-text {
     max-width: 600px;
     text-align: left;
     font-size: 46px;
-    margin: 10vh 10vh 0 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .edit-tests-selector {
+    .edit-tests-placeholder {
+      flex-wrap: wrap;
+      margin: 0;
+      padding-left: 10vh;
+
+      .edit-tests-selector-text {
+        font-size: 26px;
+        margin: 5vh 10vh 0 0;
+      }
+
+      .picture {
+        width: 200px;
+        margin-top: 30px;
+      }
+    }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import EditTestsInfo from './editTestsInfo/editTestsInfo';
+import EditTestsInfo from './EeditTestsInfo/EditTestsInfo';
 import imageSrc from '../../assets/images/goose.svg';
-import './editTestsSelector.scss';
+import './EditTestsSelector.scss';
 
 
 const EditTestsSelector = () => {
@@ -12,7 +12,7 @@ const EditTestsSelector = () => {
       </div>
       <div className='edit-tests-placeholder'>
         <div className='edit-tests-selector-text'>Select the option at the top to see the questions.</div>
-        <img title="goose-img" src={imageSrc} />
+        <img title='goose-img' alt='goose-img' src={imageSrc} className='picture' />
       </div>
     </div>
 
