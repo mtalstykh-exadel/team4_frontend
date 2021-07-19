@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -22,35 +21,26 @@ const TestsData = (props) => {
     { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
     { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
   ];
-
-  const useStyles = makeStyles({
-    root: {
-      width: '100%',
-    },
-    container: {
-      minHeight: 100,
-    },
-  });
-  const classes = useStyles();
+  const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
+  let keysForComps = 1;
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(100);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  let keysForComps = 1;
   const testAction = (action) => {
     alert(action);
   };
-  const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
+
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
+    <Paper>
+      <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

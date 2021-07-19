@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik } from "formik";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./loginForm.scss";
@@ -20,16 +19,6 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
 
-  // styles from material ui
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(1),
-        width: "25ch",
-      },
-    },
-  }));
-  const classes = useStyles();
 
   // function 'submit' where will be all actions after submitting
   const submit = (values, { setSubmitting }) => {
@@ -41,7 +30,7 @@ const LoginForm = () => {
       {loading && <img src={preloader} />}
       <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={submit} >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, }) => (
-          <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off" >
+          <form onSubmit={handleSubmit} noValidate autoComplete="off" >
             {/* form for email */}
             <div className="fieldsWrapper">
               <TextField id="outlined-basic" label="Mail" variant="outlined" type="email" name="email"
