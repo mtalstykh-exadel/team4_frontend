@@ -7,14 +7,12 @@ import Button from '@material-ui/core/Button';
 const Page404 = () => {
   return (
     <>
-      <div className='body404'>
-        <div className='body404 block'>
+      <div className='block404'>
           <div className='text404'>
             <div>4</div>
             <img src={logo} alt='logo' className='logo404'/>
             <div>4</div>
           </div>
-        </div>
       </div>
       <div className='caption404'>
         <h1>Oops, this page was not found!</h1>
