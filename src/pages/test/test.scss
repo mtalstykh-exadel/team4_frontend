@@ -34,6 +34,7 @@
   width: 100%; /* фиксируем ширину обертки */
   margin: 0 auto; /* центрируем ее */
   height: 80px; /* Задаем высоту обертки */
+  padding-top: 40px;
 
   .wrapper3 :last-child {
     margin-right: 0; /* Убираем поле последнего div-а */

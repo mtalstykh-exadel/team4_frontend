@@ -1,0 +1,41 @@
+.img img {
+  width: 35px;
+}
+
+#start {
+  padding-right: 10%;
+}
+
+#stop {
+  padding-left: 20%;
+}
+
+#audio {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  row-gap: 10px;
+  width: 400px;
+  margin: 0 auto 0 auto;
+  justify-items: center;
+  align-items: center;
+  padding: 10px;
+}
+
+#audio span {
+  color: #3f51b5;
+}
+
+#audio span:hover {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.audioTopic {
+  padding: 10px;
+}
+
+.speakingTopic {
+  font-size: 24px;
+  padding-top: 15px;
+  padding-bottom: 40px;
+}
