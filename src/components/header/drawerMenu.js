@@ -26,7 +26,7 @@ const DrawerMenu = (props) => {
   );
 
   return (
-    <div className='list'>
+    <div className='drawer'>
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>
@@ -45,18 +45,18 @@ const DrawerMenu = (props) => {
       </div>
       <Divider/>
       {role !== 'default' &&
-      <div className='drawer'>
+      <div className='drawerSplit'>
         {role === 'hr' && <>{linkBtn('/employees','Employees')}</>}
         {role === 'admin' && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
         {role === 'coach' && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
       </div>}
       <Divider/>
-      <div className='drawer'>
+      <div className='drawerSplit'>
         <Button onClick={ () => {dispatch(languageChange('english'));}}>English</Button>
         <Button onClick={ () => {dispatch(languageChange('russian'));}}>Russian</Button>
       </div>
       <Divider/>
-      <div className='drawer'>
+      <div className='drawerSplit'>
         <Button
           component={Link}
           to={'/profile'}>

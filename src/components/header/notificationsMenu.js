@@ -64,7 +64,6 @@ const Notifications = (props) => {
     <Menu
       elevation={1}
       anchorEl={props.notifEl}
-      className='notifiMenu'
       open={Boolean(props.notifEl)}
       onClose={props.handleNotifClose}
       anchorOrigin={{
@@ -88,7 +87,6 @@ const Notifications = (props) => {
             className='closeButton'
             onClick={props.handleNotifClose}>
             <CloseIcon
-              className='closeIcon'
               size='small'> </CloseIcon>
           </Button>
           {item.type === 'result' ? notificationsAssign(item) : notificationsTest(item)}

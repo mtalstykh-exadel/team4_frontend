@@ -107,7 +107,6 @@ const Header = () => {
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
         <div className='sideRight'>
           <IconButton
-            className='notifBtn'
             edge='start'
             color='inherit'
             aria-haspopup='true'
@@ -117,7 +116,7 @@ const Header = () => {
             </Badge>
           </IconButton>
           { matches &&
-          <div className='sideBtns'>
+          <>
             <IconButton
               edge='end'
               color='inherit'
@@ -130,13 +129,13 @@ const Header = () => {
                 className='triangle'/>
             </IconButton>
             <Button
-              className={'bold'}
+              className='bold'
               onClick={handleLangMenu}>
               {shorthand}
               <ArrowDropDownIcon
                 className='triangle'/>
             </Button>
-          </div>}
+          </>}
         </div>
         {<AccountMenu
           accEl={states.accumulatorEl}
