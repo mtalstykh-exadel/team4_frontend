@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/buttons/Buttons.jsx:34
-msgid "Example button Material-UI"
-msgstr "Example button Material-UI"
+#~ msgid "Example button Material-UI"
+#~ msgstr "Example button Material-UI"
 
 #: src/components/buttons/Buttons.jsx:37
-msgid "Example №2 disabled"
-msgstr "Example №2 disabled"
+#~ msgid "Example №2 disabled"
+#~ msgstr "Example №2 disabled"

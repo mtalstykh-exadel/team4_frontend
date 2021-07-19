@@ -8,13 +8,14 @@ import { I18nProvider } from '@lingui/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import catalogEn from '@lingui/loader!./locales/en/messages.po';
-import catalogRu from '@lingui/loader!./locales/ru/messages.po';
-i18n.load('en', catalogEn.messages);
-i18n.load('ru', catalogRu.messages);
-i18n.activate('en');
+import jwt from './utils/jwt-parser.js';
+import Lang from './utils/lang-service.js';
 
 const AppContainer = () => {
+  Lang.get(jwt.parse(
+    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2MjY2Nzk2ODQsImV4cCI6MTY1ODIxNTY4NCwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjoiTWFuYWdlciIsImxhbmciOiJydSJ9.0M0nKXvGBdJgA13XQYGMX-jk3jcVDWBc9iwO_uy2sE0"
+  ));
+  
   return <BrowserRouter>
     <Provider store={store}>
       <I18nProvider i18n={i18n}>
