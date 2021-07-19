@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/buttons/Buttons.jsx:34
-#~ msgid "Example button Material-UI"
-#~ msgstr "ПРИМЕР КНОПКИ Material-UI"
+msgid "Английский"
+msgstr "Английский"
 
-#: src/components/buttons/Buttons.jsx:37
-#~ msgid "Example №2 disabled"
-#~ msgstr "ПРИМЕР №2 ОТКЛЮЧЕН"
+#: src/components/buttons/Buttons.jsx:31
+msgid "Русский"
+msgstr "Русский"
