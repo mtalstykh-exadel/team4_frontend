@@ -21,8 +21,16 @@ const AccountMenu = (props) => {
         vertical: 'top',
         horizontal: 'center'
       }}>
-      <MenuItem onClick={props.handleAccClose} component={Link} to={'/profile'}>My account</MenuItem>
-      <MenuItem onClick={props.handleLogoutMenu}>Logout</MenuItem>
+      <MenuItem
+        component={Link}
+        to={'/profile'}
+        onClick={props.handleAccClose}>
+          My account
+      </MenuItem>
+      <MenuItem
+        onClick={props.handleLogoutMenu}>
+          Logout
+      </MenuItem>
     </Menu>);
 };
 

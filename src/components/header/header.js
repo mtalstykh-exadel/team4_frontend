@@ -121,8 +121,11 @@ const Header = () => {
               color='inherit'
               aria-haspopup='true'
               onClick={handleAccMenu}>
-              <Avatar className='avatar' src={avatar}/>
-              <ArrowDropDownIcon className='triangle'/>
+              <Avatar
+                className='avatar'
+                src={avatar}/>
+              <ArrowDropDownIcon
+                className='triangle'/>
             </IconButton>
             <Button
               className={'bold'}

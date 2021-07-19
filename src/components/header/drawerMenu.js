@@ -38,7 +38,9 @@ const DrawerMenu = (props) => {
           aria-haspopup='true'
           component={Link}
           to={'/profile'}>
-          <Avatar className='avatar' src={avatar}/>
+          <Avatar
+            className='avatar'
+            src={avatar}/>
         </IconButton>
       </div>
       <Divider/>
