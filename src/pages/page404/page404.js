@@ -6,22 +6,20 @@ import Button from '@material-ui/core/Button';
 
 const Page404 = () => {
   return (
-    <>
-      <div className='block404'>
-          <div className='text404'>
-            <div>4</div>
-            <img src={logo} alt='logo' className='logo404'/>
-            <div>4</div>
-          </div>
+    <div className='page404'>
+      <div className='logo404-wrapper'>
+            <span>4</span>
+            <span><img src={logo} alt='logo' className='logo'/></span>
+            <span>4</span>
       </div>
-      <div className='caption404'>
+      <div className='message-wrapper'>
         <h1>Oops, this page was not found!</h1>
         <h3>Either something went wrong or the page doesn't exist anymore.</h3>
       </div>
-      <div className='button404'>
+      <div className='button-wrapper'>
         <Button color='primary' variant='contained'>Go Home</Button>
       </div>
-    </>
+    </div>
   );
 };
 

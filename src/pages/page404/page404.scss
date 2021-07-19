@@ -1,37 +1,28 @@
-.block404 {
+.logo404-wrapper {
   height: 50vh;
   width: 100vw;
   position: relative;
-  display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.text404 {
-  position: absolute;
-  bottom: 0;
   font-size: 340px;
   color: #3e6dd7;
-  width: 30vw;
-  border-radius: 12px;
-  background-color: white;
-  display: flex;
   justify-content: center;
+  text-align: center;
+  display: flex;
 }
 
-.logo404 {
+.logo {
   display: block;
   margin: auto;
   width: 270px;
   height: 270px;
 }
 
-.caption404 {
+.message-wrapper {
   color: #fe873c;
   text-align: center;
 }
 
-.button404 {
+.button-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
