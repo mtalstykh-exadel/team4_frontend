@@ -5,10 +5,13 @@ import './App.scss';
 import Buttons from './components/buttons/Buttons';
 import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
-import Profile from './components/profile/profile';
-import Page404 from "./pages/page404/page404";
+import Profile from './pages/profile/profile';
+import Main from './pages/main/main';
+import DemoJWT from './pages/jwt/jwt.jsx';
 
-function App() {
+
+const App = () => {
+
   return (
     <div className="App">
       <Switch>
@@ -16,11 +19,14 @@ function App() {
         <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
-        <PrivateRoute path="/"><Profile /></PrivateRoute>
-        <Route path="*" render={() => <Page404 />} />
+        <PrivateRoute path="/" exact><Main /></PrivateRoute>
+        <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
+
+        <Route path="*" render={() => <div>This page is not defined</div>} />
       </Switch>
     </div>
   );
-}
+};
+
 
 export default App;
