@@ -1,15 +1,13 @@
 .body404 {
   height: 50vh;
   width: 100vw;
-}
 
-.block404 {
-  height: 50vh;
-  width: 100vw;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .text404 {

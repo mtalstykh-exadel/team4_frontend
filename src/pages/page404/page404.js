@@ -1,14 +1,14 @@
 import React from 'react';
 
 import './page404.scss';
-import logo from '../../assets/images/logo/logo.png';
+import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
 
 const Page404 = () => {
   return (
-    <div>
+    <>
       <div className='body404'>
-        <div className='block404'>
+        <div className='body404 block'>
           <div className='text404'>
             <div>4</div>
             <img src={logo} alt='logo' className='logo404'/>
@@ -23,7 +23,7 @@ const Page404 = () => {
       <div className='button404'>
         <Button color='primary' variant='contained'>Go Home</Button>
       </div>
-    </div>
+    </>
   );
 };
 
