@@ -7,25 +7,14 @@ import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { languageChange } from '../../store/actions/headerActions';
-import { makeStyles } from '@material-ui/core/styles';
 
 // import image as an avatar for profile icon
 import avatar from '../../assets/images/logo/logoText.svg';
 
 const DrawerMenu = (props) => {
-  // const classes = useStyles();
   const dispatch = useDispatch();
   const role = useSelector((state) => state.role);
-  const useStyles = makeStyles((theme) => ({
-    avatar: {
-      width: theme.spacing(3),
-      height: theme.spacing(3)
-    },
-    triangle: {
-      fontSize: 15
-    }
-  }));
-  const classes = useStyles();
+
   const linkBtn = (path, name) => (
     <Button
       className={location.pathname === path ? 'bold' : null}
@@ -49,7 +38,7 @@ const DrawerMenu = (props) => {
           aria-haspopup='true'
           component={Link}
           to={'/profile'}>
-          <Avatar className={classes.avatar} src={avatar}/>
+          <Avatar className='avatar' src={avatar}/>
         </IconButton>
       </div>
       <Divider/>

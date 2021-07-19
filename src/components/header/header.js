@@ -18,23 +18,10 @@ import DrawerMenu from './drawerMenu';
 import LanguageMenu from './languageMenu';
 import Notifications from './notificationsMenu';
 
-import { makeStyles } from '@material-ui/core/styles';
-
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
   const location = useLocation();
 
-
-  const useStyles = makeStyles((theme) => ({
-    avatar: {
-      width: theme.spacing(3),
-      height: theme.spacing(3)
-    },
-    triangle: {
-      fontSize: 15
-    }
-  }));
-  const classes = useStyles();
   const role = useSelector((state) => state.role);
   const shorthand = useSelector((state) => state.language).substring(0,2);
   const [states, setState] = useState({
@@ -86,6 +73,7 @@ const Header = () => {
       {name}
     </Button>
   );
+
   return (
     <AppBar
       elevation={1}
@@ -133,15 +121,15 @@ const Header = () => {
               color='inherit'
               aria-haspopup='true'
               onClick={handleAccMenu}>
-              <Avatar className={classes.avatar} src={avatar}/>
-              <ArrowDropDownIcon className={classes.triangle}/>
+              <Avatar className='avatar' src={avatar}/>
+              <ArrowDropDownIcon className='triangle'/>
             </IconButton>
             <Button
               className={'bold'}
               onClick={handleLangMenu}>
               {shorthand}
               <ArrowDropDownIcon
-                className={classes.triangle}/>
+                className='triangle'/>
             </Button>
           </div>}
         </div>

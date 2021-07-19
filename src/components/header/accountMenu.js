@@ -25,6 +25,7 @@ const AccountMenu = (props) => {
       <MenuItem onClick={props.handleLogoutMenu}>Logout</MenuItem>
     </Menu>);
 };
+
 AccountMenu.propTypes = {
   accEl: PropTypes.any,
   handleAccClose: PropTypes.func,

@@ -3,20 +3,11 @@ import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 
 import { fetchLogout } from '../../store/actions/headerActions';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2, 4, 3),
-  }
-}));
-
 const LogoutModal = (props) => {
   const dispatch = useDispatch();
-  const classes = useStyles();
 
   return (
     <Modal
@@ -25,7 +16,7 @@ const LogoutModal = (props) => {
       open={Boolean(props.logoutEl)}
       onClose={props.handleAccClose}>
       <Fade in={props.logoutEl}>
-        <div className={classes.paper}>
+        <div className='paper'>
           <h2>Log out of account?</h2>
           <div className='modalBtns'>
             <Button
