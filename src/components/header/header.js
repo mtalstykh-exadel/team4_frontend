@@ -10,8 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import './headerStyles.scss';
 
-import logo from '../../assets/images/logo/logoText.svg';
+import logo from '../../assets/images/logo/logo.svg';
+import logoText from '../../assets/images/logo/logoText.svg';
 import avatar from '../../assets/images/logo/logoText.svg';
+
 import AccountMenu from './accountMenu';
 import LogoutModal from './logoutModal';
 import DrawerMenu from './drawerMenu';
@@ -97,7 +99,7 @@ const Header = () => {
                 handleDrawer={() => handleDrawer(false)}/>}
             </Drawer>
           </>}
-          { matches && <img src={logo} alt='logo' className='logoText'/> }
+          { matches && <img src={logoText} alt='logo' className='logoText'/> }
           { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
           { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
           { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}

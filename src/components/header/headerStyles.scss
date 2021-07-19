@@ -21,6 +21,11 @@ body {
     max-width: 160px;
   }
 
+  .logo {
+    max-width: 60px;
+    min-width: 50px;
+  }
+
   .paper {
     padding: 30px;
     background-color: beige;
@@ -33,11 +38,6 @@ body {
   .avatar {
     height: 30px;
     width: 30px;
-  }
-
-  .logo {
-    max-width: 160px;
-    min-width: 100px;
   }
 
   .modalBtns {
