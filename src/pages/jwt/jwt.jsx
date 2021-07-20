@@ -16,7 +16,7 @@ export default function DemoJWT() {
       >
         1) parse jwt
       </button>
-      <button onClick={() => setJwtData(JSON.stringify(JWT.get()))}>
+      <button onClick={() => setJwtData(JSON.stringify(jwt.get()))}>
         2) get jwt
       </button>
     </>
