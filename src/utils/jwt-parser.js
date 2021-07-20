@@ -1,23 +1,17 @@
 import jwt_decode from "jwt-decode";
+const jwtKey = "jwt=data";
 
-class JWT {
-  constructor() {
-    this.jwtKey = "jwt=data";
-    this.data;
-  }
-  parse(token) {
-    this.data = jwt_decode(token);
-    this.save();
-  }
-  save() {
-    localStorage.setItem(this.jwtKey, JSON.stringify(this.data));
-  }
-  get() {
-    return JSON.parse(localStorage.getItem(this.jwtKey));
-  }
-  remove() {
-    localStorage.removeItem(this.jwtKey);
-  }
-}
+const saveJWT = (token) => {
+  localStorage.setItem(jwtKey, JSON.stringify(jwt_decode(token)));
+};
 
-export default new JWT();
+const getJWT = () => {
+  return JSON.parse(localStorage.getItem(jwtKey));
+};
+
+const removeJWT = () => {
+  localStorage.removeItem(jwtKey);
+};
+
+export { saveJWT, getJWT, removeJWT };
+
