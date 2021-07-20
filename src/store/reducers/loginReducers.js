@@ -1,4 +1,4 @@
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS } from "../actions/actionTypes";
+import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from "../actions/actionTypes";
 
 const initialState = {
   email: '',
@@ -25,10 +25,20 @@ const loginReducer = (state = initialState, action) => {
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
-        data: null,
+        email: '',
+        password: '',
+        isAuth: false,
         loading: false,
         error: true
       });
+    case LOGOUT_START:
+      return {
+        email: '',
+        password: '',
+        isAuth: false,
+        loading: false,
+        error: ''
+      };
     default:
       return state;
   }

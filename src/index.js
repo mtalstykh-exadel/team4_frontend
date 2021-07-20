@@ -24,9 +24,9 @@ const AppContainer = () => {
 };
 
 ReactDOM.render(
-  <I18nProvider i18n={i18n}>
-    <App />
-  </I18nProvider>,
+
+  <AppContainer />,
+
   document.getElementById('root')
 );
 reportWebVitals();
