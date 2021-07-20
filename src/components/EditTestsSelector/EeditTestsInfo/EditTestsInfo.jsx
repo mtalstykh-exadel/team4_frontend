@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
 import { useState } from 'react';
 import './EditTestsInfo.scss';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const EditTestsInfo = () => {
 
@@ -16,9 +17,9 @@ const EditTestsInfo = () => {
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   const testModules = ['Gramma', 'Listening', 'Essay', 'Speaking'];
 
-  const testLevelsList = testLevels.map((elem) => { return <option className='edit-tests-option' key={elem} value={elem}>{elem}</option>; });
+  const testLevelsList = testLevels.map((elem) => { return <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>; });
 
-  const testModulesList = testModules.map((elem) => { return <option className='edit-tests-option' key={elem} value={elem}>{elem}</option>; });
+  const testModulesList = testModules.map((elem) => { return <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>; });
 
   return (
     <>
@@ -26,14 +27,14 @@ const EditTestsInfo = () => {
         <FormControl variant="outlined" className="edit-tests-search-level" size='small'>
           <InputLabel htmlFor="level">Level</InputLabel>
           <Select name='level' label="Level" value={level} inputProps={{ name: 'level' }} onChange={(event) => setLevel(event.target.value)}>
-            <option className='edit-tests-option edit-tests-option-none' key='' aria-label="None" value=''>None</option>
+            <MenuItem value="" className='edit-tests-option edit-tests-option-none'>None</MenuItem>
             {testLevelsList}
           </Select>
         </FormControl>
         <FormControl variant="outlined" className="edit-tests-search-module" size='small'>
           <InputLabel htmlFor="module">Module</InputLabel>
           <Select name='module' label='module' value={module} inputProps={{ name: 'module' }} onChange={(event) => setModule(event.target.value)}>
-            <option className='edit-tests-option edit-tests-option-none' key='' aria-label="None" value=''>None</option>
+            <MenuItem value="" className='edit-tests-option edit-tests-option-none'>None</MenuItem>
             {testModulesList}
           </Select>
         </FormControl>
