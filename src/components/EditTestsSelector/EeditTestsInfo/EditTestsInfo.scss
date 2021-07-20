@@ -14,10 +14,6 @@
     margin-left: 15px;
   }
 
-  .list {
-    font-style: italic;
-  }
-
   @media screen and (max-width: 380px) {
     flex-wrap: wrap;
     justify-content: center;
@@ -38,4 +34,8 @@
 .edit-tests-option {
   margin: 10px;
   cursor: pointer;
+}
+
+.edit-tests-option-none {
+  font-style: italic;
 }

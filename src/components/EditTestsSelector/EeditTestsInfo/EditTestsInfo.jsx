@@ -13,8 +13,8 @@ const EditTestsInfo = () => {
   const [module, setModule] = useState('');
   const [ID, setId] = useState('');
 
-  const testLevels = ['', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  const testModules = ['', 'Gramma', 'Listening', 'Essay', 'Speaking'];
+  const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+  const testModules = ['Gramma', 'Listening', 'Essay', 'Speaking'];
 
   const addtestLevels = testLevels.map((elem) => { return <option className='edit-tests-option' key={elem} value={elem}>{elem}</option>; });
 
@@ -26,12 +26,14 @@ const EditTestsInfo = () => {
         <FormControl variant="outlined" className="edit-tests-search-level" size='small'>
           <InputLabel htmlFor="level">Level</InputLabel>
           <Select name='level' label="Level" value={level} inputProps={{ name: 'level' }} onChange={(event) => setLevel(event.target.value)}>
+            <option className='edit-tests-option edit-tests-option-none' key='' aria-label="None" value=''>None</option>
             {addtestLevels}
           </Select>
         </FormControl>
         <FormControl variant="outlined" className="edit-tests-search-module" size='small'>
           <InputLabel htmlFor="module">Module</InputLabel>
           <Select name='module' label='module' value={module} inputProps={{ name: 'module' }} onChange={(event) => setModule(event.target.value)}>
+            <option className='edit-tests-option edit-tests-option-none' key='' aria-label="None" value=''>None</option>
             {addtestModules}
           </Select>
         </FormControl>
