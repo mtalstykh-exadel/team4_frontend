@@ -12,14 +12,14 @@ const EditTestsInfo = () => {
 
   const [level, setLevel] = useState('');
   const [module, setModule] = useState('');
-  const [ID, setId] = useState('');
+  const [QuestId, setQuestId] = useState('');
 
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   const testModules = ['Gramma', 'Listening', 'Essay', 'Speaking'];
 
-  const testLevelsList = testLevels.map((elem) => { return <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>; });
+  const testLevelsList = testLevels.map((elem) => { return (<MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>); });
 
-  const testModulesList = testModules.map((elem) => { return <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>; });
+  const testModulesList = testModules.map((elem) => { return (<MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>); });
 
   return (
     <>
@@ -38,7 +38,7 @@ const EditTestsInfo = () => {
             {testModulesList}
           </Select>
         </FormControl>
-        <TextField label="ID" className="edit-tests-search-id" variant="outlined" size='small' value={ID} onChange={(event) => setId(event.target.value)} inputProps={{ name: 'ID' }} />
+        <TextField label="ID" className="edit-tests-search-id" variant="outlined" size='small' value={QuestId} onChange={(event) => setQuestId(event.target.value)} inputProps={{ name: 'ID' }} />
         <Button color="primary" variant="contained" type="search" className='btn-search'>
           Search
         </Button>
