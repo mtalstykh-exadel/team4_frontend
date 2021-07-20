@@ -49,7 +49,7 @@ const LoginForm = () => {
 
             <div className="fieldsWrapper">
               <Button variant="contained" color="primary" type="submit"
-                disabled={isSubmitting | !!errors.email | !!errors.password || loading} >
+                disabled={isSubmitting || !!errors.email || !!errors.password || loading} >
                 Log in
               </Button>
             </div>
