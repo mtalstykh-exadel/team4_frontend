@@ -8,7 +8,7 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import './headerStyles.scss';
+import './header.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
@@ -126,7 +126,7 @@ const Header = () => {
               aria-haspopup='true'
               onClick={handleAccount}>
               <Avatar
-                className='avatar'
+                className='avatarHeader'
                 src={avatar}
                 alt='avatar'/>
               <ArrowDropDownIcon

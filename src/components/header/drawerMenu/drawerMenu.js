@@ -39,7 +39,7 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatar'
+            className='avatarHeader'
             src={avatar}/>
         </IconButton>
       </div>
