@@ -13,7 +13,7 @@ import { defineLang } from './utils/lang-service.js';
 
 const AppContainer = () => {
   defineLang();
-  
+
   return <BrowserRouter>
     <Provider store={store}>
       <I18nProvider i18n={i18n}>
