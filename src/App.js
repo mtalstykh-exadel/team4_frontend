@@ -8,6 +8,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
+import AdminTestPage from './pages/admin/test-page-admin/tests-page-admin.jsx';
 
 
 const App = () => {
@@ -19,8 +20,9 @@ const App = () => {
         <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
-        <PrivateRoute path="/" exact><Main /></PrivateRoute>
+        <PrivateRoute path="/main" ><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
+        <PrivateRoute path="/" exact><AdminTestPage /></PrivateRoute>
 
         <Route path="*" render={() => <div>This page is not defined</div>} />
       </Switch>
