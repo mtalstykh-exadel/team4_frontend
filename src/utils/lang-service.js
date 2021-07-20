@@ -2,23 +2,10 @@ import { i18n } from "@lingui/core";
 import catalogEn from "@lingui/loader!../locales/en/messages.po";
 import catalogRu from "@lingui/loader!../locales/ru/messages.po";
 
-export class LangService {
-  constructor(){
-    this.currentLang = JSON.parse(localStorage.getItem("jwt=data"));
-    this.langKey = "lang";
-  }
-  defineLang() {
-    if (this.currentLang?.lang){
-      this.saveLang(this.currentLang.lang);
-    }
-    else if (localStorage.getItem(this.langKey)){
-      this.saveLang(localStorage.getItem(this.langKey));
-    }
-    else {
-      this.saveLang("en");
-    }
-  }
-  saveLang(lang) {
+const currentLang = JSON.parse(localStorage.getItem("jwt=data"));
+const langKey = "lang";
+
+function saveLang(lang) {
     switch (lang) {
       case "ru":
           i18n.load("ru", catalogRu.messages);
@@ -34,8 +21,19 @@ export class LangService {
           lang = "en";
         break;
       }
-    localStorage.setItem(this.langKey, lang);  
+    localStorage.setItem(langKey, lang);  
+}
+
+function defineLang() {
+  if (currentLang?.lang){
+    saveLang(currentLang.lang);
+  }
+  else if (localStorage.getItem(langKey)){
+    saveLang(localStorage.getItem(langKey));
+  }
+  else {
+    saveLang("en");
   }
 }
 
-
+export { saveLang, defineLang }
