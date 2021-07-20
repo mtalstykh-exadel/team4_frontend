@@ -1,14 +1,8 @@
 import jwt_decode from "jwt-decode";
 const jwtKey = "jwt=data";
-let data = null;
 
-const saveJWT = () => {
-  localStorage.setItem(jwtKey, JSON.stringify(data));
-};
-
-const parseJWT = (token) => {
-    data = jwt_decode(token);
-    saveJWT();
+const saveJWT = (token) => {
+  localStorage.setItem(jwtKey, JSON.stringify( jwt_decode(token) ));
 };
 
 const getJWT = () => {
@@ -19,5 +13,5 @@ const removeJWT = () => {
     localStorage.removeItem(jwtKey);
 };
 
-export {saveJWT, parseJWT, getJWT, removeJWT};
+export {saveJWT, getJWT, removeJWT};
 
