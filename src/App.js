@@ -8,8 +8,8 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
+import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
-
 
 const App = () => {
 
@@ -23,12 +23,11 @@ const App = () => {
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
+        <Route path="*" render={() => <Page404 />} />
 
-        <Route path="*" render={() => <div>This page is not defined</div>} />
       </Switch>
     </div>
   );
 };
-
 
 export default App;
