@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { languageChange } from '../../store/actions/headerActions';
+import { languageChange } from '../../../store/actions/headerActions';
 
 // import image as an avatar for profile icon
-import avatar from '../../assets/images/logo/logoText.svg';
+import avatar from '../../../assets/images/logo/logoText.svg';
 
 const DrawerMenu = (props) => {
   const dispatch = useDispatch();

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Menu, Typography, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import notificationsData from './dummyData';
+import notificationsData from '../data/dummyData';
 
 const Notifications = (props) => {
   const notificationsAssign = (item) => (

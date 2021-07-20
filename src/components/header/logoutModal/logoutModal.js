@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
 
-import { fetchLogout } from '../../store/actions/headerActions';
+import { fetchLogout } from '../../../store/actions/headerActions';
 
 const LogoutModal = (props) => {
   const dispatch = useDispatch();

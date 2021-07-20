@@ -1,33 +1,37 @@
 body {
   .toolbar {
     justify-content: space-around;
+
+    .icons-triangle {
+      font-size: 15px;
+    }
+    
+    .toolbar-sideLeft {
+      display: flex;
+  
+      .roleBtns {
+        padding: 20px;
+      }
+    }
+  
+    .toolbar-sideRight {
+      display: flex;
+    }
+  
+    .logoText {
+      max-width: 160px;
+    }
+  
+    .logo {
+      max-width: 60px;
+      min-width: 50px;
+    }
   }
 
   @media screen and (max-width: 1024px) {
     .toolbar {
       justify-content: space-between;
     }
-  }
-
-  .toolbar-sideLeft {
-    display: flex;
-
-    .roleBtns {
-      padding: 20px;
-    }
-  }
-
-  .toolbar-sideRight {
-    display: flex;
-  }
-
-  .logoText {
-    max-width: 160px;
-  }
-
-  .logo {
-    max-width: 60px;
-    min-width: 50px;
   }
 
   .drawer {
@@ -43,10 +47,6 @@ body {
       flex-wrap: wrap;
       justify-content: space-between;
     }
-  }
-
-  .icons-triangle {
-    font-size: 15px;
   }
 
   .avatar {
@@ -91,6 +91,7 @@ body {
 
     .paper {
       padding: 30px;
+      background-color: white;
     }
 
     .modalBtns {

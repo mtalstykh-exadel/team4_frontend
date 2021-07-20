@@ -14,11 +14,11 @@ import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
 import avatar from '../../assets/images/logo/logoText.svg';
 
-import AccountMenu from './accountMenu';
-import LogoutModal from './logoutModal';
-import DrawerMenu from './drawerMenu';
-import LanguageMenu from './languageMenu';
-import Notifications from './notificationsMenu';
+import AccountMenu from './accountDropdown/accountDropdown';
+import LogoutModal from './logoutModal/logoutModal';
+import DrawerMenu from './drawerMenu/drawerMenu';
+import LanguageMenu from './languageDropdown/languageDropdown';
+import Notifications from './notificationsDropdown/notificationsDropdown';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
@@ -34,21 +34,21 @@ const Header = () => {
     notificationsEmpty: false,
     drawerEl: false
   });
-  const handleCircle = (value) => setState({
+  const handleBadge = (value) => setState({
     notificationsEmpty: value
   });
   const handleDrawer = (value) => setState({
     drawerEl: value
   });
 
-  const handleAccountMenu = (event) => setState({
+  const handleAccount = (event) => setState({
     accumulatorEl: event.currentTarget
   });
   const handleAccountClose = () => setState({
     accumulatorEl: null
   });
 
-  const handleLanguageMenu = (event) => setState({
+  const handleLanguage = (event) => setState({
     languageEl: event.currentTarget
   });
 
@@ -56,10 +56,10 @@ const Header = () => {
     languageEl: null
   });
 
-  const handleLogoutModal = (value) => setState({
+  const handleLogout = (value) => setState({
     logoutEl: value
   });
-  const handleNotificationsOpen = (event) => setState({
+  const handleNotifications = (event) => setState({
     notificationsEl: event.currentTarget
   });
 
@@ -78,6 +78,7 @@ const Header = () => {
 
   return (
     <AppBar
+      color='inherit'
       className='base-color'
       elevation={1}
       position='static'>
@@ -94,7 +95,7 @@ const Header = () => {
               open={states.drawerEl}
               onClose={() => handleDrawer(false)}>
               {<DrawerMenu
-                handleLogoutModal={handleLogoutModal}
+                handleLogoutModal={handleLogout}
                 handleDrawer={() => handleDrawer(false)}/>}
             </Drawer>
           </>}
@@ -109,7 +110,7 @@ const Header = () => {
             edge='start'
             aria-haspopup='true'
             color='inherit'
-            onClick={handleNotificationsOpen}>
+            onClick={handleNotifications}>
             <Badge
               color='primary'
               overlap='circular'
@@ -123,7 +124,7 @@ const Header = () => {
               edge='end'
               color='inherit'
               aria-haspopup='true'
-              onClick={handleAccountMenu}>
+              onClick={handleAccount}>
               <Avatar
                 className='avatar'
                 src={avatar}
@@ -133,7 +134,7 @@ const Header = () => {
             </IconButton>
             <Button
               className='bold'
-              onClick={handleLanguageMenu}>
+              onClick={handleLanguage}>
               {shorthand}
               <ArrowDropDownIcon
                 className='icons-triangle'/>
@@ -143,11 +144,11 @@ const Header = () => {
         {<AccountMenu
           accEl={states.accumulatorEl}
           handleAccClose={handleAccountClose}
-          handleLogoutMenu={() => {handleLogoutModal(true);}}/>}
+          handleLogoutMenu={() => {handleLogout(true);}}/>}
         {<LogoutModal
           logoutEl={states.logoutEl}
           handleAccClose={handleAccountClose}
-          handleLogoutClose={() => {handleLogoutModal(false);}}
+          handleLogoutClose={() => {handleLogout(false);}}
           handleLangClose={handleLanguageClose}/>}
         {<LanguageMenu
           langEl={states.languageEl}
@@ -155,7 +156,7 @@ const Header = () => {
         {<Notifications
           notifEl={states.notificationsEl}
           handleNotifClose={handleNotificationsClose}
-          handleCircle={(value) => handleCircle(value)}/>}
+          handleCircle={(value) => handleBadge(value)}/>}
       </Toolbar>
     </AppBar>
   );
