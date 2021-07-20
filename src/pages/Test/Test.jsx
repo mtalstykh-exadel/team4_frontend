@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import './test.scss';
+import './Test.scss';
 import Layout from "../../components/layout/Layout";
-import Speaking from "./speaking/speaking";
-import Essay from "./essay/essay";
-import Grammar from "./grammar/grammar";
-import Listening from "./listening/listening";
+import Speaking from "./Speaking/Speaking";
+import Essay from "./Essay/Essay";
+import Grammar from "./Grammar/Grammar";
+import Listening from "./Listening/Listening";
 import Button from '@material-ui/core/Button';
 
 export default class Test extends Component {

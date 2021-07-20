@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import './essay.scss';
+import './Essay.scss';
 
 export default class Essay extends Component {
   state = {

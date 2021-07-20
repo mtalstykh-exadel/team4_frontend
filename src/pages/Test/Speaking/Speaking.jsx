@@ -1,7 +1,7 @@
 import React from "react";
 import Button from '@material-ui/core/Button';
 import micro from '../../../assets/images/micro.svg';
-import "./speaking.scss";
+import "./Speaking.scss";
 const Speaking = () => {
   let url = null;
   let startTime = null;
@@ -76,7 +76,7 @@ const Speaking = () => {
   return (
     <>
       <div className='stepDescription'>Write down record</div>
-      <div className='speakingTopic'>Essay Topic</div>
+      <div className='speakingTopic'>Speaking Topic</div>
       <div className='img'><img src={micro}/></div>
       <div id='time'></div>
       <div id='audio'></div>

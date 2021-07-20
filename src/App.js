@@ -8,7 +8,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
-import Test from "./pages/test/test";
+import Test from "./pages/Test/Test";
 
 
 const App = () => {
