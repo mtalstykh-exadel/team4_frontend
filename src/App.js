@@ -8,7 +8,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
-import Page404 from "./pages/page404/page404";
+import Page404 from "./pages/Page404/Page404";
 
 const App = () => {
 

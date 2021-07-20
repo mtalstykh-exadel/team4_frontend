@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './page404.scss';
+import './Page404.scss';
 import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
 
