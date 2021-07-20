@@ -1,7 +1,7 @@
 import React from 'react';
 import './profile.scss';
-import ProfileInfo from '../../components/profile/profileInfo/profileInfo';
-import TestsInfo from '../../components/profile/testsInfo/testsInfo';
+import ProfileInfo from '../../components/ProfileInfo/profileInfo';
+import TestsInfo from '../../components/testsInfo/TestsInfo';
 
 const Profile = () => {
   return (

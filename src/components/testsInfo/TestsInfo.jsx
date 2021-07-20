@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import TestsData from './testsData/testsData';
-import TestInfoSearchForm from './testsInfoSearchForm/testsInfoSearchForm';
+import TestsData from './TestsData/testsData';
+import TestInfoSearchForm from './TestsInfoSearchForm/TestsInfoSearchForm';
 
 const TestsInfo = () => {
   const [filter, setFilter] = useState(null);

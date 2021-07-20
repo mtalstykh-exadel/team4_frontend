@@ -21,7 +21,9 @@ const TestsData = (props) => {
     { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
     { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
   ];
+
   const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
+
   let keysForColumns = 1;
 
   const [page, setPage] = React.useState(0);
@@ -30,10 +32,12 @@ const TestsData = (props) => {
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   const testAction = (action) => {
     console.log(action);
   };
