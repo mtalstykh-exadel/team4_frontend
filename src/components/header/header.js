@@ -9,6 +9,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './headerStyles.scss';
+import '../theme/theme.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
@@ -108,13 +109,13 @@ const Header = () => {
           <IconButton
             edge='start'
             aria-haspopup='true'
-            color='inherit'
             onClick={handleNotificationsOpen}>
             <Badge
+              classes={{ badge: 'notifications-color' }}
               color='primary'
               overlap='circular'
               variant='dot'>
-              <NotificationsNoneIcon/>
+              <NotificationsNoneIcon className='icons-color'/>
             </Badge>
           </IconButton>
           { matches &&
@@ -125,18 +126,18 @@ const Header = () => {
               aria-haspopup='true'
               onClick={handleAccountMenu}>
               <Avatar
-                className='avatar'
+                className='avatar icons-color'
                 src={avatar}
                 alt='avatar'/>
               <ArrowDropDownIcon
-                className='icons-triangle'/>
+                className='icons-triangle icons-color'/>
             </IconButton>
             <Button
               className='bold'
               onClick={handleLanguageMenu}>
               {shorthand}
               <ArrowDropDownIcon
-                className='icons-triangle'/>
+                className='icons-triangle icons-color'/>
             </Button>
           </>}
         </div>

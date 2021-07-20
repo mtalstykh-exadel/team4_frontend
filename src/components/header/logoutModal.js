@@ -11,7 +11,7 @@ const LogoutModal = (props) => {
 
   return (
     <Modal
-      className='modal'
+      className='base-color'
       BackdropComponent={Backdrop}
       open={Boolean(props.logoutEl)}
       onClose={props.handleAccClose}>
@@ -20,13 +20,13 @@ const LogoutModal = (props) => {
           <h2>Log out of account?</h2>
           <div className='modalBtns'>
             <Button
-              color='primary'
+              className='primary-contained'
               variant='contained'
               onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(fetchLogout());}}>
                 Yes
             </Button>
             <Button
-              color='primary'
+              className='primary-outlined'
               variant='outlined'
               onClick={() => {props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose();}}>
                 No

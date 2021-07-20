@@ -17,7 +17,7 @@ const validationSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const loading = useSelector((state) => state.login.loading);
-
+  const error = useSelector((state) => state.login.error);
   const dispatch = useDispatch();
 
   // styles from material ui
@@ -67,13 +67,13 @@ const LoginForm = () => {
                 variant="outlined"
                 type="email"
                 name="email"
+                error={error ? true : false}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
               />
             </div>
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
-
             {/* form for password */}
             <div className="fieldsWrapper">
               <TextField
@@ -82,6 +82,7 @@ const LoginForm = () => {
                 variant="outlined"
                 type="password"
                 name="password"
+                error={error ? true : false}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
@@ -93,8 +94,9 @@ const LoginForm = () => {
 
             {/* button for submitting */}
             <div className="fieldsWrapper">
-              <Button variant="contained"
-                color="primary"
+              <Button
+                className="primary-contained"
+                variant="contained"
                 type="submit"
                 disabled={isSubmitting}
               >

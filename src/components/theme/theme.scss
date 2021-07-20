@@ -1,0 +1,55 @@
+$base-color: #fff;
+$primary-color: #3e6dd7;
+$secondary-color: #828282;
+$notifications-color: #6fff97;
+$error-color: red;
+$icons-color: #000;
+
+body {
+  .base-color {
+    background-color: $base-color;
+  }
+
+  .primary-contained {
+    background-color: $primary-color;
+    color: $base-color;
+  }
+
+  .primary-outlined {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  .secondary-outlined {
+    border-color: $secondary-color;
+    color: $secondary-color;
+  }
+
+  .icons-color {
+    fill: $icons-color;
+  }
+
+  .notifications-color {
+    background-color: $notifications-color;
+  }
+
+  .error-outlined {
+    background-color: $error-color;
+  }
+
+  :hover .MuiOutlinedInput-root {
+    &.Mui-focused fieldset {
+      border-color: $primary-color;
+    }
+
+    &:hover fieldset {
+      border-color: $primary-color;
+    }
+  }
+
+  :hover .MuiFormLabel-root {
+    &.Mui-focused {
+      color: $primary-color;
+    }
+  }
+}
