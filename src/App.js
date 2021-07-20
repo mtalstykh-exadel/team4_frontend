@@ -10,6 +10,7 @@ import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
+import Test from "./pages/Test/Test";
 
 const App = () => {
 
@@ -23,8 +24,8 @@ const App = () => {
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
+        <PrivateRoute path='/test'><Test /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
-
       </Switch>
     </div>
   );
