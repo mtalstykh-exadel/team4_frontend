@@ -5,5 +5,5 @@
       "include": ["src"]
    }],
    "format": "po",
-   sourceLocale: "en" 
+   "sourceLocale": "en" 
 }
