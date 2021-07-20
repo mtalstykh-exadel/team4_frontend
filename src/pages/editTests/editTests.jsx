@@ -6,11 +6,7 @@ const EditTests = () => {
   return (
     <Layout>
       <EditTestsSelector />
-      {/* <div>
-        <QuestionData/>
-      </div> */}
     </Layout>
-
   );
 };
 

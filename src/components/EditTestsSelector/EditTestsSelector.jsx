@@ -12,7 +12,6 @@ const EditTestsSelector = () => {
         <img title='goose-img' alt='goose-img' src={imageSrc} className='picture' />
       </div>
     </div>
-
   );
 };
 
