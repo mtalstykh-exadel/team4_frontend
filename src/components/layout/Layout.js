@@ -1,6 +1,6 @@
-import "./Layout.module.css";
+import "./Layout.scss";
 import React from "react";
-import {PropTypes} from "@material-ui/core";
+import { PropTypes } from "prop-types";
 
 const Layout = ({children}) => {
   return (
