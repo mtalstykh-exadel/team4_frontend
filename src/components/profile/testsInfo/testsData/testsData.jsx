@@ -22,7 +22,7 @@ const TestsData = (props) => {
     { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
   ];
   const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
-  let keysForComps = 1;
+  let keysForColumns = 1;
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(100);
@@ -58,9 +58,9 @@ const TestsData = (props) => {
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
                       const value = row[column.id];
-                      keysForComps++;
+                      keysForColumns++;
                       return (
-                        <TableCell key={keysForComps} align={column.align}>
+                        <TableCell key={keysForColumns} align={column.align}>
                           {
                             column.id === 'action' ?
                               <Button variant="contained" color="primary"

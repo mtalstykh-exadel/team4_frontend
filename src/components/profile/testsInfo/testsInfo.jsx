@@ -6,12 +6,8 @@ import TestInfoSearchForm from './testsInfoSearchForm/testsInfoSearchForm';
 const TestsInfo = () => {
   const [filter, setFilter] = useState(null);
   return <div>
-    <div>
-      <TestInfoSearchForm setFilter={setFilter} />
-    </div>
-    <div>
-      <TestsData filter={filter} />
-    </div>
+    <TestInfoSearchForm setFilter={setFilter} />
+    <TestsData filter={filter} />
   </div>;
 };
 

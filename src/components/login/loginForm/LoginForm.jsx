@@ -8,17 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import preloader from "../../../assets/gif/preloader.gif";
 import { fetchLoginData } from "../../../store/actions/loginActions";
 
-// filtering and checking what the user has entered into forms
-const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string().required("Required"),
-});
-
 const LoginForm = () => {
+  // filtering and checking what the user has entered into forms
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().required("Required"),
+  });
+
+  const error = useSelector((state) => state.login.error);
   const loading = useSelector((state) => state.login.loading);
 
   const dispatch = useDispatch();
-
 
   // function 'submit' where will be all actions after submitting
   const submit = (values, { setSubmitting }) => {
@@ -44,10 +44,12 @@ const LoginForm = () => {
                 onChange={handleChange} onBlur={handleBlur} value={values.password} />
             </div>
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
-
+            {error && <div>Your email or password is incorrect. Please try again</div>}
             {/* button for submitting */}
+            
             <div className="fieldsWrapper">
-              <Button variant="contained" color="primary" type="submit" disabled={isSubmitting} >
+              <Button variant="contained" color="primary" type="submit"
+              disabled={isSubmitting | !!errors.email | !!errors.password || loading} >
                 Log in
               </Button>
             </div>

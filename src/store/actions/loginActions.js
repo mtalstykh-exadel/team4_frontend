@@ -8,16 +8,16 @@ export const fetchLoginSuccess = (data) => ({ type: LOGIN_SUCCESS, data });
 
 export const fetchLoginFailure = (e) => ({ type: LOGIN_FAILURE, error: e.message });
 
-export const fetchLoginData = (dt) => (dispatch, getState) => {
+export const fetchLoginData = (data) => (dispatch, getState) => {
   const auth = getState();
-  if (auth && (auth.loading || auth.error)) {
+  if (auth.login.isAuth && (auth.login.loading || auth.login.error)) {
     return;
   }
-  dispatch(fetchLoginStart(dt));
-  return getLoginData(dt)
+  dispatch(fetchLoginStart(data));
+  return getLoginData(data)
     .then((authData) => {
       dispatch(fetchLoginSuccess(authData));
-      dispatch(setProfileData(null, 'Ivan Ivanov', 'frontend developer', dt.email));
+      dispatch(setProfileData(null, 'Ivan Ivanov', 'frontend developer', data.email));
     })
     .catch((e) => dispatch(fetchLoginFailure(e)));
 };

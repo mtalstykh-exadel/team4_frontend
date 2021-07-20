@@ -11,7 +11,7 @@ const ProfileInfo = () => {
   const email = useSelector((state) => state.profile.email);
 
   return <div className='profileInfo'>
-    {avatar ? avatar : <Avatar className='avatar1' style={{ height: 80, width: 80 }} />}
+    {avatar ? avatar : <Avatar className='avatar1'/>}
     <div className='profileData'>
       <h2 className='fullname'>{fullname ? fullname : null}</h2>
       <p className='occupation'>{occupation ? occupation : null}</p>
