@@ -14,13 +14,14 @@ import { defineLang } from './utils/lang-service.js';
 const AppContainer = () => {
   defineLang();
 
-  return <BrowserRouter>
+  return (<BrowserRouter>
     <Provider store={store}>
       <I18nProvider i18n={i18n}>
         <App />
       </I18nProvider>
     </Provider>
-  </BrowserRouter>;
+  </BrowserRouter>
+  );
 };
 
 ReactDOM.render(

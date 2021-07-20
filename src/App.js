@@ -13,8 +13,8 @@ const App = () => {
       <Switch>
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
-        <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
+        <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <Route path="*" render={() => <div>This page is not defined</div>} />
       </Switch>
     </div>
