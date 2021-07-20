@@ -35,10 +35,10 @@ const Buttons = () => {
       <Button variant="contained" disabled className={classes.testButtons}>
         <Trans>ruTest</Trans>
       </Button>
-      <Button variant="contained" className={classes.testButtons} onClick={() => { ln.set("en"); }}>
+      <Button variant="contained" className={classes.testButtons} onClick={() => { ln.saveLang("en"); }}>
         en
       </Button>
-      <Button variant="contained" className={classes.testButtons} onClick={() => { ln.set("ru"); }}>
+      <Button variant="contained" className={classes.testButtons} onClick={() => { ln.saveLang("ru"); }}>
         ru
       </Button>
       <Button

@@ -11,7 +11,7 @@ import store from './store/store';
 import { Lang } from './utils/lang-service.js';
 const ln = new Lang();
 const AppContainer = () => {
-  ln.get();
+  ln.defineLang();
   
   return <BrowserRouter>
     <Provider store={store}>
