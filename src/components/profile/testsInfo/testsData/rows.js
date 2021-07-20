@@ -63,25 +63,10 @@ const rows = [
 
 for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[0], id: i });
-}
-
-for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[1], id: i });
-}
-
-for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[2], id: i });
-}
-
-for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[3], id: i });
-}
-
-for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[4], id: i });
-}
-
-for (let i = 2; i < 50; i++) {
   rows.push({ ...rows[5], id: i });
 }
 

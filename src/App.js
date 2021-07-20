@@ -2,7 +2,6 @@ import React from 'react';
 import Login from './pages/login/login';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
-import Buttons from './components/buttons/Buttons';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
@@ -13,7 +12,6 @@ const App = () => {
     <div className="App">
       <Switch>
         <Route path='/login' render={() => <Login />} />
-        <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>

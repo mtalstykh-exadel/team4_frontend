@@ -4,7 +4,6 @@ import { Avatar } from '@material-ui/core';
 import './profileInfo.scss';
 
 const ProfileInfo = () => {
-
   const avatar = useSelector((state) => state.profile.avatar);
   const fullname = useSelector((state) => state.profile.fullname);
   const occupation = useSelector((state) => state.profile.occupation);

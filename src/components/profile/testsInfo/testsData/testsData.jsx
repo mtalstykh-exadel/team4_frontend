@@ -35,7 +35,7 @@ const TestsData = (props) => {
     setPage(0);
   };
   const testAction = (action) => {
-    alert(action);
+    console.log(action);
   };
 
   return (

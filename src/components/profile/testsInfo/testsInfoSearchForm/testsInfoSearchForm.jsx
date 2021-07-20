@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import './testsInfoSearchForm.scss';
 
 const TestInfoSearchForm = (props) => {
-
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   const onSubmit = (values) => {
