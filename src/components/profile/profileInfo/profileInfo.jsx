@@ -9,14 +9,15 @@ const ProfileInfo = () => {
   const occupation = useSelector((state) => state.profile.occupation);
   const email = useSelector((state) => state.profile.email);
 
-  return (<div className='profileInfo'>
-    {avatar ? avatar : <Avatar className='avatar1' />}
-    <div className='profileData'>
-      <h2 className='fullname'>{fullname ? fullname : null}</h2>
-      <p className='occupation'>{occupation ? occupation : null}</p>
-      <p className='email'><b>Email:</b> {email ? email : null}</p>
+  return (
+    <div className='profileInfo'>
+      {avatar ? avatar : <Avatar className='avatar1' />}
+      <div className='profileData'>
+        <h2 className='fullname'>{fullname ? fullname : null}</h2>
+        <p className='occupation'>{occupation ? occupation : null}</p>
+        <p className='email'><b>Email:</b> {email ? email : null}</p>
+      </div>
     </div>
-  </div>
   );
 };
 
