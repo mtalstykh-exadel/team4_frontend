@@ -5,7 +5,7 @@ import catalogRu from "@lingui/loader!../locales/ru/messages.po";
 const currentLang = JSON.parse(localStorage.getItem("jwt=data"));
 const langKey = "lang";
 
-function saveLang(lang) {
+const saveLang = (lang) => {
     switch (lang) {
       case "ru":
           i18n.load("ru", catalogRu.messages);
@@ -22,9 +22,9 @@ function saveLang(lang) {
         break;
       }
     localStorage.setItem(langKey, lang);  
-}
+};
 
-function defineLang() {
+const defineLang = () => {
   if (currentLang?.lang){
     saveLang(currentLang.lang);
   }
@@ -34,6 +34,6 @@ function defineLang() {
   else {
     saveLang("en");
   }
-}
+};
 
-export { saveLang, defineLang }
+export { saveLang, defineLang };
