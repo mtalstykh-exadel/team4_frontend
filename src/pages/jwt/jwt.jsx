@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import JWT from "../../utils/jwt-parser.js";
 import { saveJWT, getJWT } from "../../utils/jwt-parser.js";
 
 export default function DemoJWT() {
