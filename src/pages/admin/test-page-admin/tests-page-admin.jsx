@@ -1,6 +1,5 @@
-
-import styles from './test-page-admin.scss';
 import React from 'react';
+import styles from './test-page-admin.scss';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -31,23 +30,23 @@ const AdminTestPage = () => {
             <Table className="table" aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell className={styles.headRowItem}>Level</TableCell>
-                        <TableCell align="right" className="head-row-item">Assigned</TableCell>
-                        <TableCell align="right" className="head-row-item">Deadline</TableCell>
-                        <TableCell align="right" className="head-row-item">Coach</TableCell>
-                        <TableCell align="right" className="head-row-item">Action</TableCell>
+                        <TableCell className={styles.headRowItem} size="small">Level</TableCell>
+                        <TableCell align="right" className="head-row-item" size="small">Assigned</TableCell>
+                        <TableCell align="right" className="head-row-item" size="small">Deadline</TableCell>
+                        <TableCell align="right" className="head-row-item" size="small">Coach</TableCell>
+                        <TableCell align="right" className="head-row-item" size="small">Action</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
                         <TableRow key={row.name}>
-                            <TableCell component="th" scope="row">
+                            <TableCell scope="row" size="small">
                                 {row.name}
                             </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
+                            <TableCell align="right" size="small">{row.calories}</TableCell>
+                            <TableCell align="right" size="small">{row.fat}</TableCell>
+                            <TableCell align="right" size="small">{row.carbs}</TableCell>
+                            <TableCell align="right" size="small">{row.protein}</TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
