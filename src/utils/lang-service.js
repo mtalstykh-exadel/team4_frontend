@@ -4,9 +4,8 @@ import catalogRu from "@lingui/loader!../locales/ru/messages.po";
 
 export class Lang {
   constructor(){
-    this.systemLang;
-    this.langKey = "lang";
     this.current = JSON.parse(localStorage.getItem("jwt=data"));
+    this.langKey = "lang";
   }
   get() {
     if (this.current?.lang){
