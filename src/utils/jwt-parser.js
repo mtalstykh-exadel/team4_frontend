@@ -1,6 +1,6 @@
 import jwt_decode from "jwt-decode";
 
-class JWT {
+export class JWT {
   constructor() {
     this.jwtKey = "jwt=data";
     this.data;
@@ -20,4 +20,3 @@ class JWT {
   }
 }
 
-export default new JWT();

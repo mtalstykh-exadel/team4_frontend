@@ -12,9 +12,9 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/buttons/Buttons.jsx:34
-msgid "Английский"
+msgid "enTest"
 msgstr "English"
 
 #: src/components/buttons/Buttons.jsx:31
-msgid "Русский"
+msgid "ruTest"
 msgstr "Russian"
