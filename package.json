@@ -33,7 +33,9 @@
     "lint:js": "eslint src",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "extract": "lingui extract",
+    "compile": "lingui compile"
   },
   "eslintConfig": {
     "extends": [
@@ -64,13 +66,17 @@
     ]
   },
   "devDependencies": {
-    "@lingui/core": "^3.10.4",
+    "@babel/core": "^7.14.6",
+    "@lingui/cli": "^3.10.2",
+    "@lingui/loader": "^3.10.2",
+    "@lingui/macro": "^3.10.2",
     "@storybook/addon-actions": "^6.3.2",
     "@storybook/addon-essentials": "^6.3.2",
     "@storybook/addon-links": "^6.3.2",
     "@storybook/node-logger": "^6.3.2",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.3.2",
+    "babel-plugin-macros": "^3.1.0",
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
