@@ -9,6 +9,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './headerStyles.scss';
+import './theme.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
@@ -41,29 +42,29 @@ const Header = () => {
     drawerEl: value
   });
 
-  const handleAccMenu = (event) => setState({
+  const handleAccountMenu = (event) => setState({
     accumulatorEl: event.currentTarget
   });
-  const handleAccClose = () => setState({
+  const handleAccountClose = () => setState({
     accumulatorEl: null
   });
 
-  const handleLangMenu = (event) => setState({
+  const handleLanguageMenu = (event) => setState({
     languageEl: event.currentTarget
   });
 
-  const handleLangClose = () => setState({
+  const handleLanguageClose = () => setState({
     languageEl: null
   });
 
   const handleLogoutModal = (value) => setState({
     logoutEl: value
   });
-  const handleNotifOpen = (event) => setState({
+  const handleNotificationsOpen = (event) => setState({
     notificationsEl: event.currentTarget
   });
 
-  const handleNotifClose = () => setState({
+  const handleNotificationsClose = () => setState({
     notificationsEl: null
   });
   const linkBtn = (path, name) => (
@@ -78,15 +79,14 @@ const Header = () => {
 
   return (
     <AppBar
+      className='base-color'
       elevation={1}
-      position='static'
-      color='inherit'>
+      position='static'>
       <Toolbar className='toolbar'>
-        <div className='sideLeft'>
+        <div className='toolbar-sideLeft'>
           {!matches && <>
             <IconButton
               edge='start'
-              color='inherit'
               aria-haspopup='true'
               onClick={() => handleDrawer(true)}>
               <MenuIcon/>
@@ -105,13 +105,16 @@ const Header = () => {
           { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
         </div>
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
-        <div className='sideRight'>
+        <div className='toolbar-sideRight'>
           <IconButton
             edge='start'
-            color='inherit'
             aria-haspopup='true'
-            onClick={handleNotifOpen}>
-            <Badge overlap='circular' variant='dot' color='primary'>
+            color='inherit'
+            onClick={handleNotificationsOpen}>
+            <Badge
+              color='primary'
+              overlap='circular'
+              variant='dot'>
               <NotificationsNoneIcon/>
             </Badge>
           </IconButton>
@@ -121,37 +124,38 @@ const Header = () => {
               edge='end'
               color='inherit'
               aria-haspopup='true'
-              onClick={handleAccMenu}>
+              onClick={handleAccountMenu}>
               <Avatar
                 className='avatar'
-                src={avatar}/>
+                src={avatar}
+                alt='avatar'/>
               <ArrowDropDownIcon
-                className='triangle'/>
+                className='icons-triangle'/>
             </IconButton>
             <Button
               className='bold'
-              onClick={handleLangMenu}>
+              onClick={handleLanguageMenu}>
               {shorthand}
               <ArrowDropDownIcon
-                className='triangle'/>
+                className='icons-triangle'/>
             </Button>
           </>}
         </div>
         {<AccountMenu
           accEl={states.accumulatorEl}
-          handleAccClose={handleAccClose}
+          handleAccClose={handleAccountClose}
           handleLogoutMenu={() => {handleLogoutModal(true);}}/>}
         {<LogoutModal
           logoutEl={states.logoutEl}
-          handleAccClose={handleAccClose}
+          handleAccClose={handleAccountClose}
           handleLogoutClose={() => {handleLogoutModal(false);}}
-          handleLangClose={handleLangClose}/>}
+          handleLangClose={handleLanguageClose}/>}
         {<LanguageMenu
           langEl={states.languageEl}
-          handleLangClose={handleLangClose}/>}
+          handleLangClose={handleLanguageClose}/>}
         {<Notifications
           notifEl={states.notificationsEl}
-          handleNotifClose={handleNotifClose}
+          handleNotifClose={handleNotificationsClose}
           handleCircle={(value) => handleCircle(value)}/>}
       </Toolbar>
     </AppBar>

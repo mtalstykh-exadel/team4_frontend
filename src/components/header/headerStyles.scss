@@ -9,7 +9,7 @@ body {
     }
   }
 
-  .sideLeft {
+  .toolbar-sideLeft {
     display: flex;
 
     .roleBtns {
@@ -17,7 +17,7 @@ body {
     }
   }
 
-  .sideRight {
+  .toolbar-sideRight {
     display: flex;
   }
 
@@ -45,7 +45,7 @@ body {
     }
   }
 
-  .triangle {
+  .icons-triangle {
     font-size: 15px;
   }
 
@@ -58,7 +58,7 @@ body {
     font-weight: bold;
   }
 
-  .notifTest {
+  .notifications-test {
     padding: 15px 0 0 10px;
 
     .closeButton {
@@ -67,18 +67,18 @@ body {
     }
   }
 
-  .notifEmpty {
+  .notifications-empty {
     display: inline-block;
     padding: 10px 0 50px 20px;
   }
 
-  .takeTestBtn {
+  .notifications-takeTestBtn {
     width: 30%;
     height: 25px;
     text-transform: none;
   }
 
-  .seemoreBtn {
+  .notifications-seemoreBtn {
     float: right;
     margin-right: 10px;
     text-transform: none;
@@ -91,7 +91,6 @@ body {
 
     .paper {
       padding: 30px;
-      background-color: beige;
     }
 
     .modalBtns {

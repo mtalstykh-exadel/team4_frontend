@@ -22,7 +22,7 @@ const Notifications = (props) => {
         to='/test'
         color='primary'
         variant='text'
-        className='seemoreBtn'
+        className='notifications-seemoreBtn'
         onClick={props.handleNotifClose}>
           See More
       </Button>
@@ -45,7 +45,7 @@ const Notifications = (props) => {
         to='/test'
         color='primary'
         variant='contained'
-        className='takeTestBtn'
+        className='notifications-takeTestBtn'
         onClick={props.handleNotifClose}>
           Take Test
       </Button>
@@ -54,7 +54,7 @@ const Notifications = (props) => {
 
   const notificationsEmpty = (
     <Typography
-      className='notifEmpty'
+      className='notifications-empty'
       variant='caption'>
       No new notificiations for you
     </Typography>
@@ -79,7 +79,7 @@ const Notifications = (props) => {
           width: 350,
         }}}>
       {Object.keys(notificationsData).length !== 0 ? notificationsData.map((item, index) => (
-        <div className='notifTest' key={index}>
+        <div className='notifications-test' key={index}>
           <Typography variant="caption">
             {item.date}
           </Typography>
