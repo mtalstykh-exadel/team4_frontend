@@ -11,7 +11,6 @@ import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 
-
 const App = () => {
 
   return (
@@ -30,6 +29,5 @@ const App = () => {
     </div>
   );
 };
-
 
 export default App;
