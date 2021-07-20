@@ -8,8 +8,8 @@ import { I18nProvider } from '@lingui/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
-import { Lang } from './utils/lang-service.js';
-const ln = new Lang();
+import { LangService } from './utils/lang-service.js';
+const ln = new LangService();
 const AppContainer = () => {
   ln.defineLang();
   
