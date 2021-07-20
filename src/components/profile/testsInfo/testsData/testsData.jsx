@@ -55,15 +55,15 @@ const TestsData = (props) => {
             {
               filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id} >
                     {columns.map((column) => {
                       const value = row[column.id];
                       keysForColumns++;
                       return (
-                        <TableCell key={keysForColumns} align={column.align}>
+                        <TableCell key={keysForColumns} align={column.align} size="small">
                           {
                             column.id === 'action' ?
-                              <Button variant="contained" color="primary"
+                              <Button variant="contained" color="primary" size='small'
                                 onClick={() => testAction(row[column.id])} >
                                 {value}
                               </Button>
