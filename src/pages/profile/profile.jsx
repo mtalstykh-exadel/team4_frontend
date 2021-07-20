@@ -1,7 +1,7 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import React from 'react';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   const useStyles = makeStyles((theme) => ({

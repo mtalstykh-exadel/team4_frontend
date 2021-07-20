@@ -23,9 +23,7 @@ const AppContainer = () => {
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppContainer />
-  </React.StrictMode>,
+  <AppContainer />,
   document.getElementById('root')
 );
 reportWebVitals();
