@@ -17,9 +17,17 @@ const EditTestsInfo = () => {
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   const testModules = ['Gramma', 'Listening', 'Essay', 'Speaking'];
 
-  const testLevelsList = testLevels.map((elem) => { return (<MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>); });
+  const testLevelsList = testLevels.map((elem) => {
+    return (
+      <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>
+    );
+  });
 
-  const testModulesList = testModules.map((elem) => { return (<MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>); });
+  const testModulesList = testModules.map((elem) => {
+    return (
+      <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>
+    );
+  });
 
   return (
     <>
