@@ -4,26 +4,26 @@ import App from './App';
 import './index.scss';
 import 'normalize.css';
 import reportWebVitals from './reportWebVitals';
+import { i18n } from '@lingui/core';
+import { I18nProvider } from '@lingui/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
+import { defineLang } from './utils/lang-service.js';
 
 const AppContainer = () => {
+  defineLang();
   return <BrowserRouter>
     <Provider store={store}>
-      <App />
+      <I18nProvider i18n={i18n}>
+        <App />
+      </I18nProvider>
     </Provider>
   </BrowserRouter>;
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppContainer />
-  </React.StrictMode>,
+  <AppContainer />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

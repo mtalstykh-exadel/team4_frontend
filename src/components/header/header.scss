@@ -1,0 +1,103 @@
+body {
+  .toolbar {
+    justify-content: space-around;
+
+    .icons-triangle {
+      font-size: 15px;
+    }
+
+    .toolbar-sideLeft {
+      display: flex;
+
+      .roleBtns {
+        padding: 20px;
+      }
+    }
+
+    .toolbar-sideRight {
+      display: flex;
+    }
+
+    .logoText {
+      max-width: 160px;
+    }
+
+    .logo {
+      max-width: 60px;
+      min-width: 50px;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .toolbar {
+      justify-content: space-between;
+    }
+  }
+
+  .drawer {
+    padding: 15px;
+    width: 200px;
+
+    .drawerSplit {
+      padding: 20px 40px 20px 10px;
+    }
+
+    .drawerIcons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+
+  .avatarHeader {
+    height: 30px;
+    width: 30px;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .notifications-test {
+    padding: 15px 0 0 10px;
+
+    .closeButton {
+      position: relative;
+      float: right;
+    }
+  }
+
+  .notifications-empty {
+    display: inline-block;
+    padding: 10px 0 50px 20px;
+  }
+
+  .notifications-takeTestBtn {
+    width: 30%;
+    height: 25px;
+    text-transform: none;
+  }
+
+  .notifications-seemoreBtn {
+    float: right;
+    margin-right: 10px;
+    text-transform: none;
+  }
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .paper {
+      padding: 30px;
+      background-color: white;
+    }
+
+    .modalBtns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
