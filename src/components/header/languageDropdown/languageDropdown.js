@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { languageChange } from '../../store/actions/headerActions';
+import { languageChange } from '../../../store/actions/headerActions';
 
 const LanguageMenu = (props) => {
   const dispatch = useDispatch();

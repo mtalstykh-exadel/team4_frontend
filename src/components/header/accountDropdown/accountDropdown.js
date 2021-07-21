@@ -25,7 +25,7 @@ const AccountMenu = (props) => {
         component={Link}
         to={'/profile'}
         onClick={props.handleAccClose}>
-          My account
+          Profile
       </MenuItem>
       <MenuItem
         onClick={props.handleLogoutMenu}>
