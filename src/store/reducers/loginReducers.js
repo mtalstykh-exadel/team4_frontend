@@ -1,11 +1,10 @@
 import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from "../actions/actionTypes";
 
 const initialState = {
-  email: '',
-  password: '',
+  data: '',
   isAuth: false,
   loading: false,
-  error: ''
+  error: false
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -17,27 +16,24 @@ const loginReducer = (state = initialState, action) => {
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        email: action.data.email,
-        password: action.data.password,
+        data: action.data,
         isAuth: true,
         loading: false,
         error: false
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
-        email: '',
-        password: '',
+        data: '',
         isAuth: false,
         loading: false,
-        error: true
+        error: action.error
       });
     case LOGOUT_START:
       return {
-        email: '',
-        password: '',
+        data: '',
         isAuth: false,
         loading: false,
-        error: ''
+        error: false
       };
     default:
       return state;

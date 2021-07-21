@@ -7,10 +7,4 @@ const languageReducer = (state = 'english', action) => {
   }
 };
 
-const roleReducer = (state = 'admin', action) => {
-  switch (action.type) {
-    default: return state;
-  }
-};
-
-export {languageReducer, roleReducer };
+export {languageReducer };

@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import preloader from "../../../assets/gif/preloader.gif";
 import { fetchLoginData } from "../../../store/actions/loginActions";
 
-import handlejwt from '../../jwt';
 // filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({
   email: Yup.string().required("Required"),
@@ -98,7 +97,6 @@ const LoginForm = () => {
                 color="primary"
                 type="submit"
                 disabled={isSubmitting}
-                onClick={() => { handlejwt('https://untitled-testing-system.herokuapp.com/login', {login: values.email , password: values.password});}}
               >
                 Log in
               </Button>
