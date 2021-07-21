@@ -1,5 +1,5 @@
 import getLoginData from '../../components/login/dataTunk';
-import handlejwt from '../../utils/jwtFetch';
+import handlejwt from '../../utils/jwt-fetch';
 import { getJWT } from '../../utils/jwt-parser';
 
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
