@@ -2,7 +2,7 @@ import React from 'react';
 import './Page404.scss';
 import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Page404 = () => {
   return (
