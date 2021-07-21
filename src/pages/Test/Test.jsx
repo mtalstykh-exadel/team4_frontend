@@ -29,10 +29,10 @@ const Test = () => {
             <Button className='previous-step-button' color='primary' variant='outlined'
                     onClick={
                         () => {setStep((prev) => {
-                          setNextButtonText('Next step');
                           if (prev > 0) {
-                            return prev - 1;
+                            prev--;
                           }
+                          setNextButtonText('Next step');
                           return prev;
                         });
                       }
@@ -40,9 +40,11 @@ const Test = () => {
             <Button className='next-step-button' color='primary' variant='contained'
                     onClick={
                         () => {setStep((next) => {
-                          setNextButtonText('Submit');
                           if (next < 3) {
-                            return next + 1;
+                            next++;
+                          }
+                          if (next === 3) {
+                            setNextButtonText('Submit');
                           }
                           return next;
                         });
