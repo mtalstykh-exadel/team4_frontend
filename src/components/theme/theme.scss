@@ -5,6 +5,10 @@ $notifications-color: #6fff97;
 $icons-color: #000;
 
 body {
+  .bold {
+    font-weight: bold;
+  }
+
   .base-color {
     background-color: $base-color;
   }
@@ -36,7 +40,7 @@ body {
     background-color: $notifications-color;
   }
 
-  :hover .MuiOutlinedInput-root {
+  &:hover .MuiOutlinedInput-root {
     &.Mui-focused fieldset {
       border-color: $primary-color;
     }
