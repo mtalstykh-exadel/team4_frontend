@@ -24,7 +24,7 @@ const App = () => {
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
-        <Route path='/test'><Test /></Route>
+        <PrivateRoute path='/test'><Test /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
       </Switch>
     </div>
