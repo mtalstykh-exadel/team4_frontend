@@ -82,7 +82,7 @@ const LoginForm = () => {
                 variant="outlined"
                 type="password"
                 name="password"
-                error={ (error || (errors.password && touched.email)) ? true : false}
+                error={error || (errors.password && touched.email) ? true : false}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
