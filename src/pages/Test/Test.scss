@@ -1,90 +1,91 @@
-.wrapper1 {
-  width: 100%; /* фиксируем ширину обертки */
-  margin: 0 auto; /* центрируем ее */
-  height: 90px; /* Задаем высоту обертки */
+.test-navigation-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 90px;
 
-  .wrapper1 :last-child {
-    margin-right: 0; /* Убираем поле последнего div-а */
+  .test-navigation-wrapper :last-child {
+    margin-right: 0;
+  }
+
+  .test-step {
+    float: left;
+    line-height: 100%;
+    font-size: 24px;
+    color: black;
+    width: 20%;
+    text-align: center;
+    border-bottom: #e2e9f9 solid 2px;
+    padding-bottom: 13px;
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .test-step.active {
+    border-bottom: #3e6dd7 solid 5px;
+  }
+
+  .test-step.time {
+    border: none;
+    font-size: 36px;
   }
 }
 
-.bl {
-  float: left; /* Задаем обтекание */
-  line-height: 100%; /* Высота строки +  верт. центрирования текста */
-  font-size: 24px;
-  color: black;
-  width: 20%;
-  text-align: center;
-  border-bottom: #e2e9f9 solid 2px;
-  padding-bottom: 13px;
-  padding-top: 40px;
-  margin-bottom: 40px;
-}
-
-.bl.active {
-  border-bottom: #3e6dd7 solid 5px;
-}
-
-.bl.time {
-  border: none;
-  font-size: 36px;
-}
-
-.wrapper3 {
-  width: 100%; /* фиксируем ширину обертки */
-  margin: 0 auto; /* центрируем ее */
-  height: 80px; /* Задаем высоту обертки */
-  padding-top: 40px;
-
-  .wrapper3 :last-child {
-    margin-right: 0; /* Убираем поле последнего div-а */
+.test-task-wrapper {
+  .step-description {
+    font-size: 18px;
+    color: #828282;
+    padding-bottom: 5px;
+    text-align: center;
   }
 }
 
-.testButtons {
-  display: flex;
-  justify-content: space-between;
-}
+.buttons-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 80px;
+  padding-top: 40px;
 
-.prev,
-.next {
-  float: left; /* Задаем обтекание */
-  line-height: 100%; /* Высота строки +  верт. центрирования текста */
-  color: black;
-  text-align: center;
-  width: 14%;
-  height: 50%;
-  margin: 15%;
-}
+  .buttons-wrapper :last-child {
+    margin-right: 0;
+  }
 
-.prev.invisible,
-.next.invisible {
-  visibility: hidden;
-}
+  .test-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.reportMistake {
-  float: right;
-  padding-top: 20px;
-  font-size: 14px;
-  color: #828282;
-  padding-bottom: 112px;
-}
+  .previous-step-button,
+  .next-step-button {
+    float: left;
+    line-height: 100%;
+    color: black;
+    text-align: center;
+    width: 14%;
+    height: 50%;
+    margin: 15%;
+  }
 
-.stepDescription {
-  font-size: 18px;
-  color: #828282;
-  padding-bottom: 5px;
-  text-align: center;
+  .previous-step-button.invisible,
+  .next-step-button.invisible {
+    visibility: hidden;
+  }
+
+  .report-mistake {
+    float: right;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #828282;
+    padding-bottom: 112px;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-  .bl {
+  .test-step {
     font-size: 18px;
   }
 
-  .bl.time {
+  .test-step.time {
     border: none;
     font-size: 30px;
   }
-
 }

@@ -1,32 +1,27 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
 import './Essay.scss';
 
-export default class Essay extends Component {
-  state = {
-    value: '',
-    length: 0
+const Essay = () => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
   };
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
-  }
-
-  getValueLength = () => {
-    this.setState({length: this.state.value.length});
-  }
-
-  render() {
     return (
       <>
-        <div className='stepDescription'>Write an essay on a given topic</div>
-        <div className='essayTopic'>Essay Topic</div>
-        <textarea onPaste={(event) => {event.preventDefault(); return false;}}
-                  onCopy={(event) => {event.preventDefault(); return false;}}
-                  onCut={(event) => {event.preventDefault(); return false;}}
-                  className='essayInput' maxLength='512' value={this.state.value}
-                  onChange={this.handleChange} onKeyUp={this.getValueLength} onKeyDown={this.getValueLength}/>
-        <div className='essayCount'>{this.state.length} out of 512 characters</div>
+        <div className='step-description'>Write an essay on a given topic</div>
+        <div className='essay-topic'>Essay Topic</div>
+        <textarea
+          onPaste={(event) => {return false;}}
+          onCopy={(event) => {return false;}}
+          onCut={(event) => {return false;}}
+          className='essay-input' maxLength='512' value={value}
+          onChange={handleChange}
+        />
+        <div className='essay-count'>{value.length} out of 512 characters</div>
       </>
     );
-  }
-}
+};
+
+export default Essay;

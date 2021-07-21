@@ -2,6 +2,7 @@ import React from "react";
 import Button from '@material-ui/core/Button';
 import micro from '../../../assets/images/micro.svg';
 import "./Speaking.scss";
+
 const Speaking = () => {
   let url = null;
   let startTime = null;
@@ -18,7 +19,6 @@ const Speaking = () => {
         for (let k = 0; k < voice.length; k++) sum = sum + voice[k].time;
         console.log(voice.length);
 
-
         mediaRecorder.start();
         // setTimeout(function(){mediaRecorder.stop();}, 300000);
         startTime = Date.now();
@@ -27,22 +27,21 @@ const Speaking = () => {
         }, 500);
       });
 
-
       mediaRecorder.addEventListener("dataavailable", function (event) {
         const key = Math.random();
         voice.push({key: key, time: parseInt((Date.now() - startTime) / 1000), data: event.data});
         url = URL.createObjectURL(event.data);
 
-        let obj = document.createElement('audio');
-        obj.setAttribute('src', url);
-        obj.setAttribute("controls", "controls");
-        obj.setAttribute("key", key);
+        let htmlAudioElement = document.createElement('audio');
+        htmlAudioElement.setAttribute('src', url);
+        htmlAudioElement.setAttribute("controls", "controls");
+        htmlAudioElement.setAttribute("key", key);
 
-        document.getElementById('audio').appendChild(obj);
-        obj = document.createElement('span');
-        obj.setAttribute("key", key);
-        obj.innerHTML = 'DELETE';
-        obj.addEventListener("click", function (event) {
+        document.getElementById('audio').appendChild(htmlAudioElement);
+        htmlAudioElement = document.createElement('span');
+        htmlAudioElement.setAttribute("key", key);
+        htmlAudioElement.innerHTML = 'DELETE';
+        htmlAudioElement.addEventListener("click", function (event) {
           const key = event.target.getAttribute("key");
           const lst = document.getElementById('audio').childNodes;
           for (let k = 0; k < lst.length; k++) {
@@ -58,25 +57,20 @@ const Speaking = () => {
               break;
             }
           }
-
         });
-        document.getElementById('audio').appendChild(obj);
-
+        document.getElementById('audio').appendChild(htmlAudioElement);
       });
 
       document.getElementById('stop').addEventListener('click', function () {
         mediaRecorder.stop();
         clearTimeout(startTimeId);
       });
-
-
     });
-
 
   return (
     <>
-      <div className='stepDescription'>Write down record</div>
-      <div className='speakingTopic'>Speaking Topic</div>
+      <div className='step-description'>Write down record</div>
+      <div className='speaking-topic'>Speaking Topic</div>
       <div className='img'><img src={micro}/></div>
       <div id='time'></div>
       <div id='audio'></div>
