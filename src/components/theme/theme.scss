@@ -2,7 +2,6 @@ $base-color: #fff;
 $primary-color: #3e6dd7;
 $secondary-color: #828282;
 $notifications-color: #6fff97;
-$error-color: red;
 $icons-color: #000;
 
 body {
@@ -13,6 +12,10 @@ body {
   .primary-contained {
     background-color: $primary-color;
     color: $base-color;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.9);
+    }
   }
 
   .primary-outlined {
@@ -31,10 +34,6 @@ body {
 
   .notifications-color {
     background-color: $notifications-color;
-  }
-
-  .error-outlined {
-    background-color: $error-color;
   }
 
   :hover .MuiOutlinedInput-root {

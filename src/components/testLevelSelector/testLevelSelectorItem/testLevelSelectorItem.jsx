@@ -9,7 +9,7 @@ const TestLevelsSelectorItem = ({ title, description }) => {
     <div className='test-level-selector-item'>
       <div className="title">{title}</div>
       <div className="description">{description}</div>
-      <Button variant="contained" color="primary" className='btn'>
+      <Button variant="contained" className='btn primary-contained'>
         Take test
       </Button>
     </div>

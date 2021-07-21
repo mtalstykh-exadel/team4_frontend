@@ -67,7 +67,7 @@ const LoginForm = () => {
                 variant="outlined"
                 type="email"
                 name="email"
-                error={error ? true : false}
+                error={error || (errors.email && touched.password) ? true : false}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.email}
@@ -82,12 +82,13 @@ const LoginForm = () => {
                 variant="outlined"
                 type="password"
                 name="password"
-                error={error ? true : false}
+                error={ (error || (errors.password && touched.email)) ? true : false}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
               />
             </div>
+            {console.log(errors.email, errors.password)}
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}

@@ -22,33 +22,29 @@ const Profile = () => {
     <div className="routingButtons">
       <Button
         variant="contained"
-        color="primary"
         disabled
-        className={classes.testButtons}
+        className={`${classes.testButtons} primary-contained`}
       >
         <Link to="/login">Login</Link>
       </Button>
       <Button
         variant="contained"
-        color="primary"
         disableElevation
-        className={classes.testButtons}
+        className={`${classes.testButtons} primary-contained`}
       >
         <Link to="/counter">Counter</Link>
       </Button>
       <Button
         variant="contained"
-        color="primary"
         disableElevation
-        className={classes.testButtons}
+        className={`${classes.testButtons} primary-contained`}
       >
         <Link to="/buttons">Buttons</Link>
       </Button>
       <Button
         variant="contained"
-        color="primary"
         disableElevation
-        className={classes.testButtons}
+        className={`${classes.testButtons} primary-contained`}
       >
         <Link to="/jwt">JWT</Link>
       </Button>

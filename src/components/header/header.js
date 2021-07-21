@@ -9,7 +9,6 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './headerStyles.scss';
-import '../theme/theme.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
