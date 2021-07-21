@@ -24,8 +24,7 @@ const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
   const location = useLocation();
 
-  const role = useSelector((state) => state.role);
-  const shorthand = useSelector((state) => state.language).substring(0,2);
+  const role = useSelector((state) => state.data.role);
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
@@ -135,7 +134,7 @@ const Header = () => {
             <Button
               className='bold'
               onClick={handleLanguage}>
-              {shorthand}
+              EN
               <ArrowDropDownIcon
                 className='icons-triangle'/>
             </Button>

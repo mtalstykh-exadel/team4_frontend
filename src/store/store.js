@@ -3,12 +3,10 @@ import thunk from "redux-thunk";
 import { combineReducers } from 'redux';
 import { counterReducer } from './reducers/counterReducers';
 import { loginReducer } from './reducers/loginReducers';
-import { languageReducer } from './reducers/headerReducers';
 
 const rootReducers = combineReducers({
   counter: counterReducer,
-  login: loginReducer,
-  language: languageReducer
+  login: loginReducer
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));
