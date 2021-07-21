@@ -15,7 +15,7 @@ const EditTestsInfo = () => {
   const [QuestId, setQuestId] = useState('');
 
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  const testModules = ['Gramma', 'Listening', 'Essay', 'Speaking'];
+  const testModules = ['Grammar', 'Listening', 'Essay', 'Speaking'];
 
   const testLevelsList = testLevels.map((elem) => {
     return (
