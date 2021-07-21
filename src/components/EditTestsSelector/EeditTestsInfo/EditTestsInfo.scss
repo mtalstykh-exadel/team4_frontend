@@ -1,0 +1,41 @@
+.edit-tests-search-form {
+  display: flex;
+  text-align: left;
+
+  .edit-tests-search-level,
+  .edit-tests-search-module {
+    width: 210px;
+    margin-right: 10px;
+  }
+
+  .btn-search {
+    width: 120px;
+    height: 40px;
+    margin-left: 15px;
+  }
+
+  @media screen and (max-width: 380px) {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .edit-tests-search-level,
+    .edit-tests-search-module,
+    .edit-tests-search-id {
+      margin: 5px;
+    }
+
+    .btn-search {
+      width: 210px;
+      margin: 5px 0;
+    }
+  }
+}
+
+.edit-tests-option {
+  margin: 10px;
+  cursor: pointer;
+}
+
+.edit-tests-option-none {
+  font-style: italic;
+}

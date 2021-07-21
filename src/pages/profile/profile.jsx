@@ -1,16 +1,17 @@
 import React from 'react';
-import './profile.scss';
-import ProfileInfo from '../../components/ProfileInfo/profileInfo';
+import './Profile.scss';
+import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
 import TestsInfo from '../../components/testsInfo/TestsInfo';
+import Layout from '../../components/layout/Layout';
 
 const Profile = () => {
   return (
-    <>
-      <div className='profileRow'>
-        <ProfileInfo />
-        <TestsInfo />
-      </div>
-    </>
+    <Layout>
+    <div className='profileRow'>
+      <ProfileInfo />
+      <TestsInfo />
+    </div>
+    </Layout>
   );
 };
 

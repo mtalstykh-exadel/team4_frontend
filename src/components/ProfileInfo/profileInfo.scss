@@ -3,23 +3,30 @@
   height: 100%;
   float: left;
   margin-bottom: 100px;
-}
 
-.profileData {
-  float: left;
-  text-align: left;
-}
+  .profileData {
+    float: left;
+    text-align: left;
+  }
 
-.fullname,
-.occupation {
-  margin: 5px 0;
-}
+  .fullname,
+  .occupation {
+    margin: 5px 0;
+  }
 
-.email {
-  margin: 21px 0 0 0;
-}
+  .email {
+    margin: 21px 0 0 0;
+  }
 
-body .avatar1 {
-  height: 80px;
-  width: 80px;
+  .avatar {
+    height: 80px;
+    width: 80px;
+  }
+
+  .defaultAvatar {
+    float: left;
+    margin: 5px 46px 0 0;
+    height: 80px;
+    width: 80px;
+  }
 }

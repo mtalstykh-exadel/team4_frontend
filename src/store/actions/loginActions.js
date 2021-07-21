@@ -1,4 +1,4 @@
-import getLoginData from '../../components/login/dataTunk';
+import getLoginData from '../../components/LoginForm/dataTunk';
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/actionTypes';
 import { setProfileData } from './profileActions';
 

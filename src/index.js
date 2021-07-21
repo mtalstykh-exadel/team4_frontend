@@ -13,22 +13,17 @@ import { defineLang } from './utils/lang-service.js';
 
 const AppContainer = () => {
   defineLang();
-
-  return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <I18nProvider i18n={i18n}>
-          <App />
-        </I18nProvider>
-      </Provider>
-    </BrowserRouter>
-  );
+  return <BrowserRouter>
+    <Provider store={store}>
+      <I18nProvider i18n={i18n}>
+        <App />
+      </I18nProvider>
+    </Provider>
+  </BrowserRouter>;
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AppContainer />
-  </React.StrictMode>,
+  <AppContainer />,
   document.getElementById('root')
 );
 reportWebVitals();

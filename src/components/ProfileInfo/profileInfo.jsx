@@ -11,11 +11,11 @@ const ProfileInfo = () => {
 
   return (
     <div className='profileInfo'>
-      {avatar ? avatar : <Avatar className='avatar1' />}
+      {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
       <div className='profileData'>
-        <h2 className='fullname'>{fullname ? fullname : null}</h2>
-        <p className='occupation'>{occupation ? occupation : null}</p>
-        <p className='email'><b>Email:</b> {email ? email : null}</p>
+        {fullname ? <h2 className='fullname'>{fullname}</h2> : null}
+        {occupation ? <p className='occupation'>{occupation}</p> : null}
+        {email ? <p className='email'> <b>E-mail: </b>{email} </p> : null}
       </div>
     </div>
   );

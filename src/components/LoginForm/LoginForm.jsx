@@ -5,8 +5,8 @@ import Button from "@material-ui/core/Button";
 import "./loginForm.scss";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import preloader from "../../../assets/gif/preloader.gif";
-import { fetchLoginData } from "../../../store/actions/loginActions";
+import preloader from "../../assets/gif/preloader.gif";
+import { fetchLoginData } from "../../store/actions/loginActions";
 
 // filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({

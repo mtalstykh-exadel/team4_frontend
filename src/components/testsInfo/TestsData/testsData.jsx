@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,10 +14,10 @@ import { Button } from '@material-ui/core';
 const TestsData = (props) => {
   const columns = [
     { id: 'level', label: 'Level', minWidth: 50, align: 'center' },
-    { id: 'assigned', label: 'Assigned', minWidth: 140, align: 'center' },
-    { id: 'deadline', label: 'Deadline', minWidth: 140, align: 'center', },
-    { id: 'dateVerified', label: 'Date verified', minWidth: 140, align: 'center', },
-    { id: 'status', label: 'Status', minWidth: 50, align: 'center', },
+    { id: 'assigned', label: 'Assigned', minWidth: 130, align: 'center' },
+    { id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center', },
+    { id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center', },
+    { id: 'status', label: 'Status', minWidth: 40, align: 'center', },
     { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
     { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
   ];
@@ -26,8 +26,8 @@ const TestsData = (props) => {
 
   let keysForColumns = 1;
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(100);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(100);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

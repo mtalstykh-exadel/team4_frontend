@@ -5,7 +5,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import PropTypes from 'prop-types';
-import './testsInfoSearchForm.scss';
+import './TestsInfoSearchForm.scss';
 
 const TestInfoSearchForm = (props) => {
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -23,7 +23,7 @@ const TestInfoSearchForm = (props) => {
           <Select native value={formik.values.level} name='level' onChange={formik.handleChange} label="Level"
             inputProps={{ name: 'level' }}>
             <option aria-label="All" value={null} />
-            {testLevels.map((o) => <option key={testLevels.indexOf(o)}>{o}</option>)}
+            {testLevels.map((el) => <option key={testLevels.indexOf(el)}>{el}</option>)}
           </Select>
         </FormControl>
         <Button color="primary" variant="contained" type="submit" className='submitButton'>
