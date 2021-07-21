@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.scss';
-import 'normalize.css';
+import './normalize.css';
 import reportWebVitals from './reportWebVitals';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
