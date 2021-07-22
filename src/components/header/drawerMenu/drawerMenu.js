@@ -10,7 +10,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import avatar from '../../../assets/images/logo/logoText.svg';
 
 const DrawerMenu = (props) => {
-  const role = useSelector((state) => state.data.role);
+  const role = useSelector((state) => state.login.data.role);
 
   const linkBtn = (path, name) => (
     <Button

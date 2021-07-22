@@ -24,7 +24,7 @@ const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
   const location = useLocation();
 
-  const role = useSelector((state) => state.data.role);
+  const role = useSelector((state) => state.login.data.role);
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
