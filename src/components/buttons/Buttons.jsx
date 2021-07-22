@@ -21,19 +21,13 @@ const Buttons = () => {
       },
     },
   }));
-  const openWindow = () => {
-    const open = true;
-    ReactDOM.render(<SimpleModal open={open}/>, document.getElementById('modal'));
-    console.log(open);
-    console.log(document.getElementById('modal'));
-  };
   const classes = useStyles();
   return (
     <>
       <div id='modal'/>
       <Button
         onClick={() => {
-          openWindow();
+          ReactDOM.render(<SimpleModal/>, document.getElementById('modal'));
         }}
         variant="contained"
         color="primary"

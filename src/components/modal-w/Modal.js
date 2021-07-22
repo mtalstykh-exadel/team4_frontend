@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 
 
 // const SimpleModal = ({children}) => {
-const SimpleModal = ({open, children}) => {
-  const [opened, setClose] = React.useState(open);
+const SimpleModal = ({children}) => {
+  const [opened, setClose] = React.useState(true);
 
   const handleModal = () => {
     setClose(false);
+    console.log(opened);
+    console.log(setClose);
   };
   return (
     <>
