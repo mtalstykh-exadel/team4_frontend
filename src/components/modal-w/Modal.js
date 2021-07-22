@@ -3,21 +3,21 @@ import './Modal.scss';
 import {Modal} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-const SimpleModal = ({children}) => {
-  const [open, setOpen] = React.useState(false);
+
+// const SimpleModal = ({children}) => {
+const SimpleModal = ({open, children}) => {
+  const [opened, setClose] = React.useState(open);
 
   const handleModal = () => {
-    setOpen(() => {
-      return open === false ? true : false;
-    });
+    setClose(false);
   };
   return (
     <>
-      <button type="button" onClick={handleModal}>
+      {/* <button type="button" onClick={handleModal}>
         Open Modal
-      </button>
+      </button> */}
       <Modal
-        open={open}
+        open={opened}
         onClose={handleModal}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
@@ -29,7 +29,11 @@ const SimpleModal = ({children}) => {
     </>
   );
 };
-SimpleModal.propTypes = {
-  children: PropTypes.array,
-};
+
+SimpleModal.propTypes =
+  {
+    children: PropTypes.array,
+    open: PropTypes.bool
+  };
+
 export default SimpleModal;

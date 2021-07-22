@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from 'react-dom';
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core";
 import {Link} from "react-router-dom";
@@ -20,12 +21,20 @@ const Buttons = () => {
       },
     },
   }));
-
+  const openWindow = () => {
+    const open = true;
+    ReactDOM.render(<SimpleModal open={open}/>, document.getElementById('modal'));
+    console.log(open);
+    console.log(document.getElementById('modal'));
+  };
   const classes = useStyles();
   return (
     <>
-      <SimpleModal/>
+      <div id='modal'/>
       <Button
+        onClick={() => {
+          openWindow();
+        }}
         variant="contained"
         color="primary"
         disableElevation
@@ -42,7 +51,8 @@ const Buttons = () => {
         en
       </Button>
       <Button variant="contained" className={classes.testButtons} onClick={() => {
-        switchLang("ru");}}>
+        switchLang("ru");
+      }}>
         ru
       </Button>
       <Button
