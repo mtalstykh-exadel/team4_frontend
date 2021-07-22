@@ -3,42 +3,42 @@ const rows = [
     level: 'A1',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test'
   },
   {
     level: 'A2',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test'
   },
   {
     level: 'B1',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test'
   },
   {
     level: 'B2',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test'
   },
   {
     level: 'C1',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test'
   },
   {
     level: 'C2',
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
-    Coach: '24 Jul 2021, 10:54',
+    Coach: '',
     action: 'Take test' 
   },
 ];
