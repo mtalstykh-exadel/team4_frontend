@@ -1,5 +1,5 @@
 import "./Layout.scss";
-import '../theme/theme.scss';
+import '../../styles/theme.scss';
 import React from "react";
 
 import { PropTypes } from "prop-types";
