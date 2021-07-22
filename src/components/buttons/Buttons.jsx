@@ -1,13 +1,12 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import Button from "@material-ui/core/Button";
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, Modal} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {Trans} from '@lingui/macro';
 import {switchLang} from "../../utils/lang-service.js";
-import SimpleModal from "../modal-w/Modal.js";
+import PropTypes from 'prop-types';
 
-const Buttons = () => {
+const Buttons = ({children}) => {
   // To apply styles to material elements
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,13 +21,21 @@ const Buttons = () => {
     },
   }));
   const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <div id='modal'/>
       <Button
-        onClick={() => {
-          ReactDOM.render(<SimpleModal/>, document.getElementById('modal'));
-        }}
+        onClick={handleOpen}
         variant="contained"
         color="primary"
         disableElevation
@@ -36,6 +43,16 @@ const Buttons = () => {
       >
         <Trans>enTest</Trans>
       </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        className='modalMain'>
+        <div className='modal'>
+          {children}
+        </div>
+      </Modal>
       <Button variant="contained" disabled className={classes.testButtons}>
         <Trans>ruTest</Trans>
       </Button>
@@ -61,4 +78,8 @@ const Buttons = () => {
   );
 };
 
+Buttons.propTypes =
+  {
+    children: PropTypes.array
+  };
 export default Buttons;
