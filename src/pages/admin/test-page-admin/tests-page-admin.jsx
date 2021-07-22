@@ -104,7 +104,6 @@ const AdminTestPage = (props) => {
                                 {/* <InputLabel htmlFor="outlined-age-native-simple">ADADA</InputLabel> */}
                                 <Select
                                   native
-                                  
                                   // value={state.age}
                                   // onChange={handleChange}
                                   // label="Age"
