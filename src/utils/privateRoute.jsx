@@ -1,5 +1,4 @@
 import React from "react";
-import { ReactComponentLike } from "prop-types";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 
@@ -20,7 +19,7 @@ const PrivateRoute = ({ children, ...rest }) => {
   );
 };
 PrivateRoute.propTypes = {
-  children: ReactComponentLike,
+  children: PrivateRoute.array,
 };
 
 export default PrivateRoute;
