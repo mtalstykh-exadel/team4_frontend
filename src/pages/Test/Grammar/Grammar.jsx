@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 import './Grammar.scss';
 
-const Grammar = ({ tasks }) => {
+const Grammar = ({tasks}) => {
   let numberOfTheQuestion = 0;
   const questions = tasks.map((item1) => {
     numberOfTheQuestion++;
@@ -25,7 +25,7 @@ const Grammar = ({ tasks }) => {
   });
   return (
     <>
-      <div className='step-description'>Choose the correct option to complete the sentence</div>
+      <div className='step-description grammar'>Choose the correct option to complete the sentence</div>
       {questions}
     </>
 );

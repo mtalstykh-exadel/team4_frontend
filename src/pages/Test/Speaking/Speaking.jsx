@@ -8,8 +8,8 @@ const Speaking = () => {
   const [blobURL, setBlobURL] = useState("");
   return (
     <>
-      <div className="stepDescription">Write down record</div>
-      <div className="speakingTopic">Speaking Topic</div>
+      <div className="step-description">Write down record</div>
+      <div className="speaking-topic">Speaking Topic</div>
       <div className="img">
         <img src={micro} />
         <audio src={blobURL} controls />

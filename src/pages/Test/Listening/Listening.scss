@@ -1,26 +1,33 @@
-.audio {
-  padding: 10px;
-}
-
-.question {
-  padding-top: 30px;
-  padding-bottom: 8px;
-  text-align: left;
-
-  .number {
-    font-size: 24px;
-    font-weight: 500;
+.listening-step {
+  .audio {
+    padding-top: 22px;
+    padding-bottom: 5px;
   }
 
-  .sentence {
+  .question {
+    padding-top: 30px;
+    padding-bottom: 8px;
+    text-align: left;
+
+    .number {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .sentence {
+      font-size: 18px;
+      font-weight: 400;
+    }
+  }
+
+  .option {
+    padding-top: 13px;
+    text-align: left;
     font-size: 18px;
     font-weight: 400;
   }
-}
 
-.option {
-  padding-top: 13px;
-  text-align: left;
-  font-size: 18px;
-  font-weight: 400;
+  .step-description.grammar {
+    display: none;
+  }
 }
