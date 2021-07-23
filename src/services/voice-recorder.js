@@ -6,13 +6,15 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
   const mediaRecorder = new MediaRecorder(stream);
 
   mediaRecorder.onstop = function () {
-    blobURL = window.URL.createObjectURL( new Blob(chunks, { type: "audio/ogg; codecs=opus" }) );
+    blobURL = window.URL.createObjectURL(
+      new Blob(chunks, { type: "audio/ogg; codecs=opus" })
+    );
     chunks = [];
   };
 
   mediaRecorder.ondataavailable = function (e) {
-        chunks.push(e.data);
-    };
+    chunks.push(e.data);
+  };
   rec = mediaRecorder;
 });
 
@@ -26,4 +28,4 @@ const offRecAudio = () => {
   return blobURL;
 };
 
-export {offRecAudio, onRecAudio}; 
+export { offRecAudio, onRecAudio };
