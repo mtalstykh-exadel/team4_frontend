@@ -13,7 +13,6 @@ import { defineLang } from './utils/lang-service.js';
 
 const AppContainer = () => {
   defineLang();
-
   return <BrowserRouter>
     <Provider store={store}>
       <I18nProvider i18n={i18n}>
@@ -24,9 +23,7 @@ const AppContainer = () => {
 };
 
 ReactDOM.render(
-  <I18nProvider i18n={i18n}>
-    <App />
-  </I18nProvider>,
+  <AppContainer />,
   document.getElementById('root')
 );
 reportWebVitals();
