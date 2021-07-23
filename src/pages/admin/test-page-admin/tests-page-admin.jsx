@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import './test-page-admin.scss';
 import Layout from '../../../components/layout/Layout.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper";
@@ -12,19 +11,28 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { rows } from "./rows.js";
 import PropTypes from "prop-types";
-// import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
+import './test-page-admin.scss';
 
 const useStyles = makeStyles({
   formControl: {
     minWidth: 120,
   },
+  root: {
+    minWidth: 345,
+    minHeight: 30,
+    boxSizing: "border-box",
+    padding: 0,
+    paddingBottom: "auto",
+    paddingTop: "auto",
+    paddingLeft: 21,
+  }
 });
 
 const AdminTestPage = (props) => {
   const columns = [
-    { id: "level", label: "Level", maxWidth: 50, align: "center"},
+    { id: "level", label: "Level", maxWidth: 50, align: "center" },
     { id: "assigned", label: "Assigned", maxWidth: 130, align: "center" },
     { id: "deadline", label: "Deadline", maxWidth: 130, align: "center" },
     { id: "Coach", label: "Coach", maxWidth: 130, align: "center" },
@@ -67,7 +75,7 @@ const AdminTestPage = (props) => {
                     className={classes.test228}
                     size="small"
                     key={column.id}
-                    align={column.align} 
+                    align={column.align}
                     style={{ minWidth: column.minWidth }}
                   >
                     {column.label}
@@ -91,35 +99,36 @@ const AdminTestPage = (props) => {
                             size="small"
                           >
 
-                          {column.id === "Coach" ? (
-                            <>
+                            {column.id === "Coach" ? (
                               <Select
                                 native
                                 variant="outlined"
                                 defaultValue="placeholder"
+                                classes={{
+                                  root: classes.root
+                                }}
                               >
                                 <option aria-label="None" value="placeholder">placeholder</option>
                                 <option value={10}>Ten</option>
                                 <option value={20}>Twenty</option>
                                 <option value={30}>Thirty</option>
                               </Select>
-                            </>
-                          ) : (
-                            console.log("ayf")
-                          )}
+                            ) : (
+                              console.log("ayf")
+                            )}
 
-                          {column.id === "action" ? (
-                            <Button
-                              variant="contained"
-                              color="primary"
-                              size="small"
-                              onClick={() => testAction(row[column.id])}
-                            >
-                              {value}
-                            </Button>
-                          ) : (
-                            value
-                          )}
+                            {column.id === "action" ? (
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                size="small"
+                                onClick={() => testAction(row[column.id])}
+                              >
+                                {value}
+                              </Button>
+                            ) : (
+                              value
+                            )}
                           </TableCell>
                         );
                       })}
