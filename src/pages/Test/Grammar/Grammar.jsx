@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import './Grammar.scss';
 
 const Grammar = ({ tasks }) => {
@@ -31,8 +32,8 @@ const Grammar = ({ tasks }) => {
 };
 
 Grammar.propTypes = {
-  tasks: Grammar.array,
-  questions: Grammar.array
+  tasks: PropTypes.array,
+  questions: PropTypes.array
 };
 
 export default Grammar;

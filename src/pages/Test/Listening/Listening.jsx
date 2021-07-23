@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Listening.scss";
 import Grammar from "../Grammar/Grammar";
 
@@ -15,7 +16,7 @@ const Listening = ({tasks}) => {
 };
 
 Listening.propTypes = {
-  tasks: Listening.array,
+  tasks: PropTypes.array,
 };
 
 export default Listening;

@@ -9,26 +9,23 @@ const Speaking = () => {
   const [chunks, setChunks] = useState([]);
   const [rec, setRec] = useState({});
 
-
     navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
       const mediaRecorder = new MediaRecorder(stream);
 
       mediaRecorder.onstop = function() {
-        setBlobURL(window.URL.createObjectURL(new Blob(chunks, {'type': 'audio/ogg; codecs=opus' })));
+        setBlobURL(window.URL.createObjectURL(new Blob(chunks, {'type': 'audio/ogg; codecs=opus'})));
         setChunks([]);
       };
     
       mediaRecorder.ondataavailable = function(e) {
-          setChunks((prev) => [...prev, e.data]);
+        setChunks((prev) => [...prev, e.data]);
       };
-
       setRec(mediaRecorder);
     });
 
 
   const onRecAudio = () => {
     rec.start(100);
-    console.log(rec.state);
     setOnRec(false);
   };
 
