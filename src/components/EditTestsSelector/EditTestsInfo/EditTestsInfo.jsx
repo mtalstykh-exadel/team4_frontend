@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
-import { useState } from 'react';
 import './EditTestsInfo.scss';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -46,7 +45,8 @@ const EditTestsInfo = () => {
             {testModulesList}
           </Select>
         </FormControl>
-        <TextField label="ID" className="edit-tests-search-id" variant="outlined" size='small' value={QuestId} onChange={(event) => setQuestId(event.target.value)} inputProps={{ name: 'ID' }} />
+        <TextField label="ID" className="edit-tests-search-id" variant="outlined" size='small'
+          value={QuestId} onChange={(event) => setQuestId(event.target.value)} inputProps={{ name: 'ID' }} />
         <Button color="primary" variant="contained" type="search" className='btn-search'>
           Search
         </Button>
@@ -54,5 +54,6 @@ const EditTestsInfo = () => {
     </>
   );
 };
+
 
 export default EditTestsInfo;

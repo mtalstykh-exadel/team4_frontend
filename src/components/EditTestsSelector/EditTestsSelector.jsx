@@ -5,6 +5,7 @@ import EditTestsData from '../EditTestsSelector/EditTestsData/EditTestsData';
 import './EditTestsSelector.scss';
 
 const EditTestsSelector = () => {
+
   return (
     <div className='edit-tests-selector'>
       <EditTestsInfo />
