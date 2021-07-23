@@ -1,9 +1,12 @@
 import { saveJWT } from "../utils/jwt-parser";
 import axios from 'axios';
 
-const url = 'https://untitled-testing-system.herokuapp.com/login';
+const axiosInstance = axios.create({
+  baseURL: 'https://untitled-testing-system.herokuapp.com'
+});
+
 const handlejwt = async (data) => {
-  return axios.post(url, data)
+  return axiosInstance.post('/login', data )
     .then((response) => saveJWT(response.data));
 };
 

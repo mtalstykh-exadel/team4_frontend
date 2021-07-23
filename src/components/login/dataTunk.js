@@ -4,13 +4,9 @@ const timeout = function (ms) {
   });
 };
 
-const rand = () => Math.random() < .9;
-
 const getLoginData = (data) => {
-  return timeout(1500).then(() =>
-    rand()
-      ? Promise.resolve(data)
-      : Promise.reject(new Error('Login Error')));
+  return timeout(1500)
+    .then(() => Promise.resolve(data));
 };
 
 export default getLoginData;
