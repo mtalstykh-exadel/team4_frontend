@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from '../../../components/layout/Layout.js';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -15,14 +15,14 @@ import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
 import './test-page-admin.scss';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(() => ({
   headItems: {
     fontFamily: "Roboto bold",
     textAlign: "right"
   },
-  formControl: {
-    minWidth: 120,
-  },
+}));
+
+const SelectItem = withStyles(() => ({
   root: {
     minWidth: 345,
     minHeight: 30,
@@ -31,10 +31,8 @@ const useStyles = makeStyles({
     paddingBottom: "auto",
     paddingTop: "auto",
     paddingLeft: 21,
-  },
-  defaultValue: {
   }
-});
+}))(Select);
 
 const AdminTestPage = (props) => {
   const columns = [
@@ -103,31 +101,33 @@ const AdminTestPage = (props) => {
                             key={keysForColumns}
                             align={column.align}
                             size="small"
+                            classes={{
+                              rootCell: classes.rootCell
+                            }}
                           >
 
                             {column.id === "Coach" ? (
-                              <Select
+                              <SelectItem
                                 native
                                 variant="outlined"
                                 defaultValue="placeholder"
                                 color="red"
                                 classes={{
                                   root: classes.root,
-                                  defaultValue: classes.defaultValue,
                                 }}
                               >
                                 <option aria-label="None" value="placeholder">name</option>
                                 <option value={10}>Ten</option>
                                 <option value={20}>Twenty</option>
                                 <option value={30}>Thirty</option>
-                              </Select>
+                              </SelectItem>
                             ) : (
                               console.log("ayf")
                             )}
 
                             {column.id === "action" ? (
                               <Button
-                                variant="contained"
+                                variant="outlined"
                                 color="primary"
                                 size="small"
                                 onClick={() => testAction(row[column.id])}
