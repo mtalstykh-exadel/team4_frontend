@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {Trans} from '@lingui/macro';
 import {switchLang} from "../../utils/lang-service.js";
 import PropTypes from 'prop-types';
-import '../../styles/modal.scss';
 
 const Buttons = ({children}) => {
   // To apply styles to material elements
