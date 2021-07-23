@@ -5,8 +5,9 @@ import Button from "@material-ui/core/Button";
 import "./loginForm.scss";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import preloader from "../../assets/gif/preloader.gif";
 import { fetchLoginData } from "../../store/actions/loginActions";
+import { languageChange } from "../../store/actions/headerActions";
+import { CircularProgress } from "@material-ui/core";
 
 // filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({
@@ -25,37 +26,45 @@ const LoginForm = () => {
     dispatch(fetchLoginData(values));
     setSubmitting(false);
   };
+
+  const changeLang = (e) => {
+    e.currentTarget.outerText === ' RU' ? languageChange('russian') : languageChange('english');
+  };
   return (
     <div className="loginForm">
-      {loading && <img src={preloader} />}
       <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={submit} >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, }) => (
           <form onSubmit={handleSubmit} noValidate autoComplete="off" >
             {/* form for email */}
             <div className="fieldsWrapper">
               <TextField id="outlined-basic" label="Mail" variant="outlined" type="email" name="email"
-                onChange={handleChange} onBlur={handleBlur} value={values.email} />
+                onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
             </div>
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
             {/* form for password */}
             <div className="fieldsWrapper">
               <TextField id="outlined-basic" label="Password" variant="outlined" type="password" name="password"
-                onChange={handleChange} onBlur={handleBlur} value={values.password} />
+                onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' />
             </div>
             {errors.password && touched.password ? <div>{errors.password}</div> : null}
             {error && <div>Your email or password is incorrect. Please try again</div>}
             {/* button for submitting */}
 
             <div className="fieldsWrapper">
-              <Button variant="contained" color="primary" type="submit"
+              <Button variant="contained" color="primary" type="submit" className='logIn'
                 disabled={isSubmitting || !!errors.email || !!errors.password || loading} >
-                Log in
+                {loading ? <CircularProgress /> : <>Log in</>}
               </Button>
             </div>
           </form>
         )}
       </Formik>
+
+      <div className='lang'>
+        <span className='enRu' onClick={changeLang}>EN </span>
+        <span className='enRu' onClick={changeLang}> RU</span>
+      </div>
     </div>
   );
 };
