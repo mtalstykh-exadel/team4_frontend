@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import play from "../../../assets/images/play.svg";
 import volume from "../../../assets/images/volume.svg";
 const Player = ({ src }) => {
-  const [checkPlay, setCheckPlay] = useState(false);
   const [audioDuration, setAudioDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
   const [progressPercent, setProgressPercent] = useState(0);
@@ -14,22 +13,15 @@ const Player = ({ src }) => {
     audio.play();
     setProgressPercent(0);
     setAudioCurrent(0);
-    if (checkPlay === false) {
-      audio.addEventListener("timeupdate", AudioProgressBar);
-      setCheckPlay(true);
-    }
+    audio.removeEventListener("timeupdate", AudioProgressBar);
+    audio.addEventListener("timeupdate", AudioProgressBar);
   };
 
   const AudioProgressBar = (e) => {
     const { duration, currentTime } = e.srcElement;
     setAudioDuration(Math.floor(duration));
     setAudioCurrent(Math.floor(currentTime));
-    setProgressPercent(() => {
-      const perc = (audioCurrent / audioDuration) * 100;
-      if (isNaN(perc) === false) {
-        return perc;
-      }
-    });
+    setProgressPercent((currentTime / duration) * 100);
   };
 
   return (
