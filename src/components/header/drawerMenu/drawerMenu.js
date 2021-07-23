@@ -3,21 +3,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
+import { Divider, Button, Avatar, IconButton, Switch } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { languageChange } from '../../../store/actions/headerActions';
+import { themeChange } from '../../../store/actions/headerActions';
 
 // import image as an avatar for profile icon
 import avatar from '../../../assets/images/logo/logoText.svg';
 
 const DrawerMenu = (props) => {
+  const darktheme = useSelector((state) => state.darktheme);
   const dispatch = useDispatch();
   const role = useSelector((state) => state.role);
 
   const linkBtn = (path, name) => (
     <Button
-      className={location.pathname === path ? 'bold' : null}
+      className={`${location.pathname === path ? 'bold' : null} font-primary`}
       disableElevation
       component={Link}
       to={path}>
@@ -26,11 +28,11 @@ const DrawerMenu = (props) => {
   );
 
   return (
-    <div className='drawer'>
+    <div className={`drawer ${darktheme ? 'theme-dark' : 'theme-light'}`}>
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>
-          <CloseIcon/>
+          <CloseIcon className='icons-color'/>
         </Button>
         <IconButton
           edge='end'
@@ -39,7 +41,7 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatarHeader'
+            className='avatarHeader icons-color'
             src={avatar}/>
         </IconButton>
       </div>
@@ -52,22 +54,31 @@ const DrawerMenu = (props) => {
       </div>}
       <Divider/>
       <div className='drawerSplit'>
-        <Button onClick={ () => {dispatch(languageChange('english'));}}>English</Button>
-        <Button onClick={ () => {dispatch(languageChange('russian'));}}>Russian</Button>
+        <Button className='font-primary' onClick={ () => {dispatch(languageChange('english'));}}>English</Button>
+        <Button className='font-primary' onClick={ () => {dispatch(languageChange('russian'));}}>Russian</Button>
       </div>
       <Divider/>
       <div className='drawerSplit'>
         <Button
+          className='font-primary'
           component={Link}
           to={'/profile'}>
           My account
         </Button>
         <Button
+          className='font-primary'
           onClick={props.handleLogoutModal}>
         Logout
         </Button>
       </div>
       <Divider/>
+      <div className='drawerSplit'>
+        Dark mode
+        <Switch
+          size='small'
+          checked={darktheme}
+          onChange={() => {dispatch(themeChange(!darktheme));}}/>
+      </div>
     </div>);
 };
 

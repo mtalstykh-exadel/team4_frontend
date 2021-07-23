@@ -7,12 +7,12 @@ import Header from '../../components/header/header';
 
 const Layout = ({children}) => {
   return (
-    <>
+    <div className="base-color">
       <Header/>
-      <main className="main">
+      <main className="main base-color">
         {children}
       </main>
-    </>
+    </div>
   );
 };
 

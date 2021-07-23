@@ -1,58 +1,199 @@
-$base-color: #fff;
-$primary-color: #3e6dd7;
-$secondary-color: #828282;
-$notifications-color: #6fff97;
-$icons-color: #000;
-
 body {
-  .bold {
-    font-weight: bold;
-  }
+  .theme-light {
+    $base-color: #fff;
+    $primary-color: #3e6dd7;
+    $secondary-color: #828282;
+    $notifications-color: #6fff97;
+    $icons-color: #000;
+    $font-color-primary: rgb(0, 0, 0);
+    $font-color-secondary: rgb(243, 243, 243);
 
-  .base-color {
-    background-color: $base-color;
-  }
+    color: $font-color-primary;
 
-  .primary-contained {
-    background-color: $primary-color;
-    color: $base-color;
-
-    &:hover {
-      background-color: rgba($primary-color, 0.9);
-    }
-  }
-
-  .primary-outlined {
-    border-color: $primary-color;
-    color: $primary-color;
-  }
-
-  .secondary-outlined {
-    border-color: $secondary-color;
-    color: $secondary-color;
-  }
-
-  .icons-color {
-    fill: $icons-color;
-  }
-
-  .notifications-color {
-    background-color: $notifications-color;
-  }
-
-  &:hover .MuiOutlinedInput-root {
-    &.Mui-focused fieldset {
-      border-color: $primary-color;
+    .bold {
+      font-weight: bold;
     }
 
-    &:hover fieldset {
-      border-color: $primary-color;
-    }
-  }
+    // font color
 
-  :hover .MuiFormLabel-root {
-    &.Mui-focused {
+    .font-primary {
+      color: $font-color-primary;
+    }
+
+    .font-secondary {
+      color: $font-color-secondary;
+    }
+
+    .font-color {
       color: $primary-color;
+    }
+
+    // background color
+
+    .base-color {
+      background-color: $base-color;
+    }
+
+    // buttons color
+
+    &.primary-contained {
+      background-color: $primary-color;
+      color: $font-color-secondary;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.9);
+      }
+    }
+
+    .primary-outlined {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    .secondary-contained {
+      border-color: $secondary-color;
+      color: $base-color;
+    }
+
+    .secondary-outlined {
+      border-color: $secondary-color;
+      color: $secondary-color;
+    }
+
+    // icons color
+
+    .icons-color {
+      fill: $icons-color;
+    }
+
+    .notifications-color {
+      background-color: $notifications-color;
+    }
+
+    // misc
+
+    &:hover .MuiOutlinedInput-root {
+      &.Mui-focused fieldset {
+        border-color: $primary-color;
+      }
+
+      &:hover fieldset {
+        border-color: $primary-color;
+      }
+    }
+
+    :hover .MuiFormLabel-root {
+      &.Mui-focused {
+        color: $primary-color;
+      }
+    }
+
+    .MuiSwitch-root {
+      &.Mui-checked {
+        color: $primary-color;
+      }
+
+      &.MuiSwitch-track {
+        background-color: $primary-color;
+      }
+    }
+
+    .MuiPaper-root {
+      background-color: $base-color;
+    }
+  }
+
+  .theme-dark {
+    $base-color: rgb(75, 75, 75);
+    $primary-color: #3e6dd7;
+    $secondary-color: #828282;
+    $notifications-color: #6fff97;
+    $icons-color: rgb(255, 255, 255);
+    $font-color-primary: rgb(255, 255, 255);
+    $font-color-secondary: rgb(255, 255, 255);
+
+    color: $font-color-primary;
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .font-primary {
+      color: $font-color-primary;
+    }
+
+    .font-secondary {
+      color: $font-color-secondary;
+    }
+
+    .font-color {
+      color: $primary-color;
+    }
+
+    .base-color {
+      background-color: $base-color;
+    }
+
+    &.primary-contained {
+      background-color: $primary-color;
+      color: $font-color-secondary;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.9);
+      }
+    }
+
+    .primary-outlined {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    .secondary-contained {
+      border-color: $secondary-color;
+      color: $base-color;
+    }
+
+    .secondary-outlined {
+      border-color: $secondary-color;
+      color: $secondary-color;
+    }
+
+    .icons-color {
+      fill: $icons-color;
+    }
+
+    .notifications-color {
+      background-color: $notifications-color;
+    }
+
+    &:hover .MuiOutlinedInput-root {
+      &.Mui-focused fieldset {
+        border-color: $primary-color;
+      }
+
+      &:hover fieldset {
+        border-color: $primary-color;
+      }
+    }
+
+    :hover .MuiFormLabel-root {
+      &.Mui-focused {
+        color: $primary-color;
+      }
+    }
+
+    .MuiSwitch-root {
+      & .Mui-checked {
+        color: $primary-color;
+      }
+
+      & .MuiSwitch-track {
+        background-color: $primary-color;
+      }
+    }
+
+    .MuiPaper-root {
+      background-color: $base-color;
     }
   }
 }

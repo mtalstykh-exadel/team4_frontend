@@ -1,7 +1,11 @@
 import React from 'react';
-import Login from './pages/login/login';
+import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+
 import './App.scss';
+import '../src/styles/theme.scss';
+
+import Login from './pages/login/login';
 import Buttons from './components/buttons/Buttons';
 import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
@@ -12,9 +16,9 @@ import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 
 const App = () => {
-
+  const darktheme = useSelector((state) => state.darktheme);
   return (
-    <div className="App">
+    <div className={`App ${darktheme ? 'theme-dark' : 'theme-light'}`}>
       <Switch>
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/buttons"><Buttons /></PrivateRoute>

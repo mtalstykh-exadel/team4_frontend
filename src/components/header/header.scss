@@ -1,52 +1,20 @@
-body {
-  .toolbar {
-    justify-content: space-around;
+.toolbar {
+  justify-content: space-around;
 
-    .icons-triangle {
-      font-size: 15px;
-    }
+  .icons-triangle {
+    font-size: 15px;
+  }
 
-    .toolbar-sideLeft {
-      display: flex;
+  .toolbar-sideLeft {
+    display: flex;
 
-      .roleBtns {
-        padding: 20px;
-      }
-    }
-
-    .toolbar-sideRight {
-      display: flex;
-    }
-
-    .logoText {
-      max-width: 160px;
-    }
-
-    .logo {
-      max-width: 60px;
-      min-width: 50px;
+    .roleBtns {
+      padding: 20px;
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    .toolbar {
-      justify-content: space-between;
-    }
-  }
-
-  .drawer {
-    padding: 15px;
-    width: 200px;
-
-    .drawerSplit {
-      padding: 20px 40px 20px 10px;
-    }
-
-    .drawerIcons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+  .toolbar-sideRight {
+    display: flex;
   }
 
   .avatarHeader {
@@ -54,6 +22,38 @@ body {
     width: 30px;
   }
 
+  .logoText {
+    max-width: 160px;
+  }
+
+  .logo {
+    max-width: 60px;
+    min-width: 50px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .toolbar {
+    justify-content: space-between;
+  }
+}
+
+.drawer {
+  padding: 15px;
+  width: 200px;
+
+  .drawerSplit {
+    padding: 20px 40px 20px 10px;
+  }
+
+  .drawerIcons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.notifications-dropdown-menu {
   .notifications-test {
     padding: 15px 0 0 10px;
 
@@ -79,21 +79,20 @@ body {
     margin-right: 10px;
     text-transform: none;
   }
+}
 
-  .modal {
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .paper {
+    padding: 30px;
+  }
+
+  .modalBtns {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .paper {
-      padding: 30px;
-      background-color: white;
-    }
-
-    .modalBtns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }

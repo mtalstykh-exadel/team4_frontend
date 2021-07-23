@@ -11,3 +11,4 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 
 export const LOGOUT_START = 'LOGOUT_START';
+export const THEME_CHANGE = 'HEADER_CHANGE';

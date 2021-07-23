@@ -23,7 +23,6 @@ import Notifications from './notificationsDropdown/notificationsDropdown';
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
   const location = useLocation();
-
   const role = useSelector((state) => state.role);
   const shorthand = useSelector((state) => state.language).substring(0,2);
   const [states, setState] = useState({
@@ -34,9 +33,11 @@ const Header = () => {
     notificationsEmpty: false,
     drawerEl: false
   });
+
   const handleBadge = (value) => setState({
     notificationsEmpty: value
   });
+
   const handleDrawer = (value) => setState({
     drawerEl: value
   });
@@ -44,6 +45,7 @@ const Header = () => {
   const handleAccount = (event) => setState({
     accumulatorEl: event.currentTarget
   });
+
   const handleAccountClose = () => setState({
     accumulatorEl: null
   });
@@ -59,6 +61,7 @@ const Header = () => {
   const handleLogout = (value) => setState({
     logoutEl: value
   });
+
   const handleNotifications = (event) => setState({
     notificationsEl: event.currentTarget
   });
@@ -66,10 +69,11 @@ const Header = () => {
   const handleNotificationsClose = () => setState({
     notificationsEl: null
   });
+
   const linkBtn = (path, name) => (
     <Button
       disableElevation
-      className={`${location.pathname === path ? 'bold' : null} 'roleBtns'`}
+      className={`${location.pathname === path ? 'bold' : null} roleBtns font-primary theme-dark`}
       component={Link}
       to={path}>
       {name}
@@ -89,9 +93,11 @@ const Header = () => {
               edge='start'
               aria-haspopup='true'
               onClick={() => handleDrawer(true)}>
-              <MenuIcon/>
+              <MenuIcon className='icons-color'/>
             </IconButton>
-            <Drawer anchor={'left'}
+            <Drawer
+              className='theme-dark'
+              anchor={'left'}
               open={states.drawerEl}
               onClose={() => handleDrawer(false)}>
               {<DrawerMenu
@@ -133,7 +139,7 @@ const Header = () => {
                 className='icons-triangle icons-color'/>
             </IconButton>
             <Button
-              className='bold'
+              className='bold font-primary'
               onClick={handleLanguage}>
               {shorthand}
               <ArrowDropDownIcon
