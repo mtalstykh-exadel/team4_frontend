@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 body {
   .theme-light {
     $base-color: #fff;
@@ -5,8 +7,8 @@ body {
     $secondary-color: #828282;
     $notifications-color: #6fff97;
     $icons-color: #000;
-    $font-color-primary: rgb(0, 0, 0);
-    $font-color-secondary: rgb(243, 243, 243);
+    $font-color-primary: #000;
+    $font-color-secondary: #fff;
 
     color: $font-color-primary;
 
@@ -36,7 +38,7 @@ body {
 
     // buttons color
 
-    &.primary-contained {
+    .primary-contained {
       background-color: $primary-color;
       color: $font-color-secondary;
 
@@ -108,9 +110,9 @@ body {
     $primary-color: #3e6dd7;
     $secondary-color: #828282;
     $notifications-color: #6fff97;
-    $icons-color: rgb(255, 255, 255);
-    $font-color-primary: rgb(255, 255, 255);
-    $font-color-secondary: rgb(255, 255, 255);
+    $icons-color: #fff;
+    $font-color-primary: #fff;
+    $font-color-secondary: #fff;
 
     color: $font-color-primary;
 
@@ -134,7 +136,7 @@ body {
       background-color: $base-color;
     }
 
-    &.primary-contained {
+    .primary-contained {
       background-color: $primary-color;
       color: $font-color-secondary;
 
