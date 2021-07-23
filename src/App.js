@@ -10,6 +10,7 @@ import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
+import '../../styles/modal.scss';
 
 const App = () => {
 
