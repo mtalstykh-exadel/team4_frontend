@@ -13,9 +13,9 @@ const Essay = () => {
         <div className='step-description'>Write an essay on a given topic</div>
         <div className='essay-topic'>Essay Topic</div>
         <textarea
-          onPaste={() => {return false;}}
-          onCopy={() => {return false;}}
-          onCut={() => {return false;}}
+          onPaste={(event) => {event.preventDefault(); return false;}}
+          onCopy={(event) => {event.preventDefault(); return false;}}
+          onCut={(event) => {event.preventDefault(); return false;}}
           className='essay-input' maxLength='512' value={value}
           onChange={handleChange}
         />

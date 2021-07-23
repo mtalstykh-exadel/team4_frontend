@@ -1,5 +1,7 @@
 .img img {
-  width: 35px;
+  width: 60px;
+  padding-bottom: 40px;
+  cursor: pointer;
 }
 
 #start {
@@ -33,5 +35,9 @@
 .speaking-topic {
   font-size: 24px;
   padding-top: 15px;
-  padding-bottom: 40px;
+  padding-bottom: 68px;
+}
+
+.invisible-button {
+  display: none;
 }
