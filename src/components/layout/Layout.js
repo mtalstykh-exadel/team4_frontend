@@ -8,7 +8,7 @@ const Layout = ({ pageWrapperClass, children }) => {
   return (
     <>
       <Header/>
-       <main className={pageWrapperClass}>
+      <main className={pageWrapperClass}>
         {children}
       </main>
     </>
