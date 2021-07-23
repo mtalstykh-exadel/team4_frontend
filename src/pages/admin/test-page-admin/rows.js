@@ -39,7 +39,7 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     Coach: '',
-    action: 'Take test' 
+    action: 'Take test'
   },
 ];
 

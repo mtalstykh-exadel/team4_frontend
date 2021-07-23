@@ -12,21 +12,14 @@ import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { rows } from "./rows.js";
 import PropTypes from "prop-types";
-import FormControl from '@material-ui/core/FormControl';
-// import InputLabel from '@material-ui/core/InputLabel';
+// import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles({
-  test228: {
-    fontFamily: "Roboto bold",
-    backgroundColor: "#ffffff",
-    padding: "6 0 6 0",
+  formControl: {
+    minWidth: 120,
   },
-  SelectName: {
-    fontFamily: "Roboto bold",
-    color: "red"
-  }
 });
 
 const AdminTestPage = (props) => {
@@ -100,21 +93,16 @@ const AdminTestPage = (props) => {
 
                           {column.id === "Coach" ? (
                             <>
-                              <FormControl variant="outlined" className={classes.formControl}>
-                                {/* <InputLabel htmlFor="outlined-age-native-simple">ADADA</InputLabel> */}
-                                <Select
-                                  native
-                                  inputProps={{
-                                    name: 'age',
-                                    id: 'outlined-age-native-simple',
-                                  }}
-                                >
-                                  <option aria-label="None" value="" className={classes.SelectName}>placeholder</option>
-                                  <option value={10}>Ten</option>
-                                  <option value={20}>Twenty</option>
-                                  <option value={30}>Thirty</option>
-                                </Select>
-                              </FormControl>
+                              <Select
+                                native
+                                variant="outlined"
+                                defaultValue="placeholder"
+                              >
+                                <option aria-label="None" value="placeholder">placeholder</option>
+                                <option value={10}>Ten</option>
+                                <option value={20}>Twenty</option>
+                                <option value={30}>Thirty</option>
+                              </Select>
                             </>
                           ) : (
                             console.log("ayf")
