@@ -33,7 +33,6 @@ const Buttons = ({children}) => {
   };
   return (
     <>
-      <div id='modal'/>
       <Button
         onClick={handleOpen}
         variant="contained"
