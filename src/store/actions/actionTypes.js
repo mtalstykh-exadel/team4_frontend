@@ -9,3 +9,5 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 export const LOGOUT_START = 'LOGOUT_START';
+
+export const JWT_PARSE = 'JWT_PARSE';

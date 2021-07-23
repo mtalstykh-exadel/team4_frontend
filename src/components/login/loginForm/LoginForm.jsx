@@ -16,8 +16,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
-  const loading = useSelector((state) => state.login.loading);
-
+  const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
 
   // styles from material ui

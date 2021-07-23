@@ -1,9 +1,9 @@
-import { saveJWT } from "../utils/jwt-parser";
 import axiosInstance from "./axios";
+import { saveJWT } from "../utils/jwt-parser";
 
-const handlejwt = async (data) => {
+const handleJWT = async (data) => {
   return axiosInstance.post('/login', data )
     .then((response) => saveJWT(response.data));
 };
 
-export default handlejwt;
+export default handleJWT;
