@@ -16,6 +16,10 @@ import { Button } from "@material-ui/core";
 import './test-page-admin.scss';
 
 const useStyles = makeStyles({
+  headItems: {
+    fontFamily: "Roboto bold",
+    textAlign: "right"
+  },
   formControl: {
     minWidth: 120,
   },
@@ -27,16 +31,18 @@ const useStyles = makeStyles({
     paddingBottom: "auto",
     paddingTop: "auto",
     paddingLeft: 21,
+  },
+  defaultValue: {
   }
 });
 
 const AdminTestPage = (props) => {
   const columns = [
-    { id: "level", label: "Level", maxWidth: 50, align: "center" },
-    { id: "assigned", label: "Assigned", maxWidth: 130, align: "center" },
-    { id: "deadline", label: "Deadline", maxWidth: 130, align: "center" },
-    { id: "Coach", label: "Coach", maxWidth: 130, align: "center" },
-    { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
+    { id: "level", label: "Level", width: 50, align: "right" },
+    { id: "assigned", label: "Assigned", width: 130, align: "right" },
+    { id: "deadline", label: "Deadline", width: 130, align: "right" },
+    { id: "Coach", label: "Coach", width: 345, align: "right" },
+    { id: "action", label: "Action", width: 100, align: "right", },
   ];
 
   const filteredRows = rows.filter((r) =>
@@ -72,7 +78,7 @@ const AdminTestPage = (props) => {
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
-                    className={classes.test228}
+                    className={classes.headItems}
                     size="small"
                     key={column.id}
                     align={column.align}
@@ -104,11 +110,13 @@ const AdminTestPage = (props) => {
                                 native
                                 variant="outlined"
                                 defaultValue="placeholder"
+                                color="red"
                                 classes={{
-                                  root: classes.root
+                                  root: classes.root,
+                                  defaultValue: classes.defaultValue,
                                 }}
                               >
-                                <option aria-label="None" value="placeholder">placeholder</option>
+                                <option aria-label="None" value="placeholder">name</option>
                                 <option value={10}>Ten</option>
                                 <option value={20}>Twenty</option>
                                 <option value={30}>Thirty</option>

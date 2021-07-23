@@ -5,3 +5,8 @@
 .MuiOutlinedInput-input {
   padding: auto auto 8px 21px;
 }
+
+.MuiTableCell-sizeSmall {
+  width: fit-content;
+  max-width: 345px;
+}
