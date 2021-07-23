@@ -8,7 +8,7 @@ const languageReducer = (state = 'english', action) => {
   }
 };
 
-const themeReducer = ( state = 'false', action) => {
+const themeReducer = ( state = false, action) => {
   switch (action.type) {
     case THEME_CHANGE: return action.darktheme;
     default: return state;

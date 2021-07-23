@@ -88,7 +88,6 @@ const LoginForm = () => {
                 value={values.password}
               />
             </div>
-            {console.log(errors.email, errors.password)}
             {errors.password && touched.password ? (
               <div>{errors.password}</div>
             ) : null}

@@ -38,7 +38,7 @@ const AccountMenu = (props) => {
           Dark mode
         <Switch
           size='small'
-          checked={darktheme}
+          checked={Boolean(darktheme)}
           onChange={() => {dispatch(themeChange(!darktheme));}}/>
       </MenuItem>
       <MenuItem
