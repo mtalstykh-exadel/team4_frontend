@@ -23,6 +23,7 @@ const onRecAudio = () => {
 const offRecAudio = () => {
   rec.stop();
   rec.onstop();
+  return blobURL;
 };
 
-export {blobURL, offRecAudio, onRecAudio}; 
+export {offRecAudio, onRecAudio}; 

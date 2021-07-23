@@ -1,11 +1,11 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import micro from "../../../assets/images/micro.svg";
-import {blobURL, offRecAudio, onRecAudio} from "../../../services/voice-recorder.js";
+import {offRecAudio, onRecAudio} from "../../../services/voice-recorder.js";
 import "./Speaking.scss";
 
 const Speaking = () => {
-
+  const [blobURL, setBlobURL] = useState("");
   return (
     <>
       <div className="stepDescription">Write down record</div>
@@ -15,7 +15,7 @@ const Speaking = () => {
         <audio src={blobURL} controls />
       </div>
       <Button onClick={onRecAudio}>on</Button>
-      <Button onClick={offRecAudio}>off</Button>
+      <Button onClick={() => setBlobURL(offRecAudio())}>off</Button>
     </>
   );
 };
