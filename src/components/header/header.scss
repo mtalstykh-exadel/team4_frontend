@@ -1,8 +1,14 @@
-.toolbar {
-  width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-around;
+.toolbar-wrapper {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+
+  .toolbar {
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+  }
 
   .icons-triangle {
     font-size: 15px;

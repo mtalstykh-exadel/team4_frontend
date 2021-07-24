@@ -86,84 +86,86 @@ const Header = () => {
       className='base-color'
       elevation={1}
       position='static'>
-      <Toolbar className='toolbar'>
-        <div className='toolbar-sideLeft'>
-          {!matches && <>
+      <div className='toolbar-wrapper'>
+        <Toolbar className='toolbar'>
+          <div className='toolbar-sideLeft'>
+            {!matches && <>
+              <IconButton
+                edge='start'
+                aria-haspopup='true'
+                onClick={() => handleDrawer(true)}>
+                <MenuIcon className='icons-color'/>
+              </IconButton>
+              <Drawer
+                className='theme-dark'
+                anchor={'left'}
+                open={states.drawerEl}
+                onClose={() => handleDrawer(false)}>
+                {<DrawerMenu
+                  handleLogoutModal={handleLogout}
+                  handleDrawer={() => handleDrawer(false)}/>}
+              </Drawer>
+            </>}
+            { matches && <img src={logoText} alt='logo' className='logoText'/> }
+            { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
+            { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
+            { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
+          </div>
+          { !matches && <img src={logo} alt="logo" className={'logo'}/> }
+          <div className='toolbar-sideRight'>
             <IconButton
               edge='start'
               aria-haspopup='true'
-              onClick={() => handleDrawer(true)}>
-              <MenuIcon className='icons-color'/>
+              onClick={handleNotifications}>
+              <Badge
+                classes={{ badge: 'notifications-color' }}
+                color='primary'
+                overlap='circular'
+                variant='dot'>
+                <NotificationsNoneIcon className='icons-color'/>
+              </Badge>
             </IconButton>
-            <Drawer
-              className='theme-dark'
-              anchor={'left'}
-              open={states.drawerEl}
-              onClose={() => handleDrawer(false)}>
-              {<DrawerMenu
-                handleLogoutModal={handleLogout}
-                handleDrawer={() => handleDrawer(false)}/>}
-            </Drawer>
-          </>}
-          { matches && <img src={logoText} alt='logo' className='logoText'/> }
-          { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
-          { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-          { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
-        </div>
-        { !matches && <img src={logo} alt="logo" className={'logo'}/> }
-        <div className='toolbar-sideRight'>
-          <IconButton
-            edge='start'
-            aria-haspopup='true'
-            onClick={handleNotifications}>
-            <Badge
-              classes={{ badge: 'notifications-color' }}
-              color='primary'
-              overlap='circular'
-              variant='dot'>
-              <NotificationsNoneIcon className='icons-color'/>
-            </Badge>
-          </IconButton>
-          { matches &&
-          <>
-            <IconButton
-              edge='end'
-              color='inherit'
-              aria-haspopup='true'
-              onClick={handleAccount}>
-              <Avatar
-                className='avatarHeader icons-color'
-                src={avatar}
-                alt='avatar'/>
-              <ArrowDropDownIcon
-                className='icons-triangle icons-color'/>
-            </IconButton>
-            <Button
-              className='bold font-primary'
-              onClick={handleLanguage}>
-              {shorthand}
-              <ArrowDropDownIcon
-                className='icons-triangle icons-color'/>
-            </Button>
-          </>}
-        </div>
-        {<AccountMenu
-          accEl={states.accumulatorEl}
-          handleAccClose={handleAccountClose}
-          handleLogoutMenu={() => {handleLogout(true);}}/>}
-        {<LogoutModal
-          logoutEl={states.logoutEl}
-          handleAccClose={handleAccountClose}
-          handleLogoutClose={() => {handleLogout(false);}}
-          handleLangClose={handleLanguageClose}/>}
-        {<LanguageMenu
-          langEl={states.languageEl}
-          handleLangClose={handleLanguageClose}/>}
-        {<Notifications
-          notifEl={states.notificationsEl}
-          handleNotifClose={handleNotificationsClose}
-          handleCircle={(value) => handleBadge(value)}/>}
-      </Toolbar>
+            { matches &&
+            <>
+              <IconButton
+                edge='end'
+                color='inherit'
+                aria-haspopup='true'
+                onClick={handleAccount}>
+                <Avatar
+                  className='avatarHeader icons-color'
+                  src={avatar}
+                  alt='avatar'/>
+                <ArrowDropDownIcon
+                  className='icons-triangle icons-color'/>
+              </IconButton>
+              <Button
+                className='bold font-primary'
+                onClick={handleLanguage}>
+                {shorthand}
+                <ArrowDropDownIcon
+                  className='icons-triangle icons-color'/>
+              </Button>
+            </>}
+          </div>
+          {<AccountMenu
+            accEl={states.accumulatorEl}
+            handleAccClose={handleAccountClose}
+            handleLogoutMenu={() => {handleLogout(true);}}/>}
+          {<LogoutModal
+            logoutEl={states.logoutEl}
+            handleAccClose={handleAccountClose}
+            handleLogoutClose={() => {handleLogout(false);}}
+            handleLangClose={handleLanguageClose}/>}
+          {<LanguageMenu
+            langEl={states.languageEl}
+            handleLangClose={handleLanguageClose}/>}
+          {<Notifications
+            notifEl={states.notificationsEl}
+            handleNotifClose={handleNotificationsClose}
+            handleCircle={(value) => handleBadge(value)}/>}
+        </Toolbar>
+      </div>
     </AppBar>
   );
 };
