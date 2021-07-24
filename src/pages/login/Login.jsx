@@ -10,7 +10,7 @@ const Login = () => {
   if (auth) return <Redirect to='/' />;
   return (
     <div className='wrapper'>
-      <div className='login'>
+      <div className='loginRow'>
         <img src={logo} alt="" className='logo' />
         <LoginForm />
       </div>

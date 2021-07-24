@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar } from '@material-ui/core';
-import './profileInfo.scss';
+import './ProfileInfo.scss';
 
 const ProfileInfo = () => {
   const avatar = useSelector((state) => state.profile.avatar);

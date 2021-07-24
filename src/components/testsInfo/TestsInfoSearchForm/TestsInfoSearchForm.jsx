@@ -18,6 +18,13 @@ const TestInfoSearchForm = (props) => {
   useEffect(() => {
     formik.submitForm();
   }, [formik.values]);
+
+  const testLevelsList = testLevels.map((elem) => {
+    return (
+      <option key={testLevels.indexOf(elem)}>{elem}</option>
+    );
+  });
+
   return (
     <div className='searchForm'>
       <form onSubmit={formik.handleSubmit}>
@@ -28,7 +35,7 @@ const TestInfoSearchForm = (props) => {
             inputProps={{ name: 'level' }}
           >
             <option aria-label="All" value={null} />
-            {testLevels.map((el) => <option key={testLevels.indexOf(el)}>{el}</option>)}
+            {testLevelsList}
           </Select>
         </FormControl>
       </form>
