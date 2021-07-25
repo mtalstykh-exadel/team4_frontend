@@ -5,7 +5,7 @@ html {
     content: "";
     background: url('../../assets/images/backgroundLogin/britain.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: auto 100%;
     opacity: 0.3;
     top: 0;
     left: 0;
@@ -16,11 +16,20 @@ html {
   }
 
   .loginRow {
-    width: 27%;
-    margin: 8% auto;
+    width: 500px;
+    margin: 100px auto;
 
     .logo {
-      width: 60%;
+      width: 300px;
+    }
+
+    @media screen and (max-width: 900px) {
+      width: 270px;
+      margin: 100px auto;
+
+      .logo {
+        width: 200px;
+      }
     }
   }
 }
