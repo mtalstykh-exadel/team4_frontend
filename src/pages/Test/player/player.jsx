@@ -3,8 +3,7 @@ import "./player.scss";
 import PropTypes from "prop-types";
 import play from "../../../assets/images/play.svg";
 import volume from "../../../assets/images/volume.svg";
-const Player = ({ src }) => {
-  const [audioDuration, setAudioDuration] = useState(0);
+const Player = ({ src, audioDuration }) => {
   const [audioCurrent, setAudioCurrent] = useState(0);
   const [progressPercent, setProgressPercent] = useState(0);
   const audio = document.getElementById("audio-player");
@@ -19,7 +18,6 @@ const Player = ({ src }) => {
 
   const AudioProgressBar = (e) => {
     const { duration, currentTime } = e.srcElement;
-    setAudioDuration(Math.floor(duration));
     setAudioCurrent(Math.floor(currentTime));
     setProgressPercent((currentTime / duration) * 100);
   };
@@ -50,6 +48,7 @@ const Player = ({ src }) => {
 
 Player.propTypes = {
   src: PropTypes.string,
+  audioDuration: PropTypes.number
 };
 
 export default Player;

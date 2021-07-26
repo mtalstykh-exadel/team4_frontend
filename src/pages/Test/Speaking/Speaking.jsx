@@ -1,17 +1,21 @@
 import React, { useState } from "react";
+import { speakingTimerHandler } from "../../../services/timer.js";
+import { offRecAudio, onRecAudio } from "../../../services/voice-recorder.js";
 import micOn from "../../../assets/images/micOn.svg";
 import micOff from "../../../assets/images/micOff.svg";
 import Player from "../player/player.jsx";
-import { offRecAudio, onRecAudio } from "../../../services/voice-recorder.js";
 import "./Speaking.scss";
 
 const Speaking = () => {
-  const [blobURL, setBlobURL] = useState("");
   const [invisible, setInvisible] = useState("off");
+  const [blobURL, setBlobURL] = useState("");
+  const [audioDuration, setAudioDuration] = useState(0);
+
   return (
     <>
       <div className="step-description">Write down record</div>
       <div className="speaking-topic">Speaking Topic</div>
+      <div className="audio-speaking-timer" id="speaking-timer">5:00</div>
       <div className="microphone">
         <img
           src={micOn}
@@ -21,6 +25,7 @@ const Speaking = () => {
           onClick={() => {
             setInvisible("on");
             onRecAudio();
+            speakingTimerHandler(true);
           }}
         />
         <img
@@ -31,10 +36,11 @@ const Speaking = () => {
           onClick={() => {
             setInvisible("off");
             setBlobURL(offRecAudio());
+            setAudioDuration(speakingTimerHandler(false));
           }}
         />
       </div>
-      <Player src={blobURL}></Player>
+      <Player src={blobURL} audioDuration={audioDuration}></Player>
     </>
   );
 };
