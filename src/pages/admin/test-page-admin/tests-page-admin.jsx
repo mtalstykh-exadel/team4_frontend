@@ -10,6 +10,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import { rows } from "./rows.js";
+import { coaches } from "./test data/Coaches.js";
 import PropTypes from "prop-types";
 import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
@@ -34,12 +35,11 @@ const SelectItem = withStyles(() => ({
   }
 }))(Select);
 
-// const TableCellTEST = withStyles(() => ({
-//   root: {
-//     width: "fit-content",
-//     maxWidth: 345,
-//   }
-// }))(TableCell);
+const ButtonAssign = withStyles(() => ({
+  root: {
+    minWidth: 127,
+  }
+}))(Button);
 
 const AdminTestPage = (props) => {
   const columns = [
@@ -47,7 +47,7 @@ const AdminTestPage = (props) => {
     { id: "assigned", label: "Assigned", width: 130, align: "right" },
     { id: "deadline", label: "Deadline", width: 130, align: "right" },
     { id: "Coach", label: "Coach", width: 345, align: "right" },
-    { id: "action", label: "Action", width: 100, align: "right" },
+    { id: "action", label: "Action", width: 127, align: "right" },
   ];
 
   const filteredRows = rows.filter((r) =>
@@ -55,6 +55,7 @@ const AdminTestPage = (props) => {
   );
 
   let keysForColumns = 1;
+  let keysForOptions = 1;
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
@@ -112,7 +113,6 @@ const AdminTestPage = (props) => {
                               rootCell: classes.rootCell
                             }}
                           >
-
                             {column.id === "Coach" ? (
                               <SelectItem
                                 native
@@ -124,23 +124,28 @@ const AdminTestPage = (props) => {
                                 }}
                               >
                                 <option aria-label="None" value="placeholder">name</option>
-                                <option value={10}>Ten</option>
-                                <option value={20}>Twenty</option>
-                                <option value={30}>Thirty</option>
+                                {coaches.map((coachName) => {
+                                  keysForOptions++;
+                                  return (
+                                    <option key={keysForOptions} value={coachName}>
+                                      {coachName}
+                                    </option>
+                                  );
+                                })}
                               </SelectItem>
                             ) : (
-                              console.log("ayf")
+                              console.log('false')
                             )}
 
                             {column.id === "action" ? (
-                              <Button
+                              <ButtonAssign
                                 variant="outlined"
                                 color="primary"
                                 size="small"
                                 onClick={() => testAction(row[column.id])}
                               >
                                 {value}
-                              </Button>
+                              </ButtonAssign>
                             ) : (
                               value
                             )}
