@@ -4,7 +4,7 @@ let timer;
 
 const speakingTimerHandler = (timerOn) => {
   const speakingTimerDomElement = document.getElementById("speaking-timer");
-  timeMinut = 300;
+  timeMinut = 299;
   if (timerOn === false) {
     return stopTimer(speakingTimerDomElement);
   } else {
