@@ -1,0 +1,48 @@
+.primary-button {
+  background-color: #3e6dd7;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 4.5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.4s ease;
+}
+
+.primary-button.disable {
+  background-color: #bdbdbd;
+  color: #4f4f4f;
+}
+
+.primary-button:hover {
+  background-color: darken(#3e62c4, 3%);
+  transition: 0.4s ease;
+}
+
+.secondary-button {
+  background-color: white;
+  border: 1px solid #3e6dd7;
+  color: #3e6dd7;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 4.5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.4s ease;
+}
+
+.secondary-button.disable {
+  background-color: white;
+  border: 1px solid #828282;
+  color: black;
+}
+
+.secondary-button:hover {
+  background-color: white;
+  border: 1px solid darken(#3e62c4, 3%);
+  color: darken(#3e62c4, 3%);
+  transition: 0.4s ease;
+}
