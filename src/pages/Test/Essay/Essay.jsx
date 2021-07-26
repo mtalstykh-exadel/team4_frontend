@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./Essay.scss";
 
 const Essay = () => {
-  const [value, setValue] = useState("");
+  const [characters, setCharacters] = useState("");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setCharacters(event.target.value);
   };
 
   return (
@@ -27,10 +27,10 @@ const Essay = () => {
         }}
         className="essay-input"
         maxLength="512"
-        value={value}
+        value={characters}
         onChange={handleChange}
       />
-      <div className="essay-count">{value.length} out of 512 characters</div>
+      <div className="essay-characters">{characters.length} out of 512 characters</div>
     </>
   );
 };

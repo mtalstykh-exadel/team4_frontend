@@ -3,26 +3,27 @@ import PropTypes from "prop-types";
 import "./Grammar.scss";
 
 const Grammar = ({ tasks }) => {
-  let numberOfTheQuestion = 0;
-  const questions = tasks.map((item1) => {
-    numberOfTheQuestion++;
-    const options = item1.options.map((item2) => {
+  let questionCount = 0;
+
+  const questions = tasks.map((question) => {
+    questionCount++;
+    const options = question.options.map((questionItem) => {
       return (
-        <div key={item2.option} className="option">
+        <div key={questionItem.option} className="option">
           <input
             type="radio"
-            name={"group-" + numberOfTheQuestion}
-            value={item2.option}
+            name={"group-" + questionCount}
+            value={questionItem.option}
           />
-          <label> {item2.option}</label>
+          <label> {questionItem.option}</label>
         </div>
       );
     });
     return (
-      <div key={numberOfTheQuestion}>
+      <div key={questionCount}>
         <div className="question">
-          <span className="question number">{numberOfTheQuestion}. </span>
-          <span className="question sentence">{item1.sentence}</span>
+          <span className="question number">{questionCount}. </span>
+          <span className="question sentence">{question.sentence}</span>
         </div>
         {options}
       </div>

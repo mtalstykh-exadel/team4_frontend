@@ -12,7 +12,7 @@ const Speaking = () => {
     <>
       <div className="step-description">Write down record</div>
       <div className="speaking-topic">Speaking Topic</div>
-      <div className="img">
+      <div className="microphone">
         <img
           src={micOn}
           alt="micro"
