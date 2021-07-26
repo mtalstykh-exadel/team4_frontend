@@ -50,7 +50,7 @@ const Speaking = () => {
           }}
         />
       </div>
-      <Player src={blobURL} audioDuration={checkTime(audioDuration)} checkTime={checkTime}></Player>
+      <Player src={blobURL} audioDuration={audioDuration} checkTime={checkTime}></Player>
     </>
   );
 };

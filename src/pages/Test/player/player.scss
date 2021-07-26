@@ -31,15 +31,20 @@
     border-radius: 4px;
     background: rgba(62, 109, 215, 0.05);
 }
+.player-button:active{
+    border-radius: 4px;
+    background: rgba(62, 109, 215, 0.1);
+}
 .progress-container{
     position: relative;
     margin-top: 28px;
+    height: 1px;
     width: 540px;
     margin-right: 10px;
 }
 .progress{
     width: 540px;
-    border: 1px solid #828282;
+    border: 2px solid #828282;
 }
 
 .progress-line{
@@ -47,4 +52,5 @@
     width: 10%;
     border: 2px solid #3f51b5;
     border-radius: 5px;
+    max-width: 100%;
 }
