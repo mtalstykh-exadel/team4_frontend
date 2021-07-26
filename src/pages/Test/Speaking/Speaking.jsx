@@ -21,6 +21,17 @@ const Speaking = () => {
     return `${minutes}:${seconds}`;
   };
 
+  const SpeakingTimerHandker = () => {
+    const element = document.getElementById("speaking-timer");
+    element.addEventListener("DOMNodeInserted", () => {
+      if (element.textContent === "0:00") {
+        setInvisible("off");
+        setBlobURL(offRecAudio());
+        setAudioDuration(speakingTimerHandler(false));
+      }
+    });
+  };
+
   return (
     <>
       <div className="step-description">Write down record</div>
@@ -39,6 +50,7 @@ const Speaking = () => {
               setInvisible("on");
               onRecAudio();
               speakingTimerHandler(true);
+              SpeakingTimerHandker();
             }}
           />
         ) : (
@@ -59,7 +71,7 @@ const Speaking = () => {
         src={blobURL}
         audioDuration={audioDuration}
         checkTime={checkTime}
-      ></Player>
+      />
     </>
   );
 };
