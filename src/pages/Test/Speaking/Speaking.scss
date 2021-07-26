@@ -1,7 +1,18 @@
-.microphone img {
+.microphone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 60px;
-  padding-bottom: 40px;
+  height: 60px;
+  margin: 0 auto;
+  margin-bottom: 60px;
+  background-color: #3E6DD7;
+  border-radius: 50%;
   cursor: pointer;
+}
+
+.off {
+  background-color: #D7463E;
 }
 
 .speaking-topic {
@@ -18,4 +29,9 @@
   font-size: 16px;
   line-height: 19px;
   margin-bottom: 9px;
+}
+
+.microphone-item{
+  fill: #fff;
+  margin: 0 auto;
 }

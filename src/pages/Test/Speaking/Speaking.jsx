@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { offRecAudio, onRecAudio } from "../../../services/voice-recorder.js";
 import { speakingTimerHandler } from "../../../services/timer.js";
-import micOff from "../../../assets/images/micOff.svg";
-import micOn from "../../../assets/images/micOn.svg";
+import MicOffIcon from '@material-ui/icons/MicOff';
+import MicIcon from '@material-ui/icons/Mic';
 import Player from "../player/player.jsx";
 import "./Speaking.scss";
 
@@ -26,29 +26,34 @@ const Speaking = () => {
       <div className="step-description">Write down record</div>
       <div className="speaking-topic">Speaking Topic</div>
       <div className="audio-speaking-timer" id="speaking-timer">5:00</div>
-      <div className="microphone">
-        <img
-          src={micOn}
-          alt="micro"
-          name="onButton"
-          className={invisible === "on" ? "invisible-button" : ""}
-          onClick={() => {
-            setInvisible("on");
-            onRecAudio();
-            speakingTimerHandler(true);
-          }}
-        />
-        <img
-          src={micOff}
-          alt="micro"
-          name="offButton"
-          className={invisible === "off" ? "invisible-button" : ""}
-          onClick={() => {
-            setInvisible("off");
-            setBlobURL(offRecAudio());
-            setAudioDuration(speakingTimerHandler(false));
-          }}
-        />
+        <div className={invisible === "off" ? "microphone" : "microphone off"}>
+          {
+          invisible === "off" ? (
+            <MicIcon
+            alt="micro"
+            className="microphone-item"
+            style={{ color: "white" }}
+            name="onButton"
+            onClick={() => {
+              setInvisible("on");
+              onRecAudio();
+              speakingTimerHandler(true);
+            }}
+          />
+          ) : (
+            <MicOffIcon
+            alt="micro"
+            className="microphone-item"
+            style={{ color: "white" }}
+            name="offButton"
+            onClick={() => {
+              setInvisible("off");
+              setBlobURL(offRecAudio());
+              setAudioDuration(speakingTimerHandler(false));
+            }}
+            />
+          )
+        }
       </div>
       <Player src={blobURL} audioDuration={audioDuration} checkTime={checkTime}></Player>
     </>

@@ -32,10 +32,12 @@ const Player = ({ src, audioDuration, checkTime }) => {
     setAudioCurrent(checkTime(currentTime));
     setProgressPercent((currentTime / audioDuration) * 100);
   };
-
+if (audio){
   audio.onended = () => {
     setAudioOn(false);
   };
+}
+
 
   return (
     <div className="player">
@@ -71,7 +73,7 @@ const Player = ({ src, audioDuration, checkTime }) => {
         <VolumeUpIcon
           color="action"
           fontSize="medium"
-          onClick={AudioController}
+          // onClick={showVolumeChanger}
           alt="volume"
         />
       </button>
