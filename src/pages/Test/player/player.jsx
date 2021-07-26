@@ -32,12 +32,11 @@ const Player = ({ src, audioDuration, checkTime }) => {
     setAudioCurrent(checkTime(currentTime));
     setProgressPercent((currentTime / audioDuration) * 100);
   };
-if (audio){
-  audio.onended = () => {
-    setAudioOn(false);
-  };
-}
-
+  if (audio) {
+    audio.onended = () => {
+      setAudioOn(false);
+    };
+  }
 
   return (
     <div className="player">
