@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -7,19 +7,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { rows } from './rows';
+import {rows} from './rows';
 import PropTypes from 'prop-types';
-import { Button } from '@material-ui/core';
+import {Button, Modal} from '@material-ui/core';
 
 const TestsData = (props) => {
   const columns = [
-    { id: 'level', label: 'Level', minWidth: 50, align: 'center' },
-    { id: 'assigned', label: 'Assigned', minWidth: 130, align: 'center' },
-    { id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center', },
-    { id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center', },
-    { id: 'status', label: 'Status', minWidth: 40, align: 'center', },
-    { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
-    { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
+    {id: 'level', label: 'Level', minWidth: 50, align: 'center'},
+    {id: 'assigned', label: 'Assigned', minWidth: 130, align: 'center'},
+    {id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center',},
+    {id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center',},
+    {id: 'status', label: 'Status', minWidth: 40, align: 'center',},
+    {id: 'result', label: 'Result', minWidth: 80, align: 'center',},
+    {id: 'action', label: 'Action', minWidth: 100, align: 'center',},
   ];
 
   const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
@@ -38,9 +38,19 @@ const TestsData = (props) => {
     setPage(0);
   };
 
-  const testAction = (action) => {
-    console.log(action);
+  /*  const testAction = (action) => {
+     console.log(action);
+   };*/
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
   };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
 
   return (
     <Paper>
@@ -49,7 +59,7 @@ const TestsData = (props) => {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
+                <TableCell key={column.id} align={column.align} style={{minWidth: column.minWidth}}>
                   {column.label}
                 </TableCell>
               ))}
@@ -59,7 +69,7 @@ const TestsData = (props) => {
             {
               filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id} >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       keysForColumns++;
@@ -67,10 +77,23 @@ const TestsData = (props) => {
                         <TableCell key={keysForColumns} align={column.align} size="small">
                           {
                             column.id === 'action' ?
-                              <Button variant="contained" color="primary" size='small'
-                                onClick={() => testAction(row[column.id])} >
-                                {value}
-                              </Button>
+                              <>
+                                <Button variant="contained" color="primary" size='small'
+                                  // onClick={() => testAction(row[column.id])} >
+                                        onClick={handleOpen}>
+                                  {value}
+                                </Button>
+                                <Modal
+                                  open={open}
+                                  onClose={handleClose}
+                                  aria-labelledby="simple-modal-title"
+                                  aria-describedby="simple-modal-description"
+                                  className='modal'>
+                                  <div className='modal-content' style={{padding: "40px", textAlign: "center"}}>
+                                    You can't take the test anymore today. Come back tomorrow at 7.30
+                                  </div>
+                                </Modal>
+                              </>
                               : value
                           }
                         </TableCell>
@@ -83,7 +106,7 @@ const TestsData = (props) => {
         </Table>
       </TableContainer>
       <TablePagination rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
-        page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+                       page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage}/>
     </Paper>
   );
 };
