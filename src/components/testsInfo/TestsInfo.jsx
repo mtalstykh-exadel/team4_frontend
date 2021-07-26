@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import TestsData from './TestsData/TestsData';
+import TestsData from './TestsData/testsData';
 import TestInfoSearchForm from './TestsInfoSearchForm/TestsInfoSearchForm';
 
 const TestsInfo = () => {
