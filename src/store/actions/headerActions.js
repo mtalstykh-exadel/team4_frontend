@@ -1,4 +1,4 @@
-import getLoginData from '../../components/login/dataTunk';
+import getLoginData from '../../components/LoginForm/dataTunk';
 
 import { LANGUAGE_CHANGE } from '../actions/actionTypes';
 

@@ -1,0 +1,32 @@
+.profileInfo {
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 100px;
+
+  .profileData {
+    float: left;
+    text-align: left;
+  }
+
+  .fullname,
+  .occupation {
+    margin: 5px 0;
+  }
+
+  .email {
+    margin: 21px 0 0 0;
+  }
+
+  .avatar {
+    height: 80px;
+    width: 80px;
+  }
+
+  .defaultAvatar {
+    float: left;
+    margin: 5px 46px 0 0;
+    height: 80px;
+    width: 80px;
+  }
+}

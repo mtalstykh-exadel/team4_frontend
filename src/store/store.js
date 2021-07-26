@@ -1,12 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import { combineReducers } from 'redux';
-import { counterReducer } from './reducers/counterReducers';
 import { loginReducer } from './reducers/loginReducers';
 import { languageReducer, roleReducer } from './reducers/headerReducers';
+import { profileReducer } from './reducers/profileReducers';
 
 const rootReducers = combineReducers({
-  counter: counterReducer,
+  profile: profileReducer,
   login: loginReducer,
   language: languageReducer,
   role: roleReducer,
