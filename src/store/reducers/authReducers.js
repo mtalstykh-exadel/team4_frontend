@@ -1,8 +1,13 @@
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START, JWT_PARSE } from "../actions/actionTypes";
+import { getJWTtoken } from "../../utils/jwt-parser";
+
+import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from "../actions/actionTypes";
+
+const initialToken = getJWTtoken();
+const authentication = !!initialToken;
 
 const initialState = {
-  token: '',
-  isAuth: false,
+  token: initialToken,
+  isAuth: authentication,
   loading: false,
   error: false
 };
@@ -40,13 +45,4 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-const jwtReducer = (state = {}, action) => {
-  switch (action.type) {
-    case JWT_PARSE:
-      return action.data;
-    default:
-      return state;
-  }
-};
-
-export { authReducer, jwtReducer };
+export { authReducer };

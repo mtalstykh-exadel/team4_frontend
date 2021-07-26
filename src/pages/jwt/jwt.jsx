@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { saveJWT, getJWT } from "../../utils/jwt-parser.js";
+import { saveJWT, getJWTdata } from "../../utils/jwt-parser.js";
 
 export default function DemoJWT() {
   const [jwtData, setJwtData] = useState("");
@@ -17,7 +17,7 @@ export default function DemoJWT() {
       >
         1) parse jwt
       </button>
-      <button onClick={() => setJwtData(JSON.stringify(getJWT()))}>
+      <button onClick={() => setJwtData(JSON.stringify(getJWTdata()))}>
         2) get jwt
       </button>
     </>

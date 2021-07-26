@@ -2,7 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import { combineReducers } from 'redux';
 import { counterReducer } from './reducers/counterReducers';
-import { authReducer, jwtReducer } from './reducers/loginReducers';
+import { authReducer } from './reducers/authReducers';
+import { jwtReducer } from './reducers/jwtReducers';
 
 const rootReducers = combineReducers({
   counter: counterReducer,

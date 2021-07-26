@@ -8,6 +8,9 @@ export const LOGIN_START = 'LOGIN_START';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
+// logout actiontypes
 export const LOGOUT_START = 'LOGOUT_START';
 
+// jwt actiontypes
 export const JWT_PARSE = 'JWT_PARSE';
+export const JWT_REMOVE = 'JWT_REMOVE';
