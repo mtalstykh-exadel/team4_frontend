@@ -10,6 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import {rows} from './rows';
 import PropTypes from 'prop-types';
 import {Button, Modal} from '@material-ui/core';
+import {Trans} from "@lingui/macro";
+
 
 const TestsData = (props) => {
   const columns = [
@@ -38,9 +40,9 @@ const TestsData = (props) => {
     setPage(0);
   };
 
-  /*  const testAction = (action) => {
-     console.log(action);
-   };*/
+  const testAction = (action) => {
+    console.log(action);
+  };
   const [open, setOpen] = React.useState(false);
 
   const time = '7.30';
@@ -54,66 +56,79 @@ const TestsData = (props) => {
 
 
   return (
-    <Paper>
-      <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell key={column.id} align={column.align} style={{minWidth: column.minWidth}}>
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {
-              filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      keysForColumns++;
-                      return (
-                        <TableCell key={keysForColumns} align={column.align} size="small">
-                          {
-                            column.id === 'action' ?
-                              <>
-                                <Button variant="contained" color="primary" size='small'
-                                  // onClick={() => testAction(row[column.id])} >
-                                        onClick={handleOpen}>
-                                  {value}
-                                </Button>
-                                <Modal
-                                  open={open}
-                                  onClose={handleClose}
-                                  aria-labelledby="simple-modal-title"
-                                  aria-describedby="simple-modal-description"
-                                  className='modal'>
-                                  <div className='modal-content' style={{padding: "40px", textAlign: "center"}}>
-                                    You can't take the test anymore today. Come back tomorrow at {time}
-                                  </div>
-                                </Modal>
-                              </>
-                              : value
-                          }
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
-                       page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage}/>
-    </Paper>
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        className='modal'>
+        <div className='modal-content' style={{padding: "40px", textAlign: "center"}}>
+          You can't take the test anymore today. Come back tomorrow at {time}
+        </div>
+      </Modal>
+
+      <Paper>
+
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell key={column.id} align={column.align} style={{minWidth: column.minWidth}}>
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {
+                filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                  return (
+
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        keysForColumns++;
+                        return (
+                          <TableCell key={keysForColumns} align={column.align} size="small">
+                            {
+                              column.id === 'action' ?
+                                <>
+                                  <Button variant="contained" color="primary" size='small'
+                                          onClick={() => testAction(row[column.id])}>
+                                    {value}
+                                  </Button>
+
+                                  <Button
+                                    onClick={handleOpen}
+                                    variant="contained"
+                                    color="primary"
+                                  >
+                                    <Trans>Try Again</Trans>
+                                  </Button>
+                                </>
+                                : value
+                            }
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
+                         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage}/>
+      </Paper>
+    </>
   );
 };
 
-TestsData.propTypes = {
-  filter: PropTypes.any
-};
+TestsData.propTypes =
+  {
+    filter: PropTypes.any
+  };
 
 export default TestsData;
