@@ -43,6 +43,7 @@ const TestsData = (props) => {
    };*/
   const [open, setOpen] = React.useState(false);
 
+  const time = '7.30';
   const handleOpen = () => {
     setOpen(true);
   };
@@ -90,7 +91,7 @@ const TestsData = (props) => {
                                   aria-describedby="simple-modal-description"
                                   className='modal'>
                                   <div className='modal-content' style={{padding: "40px", textAlign: "center"}}>
-                                    You can't take the test anymore today. Come back tomorrow at 7.30
+                                    You can't take the test anymore today. Come back tomorrow at {time}
                                   </div>
                                 </Modal>
                               </>
