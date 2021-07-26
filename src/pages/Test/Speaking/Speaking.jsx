@@ -10,7 +10,7 @@ const Speaking = () => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
-  
+
   const checkTime = ( time ) => {
     const minutes = Math.floor((time / 60) % 60);
     let seconds = Math.floor(time % 60);

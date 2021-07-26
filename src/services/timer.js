@@ -17,16 +17,16 @@ const startTimer = (element) => {
   timer = setInterval(() => {
     let seconds = timeMinut % 60;
     const minutes = (timeMinut / 60) % 60;
-      if (seconds < 10) {
-        seconds = "0" + seconds;
-      }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
     ++audioDuration;
     --timeMinut;
     element.textContent = `${Math.floor(minutes)}:${seconds}`;
   }, 1000);
 };
 
-const stopTimer = (element) => { 
+const stopTimer = (element) => {
   clearInterval(timer);
   element.textContent = "5:00";
   return audioDuration;

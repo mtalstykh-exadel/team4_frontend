@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import "./player.scss";
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PropTypes from "prop-types";
-import play from "../../../assets/images/play.svg";
-import volume from "../../../assets/images/volume.svg";
+import "./player.scss";
+
+
 const Player = ({ src, audioDuration, checkTime }) => {
   const [audioCurrent, setAudioCurrent] = useState(0);
   const [progressPercent, setProgressPercent] = useState(0);
@@ -24,12 +26,14 @@ const Player = ({ src, audioDuration, checkTime }) => {
 
   return (
     <div className="player">
-      <img
-        onClick={AudioController}
-        className="player-button"
-        src={play}
-        alt="play"
-      />
+      <button className="player-button">
+        <PlayArrowIcon
+          color="primary"
+          fontSize="medium"
+          onClick={AudioController}
+          alt="play"
+        />
+      </button>
       <div className="player-time">
         {audioCurrent === 0 ? "0:00" : audioCurrent}/{audioDuration}
       </div>
@@ -41,14 +45,21 @@ const Player = ({ src, audioDuration, checkTime }) => {
         ></div>
         <div className="progress"></div>
       </div>
-      <img className="player-button" src={volume} alt="volume" />
+      <button className="player-button">
+        <VolumeUpIcon
+          color="primary"
+          fontSize="medium"
+          onClick={AudioController}
+          alt="volume"
+        />
+      </button>
     </div>
   );
 };
 
 Player.propTypes = {
   src: PropTypes.string,
-  audioDuration: PropTypes.number,
+  audioDuration: PropTypes.string,
   checkTime: PropTypes.func
 };
 
