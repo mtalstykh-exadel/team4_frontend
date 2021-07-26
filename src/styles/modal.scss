@@ -1,4 +1,4 @@
-.modal {
+.modal-content {
   width: fit-content;
   block-size: fit-content;
   min-width: 440px;
@@ -6,7 +6,7 @@
   background-color: white;
 }
 
-.modalMain {
+.modal {
   display: flex;
   justify-content: center;
   align-items: center;
