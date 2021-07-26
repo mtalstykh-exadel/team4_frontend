@@ -1,15 +1,25 @@
 import React, { useState } from "react";
-import { speakingTimerHandler } from "../../../services/timer.js";
 import { offRecAudio, onRecAudio } from "../../../services/voice-recorder.js";
-import micOn from "../../../assets/images/micOn.svg";
+import { speakingTimerHandler } from "../../../services/timer.js";
 import micOff from "../../../assets/images/micOff.svg";
+import micOn from "../../../assets/images/micOn.svg";
 import Player from "../player/player.jsx";
 import "./Speaking.scss";
 
 const Speaking = () => {
+  const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
-  const [audioDuration, setAudioDuration] = useState(0);
+  
+  const checkTime = ( time ) => {
+    const minutes = Math.floor((time / 60) % 60);
+    let seconds = Math.floor(time % 60);
+
+    if (seconds < 10){
+      seconds = "0" + seconds;
+    }
+    return `${minutes}:${seconds}`;
+  };
 
   return (
     <>
@@ -40,7 +50,7 @@ const Speaking = () => {
           }}
         />
       </div>
-      <Player src={blobURL} audioDuration={audioDuration}></Player>
+      <Player src={blobURL} audioDuration={checkTime(audioDuration)} checkTime={checkTime}></Player>
     </>
   );
 };
