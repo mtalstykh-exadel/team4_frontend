@@ -47,8 +47,8 @@ const Buttons = ({children}) => {
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
-        className='modalMain'>
-        <div className='modal'>
+        className='modal'>
+        <div className='modal-content'>
           {children}
         </div>
       </Modal>
