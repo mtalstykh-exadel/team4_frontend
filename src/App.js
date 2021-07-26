@@ -10,6 +10,7 @@ import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
+import TestsForVerification from './pages/testsForVerification/testsForVerificaton';
 
 const App = () => {
 
@@ -22,7 +23,9 @@ const App = () => {
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
-        <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
+        <PrivateRoute path="/edit-tests" ><EditTests /></PrivateRoute>
+        <PrivateRoute path="/tests-for-verification" ><TestsForVerification /></PrivateRoute>
+        TestsForVerification
         <Route path="*" render={() => <Page404 />} />
 
       </Switch>
