@@ -3,9 +3,10 @@ import PropTypes from "prop-types";
 import "./Grammar.scss";
 
 const Grammar = ({ tasks }) => {
-  let questionCount = 0;
 
+  let questionCount = 0;
   const questions = tasks.map((question) => {
+
     questionCount++;
     const options = question.options.map((questionItem) => {
       return (
@@ -19,6 +20,7 @@ const Grammar = ({ tasks }) => {
         </div>
       );
     });
+
     return (
       <div key={questionCount}>
         <div className="question">
@@ -28,7 +30,9 @@ const Grammar = ({ tasks }) => {
         {options}
       </div>
     );
+
   });
+
   return (
     <>
       <div className="step-description grammar">

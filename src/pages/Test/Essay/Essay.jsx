@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Essay.scss";
+import { TextField } from "@material-ui/core";
 
 const Essay = () => {
   const [characters, setCharacters] = useState("");
@@ -12,7 +13,7 @@ const Essay = () => {
     <>
       <div className="step-description">Write an essay on a given topic</div>
       <div className="essay-topic">Essay Topic</div>
-      <textarea
+      <TextField
         onPaste={(event) => {
           event.preventDefault();
           return false;
@@ -26,9 +27,12 @@ const Essay = () => {
           return false;
         }}
         className="essay-input"
-        maxLength="512"
+        variant="outlined"
+        multiline
+        rows={10}
         value={characters}
         onChange={handleChange}
+        inputProps={{ maxLength: 512 }}
       />
       <div className="essay-characters">{characters.length} out of 512 characters</div>
     </>
@@ -36,3 +40,4 @@ const Essay = () => {
 };
 
 export default Essay;
+
