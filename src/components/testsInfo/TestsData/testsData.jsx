@@ -10,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import {rows} from './rows';
 import PropTypes from 'prop-types';
 import {Button, Modal} from '@material-ui/core';
-import {Trans} from "@lingui/macro";
 
 
 const TestsData = (props) => {
@@ -39,10 +38,11 @@ const TestsData = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
+  
   const testAction = (action) => {
     console.log(action);
   };
+
   const [open, setOpen] = React.useState(false);
 
   const time = '7.30';
@@ -105,7 +105,7 @@ const TestsData = (props) => {
                                     variant="contained"
                                     color="primary"
                                   >
-                                    <Trans>Try Again</Trans>
+                                    Try Again
                                   </Button>
                                 </>
                                 : value
