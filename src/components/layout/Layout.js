@@ -1,6 +1,5 @@
 import "./Layout.scss";
 import React from "react";
-
 import { PropTypes } from "prop-types";
 import Header from '../../components/header/header';
 
@@ -16,7 +15,7 @@ const Layout = ({children}) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
 };
 
 export default Layout;
