@@ -31,92 +31,94 @@ const Test = () => {
 
   return (
     <Layout>
-      <div className="test-navigation-wrapper">
-        <div
-          className={step === 0 ? "test-step active" : "test-step"}
-          onClick={() => {
-            setStep(0);
-            setNextButtonText("Next step");
-            setPrevButtonClass("previous-step-button invisible");
-          }}
-        >
-          Grammar
-        </div>
-        <div
-          className={step === 1 ? "test-step active" : "test-step"}
-          onClick={() => {
-            setStep(1);
-            setNextButtonText("Next step");
-            setPrevButtonClass("previous-step-button");
-          }}
-        >
-          Listening
-        </div>
-        <div
-          className={step === 2 ? "test-step active" : "test-step"}
-          onClick={() => {
-            setStep(2);
-            setNextButtonText("Next step");
-            setPrevButtonClass("previous-step-button");
-          }}
-        >
-          Essay
-        </div>
-        <div
-          className={step === 3 ? "test-step active" : "test-step"}
-          onClick={() => {
-            setStep(3);
-            setNextButtonText("Submit");
-            setPrevButtonClass("previous-step-button");
-          }}
-        >
-          Speaking
-        </div>
-        <div className="test-step time" id="test-timer">{minutes}:00</div>
-      </div>
-      <div className="test-task-wrapper">{steps[step]}</div>
-      <div className="buttons-wrapper">
-        <div className="test-buttons">
-          <Button
-            className={prevButtonClass}
-            color="primary"
-            variant="outlined"
+      <div className="test-page">
+        <div className="test-navigation-wrapper">
+          <div
+            className={step === 0 ? "test-step active" : "test-step"}
             onClick={() => {
-              setStep((prev) => {
-                if (prev > 0) {
-                  prev--;
-                }
-                if (prev === 0) {
-                  setPrevButtonClass("previous-step-button invisible");
-                }
-                setNextButtonText("Next step");
-                return prev;
-              });
+              setStep(0);
+              setNextButtonText("Next step");
+              setPrevButtonClass("previous-step-button invisible");
             }}
           >
-            Previous step
-          </Button>
-          <Button
-            className="next-step-button"
-            color="primary"
-            variant="contained"
+            Grammar
+          </div>
+          <div
+            className={step === 1 ? "test-step active" : "test-step"}
             onClick={() => {
-              setStep((next) => {
-                if (next < 3) {
-                  next++;
-                }
-                if (next === 3) {
-                  setNextButtonText("Submit");
-                }
-                setPrevButtonClass("previous-step-button");
-                return next;
-              });
+              setStep(1);
+              setNextButtonText("Next step");
+              setPrevButtonClass("previous-step-button");
             }}
           >
-            {nextButtonText}
-          </Button>
+            Listening
+          </div>
+          <div
+            className={step === 2 ? "test-step active" : "test-step"}
+            onClick={() => {
+              setStep(2);
+              setNextButtonText("Next step");
+              setPrevButtonClass("previous-step-button");
+            }}
+          >
+            Essay
+          </div>
+          <div
+            className={step === 3 ? "test-step active" : "test-step"}
+            onClick={() => {
+              setStep(3);
+              setNextButtonText("Submit");
+              setPrevButtonClass("previous-step-button");
+            }}
+          >
+            Speaking
+          </div>
+          <div className="test-step time" id="test-timer">{minutes}:00</div>
         </div>
-        <div className="report-mistake">Report a mistake</div>
+        <div className="test-task-wrapper">{steps[step]}</div>
+        <div className="buttons-wrapper">
+          <div className="test-buttons">
+            <Button
+              className={prevButtonClass}
+              color="primary"
+              variant="outlined"
+              onClick={() => {
+                setStep((prev) => {
+                  if (prev > 0) {
+                    prev--;
+                  }
+                  if (prev === 0) {
+                    setPrevButtonClass("previous-step-button invisible");
+                  }
+                  setNextButtonText("Next step");
+                  return prev;
+                });
+              }}
+            >
+              Previous step
+            </Button>
+            <Button
+              className="next-step-button"
+              color="primary"
+              variant="contained"
+              onClick={() => {
+                setStep((next) => {
+                  if (next < 3) {
+                    next++;
+                  }
+                  if (next === 3) {
+                    setNextButtonText("Submit");
+                  }
+                  setPrevButtonClass("previous-step-button");
+                  return next;
+                });
+              }}
+            >
+              {nextButtonText}
+            </Button>
+          </div>
+          <div className="report-mistake">Report a mistake</div>
+        </div>
       </div>
     </Layout>
   );

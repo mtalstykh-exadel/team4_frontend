@@ -67,70 +67,68 @@ const Player = ({ src, audioDuration, id }) => {
   }
 
   return (
-    <>
-      <div className="player">
-        <div
-          className={
-            showVolumeChanger === true ? "volume-changer" : "invisible"
-          }
-        >
-          <input
-            className="volume-range"
-            onChange={AudioVolumeHandler}
-            type="range"
-            min="0"
-            step="10"
-            max="100"
-            defaultValue="30"
-          />
-        </div>
-        <button className="player-button">
-          {audioOn === false ? (
-            <PlayArrowIcon
-              color="primary"
-              fontSize="medium"
-              onClick={AudioController}
-              alt="play"
-            />
-          ) : (
-            <PauseIcon
-              color="primary"
-              fontSize="medium"
-              onClick={AudioStop}
-              alt="play"
-            />
-          )}
-        </button>
-        <div className="player-time">
-          {audioCurrent === 0 ? "0:00" : audioCurrent} /
-          {audioDuration === undefined
-            ? checkTime(localeDuration)
-            : checkTime(audioDuration)}
-        </div>
-        <div className="progress-container">
-          <audio id={id} src={src} />
-          <div
-            style={{ width: progressPercent + "%" }}
-            className="progress-line"
-          />
-          <div className="progress" />
-        </div>
-        <button className="player-button">
-          <VolumeUpIcon
-            color="action"
-            fontSize="medium"
-            onClick={() => {
-              if (showVolumeChanger === false) {
-                setShowVolumeChanger(true);
-              } else {
-                setShowVolumeChanger(false);
-              }
-            }}
-            alt="volume"
-          />
-        </button>
+    <div className="player">
+      <div
+        className={
+          showVolumeChanger === true ? "volume-changer" : "invisible"
+        }
+      >
+        <input
+          className="volume-range"
+          onChange={AudioVolumeHandler}
+          type="range"
+          min="0"
+          step="10"
+          max="100"
+          defaultValue="30"
+        />
       </div>
-    </>
+      <button className="player-button">
+        {audioOn === false ? (
+          <PlayArrowIcon
+            color="primary"
+            fontSize="medium"
+            onClick={AudioController}
+            alt="play"
+          />
+        ) : (
+          <PauseIcon
+            color="primary"
+            fontSize="medium"
+            onClick={AudioStop}
+            alt="play"
+          />
+        )}
+      </button>
+      <div className="player-time">
+        {audioCurrent === 0 ? "0:00" : audioCurrent} /
+        {audioDuration === undefined
+          ? checkTime(localeDuration)
+          : checkTime(audioDuration)}
+      </div>
+      <div className="progress-container">
+        <audio id={id} src={src} />
+        <div
+          style={{ width: progressPercent + "%" }}
+          className="progress-line"
+        />
+        <div className="progress" />
+      </div>
+      <button className="player-button">
+        <VolumeUpIcon
+          color="action"
+          fontSize="medium"
+          onClick={() => {
+            if (showVolumeChanger === false) {
+              setShowVolumeChanger(true);
+            } else {
+              setShowVolumeChanger(false);
+            }
+          }}
+          alt="volume"
+        />
+      </button>
+    </div>
   );
 };
 

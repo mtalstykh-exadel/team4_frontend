@@ -1,22 +1,24 @@
-.question {
-  padding-top: 30px;
-  padding-bottom: 8px;
-  text-align: left;
+.grammar-step {
+  .test-question {
+    padding-top: 30px;
+    padding-bottom: 8px;
+    text-align: left;
 
-  .number {
-    font-size: 24px;
-    font-weight: 500;
+    .number {
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .sentence {
+      font-size: 18px;
+      font-weight: 400;
+    }
   }
 
-  .sentence {
+  .test-question-option {
+    padding-top: 13px;
+    text-align: left;
     font-size: 18px;
     font-weight: 400;
   }
-}
-
-.question-option {
-  padding-top: 13px;
-  text-align: left;
-  font-size: 18px;
-  font-weight: 400;
 }

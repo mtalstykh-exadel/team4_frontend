@@ -23,7 +23,7 @@ const Speaking = () => {
   };
 
   return (
-    <>
+    <div className="speaking-step">
       <div className="step-description">Write down record</div>
       <div className="speaking-topic">Speaking Topic</div>
       <div className="audio-speaking-timer" id="speaking-timer">
@@ -60,7 +60,7 @@ const Speaking = () => {
         src={blobURL}
         audioDuration={audioDuration}
       />
-    </>
+    </div>
   );
 };
 
