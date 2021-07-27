@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import { AppBar,Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer} from '@material-ui/core';
+import { AppBar, Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer } from '@material-ui/core';
 
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -102,8 +102,7 @@ const Header = () => {
           { matches && <img src={logoText} alt='logo' className='logoText'/> }
           { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
           { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-          {/* RETURN AS IT WAS */}
-          { <>{linkBtn('/edittests','Edit tests')}</>}
+          { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
         </div>
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
         <div className='toolbar-sideRight'>
