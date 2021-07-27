@@ -11,7 +11,7 @@ const Speaking = () => {
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
 
-  const SpeakingTimerHandler = () => {
+  const checkSpeakingTimerHandler = () => {
     const element = document.getElementById("speaking-timer");
     element.addEventListener("DOMNodeInserted", () => {
       if (element.textContent === "0:00") {
@@ -38,8 +38,8 @@ const Speaking = () => {
             onClick={() => {
               setInvisible("on");
               onRecAudio();
-              speakingTimerHandler(true);
-              SpeakingTimerHandler();
+              speakingTimerHandler({timerOn: true, id: "speaking-timer", minutes: 5});
+              checkSpeakingTimerHandler();
             }}
           />
         ) : (
