@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
+import { Trans } from "@lingui/macro";
+
+import { switchLang } from '../../../utils/lang-service';
+
 const LanguageMenu = (props) => {
 
   return (
@@ -21,12 +25,12 @@ const LanguageMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
-        onClick={ () => {props.handleLangClose();}}>
-        English
+        onClick={ () => {props.handleLangClose(); switchLang('en');}}>
+        <Trans>English</Trans>
       </MenuItem>
       <MenuItem
-        onClick={ () => {props.handleLangClose();}}>
-        Russian
+        onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
+        <Trans>Russian</Trans>
       </MenuItem>
     </Menu>);
 };
