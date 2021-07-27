@@ -9,7 +9,7 @@ import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
-import TestsForVerification from './pages/testsForVerification/testsForVerificaton';
+import TestsForVerification from './pages/TestsForVerification/TestsForVerificaton';
 import '../src/styles/modal.scss';
 
 const App = () => {
@@ -25,7 +25,6 @@ const App = () => {
         <PrivateRoute path="/edit-tests" ><EditTests /></PrivateRoute>
         <PrivateRoute path="/tests-for-verification" ><TestsForVerification /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
-
       </Switch>
     </div>
   );
