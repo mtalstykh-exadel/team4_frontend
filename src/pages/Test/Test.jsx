@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./Test.scss";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import Speaking from "./Speaking/Speaking";
 import Essay from "./Essay/Essay";
 import Grammar from "./Grammar/Grammar";
@@ -9,17 +9,19 @@ import Button from "@material-ui/core/Button";
 import grammarTasks from "../../testData/GrammarTasks";
 import listeningTasks from "../../testData/ListeningTasks";
 
-const Test = () => {
+export const Test = () => {
   const [step, setStep] = useState(0);
   const [nextButtonText, setNextButtonText] = useState("Next step");
   const [prevButtonClass, setPrevButtonClass] = useState(
     "previous-step-button invisible"
   );
+
+  // const [time, setTime] = useState({minutes: 0, seconds: 0});
   const steps = [
-    <Grammar key="0" tasks={grammarTasks} />,
-    <Listening key="1" tasks={listeningTasks} />,
-    <Essay key="2" />,
-    <Speaking key="3" />,
+    <Grammar key="0" tasks={grammarTasks}/>,
+    <Listening key="1" tasks={listeningTasks}/>,
+    <Essay key="2"/>,
+    <Speaking key="3"/>,
   ];
 
   return (

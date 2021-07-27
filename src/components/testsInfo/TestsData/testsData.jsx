@@ -27,7 +27,6 @@ const TestsData = (props) => {
 
   let keysForColumns = 1;
 
-  const [showButton, setShowButton] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
 
@@ -40,10 +39,9 @@ const TestsData = (props) => {
     setPage(0);
   };
 
-  const testAction = (action) => {
-    console.log(action);
-    setShowButton(showButton !== showButton);
-  };
+  /* const testAction = (action, second) => {
+    console.log(document.getElementById(action).style);
+  }; */
 
   const [open, setOpen] = React.useState(false);
 
@@ -97,17 +95,20 @@ const TestsData = (props) => {
                             {
                               column.id === 'action' ?
                                 <>
-                                  <Button variant="contained" color="primary" size='small'
-                                          onClick={() => testAction(row[column.id])}
-                                          style={{visibility: showButton ? 'visible' : 'hidden'}}>
+                                  <Button variant="contained" color="primary" size='small' id={row.id + "-btn"}
+                                          onClick={() => {
+                                           document.getElementById(row.id + "-btn").style.display = 'none';
+                                           document.getElementById(row.id + '-btn-second').style.display = 'block';
+                                          }}
+                                          style={{display: 'block'}}>
                                     {value}
                                   </Button>
-
                                   <Button
                                     onClick={handleOpen}
                                     variant="contained"
                                     color="primary"
-                                    style={{visibility: showButton ? 'hidden' : 'visible'}}
+                                    id={row.id + "-btn-second"}
+                                    style={{display: 'none'}}
                                   >
                                     Try Again
                                   </Button>
