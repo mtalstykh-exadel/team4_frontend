@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Layout from '../../components/Layout/Layout.js';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
-import { rows } from "./rows.js";
+import { rows } from "../../testData/rowsForAdminDistribution.js";
 import { coaches } from "../../testData/Coaches.js";
 import PropTypes from "prop-types";
 import './adminDistribution.scss';
@@ -32,10 +32,6 @@ const AdminDistribution = (props) => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-  };
-
-  const testAction = (action) => {
-    console.log(action);
   };
 
   return (
@@ -101,7 +97,6 @@ const AdminDistribution = (props) => {
                                   variant="outlined"
                                   color="primary"
                                   size="small"
-                                  onClick={() => testAction(row[column.id])}
                                 >
                                   {value}
                                 </Button>
