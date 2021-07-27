@@ -12,5 +12,5 @@ export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 
 export const LOGOUT_START = 'LOGOUT_START';
 
-//coach actionTypes
+// coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';
