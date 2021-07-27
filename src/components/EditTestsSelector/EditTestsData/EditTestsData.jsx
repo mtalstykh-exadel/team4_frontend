@@ -8,16 +8,35 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { Questions } from './mock-data-Questions';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsData.scss';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { archiveQuestions, requestQuestionsList } from '../../../store/actions/coachActions';
+import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
-const EditTestsData = () => {
+const EditTestsData = (props) => {
+  const dispatch = useDispatch();
 
-  const rows = ['ID', 'Question', 'Action', 'Add archive'];
+  useEffect(() => {
+    dispatch(requestQuestionsList());
+  }, []);
+  const questions = useSelector((state) => state.coach.questions);
 
+  const filteredQuestions = questions ? questions
+    .filter((el) => props.level ? props.level === el.level : el)
+    .filter((el) => props.module ? props.module === el.module : el)
+    .filter((el) => props.questId && !!Number(props.questId) ? Number(props.questId) === el.id : el)
+    : [];
+
+  const rows = ['ID', '', 'Question', 'Action', 'Add archive'];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  const archiveTheQuestion = (questId) => {
+    dispatch(archiveQuestions(questId));
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -27,6 +46,10 @@ const EditTestsData = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect(() => {
+    filteredQuestions.length < rowsPerPage && setPage(0);
+  }, [filteredQuestions]);
 
   return (
     <div className='edit-tests-data-wrapper'>
@@ -43,17 +66,24 @@ const EditTestsData = () => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{Questions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            <TableBody>{filteredQuestions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component="th" scope="row">{row.id}</TableCell>
-                  <TableCell align="left">{row.question}</TableCell>
+                  <TableCell component="th" scope="row" padding='none' size='small'>
+                    {
+                      row.module === 'Listening'
+                        ? <PlayCircleOutlineIcon color='primary' cursor='pointer' />
+                        : null
+                    }
+                  </TableCell>
+                  <TableCell align="left" size='small'>{row.question}</TableCell>
                   <TableCell align="left">
                     <Button color="primary" variant="outlined" size="small" style={{ width: 110, border: 'solid 2px #3F51B5' }} type="search" className='btn-search'>
                       Edit
                     </Button>
                   </TableCell>
-                  <TableCell align="left">{<ArchiveOutlinedIcon color='primary' fontSize='large' />}</TableCell>
+                  <TableCell align="left">{<ArchiveOutlinedIcon color='primary' className='archiveBtn' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
                 </TableRow>
               );
             })}
@@ -63,7 +93,7 @@ const EditTestsData = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={Questions.length}
+          count={filteredQuestions.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -72,6 +102,12 @@ const EditTestsData = () => {
       </Paper>
     </div>
   );
+};
+
+EditTestsData.propTypes = {
+  level: PropTypes.any,
+  module: PropTypes.any,
+  questId: PropTypes.any
 };
 
 export default EditTestsData;
