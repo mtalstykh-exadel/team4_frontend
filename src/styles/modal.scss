@@ -1,13 +1,13 @@
-.modal-content {
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .modal-content {
   width: fit-content;
   block-size: fit-content;
   min-width: 440px;
   min-height: 126px;
   background-color: white;
-}
-
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ }
 }
