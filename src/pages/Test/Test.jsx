@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Test.scss";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../../components/layout/Layout";
 import Speaking from "./Speaking/Speaking";
 import Essay from "./Essay/Essay";
 import Grammar from "./Grammar/Grammar";
@@ -8,19 +8,26 @@ import Listening from "./Listening/Listening";
 import Button from "@material-ui/core/Button";
 import grammarTasks from "../../testData/GrammarTasks";
 import listeningTasks from "../../testData/ListeningTasks";
+import { testTimerHandler } from "../../services/test-timer.js";
 
 const Test = () => {
+  const minutes = 40;
   const [step, setStep] = useState(0);
   const [nextButtonText, setNextButtonText] = useState("Next step");
   const [prevButtonClass, setPrevButtonClass] = useState(
     "previous-step-button invisible"
   );
+
   const steps = [
     <Grammar key="0" tasks={grammarTasks} />,
     <Listening key="1" tasks={listeningTasks} />,
     <Essay key="2" />,
     <Speaking key="3" />,
   ];
+
+  window.onload = function() {
+    testTimerHandler(minutes);
+  };
 
   return (
     <Layout>
@@ -65,7 +72,7 @@ const Test = () => {
         >
           Speaking
         </div>
-        <div className="test-step time">Time</div>
+        <div className="test-step time" id="test-timer">{minutes}:00</div>
       </div>
       <div className="test-task-wrapper">{steps[step]}</div>
       <div className="buttons-wrapper">
