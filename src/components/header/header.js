@@ -101,7 +101,7 @@ const Header = () => {
           </>}
           {matches && <img src={logoText} alt='logo' className='logoText' />}
           {role === 'hr' && matches && <>{linkBtn('/employees', 'Employees')}</>}
-          {role === 'admin' && matches && <>{linkBtn('/statistics', 'Statistics')}{linkBtn('/admindistribution', 'Distribution of tests')}</>}
+          {role === 'admin' && matches && <>{linkBtn('/statistics', 'Statistics')}{linkBtn('/admin-distribution', 'Distribution of tests')}</>}
           {role === 'coach' && matches && <>{linkBtn('/tests', 'Tests')}{linkBtn('/edittests', 'Edit tests')}</>}
         </div>
         {!matches && <img src={logo} alt="logo" className={'logo'} />}

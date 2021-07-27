@@ -7,7 +7,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
-import AdminTestPage from './pages/adminDistribution/tests-page-admin.jsx';
+import AdminDistribution from './pages/adminDistribution/adminDistribution.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 import '../src/styles/modal.scss';
@@ -22,10 +22,9 @@ const App = () => {
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
-        <PrivateRoute path="/admindistribution" ><AdminTestPage /></PrivateRoute>
+        <PrivateRoute path="/admin-distribution" ><AdminDistribution /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
-
       </Switch>
     </div>
   );

@@ -13,9 +13,9 @@ import { coaches } from "../../testData/Coaches.js";
 import PropTypes from "prop-types";
 import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
-import './test-page-admin.scss';
+import './adminDistribution.scss';
 
-const AdminTestPage = (props) => {
+const AdminDistribution = (props) => {
   const columns = [
     { id: "level", label: "Level", width: 50, align: "right" },
     { id: "assigned", label: "Assigned", width: 130, align: "right" },
@@ -48,7 +48,7 @@ const AdminTestPage = (props) => {
   };
 
   return (
-    <div className="AdminTestPage">
+    <div className="AdminDistribution">
       <Layout>
         <Paper>
           <TableContainer className="paper">
@@ -141,8 +141,8 @@ const AdminTestPage = (props) => {
   );
 };
 
-AdminTestPage.propTypes = {
+AdminDistribution.propTypes = {
   filter: PropTypes.any,
 };
 
-export default AdminTestPage;
+export default AdminDistribution;
