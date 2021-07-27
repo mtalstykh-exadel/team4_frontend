@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Test.scss";
 import Layout from "../../components/Layout/Layout";
 import Speaking from "./Speaking/Speaking";
@@ -25,9 +25,9 @@ const Test = () => {
     <Speaking key="3" />,
   ];
 
-  window.onload = function() {
+  useEffect(() => {
     testTimerHandler(minutes);
-  };
+  },[minutes]);
 
   return (
     <Layout>
