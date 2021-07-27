@@ -12,7 +12,6 @@ import EditTests from './pages/editTests/editTests';
 import Test from "./pages/Test/Test";
 import '../src/styles/modal.scss';
 
-
 const App = () => {
 
   return (
