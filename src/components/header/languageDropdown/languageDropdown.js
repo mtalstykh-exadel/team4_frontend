@@ -1,13 +1,9 @@
 import { React } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { languageChange } from '../../../store/actions/headerActions';
-
 const LanguageMenu = (props) => {
-  const dispatch = useDispatch();
 
   return (
     <Menu
@@ -25,11 +21,11 @@ const LanguageMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('english'));}}>
+        onClick={ () => {props.handleLangClose();}}>
         English
       </MenuItem>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('russian'));}}>
+        onClick={ () => {props.handleLangClose();}}>
         Russian
       </MenuItem>
     </Menu>);

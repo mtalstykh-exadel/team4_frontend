@@ -8,4 +8,9 @@ export const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
 // header actionTypes
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 
+// logout actiontypes
 export const LOGOUT_START = 'LOGOUT_START';
+
+// jwt actiontypes
+export const JWT_ADD = 'JWT_ADD';
+export const JWT_REMOVE = 'JWT_REMOVE';

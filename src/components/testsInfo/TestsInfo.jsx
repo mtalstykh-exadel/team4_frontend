@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import TestsData from './TestsData/TestsData';
 import TestInfoSearchForm from './TestsInfoSearchForm/TestsInfoSearchForm';
 

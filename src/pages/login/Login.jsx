@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 const Login = () => {
-  const auth = useSelector((state) => state.login.isAuth);
+  const auth = useSelector((state) => state.auth.isAuth);
   if (auth) return <Redirect to='/' />;
   return (
     <div className='wrapper'>

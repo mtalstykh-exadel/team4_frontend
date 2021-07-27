@@ -4,10 +4,11 @@ import { Avatar } from '@material-ui/core';
 import './ProfileInfo.scss';
 
 const ProfileInfo = () => {
+
   const avatar = useSelector((state) => state.profile.avatar);
-  const fullname = useSelector((state) => state.profile.fullname);
+  const fullname = useSelector((state) => state.jwt.name);
   const occupation = useSelector((state) => state.profile.occupation);
-  const email = useSelector((state) => state.profile.email);
+  const email = useSelector((state) => state.jwt.sub);
 
   return (
     <div className='profileInfo'>

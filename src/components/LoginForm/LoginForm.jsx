@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -6,7 +6,6 @@ import "./LoginForm.scss";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLoginData } from "../../store/actions/loginActions";
-import { languageChange } from "../../store/actions/headerActions";
 import { CircularProgress } from "@material-ui/core";
 
 // filtering and checking what the user has entered into forms
@@ -16,8 +15,9 @@ const validationSchema = Yup.object().shape({
 });
 
 const LoginForm = () => {
-  const error = useSelector((state) => state.login.error);
-  const loading = useSelector((state) => state.login.loading);
+  const [language, setLanguage] = useState('en');
+  const error = useSelector((state) => state.auth.error);
+  const loading = useSelector((state) => state.auth.loading);
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const LoginForm = () => {
   };
 
   const changeLang = (e) => {
-    e.currentTarget.outerText === ' RU' ? languageChange('russian') : languageChange('english');
+    e.currentTarget.outerText === 'RU' ? setLanguage('ru') : setLanguage('en');
   };
   return (
     <div className="loginForm">
@@ -62,8 +62,12 @@ const LoginForm = () => {
       </Formik>
 
       <div className='langSwitcher'>
-        <span className='langItem' onClick={changeLang}>EN</span>
-        <span className='langItem' onClick={changeLang}>RU</span>
+        <span className='langItem' onClick={changeLang}>
+          {language === 'en' ? <b>EN</b> : <>EN</>}
+        </span>
+        <span className='langItem' onClick={changeLang}>
+          {language === 'ru' ? <b>RU</b> : <>RU</>}
+        </span>
       </div>
     </div>
   );

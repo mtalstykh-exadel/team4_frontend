@@ -2,9 +2,7 @@ import { SET_PROFILE_DATA } from "../actions/actionTypes";
 
 const initialState = {
   avatar: null,
-  fullname: null,
-  occupation: null,
-  email: null
+  occupation: null
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -12,9 +10,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_PROFILE_DATA:
       return Object.assign({}, state, {
         avatar: action.avatar,
-        fullname: action.fullname,
-        occupation: action.occupation,
-        email: action.email
+        occupation: action.occupation
       });
     default:
       return state;
