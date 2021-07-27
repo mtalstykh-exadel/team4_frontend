@@ -102,7 +102,8 @@ const Header = () => {
           { matches && <img src={logoText} alt='logo' className='logoText'/> }
           { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
           { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-          { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
+          {/* RETURN AS IT WAS */}
+          { <>{linkBtn('/edittests','Edit tests')}</>}
         </div>
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
         <div className='toolbar-sideRight'>
