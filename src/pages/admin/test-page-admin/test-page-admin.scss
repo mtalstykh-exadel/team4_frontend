@@ -3,6 +3,10 @@
     margin-top: 40px;
   }
 
+  .headItems {
+    font-family: "Roboto bold";
+  }
+
   .MuiOutlinedInput-input {
     padding: 0;
   }
@@ -11,5 +15,9 @@
     min-width: 345px;
     min-height: 30px;
     max-height: 30px;
+  }
+
+  .buttonAssign {
+    min-width: 127px;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Layout from '../../../components/layout/Layout.js';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Layout from '../../../components/Layout/Layout.js';
+//import { makeStyles } from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -15,31 +15,6 @@ import PropTypes from "prop-types";
 import Select from '@material-ui/core/Select';
 import { Button } from "@material-ui/core";
 import './test-page-admin.scss';
-
-const useStyles = makeStyles(() => ({
-  headItems: {
-    fontFamily: "Roboto bold",
-    textAlign: "right"
-  },
-}));
-
-//const SelectItem = withStyles(() => ({
-//  root: {
-//    minWidth: 345,
-//    minHeight: 30,
-//    boxSizing: "border-box",
-//    padding: 0,
-//    paddingBottom: "auto",
-//    paddingTop: "auto",
-//    paddingLeft: 21,
-//  }
-//}))(Select);
-
-const ButtonAssign = withStyles(() => ({
-  root: {
-    minWidth: 127,
-  }
-}))(Button);
 
 const AdminTestPage = (props) => {
   const columns = [
@@ -73,7 +48,7 @@ const AdminTestPage = (props) => {
     console.log(action);
   };
 
-  const classes = useStyles();
+  //const classes = useStyles();
 
   return (
     <div className="AdminTestPage">
@@ -85,11 +60,10 @@ const AdminTestPage = (props) => {
                 <TableRow>
                   {columns.map((column) => (
                     <TableCell
-                      className={classes.headItems}
+                      className="headItems"
                       size="small"
                       key={column.id}
                       align={column.align}
-                      style={{ minWidth: column.minWidth }}
                     >
                       {column.label}
                     </TableCell>
@@ -110,9 +84,6 @@ const AdminTestPage = (props) => {
                               key={keysForColumns}
                               align={column.align}
                               size="small"
-                              classes={{
-                                rootCell: classes.rootCell
-                              }}
                             >
                               {column.id === "Coach" ? (
                                 <Select
@@ -121,9 +92,6 @@ const AdminTestPage = (props) => {
                                   variant="outlined"
                                   defaultValue="placeholder"
                                   color="red"
-                                  classes={{
-                                    root: classes.root,
-                                  }}
                                 >
                                   <option aria-label="None" value="placeholder">name</option>
                                   {coaches.map((coachName) => {
@@ -140,14 +108,15 @@ const AdminTestPage = (props) => {
                               )}
 
                               {column.id === "action" ? (
-                                <ButtonAssign
+                                <Button
+                                  className="buttonAssign"
                                   variant="outlined"
                                   color="primary"
                                   size="small"
                                   onClick={() => testAction(row[column.id])}
                                 >
                                   {value}
-                                </ButtonAssign>
+                                </Button>
                               ) : (
                                 value
                               )}
