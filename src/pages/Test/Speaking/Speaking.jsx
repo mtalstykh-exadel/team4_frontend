@@ -21,7 +21,7 @@ const Speaking = () => {
     return `${minutes}:${seconds}`;
   };
 
-  const SpeakingTimerHandker = () => {
+  const SpeakingTimerHandler = () => {
     const element = document.getElementById("speaking-timer");
     element.addEventListener("DOMNodeInserted", () => {
       if (element.textContent === "0:00") {
@@ -49,7 +49,7 @@ const Speaking = () => {
               setInvisible("on");
               onRecAudio();
               speakingTimerHandler(true);
-              SpeakingTimerHandker();
+              SpeakingTimerHandler();
             }}
           />
         ) : (
