@@ -3,11 +3,11 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Header from '../../components/header/header';
 
-const Layout = ({children}) => {
+const Layout = ({ pageWrapperClass, children }) => {
   return (
     <>
       <Header/>
-      <main className="main">
+      <main className={pageWrapperClass}>
         {children}
       </main>
     </>
@@ -15,7 +15,8 @@ const Layout = ({children}) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.object,
+  children: PropTypes.array,
+  pageWrapperClass: PropTypes.string,
 };
 
 export default Layout;
