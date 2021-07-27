@@ -5,13 +5,15 @@ import { Link } from 'react-router-dom';
 import { Menu, Typography, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { Trans } from '@lingui/macro';
+
 import notificationsData from '../data/dummyData';
 
 const Notifications = (props) => {
   const notificationsAssign = (item) => (
     <>
       <Typography variant='body1'>
-        {item.body}
+        <Trans id='notificationTestAsigned'>A test to determine the level of English has been asigned to your name</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold'>
         {item.level}
@@ -24,7 +26,7 @@ const Notifications = (props) => {
         variant='text'
         className='notifications-seemoreBtn'
         onClick={props.handleNotifClose}>
-          See More
+        <Trans>See More</Trans>
       </Button>
     </>
   );
@@ -32,7 +34,7 @@ const Notifications = (props) => {
   const notificationsTest = (item) => (
     <>
       <Typography variant='body1'>
-        {item.body}
+        <Trans id='notificationTestChecked'>Your English language test is checked. Your English level has been set as .</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold'>
         {item.level}
@@ -47,7 +49,7 @@ const Notifications = (props) => {
         variant='contained'
         className='notifications-takeTestBtn'
         onClick={props.handleNotifClose}>
-          Take Test
+        <Trans>Take test</Trans>
       </Button>
     </>
   );
@@ -56,7 +58,7 @@ const Notifications = (props) => {
     <Typography
       className='notifications-empty'
       variant='caption'>
-      No new notificiations for you
+      <Trans id='notificationsEmpty'>No new notificiations for you</Trans>
     </Typography>
   );
 

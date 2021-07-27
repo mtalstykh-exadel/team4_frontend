@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
+import { Trans } from "@lingui/macro";
+
 const AccountMenu = (props) => {
   return (
     <Menu
@@ -25,11 +27,11 @@ const AccountMenu = (props) => {
         component={Link}
         to={'/profile'}
         onClick={props.handleAccClose}>
-          Profile
+        <Trans>Profile</Trans>
       </MenuItem>
       <MenuItem
         onClick={props.handleLogoutMenu}>
-          Logout
+        <Trans>Logout</Trans>
       </MenuItem>
     </Menu>);
 };
