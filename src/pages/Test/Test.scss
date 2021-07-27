@@ -1,0 +1,88 @@
+.test-navigation-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 90px;
+
+  .test-navigation-wrapper :last-child {
+    margin-right: 0;
+  }
+
+  .test-step {
+    float: left;
+    line-height: 100%;
+    font-size: 24px;
+    color: black;
+    width: 20%;
+    text-align: center;
+    border-bottom: #e2e9f9 solid 2px;
+    padding-bottom: 13px;
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .test-step.active {
+    border-bottom: #3e6dd7 solid 5px;
+  }
+
+  .test-step.time {
+    border: none;
+    font-size: 36px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .test-step {
+      font-size: 18px;
+    }
+
+    .test-step.time {
+      border: none;
+      font-size: 30px;
+    }
+  }
+}
+
+.test-task-wrapper {
+  .step-description {
+    font-size: 18px;
+    color: #828282;
+    padding-bottom: 5px;
+    text-align: center;
+  }
+}
+
+.buttons-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  height: 80px;
+  padding-top: 40px;
+
+  .buttons-wrapper :last-child {
+    margin-right: 0;
+  }
+}
+
+.test-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.previous-step-button,
+.next-step-button {
+  float: left;
+  line-height: 100%;
+  width: 14%;
+  height: 50%;
+  margin: 15%;
+}
+
+.previous-step-button.invisible {
+  visibility: hidden;
+}
+
+.report-mistake {
+  float: right;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #828282;
+  padding-bottom: 112px;
+}
