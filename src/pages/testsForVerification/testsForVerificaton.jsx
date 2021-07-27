@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/Layout/Layout';
 import TestsDataForVerification from '../../components/TestsDataForVerification/TestsDataForVerification';
 
 const TestsForVerification = () => {
@@ -9,5 +9,6 @@ const TestsForVerification = () => {
     </Layout>
   );
 };
+
 
 export default TestsForVerification;
