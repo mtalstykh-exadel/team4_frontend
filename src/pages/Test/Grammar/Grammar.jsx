@@ -10,7 +10,7 @@ const Grammar = ({ tasks }) => {
     questionCount++;
     const options = question.options.map((questionItem) => {
       return (
-        <div key={questionItem.option} className="question-option">
+        <div key={questionItem.option} className="test-question-option">
           <input
             type="radio"
             name={"group-" + questionCount}
@@ -22,10 +22,10 @@ const Grammar = ({ tasks }) => {
     });
 
     return (
-      <div key={questionCount}>
-        <div className="question">
-          <span className="question number">{questionCount}. </span>
-          <span className="question sentence">{question.sentence}</span>
+      <div key={questionCount} className="grammar-tasks">
+        <div className="test-question">
+          <span className="test-question number">{questionCount}. </span>
+          <span className="test-question sentence">{question.sentence}</span>
         </div>
         {options}
       </div>
