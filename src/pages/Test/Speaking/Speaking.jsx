@@ -44,7 +44,6 @@ const Speaking = () => {
           <MicIcon
             alt="microOn"
             className="microphone-item"
-            style={{ color: "white" }}
             name="onButton"
             onClick={() => {
               setInvisible("on");
@@ -57,7 +56,6 @@ const Speaking = () => {
           <MicOffIcon
             alt="microOff"
             className="microphone-item"
-            style={{ color: "white" }}
             name="offButton"
             onClick={() => {
               setInvisible("off");
