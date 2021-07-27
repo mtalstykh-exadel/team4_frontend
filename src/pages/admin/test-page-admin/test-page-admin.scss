@@ -1,3 +1,15 @@
-.paper {
-  margin-top: 40px;
+.AdminTestPage {
+  .paper {
+    margin-top: 40px;
+  }
+
+  .MuiOutlinedInput-input {
+    padding: 0;
+  }
+
+  .selectCoachNames {
+    min-width: 345px;
+    min-height: 30px;
+    max-height: 30px;
+  }
 }
