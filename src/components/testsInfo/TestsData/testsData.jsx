@@ -106,6 +106,7 @@ const TestsData = (props) => {
                                     onClick={handleOpen}
                                     variant="contained"
                                     color="primary"
+                                    size='small'
                                     id={row.id + "-btn-second"}
                                     style={{display: 'none'}}
                                   >
