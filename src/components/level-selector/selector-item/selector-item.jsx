@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./item-style.scss";
 
-const selectorItem = ({ title, description }) => {
+const SelectorItem = ({ title, description }) => {
   return (
     <div className="test-level-selector-item">
       <div className="title">{title}</div>
@@ -23,9 +23,9 @@ const selectorItem = ({ title, description }) => {
   );
 };
 
-selectorItem.propTypes = {
+SelectorItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
-export default selectorItem;
+export default SelectorItem;
