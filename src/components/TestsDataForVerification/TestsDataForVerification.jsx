@@ -32,7 +32,7 @@ const TestsDataForVerification = () => {
     setPage(0);
   };
 
-  const tableRows = rows.map((rowName) => {
+  const tableHeadCells = rows.map((rowName) => {
     return (
       <TableCell key={rowName} align="left" style={{ fontWeight: 700 }}>{rowName}</TableCell>
     );
@@ -45,7 +45,7 @@ const TestsDataForVerification = () => {
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow>
-                {tableRows}
+                {tableHeadCells}
               </TableRow>
             </TableHead>
             <TableBody>{testForVerification.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
