@@ -5,41 +5,63 @@ import PauseIcon from "@material-ui/icons/Pause";
 import PropTypes from "prop-types";
 import "./player.scss";
 
-const Player = ({ src, audioDuration, checkTime }) => {
+const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
-  const audio = document.getElementById("audio-player");
+  const [localeDuration ,setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
+  const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
 
   const AudioController = () => {
-    if (audio) {
-      audio.play();
+    if (document.getElementById(id)) {
+      document.getElementById(id).play()
+        .catch((err) => {
+          console.warn(err);
+        });
+
       setProgressPercent(0);
       setAudioCurrent(0);
-      audio.removeEventListener("timeupdate", AudioProgressBar);
-      audio.addEventListener("timeupdate", AudioProgressBar);
       setAudioOn(true);
+
+      document.getElementById(id).removeEventListener("timeupdate", AudioProgressBar);
+      document.getElementById(id).addEventListener("timeupdate", AudioProgressBar);
     }
   };
 
   const AudioStop = () => {
-    audio.pause();
+    audioDomElement.pause();
     setAudioOn(false);
   };
 
   const AudioProgressBar = (e) => {
-    const { currentTime } = e.srcElement;
+    const { currentTime, duration } = e.srcElement;
     setAudioCurrent(checkTime(currentTime));
-    setProgressPercent((currentTime / audioDuration) * 100);
+
+    if (audioDuration){
+      setProgressPercent((currentTime / audioDuration) * 100);
+    } else {
+      setProgressPercent((currentTime / duration) * 100);
+      setLocaleDuration(duration);
+    }
   };
 
   const AudioVolumeHandler = (e) => {
-    audio.volume = e.target.value / 100;
+    audioDomElement.volume = e.target.value / 100;
   };
 
-  if (audio) {
-    audio.onended = () => {
+  const checkTime = (time) => {
+    const minutes = Math.floor((time / 60) % 60);
+    let seconds = Math.floor(time % 60);
+
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    return `${minutes}:${seconds}`;
+  };
+
+  if (audioDomElement) {
+    audioDomElement.onended = () => {
       setAudioOn(false);
     };
   }
@@ -80,16 +102,16 @@ const Player = ({ src, audioDuration, checkTime }) => {
           )}
         </button>
         <div className="player-time">
-          {audioCurrent === 0 ? "0:00" : audioCurrent}/
-          {checkTime(audioDuration)}
+          {audioCurrent === 0 ? "0:00" : audioCurrent} / 
+          {audioDuration === undefined ? checkTime(localeDuration) : checkTime(audioDuration)}
         </div>
         <div className="progress-container">
-          <audio id="audio-player" src={src}/>
+          <audio id={id} src={src} />
           <div
             style={{ width: progressPercent + "%" }}
             className="progress-line"
           />
-          <div className="progress"/>
+          <div className="progress" />
         </div>
         <button className="player-button">
           <VolumeUpIcon
@@ -113,7 +135,7 @@ const Player = ({ src, audioDuration, checkTime }) => {
 Player.propTypes = {
   src: PropTypes.string,
   audioDuration: PropTypes.number,
-  checkTime: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default Player;

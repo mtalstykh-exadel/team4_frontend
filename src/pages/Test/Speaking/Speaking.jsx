@@ -11,16 +11,6 @@ const Speaking = () => {
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
 
-  const checkTime = (time) => {
-    const minutes = Math.floor((time / 60) % 60);
-    let seconds = Math.floor(time % 60);
-
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
-    return `${minutes}:${seconds}`;
-  };
-
   const SpeakingTimerHandler = () => {
     const element = document.getElementById("speaking-timer");
     element.addEventListener("DOMNodeInserted", () => {
@@ -66,9 +56,9 @@ const Speaking = () => {
         )}
       </div>
       <Player
+        id="player-speaking"
         src={blobURL}
         audioDuration={audioDuration}
-        checkTime={checkTime}
       />
     </>
   );
