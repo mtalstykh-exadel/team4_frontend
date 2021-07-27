@@ -1,10 +1,10 @@
 let audioDuration = 0;
-let timeMinut;
+let timeSeconds;
 let timer;
 
 const speakingTimerHandler = (timerOn) => {
   const speakingTimerDomElement = document.getElementById("speaking-timer");
-  timeMinut = 299;
+  timeSeconds = 299;
   if (timerOn === false) {
     return stopTimer(speakingTimerDomElement);
   } else {
@@ -21,16 +21,16 @@ const stopTimer = (element) => {
 const startTimer = (element) => {
   audioDuration = 0;
   timer = setInterval(() => {
-    let seconds = timeMinut % 60;
-    const minutes = (timeMinut / 60) % 60;
-    if (timeMinut < 0) {
+    let seconds = timeSeconds % 60;
+    const minutes = (timeSeconds / 60) % 60;
+    if (timeSeconds < 0) {
       stopTimer(element);
     } else {
       if (seconds < 10) {
         seconds = "0" + seconds;
       }
       ++audioDuration;
-      --timeMinut;
+      --timeSeconds;
       element.textContent = `${Math.floor(minutes)}:${seconds}`;
     }
   }, 1000);

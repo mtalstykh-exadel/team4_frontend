@@ -84,12 +84,12 @@ const Player = ({ src, audioDuration, checkTime }) => {
           {checkTime(audioDuration)}
         </div>
         <div className="progress-container">
-          <audio id="audio-player" src={src}></audio>
+          <audio id="audio-player" src={src}/>
           <div
             style={{ width: progressPercent + "%" }}
             className="progress-line"
-          ></div>
-          <div className="progress"></div>
+          />
+          <div className="progress"/>
         </div>
         <button className="player-button">
           <VolumeUpIcon
