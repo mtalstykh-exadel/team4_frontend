@@ -12,7 +12,13 @@ import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 import '../src/styles/modal.scss';
 
+import { useDispatch } from 'react-redux';
+import { tokenTimeout } from './store/actions/tokenTimeout';
+
 const App = () => {
+
+  const dispatch = useDispatch();
+  dispatch(tokenTimeout());
 
   return (
     <div className="App">

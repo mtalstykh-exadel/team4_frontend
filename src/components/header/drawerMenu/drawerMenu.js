@@ -1,19 +1,16 @@
 import { React } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { languageChange } from '../../../store/actions/headerActions';
-
 // import image as an avatar for profile icon
 import avatar from '../../../assets/images/logo/logoText.svg';
 
 const DrawerMenu = (props) => {
-  const dispatch = useDispatch();
-  const role = useSelector((state) => state.role);
+  const role = useSelector((state) => state.jwt.role);
 
   const linkBtn = (path, name) => (
     <Button
@@ -52,8 +49,8 @@ const DrawerMenu = (props) => {
       </div>}
       <Divider/>
       <div className='drawerSplit'>
-        <Button onClick={ () => {dispatch(languageChange('english'));}}>English</Button>
-        <Button onClick={ () => {dispatch(languageChange('russian'));}}>Russian</Button>
+        <Button>English</Button>
+        <Button>Russian</Button>
       </div>
       <Divider/>
       <div className='drawerSplit'>
