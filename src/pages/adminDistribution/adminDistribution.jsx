@@ -1,18 +1,9 @@
 import React, { useState } from "react";
 import Layout from '../../components/Layout/Layout.js';
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
 import { rows } from "./rows.js";
 import { coaches } from "../../testData/Coaches.js";
 import PropTypes from "prop-types";
-import Select from '@material-ui/core/Select';
-import { Button } from "@material-ui/core";
 import './adminDistribution.scss';
 
 const AdminDistribution = (props) => {
@@ -101,7 +92,7 @@ const AdminDistribution = (props) => {
                                   })}
                                 </Select>
                               ) : (
-                                console.log('false')
+                                null
                               )}
 
                               {column.id === "action" ? (
