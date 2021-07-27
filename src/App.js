@@ -7,7 +7,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import DemoJWT from './pages/jwt/jwt.jsx';
-import AdminTestPage from './pages/admin/test-page-admin/tests-page-admin.jsx';
+import AdminTestPage from './pages/adminDistribution/tests-page-admin.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 import '../src/styles/modal.scss';
