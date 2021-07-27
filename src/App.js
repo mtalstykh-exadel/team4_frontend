@@ -20,9 +20,9 @@ const App = () => {
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
-        <PrivateRoute path="/main" ><Main /></PrivateRoute>
+        <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
-        <PrivateRoute path="/" exact><AdminTestPage /></PrivateRoute>
+        <PrivateRoute path="/admindistribution" ><AdminTestPage /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
 
