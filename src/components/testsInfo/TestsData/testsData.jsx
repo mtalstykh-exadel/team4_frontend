@@ -27,6 +27,7 @@ const TestsData = (props) => {
 
   let keysForColumns = 1;
 
+  const [showButton, setShowButton] = useState(true);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
 
@@ -38,9 +39,10 @@ const TestsData = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  
+
   const testAction = (action) => {
     console.log(action);
+    setShowButton(showButton !== showButton);
   };
 
   const [open, setOpen] = React.useState(false);
@@ -96,7 +98,8 @@ const TestsData = (props) => {
                               column.id === 'action' ?
                                 <>
                                   <Button variant="contained" color="primary" size='small'
-                                          onClick={() => testAction(row[column.id])}>
+                                          onClick={() => testAction(row[column.id])}
+                                          style={{visibility: showButton ? 'visible' : 'hidden'}}>
                                     {value}
                                   </Button>
 
@@ -104,6 +107,7 @@ const TestsData = (props) => {
                                     onClick={handleOpen}
                                     variant="contained"
                                     color="primary"
+                                    style={{visibility: showButton ? 'hidden' : 'visible'}}
                                   >
                                     Try Again
                                   </Button>
