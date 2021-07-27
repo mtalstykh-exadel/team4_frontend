@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Test.scss";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../components/Layout/Layout";
 import Speaking from "./Speaking/Speaking";
 import Essay from "./Essay/Essay";
 import Grammar from "./Grammar/Grammar";

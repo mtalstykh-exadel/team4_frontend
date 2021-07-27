@@ -8,7 +8,7 @@ import "./player.scss";
 const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
-  const [localeDuration ,setLocaleDuration] = useState(0);
+  const [localeDuration, setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
   const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
@@ -38,7 +38,7 @@ const Player = ({ src, audioDuration, id }) => {
     const { currentTime, duration } = e.srcElement;
     setAudioCurrent(checkTime(currentTime));
 
-    if (audioDuration){
+    if (audioDuration) {
       setProgressPercent((currentTime / audioDuration) * 100);
     } else {
       setProgressPercent((currentTime / duration) * 100);
@@ -102,8 +102,10 @@ const Player = ({ src, audioDuration, id }) => {
           )}
         </button>
         <div className="player-time">
-          {audioCurrent === 0 ? "0:00" : audioCurrent} / 
-          {audioDuration === undefined ? checkTime(localeDuration) : checkTime(audioDuration)}
+          {audioCurrent === 0 ? "0:00" : audioCurrent} /
+          {audioDuration === undefined
+            ? checkTime(localeDuration)
+            : checkTime(audioDuration)}
         </div>
         <div className="progress-container">
           <audio id={id} src={src} />
