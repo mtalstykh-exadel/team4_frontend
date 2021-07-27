@@ -7,11 +7,16 @@ import Counter from './components/counter/counter';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
-import DemoJWT from './pages/jwt/jwt.jsx';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 
+import { useDispatch } from 'react-redux';
+import { tokenTimeout } from './store/actions/tokenTimeout';
+
 const App = () => {
+
+  const dispatch = useDispatch();
+  dispatch(tokenTimeout());
 
   return (
     <div className="App">
@@ -21,7 +26,6 @@ const App = () => {
         <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
-        <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
       </Switch>

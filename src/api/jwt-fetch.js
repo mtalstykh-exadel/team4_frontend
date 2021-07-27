@@ -1,9 +1,9 @@
 import axiosInstance from "./axios";
-import { saveJWT } from "../utils/jwt-parser";
+import { saveJWTtoLocalstorage } from "../utils/jwt-parser";
 
 const handleJWT = async (data) => {
   return axiosInstance.post('/login', data )
-    .then((response) => saveJWT(response.data));
+    .then((response) => saveJWTtoLocalstorage(response.data));
 };
 
 export default handleJWT;

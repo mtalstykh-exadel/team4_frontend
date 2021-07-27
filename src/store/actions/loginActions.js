@@ -1,20 +1,32 @@
 import handleJWT from '../../api/jwt-fetch';
 
-import { getJWTdata, getJWTtoken } from '../../utils/jwt-parser';
-import { calculateAuthTime } from '../../utils/token-expire';
+import { getJWTdata, getJWTtoken, removeJWTfromLocalstorage } from '../../utils/jwt-parser';
+import { tokenTimeout } from './tokenTimeout';
 
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_PARSE, JWT_REMOVE } from '../actions/actionTypes';
-import { fetchLogout } from './logoutActions';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_ADD, JWT_REMOVE } from '../actions/actionTypes';
 
-export const fetchLoginStart = () => ({ type: LOGIN_START });
+export const fetchLoginStart = () => {
+  return { type: LOGIN_START };
+};
 
-export const fetchLoginSuccess = (token) => ({ type: LOGIN_SUCCESS, token });
+export const fetchLoginSuccess = () => {
+  const token = getJWTtoken();
+  return { type: LOGIN_SUCCESS, token };
+};
 
-export const fetchLoginFailure = (e) => ({ type: LOGIN_FAILURE, error: e.message });
+export const fetchLoginFailure = (e) => {
+  return { type: LOGIN_FAILURE, error: e.message };
+};
 
-export const parseJWT = (data) => ({ type: JWT_PARSE , data });
+export const addJWT = () => {
+  const data = getJWTdata();
+  return { type: JWT_ADD , data };
+};
 
-export const clearJWT = () => ({ type: JWT_REMOVE });
+export const removeJWT = () => {
+  removeJWTfromLocalstorage();
+  return { type: JWT_REMOVE };
+};
 
 export const fetchLoginData = (data) => (dispatch, getState) => {
   const auth = getState();
@@ -27,8 +39,8 @@ export const fetchLoginData = (data) => (dispatch, getState) => {
 
   return Promise.resolve(data)
     .then(handleJWT({login: data.email , password: data.password})
-      .then(() => dispatch(parseJWT(getJWTdata())))
-      .then(() => dispatch(fetchLoginSuccess(getJWTtoken())))
-      .then(() => setTimeout(() => dispatch(fetchLogout()), calculateAuthTime()))
+      .then(() => dispatch(addJWT()))
+      .then(() => dispatch(fetchLoginSuccess()))
+      .then(() => dispatch(tokenTimeout()))
       .catch((e) => dispatch(fetchLoginFailure(e))));
 };

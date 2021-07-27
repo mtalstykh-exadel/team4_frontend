@@ -12,5 +12,5 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_START = 'LOGOUT_START';
 
 // jwt actiontypes
-export const JWT_PARSE = 'JWT_PARSE';
+export const JWT_ADD = 'JWT_ADD';
 export const JWT_REMOVE = 'JWT_REMOVE';

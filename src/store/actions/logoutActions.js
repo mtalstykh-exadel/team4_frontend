@@ -1,17 +1,16 @@
-import { removeJWT } from '../../utils/jwt-parser';
-
 import { LOGOUT_START } from './actionTypes';
-import { clearJWT } from './loginActions';
+import { removeJWT } from './loginActions';
 
-export const logoutStart = () => ({ type: LOGOUT_START });
+export const logoutStart = () => {
+  return { type: LOGOUT_START };
+};
 
-export const fetchLogout = () => (dispatch, getState) => {
+export const logoutActions = () => (dispatch, getState) => {
   const auth = getState();
   if (auth && (auth.isAuth)) {
     return;
   }
   return Promise.resolve()
     .then(() => dispatch(logoutStart()))
-    .then(() => dispatch(clearJWT()))
-    .then(removeJWT());
+    .then(() => dispatch(removeJWT()));
 };

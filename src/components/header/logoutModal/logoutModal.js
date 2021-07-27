@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
 
-import { fetchLogout } from '../../../store/actions/logoutActions';
+import { logoutActions } from '../../../store/actions/logoutActions';
 
 const LogoutModal = (props) => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const LogoutModal = (props) => {
             <Button
               color='primary'
               variant='contained'
-              onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(fetchLogout());}}>
+              onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions());}}>
                 Yes
             </Button>
             <Button
