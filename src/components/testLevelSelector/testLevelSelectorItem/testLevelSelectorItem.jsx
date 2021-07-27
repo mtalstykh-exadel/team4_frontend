@@ -10,11 +10,15 @@ const TestLevelsSelectorItem = ({ title, description }) => {
     <div className='test-level-selector-item'>
       <div className="title">{title}</div>
       <div className="description">{description}</div>
-      <Link to="/test" className='btn'>
-        <Button variant="contained" color="primary">
-        Take test
-        </Button>
-      </Link>
+        <Button 
+            disableElevation 
+            className="btn" 
+            variant="contained" 
+            color="primary"
+            component={Link} 
+            to="/test"> 
+          Take test
+      </Button>
     </div>
   );
 };
