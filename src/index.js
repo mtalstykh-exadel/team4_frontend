@@ -14,14 +14,14 @@ import { I18nProvider } from '@lingui/react';
 import store from './store/store';
 
 import { fetchLogout } from './store/actions/logoutActions';
-import { calculateRemainingTime } from './utils/token-expire';
+import { calculateAuthTime } from './utils/token-expire';
 import { defineLang } from './utils/lang-service.js';
 
 const AppContainer = () => {
   const state = store.getState();
 
   if (state.auth.isAuth) {
-    useEffect(() => setTimeout(() => store.dispatch(fetchLogout()), calculateRemainingTime()));
+    useEffect(() => setTimeout(() => store.dispatch(fetchLogout()), calculateAuthTime()));
   }
 
   defineLang();

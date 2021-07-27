@@ -1,7 +1,7 @@
 import handleJWT from '../../api/jwt-fetch';
 
 import { getJWTdata, getJWTtoken } from '../../utils/jwt-parser';
-import { calculateRemainingTime } from '../../utils/token-expire';
+import { calculateAuthTime } from '../../utils/token-expire';
 
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_PARSE, JWT_REMOVE } from '../actions/actionTypes';
 import { fetchLogout } from './logoutActions';
@@ -29,6 +29,6 @@ export const fetchLoginData = (data) => (dispatch, getState) => {
     .then(handleJWT({login: data.email , password: data.password})
       .then(() => dispatch(parseJWT(getJWTdata())))
       .then(() => dispatch(fetchLoginSuccess(getJWTtoken())))
-      .then(() => setTimeout(() => dispatch(fetchLogout()), calculateRemainingTime()))
+      .then(() => setTimeout(() => dispatch(fetchLogout()), calculateAuthTime()))
       .catch((e) => dispatch(fetchLoginFailure(e))));
 };

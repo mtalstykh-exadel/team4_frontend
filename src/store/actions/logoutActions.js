@@ -10,7 +10,7 @@ export const fetchLogout = () => (dispatch, getState) => {
   if (auth && (auth.isAuth)) {
     return;
   }
-  return Promise.resolve('')
+  return Promise.resolve()
     .then(() => dispatch(logoutStart()))
     .then(() => dispatch(clearJWT()))
     .then(removeJWT());
