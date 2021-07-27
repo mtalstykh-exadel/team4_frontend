@@ -22,7 +22,7 @@ const Grammar = ({ tasks }) => {
     });
 
     return (
-      <div key={questionCount} className="grammar-tasks">
+      <div key={questionCount} className="grammar-step">
         <div className="test-question">
           <span className="test-question number">{questionCount}. </span>
           <span className="test-question sentence">{question.sentence}</span>
