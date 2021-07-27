@@ -8,7 +8,8 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from "@lingui/macro";
 
-import RoleButtons from '../roleButtons/roleButtons';
+import { switchLang } from '../../../utils/lang-service';
+import UserNavigation from '../userNavigation/userNavigation';
 
 // import image as an avatar for profile icon
 import avatar from '../../../assets/images/logo/logoText.svg';
@@ -37,15 +38,17 @@ const DrawerMenu = (props) => {
       <Divider/>
       {role !== 'ROLE_USER' &&
       <div className='drawerSplit'>
-        <RoleButtons
+        <UserNavigation
           roleBtns=''/>
       </div>}
       {role !== 'ROLE_USER' && <Divider/>}
       <div className='drawerSplit'>
-        <Button>
+        <Button
+          onClick={ () => switchLang('en')}>
           <Trans>English</Trans>
         </Button>
-        <Button>
+        <Button
+          onClick={ () => switchLang('ru')}>
           <Trans>Russian</Trans>
         </Button>
       </div>

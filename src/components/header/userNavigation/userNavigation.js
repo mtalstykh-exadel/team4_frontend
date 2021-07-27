@@ -8,7 +8,7 @@ import { Button } from "@material-ui/core";
 
 import { Trans } from "@lingui/macro";
 
-const RoleButtons = (props) => {
+const UserNavigation = (props) => {
   const location = useLocation();
   const role = useSelector((state) => state.jwt.role);
 
@@ -59,8 +59,8 @@ const RoleButtons = (props) => {
   );
 };
 
-RoleButtons.propTypes = {
+UserNavigation.propTypes = {
   roleBtns: PropTypes.string
 };
 
-export default RoleButtons;
+export default UserNavigation;

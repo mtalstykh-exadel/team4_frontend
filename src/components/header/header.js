@@ -17,7 +17,7 @@ import LogoutModal from './logoutModal/logoutModal';
 import DrawerMenu from './drawerMenu/drawerMenu';
 import LanguageMenu from './languageDropdown/languageDropdown';
 import Notifications from './notificationsDropdown/notificationsDropdown';
-import RoleButtons from './roleButtons/roleButtons';
+import UserNavigation from './userNavigation/userNavigation';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
@@ -88,7 +88,7 @@ const Header = () => {
           </>}
           { matches && <img src={logoText} alt='logo' className='logoText'/> }
           { matches &&
-            <RoleButtons
+            <UserNavigation
               roleBtns={'roleBtns'}/>}
         </div>
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
