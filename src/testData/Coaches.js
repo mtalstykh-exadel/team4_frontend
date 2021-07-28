@@ -1,2 +1,2 @@
-const coaches = ['Gena Bukin', 'Dasha Vasnicova', 'Leonel Messi', 'Pavel Lazutin', 'Grisha Gorin'];
+const coaches = ['Coach1', 'Coach2', 'Coach3', 'Coach4', 'Coach5'];
 export { coaches };
