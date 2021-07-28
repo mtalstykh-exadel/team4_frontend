@@ -5,11 +5,11 @@ import React from "react";
 import { PropTypes } from "prop-types";
 import Header from '../../components/header/header';
 
-const Layout = ({children}) => {
+const Layout = ({ pageWrapperClass, children }) => {
   return (
     <div className="base-color">
       <Header/>
-      <main className="main base-color">
+      <main className={`${pageWrapperClass} base-color`}>
         {children}
       </main>
     </div>
@@ -17,7 +17,8 @@ const Layout = ({children}) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.any,
+  pageWrapperClass: PropTypes.string,
 };
 
 export default Layout;

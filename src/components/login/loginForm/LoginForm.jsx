@@ -11,13 +11,13 @@ import { fetchLoginData } from "../../../store/actions/loginActions";
 
 // filtering and checking what the user has entered into forms
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
+  email: Yup.string().required("Required"),
   password: Yup.string().required("Required"),
 });
 
 const LoginForm = () => {
-  const loading = useSelector((state) => state.login.loading);
-  const error = useSelector((state) => state.login.error);
+  const loading = useSelector((state) => state.auth.loading);
+  const error = useSelector((state) => state.auth.error);
   const dispatch = useDispatch();
 
   // styles from material ui

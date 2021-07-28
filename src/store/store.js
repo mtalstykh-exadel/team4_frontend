@@ -2,14 +2,14 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import { combineReducers } from 'redux';
 import { counterReducer } from './reducers/counterReducers';
-import { loginReducer } from './reducers/loginReducers';
-import { languageReducer, roleReducer, themeReducer } from './reducers/headerReducers';
+import { authReducer } from './reducers/authReducers';
+import { jwtReducer } from './reducers/jwtReducers';
+import { themeReducer } from './reducers/themeReducers';
 
 const rootReducers = combineReducers({
   counter: counterReducer,
-  login: loginReducer,
-  language: languageReducer,
-  role: roleReducer,
+  auth: authReducer,
+  jwt: jwtReducer,
   darktheme: themeReducer
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

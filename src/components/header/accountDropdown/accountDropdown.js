@@ -6,6 +6,8 @@ import { useDispatch ,useSelector } from 'react-redux';
 import { Menu, MenuItem, Switch } from '@material-ui/core';
 import { themeChange } from '../../../store/actions/headerActions';
 
+import { Trans } from "@lingui/macro";
+
 const AccountMenu = (props) => {
   const darktheme = useSelector((state) => state.darktheme);
   const dispatch = useDispatch();
@@ -32,7 +34,7 @@ const AccountMenu = (props) => {
         component={Link}
         to={'/profile'}
         onClick={props.handleAccClose}>
-          Profile
+        <Trans>Profile</Trans>
       </MenuItem>
       <MenuItem className='font-primary'>
           Dark mode
@@ -44,7 +46,7 @@ const AccountMenu = (props) => {
       <MenuItem
         className='font-primary'
         onClick={props.handleLogoutMenu}>
-          Logout
+        <Trans>Logout</Trans>
       </MenuItem>
     </Menu>);
 };

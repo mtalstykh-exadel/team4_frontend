@@ -1,5 +1,4 @@
 import { React, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { AppBar,Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer} from '@material-ui/core';
@@ -19,12 +18,11 @@ import LogoutModal from './logoutModal/logoutModal';
 import DrawerMenu from './drawerMenu/drawerMenu';
 import LanguageMenu from './languageDropdown/languageDropdown';
 import Notifications from './notificationsDropdown/notificationsDropdown';
+import UserNavigation from './userNavigation/userNavigation';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
-  const location = useLocation();
-  const role = useSelector((state) => state.role);
-  const shorthand = useSelector((state) => state.language).substring(0,2);
+  const darktheme = useSelector((state) => state.darktheme);
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
@@ -70,16 +68,6 @@ const Header = () => {
     notificationsEl: null
   });
 
-  const linkBtn = (path, name) => (
-    <Button
-      disableElevation
-      className={`${location.pathname === path ? 'bold' : null} roleBtns font-primary theme-dark`}
-      component={Link}
-      to={path}>
-      {name}
-    </Button>
-  );
-
   return (
     <AppBar
       color='inherit'
@@ -87,17 +75,17 @@ const Header = () => {
       elevation={1}
       position='static'>
       <div className='toolbar-wrapper'>
-        <Toolbar className='toolbar'>
+        <Toolbar className= {`${darktheme ? 'theme-dark' : 'theme-light'} toolbar`}>
           <div className='toolbar-sideLeft'>
             {!matches && <>
               <IconButton
                 edge='start'
                 aria-haspopup='true'
                 onClick={() => handleDrawer(true)}>
-                <MenuIcon className='icons-color'/>
+                <MenuIcon/>
               </IconButton>
               <Drawer
-                className='theme-dark'
+                className = {`${darktheme ? 'theme-dark' : 'theme-light'}`}
                 anchor={'left'}
                 open={states.drawerEl}
                 onClose={() => handleDrawer(false)}>
@@ -107,22 +95,22 @@ const Header = () => {
               </Drawer>
             </>}
             { matches && <img src={logoText} alt='logo' className='logoText'/> }
-            { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
-            { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-            { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
+            { matches &&
+              <UserNavigation
+                roleBtns={'roleBtns'}/>}
           </div>
           { !matches && <img src={logo} alt="logo" className={'logo'}/> }
           <div className='toolbar-sideRight'>
             <IconButton
               edge='start'
               aria-haspopup='true'
+              color='inherit'
               onClick={handleNotifications}>
               <Badge
                 classes={{ badge: 'notifications-color' }}
-                color='primary'
                 overlap='circular'
                 variant='dot'>
-                <NotificationsNoneIcon className='icons-color'/>
+                <NotificationsNoneIcon/>
               </Badge>
             </IconButton>
             { matches &&
@@ -140,9 +128,9 @@ const Header = () => {
                   className='icons-triangle icons-color'/>
               </IconButton>
               <Button
-                className='bold font-primary'
+                className='bold'
                 onClick={handleLanguage}>
-                {shorthand}
+                {localStorage.getItem('lang')}
                 <ArrowDropDownIcon
                   className='icons-triangle icons-color'/>
               </Button>

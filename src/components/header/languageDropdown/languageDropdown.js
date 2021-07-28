@@ -1,13 +1,14 @@
 import { React } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { languageChange } from '../../../store/actions/headerActions';
+import { Trans } from "@lingui/macro";
+
+import { switchLang } from '../../../utils/lang-service';
 
 const LanguageMenu = (props) => {
-  const dispatch = useDispatch();
   const darktheme = useSelector((state) => state.darktheme);
 
   return (
@@ -28,13 +29,13 @@ const LanguageMenu = (props) => {
       }}>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('english'));}}>
-        English
+        onClick={ () => {props.handleLangClose(); switchLang('en');}}>
+        <Trans>English</Trans>
       </MenuItem>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('russian'));}}>
-        Russian
+        onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
+        <Trans>Russian</Trans>
       </MenuItem>
     </Menu>);
 };

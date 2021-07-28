@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import { Menu, Typography, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { Trans } from '@lingui/macro';
+
 import notificationsData from '../data/dummyData';
 
 const Notifications = (props) => {
@@ -13,10 +15,8 @@ const Notifications = (props) => {
 
   const notificationsAssign = (item) => (
     <>
-      <Typography
-        variant='body1'
-        className='font-primary'>
-        {item.body}
+      <Typography variant='body1' className='font-primary'>
+        <Trans id='notificationTestAsigned'>A test to determine the level of English has been asigned to your name</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}
@@ -29,17 +29,15 @@ const Notifications = (props) => {
         variant='text'
         className='notifications-seemoreBtn font-color'
         onClick={props.handleNotifClose}>
-          See More
+        <Trans>See More</Trans>
       </Button>
     </>
   );
 
   const notificationsTest = (item) => (
     <>
-      <Typography
-        className='font-primary'
-        variant='body1'>
-        {item.body}
+      <Typography variant='body1' className='font-primary'>
+        <Trans id='notificationTestChecked'>Your English language test is checked. Your English level has been set as .</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}
@@ -54,16 +52,14 @@ const Notifications = (props) => {
         variant='contained'
         className='notifications-takeTestBtn primary-contained'
         onClick={props.handleNotifClose}>
-          Take Test
+        <Trans>Take test</Trans>
       </Button>
     </>
   );
 
   const notificationsEmpty = (
-    <Typography
-      className='notifications-empty font-primary'
-      variant='caption'>
-      No new notificiations for you
+    <Typography variant='caption' className='notifications-empty font-primary'>
+      <Trans id='notificationsEmpty'>No new notificiations for you</Trans>
     </Typography>
   );
 
@@ -88,9 +84,7 @@ const Notifications = (props) => {
         }}}>
       {Object.keys(notificationsData).length !== 0 ? notificationsData.map((item, index) => (
         <div className='notifications-test' key={index}>
-          <Typography
-            className='font-primary'
-            variant="caption">
+          <Typography variant='caption' className='font-primary'>
             {item.date}
           </Typography>
           <Button
