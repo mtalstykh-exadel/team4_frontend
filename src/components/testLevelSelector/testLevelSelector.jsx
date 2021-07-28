@@ -3,7 +3,7 @@ import React from 'react';
 import TestLevelsSelectorItem from './testLevelSelectorItem/testLevelSelectorItem.jsx';
 import './testLevelSelector.scss';
 
-const LevelSelector = () => {
+const TestLevelsSelector = () => {
 
   const testLevelsData = [
     {
@@ -51,4 +51,4 @@ const LevelSelector = () => {
   );
 };
 
-export default LevelSelector;
+export default TestLevelsSelector;
