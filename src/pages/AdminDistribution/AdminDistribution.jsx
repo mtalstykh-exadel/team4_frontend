@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from '../../components/Layout/Layout.js';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
 import { rows } from "../../testData/rowsForAdminDistribution.js";
-import { coaches } from "../../testData/Coaches.js";
+import { coaches } from "./Coaches.js";
 import PropTypes from "prop-types";
 import './AdminDistribution.scss';
 
