@@ -11,29 +11,37 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/roleButtons/roleButtons.js:55
+#: src/components/header/userNavigation/userNavigation.js:55
 msgid "Distribution of tests"
 msgstr "Распределение тестов"
 
-#: src/components/header/roleButtons/roleButtons.js:39
+#: src/components/header/userNavigation/userNavigation.js:39
 msgid "Edit tests"
 msgstr "Редактировать тесты"
 
-#: src/components/header/roleButtons/roleButtons.js:23
+#: src/components/header/userNavigation/userNavigation.js:23
 msgid "Employees"
 msgstr "Работники"
 
-#: src/components/header/drawerMenu/drawerMenu.js:45
+#: src/components/header/drawerMenu/drawerMenu.js:48
 #: src/components/header/languageDropdown/languageDropdown.js:29
 msgid "English"
 msgstr "Английский"
+
+#: src/components/LoginForm/LoginForm.jsx:47
+msgid "Invalid email"
+msgstr "Некорректный email"
+
+#: src/components/LoginForm/LoginForm.jsx:61
+msgid "Log in"
+msgstr "Войти"
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
 msgstr "Выйти из аккаунта?"
 
 #: src/components/header/accountDropdown/accountDropdown.js:34
-#: src/components/header/drawerMenu/drawerMenu.js:60
+#: src/components/header/drawerMenu/drawerMenu.js:64
 msgid "Logout"
 msgstr "Выход"
 
@@ -42,11 +50,16 @@ msgid "No"
 msgstr "Нет"
 
 #: src/components/header/accountDropdown/accountDropdown.js:30
-#: src/components/header/drawerMenu/drawerMenu.js:56
+#: src/components/header/drawerMenu/drawerMenu.js:60
 msgid "Profile"
 msgstr "Профиль"
 
-#: src/components/header/drawerMenu/drawerMenu.js:48
+#: src/components/LoginForm/LoginForm.jsx:46
+#: src/components/LoginForm/LoginForm.jsx:54
+msgid "Required field"
+msgstr "Обязательное поле"
+
+#: src/components/header/drawerMenu/drawerMenu.js:52
 #: src/components/header/languageDropdown/languageDropdown.js:33
 msgid "Russian"
 msgstr "Русский"
@@ -55,7 +68,7 @@ msgstr "Русский"
 msgid "See More"
 msgstr "Посмотреть больше"
 
-#: src/components/header/roleButtons/roleButtons.js:48
+#: src/components/header/userNavigation/userNavigation.js:48
 msgid "Statistics"
 msgstr "Статистика"
 
@@ -68,13 +81,17 @@ msgstr "Пройти тест"
 msgid "Testing procedure"
 msgstr "Процедура тестирования"
 
-#: src/components/header/roleButtons/roleButtons.js:32
+#: src/components/header/userNavigation/userNavigation.js:32
 msgid "Tests for verification"
 msgstr "Тесты на проверку"
 
 #: src/components/header/logoutModal/logoutModal.js:28
 msgid "Yes"
 msgstr "Да"
+
+#: src/components/LoginForm/LoginForm.jsx:55
+msgid "Your email or password is incorrect. Please try again"
+msgstr "Ваш email или пароль неверный. Пожалуйста попробуйте снова"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:16
 msgid "notificationTestAsigned"

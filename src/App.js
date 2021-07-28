@@ -5,16 +5,14 @@ import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import '../src/styles/theme.scss';
 
-import Login from './pages/login/login';
-import Counter from './components/counter/counter';
+import Login from './pages/Login/Login';
 import PrivateRoute from './utils/privateRoute';
-import Profile from './pages/profile/profile';
+import Profile from './pages/Profile/Profile';
 import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 import Test from "./pages/Test/Test";
 import '../src/styles/modal.scss';
-
 import { useDispatch } from 'react-redux';
 import { tokenTimeout } from './store/actions/tokenTimeout';
 
@@ -27,7 +25,6 @@ const App = () => {
     <div className={`App ${darktheme ? 'theme-dark' : 'theme-light'}`}>
       <Switch>
         <Route path='/login' render={() => <Login />} />
-        <PrivateRoute path="/counter"><Counter /></PrivateRoute>
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>

@@ -1,13 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import { combineReducers } from 'redux';
-import { counterReducer } from './reducers/counterReducers';
-import { authReducer } from './reducers/authReducers';
+
 import { jwtReducer } from './reducers/jwtReducers';
+import { authReducer } from './reducers/authReducers';
 import { themeReducer } from './reducers/themeReducers';
+import { profileReducer } from './reducers/profileReducers';
 
 const rootReducers = combineReducers({
-  counter: counterReducer,
+  profile: profileReducer,
   auth: authReducer,
   jwt: jwtReducer,
   darktheme: themeReducer

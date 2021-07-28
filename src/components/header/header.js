@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 
 import { AppBar,Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer} from '@material-ui/core';
 
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './header.scss';
