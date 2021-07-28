@@ -9,6 +9,7 @@ import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
+import Test from "./pages/Test/Test";
 import '../src/styles/modal.scss';
 
 import { useDispatch } from 'react-redux';
@@ -28,6 +29,7 @@ const App = () => {
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
         <PrivateRoute path="/admin-distribution"><AdminDistribution /></PrivateRoute>
+        <PrivateRoute path='/test'><Test /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
       </Switch>
     </div>
