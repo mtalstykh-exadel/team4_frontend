@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper } from '@material-ui/core';
-import './TestsDataForVerification.scss';
+import './TestsForVerificationTable.scss';
 
-const TestsDataForVerification = () => {
+export const TestsForVerificationTable = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -80,5 +80,3 @@ const TestsDataForVerification = () => {
     </div>
   );
 };
-
-export default TestsDataForVerification;

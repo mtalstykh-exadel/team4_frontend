@@ -1,14 +1,11 @@
 import React from 'react';
 import Layout from '../../components/Layout/Layout';
-import TestsDataForVerification from '../../components/TestsDataForVerification/TestsDataForVerification';
+import { TestsForVerificationTable } from '../../components/TestsForVerificationTable/TestsForVerificationTable';
 
-const TestsForVerification = () => {
+export const TestsForVerification = () => {
   return (
     <Layout>
-      <TestsDataForVerification />
+      <TestsForVerificationTable />
     </Layout>
   );
 };
-
-
-export default TestsForVerification;
