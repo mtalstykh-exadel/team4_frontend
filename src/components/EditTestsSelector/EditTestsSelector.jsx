@@ -1,5 +1,5 @@
 import React from 'react';
-import EditTestsInfo from './EeditTestsInfo/EditTestsInfo';
+import EditTestsInfo from './EditTestsInfo/EditTestsInfo';
 import imageSrc from '../../assets/images/goose.svg';
 import './EditTestsSelector.scss';
 
