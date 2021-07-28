@@ -1,17 +1,24 @@
 import jwt_decode from "jwt-decode";
-const jwtKey = "jwt=data";
+const jwtTokenKey = "jwt=token";
+const jwtDataKey = "jwt=data";
 
-const saveJWT = (token) => {
-  localStorage.setItem(jwtKey, JSON.stringify(jwt_decode(token)));
+const saveJWTtoLocalstorage = (token) => {
+  localStorage.setItem(jwtTokenKey, JSON.stringify(token));
+  localStorage.setItem(jwtDataKey, JSON.stringify(jwt_decode(token)));
 };
 
-const getJWT = () => {
-  return JSON.parse(localStorage.getItem(jwtKey));
+const getJWTdata = () => {
+  return JSON.parse(localStorage.getItem(jwtDataKey));
 };
 
-const removeJWT = () => {
-  localStorage.removeItem(jwtKey);
+const getJWTtoken = () => {
+  return JSON.parse(localStorage.getItem(jwtTokenKey));
 };
 
-export { saveJWT, getJWT, removeJWT };
+const removeJWTfromLocalstorage = () => {
+  localStorage.removeItem(jwtDataKey);
+  localStorage.removeItem(jwtTokenKey);
+};
+
+export { saveJWTtoLocalstorage , getJWTdata, getJWTtoken, removeJWTfromLocalstorage };
 

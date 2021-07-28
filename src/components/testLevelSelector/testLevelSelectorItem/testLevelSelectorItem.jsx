@@ -3,8 +3,11 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./testLevelSelectorItem.scss";
+import './testLevelSelectorItem.scss';
+import { Trans } from '@lingui/macro';
 
-const SelectorItem = ({ title, description }) => {
+const TestLevelsSelectorItem = ({ title, description }) => {
+
   return (
     <div className="test-level-selector-item">
       <div className="title">{title}</div>
@@ -17,7 +20,7 @@ const SelectorItem = ({ title, description }) => {
         component={Link}
         to="/test"
       >
-        Take test
+        <Trans>Take test</Trans>
       </Button>
     </div>
   );
