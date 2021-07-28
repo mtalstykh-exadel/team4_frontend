@@ -22,7 +22,6 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
 
-  // function 'submit' where will be all actions after submitting
   const submit = (values, { setSubmitting }) => {
     dispatch(fetchLoginData(values));
     setSubmitting(false);
@@ -36,7 +35,7 @@ const LoginForm = () => {
       <Formik initialValues={{ email: "", password: "" }} validationSchema={validationSchema} onSubmit={submit} >
         {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, }) => (
           <form onSubmit={handleSubmit} noValidate autoComplete="off" >
-            {/* form for email */}
+            {/* field for email */}
             <div className="fieldsWrapper">
               <TextField id="outlined-basic" label='Email' variant="outlined" type="email" name="email"
                 onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
@@ -45,7 +44,7 @@ const LoginForm = () => {
             ? <Trans>Required field</Trans>
             : <Trans>Invalid email</Trans> : null}
 
-            {/* form for password */}
+            {/* field for password */}
             <div className="fieldsWrapper">
               <TextField id="outlined-basic" label='Password' variant="outlined" type="password" name="password"
                 onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' />
