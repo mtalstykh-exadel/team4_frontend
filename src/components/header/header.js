@@ -21,7 +21,6 @@ import UserNavigation from './userNavigation/userNavigation';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
-
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
