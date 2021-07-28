@@ -11,42 +11,63 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/roleButtons/roleButtons.js:55
+#: src/components/header/userNavigation/userNavigation.js:55
 msgid "Distribution of tests"
 msgstr "Distribution of tests"
 
-#: src/components/header/roleButtons/roleButtons.js:39
+#: src/components/header/userNavigation/userNavigation.js:39
 msgid "Edit tests"
 msgstr "Edit tests"
 
-#: src/components/header/roleButtons/roleButtons.js:23
+#: src/components/header/userNavigation/userNavigation.js:23
 msgid "Employees"
 msgstr "Employees"
 
-#: src/components/header/drawerMenu/drawerMenu.js:45
+#: src/components/header/drawerMenu/drawerMenu.js:48
 #: src/components/header/languageDropdown/languageDropdown.js:29
 msgid "English"
 msgstr "English"
+
+#: src/components/LoginForm/LoginForm.jsx:47
+msgid "Invalid email"
+msgstr "Invalid email"
+
+#: src/components/LoginForm/LoginForm.jsx:61
+msgid "Log in"
+msgstr "Log in"
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
 msgstr "Log out of account?"
 
 #: src/components/header/accountDropdown/accountDropdown.js:34
-#: src/components/header/drawerMenu/drawerMenu.js:60
+#: src/components/header/drawerMenu/drawerMenu.js:64
 msgid "Logout"
 msgstr "Logout"
+
+#: src/components/LoginForm/LoginForm.jsx:42
+#~ msgid "Mail"
+#~ msgstr "Mail"
 
 #: src/components/header/logoutModal/logoutModal.js:34
 msgid "No"
 msgstr "No"
 
+#: src/components/LoginForm/LoginForm.jsx:51
+msgid "Password"
+msgstr "Password"
+
 #: src/components/header/accountDropdown/accountDropdown.js:30
-#: src/components/header/drawerMenu/drawerMenu.js:56
+#: src/components/header/drawerMenu/drawerMenu.js:60
 msgid "Profile"
 msgstr "Profile"
 
-#: src/components/header/drawerMenu/drawerMenu.js:48
+#: src/components/LoginForm/LoginForm.jsx:46
+#: src/components/LoginForm/LoginForm.jsx:54
+msgid "Required field"
+msgstr "Required field"
+
+#: src/components/header/drawerMenu/drawerMenu.js:52
 #: src/components/header/languageDropdown/languageDropdown.js:33
 msgid "Russian"
 msgstr "Russian"
@@ -55,7 +76,7 @@ msgstr "Russian"
 msgid "See More"
 msgstr "See More"
 
-#: src/components/header/roleButtons/roleButtons.js:48
+#: src/components/header/userNavigation/userNavigation.js:48
 msgid "Statistics"
 msgstr "Statistics"
 
@@ -68,13 +89,17 @@ msgstr "Take test"
 msgid "Testing procedure"
 msgstr "Testing procedure"
 
-#: src/components/header/roleButtons/roleButtons.js:32
+#: src/components/header/userNavigation/userNavigation.js:32
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
 #: src/components/header/logoutModal/logoutModal.js:28
 msgid "Yes"
 msgstr "Yes"
+
+#: src/components/LoginForm/LoginForm.jsx:55
+msgid "Your email or password is incorrect. Please try again"
+msgstr "Your email or password is incorrect. Please try again"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:16
 msgid "notificationTestAsigned"
@@ -91,3 +116,7 @@ msgstr "No new notificiations for you"
 #: src/pages/main/main.jsx:13
 msgid "testLevel"
 msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
+
+#: src/components/LoginForm/LoginForm.jsx:45
+#~ msgid "{0}"
+#~ msgstr "{0}"

@@ -8,6 +8,7 @@ const langKey = "lang";
 const switchLang = (lang) => {
   switch (lang) {
     case "ru":
+      debugger;
       i18n.load("ru", catalogRu.messages);
       i18n.activate("ru");
       break;

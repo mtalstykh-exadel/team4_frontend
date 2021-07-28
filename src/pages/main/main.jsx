@@ -3,7 +3,7 @@ import React from 'react';
 import { Trans } from '@lingui/macro';
 
 import TestLevelsSelector from '../../components/testLevelSelector/testLevelSelector';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/Layout/Layout';
 import './main.scss';
 
 const Main = () => {
