@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { offRecAudio, onRecAudio } from "../../../services/voice-recorder.js";
-import { speakingTimerHandler } from "../../../services/speaking-timer.js";
+import { offRecAudio, onRecAudio } from "../../../services/voice-recorder";
+import { speakingTimerHandler } from "../../../services/speaking-timer";
 import MicOffIcon from "@material-ui/icons/MicOff";
 import MicIcon from "@material-ui/icons/Mic";
-import Player from "../player/player.jsx";
+import Player from "../player/player";
 import "./Speaking.scss";
 
 const Speaking = () => {
