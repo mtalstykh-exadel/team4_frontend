@@ -29,7 +29,6 @@ const LoginForm = () => {
   };
 
   const changeLang = (e) => {
-    debugger;
     e.currentTarget.outerText === 'RU' ? switchLang('ru') : switchLang('en');
   };
   return (
