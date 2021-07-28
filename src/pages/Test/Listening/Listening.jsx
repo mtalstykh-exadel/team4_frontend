@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Listening.scss";
 import Grammar from "../Grammar/Grammar";
-import Player from "../player/player.jsx";
+import Player from "../player/player";
 
 const Listening = ({ tasks }) => {
 
