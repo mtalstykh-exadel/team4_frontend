@@ -6,7 +6,7 @@ import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/Profile/Profile';
 import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
-import EditTests from './pages/editTests/editTests';
+import EditTests from './pages/EditTests/EditTests';
 import TestsForVerification from './pages/testsForVerification/testsForVerificaton';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 import Test from "./pages/Test/Test";
