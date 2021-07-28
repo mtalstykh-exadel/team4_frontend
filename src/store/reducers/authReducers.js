@@ -1,14 +1,17 @@
+import { getJWTtoken } from "../../utils/jwt-parser";
 import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from "../actions/actionTypes";
 
+const initialToken = getJWTtoken();
+const authentication = !!initialToken;
+
 const initialState = {
-  email: '',
-  password: '',
-  isAuth: false,
+  token: initialToken,
+  isAuth: authentication,
   loading: false,
-  error: ''
+  error: false
 };
 
-const loginReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
       return Object.assign({}, state, {
@@ -17,31 +20,28 @@ const loginReducer = (state = initialState, action) => {
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
-        email: action.data.email,
-        password: action.data.password,
+        token: action.token,
         isAuth: true,
         loading: false,
         error: false
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
-        email: '',
-        password: '',
+        token: '',
         isAuth: false,
         loading: false,
-        error: true
+        error: action.error
       });
     case LOGOUT_START:
       return {
-        email: '',
-        password: '',
+        token: '',
         isAuth: false,
         loading: false,
-        error: ''
+        error: false
       };
     default:
       return state;
   }
 };
 
-export { loginReducer };
+export { authReducer };
