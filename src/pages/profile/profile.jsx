@@ -7,10 +7,10 @@ import Layout from '../../components/Layout/Layout';
 const Profile = () => {
   return (
     <Layout>
-    <div className='profileRow'>
-      <ProfileInfo />
-      <TestsInfo />
-    </div>
+      <div className='profileRow'>
+        <ProfileInfo />
+        <TestsInfo />
+      </div>
     </Layout>
   );
 };

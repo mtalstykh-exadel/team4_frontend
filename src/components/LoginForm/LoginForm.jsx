@@ -41,8 +41,8 @@ const LoginForm = () => {
                 onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
             </div>
             {errors.email && touched.email ? errors.email === 'R'
-            ? <Trans>Required field</Trans>
-            : <Trans>Invalid email</Trans> : null}
+              ? <Trans>Required field</Trans>
+              : <Trans>Invalid email</Trans> : null}
 
             {/* field for password */}
             <div className="fieldsWrapper">

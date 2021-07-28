@@ -7,7 +7,7 @@ import Profile from './pages/Profile/Profile';
 import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
-import TestsForVerification from './pages/TestsForVerification/TestsForVerificaton';
+import TestsForVerification from './pages/testsForVerification/testsForVerificaton';
 import '../src/styles/modal.scss';
 import { useDispatch } from 'react-redux';
 import { tokenTimeout } from './store/actions/tokenTimeout';
