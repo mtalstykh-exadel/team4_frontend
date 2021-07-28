@@ -29,7 +29,7 @@ const LoginForm = () => {
   };
 
   const changeLang = (e) => {
-    e.currentTarget.outerText === 'RU' ? switchLang('ru') : switchLang('en');
+    e.currentTarget.outerText === 'EN' ? switchLang('ru') : switchLang('en');
   };
   return (
     <div className="loginForm">
