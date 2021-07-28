@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import "./loginForm.scss";
+import "./LoginForm.scss";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLoginData } from "../../store/actions/loginActions";
