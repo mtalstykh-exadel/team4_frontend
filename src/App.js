@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from './pages/Login/Login';
-import { Switch, Route } from 'react-router-dom';
+// import Login from './pages/Login/Login';
+import {Switch, Route} from 'react-router-dom';
 import './App.scss';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/profile/profile';
@@ -15,13 +15,13 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <Route path='/login' render={() => <Login />} />
-        <PrivateRoute path="/profile"><Profile /></PrivateRoute>
-        <PrivateRoute path="/jwt" ><DemoJWT /></PrivateRoute>
-        <PrivateRoute path="/" exact><Main /></PrivateRoute>
-        <PrivateRoute path="/test" exact><Test /></PrivateRoute>
-        <PrivateRoute path="/edittests" ><EditTests /></PrivateRoute>
-        <Route path="*" render={() => <Page404 />} />
+        <Route path='/404' render={() => <Page404/>}/>
+        <PrivateRoute path="/profile"><Profile/></PrivateRoute>
+        <PrivateRoute path="/jwt"><DemoJWT/></PrivateRoute>
+        <PrivateRoute path="/" exact><Main/></PrivateRoute>
+        <PrivateRoute path="/test" exact><Test/></PrivateRoute>
+        <PrivateRoute path="/edittests"><EditTests/></PrivateRoute>
+        <Route path="*" render={() => <Page404/>}/>
       </Switch>
     </div>
   );

@@ -2,11 +2,20 @@ import React from 'react';
 import './Page404.scss';
 import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import '../../styles/modal.scss';
+import AssignTest from '../../components/modal_windows_hr/assigning_test_to_user';
+import ViewingUserInf from "../../components/modal_windows_hr/user_inf";
+
 
 const Page404 = () => {
+
   return (
     <div className='page404'>
+      <AssignTest/>
+      <div>
+        < ViewingUserInf name={'Ivanov Ivan'} gmail={'E-mail: yaroslavsmirnov@gmail.com'} img={'a'}/>
+      </div>
       <div className='logo404-wrapper'>
         <span>4</span>
         <span><img src={logo} alt='logo' className='logo'/></span>
