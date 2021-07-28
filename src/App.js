@@ -1,9 +1,9 @@
 import React from 'react';
-import Login from './pages/login/Login';
+import Login from './pages/Login/Login';
 import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import PrivateRoute from './utils/privateRoute';
-import Profile from './pages/Profile/Pofile';
+import Profile from './pages/Profile/Profile';
 import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
