@@ -16,7 +16,7 @@ const Layout = ({ pageWrapperClass, children }) => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.array,
   pageWrapperClass: PropTypes.string,
 };
 
