@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
-import SelectorItem from './Selector-item/selector-item.jsx';
-import './testLevelSelectorItem.scss';
+import TestLevelsSelectorItem from './testLevelSelectorItem/testLevelSelectorItem.jsx';
+import './testLevelSelector.scss';
 
 const LevelSelector = () => {
 
@@ -40,7 +40,7 @@ const LevelSelector = () => {
 
   const testLevelsDataArr = testLevelsData.map((level, id) => {
     return (
-      <SelectorItem title={level.title} description={level.description} key={id} />
+      <TestLevelsSelectorItem title={level.title} description={level.description} key={id} />
     );
   });
 

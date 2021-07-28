@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import "./testLevelSelectorItem.scss";
-import './testLevelSelectorItem.scss';
+
 import { Trans } from '@lingui/macro';
 
 const TestLevelsSelectorItem = ({ title, description }) => {
@@ -26,9 +26,9 @@ const TestLevelsSelectorItem = ({ title, description }) => {
   );
 };
 
-SelectorItem.propTypes = {
+TestLevelsSelectorItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
-export default SelectorItem;
+export default TestLevelsSelectorItem;
