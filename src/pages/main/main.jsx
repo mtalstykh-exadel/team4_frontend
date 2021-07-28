@@ -1,5 +1,5 @@
 import React from 'react';
-import LevelSelector from '../../components/Level-selector/level-selector.jsx';
+import LevelSelector from '../../components/testLevelSelector/testLevelSelectorItem.jsx';
 import Layout from '../../components/Layout/Layout';
 import './main.scss';
 
