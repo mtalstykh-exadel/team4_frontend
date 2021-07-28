@@ -6,8 +6,8 @@ import Essay from "./Essay/Essay";
 import Grammar from "./Grammar/Grammar";
 import Listening from "./Listening/Listening";
 import Button from "@material-ui/core/Button";
-import grammarTasks from "../../testData/GrammarTasks";
-import listeningTasks from "../../testData/ListeningTasks";
+import grammarTasks from "./testData/GrammarTasks";
+import listeningTasks from "./testData/ListeningTasks";
 import { testTimerHandler } from "../../services/test-timer";
 
 const Test = () => {
