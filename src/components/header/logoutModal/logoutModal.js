@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
 
+import { Trans } from '@lingui/macro';
+
 import { logoutActions } from '../../../store/actions/logoutActions';
 
 const LogoutModal = (props) => {
@@ -17,19 +19,19 @@ const LogoutModal = (props) => {
       onClose={props.handleAccClose}>
       <Fade in={Boolean(props.logoutEl)}>
         <div className='paper'>
-          <h2>Log out of account?</h2>
+          <h2><Trans>Log out of account?</Trans></h2>
           <div className='modalBtns'>
             <Button
               color='primary'
               variant='contained'
               onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions());}}>
-                Yes
+              <Trans>Yes</Trans>
             </Button>
             <Button
               color='primary'
               variant='outlined'
               onClick={() => {props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose();}}>
-                No
+              <Trans>No</Trans>
             </Button>
           </div>
         </div>

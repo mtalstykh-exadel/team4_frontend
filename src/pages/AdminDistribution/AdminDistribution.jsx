@@ -4,7 +4,7 @@ import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePag
 import { rows } from "../../testData/rowsForAdminDistribution.js";
 import { coaches } from "../../testData/Coaches.js";
 import PropTypes from "prop-types";
-import './adminDistribution.scss';
+import './AdminDistribution.scss';
 
 const AdminDistribution = (props) => {
   const columns = [

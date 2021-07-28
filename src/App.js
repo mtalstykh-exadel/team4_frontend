@@ -8,7 +8,7 @@ import Profile from './pages/profile/profile';
 import Main from './pages/main/main';
 import Page404 from "./pages/Page404/Page404";
 import EditTests from './pages/editTests/editTests';
-import AdminDistribution from './pages/adminDistribution/adminDistribution';
+import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 import '../src/styles/modal.scss';
 
 import { useDispatch } from 'react-redux';
