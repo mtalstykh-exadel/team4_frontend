@@ -45,10 +45,6 @@ msgstr "Log out of account?"
 msgid "Logout"
 msgstr "Logout"
 
-#: src/components/LoginForm/LoginForm.jsx:42
-#~ msgid "Mail"
-#~ msgstr "Mail"
-
 #: src/components/header/logoutModal/logoutModal.js:34
 msgid "No"
 msgstr "No"
@@ -116,7 +112,3 @@ msgstr "No new notificiations for you"
 #: src/pages/main/main.jsx:13
 msgid "testLevel"
 msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
-
-#: src/components/LoginForm/LoginForm.jsx:45
-#~ msgid "{0}"
-#~ msgstr "{0}"
