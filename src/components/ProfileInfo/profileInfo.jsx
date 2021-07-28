@@ -7,7 +7,6 @@ const ProfileInfo = () => {
 
   const avatar = useSelector((state) => state.profile.avatar);
   const fullname = useSelector((state) => state.jwt.name);
-  const occupation = useSelector((state) => state.profile.occupation);
   const email = useSelector((state) => state.jwt.sub);
 
   return (
@@ -15,7 +14,6 @@ const ProfileInfo = () => {
       {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
       <div className='profileData'>
         {fullname ? <h2 className='fullname'>{fullname}</h2> : null}
-        {occupation ? <p className='occupation'>{occupation}</p> : null}
         {email ? <p className='email'> <b>E-mail: </b>{email} </p> : null}
       </div>
     </div>

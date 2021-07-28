@@ -28,7 +28,6 @@ export const removeJWT = () => {
 
 export const fetchLoginData = (data) => (dispatch, getState) => {
   const auth = getState();
-debugger;
   if (auth.auth.isAuth && (auth.auth.loading || auth.auth.error)) {
     return;
   }

@@ -9,7 +9,7 @@ const Login = () => {
   const auth = useSelector((state) => state.auth.isAuth);
   if (auth) return <Redirect to='/' />;
   return (
-    <div className='wrapper'>
+    <div className='loginWrapper'>
       <div className='loginRow'>
         <img src={logo} alt="" className='logo' />
         <LoginForm />
