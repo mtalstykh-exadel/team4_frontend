@@ -3,7 +3,7 @@ import '../../styles/theme.scss';
 import React from "react";
 
 import { PropTypes } from "prop-types";
-import Header from '../../components/header/header';
+import Header from '../header/header';
 
 const Layout = ({ pageWrapperClass, children }) => {
   return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 
 import { Menu, MenuItem, Switch } from '@material-ui/core';
-import { themeChange } from '../../../store/actions/headerActions';
+import { themeChange } from '../../../store/actions/themeActions';
 
 import { Trans } from "@lingui/macro";
 
