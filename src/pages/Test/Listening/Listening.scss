@@ -1,0 +1,27 @@
+.listening-step {
+  .audio {
+    padding-top: 22px;
+    padding-bottom: 5px;
+  }
+
+  .number {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .sentence {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .option {
+    padding-top: 13px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .step-description.grammar {
+    display: none;
+  }
+}

@@ -1,11 +1,9 @@
 import { React, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import { AppBar, Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer } from '@material-ui/core';
 
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MenuIcon from '@material-ui/icons/Menu';
 
 import './header.scss';
@@ -19,13 +17,11 @@ import LogoutModal from './logoutModal/logoutModal';
 import DrawerMenu from './drawerMenu/drawerMenu';
 import LanguageMenu from './languageDropdown/languageDropdown';
 import Notifications from './notificationsDropdown/notificationsDropdown';
+import UserNavigation from './userNavigation/userNavigation';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
-  const location = useLocation();
 
-  const role = useSelector((state) => state.role);
-  const shorthand = useSelector((state) => state.language).substring(0,2);
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
@@ -66,15 +62,6 @@ const Header = () => {
   const handleNotificationsClose = () => setState({
     notificationsEl: null
   });
-  const linkBtn = (path, name) => (
-    <Button
-      disableElevation
-      className={`${location.pathname === path ? 'bold' : null} 'roleBtns'`}
-      component={Link}
-      to={path}>
-      {name}
-    </Button>
-  );
 
   return (
     <AppBar
@@ -100,9 +87,9 @@ const Header = () => {
             </Drawer>
           </>}
           { matches && <img src={logoText} alt='logo' className='logoText'/> }
-          { role === 'hr' && matches && <>{linkBtn('/employees','Employees')}</>}
-          { role === 'admin' && matches && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-          { role === 'coach' && matches && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
+          { matches &&
+            <UserNavigation
+              roleBtns={'roleBtns'}/>}
         </div>
         { !matches && <img src={logo} alt="logo" className={'logo'}/> }
         <div className='toolbar-sideRight'>
@@ -135,7 +122,7 @@ const Header = () => {
             <Button
               className='bold'
               onClick={handleLanguage}>
-              {shorthand}
+              {localStorage.getItem('lang')}
               <ArrowDropDownIcon
                 className='icons-triangle'/>
             </Button>

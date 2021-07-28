@@ -1,0 +1,40 @@
+.speaking-step {
+  .microphone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+    background-color: #3e6dd7;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .microphone-off {
+    background-color: #d7463e;
+  }
+
+  .speaking-topic {
+    font-size: 24px;
+    padding-top: 15px;
+    padding-bottom: 55px;
+  }
+
+  .invisible-button {
+    display: none;
+  }
+
+  .audio-speaking-timer {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 9px;
+  }
+
+  .microphone-item {
+    fill: #fff;
+    margin: 0 auto;
+    color: white;
+  }
+}
