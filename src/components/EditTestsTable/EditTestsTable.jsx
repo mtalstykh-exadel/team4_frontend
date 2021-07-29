@@ -4,7 +4,7 @@ import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
+import { archiveQuestion, requestQuestionsList } from '../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 export const EditTestsTable = (props) => {
