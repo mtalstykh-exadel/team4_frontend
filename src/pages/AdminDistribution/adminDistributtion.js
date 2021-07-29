@@ -6,6 +6,7 @@ const AssignTest = (id) => {
     if (buttonAssign.classList.contains("buttonDeassign")) {
       buttonAssign.textContent = 'assign';
     }
+    selectNames.classList.toggle('selectCoachNames--disabled');
     buttonAssign.classList.toggle('buttonDeassign');
   }
 };

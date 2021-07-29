@@ -77,7 +77,6 @@ const AdminDistribution = (props) => {
                                   native
                                   variant="outlined"
                                   defaultValue="placeholder"
-                                  color="red"
                                 >
                                   <option aria-label="None" value="placeholder">name</option>
                                   {coaches.map((coachName) => {

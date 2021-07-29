@@ -34,4 +34,13 @@
     background-color: #7a7a7a18;
     border-color: #3a3a3a;
   }
+
+  .selectCoachNames--disabled {
+    color: #828282;
+    pointer-events: none;
+  }
+
+  .selectCoachNames--disabled:focus {
+    background-color: rgba(255, 255, 255, 0);
+  }
 }
