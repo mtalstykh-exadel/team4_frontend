@@ -30,6 +30,12 @@
     margin-right: 23px;
   }
 
+  @media only screen and (max-width: 800px) {
+    .player-time {
+      margin-top: 10px;
+    }
+  }
+
   .player-button:hover {
     border-radius: 4px;
     background-color: rgba(62, 109, 215, 0.05);

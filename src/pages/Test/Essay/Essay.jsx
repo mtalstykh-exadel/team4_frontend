@@ -10,7 +10,7 @@ const Essay = () => {
   };
 
   return (
-    <>
+    <div className="essay-step">
       <div className="step-description">Write an essay on a given topic</div>
       <div className="essay-topic">Essay Topic</div>
       <TextField
@@ -35,7 +35,7 @@ const Essay = () => {
         inputProps={{ maxLength: 512 }}
       />
       <div className="essay-characters">{characters.length} out of 512 characters</div>
-    </>
+    </div>
   );
 };
 
