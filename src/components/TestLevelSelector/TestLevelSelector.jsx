@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React from 'react';
-import TestLevelsSelectorItem from './testLevelSelectorItem/testLevelSelectorItem';
-import './testLevelSelector.scss';
+import TestLevelsSelectorItem from './TestLevelSelectorItem/TestLevelSelectorItem';
+import './TestLevelSelector.scss';
 
 const TestLevelsSelector = () => {
 

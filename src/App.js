@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/Profile/Profile';
-import Main from './pages/main/main';
+import Main from './pages/Main/Main';
 import Page404 from "./pages/Page404/Page404";
 import { TestsForVerification, EditTests } from './pages';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
