@@ -20,5 +20,18 @@
 
   .buttonAssign {
     min-width: 127px;
+    font-weight: bold;
+  }
+
+  .buttonDeassign {
+    min-width: 127px;
+    color: black;
+    border-color: #828282;
+    font-weight: bold;
+  }
+
+  .buttonDeassign:hover {
+    background-color: #7a7a7a18;
+    border-color: #3a3a3a;
   }
 }
