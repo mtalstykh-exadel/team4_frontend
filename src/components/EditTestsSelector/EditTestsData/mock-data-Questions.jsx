@@ -1,4 +1,4 @@
-const Questions = [
+const questions = [
   {
     question: 'She is the best ... .',
     id: 1245786,
@@ -121,4 +121,4 @@ const Questions = [
   },
 ];
 
-export { Questions };
+export { questions };
