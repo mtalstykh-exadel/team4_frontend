@@ -12,11 +12,11 @@ const Grammar = ({ tasks }) => {
       return (
         <div key={questionItem.option} className="test-question-option">
           <input
+            id={questionItem.option + questionCount}
             type="radio"
             name={"group-" + questionCount}
-            value={questionItem.option}
           />
-          <label> {questionItem.option}</label>
+          <label htmlFor={questionItem.option + questionCount}> {questionItem.option}</label>
         </div>
       );
     });
