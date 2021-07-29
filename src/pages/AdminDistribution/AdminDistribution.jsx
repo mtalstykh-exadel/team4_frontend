@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Layout from '../../components/Layout/Layout.js';
+import Layout from "../../components/Layout/Layout.js";
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
 import { rows } from "../../testData/rowsForAdminDistribution.js";
 import { coaches } from "./Coaches.js";
 import PropTypes from "prop-types";
-import './AdminDistribution.scss';
+import "./AdminDistribution.scss";
+import { AssignTest } from "./adminDistributtion.js";
 
 const AdminDistribution = (props) => {
   const columns = [
@@ -57,9 +58,9 @@ const AdminDistribution = (props) => {
               <TableBody>
                 {filteredRows
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
+                  .map((row, index) => {
                     return (
-                      <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      <TableRow hover role="checkbox" tabIndex={-1} key={index} >
                         {columns.map((column) => {
                           const value = row[column.id];
                           keysForColumns++;
@@ -71,6 +72,7 @@ const AdminDistribution = (props) => {
                             >
                               {column.id === "Coach" ? (
                                 <Select
+                                  id={"item-" + index + "-select"}
                                   className="selectCoachNames"
                                   native
                                   variant="outlined"
@@ -93,10 +95,14 @@ const AdminDistribution = (props) => {
 
                               {column.id === "action" ? (
                                 <Button
+                                  id={"item-" + index + "-button"}
                                   className="buttonAssign"
                                   variant="outlined"
                                   color="primary"
                                   size="small"
+                                  onClick={() => {
+                                    AssignTest("item-" + index);
+                                  }}
                                 >
                                   {value}
                                 </Button>
