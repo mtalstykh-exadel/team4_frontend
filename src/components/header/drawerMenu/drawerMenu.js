@@ -12,8 +12,7 @@ import { switchLang } from '../../../utils/lang-service';
 import { themeChange } from '../../../store/actions/themeActions';
 import UserNavigation from '../userNavigation/userNavigation';
 
-// import image as an avatar for profile icon
-import avatar from '../../../assets/images/logo/logoText.svg';
+import avatar from '../../../assets/images/goose.svg';
 
 const DrawerMenu = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const DrawerMenu = (props) => {
   const darktheme = useSelector((state) => state.darktheme);
 
   return (
-    <div className={`drawer ${darktheme ? 'theme-dark' : 'theme-light'}`}>
+    <div className='drawer theme-wrapper'>
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>
@@ -34,7 +33,7 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatarHeader icons-color'
+            className='avatarDrawer icons-color'
             src={avatar}/>
         </IconButton>
       </div>
@@ -72,8 +71,8 @@ const DrawerMenu = (props) => {
         </Button>
       </div>
       <Divider/>
-      <div className='drawerSplit'>
-        Dark mode
+      <div className='drawerSplit font-primary'>
+        <Trans>Dark mode</Trans>
         <Switch
           size='small'
           checked={Boolean(darktheme)}

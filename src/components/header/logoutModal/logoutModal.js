@@ -1,7 +1,6 @@
 import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
 import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
 
@@ -11,11 +10,10 @@ import { logoutActions } from '../../../store/actions/logoutActions';
 
 const LogoutModal = (props) => {
   const dispatch = useDispatch();
-  const darktheme = useSelector((state) => state.darktheme);
 
   return (
     <Modal
-      className={`modal ${darktheme ? 'theme-dark' : 'theme-light'} base-color`}
+      className='modal'
       BackdropComponent={Backdrop}
       open={Boolean(props.logoutEl)}
       onClose={props.handleAccClose}>

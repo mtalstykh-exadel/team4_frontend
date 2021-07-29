@@ -31,10 +31,10 @@ const Test = () => {
 
   return (
     <Layout>
-      <div className="test-page">
+      <div className="test-page font-primary">
         <div className="test-navigation-wrapper">
           <div
-            className={step === 0 ? "test-step active" : "test-step"}
+            className={`${step === 0 ? "test-step active" : "test-step"}`}
             onClick={() => {
               setStep(0);
               setNextButtonText("Next step");
@@ -79,7 +79,7 @@ const Test = () => {
         <div className="buttons-wrapper">
           <div className="test-buttons">
             <Button
-              className={prevButtonClass}
+              className={`${prevButtonClass} primary-outlined`}
               color="primary"
               variant="outlined"
               onClick={() => {
@@ -98,7 +98,7 @@ const Test = () => {
               Previous step
             </Button>
             <Button
-              className="next-step-button"
+              className="next-step-button primary-contained"
               color="primary"
               variant="contained"
               onClick={() => {

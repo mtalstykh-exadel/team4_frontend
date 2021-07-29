@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-import { AppBar,Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer} from '@material-ui/core';
+import { AppBar,Toolbar , Button, IconButton, Avatar, Badge, useMediaQuery, Drawer, Box } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
@@ -11,7 +11,7 @@ import './header.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
 import logoText from '../../assets/images/logo/logoText.svg';
-import avatar from '../../assets/images/logo/logoText.svg';
+import avatar from '../../assets/images/goose.svg';
 
 import AccountMenu from './accountDropdown/accountDropdown';
 import LogoutModal from './logoutModal/logoutModal';
@@ -22,7 +22,6 @@ import UserNavigation from './userNavigation/userNavigation';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
-  const darktheme = useSelector((state) => state.darktheme);
   const [states, setState] = useState({
     accumulatorEl: null,
     languageEl: null,
@@ -75,17 +74,17 @@ const Header = () => {
       elevation={1}
       position='static'>
       <div className='toolbar-wrapper'>
-        <Toolbar className= {`${darktheme ? 'theme-dark' : 'theme-light'} toolbar`}>
+        <Toolbar className= 'toolbar'>
           <div className='toolbar-sideLeft'>
             {!matches && <>
               <IconButton
                 edge='start'
                 aria-haspopup='true'
                 onClick={() => handleDrawer(true)}>
-                <MenuIcon/>
+                <MenuIcon className='icons-color'/>
               </IconButton>
               <Drawer
-                className = {`${darktheme ? 'theme-dark' : 'theme-light'}`}
+                elevation={2}
                 anchor={'left'}
                 open={states.drawerEl}
                 onClose={() => handleDrawer(false)}>
@@ -94,12 +93,18 @@ const Header = () => {
                   handleDrawer={() => handleDrawer(false)}/>}
               </Drawer>
             </>}
-            { matches && <img src={logoText} alt='logo' className='logoText'/> }
+            { matches &&
+              <Box className='logo-wrapper' component={Link} to={'/'}>
+                <img src={logoText} alt='logo' className='logoText'/>
+              </Box> }
             { matches &&
               <UserNavigation
                 roleBtns={'roleBtns'}/>}
           </div>
-          { !matches && <img src={logo} alt="logo" className={'logo'}/> }
+          { !matches &&
+          <Box component={Link} to={'/'}>
+            <img src={logo} alt='logo' className={'logo'}/>
+          </Box>}
           <div className='toolbar-sideRight'>
             <IconButton
               edge='start'
@@ -110,7 +115,7 @@ const Header = () => {
                 classes={{ badge: 'notifications-color' }}
                 overlap='circular'
                 variant='dot'>
-                <NotificationsNoneIcon/>
+                <NotificationsNoneIcon className='icons-color'/>
               </Badge>
             </IconButton>
             { matches &&
@@ -128,7 +133,7 @@ const Header = () => {
                   className='icons-triangle icons-color'/>
               </IconButton>
               <Button
-                className='bold'
+                className='bold font-primary'
                 onClick={handleLanguage}>
                 {localStorage.getItem('lang')}
                 <ArrowDropDownIcon

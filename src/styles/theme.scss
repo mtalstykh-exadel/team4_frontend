@@ -1,201 +1,151 @@
-/* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-duplicate-selectors */
 
 body {
-  .theme-light {
-    $base-color: #fff;
-    $primary-color: #3e6dd7;
-    $secondary-color: #828282;
-    $notifications-color: #6fff97;
-    $icons-color: #000;
-    $font-color-primary: #000;
-    $font-color-secondary: #fff;
+  --base-color: #fff;
+  --base-color-elevation: #fff;
+  --primary-color: #3e6dd7;
+  --primary-color-rgb: 62, 109, 215;
+  --secondary-color: #828282;
+  --notifications-color: #6fff97;
+  --icons-color: #000;
+  --font-color-primary: #000;
+  --font-color-secondary: #fff;
+  --border-color: 189, 189, 189;
+}
 
-    color: $font-color-primary;
+body[data-theme='dark'] {
+  --base-color: #22272e;
+  --base-color-elevation: #30363d;
+  --primary-color: #3e6dd7;
+  --primary-color-rgb: 62, 109, 215;
+  --secondary-color: #828282;
+  --notifications-color: #6fff97;
+  --icons-color: #fff;
+  --font-color-primary: #adb6c3;
+  --font-color-secondary: #fff;
+  --border-color: 189, 189, 189;
+}
 
-    .bold {
-      font-weight: bold;
-    }
+body {
 
-    // font color
+  // font color
 
-    .font-primary {
-      color: $font-color-primary;
-    }
+  color: var(--font-color-primary);
 
-    .font-secondary {
-      color: $font-color-secondary;
-    }
+  .font-primary {
+    color: var(--font-color-primary);
+  }
 
-    .font-color {
-      color: $primary-color;
-    }
+  .font-secondary {
+    color: var(--font-color-secondary);
+  }
 
-    // background color
+  .font-color {
+    color: var(--primary-color);
+  }
 
-    .base-color {
-      background-color: $base-color;
-    }
+  .bold {
+    font-weight: bold;
+  }
 
-    // buttons color
+  // background color
 
-    .primary-contained {
-      background-color: $primary-color;
-      color: $font-color-secondary;
+  .base-color {
+    background-color: var(--base-color);
+  }
 
-      &:hover {
-        background-color: rgba($primary-color, 0.9);
-      }
-    }
+  .base-color-elevated {
+    background-color: var(--base-color-elevation);
+  }
 
-    .primary-outlined {
-      border-color: $primary-color;
-      color: $primary-color;
-    }
+  // buttons color
 
-    .secondary-contained {
-      border-color: $secondary-color;
-      color: $base-color;
-    }
+  .primary-contained {
+    background-color: var(--primary-color);
+    color: var(--font-color-secondary);
 
-    .secondary-outlined {
-      border-color: $secondary-color;
-      color: $secondary-color;
-    }
-
-    // icons color
-
-    .icons-color {
-      fill: $icons-color;
-    }
-
-    .notifications-color {
-      background-color: $notifications-color;
-    }
-
-    // misc
-
-    &:hover .MuiOutlinedInput-root {
-      &.Mui-focused fieldset {
-        border-color: $primary-color;
-      }
-
-      &:hover fieldset {
-        border-color: $primary-color;
-      }
-    }
-
-    :hover .MuiFormLabel-root {
-      &.Mui-focused {
-        color: $primary-color;
-      }
-    }
-
-    .MuiSwitch-root {
-      &.Mui-checked {
-        color: $primary-color;
-      }
-
-      &.MuiSwitch-track {
-        background-color: $primary-color;
-      }
-    }
-
-    .MuiPaper-root {
-      background-color: $base-color;
+    &:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.8);
     }
   }
 
-  .theme-dark {
-    $base-color: rgb(75, 75, 75);
-    $primary-color: #3e6dd7;
-    $secondary-color: #828282;
-    $notifications-color: #6fff97;
-    $icons-color: #fff;
-    $font-color-primary: #fff;
-    $font-color-secondary: #fff;
+  .primary-outlined {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+  }
 
-    color: $font-color-primary;
+  .secondary-contained {
+    border-color: var(--secondary-color);
+    color: var(--base-color);
+  }
 
-    .bold {
-      font-weight: bold;
-    }
+  .secondary-outlined {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+  }
 
-    .font-primary {
-      color: $font-color-primary;
-    }
+  // icons color
 
-    .font-secondary {
-      color: $font-color-secondary;
-    }
+  .icons-color {
+    fill: var(--icons-color);
+  }
 
-    .font-color {
-      color: $primary-color;
-    }
+  .notifications-color {
+    background-color: var(--notifications-color);
+  }
 
-    .base-color {
-      background-color: $base-color;
-    }
+  // misc
 
-    .primary-contained {
-      background-color: $primary-color;
-      color: $font-color-secondary;
-
-      &:hover {
-        background-color: rgba($primary-color, 0.9);
+  .theme-wrapper {
+    :hover .MuiInputLabel-root {
+      &.Mui-focused {
+        color: var(--primary-color);
       }
     }
 
-    .primary-outlined {
-      border-color: $primary-color;
-      color: $primary-color;
+    .MuiSelect-icon {
+      fill: var(--icons-color);
     }
 
-    .secondary-contained {
-      border-color: $secondary-color;
-      color: $base-color;
-    }
-
-    .secondary-outlined {
-      border-color: $secondary-color;
-      color: $secondary-color;
-    }
-
-    .icons-color {
-      fill: $icons-color;
-    }
-
-    .notifications-color {
-      background-color: $notifications-color;
-    }
-
-    &:hover .MuiOutlinedInput-root {
-      &.Mui-focused fieldset {
-        border-color: $primary-color;
-      }
-
-      &:hover fieldset {
-        border-color: $primary-color;
-      }
+    :hover .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
     }
 
     :hover .MuiFormLabel-root {
       &.Mui-focused {
-        color: $primary-color;
+        color: var(--primary-color);
       }
     }
 
     .MuiSwitch-root {
-      & .Mui-checked {
-        color: $primary-color;
+      .MuiSwitch-switchBase {
+        color: var(--primary-color);
       }
 
-      & .MuiSwitch-track {
-        background-color: $primary-color;
+      .Mui-checked {
+        color: var(--primary-color);
+      }
+
+      .MuiSwitch-track {
+        background-color: var(--primary-color);
       }
     }
+  }
 
-    .MuiPaper-root {
-      background-color: $base-color;
+  .MuiPaper-root {
+    background-color: var(--base-color);
+
+    &.MuiPaper-elevation1 {
+      border-bottom: 1px solid rgba(var(--border-color), 0.5);
     }
+
+    &.MuiPaper-elevation2 {
+      background-color: var(--base-color-elevation);
+      border: 1px solid rgba(var(--border-color), 0.5);
+    }
+  }
+
+  .MuiDivider-root {
+    background-color: rgba(var(--border-color), 0.5);
   }
 }

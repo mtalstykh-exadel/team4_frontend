@@ -1,6 +1,5 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Menu, Typography, Button } from '@material-ui/core';
@@ -11,7 +10,6 @@ import { Trans } from '@lingui/macro';
 import notificationsData from '../data/dummyData';
 
 const Notifications = (props) => {
-  const darktheme = useSelector((state) => state.darktheme);
 
   const notificationsAssign = (item) => (
     <>
@@ -65,8 +63,8 @@ const Notifications = (props) => {
 
   return (
     <Menu
-      className={`notifications-dropdown-menu ${darktheme ? 'theme-dark' : 'theme-light'} base-color`}
-      elevation={1}
+      className='notifications-dropdown-menu'
+      elevation={2}
       anchorEl={props.notifEl}
       open={Boolean(props.notifEl)}
       onClose={props.handleNotifClose}

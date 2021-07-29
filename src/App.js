@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
@@ -18,11 +17,10 @@ import { tokenTimeout } from './store/actions/tokenTimeout';
 
 const App = () => {
   const dispatch = useDispatch();
-  const darktheme = useSelector((state) => state.darktheme);
   dispatch(tokenTimeout());
 
   return (
-    <div className={`App ${darktheme ? 'theme-dark' : 'theme-light'}`}>
+    <div className='App theme-wrapper'>
       <Switch>
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>

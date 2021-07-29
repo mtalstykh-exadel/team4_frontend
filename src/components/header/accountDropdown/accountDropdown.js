@@ -14,8 +14,8 @@ const AccountMenu = (props) => {
 
   return (
     <Menu
-      className={`${darktheme ? 'theme-dark' : 'theme-light'} base-color`}
-      elevation={1}
+      className='theme-wrapper'
+      elevation={2}
       anchorEl={props.accEl}
       open={Boolean(props.accEl)}
       keepMounted
@@ -37,7 +37,7 @@ const AccountMenu = (props) => {
         <Trans>Profile</Trans>
       </MenuItem>
       <MenuItem className='font-primary'>
-          Dark mode
+        <Trans>Dark mode</Trans>
         <Switch
           size='small'
           checked={Boolean(darktheme)}
