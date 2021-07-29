@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import React from 'react';
-import TestLevelsSelectorItem from './TestLevelSelectorItem/TestLevelSelectorItem';
+import { TestLevelsSelectorItem } from './TestLevelSelectorItem/TestLevelSelectorItem';
 import './TestLevelSelector.scss';
 
-const TestLevelsSelector = () => {
+export const TestLevelSelector = () => {
 
   const testLevelsData = [
     {
@@ -50,5 +50,3 @@ const TestLevelsSelector = () => {
     </div>
   );
 };
-
-export default TestLevelsSelector;

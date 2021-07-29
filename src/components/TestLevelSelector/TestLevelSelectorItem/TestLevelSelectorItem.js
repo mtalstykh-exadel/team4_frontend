@@ -6,7 +6,7 @@ import "./TestLevelSelectorItem.scss";
 
 import { Trans } from '@lingui/macro';
 
-const TestLevelsSelectorItem = ({ title, description }) => {
+export const TestLevelsSelectorItem = ({ title, description }) => {
 
   return (
     <div className="test-level-selector-item">
@@ -30,5 +30,3 @@ TestLevelsSelectorItem.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
-
-export default TestLevelsSelectorItem;
