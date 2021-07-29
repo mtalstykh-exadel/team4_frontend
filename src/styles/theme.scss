@@ -1,6 +1,6 @@
-/* stylelint-disable no-duplicate-selectors */
+/* stylelint-disable no-descending-specificity */
 
-body {
+body[theme='light'] {
   --base-color: #fff;
   --base-color-elevation: #fff;
   --primary-color: #3e6dd7;
@@ -13,7 +13,7 @@ body {
   --border-color: 189, 189, 189;
 }
 
-body[data-theme='dark'] {
+body[theme='dark'] {
   --base-color: #22272e;
   --base-color-elevation: #30363d;
   --primary-color: #3e6dd7;
@@ -105,6 +105,10 @@ body {
 
     .MuiSelect-icon {
       fill: var(--icons-color);
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
     }
 
     :hover .MuiOutlinedInput-notchedOutline {

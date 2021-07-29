@@ -13,11 +13,10 @@ import EditTests from './pages/editTests/editTests';
 import Test from "./pages/Test/Test";
 import '../src/styles/modal.scss';
 import { useDispatch } from 'react-redux';
-import { tokenTimeout } from './store/actions/tokenTimeout';
-
+import { initApp } from './store/actions/initActions/initActions';
 const App = () => {
   const dispatch = useDispatch();
-  dispatch(tokenTimeout());
+  dispatch(initApp());
 
   return (
     <div className='App theme-wrapper'>

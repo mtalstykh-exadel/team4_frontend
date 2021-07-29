@@ -1,16 +1,14 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useDispatch ,useSelector } from 'react-redux';
 
-import { Menu, MenuItem, Switch } from '@material-ui/core';
-import { themeChange } from '../../../store/actions/themeActions';
+import { Menu, MenuItem } from '@material-ui/core';
+
+import ThemeSwitch from '../themeSwitch/themeSwitch';
 
 import { Trans } from "@lingui/macro";
 
 const AccountMenu = (props) => {
-  const darktheme = useSelector((state) => state.darktheme);
-  const dispatch = useDispatch();
 
   return (
     <Menu
@@ -38,10 +36,7 @@ const AccountMenu = (props) => {
       </MenuItem>
       <MenuItem className='font-primary'>
         <Trans>Dark mode</Trans>
-        <Switch
-          size='small'
-          checked={Boolean(darktheme)}
-          onChange={() => {dispatch(themeChange(!darktheme));}}/>
+        <ThemeSwitch/>
       </MenuItem>
       <MenuItem
         className='font-primary'

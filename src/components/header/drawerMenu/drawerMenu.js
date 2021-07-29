@@ -1,23 +1,21 @@
 import { React } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Divider, Button, Avatar, IconButton, Switch } from '@material-ui/core';
+import { Divider, Button, Avatar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from "@lingui/macro";
 
 import { switchLang } from '../../../utils/lang-service';
-import { themeChange } from '../../../store/actions/themeActions';
 import UserNavigation from '../userNavigation/userNavigation';
+import ThemeSwitch from '../themeSwitch/themeSwitch';
 
 import avatar from '../../../assets/images/goose.svg';
 
 const DrawerMenu = (props) => {
-  const dispatch = useDispatch();
   const role = useSelector((state) => state.jwt.role);
-  const darktheme = useSelector((state) => state.darktheme);
 
   return (
     <div className='drawer theme-wrapper'>
@@ -73,10 +71,7 @@ const DrawerMenu = (props) => {
       <Divider/>
       <div className='drawerSplit font-primary'>
         <Trans>Dark mode</Trans>
-        <Switch
-          size='small'
-          checked={Boolean(darktheme)}
-          onChange={() => {dispatch(themeChange(!darktheme));}}/>
+        <ThemeSwitch/>
       </div>
     </div>);
 };
