@@ -1,8 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import './App.scss';
 import '../src/styles/theme.scss';
+import '../src/styles/modal.scss';
 
 import Login from './pages/Login/Login';
 import PrivateRoute from './utils/privateRoute';
@@ -12,9 +14,9 @@ import Page404 from "./pages/Page404/Page404";
 import { TestsForVerification, EditTests } from './pages';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 import Test from "./pages/Test/Test";
-import '../src/styles/modal.scss';
-import { useDispatch } from 'react-redux';
+
 import { initApp } from './store/actions/initActions/initActions';
+
 const App = () => {
   const dispatch = useDispatch();
   dispatch(initApp());

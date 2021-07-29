@@ -2,6 +2,7 @@ import { React } from 'react';
 import { useDispatch ,useSelector } from 'react-redux';
 
 import { Switch } from '@material-ui/core';
+
 import { themeChange } from '../../../store/actions/themeActions';
 
 const ThemeSwitch = () => {
