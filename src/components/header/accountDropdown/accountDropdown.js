@@ -12,7 +12,6 @@ const AccountMenu = (props) => {
 
   return (
     <Menu
-      className='theme-wrapper'
       elevation={2}
       anchorEl={props.accEl}
       open={Boolean(props.accEl)}

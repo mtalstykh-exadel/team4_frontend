@@ -18,7 +18,7 @@ const DrawerMenu = (props) => {
   const role = useSelector((state) => state.jwt.role);
 
   return (
-    <div className='drawer theme-wrapper'>
+    <div className='drawer'>
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>

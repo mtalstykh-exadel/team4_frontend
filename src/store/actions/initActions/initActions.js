@@ -1,4 +1,4 @@
-import { tokenTimeout } from '../tokenTimeout';
+import { tokenTimeout } from '../checkTokenTimeout';
 import { themeChange } from '../themeActions';
 
 export const initApp = () => (dispatch) => {

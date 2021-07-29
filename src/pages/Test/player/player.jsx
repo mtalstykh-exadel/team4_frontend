@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Paper from '@material-ui/core/Paper';
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import PauseIcon from "@material-ui/icons/Pause";
@@ -67,8 +68,11 @@ const Player = ({ src, audioDuration, id }) => {
   }
 
   return (
-    <div className="player">
-      <div
+    <Paper
+      elevation={2}
+      className="player">
+      <Paper
+        elevation={2}
         className={
           showVolumeChanger === true ? "volume-changer" : "invisible"
         }
@@ -82,18 +86,18 @@ const Player = ({ src, audioDuration, id }) => {
           max="100"
           defaultValue="30"
         />
-      </div>
+      </Paper>
       <button className="player-button">
         {audioOn === false ? (
           <PlayArrowIcon
-            color="primary"
+            className = "icons-color-primary"
             fontSize="medium"
             onClick={AudioController}
             alt="play"
           />
         ) : (
           <PauseIcon
-            color="primary"
+            className = "icons-color-primary"
             fontSize="medium"
             onClick={AudioStop}
             alt="play"
@@ -110,13 +114,13 @@ const Player = ({ src, audioDuration, id }) => {
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + "%" }}
-          className="progress-line"
+          className="progress-line primary-outlined"
         />
         <div className="progress" />
       </div>
       <button className="player-button">
         <VolumeUpIcon
-          color="action"
+          className='icons-color'
           fontSize="medium"
           onClick={() => {
             if (showVolumeChanger === false) {
@@ -128,7 +132,7 @@ const Player = ({ src, audioDuration, id }) => {
           alt="volume"
         />
       </button>
-    </div>
+    </Paper>
   );
 };
 

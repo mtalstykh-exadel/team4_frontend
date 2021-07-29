@@ -10,7 +10,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import './header.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
-import logoText from '../../assets/images/logo/logoText.svg';
 import avatar from '../../assets/images/goose.svg';
 
 import AccountMenu from './accountDropdown/accountDropdown';
@@ -94,15 +93,19 @@ const Header = () => {
               </Drawer>
             </>}
             { matches &&
-              <Box className='logo-wrapper' component={Link} to={'/'}>
-                <img src={logoText} alt='logo' className='logoText'/>
+              <Box className='logo-text-wrapper' component={Link} to={''}>
+                <img src={logo} alt='logo'/>
+                <div className='logo-text font-primary bold'>
+                  Untitled Testing <br/>
+                  System
+                </div>
               </Box> }
             { matches &&
               <UserNavigation
                 roleBtns={'roleBtns'}/>}
           </div>
           { !matches &&
-          <Box component={Link} to={'/'}>
+          <Box className='logo-wrapper-small' component={Link} to={'/'}>
             <img src={logo} alt='logo' className={'logo'}/>
           </Box>}
           <div className='toolbar-sideRight'>

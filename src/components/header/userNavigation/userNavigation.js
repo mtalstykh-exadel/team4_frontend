@@ -11,10 +11,9 @@ import { Trans } from "@lingui/macro";
 const UserNavigation = (props) => {
   const location = useLocation();
   const role = useSelector((state) => state.jwt.role);
-  const darktheme = useSelector((state) => state.darktheme);
 
   return (
-    <div className={`${darktheme ? 'theme-dark' : 'theme-light'}`}>
+    <>
       {role === 'ROLE_HR' && <>
         <Button
           disableElevation
@@ -56,7 +55,7 @@ const UserNavigation = (props) => {
           <Trans>Distribution of tests</Trans>
         </Button>
       </>}
-    </div>
+    </>
   );
 };
 

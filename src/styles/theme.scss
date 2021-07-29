@@ -11,6 +11,8 @@ body[theme='light'] {
   --font-color-primary: #000;
   --font-color-secondary: #fff;
   --border-color: 189, 189, 189;
+  --backdrop-color: 11, 36, 92;
+  --error-color: #eb4034;
 }
 
 body[theme='dark'] {
@@ -24,6 +26,8 @@ body[theme='dark'] {
   --font-color-primary: #adb6c3;
   --font-color-secondary: #fff;
   --border-color: 189, 189, 189;
+  --backdrop-color: 255, 255, 255;
+  --error-color: #eb4034;
 }
 
 body {
@@ -31,6 +35,7 @@ body {
   // font color
 
   color: var(--font-color-primary);
+  background-color: var(--base-color);
 
   .font-primary {
     color: var(--font-color-primary);
@@ -42,6 +47,10 @@ body {
 
   .font-color {
     color: var(--primary-color);
+  }
+
+  .font-warning {
+    color: var(--error-color);
   }
 
   .bold {
@@ -58,6 +67,13 @@ body {
     background-color: var(--base-color-elevation);
   }
 
+  .base-color-error {
+    background-color: var(--error-color);
+  }
+
+  .base-color-secondary {
+    background-color: var(--secondary-color);
+  }
   // buttons color
 
   .primary-contained {
@@ -90,38 +106,18 @@ body {
     fill: var(--icons-color);
   }
 
+  .icons-color-primary {
+    fill: var(--primary-color);
+  }
+
   .notifications-color {
     background-color: var(--notifications-color);
   }
 
   // misc
 
-  .theme-wrapper {
-    :hover .MuiInputLabel-root {
-      &.Mui-focused {
-        color: var(--primary-color);
-      }
-    }
-
-    .MuiSelect-icon {
-      fill: var(--icons-color);
-    }
-
-    .MuiOutlinedInput-notchedOutline {
-      border-color: var(--secondary-color);
-    }
-
-    :hover .MuiOutlinedInput-notchedOutline {
-      border-color: var(--secondary-color);
-    }
-
-    :hover .MuiFormLabel-root {
-      &.Mui-focused {
-        color: var(--primary-color);
-      }
-    }
-
-    .MuiSwitch-root {
+  .MuiSwitch-root {
+    &.MuiSwitch-sizeSmall {
       .MuiSwitch-switchBase {
         color: var(--primary-color);
       }
@@ -133,6 +129,52 @@ body {
       .MuiSwitch-track {
         background-color: var(--primary-color);
       }
+    }
+  }
+
+  .MuiInputBase-root {
+    .MuiSelect-root {
+      border-color: var(--secondary-color);
+    }
+
+    .MuiSelect-root option {
+      background-color: var(--base-color-elevation);
+    }
+
+    .MuiSelect-icon {
+      fill: var(--icons-color);
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
+    }
+  }
+
+  .MuiFormControl-root {
+    .MuiFormLabel-root {
+      &.Mui-focused {
+        color: var(--primary-color);
+      }
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
+    }
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
+    }
+
+    &.Mui-focused .MuiOutlinedInput-notchedOutline {
+      border-color: var(--secondary-color);
     }
   }
 
@@ -151,5 +193,9 @@ body {
 
   .MuiDivider-root {
     background-color: rgba(var(--border-color), 0.5);
+  }
+
+  .MuiBackdrop-root {
+    background-color: rgba(var(--backdrop-color), 0.25);
   }
 }

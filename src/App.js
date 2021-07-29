@@ -22,7 +22,7 @@ const App = () => {
   dispatch(initApp());
 
   return (
-    <div className='App theme-wrapper'>
+    <div className='App'>
       <Switch>
         <Route path='/login' render={() => <Login />} />
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
