@@ -25,7 +25,7 @@ const App = () => {
         <PrivateRoute path="/profile"><Profile /></PrivateRoute>
         <PrivateRoute path="/" exact><Main /></PrivateRoute>
         <PrivateRoute path="/edit-tests" ><EditTests /></PrivateRoute>
-        <PrivateRoute path="/verifytests" ><TestsForVerification /></PrivateRoute>
+        <PrivateRoute path="/verify-tests" ><TestsForVerification /></PrivateRoute>
         <PrivateRoute path="/admin-distribution"><AdminDistribution /></PrivateRoute>
         <PrivateRoute path='/test'><Test /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
