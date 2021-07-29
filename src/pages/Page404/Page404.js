@@ -14,7 +14,7 @@ const Page404 = () => {
     <div className='page404'>
       <AssignTest/>
       <div>
-        < ViewingUserInf name={'Ivanov Ivan'} gmail={'E-mail: yaroslavsmirnov@gmail.com'} img={'a'}/>
+        < ViewingUserInf name={'Ivanov Ivan'} gmail={'E-mail: yaroslavsmirnov@gmail.com'} img={'/user.png'} status={'front-end developer'}/>
       </div>
       <div className='logo404-wrapper'>
         <span>4</span>

@@ -12,6 +12,7 @@ import TablePagination from "@material-ui/core/TablePagination";
 import {rows} from '../testsInfo/TestsData/rows';
 import TableHead from "@material-ui/core/TableHead";
 import TestInfoSearchForm from "../testsInfo/TestsInfoSearchForm/TestsInfoSearchForm";
+import './user_inf.scss';
 
 const ViewingUserInf = ({name, gmail, img, status}) => {
 
@@ -64,14 +65,13 @@ const ViewingUserInf = ({name, gmail, img, status}) => {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         className='modal'>
-        <div className='modal-content' style={{
-          width: "1044px",
-          height: "510px"
-        }}>
-          <div>{img}</div>
-          <div style={{padding: "10px",fontSize: "24px"}}>{name}</div>
-          <div style={{padding: "10px",fontSize: "18px"}}>{status}</div>
-          <div>{gmail}</div>
+        <div className='modal-content'>
+          <div className='img-name'>
+            <img src={img}/>
+            {name}
+          </div>
+          <div className='status-gmail'>{status}</div>
+          <div className='status-gmail'>{gmail}</div>
           <TestInfoSearchForm setFilter={setFilter}/>
           <Paper>
             <TableContainer>
