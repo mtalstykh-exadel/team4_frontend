@@ -4,7 +4,7 @@ import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsData.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestions, requestQuestionsList } from '../../../store/actions/coachActions';
+import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
 const EditTestsData = (props) => {
@@ -26,7 +26,7 @@ const EditTestsData = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const archiveTheQuestion = (questId) => {
-    dispatch(archiveQuestions(questId));
+    dispatch(archiveQuestion(questId));
   };
 
   const handleChangePage = (event, newPage) => {
