@@ -33,9 +33,9 @@ const UserNavigation = (props) => {
         </Button>
         <Button
           disableElevation
-          className={`${location.pathname === '/edittests' ? 'bold' : null} ${props.roleBtns}`}
+          className={`${location.pathname === '/edit-tests' ? 'bold' : null} ${props.roleBtns}`}
           component={Link}
-          to='/edittests'>
+          to='/edit-tests'>
           <Trans>Edit tests</Trans>
         </Button>
       </>}
