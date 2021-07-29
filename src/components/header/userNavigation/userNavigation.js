@@ -27,16 +27,16 @@ const UserNavigation = (props) => {
       {role === 'ROLE_COACH' && <>
         <Button
           disableElevation
-          className={`${location.pathname === '/verifytests' ? 'bold' : null} ${props.roleBtns} font-primary`}
+          className={`${location.pathname === '/tests-for-verification' ? 'bold' : null} ${props.roleBtns} font-primary`}
           component={Link}
-          to='/verifytests'>
+          to='/tests-for-verification'>
           <Trans>Tests for verification</Trans>
         </Button>
         <Button
           disableElevation
-          className={`${location.pathname === '/edittests' ? 'bold' : null} ${props.roleBtns} font-primary`}
+          className={`${location.pathname === '/edit-tests' ? 'bold' : null} ${props.roleBtns} font-primary`}
           component={Link}
-          to='/edittests'>
+          to='/edit-tests'>
           <Trans>Edit tests</Trans>
         </Button>
       </>}
@@ -50,9 +50,9 @@ const UserNavigation = (props) => {
         </Button>
         <Button
           disableElevation
-          className={`${location.pathname === '/distibutetests' ? 'bold' : null} ${props.roleBtns} font-primary`}
+          className={`${location.pathname === '/admin-distribution' ? 'bold' : null} ${props.roleBtns} font-primary`}
           component={Link}
-          to='/distibutetests'>
+          to='/admin-distribution'>
           <Trans>Distribution of tests</Trans>
         </Button>
       </>}
