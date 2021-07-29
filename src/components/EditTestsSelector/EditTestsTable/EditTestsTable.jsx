@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
-import './EditTestsData.scss';
+import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 
-const EditTestsData = (props) => {
+export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -95,10 +95,8 @@ const EditTestsData = (props) => {
   );
 };
 
-EditTestsData.propTypes = {
+EditTestsTable.propTypes = {
   level: PropTypes.any,
   module: PropTypes.any,
   questId: PropTypes.any
 };
-
-export default EditTestsData;

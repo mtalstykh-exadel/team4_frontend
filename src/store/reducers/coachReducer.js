@@ -4,7 +4,7 @@ const initialState = {
   questions: null
 };
 
-const coachReducer = (state = initialState, action) => {
+export const coachReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_QUESTIONS_LIST:
       return Object.assign({}, state, {
@@ -14,5 +14,3 @@ const coachReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export { coachReducer };
