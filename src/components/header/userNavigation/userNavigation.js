@@ -28,7 +28,7 @@ const UserNavigation = (props) => {
           disableElevation
           className={`${location.pathname === '/tests-for-verification' ? 'bold' : null} ${props.roleBtns}`}
           component={Link}
-          to='/verifytests'>
+          to='/tests-for-verification'>
           <Trans>Tests for verification</Trans>
         </Button>
         <Button
