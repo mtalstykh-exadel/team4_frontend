@@ -15,6 +15,7 @@ const Grammar = ({ tasks }) => {
             id={questionItem.option + questionCount}
             type="radio"
             name={"group-" + questionCount}
+            value={questionItem.option}
           />
           <label htmlFor={questionItem.option + questionCount}> {questionItem.option}</label>
         </div>

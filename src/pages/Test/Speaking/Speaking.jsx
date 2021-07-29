@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { offRecAudio, onRecAudio } from "../../../services/voice-recorder";
-import { speakingTimerHandler } from "../../../services/speaking-timer";
+import { startTimer, createTimer, stopTimer } from "../../../services/timer";
 import MicOffIcon from "@material-ui/icons/MicOff";
 import MicIcon from "@material-ui/icons/Mic";
 import Player from "../player/player";
@@ -17,7 +17,7 @@ const Speaking = () => {
       if (element.textContent === "0:00") {
         setInvisible("off");
         setBlobURL(offRecAudio());
-        setAudioDuration(speakingTimerHandler(false));
+        setAudioDuration(stopTimer("speaking-timer"));
       }
     });
   };
@@ -38,7 +38,7 @@ const Speaking = () => {
             onClick={() => {
               setInvisible("on");
               onRecAudio();
-              speakingTimerHandler({timerOn: true, id: "speaking-timer", minutes: 5});
+              startTimer(createTimer({domId: "speaking-timer", minutes: 5}));
               checkSpeakingTimerHandler();
             }}
           />
@@ -50,7 +50,7 @@ const Speaking = () => {
             onClick={() => {
               setInvisible("off");
               setBlobURL(offRecAudio());
-              setAudioDuration(speakingTimerHandler(false));
+              setAudioDuration(stopTimer("speaking-timer"));
             }}
           />
         )}

@@ -8,12 +8,12 @@ import Listening from "./Listening/Listening";
 import Button from "@material-ui/core/Button";
 import grammarTasks from "./testData/GrammarTasks";
 import listeningTasks from "./testData/ListeningTasks";
-import { testTimerHandler } from "../../services/test-timer";
+import { startTimer,createTimer} from "../../services/timer";
 
 const Test = () => {
   const minutes = 40;
   const [step, setStep] = useState(0);
-  const [nextButtonText, setNextButtonText] = useState("Next step");
+  const [nextButtonText, setNextButtonText] = useState("Next");
   const [prevButtonClass, setPrevButtonClass] = useState(
     "previous-step-button invisible"
   );
@@ -26,7 +26,7 @@ const Test = () => {
   ];
 
   useEffect(() => {
-    testTimerHandler(minutes);
+    startTimer(createTimer({domId: "test-timer", minutes: 40}));
   },[minutes]);
 
   return (
@@ -37,7 +37,7 @@ const Test = () => {
             className={step === 0 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(0);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button invisible");
             }}
           >
@@ -47,7 +47,7 @@ const Test = () => {
             className={step === 1 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(1);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button");
             }}
           >
@@ -57,7 +57,7 @@ const Test = () => {
             className={step === 2 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(2);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button");
             }}
           >
@@ -90,12 +90,12 @@ const Test = () => {
                   if (prev === 0) {
                     setPrevButtonClass("previous-step-button invisible");
                   }
-                  setNextButtonText("Next step");
+                  setNextButtonText("Next");
                   return prev;
                 });
               }}
             >
-              Previous step
+              Previous
             </Button>
             <Button
               className="next-step-button"
