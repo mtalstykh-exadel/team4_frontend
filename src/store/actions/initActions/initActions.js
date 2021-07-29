@@ -5,5 +5,5 @@ export const initApp = () => (dispatch) => {
   dispatch(tokenTimeout());
 
   const theme = localStorage.getItem('theme');
-  theme ? dispatch(themeChange('light')) : dispatch(themeChange(theme));
+  !theme ? dispatch(themeChange('light')) : dispatch(themeChange(theme));
 };

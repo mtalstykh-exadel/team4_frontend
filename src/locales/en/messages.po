@@ -11,8 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/accountDropdown/accountDropdown.js:40
-#: src/components/header/drawerMenu/drawerMenu.js:76
+#: src/components/header/accountDropdown/accountDropdown.js:38
+#: src/components/header/drawerMenu/drawerMenu.js:73
 msgid "Dark mode"
 msgstr "Dark mode"
 
@@ -28,8 +28,8 @@ msgstr "Edit tests"
 msgid "Employees"
 msgstr "Employees"
 
-#: src/components/header/drawerMenu/drawerMenu.js:52
-#: src/components/header/languageDropdown/languageDropdown.js:32
+#: src/components/header/drawerMenu/drawerMenu.js:49
+#: src/components/header/languageDropdown/languageDropdown.js:30
 msgid "English"
 msgstr "English"
 
@@ -45,8 +45,8 @@ msgstr "Log in"
 msgid "Log out of account?"
 msgstr "Log out of account?"
 
-#: src/components/header/accountDropdown/accountDropdown.js:49
-#: src/components/header/drawerMenu/drawerMenu.js:71
+#: src/components/header/accountDropdown/accountDropdown.js:44
+#: src/components/header/drawerMenu/drawerMenu.js:68
 msgid "Logout"
 msgstr "Logout"
 
@@ -58,8 +58,8 @@ msgstr "No"
 #~ msgid "Password"
 #~ msgstr "Password"
 
-#: src/components/header/accountDropdown/accountDropdown.js:37
-#: src/components/header/drawerMenu/drawerMenu.js:66
+#: src/components/header/accountDropdown/accountDropdown.js:35
+#: src/components/header/drawerMenu/drawerMenu.js:63
 msgid "Profile"
 msgstr "Profile"
 
@@ -68,8 +68,8 @@ msgstr "Profile"
 msgid "Required field"
 msgstr "Required field"
 
-#: src/components/header/drawerMenu/drawerMenu.js:57
-#: src/components/header/languageDropdown/languageDropdown.js:37
+#: src/components/header/drawerMenu/drawerMenu.js:54
+#: src/components/header/languageDropdown/languageDropdown.js:35
 msgid "Russian"
 msgstr "Russian"
 
@@ -82,11 +82,11 @@ msgid "Statistics"
 msgstr "Statistics"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:53
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:23
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
 msgid "Take test"
 msgstr "Take test"
 
-#: src/pages/main/main.jsx:10
+#: src/pages/Main/Main.jsx:10
 msgid "Testing procedure"
 msgstr "Testing procedure"
 
@@ -114,14 +114,14 @@ msgstr "Your English language test is checked. Your English level has been set a
 msgid "notificationsEmpty"
 msgstr "No new notificiations for you"
 
-#: src/pages/main/main.jsx:11
+#: src/pages/Main/Main.jsx:11
 msgid "testLevel"
 msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
 
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:14
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
 msgid "{description}"
 msgstr "{description}"
 
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:13
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
 msgid "{title}"
 msgstr "{title}"

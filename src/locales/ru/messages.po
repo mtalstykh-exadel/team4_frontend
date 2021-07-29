@@ -11,8 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/accountDropdown/accountDropdown.js:40
-#: src/components/header/drawerMenu/drawerMenu.js:76
+#: src/components/header/accountDropdown/accountDropdown.js:38
+#: src/components/header/drawerMenu/drawerMenu.js:73
 msgid "Dark mode"
 msgstr "Темный фон"
 
@@ -28,8 +28,8 @@ msgstr "Редактировать тесты"
 msgid "Employees"
 msgstr "Работники"
 
-#: src/components/header/drawerMenu/drawerMenu.js:52
-#: src/components/header/languageDropdown/languageDropdown.js:32
+#: src/components/header/drawerMenu/drawerMenu.js:49
+#: src/components/header/languageDropdown/languageDropdown.js:30
 msgid "English"
 msgstr "Английский"
 
@@ -45,8 +45,8 @@ msgstr "Войти"
 msgid "Log out of account?"
 msgstr "Выйти из аккаунта?"
 
-#: src/components/header/accountDropdown/accountDropdown.js:49
-#: src/components/header/drawerMenu/drawerMenu.js:71
+#: src/components/header/accountDropdown/accountDropdown.js:44
+#: src/components/header/drawerMenu/drawerMenu.js:68
 msgid "Logout"
 msgstr "Выход"
 
@@ -54,8 +54,8 @@ msgstr "Выход"
 msgid "No"
 msgstr "Нет"
 
-#: src/components/header/accountDropdown/accountDropdown.js:37
-#: src/components/header/drawerMenu/drawerMenu.js:66
+#: src/components/header/accountDropdown/accountDropdown.js:35
+#: src/components/header/drawerMenu/drawerMenu.js:63
 msgid "Profile"
 msgstr "Профиль"
 
@@ -64,8 +64,8 @@ msgstr "Профиль"
 msgid "Required field"
 msgstr "Обязательное поле"
 
-#: src/components/header/drawerMenu/drawerMenu.js:57
-#: src/components/header/languageDropdown/languageDropdown.js:37
+#: src/components/header/drawerMenu/drawerMenu.js:54
+#: src/components/header/languageDropdown/languageDropdown.js:35
 msgid "Russian"
 msgstr "Русский"
 
@@ -78,11 +78,11 @@ msgid "Statistics"
 msgstr "Статистика"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:53
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:23
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
 msgid "Take test"
 msgstr "Пройти тест"
 
-#: src/pages/main/main.jsx:10
+#: src/pages/Main/Main.jsx:10
 msgid "Testing procedure"
 msgstr "Процедура тестирования"
 
@@ -110,14 +110,18 @@ msgstr "Ваш тест по Английскому языку был прове
 msgid "notificationsEmpty"
 msgstr "Оповещения отсутсвуют"
 
-#: src/pages/main/main.jsx:11
+#: src/pages/Main/Main.jsx:11
 msgid "testLevel"
 msgstr "Выберите тест в соответствии с вашим предполагаемым уровнем знания Английского языка. Если вы не знаете свой уровень, то начните с первого теста"
 
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:14
+#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:13
+#~ msgid "{Survival Level — Beginner и Elementary (A1)}"
+#~ msgstr "yes"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
 msgid "{description}"
 msgstr "{description}"
 
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:13
-msgid "{Survival Level — Beginner и Elementary (A1)}"
-msgstr "yes"
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+msgid "{title}"
+msgstr ""
