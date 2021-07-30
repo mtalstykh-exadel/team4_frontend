@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Listening.scss";
-import { Grammar, Player } from "../";
+import { Grammar, Player } from "../../index";
 
 export const Listening = ({ tasks }) => {
 

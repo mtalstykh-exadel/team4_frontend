@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./Test.scss";
-import Layout from "../../components/Layout/Layout";
-import { Speaking, Essay, Grammar, Listening } from "../../components";
-import Button from "@material-ui/core/Button";
-import grammarTasks from "../../components/testData/GrammarTasks";
-import listeningTasks from "../../components/testData/ListeningTasks";
+import { Speaking, Essay, Grammar, Listening, grammarTasks, listeningTasks} from "../../components";
 import { startTimer, createTimer } from "../../services/timer";
+import Layout from "../../components/Layout/Layout";
+import Button from "@material-ui/core/Button";
+import "./Test.scss";
 
 export const Test = () => {
   const minutes = 40;
