@@ -85,10 +85,10 @@ const Header = () => {
                 handleDrawer={() => handleDrawer(false)} />}
             </Drawer>
           </>}
-          { matches && <img src={logoText} alt='logo' className='logoText'/> }
-          { matches &&
+          {matches && <img src={logoText} alt='logo' className='logoText' />}
+          {matches &&
             <UserNavigation
-              roleBtns={'roleBtns'}/>}
+              roleBtns={'roleBtns'} />}
         </div>
         {!matches && <img src={logo} alt="logo" className={'logo'} />}
         <div className='toolbar-sideRight'>
@@ -104,28 +104,28 @@ const Header = () => {
               <NotificationsNoneIcon />
             </Badge>
           </IconButton>
-          { matches &&
-          <>
-            <IconButton
-              edge='end'
-              color='inherit'
-              aria-haspopup='true'
-              onClick={handleAccount}>
-              <Avatar
-                className='avatarHeader'
-                src={avatar}
-                alt='avatar'/>
-              <ArrowDropDownIcon
-                className='icons-triangle'/>
-            </IconButton>
-            <Button
-              className='bold'
-              onClick={handleLanguage}>
-              {localStorage.getItem('lang')}
-              <ArrowDropDownIcon
-                className='icons-triangle'/>
-            </Button>
-          </>}
+          {matches &&
+            <>
+              <IconButton
+                edge='end'
+                color='inherit'
+                aria-haspopup='true'
+                onClick={handleAccount}>
+                <Avatar
+                  className='avatarHeader'
+                  src={avatar}
+                  alt='avatar' />
+                <ArrowDropDownIcon
+                  className='icons-triangle' />
+              </IconButton>
+              <Button
+                className='bold'
+                onClick={handleLanguage}>
+                {localStorage.getItem('lang')}
+                <ArrowDropDownIcon
+                  className='icons-triangle' />
+              </Button>
+            </>}
         </div>
         {<AccountMenu
           accEl={states.accumulatorEl}
