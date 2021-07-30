@@ -3,10 +3,10 @@ import { offRecAudio, onRecAudio } from "../../services/voice-recorder";
 import { startTimer, createTimer, stopTimer } from "../../services/timer";
 import MicOffIcon from "@material-ui/icons/MicOff";
 import MicIcon from "@material-ui/icons/Mic";
-import Player from "../Player/Player";
+import { Player } from "../";
 import "./Speaking.scss";
 
-const Speaking = () => {
+export const Speaking = () => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
@@ -63,5 +63,3 @@ const Speaking = () => {
     </div>
   );
 };
-
-export default Speaking;

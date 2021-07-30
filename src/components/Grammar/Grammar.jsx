@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Grammar.scss";
 
-const Grammar = ({ tasks }) => {
+export const Grammar = ({ tasks }) => {
 
   let questionCount = 0;
   const questions = tasks.map((question) => {
@@ -48,5 +48,3 @@ Grammar.propTypes = {
   tasks: PropTypes.array,
   questions: PropTypes.array,
 };
-
-export default Grammar;

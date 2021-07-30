@@ -5,7 +5,7 @@ import PauseIcon from "@material-ui/icons/Pause";
 import PropTypes from "prop-types";
 import "./Player.scss";
 
-const Player = ({ src, audioDuration, id }) => {
+export const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -137,5 +137,3 @@ Player.propTypes = {
   audioDuration: PropTypes.number,
   id: PropTypes.string,
 };
-
-export default Player;
