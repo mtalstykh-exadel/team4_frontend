@@ -15,7 +15,9 @@ export const Player = ({ src, audioDuration, id }) => {
 
   const AudioController = () => {
     if (document.getElementById(id)) {
-      document.getElementById(id).play()
+      document
+        .getElementById(id)
+        .play()
         .catch((err) => {
           console.warn(err);
         });
@@ -24,8 +26,12 @@ export const Player = ({ src, audioDuration, id }) => {
       setAudioCurrent(0);
       setAudioOn(true);
 
-      document.getElementById(id).removeEventListener("timeupdate", AudioProgressBar);
-      document.getElementById(id).addEventListener("timeupdate", AudioProgressBar);
+      document
+        .getElementById(id)
+        .removeEventListener("timeupdate", AudioProgressBar);
+      document
+        .getElementById(id)
+        .addEventListener("timeupdate", AudioProgressBar);
     }
   };
 
@@ -69,9 +75,7 @@ export const Player = ({ src, audioDuration, id }) => {
   return (
     <div className="player">
       <div
-        className={
-          showVolumeChanger === true ? "volume-changer" : "invisible"
-        }
+        className={showVolumeChanger === true ? "volume-changer" : "invisible"}
       >
         <input
           className="volume-range"
@@ -83,21 +87,20 @@ export const Player = ({ src, audioDuration, id }) => {
           defaultValue="30"
         />
       </div>
-      <button className="player-button">
+      <button
+        className="player-button"
+        onClick={() => {
+          if (audioOn === false) {
+            AudioController();
+          } else {
+            AudioStop();
+          }
+        }}
+      >
         {audioOn === false ? (
-          <PlayArrowIcon
-            color="primary"
-            fontSize="medium"
-            onClick={AudioController}
-            alt="play"
-          />
+          <PlayArrowIcon color="primary" fontSize="medium" />
         ) : (
-          <PauseIcon
-            color="primary"
-            fontSize="medium"
-            onClick={AudioStop}
-            alt="play"
-          />
+          <PauseIcon color="primary" fontSize="medium" />
         )}
       </button>
       <div className="player-time">
@@ -114,19 +117,17 @@ export const Player = ({ src, audioDuration, id }) => {
         />
         <div className="progress" />
       </div>
-      <button className="player-button">
-        <VolumeUpIcon
-          color="action"
-          fontSize="medium"
-          onClick={() => {
-            if (showVolumeChanger === false) {
-              setShowVolumeChanger(true);
-            } else {
-              setShowVolumeChanger(false);
-            }
-          }}
-          alt="volume"
-        />
+      <button
+        className="player-button"
+        onClick={() => {
+          if (showVolumeChanger === false) {
+            setShowVolumeChanger(true);
+          } else {
+            setShowVolumeChanger(false);
+          }
+        }}
+      >
+        <VolumeUpIcon color="action" fontSize="medium" />
       </button>
     </div>
   );
