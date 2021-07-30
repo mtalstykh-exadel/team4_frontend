@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
+
 export const EmployeesTable = () => {
 
   const filteredEmloyees = [
@@ -140,7 +141,7 @@ export const EmployeesTable = () => {
   };
 
   return (
-    <div className='edit-tests-data-wrapper'>
+    <div>
       <Paper>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
