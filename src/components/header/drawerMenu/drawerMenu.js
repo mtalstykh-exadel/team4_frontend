@@ -31,8 +31,9 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatarDrawer icons-color'
-            src={avatar}/>
+            className='avatarDrawer border-secondary'
+            src={avatar}
+            alt='avatar'/>
         </IconButton>
       </div>
       <Divider/>

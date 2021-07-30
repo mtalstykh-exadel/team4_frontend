@@ -79,7 +79,7 @@ const Test = () => {
         <div className="buttons-wrapper">
           <div className="test-buttons">
             <Button
-              className={`${prevButtonClass} primary-outlined`}
+              className={prevButtonClass}
               color="primary"
               variant="outlined"
               onClick={() => {
@@ -98,7 +98,7 @@ const Test = () => {
               Previous step
             </Button>
             <Button
-              className="next-step-button primary-contained"
+              className="next-step-button"
               color="primary"
               variant="contained"
               onClick={() => {

@@ -128,7 +128,7 @@ const Header = () => {
                 aria-haspopup='true'
                 onClick={handleAccount}>
                 <Avatar
-                  className='avatarHeader icons-color'
+                  className='avatarHeader border-secondary'
                   src={avatar}
                   alt='avatar'/>
                 <ArrowDropDownIcon

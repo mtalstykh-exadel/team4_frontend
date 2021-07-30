@@ -17,7 +17,7 @@ const Page404 = () => {
         <h3>Either something went wrong or the page doesn't exist anymore.</h3>
       </div>
       <div className='button-wrapper'>
-        <Button className='primary-contained' variant='contained' component={Link} to='/'>Go Home</Button>
+        <Button color="primary" variant='contained' component={Link} to='/'>Go Home</Button>
       </div>
     </div>
   );

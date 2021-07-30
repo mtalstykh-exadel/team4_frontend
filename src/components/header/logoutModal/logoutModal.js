@@ -22,13 +22,13 @@ const LogoutModal = (props) => {
           <h2><Trans>Log out of account?</Trans></h2>
           <div className='modalBtns'>
             <Button
-              className='primary-contained'
+              color='primary'
               variant='contained'
               onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions());}}>
               <Trans>Yes</Trans>
             </Button>
             <Button
-              className='primary-outlined'
+              color='primary'
               variant='outlined'
               onClick={() => {props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose();}}>
               <Trans>No</Trans>

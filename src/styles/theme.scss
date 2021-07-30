@@ -6,6 +6,7 @@ body[theme='light'] {
   --primary-color: #3e6dd7;
   --primary-color-rgb: 62, 109, 215;
   --secondary-color: #828282;
+  --secondary-color-rgb: 130, 130, 130;
   --notifications-color: #6fff97;
   --icons-color: #000;
   --font-color-primary: #000;
@@ -20,9 +21,10 @@ body[theme='dark'] {
   --base-color-elevation: #30363d;
   --primary-color: #3e6dd7;
   --primary-color-rgb: 62, 109, 215;
-  --secondary-color: #828282;
+  --secondary-color: #adb6c3;
+  --secondary-color-rgb: 173, 182, 195;
   --notifications-color: #6fff97;
-  --icons-color: #fff;
+  --icons-color: #adb6c3;
   --font-color-primary: #adb6c3;
   --font-color-secondary: #fff;
   --border-color: 189, 189, 189;
@@ -71,31 +73,26 @@ body {
     background-color: var(--error-color);
   }
 
-  .base-color-secondary {
-    background-color: var(--secondary-color);
-  }
-  // buttons color
-
-  .primary-contained {
+  .base-color-primary {
     background-color: var(--primary-color);
-    color: var(--font-color-secondary);
 
     &:hover {
       background-color: rgba(var(--primary-color-rgb), 0.8);
     }
   }
 
-  .primary-outlined {
+  .base-color-secondary {
+    background-color: var(--secondary-color);
+  }
+
+  // border color
+
+  .border-primary {
     border-color: var(--primary-color);
     color: var(--primary-color);
   }
 
-  .secondary-contained {
-    border-color: var(--secondary-color);
-    color: var(--base-color);
-  }
-
-  .secondary-outlined {
+  .border-secondary {
     border-color: var(--secondary-color);
     color: var(--secondary-color);
   }
@@ -188,6 +185,44 @@ body {
     &.MuiPaper-elevation2 {
       background-color: var(--base-color-elevation);
       border: 1px solid rgba(var(--border-color), 0.5);
+    }
+  }
+
+  .MuiButton-containedPrimary {
+    background-color: var(--primary-color);
+    color: var(--font-color-secondary);
+
+    &:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.8);
+    }
+  }
+
+  .MuiButton-outlinedPrimary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+
+    &:hover {
+      border-color: var(--primary-color);
+      background-color: rgba(var(--primary-color-rgb), 0.1);
+    }
+  }
+
+  .MuiButton-containedSecondary {
+    background-color: var(--secondary-color);
+    color: var(--font-color-secondary);
+
+    &:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.8);
+    }
+  }
+
+  .MuiButton-outlinedSecondary {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+
+    &:hover {
+      border-color: var(--secondary-color);
+      background-color: rgba(var(secondary-color-rgb), 0.1);
     }
   }
 

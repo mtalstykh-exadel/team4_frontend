@@ -14,9 +14,9 @@ export const TestLevelsSelectorItem = ({ title, description }) => {
       <div className="description"><Trans>{description}</Trans></div>
       <Button
         disableElevation
-        className='btn primary-contained'
-        variant="contained"
+        className='btn'
         color="primary"
+        variant="contained"
         component={Link}
         to="/test"
       >

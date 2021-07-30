@@ -95,7 +95,8 @@ const AdminDistribution = (props) => {
 
                               {column.id === "action" ? (
                                 <Button
-                                  className="buttonAssign primary-outlined"
+                                  className="buttonAssign"
+                                  color="primary"
                                   variant="outlined"
                                   size="small"
                                 >
@@ -114,6 +115,7 @@ const AdminDistribution = (props) => {
             </Table>
           </TableContainer>
           <TablePagination
+            className="font-primary"
             rowsPerPageOptions={[10]}
             component="div"
             count={filteredRows.length}

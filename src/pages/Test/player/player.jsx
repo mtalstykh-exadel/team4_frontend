@@ -114,7 +114,7 @@ const Player = ({ src, audioDuration, id }) => {
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + "%" }}
-          className="progress-line primary-outlined"
+          className="progress-line border-primary"
         />
         <div className="progress" />
       </div>

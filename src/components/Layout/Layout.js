@@ -7,12 +7,12 @@ import Header from '../header/header';
 
 const Layout = ({ pageWrapperClass, children }) => {
   return (
-    <div>
+    <>
       <Header/>
       <main className={pageWrapperClass}>
         {children}
       </main>
-    </div>
+    </>
   );
 };
 

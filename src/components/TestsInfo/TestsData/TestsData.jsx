@@ -67,7 +67,7 @@ const TestsData = (props) => {
                         <TableCell className="font-primary" key={keysForColumns} align={column.align} size="small">
                           {
                             column.id === 'action' ?
-                              <Button className="primary-contained" variant="contained" size='small'
+                              <Button color="primary" variant="contained" size='small'
                                 onClick={() => testAction(row[column.id])} >
                                 {value}
                               </Button>

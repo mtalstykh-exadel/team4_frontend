@@ -1,7 +1,7 @@
 import handleJWT from '../../api/jwt-fetch';
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_ADD, JWT_REMOVE } from '../actions/actionTypes';
 import { getJWTdata, getJWTtoken, removeJWTfromLocalstorage } from '../../utils/jwt-parser';
-import { tokenTimeout } from './checkTokenTimeout';
+import { checkTokenTimeout } from './checkTokenTimeout';
 
 export const fetchLoginStart = () => {
   return { type: LOGIN_START };
@@ -36,7 +36,7 @@ export const fetchLoginData = (data) => (dispatch, getState) => {
     .then(handleJWT({ login: data.email, password: data.password })
       .then(() => dispatch(addJWT()))
       .then(() => dispatch(fetchLoginSuccess()))
-      .then(() => dispatch(tokenTimeout()))
+      .then(() => dispatch(checkTokenTimeout()))
       .catch((e) => dispatch(fetchLoginFailure(e))));
 
 };

@@ -54,9 +54,9 @@ const LoginForm = () => {
             {/* button for submitting */}
 
             <div className="fieldsWrapper">
-              <Button variant="contained" type="submit" className='loginButton primary-contained'
+              <Button color="primary" variant="contained" type="submit" className='loginButton'
                 disabled={isSubmitting || !!errors.email || !!errors.password || loading} >
-                {loading ? <CircularProgress /> : <Trans>Log in</Trans>}
+                {loading ? <CircularProgress className="border-primary"/> : <Trans>Log in</Trans>}
               </Button>
             </div>
           </form>
