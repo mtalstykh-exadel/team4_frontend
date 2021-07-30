@@ -5,7 +5,7 @@ import { Speaking, Essay, Grammar, Listening } from "../../components";
 import Button from "@material-ui/core/Button";
 import grammarTasks from "../../components/testData/GrammarTasks";
 import listeningTasks from "../../components/testData/ListeningTasks";
-import { startTimer, createTimer} from "../../services/timer";
+import { startTimer, createTimer } from "../../services/timer";
 
 export const Test = () => {
   const minutes = 40;
@@ -23,8 +23,8 @@ export const Test = () => {
   ];
 
   useEffect(() => {
-    startTimer(createTimer({domId: "test-timer", minutes: 40}));
-  },[minutes]);
+    startTimer(createTimer({ domId: "test-timer", minutes: minutes }));
+  }, [minutes]);
 
   return (
     <Layout>
@@ -70,7 +70,9 @@ export const Test = () => {
           >
             Speaking
           </div>
-          <div className="test-step time" id="test-timer">{minutes}:00</div>
+          <div className="test-step time" id="test-timer">
+            {minutes}:00
+          </div>
         </div>
         <div className="test-task-wrapper">{steps[step]}</div>
         <div className="buttons-wrapper">
