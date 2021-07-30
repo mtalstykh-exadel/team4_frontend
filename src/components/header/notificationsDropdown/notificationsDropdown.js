@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom';
 import { Menu, Typography, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { Trans } from '@lingui/macro';
+
 import notificationsData from '../data/dummyData';
 
 const Notifications = (props) => {
+
   const notificationsAssign = (item) => (
     <>
-      <Typography variant='body1'>
-        {item.body}
+      <Typography variant='body1' className='font-primary'>
+        <Trans id='notificationTestAsigned'>A test to determine the level of English has been asigned to your name</Trans>
       </Typography>
-      <Typography variant='subtitle2' className='bold'>
+      <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}
       </Typography>
       <Button
@@ -22,22 +25,22 @@ const Notifications = (props) => {
         to='/test'
         color='primary'
         variant='text'
-        className='notifications-seemoreBtn'
+        className='notifications-seemoreBtn font-color'
         onClick={props.handleNotifClose}>
-          See More
+        <Trans>See More</Trans>
       </Button>
     </>
   );
 
   const notificationsTest = (item) => (
     <>
-      <Typography variant='body1'>
-        {item.body}
+      <Typography variant='body1' className='font-primary'>
+        <Trans id='notificationTestChecked'>Your English language test is checked. Your English level has been set as .</Trans>
       </Typography>
-      <Typography variant='subtitle2' className='bold'>
+      <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}
       </Typography>
-      <Typography variant='subtitle2' className='bold'>
+      <Typography variant='subtitle2' className='bold font-primary'>
         {item.expiration}
       </Typography>
       <Button
@@ -47,22 +50,21 @@ const Notifications = (props) => {
         variant='contained'
         className='notifications-takeTestBtn'
         onClick={props.handleNotifClose}>
-          Take Test
+        <Trans>Take test</Trans>
       </Button>
     </>
   );
 
   const notificationsEmpty = (
-    <Typography
-      className='notifications-empty'
-      variant='caption'>
-      No new notificiations for you
+    <Typography variant='caption' className='notifications-empty font-primary'>
+      <Trans id='notificationsEmpty'>No new notificiations for you</Trans>
     </Typography>
   );
 
   return (
     <Menu
-      elevation={1}
+      className='notifications-dropdown-menu'
+      elevation={2}
       anchorEl={props.notifEl}
       open={Boolean(props.notifEl)}
       onClose={props.handleNotifClose}
@@ -80,14 +82,15 @@ const Notifications = (props) => {
         }}}>
       {Object.keys(notificationsData).length !== 0 ? notificationsData.map((item, index) => (
         <div className='notifications-test' key={index}>
-          <Typography variant="caption">
+          <Typography variant='caption' className='font-primary'>
             {item.date}
           </Typography>
           <Button
             className='closeButton'
             onClick={props.handleNotifClose}>
             <CloseIcon
-              size='small'> </CloseIcon>
+              size='small'
+              className='icons-color'/>
           </Button>
           {item.type === 'result' ? notificationsAssign(item) : notificationsTest(item)}
         </div>)) : notificationsEmpty

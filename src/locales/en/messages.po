@@ -11,10 +11,117 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/buttons/Buttons.jsx:34
-msgid "enTest"
+#: src/components/header/accountDropdown/accountDropdown.js:38
+#: src/components/header/drawerMenu/drawerMenu.js:73
+msgid "Dark mode"
+msgstr "Dark mode"
+
+#: src/components/header/userNavigation/userNavigation.js:56
+msgid "Distribution of tests"
+msgstr "Distribution of tests"
+
+#: src/components/header/userNavigation/userNavigation.js:40
+msgid "Edit tests"
+msgstr "Edit tests"
+
+#: src/components/header/userNavigation/userNavigation.js:24
+msgid "Employees"
+msgstr "Employees"
+
+#: src/components/header/drawerMenu/drawerMenu.js:49
+#: src/components/header/languageDropdown/languageDropdown.js:30
+msgid "English"
 msgstr "English"
 
-#: src/components/buttons/Buttons.jsx:31
-msgid "ruTest"
+#: src/components/LoginForm/LoginForm.jsx:45
+msgid "Invalid email"
+msgstr "Invalid email"
+
+#: src/components/LoginForm/LoginForm.jsx:59
+msgid "Log in"
+msgstr "Log in"
+
+#: src/components/header/logoutModal/logoutModal.js:22
+msgid "Log out of account?"
+msgstr "Log out of account?"
+
+#: src/components/header/accountDropdown/accountDropdown.js:44
+#: src/components/header/drawerMenu/drawerMenu.js:68
+msgid "Logout"
+msgstr "Logout"
+
+#: src/components/header/logoutModal/logoutModal.js:34
+msgid "No"
+msgstr "No"
+
+#: src/components/LoginForm/LoginForm.jsx:51
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#: src/components/header/accountDropdown/accountDropdown.js:35
+#: src/components/header/drawerMenu/drawerMenu.js:63
+msgid "Profile"
+msgstr "Profile"
+
+#: src/components/LoginForm/LoginForm.jsx:44
+#: src/components/LoginForm/LoginForm.jsx:52
+msgid "Required field"
+msgstr "Required field"
+
+#: src/components/header/drawerMenu/drawerMenu.js:54
+#: src/components/header/languageDropdown/languageDropdown.js:35
+msgid "Russian"
 msgstr "Russian"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
+msgid "See More"
+msgstr "See More"
+
+#: src/components/header/userNavigation/userNavigation.js:49
+msgid "Statistics"
+msgstr "Statistics"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
+msgid "Take test"
+msgstr "Take test"
+
+#: src/pages/Main/Main.jsx:10
+msgid "Testing procedure"
+msgstr "Testing procedure"
+
+#: src/components/header/userNavigation/userNavigation.js:33
+msgid "Tests for verification"
+msgstr "Tests for verification"
+
+#: src/components/header/logoutModal/logoutModal.js:28
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/LoginForm/LoginForm.jsx:53
+msgid "Your email or password is incorrect. Please try again"
+msgstr "Your email or password is incorrect. Please try again"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
+msgid "notificationTestAsigned"
+msgstr "A test to determine the level of English has been asigned to your name"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
+msgid "notificationTestChecked"
+msgstr "Your English language test is checked. Your English level has been set as ."
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
+msgid "notificationsEmpty"
+msgstr "No new notificiations for you"
+
+#: src/pages/Main/Main.jsx:11
+msgid "testLevel"
+msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
+msgid "{description}"
+msgstr "{description}"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+msgid "{title}"
+msgstr "{title}"

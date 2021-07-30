@@ -1,17 +1,17 @@
 import { React } from 'react';
-import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { languageChange } from '../../../store/actions/headerActions';
+import { Trans } from "@lingui/macro";
+
+import { switchLang } from '../../../utils/lang-service';
 
 const LanguageMenu = (props) => {
-  const dispatch = useDispatch();
 
   return (
     <Menu
-      elevation={1}
+      elevation={2}
       anchorEl={props.langEl}
       open={Boolean(props.langEl)}
       onClose={props.handleLangClose}
@@ -25,12 +25,14 @@ const LanguageMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('english'));}}>
-        English
+        className='font-primary'
+        onClick={ () => {props.handleLangClose(); switchLang('en');}}>
+        <Trans>English</Trans>
       </MenuItem>
       <MenuItem
-        onClick={ () => {props.handleLangClose(); dispatch(languageChange('russian'));}}>
-        Russian
+        className='font-primary'
+        onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
+        <Trans>Russian</Trans>
       </MenuItem>
     </Menu>);
 };

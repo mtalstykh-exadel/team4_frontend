@@ -1,36 +1,28 @@
 import { React } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
+import { Divider, Button, Avatar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { languageChange } from '../../../store/actions/headerActions';
+import { Trans } from "@lingui/macro";
 
-// import image as an avatar for profile icon
-import avatar from '../../../assets/images/logo/logoText.svg';
+import { switchLang } from '../../../utils/lang-service';
+import UserNavigation from '../userNavigation/userNavigation';
+import ThemeSwitch from '../themeSwitch/themeSwitch';
+
+import avatar from '../../../assets/images/goose.svg';
 
 const DrawerMenu = (props) => {
-  const dispatch = useDispatch();
-  const role = useSelector((state) => state.role);
-
-  const linkBtn = (path, name) => (
-    <Button
-      className={location.pathname === path ? 'bold' : null}
-      disableElevation
-      component={Link}
-      to={path}>
-      {name}
-    </Button>
-  );
+  const role = useSelector((state) => state.jwt.role);
 
   return (
     <div className='drawer'>
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>
-          <CloseIcon/>
+          <CloseIcon className='icons-color'/>
         </Button>
         <IconButton
           edge='end'
@@ -39,35 +31,49 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatarHeader'
-            src={avatar}/>
+            className='avatarDrawer border-secondary'
+            src={avatar}
+            alt='avatar'/>
         </IconButton>
       </div>
       <Divider/>
-      {role !== 'default' &&
+      {role !== 'ROLE_USER' &&
       <div className='drawerSplit'>
-        {role === 'hr' && <>{linkBtn('/employees','Employees')}</>}
-        {role === 'admin' && <>{linkBtn('/employees','Employees')}{linkBtn('/tests','Tests')}</>}
-        {role === 'coach' && <>{linkBtn('/tests','Tests')}{linkBtn('/edittests','Edit tests')}</>}
+        <UserNavigation
+          roleBtns=''/>
       </div>}
-      <Divider/>
+      {role !== 'ROLE_USER' && <Divider/>}
       <div className='drawerSplit'>
-        <Button onClick={ () => {dispatch(languageChange('english'));}}>English</Button>
-        <Button onClick={ () => {dispatch(languageChange('russian'));}}>Russian</Button>
+        <Button
+          className = 'font-primary'
+          onClick={ () => switchLang('en')}>
+          <Trans>English</Trans>
+        </Button>
+        <Button
+          className = 'font-primary'
+          onClick={ () => switchLang('ru')}>
+          <Trans>Russian</Trans>
+        </Button>
       </div>
       <Divider/>
       <div className='drawerSplit'>
         <Button
+          className='font-primary'
           component={Link}
           to={'/profile'}>
-          My account
+          <Trans>Profile</Trans>
         </Button>
         <Button
+          className='font-primary'
           onClick={props.handleLogoutModal}>
-        Logout
+          <Trans>Logout</Trans>
         </Button>
       </div>
       <Divider/>
+      <div className='drawerSplit font-primary'>
+        <Trans>Dark mode</Trans>
+        <ThemeSwitch/>
+      </div>
     </div>);
 };
 

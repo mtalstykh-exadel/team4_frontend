@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
+import ThemeSwitch from '../themeSwitch/themeSwitch';
+
+import { Trans } from "@lingui/macro";
+
 const AccountMenu = (props) => {
+
   return (
     <Menu
-      elevation={1}
+      elevation={2}
       anchorEl={props.accEl}
       open={Boolean(props.accEl)}
       keepMounted
@@ -22,14 +27,20 @@ const AccountMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
+        className='font-primary'
         component={Link}
         to={'/profile'}
         onClick={props.handleAccClose}>
-          Profile
+        <Trans>Profile</Trans>
+      </MenuItem>
+      <MenuItem className='font-primary'>
+        <Trans>Dark mode</Trans>
+        <ThemeSwitch/>
       </MenuItem>
       <MenuItem
+        className='font-primary'
         onClick={props.handleLogoutMenu}>
-          Logout
+        <Trans>Logout</Trans>
       </MenuItem>
     </Menu>);
 };

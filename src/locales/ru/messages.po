@@ -11,10 +11,117 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/buttons/Buttons.jsx:34
-msgid "enTest"
+#: src/components/header/accountDropdown/accountDropdown.js:38
+#: src/components/header/drawerMenu/drawerMenu.js:73
+msgid "Dark mode"
+msgstr "Темный фон"
+
+#: src/components/header/userNavigation/userNavigation.js:56
+msgid "Distribution of tests"
+msgstr "Распределение тестов"
+
+#: src/components/header/userNavigation/userNavigation.js:40
+msgid "Edit tests"
+msgstr "Редактировать тесты"
+
+#: src/components/header/userNavigation/userNavigation.js:24
+msgid "Employees"
+msgstr "Работники"
+
+#: src/components/header/drawerMenu/drawerMenu.js:49
+#: src/components/header/languageDropdown/languageDropdown.js:30
+msgid "English"
 msgstr "Английский"
 
-#: src/components/buttons/Buttons.jsx:31
-msgid "ruTest"
+#: src/components/LoginForm/LoginForm.jsx:45
+msgid "Invalid email"
+msgstr "Некорректный email"
+
+#: src/components/LoginForm/LoginForm.jsx:59
+msgid "Log in"
+msgstr "Войти"
+
+#: src/components/header/logoutModal/logoutModal.js:22
+msgid "Log out of account?"
+msgstr "Выйти из аккаунта?"
+
+#: src/components/header/accountDropdown/accountDropdown.js:44
+#: src/components/header/drawerMenu/drawerMenu.js:68
+msgid "Logout"
+msgstr "Выход"
+
+#: src/components/header/logoutModal/logoutModal.js:34
+msgid "No"
+msgstr "Нет"
+
+#: src/components/header/accountDropdown/accountDropdown.js:35
+#: src/components/header/drawerMenu/drawerMenu.js:63
+msgid "Profile"
+msgstr "Профиль"
+
+#: src/components/LoginForm/LoginForm.jsx:44
+#: src/components/LoginForm/LoginForm.jsx:52
+msgid "Required field"
+msgstr "Обязательное поле"
+
+#: src/components/header/drawerMenu/drawerMenu.js:54
+#: src/components/header/languageDropdown/languageDropdown.js:35
+msgid "Russian"
 msgstr "Русский"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
+msgid "See More"
+msgstr "Посмотреть больше"
+
+#: src/components/header/userNavigation/userNavigation.js:49
+msgid "Statistics"
+msgstr "Статистика"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
+msgid "Take test"
+msgstr "Пройти тест"
+
+#: src/pages/Main/Main.jsx:10
+msgid "Testing procedure"
+msgstr "Процедура тестирования"
+
+#: src/components/header/userNavigation/userNavigation.js:33
+msgid "Tests for verification"
+msgstr "Тесты на проверку"
+
+#: src/components/header/logoutModal/logoutModal.js:28
+msgid "Yes"
+msgstr "Да"
+
+#: src/components/LoginForm/LoginForm.jsx:53
+msgid "Your email or password is incorrect. Please try again"
+msgstr "Ваш email или пароль неверный. Пожалуйста попробуйте снова"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
+msgid "notificationTestAsigned"
+msgstr "Тест на определение уровня знания Английского языка был опрделен на ваше имя"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
+msgid "notificationTestChecked"
+msgstr "Ваш тест по Английскому языку был проверен. Ваш уровень языка установлен:"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
+msgid "notificationsEmpty"
+msgstr "Оповещения отсутсвуют"
+
+#: src/pages/Main/Main.jsx:11
+msgid "testLevel"
+msgstr "Выберите тест в соответствии с вашим предполагаемым уровнем знания Английского языка. Если вы не знаете свой уровень, то начните с первого теста"
+
+#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:13
+#~ msgid "{Survival Level — Beginner и Elementary (A1)}"
+#~ msgstr "yes"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
+msgid "{description}"
+msgstr "{description}"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+msgid "{title}"
+msgstr ""
