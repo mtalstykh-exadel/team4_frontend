@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Grammar.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Grammar.scss';
 
 const Grammar = ({ tasks }) => {
 
@@ -10,10 +10,10 @@ const Grammar = ({ tasks }) => {
     questionCount++;
     const options = question.options.map((questionItem) => {
       return (
-        <div key={questionItem.option} className="test-question-option">
+        <div key={questionItem.option} className='test-question-option'>
           <input
-            type="radio"
-            name={"group-" + questionCount}
+            type='radio'
+            name={'group-' + questionCount}
             value={questionItem.option}
           />
           <label> {questionItem.option}</label>
@@ -22,10 +22,10 @@ const Grammar = ({ tasks }) => {
     });
 
     return (
-      <div key={questionCount} className="grammar-step">
-        <div className="test-question">
-          <span className="test-question number">{questionCount}. </span>
-          <span className="test-question sentence">{question.sentence}</span>
+      <div key={questionCount} className='grammar-step'>
+        <div className='test-question'>
+          <span className='test-question number'>{questionCount}. </span>
+          <span className='test-question sentence'>{question.sentence}</span>
         </div>
         {options}
       </div>
@@ -35,7 +35,7 @@ const Grammar = ({ tasks }) => {
 
   return (
     <>
-      <div className="step-description grammar">
+      <div className='step-description grammar'>
         Choose the correct option to complete the sentence
       </div>
       {questions}

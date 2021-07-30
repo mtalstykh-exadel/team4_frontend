@@ -45,11 +45,11 @@ const TestsData = (props) => {
   return (
     <Paper elevation={2}>
       <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell className="font-primary base-color-elevated" key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
+                <TableCell className='font-primary base-color-elevated' key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
                   {column.label}
                 </TableCell>
               ))}
@@ -59,15 +59,15 @@ const TestsData = (props) => {
             {
               filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id} >
+                  <TableRow hover role='checkbox' tabIndex={-1} key={row.id} >
                     {columns.map((column) => {
                       const value = row[column.id];
                       keysForColumns++;
                       return (
-                        <TableCell className="font-primary" key={keysForColumns} align={column.align} size="small">
+                        <TableCell className='font-primary' key={keysForColumns} align={column.align} size='small'>
                           {
                             column.id === 'action' ?
-                              <Button color="primary" variant="contained" size='small'
+                              <Button color='primary' variant='contained' size='small'
                                 onClick={() => testAction(row[column.id])} >
                                 {value}
                               </Button>
@@ -82,7 +82,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination className="font-primary" rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
+      <TablePagination className='font-primary' rowsPerPageOptions={[10]} component='div' count={filteredRows.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );

@@ -44,15 +44,15 @@ export const EditTestsTable = (props) => {
 
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color="primary" variant="contained" type="search" className='btn-add-question'>Add question</Button>
+      <Button color='primary' variant='contained' type='search' className='btn-add-question'>Add question</Button>
       <Paper>
         <TableContainer>
-          <Table stickyHeader aria-label="sticky table">
+          <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align="left" style={{ fontWeight: 700 }}>{rowName}</TableCell>
+                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -60,21 +60,21 @@ export const EditTestsTable = (props) => {
             <TableBody>{filteredQuestions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">{row.id}</TableCell>
-                  <TableCell component="th" scope="row" padding='none' size='small'>
+                  <TableCell component='th' scope='row'>{row.id}</TableCell>
+                  <TableCell component='th' scope='row' padding='none' size='small'>
                     {
                       row.module === 'Listening'
                         ? <PlayCircleOutlineIcon color='primary' cursor='pointer' />
                         : null
                     }
                   </TableCell>
-                  <TableCell align="left" size='small'>{row.question}</TableCell>
-                  <TableCell align="left">
-                    <Button color="primary" variant="outlined" size="small" style={{ width: 110, border: 'solid 2px #3F51B5' }} type="search" className='btn-search'>
+                  <TableCell align='left' size='small'>{row.question}</TableCell>
+                  <TableCell align='left'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search'>
                       Edit
                     </Button>
                   </TableCell>
-                  <TableCell align="left">{<ArchiveOutlinedIcon color='primary' className='archiveBtn' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
+                  <TableCell align='left'>{<ArchiveOutlinedIcon color='primary' className='archiveBtn' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
                 </TableRow>
               );
             })}
@@ -83,7 +83,7 @@ export const EditTestsTable = (props) => {
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
-          component="div"
+          component='div'
           count={filteredQuestions.length}
           rowsPerPage={rowsPerPage}
           page={page}
