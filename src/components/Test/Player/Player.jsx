@@ -10,6 +10,7 @@ export const Player = ({ src, audioDuration, id }) => {
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
+  const [audioElement, setAudioElement] = useState({});
   const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
 
@@ -36,6 +37,7 @@ export const Player = ({ src, audioDuration, id }) => {
 
   const AudioProgressBar = (e) => {
     const { currentTime, duration } = e.srcElement;
+    setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
 
     if (audioDuration) {
@@ -61,7 +63,9 @@ export const Player = ({ src, audioDuration, id }) => {
   };
 
   const setAudioProgressBar = ( e ) => {
-    audioDomElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * localeDuration;
+    if (audioElement.currentTime !== null){
+      audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+    }
   };
 
   if (audioDomElement) {
