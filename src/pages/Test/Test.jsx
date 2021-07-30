@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Speaking, Essay, Grammar, Listening, grammarTasks, listeningTasks} from "../../components";
+import {
+  Speaking,
+  Essay,
+  Grammar,
+  Listening,
+  grammarTasks,
+  listeningTasks,
+} from "../../components";
 import { startTimer, createTimer } from "../../services/timer";
 import Layout from "../../components/Layout/Layout";
 import Button from "@material-ui/core/Button";
 import "./Test.scss";
 
 export const Test = () => {
-  const minutes = 40;
+  const TestDurationInminutes = 40;
   const [step, setStep] = useState(0);
   const [nextButtonText, setNextButtonText] = useState("Next");
   const [prevButtonClass, setPrevButtonClass] = useState(
@@ -21,8 +28,13 @@ export const Test = () => {
   ];
 
   useEffect(() => {
-    startTimer(createTimer({ domId: "test-timer", minutes: minutes }));
-  }, [minutes]);
+    startTimer(
+      createTimer({
+        domId: "test-timer",
+        minutes: TestDurationInminutes,
+      })
+    );
+  }, [TestDurationInminutes]);
 
   return (
     <Layout>
@@ -69,7 +81,7 @@ export const Test = () => {
             Speaking
           </div>
           <div className="test-step time" id="test-timer">
-            {minutes}:00
+            {TestDurationInminutes}:00
           </div>
         </div>
         <div className="test-task-wrapper">{steps[step]}</div>

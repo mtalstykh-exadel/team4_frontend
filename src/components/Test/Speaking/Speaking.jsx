@@ -30,30 +30,27 @@ export const Speaking = () => {
       <div className="audio-speaking-timer" id="speaking-timer">
         5:00
       </div>
-      <div className={invisible === "off" ? "microphone" : "microphone microphone-off"}>
+      <div
+        className={
+          invisible === "off" ? "microphone" : "microphone microphone-off"
+        }
+        onClick={() => {
+          if (invisible !== "off") {
+            setInvisible("off");
+            setBlobURL(offRecAudio());
+            setAudioDuration(stopTimer("speaking-timer"));
+          } else {
+            setInvisible("on");
+            onRecAudio();
+            startTimer(createTimer({ domId: "speaking-timer", minutes: 5 }));
+            checkSpeakingTimerHandler();
+          }
+        }}
+      >
         {invisible === "off" ? (
-          <MicIcon
-            alt="microOn"
-            className="microphone-item"
-            name="onButton"
-            onClick={() => {
-              setInvisible("on");
-              onRecAudio();
-              startTimer(createTimer({domId: "speaking-timer", minutes: 5}));
-              checkSpeakingTimerHandler();
-            }}
-          />
+          <MicIcon alt="microOn" className="microphone-item" />
         ) : (
-          <MicOffIcon
-            alt="microOff"
-            className="microphone-item"
-            name="offButton"
-            onClick={() => {
-              setInvisible("off");
-              setBlobURL(offRecAudio());
-              setAudioDuration(stopTimer("speaking-timer"));
-            }}
-          />
+          <MicOffIcon alt="microOff" className="microphone-item" />
         )}
       </div>
       <Player
