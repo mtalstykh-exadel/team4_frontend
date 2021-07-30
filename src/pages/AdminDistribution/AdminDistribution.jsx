@@ -35,6 +35,11 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+
+  {rows.map((row) => (
+    console.log(row?.Coach)
+  ));}
+
   return (
     <div className="AdminDistribution">
       <Layout>
@@ -100,7 +105,7 @@ const AdminDistribution = (props) => {
                                   color="primary"
                                   size="small"
                                   onClick={() => {
-                                    AssignTest("item-" + index);
+                                    AssignTest(index);
                                   }}
                                 >
                                   {value}
