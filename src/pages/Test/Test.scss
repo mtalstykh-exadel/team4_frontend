@@ -12,6 +12,7 @@
       float: left;
       line-height: 100%;
       font-size: 24px;
+      color: black;
       width: 20%;
       text-align: center;
       border-bottom: #e2e9f9 solid 2px;
@@ -22,7 +23,7 @@
     }
 
     .test-step.active {
-      border-bottom: 5px solid var(--primary-color);
+      border-bottom: #3e6dd7 solid 5px;
     }
 
     .test-step.time {
@@ -32,12 +33,12 @@
 
     @media only screen and (max-width: 800px) {
       .test-step {
-        font-size: 18px;
+        font-size: 14px;
       }
 
       .test-step.time {
         border: none;
-        font-size: 30px;
+        font-size: 20px;
       }
     }
   }
@@ -71,6 +72,13 @@
         line-height: 100%;
         width: 14%;
         height: 40px;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .previous-step-button,
+        .next-step-button {
+          width: 20%;
+        }
       }
 
       .previous-step-button.invisible {

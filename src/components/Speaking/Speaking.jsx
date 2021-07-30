@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { offRecAudio, onRecAudio } from "../../../services/voice-recorder";
-import { speakingTimerHandler } from "../../../services/speaking-timer";
+import { offRecAudio, onRecAudio } from "../../services/voice-recorder";
+import { startTimer, createTimer, stopTimer } from "../../services/timer";
 import MicOffIcon from "@material-ui/icons/MicOff";
 import MicIcon from "@material-ui/icons/Mic";
-import Player from "../player/player";
+import { Player } from "../";
 import "./Speaking.scss";
 
-const Speaking = () => {
+export const Speaking = () => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState("off");
   const [blobURL, setBlobURL] = useState("");
@@ -17,7 +17,7 @@ const Speaking = () => {
       if (element.textContent === "0:00") {
         setInvisible("off");
         setBlobURL(offRecAudio());
-        setAudioDuration(speakingTimerHandler(false));
+        setAudioDuration(stopTimer("speaking-timer"));
       }
     });
   };
@@ -29,7 +29,7 @@ const Speaking = () => {
       <div className="audio-speaking-timer" id="speaking-timer">
         5:00
       </div>
-      <div className={invisible === "off" ? "microphone base-color-primary" : "base-color-error"}>
+      <div className={invisible === "off" ? "microphone" : "microphone microphone-off"}>
         {invisible === "off" ? (
           <MicIcon
             alt="microOn"
@@ -38,7 +38,7 @@ const Speaking = () => {
             onClick={() => {
               setInvisible("on");
               onRecAudio();
-              speakingTimerHandler({timerOn: true, id: "speaking-timer", minutes: 5});
+              startTimer(createTimer({domId: "speaking-timer", minutes: 5}));
               checkSpeakingTimerHandler();
             }}
           />
@@ -50,7 +50,7 @@ const Speaking = () => {
             onClick={() => {
               setInvisible("off");
               setBlobURL(offRecAudio());
-              setAudioDuration(speakingTimerHandler(false));
+              setAudioDuration(stopTimer("speaking-timer"));
             }}
           />
         )}
@@ -63,5 +63,3 @@ const Speaking = () => {
     </div>
   );
 };
-
-export default Speaking;

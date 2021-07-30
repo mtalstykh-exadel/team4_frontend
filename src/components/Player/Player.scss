@@ -30,6 +30,12 @@
     margin-right: 23px;
   }
 
+  @media only screen and (max-width: 800px) {
+    .player-time {
+      margin-top: 10px;
+    }
+  }
+
   .player-button:hover {
     border-radius: 4px;
     background-color: rgba(62, 109, 215, 0.05);
@@ -56,7 +62,7 @@
   .progress-line {
     position: absolute;
     width: 10%;
-    border: 2px solid;
+    border: 2px solid #3f51b5;
     border-radius: 5px;
     max-width: 100%;
   }
@@ -68,6 +74,7 @@
   .volume-changer {
     position: absolute;
     right: 8px;
+    background: #fff;
     box-shadow: 0 4px 15px rgba(11, 36, 92, 0.15);
     width: 33px;
     height: 97px;

@@ -7,8 +7,13 @@
     height: 60px;
     margin: 0 auto;
     margin-bottom: 60px;
+    background-color: #3e6dd7;
     border-radius: 50%;
     cursor: pointer;
+  }
+
+  .microphone-off {
+    background-color: #d7463e;
   }
 
   .speaking-topic {

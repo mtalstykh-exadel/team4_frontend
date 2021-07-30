@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Test.scss";
 import Layout from "../../components/Layout/Layout";
-import Speaking from "./Speaking/Speaking";
-import Essay from "./Essay/Essay";
-import Grammar from "./Grammar/Grammar";
-import Listening from "./Listening/Listening";
+import { Speaking, Essay, Grammar, Listening } from "../../components";
 import Button from "@material-ui/core/Button";
-import grammarTasks from "./testData/GrammarTasks";
-import listeningTasks from "./testData/ListeningTasks";
-import { testTimerHandler } from "../../services/test-timer";
+import grammarTasks from "../../components/testData/GrammarTasks";
+import listeningTasks from "../../components/testData/ListeningTasks";
+import { startTimer, createTimer} from "../../services/timer";
 
-const Test = () => {
+export const Test = () => {
   const minutes = 40;
   const [step, setStep] = useState(0);
-  const [nextButtonText, setNextButtonText] = useState("Next step");
+  const [nextButtonText, setNextButtonText] = useState("Next");
   const [prevButtonClass, setPrevButtonClass] = useState(
     "previous-step-button invisible"
   );
@@ -26,18 +23,18 @@ const Test = () => {
   ];
 
   useEffect(() => {
-    testTimerHandler(minutes);
+    startTimer(createTimer({domId: "test-timer", minutes: 40}));
   },[minutes]);
 
   return (
     <Layout>
-      <div className="test-page font-primary">
+      <div className="test-page">
         <div className="test-navigation-wrapper">
           <div
-            className={`${step === 0 ? "test-step active" : "test-step"}`}
+            className={step === 0 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(0);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button invisible");
             }}
           >
@@ -47,7 +44,7 @@ const Test = () => {
             className={step === 1 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(1);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button");
             }}
           >
@@ -57,7 +54,7 @@ const Test = () => {
             className={step === 2 ? "test-step active" : "test-step"}
             onClick={() => {
               setStep(2);
-              setNextButtonText("Next step");
+              setNextButtonText("Next");
               setPrevButtonClass("previous-step-button");
             }}
           >
@@ -90,12 +87,12 @@ const Test = () => {
                   if (prev === 0) {
                     setPrevButtonClass("previous-step-button invisible");
                   }
-                  setNextButtonText("Next step");
+                  setNextButtonText("Next");
                   return prev;
                 });
               }}
             >
-              Previous step
+              Previous
             </Button>
             <Button
               className="next-step-button"
@@ -123,5 +120,3 @@ const Test = () => {
     </Layout>
   );
 };
-
-export default Test;

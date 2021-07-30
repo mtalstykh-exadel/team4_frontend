@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import Paper from '@material-ui/core/Paper';
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import PauseIcon from "@material-ui/icons/Pause";
 import PropTypes from "prop-types";
-import "./player.scss";
+import "./Player.scss";
 
-const Player = ({ src, audioDuration, id }) => {
+export const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -68,11 +67,8 @@ const Player = ({ src, audioDuration, id }) => {
   }
 
   return (
-    <Paper
-      elevation={2}
-      className="player">
-      <Paper
-        elevation={2}
+    <div className="player">
+      <div
         className={
           showVolumeChanger === true ? "volume-changer" : "invisible"
         }
@@ -86,18 +82,18 @@ const Player = ({ src, audioDuration, id }) => {
           max="100"
           defaultValue="30"
         />
-      </Paper>
+      </div>
       <button className="player-button">
         {audioOn === false ? (
           <PlayArrowIcon
-            className = "icons-color-primary"
+            color="primary"
             fontSize="medium"
             onClick={AudioController}
             alt="play"
           />
         ) : (
           <PauseIcon
-            className = "icons-color-primary"
+            color="primary"
             fontSize="medium"
             onClick={AudioStop}
             alt="play"
@@ -114,13 +110,13 @@ const Player = ({ src, audioDuration, id }) => {
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + "%" }}
-          className="progress-line border-primary"
+          className="progress-line"
         />
         <div className="progress" />
       </div>
       <button className="player-button">
         <VolumeUpIcon
-          className='icons-color'
+          color="action"
           fontSize="medium"
           onClick={() => {
             if (showVolumeChanger === false) {
@@ -132,7 +128,7 @@ const Player = ({ src, audioDuration, id }) => {
           alt="volume"
         />
       </button>
-    </Paper>
+    </div>
   );
 };
 
@@ -141,5 +137,3 @@ Player.propTypes = {
   audioDuration: PropTypes.number,
   id: PropTypes.string,
 };
-
-export default Player;

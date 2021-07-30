@@ -10,10 +10,8 @@ import Login from './pages/Login/Login';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/Profile/Profile';
 import Main from './pages/Main/Main';
-import Page404 from "./pages/Page404/Page404";
-import { TestsForVerification, EditTests } from './pages';
+import { TestsForVerification, EditTests, Page404, Test } from './pages';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
-import Test from "./pages/Test/Test";
 
 import { initApp } from './store/actions/initActions/initActions';
 
