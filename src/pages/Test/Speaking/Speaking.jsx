@@ -29,7 +29,7 @@ const Speaking = () => {
       <div className="audio-speaking-timer" id="speaking-timer">
         5:00
       </div>
-      <div className={invisible === "off" ? "microphone" : "microphone microphone-off"}>
+      <div className={invisible === "off" ? "microphone base-color-primary" : "base-color-error"}>
         {invisible === "off" ? (
           <MicIcon
             alt="microOn"

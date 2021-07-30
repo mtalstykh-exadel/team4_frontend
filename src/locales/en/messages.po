@@ -11,28 +11,33 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/userNavigation/userNavigation.js:55
+#: src/components/header/accountDropdown/accountDropdown.js:38
+#: src/components/header/drawerMenu/drawerMenu.js:73
+msgid "Dark mode"
+msgstr "Dark mode"
+
+#: src/components/header/userNavigation/userNavigation.js:56
 msgid "Distribution of tests"
 msgstr "Distribution of tests"
 
-#: src/components/header/userNavigation/userNavigation.js:39
+#: src/components/header/userNavigation/userNavigation.js:40
 msgid "Edit tests"
 msgstr "Edit tests"
 
-#: src/components/header/userNavigation/userNavigation.js:23
+#: src/components/header/userNavigation/userNavigation.js:24
 msgid "Employees"
 msgstr "Employees"
 
-#: src/components/header/drawerMenu/drawerMenu.js:48
-#: src/components/header/languageDropdown/languageDropdown.js:29
+#: src/components/header/drawerMenu/drawerMenu.js:49
+#: src/components/header/languageDropdown/languageDropdown.js:30
 msgid "English"
 msgstr "English"
 
-#: src/components/LoginForm/LoginForm.jsx:47
+#: src/components/LoginForm/LoginForm.jsx:45
 msgid "Invalid email"
 msgstr "Invalid email"
 
-#: src/components/LoginForm/LoginForm.jsx:61
+#: src/components/LoginForm/LoginForm.jsx:59
 msgid "Log in"
 msgstr "Log in"
 
@@ -40,8 +45,8 @@ msgstr "Log in"
 msgid "Log out of account?"
 msgstr "Log out of account?"
 
-#: src/components/header/accountDropdown/accountDropdown.js:34
-#: src/components/header/drawerMenu/drawerMenu.js:64
+#: src/components/header/accountDropdown/accountDropdown.js:44
+#: src/components/header/drawerMenu/drawerMenu.js:68
 msgid "Logout"
 msgstr "Logout"
 
@@ -50,42 +55,42 @@ msgid "No"
 msgstr "No"
 
 #: src/components/LoginForm/LoginForm.jsx:51
-msgid "Password"
-msgstr "Password"
+#~ msgid "Password"
+#~ msgstr "Password"
 
-#: src/components/header/accountDropdown/accountDropdown.js:30
-#: src/components/header/drawerMenu/drawerMenu.js:60
+#: src/components/header/accountDropdown/accountDropdown.js:35
+#: src/components/header/drawerMenu/drawerMenu.js:63
 msgid "Profile"
 msgstr "Profile"
 
-#: src/components/LoginForm/LoginForm.jsx:46
-#: src/components/LoginForm/LoginForm.jsx:54
+#: src/components/LoginForm/LoginForm.jsx:44
+#: src/components/LoginForm/LoginForm.jsx:52
 msgid "Required field"
 msgstr "Required field"
 
-#: src/components/header/drawerMenu/drawerMenu.js:52
-#: src/components/header/languageDropdown/languageDropdown.js:33
+#: src/components/header/drawerMenu/drawerMenu.js:54
+#: src/components/header/languageDropdown/languageDropdown.js:35
 msgid "Russian"
 msgstr "Russian"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:29
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
 msgid "See More"
 msgstr "See More"
 
-#: src/components/header/userNavigation/userNavigation.js:48
+#: src/components/header/userNavigation/userNavigation.js:49
 msgid "Statistics"
 msgstr "Statistics"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:52
-#: src/components/testLevelSelector/testLevelSelectorItem/testLevelSelectorItem.jsx:14
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
 msgid "Take test"
 msgstr "Take test"
 
-#: src/pages/main/main.jsx:12
+#: src/pages/Main/Main.jsx:10
 msgid "Testing procedure"
 msgstr "Testing procedure"
 
-#: src/components/header/userNavigation/userNavigation.js:32
+#: src/components/header/userNavigation/userNavigation.js:33
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
@@ -93,22 +98,30 @@ msgstr "Tests for verification"
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/LoginForm/LoginForm.jsx:55
+#: src/components/LoginForm/LoginForm.jsx:53
 msgid "Your email or password is incorrect. Please try again"
 msgstr "Your email or password is incorrect. Please try again"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:16
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
 msgid "notificationTestAsigned"
 msgstr "A test to determine the level of English has been asigned to your name"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:37
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
 msgid "notificationTestChecked"
 msgstr "Your English language test is checked. Your English level has been set as ."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:61
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
 msgid "notificationsEmpty"
 msgstr "No new notificiations for you"
 
-#: src/pages/main/main.jsx:13
+#: src/pages/Main/Main.jsx:11
 msgid "testLevel"
 msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
+msgid "{description}"
+msgstr "{description}"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+msgid "{title}"
+msgstr "{title}"

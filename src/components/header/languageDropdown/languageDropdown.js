@@ -11,7 +11,7 @@ const LanguageMenu = (props) => {
 
   return (
     <Menu
-      elevation={1}
+      elevation={2}
       anchorEl={props.langEl}
       open={Boolean(props.langEl)}
       onClose={props.handleLangClose}
@@ -25,10 +25,12 @@ const LanguageMenu = (props) => {
         horizontal: 'center'
       }}>
       <MenuItem
+        className='font-primary'
         onClick={ () => {props.handleLangClose(); switchLang('en');}}>
         <Trans>English</Trans>
       </MenuItem>
       <MenuItem
+        className='font-primary'
         onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
         <Trans>Russian</Trans>
       </MenuItem>

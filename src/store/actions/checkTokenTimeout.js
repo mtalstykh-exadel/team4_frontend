@@ -1,7 +1,7 @@
 import { getJWTdata } from "../../utils/jwt-parser";
 import { logoutActions } from "./logoutActions";
 
-export const tokenTimeout = () => (dispatch, getState) => {
+export const checkTokenTimeout = () => (dispatch, getState) => {
   const state = getState();
   const calculateAuthTime = () => {
     const currentTime = new Date().getTime() / 1000;

@@ -43,13 +43,13 @@ const TestsData = (props) => {
   };
 
   return (
-    <Paper>
+    <Paper elevation={2}>
       <TableContainer>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
+                <TableCell className="font-primary base-color-elevated" key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
                   {column.label}
                 </TableCell>
               ))}
@@ -64,10 +64,10 @@ const TestsData = (props) => {
                       const value = row[column.id];
                       keysForColumns++;
                       return (
-                        <TableCell key={keysForColumns} align={column.align} size="small">
+                        <TableCell className="font-primary" key={keysForColumns} align={column.align} size="small">
                           {
                             column.id === 'action' ?
-                              <Button variant="contained" color="primary" size='small'
+                              <Button color="primary" variant="contained" size='small'
                                 onClick={() => testAction(row[column.id])} >
                                 {value}
                               </Button>
@@ -82,7 +82,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
+      <TablePagination className="font-primary" rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );

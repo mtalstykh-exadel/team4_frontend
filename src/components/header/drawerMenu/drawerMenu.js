@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Divider, Button, Avatar, IconButton} from '@material-ui/core';
+import { Divider, Button, Avatar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from "@lingui/macro";
 
 import { switchLang } from '../../../utils/lang-service';
 import UserNavigation from '../userNavigation/userNavigation';
+import ThemeSwitch from '../themeSwitch/themeSwitch';
 
-// import image as an avatar for profile icon
-import avatar from '../../../assets/images/logo/logoText.svg';
+import avatar from '../../../assets/images/goose.svg';
 
 const DrawerMenu = (props) => {
   const role = useSelector((state) => state.jwt.role);
@@ -22,7 +22,7 @@ const DrawerMenu = (props) => {
       <div className='drawerIcons'>
         <Button
           onClick={props.handleDrawer}>
-          <CloseIcon/>
+          <CloseIcon className='icons-color'/>
         </Button>
         <IconButton
           edge='end'
@@ -31,8 +31,9 @@ const DrawerMenu = (props) => {
           component={Link}
           to={'/profile'}>
           <Avatar
-            className='avatarHeader'
-            src={avatar}/>
+            className='avatarDrawer border-secondary'
+            src={avatar}
+            alt='avatar'/>
         </IconButton>
       </div>
       <Divider/>
@@ -44,10 +45,12 @@ const DrawerMenu = (props) => {
       {role !== 'ROLE_USER' && <Divider/>}
       <div className='drawerSplit'>
         <Button
+          className = 'font-primary'
           onClick={ () => switchLang('en')}>
           <Trans>English</Trans>
         </Button>
         <Button
+          className = 'font-primary'
           onClick={ () => switchLang('ru')}>
           <Trans>Russian</Trans>
         </Button>
@@ -55,16 +58,22 @@ const DrawerMenu = (props) => {
       <Divider/>
       <div className='drawerSplit'>
         <Button
+          className='font-primary'
           component={Link}
           to={'/profile'}>
           <Trans>Profile</Trans>
         </Button>
         <Button
+          className='font-primary'
           onClick={props.handleLogoutModal}>
           <Trans>Logout</Trans>
         </Button>
       </div>
       <Divider/>
+      <div className='drawerSplit font-primary'>
+        <Trans>Dark mode</Trans>
+        <ThemeSwitch/>
+      </div>
     </div>);
 };
 

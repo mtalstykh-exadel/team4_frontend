@@ -28,7 +28,7 @@ const LoginForm = () => {
   };
 
   const changeLang = (e) => {
-    e.currentTarget.outerText === 'EN' ? switchLang('ru') : switchLang('en');
+    e.currentTarget.outerText === 'EN' ? switchLang('en') : switchLang('ru');
   };
   return (
     <div className="loginForm">
@@ -37,7 +37,7 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit} noValidate autoComplete="off" >
             {/* field for email */}
             <div className="fieldsWrapper">
-              <TextField id="outlined-basic" label='Email' variant="outlined" type="email" name="email"
+              <TextField id="outlined-basic" label='Email' variant="outlined" type="email" name="email" error={error ? true : false}
                 onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
             </div>
             {errors.email && touched.email ? errors.email === 'R'
@@ -46,7 +46,7 @@ const LoginForm = () => {
 
             {/* field for password */}
             <div className="fieldsWrapper">
-              <TextField id="outlined-basic" label='Password' variant="outlined" type="password" name="password"
+              <TextField id="outlined-basic" label='Password' variant="outlined" type="password" name="password" error={error ? true : false}
                 onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' />
             </div>
             {errors.password && touched.password ? <Trans>Required field</Trans> : null}
@@ -54,9 +54,9 @@ const LoginForm = () => {
             {/* button for submitting */}
 
             <div className="fieldsWrapper">
-              <Button variant="contained" color="primary" type="submit" className='loginButton'
+              <Button color="primary" variant="contained" type="submit" className='loginButton'
                 disabled={isSubmitting || !!errors.email || !!errors.password || loading} >
-                {loading ? <CircularProgress /> : <Trans>Log in</Trans>}
+                {loading ? <CircularProgress className="border-primary"/> : <Trans>Log in</Trans>}
               </Button>
             </div>
           </form>

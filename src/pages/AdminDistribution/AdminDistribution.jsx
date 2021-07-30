@@ -37,14 +37,15 @@ const AdminDistribution = (props) => {
   return (
     <div className="AdminDistribution">
       <Layout>
-        <Paper>
+        <Paper
+          elevation={2}>
           <TableContainer className="paper">
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
                   {columns.map((column) => (
                     <TableCell
-                      className="headItems"
+                      className="headItems font-primary base-color-elevated"
                       size="small"
                       key={column.id}
                       align={column.align}
@@ -65,13 +66,14 @@ const AdminDistribution = (props) => {
                           keysForColumns++;
                           return (
                             <TableCell
+                              className="font-primary"
                               key={keysForColumns}
                               align={column.align}
                               size="small"
                             >
                               {column.id === "Coach" ? (
                                 <Select
-                                  className="selectCoachNames"
+                                  className="selectCoachNames font-primary"
                                   native
                                   variant="outlined"
                                   defaultValue="placeholder"
@@ -94,8 +96,8 @@ const AdminDistribution = (props) => {
                               {column.id === "action" ? (
                                 <Button
                                   className="buttonAssign"
-                                  variant="outlined"
                                   color="primary"
+                                  variant="outlined"
                                   size="small"
                                 >
                                   {value}
@@ -113,6 +115,7 @@ const AdminDistribution = (props) => {
             </Table>
           </TableContainer>
           <TablePagination
+            className="font-primary"
             rowsPerPageOptions={[10]}
             component="div"
             count={filteredRows.length}
