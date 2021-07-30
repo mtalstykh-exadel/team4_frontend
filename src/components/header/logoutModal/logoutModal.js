@@ -18,7 +18,7 @@ const LogoutModal = (props) => {
       open={Boolean(props.logoutEl)}
       onClose={props.handleAccClose}>
       <Fade in={Boolean(props.logoutEl)}>
-        <div className='paper'>
+        <div className='paper base-color'>
           <h2><Trans>Log out of account?</Trans></h2>
           <div className='modalBtns'>
             <Button

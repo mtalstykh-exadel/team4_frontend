@@ -31,10 +31,10 @@ const Test = () => {
 
   return (
     <Layout>
-      <div className="test-page">
+      <div className="test-page font-primary">
         <div className="test-navigation-wrapper">
           <div
-            className={step === 0 ? "test-step active" : "test-step"}
+            className={`${step === 0 ? "test-step active" : "test-step"}`}
             onClick={() => {
               setStep(0);
               setNextButtonText("Next step");

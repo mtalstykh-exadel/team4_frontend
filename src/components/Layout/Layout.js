@@ -1,6 +1,8 @@
-import "./Layout.scss";
 import React from "react";
 import { PropTypes } from "prop-types";
+
+import "./Layout.scss";
+
 import Header from '../header/header';
 
 const Layout = ({ pageWrapperClass, children }) => {

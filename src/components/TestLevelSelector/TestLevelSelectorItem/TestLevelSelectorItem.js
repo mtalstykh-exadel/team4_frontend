@@ -10,13 +10,13 @@ export const TestLevelsSelectorItem = ({ title, description }) => {
 
   return (
     <div className="test-level-selector-item">
-      <div className="title">{title}</div>
-      <div className="description">{description}</div>
+      <div className="title"><Trans>{title}</Trans></div>
+      <div className="description"><Trans>{description}</Trans></div>
       <Button
         disableElevation
-        className="btn"
-        variant="contained"
+        className='btn'
         color="primary"
+        variant="contained"
         component={Link}
         to="/test"
       >
