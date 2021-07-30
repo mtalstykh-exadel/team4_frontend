@@ -15,9 +15,7 @@ export const Player = ({ src, audioDuration, id }) => {
 
   const AudioController = () => {
     if (document.getElementById(id)) {
-      document
-        .getElementById(id)
-        .play()
+      document.getElementById(id).play()
         .catch((err) => {
           console.warn(err);
         });
@@ -26,12 +24,8 @@ export const Player = ({ src, audioDuration, id }) => {
       setAudioCurrent(0);
       setAudioOn(true);
 
-      document
-        .getElementById(id)
-        .removeEventListener("timeupdate", AudioProgressBar);
-      document
-        .getElementById(id)
-        .addEventListener("timeupdate", AudioProgressBar);
+      document.getElementById(id).removeEventListener("timeupdate", AudioProgressBar);
+      document.getElementById(id).addEventListener("timeupdate", AudioProgressBar);
     }
   };
 
@@ -64,6 +58,10 @@ export const Player = ({ src, audioDuration, id }) => {
       seconds = "0" + seconds;
     }
     return `${minutes}:${seconds}`;
+  };
+
+  const setAudioProgressBar = ( e ) => {
+    audioDomElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * localeDuration;
   };
 
   if (audioDomElement) {
@@ -109,7 +107,7 @@ export const Player = ({ src, audioDuration, id }) => {
           ? checkTime(localeDuration)
           : checkTime(audioDuration)}
       </div>
-      <div className="progress-container">
+      <div className="progress-container" onClick={setAudioProgressBar}>
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + "%" }}
