@@ -5,7 +5,7 @@ import './App.scss';
 import PrivateRoute from './utils/privateRoute';
 import Profile from './pages/Profile/Profile';
 import Main from './pages/main/main';
-import Page404 from "./pages/Page404/Page404";
+import Page404 from "./pages/404/Page404";
 import { TestsForVerification, EditTests } from './pages';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 import Test from "./pages/Test/Test";

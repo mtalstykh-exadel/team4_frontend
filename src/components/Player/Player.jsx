@@ -3,7 +3,7 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import VolumeUpIcon from "@material-ui/icons/VolumeUp";
 import PauseIcon from "@material-ui/icons/Pause";
 import PropTypes from "prop-types";
-import "./player.scss";
+import "./Player.scss";
 
 const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
