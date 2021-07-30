@@ -7,9 +7,9 @@ import Header from '../header/header';
 
 const Layout = ({ pageWrapperClass, children }) => {
   return (
-    <div className="base-color">
+    <div>
       <Header/>
-      <main className={`${pageWrapperClass} base-color`}>
+      <main className={pageWrapperClass}>
         {children}
       </main>
     </div>

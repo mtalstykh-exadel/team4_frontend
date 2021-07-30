@@ -69,7 +69,6 @@ const Header = () => {
   return (
     <AppBar
       color='inherit'
-      className='base-color'
       elevation={1}
       position='static'>
       <div className='toolbar-wrapper'>
