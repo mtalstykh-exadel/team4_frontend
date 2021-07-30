@@ -1,4 +1,4 @@
-import { THEME_CHANGE } from "../actions/actionTypes";
+import { THEME_CHANGE } from '../actions/actionTypes';
 
 const themeReducer = ( state = '' , action) => {
   switch (action.type) {

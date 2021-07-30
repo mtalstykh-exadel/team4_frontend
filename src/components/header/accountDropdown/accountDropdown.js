@@ -6,7 +6,7 @@ import { Menu, MenuItem } from '@material-ui/core';
 
 import ThemeSwitch from '../themeSwitch/themeSwitch';
 
-import { Trans } from "@lingui/macro";
+import { Trans } from '@lingui/macro';
 
 const AccountMenu = (props) => {
 

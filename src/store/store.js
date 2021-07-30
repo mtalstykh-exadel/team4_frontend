@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from "redux-thunk";
+import thunk from 'redux-thunk';
 import { combineReducers } from 'redux';
 
 import { jwtReducer } from './reducers/jwtReducers';

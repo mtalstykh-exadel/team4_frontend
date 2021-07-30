@@ -1,4 +1,4 @@
-import { REQUEST_QUESTIONS_LIST } from "../actions/actionTypes";
+import { REQUEST_QUESTIONS_LIST } from '../actions/actionTypes';
 
 const initialState = {
   questions: null

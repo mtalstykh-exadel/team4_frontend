@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom';
-import { React } from "react";
+import { React } from 'react';
 
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 
-import { Trans } from "@lingui/macro";
+import { Trans } from '@lingui/macro';
 
 const UserNavigation = (props) => {
   const location = useLocation();
