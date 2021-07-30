@@ -13,6 +13,7 @@ export const Speaking = () => {
 
   const checkSpeakingTimerHandler = () => {
     const element = document.getElementById("speaking-timer");
+
     element.addEventListener("DOMNodeInserted", () => {
       if (element.textContent === "0:00") {
         setInvisible("off");
