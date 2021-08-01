@@ -7,22 +7,24 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { rows } from './rows';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 const TestsData = (props) => {
   const columns = [
     { id: 'level', label: 'Level', minWidth: 50, align: 'center' },
     { id: 'assigned', label: 'Assigned', minWidth: 130, align: 'center' },
-    { id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center', },
-    { id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center', },
+    { id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center' },
+    { id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center' },
     { id: 'status', label: 'Status', minWidth: 40, align: 'center', },
     { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
     { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
   ];
 
-  const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
+  const testsHistory = useSelector((state) => state.profile.testsHistory);
+
+  const filteredRows = testsHistory.filter((r) => props.filter ? r.level === props.filter : r);
 
   let keysForColumns = 1;
 

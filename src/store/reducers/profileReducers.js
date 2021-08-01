@@ -1,16 +1,14 @@
-import { SET_PROFILE_DATA } from "../actions/actionTypes";
+import { SET_USER_TESTS_HISTORY } from "../actions/actionTypes";
 
 const initialState = {
-  avatar: null,
-  occupation: null
+  testsHistory: []
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_PROFILE_DATA:
+    case SET_USER_TESTS_HISTORY:
       return Object.assign({}, state, {
-        avatar: action.avatar,
-        occupation: action.occupation
+        testsHistory: action.testsHistory
       });
     default:
       return state;

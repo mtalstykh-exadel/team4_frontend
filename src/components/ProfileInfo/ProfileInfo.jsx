@@ -5,7 +5,7 @@ import './ProfileInfo.scss';
 
 const ProfileInfo = () => {
 
-  const avatar = useSelector((state) => state.profile.avatar);
+  const avatar = useSelector((state) => state.jwt.avatar);
   const fullname = useSelector((state) => state.jwt.name);
   const email = useSelector((state) => state.jwt.sub);
 
