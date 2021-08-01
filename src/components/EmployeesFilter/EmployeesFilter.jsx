@@ -19,6 +19,7 @@ export const EmployeesFilter = (props) => {
     initialValues: { userName: '' },
     validationSchema: validation, onSubmit
   });
+
   return (
     <>
       <form className='employees-filter-form' onSubmit={formik.handleSubmit} >
