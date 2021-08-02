@@ -13,9 +13,11 @@ import Button from '@material-ui/core/Button';
 import './Test.scss';
 
 export const Test = () => {
-  const TestDurationInminutes = 40;
+  const TestDurationInMinutes = 40;
   const [step, setStep] = useState(0);
-  const [nextButtonText, setNextButtonText] = useState('Next');
+  const [nextButtonClass, setNextButtonClass] = useState(
+    'next-step-button'
+  );
   const [prevButtonClass, setPrevButtonClass] = useState(
     'previous-step-button invisible'
   );
@@ -31,10 +33,10 @@ export const Test = () => {
     startTimer(
       createTimer({
         domId: 'test-timer',
-        minutes: TestDurationInminutes,
+        minutes: TestDurationInMinutes,
       })
     );
-  }, [TestDurationInminutes]);
+  }, [TestDurationInMinutes]);
 
   return (
     <Layout>
@@ -44,7 +46,7 @@ export const Test = () => {
             className={`${step === 0 ? 'test-step active' : 'test-step'}`}
             onClick={() => {
               setStep(0);
-              setNextButtonText('Next');
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button invisible');
             }}
           >
@@ -54,7 +56,7 @@ export const Test = () => {
             className={step === 1 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(1);
-              setNextButtonText('Next');
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
             }}
           >
@@ -64,7 +66,7 @@ export const Test = () => {
             className={step === 2 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(2);
-              setNextButtonText('Next');
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
             }}
           >
@@ -74,19 +76,19 @@ export const Test = () => {
             className={step === 3 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(3);
-              setNextButtonText('Submit');
+              setNextButtonClass('next-step-button invisible');
               setPrevButtonClass('previous-step-button');
             }}
           >
             Speaking
           </div>
           <div className='test-step time' id='test-timer'>
-            {TestDurationInminutes}:00
+            {TestDurationInMinutes}:00
           </div>
         </div>
         <div className='test-task-wrapper'>{steps[step]}</div>
         <div className='buttons-wrapper'>
-          <div className='test-buttons'>
+          <div className='step-navigation-buttons'>
             <Button
               className={prevButtonClass}
               color='primary'
@@ -99,7 +101,7 @@ export const Test = () => {
                   if (prev === 0) {
                     setPrevButtonClass('previous-step-button invisible');
                   }
-                  setNextButtonText('Next');
+                  setNextButtonClass('next-step-button');
                   return prev;
                 });
               }}
@@ -107,23 +109,32 @@ export const Test = () => {
               Previous
             </Button>
             <Button
-              className='next-step-button'
+              className={nextButtonClass}
               color='primary'
-              variant='contained'
+              variant='outlined'
               onClick={() => {
                 setStep((next) => {
                   if (next < 3) {
                     next++;
                   }
                   if (next === 3) {
-                    setNextButtonText('Submit');
+                    setNextButtonClass('next-step-button invisible');
                   }
                   setPrevButtonClass('previous-step-button');
                   return next;
                 });
               }}
             >
-              {nextButtonText}
+              Next
+            </Button>
+          </div>
+          <div className='submit-button-wrapper'>
+            <Button
+              className='submit-button'
+              color='primary'
+              variant='contained'
+            >
+              Submit
             </Button>
           </div>
           <div className='report-mistake'>Report a mistake</div>

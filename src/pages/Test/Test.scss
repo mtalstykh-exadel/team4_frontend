@@ -12,7 +12,6 @@
       float: left;
       line-height: 100%;
       font-size: 24px;
-      color: black;
       width: 20%;
       text-align: center;
       border-bottom: #e2e9f9 solid 2px;
@@ -62,7 +61,7 @@
       margin-right: 0;
     }
 
-    .test-buttons {
+    .step-navigation-buttons {
       display: flex;
       justify-content: space-between;
 
@@ -70,8 +69,8 @@
       .next-step-button {
         float: left;
         line-height: 100%;
-        width: 14%;
-        height: 40px;
+        width: 12%;
+        height: 35px;
       }
 
       @media only screen and (max-width: 800px) {
@@ -81,17 +80,37 @@
         }
       }
 
-      .previous-step-button.invisible {
+      .previous-step-button.invisible,
+      .next-step-button.invisible {
         visibility: hidden;
       }
     }
 
     .report-mistake {
-      float: right;
+      text-align: center;
       padding-top: 20px;
       font-size: 14px;
       color: #828282;
       padding-bottom: 112px;
+      cursor: pointer;
+    }
+
+    .submit-button-wrapper {
+      justify-content: center;
+
+      .submit-button {
+        margin-top: 48px;
+        height: 40px;
+        width: 14%;
+        align-content: center;
+        box-shadow: none;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .submit-button {
+          width: 25%;
+        }
+      }
     }
   }
 }
