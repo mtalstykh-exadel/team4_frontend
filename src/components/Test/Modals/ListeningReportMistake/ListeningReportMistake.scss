@@ -1,0 +1,33 @@
+.main {
+  width: 500px;
+  height: 150px;
+
+  .header {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  .selector {
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
+  .btn {
+    padding-left: 10px;
+    padding-top: 10px;
+
+    .delete-button {
+      margin-right: 50%;
+    }
+
+    .report-button {
+      margin-left: 15%;
+    }
+  }
+}

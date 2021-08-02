@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Modal } from '@material-ui/core';
+import React, {useState, useEffect} from 'react';
+import {Modal} from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -8,11 +8,12 @@ import {
   grammarTasks,
   listeningTasks,
 } from '../../components';
-import { startTimer, createTimer } from '../../services/timer';
+import {startTimer, createTimer} from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
-import { Trans } from '@lingui/macro';
+import {Trans} from '@lingui/macro';
+import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -34,11 +35,19 @@ export const Test = () => {
   };
 
   const steps = [
+    <Grammar key='0' tasks={grammarTasks}/>,
+    <Listening key='1' tasks={listeningTasks}/>,
+    <Essay key='2'/>,
+    <Speaking key='3'/>,
+  ];
+
+  /* const stepsModals = [
     <Grammar key='0' tasks={grammarTasks} />,
     <Listening key='1' tasks={listeningTasks} />,
     <Essay key='2' />,
     <Speaking key='3' />,
-  ];
+  ];*/
+
 
   useEffect(() => {
     startTimer(
@@ -156,6 +165,7 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
+              <ListeningReportMistake tasks={listeningTasks}/>
             </div>
           </Modal>
         </div>
