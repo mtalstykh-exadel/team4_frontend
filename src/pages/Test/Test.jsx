@@ -12,6 +12,7 @@ import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
+import { Trans } from '@lingui/macro';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -60,7 +61,7 @@ export const Test = () => {
               setPrevButtonClass('previous-step-button invisible');
             }}
           >
-            Grammar
+            <Trans>Grammar</Trans>
           </div>
           <div
             className={step === 1 ? 'test-step active' : 'test-step'}
@@ -70,7 +71,7 @@ export const Test = () => {
               setPrevButtonClass('previous-step-button');
             }}
           >
-            Listening
+            <Trans>Listening</Trans>
           </div>
           <div
             className={step === 2 ? 'test-step active' : 'test-step'}
@@ -80,7 +81,7 @@ export const Test = () => {
               setPrevButtonClass('previous-step-button');
             }}
           >
-            Essay
+            <Trans>Essay</Trans>
           </div>
           <div
             className={step === 3 ? 'test-step active' : 'test-step'}
@@ -90,7 +91,7 @@ export const Test = () => {
               setPrevButtonClass('previous-step-button');
             }}
           >
-            Speaking
+            <Trans>Speaking</Trans>
           </div>
           <div className='test-step time' id='test-timer'>
             {TestDurationInMinutes}:00
@@ -116,7 +117,7 @@ export const Test = () => {
                 });
               }}
             >
-              Previous
+              <Trans>Previous</Trans>
             </Button>
             <Button
               className={nextButtonClass}
@@ -135,7 +136,7 @@ export const Test = () => {
                 });
               }}
             >
-              Next
+              <Trans>Next</Trans>
             </Button>
           </div>
           <div className='submit-button-wrapper'>
@@ -147,7 +148,7 @@ export const Test = () => {
               Submit
             </Button>
           </div>
-          <div className='report-mistake' onClick={handleOpen}>Report a mistake</div>
+          <div className='report-mistake' onClick={handleOpen}><Trans>Report a mistake</Trans></div>
           <Modal
             open={open}
             onClose={handleClose}

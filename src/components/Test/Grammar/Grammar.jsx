@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Grammar.scss';
+import { Trans } from '@lingui/macro';
 
 export const Grammar = ({ tasks }) => {
 
@@ -37,7 +38,7 @@ export const Grammar = ({ tasks }) => {
   return (
     <>
       <div className='step-description grammar'>
-        Choose the correct option to complete the sentence
+        <Trans>Choose the correct option to complete the sentence</Trans>
       </div>
       {questions}
     </>

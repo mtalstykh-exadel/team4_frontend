@@ -1,5 +1,5 @@
 import { REQUEST_QUESTIONS_LIST } from './actionTypes';
-import { questions } from '../../components/EditTestsTable/mock-data-Questions';
+import { questions } from '../../components/EditTests/EditTestsTable/mock-data-Questions';
 
 export const setQuestionsList = (questions) => ({ type: REQUEST_QUESTIONS_LIST, questions });
 

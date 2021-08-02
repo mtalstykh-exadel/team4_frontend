@@ -4,6 +4,7 @@ import { startTimer, createTimer, stopTimer } from '../../../services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
 import { Player } from '../../index';
+import { Trans } from '@lingui/macro';
 import './Speaking.scss';
 
 export const Speaking = () => {
@@ -24,8 +25,8 @@ export const Speaking = () => {
 
   return (
     <div className='speaking-step'>
-      <div className='step-description'>Write down record</div>
-      <div className='speaking-topic'>Speaking Topic</div>
+      <div className='step-description'><Trans>Write down record</Trans></div>
+      <div className='speaking-topic'><Trans>Speaking Topic</Trans></div>
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>

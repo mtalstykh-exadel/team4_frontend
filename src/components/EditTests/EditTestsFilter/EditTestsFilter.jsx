@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
+import { Trans } from '@lingui/macro';
 
 const validation = Yup.object({
   questId: Yup.number()
@@ -46,27 +47,26 @@ export const EditTestsFilter = (props) => {
     <>
       <form className='edit-tests-search-form' onSubmit={formik.handleSubmit} >
         <FormControl variant='outlined' className='edit-tests-search-level' size='small'>
-          <InputLabel htmlFor='level'>Level</InputLabel>
+          <InputLabel htmlFor='level'><Trans>Level</Trans></InputLabel>
           <Select name='level' label='Level' value={formik.values.level} inputProps={{ name: 'level' }} onChange={formik.handleChange}>
-            <MenuItem value='' className='edit-tests-option edit-tests-option-none'>None</MenuItem>
+            <MenuItem value='' className='edit-tests-option edit-tests-option-none'><Trans>None</Trans></MenuItem>
             {testLevelsList}
           </Select>
         </FormControl>
         <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
-          <InputLabel htmlFor='module'>Module</InputLabel>
+          <InputLabel htmlFor='module'><Trans>Module</Trans></InputLabel>
           <Select name='module' label='module' value={formik.values.module} inputProps={{ name: 'module' }} onChange={formik.handleChange}>
-            <MenuItem value='' className='edit-tests-option edit-tests-option-none'>None</MenuItem>
+            <MenuItem value='' className='edit-tests-option edit-tests-option-none'><Trans>None</Trans></MenuItem>
             {testModulesList}
           </Select>
         </FormControl>
-        <TextField label='Question ID' className='edit-tests-search-id' variant='outlined' size='small'
+        <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'
           value={formik.values.QuestId} onChange={formik.handleChange} inputProps={{ name: 'questId' }} />
-
         <Button color='primary' variant='contained' type='search' className='btn-search'>
-          Search
+          <Trans>Search</Trans>
         </Button>
       </form>
-      {formik.errors.questId ? <div>In field 'Question Id' must be a number</div> : null}
+      {formik.errors.questId ? <div><Trans>In field 'Question Id' must be a number</Trans></div> : null}
     </>
   );
 };

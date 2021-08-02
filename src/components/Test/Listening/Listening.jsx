@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Listening.scss';
 import { Grammar, Player } from '../../index';
+import { Trans } from '@lingui/macro';
 
 export const Listening = ({ tasks }) => {
 
   return (
     <div className='listening-step'>
-      <div className='step-description'>Listen and choose an answer option</div>
+      <div className='step-description'><Trans>Listen and choose an answer option</Trans></div>
       <div className='audio'>
         <Player
           id='player-listening'

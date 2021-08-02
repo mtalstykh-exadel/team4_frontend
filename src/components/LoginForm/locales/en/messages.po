@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/LoginForm/LoginForm.jsx:45
+msgid "Invalid email"
+msgstr "Invalid email"
+
+#: src/components/LoginForm/LoginForm.jsx:59
+msgid "Log in"
+msgstr "Log in"
+
+#: src/components/LoginForm/LoginForm.jsx:51
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#: src/components/LoginForm/LoginForm.jsx:44
+#: src/components/LoginForm/LoginForm.jsx:52
+msgid "Required field"
+msgstr "Required field"
+
+#: src/components/LoginForm/LoginForm.jsx:53
+msgid "Your email or password is incorrect. Please try again"
+msgstr "Your email or password is incorrect. Please try again"
