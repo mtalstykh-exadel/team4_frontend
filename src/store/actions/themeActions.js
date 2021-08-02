@@ -1,4 +1,4 @@
-import { THEME_CHANGE } from "./actionTypes";
+import { THEME_CHANGE } from './actionTypes';
 
 export const themeChange = (theme) => {
   localStorage.setItem('theme', theme);

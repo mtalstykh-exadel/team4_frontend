@@ -3,7 +3,7 @@ let timeSeconds;
 let timer;
 
 const speakingTimerHandler = (timerOn) => {
-  const speakingTimerDomElement = document.getElementById("speaking-timer");
+  const speakingTimerDomElement = document.getElementById('speaking-timer');
   timeSeconds = 299;
   if (timerOn === false) {
     return stopTimer(speakingTimerDomElement);
@@ -14,7 +14,7 @@ const speakingTimerHandler = (timerOn) => {
 
 const stopTimer = (element) => {
   clearInterval(timer);
-  element.textContent = "5:00";
+  element.textContent = '5:00';
   return audioDuration;
 };
 
@@ -27,7 +27,7 @@ const startTimer = (element) => {
       stopTimer(element);
     } else {
       if (seconds < 10) {
-        seconds = "0" + seconds;
+        seconds = '0' + seconds;
       }
       ++audioDuration;
       --timeSeconds;
