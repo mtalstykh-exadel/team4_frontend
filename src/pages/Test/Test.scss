@@ -88,11 +88,15 @@
 
     .report-mistake {
       text-align: center;
-      padding-top: 20px;
       font-size: 14px;
       color: #828282;
-      padding-bottom: 112px;
+      margin-bottom: 112px;
+      margin-top: 20px;
       cursor: pointer;
+    }
+
+    .report-mistake:hover {
+      text-decoration: underline;
     }
 
     .submit-button-wrapper {
@@ -103,7 +107,7 @@
         height: 40px;
         width: 14%;
         align-content: center;
-        box-shadow: none;
+        box-shadow: none;;
       }
 
       @media only screen and (max-width: 800px) {
