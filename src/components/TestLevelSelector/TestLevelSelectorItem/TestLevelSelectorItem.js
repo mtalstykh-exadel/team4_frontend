@@ -6,12 +6,12 @@ import './TestLevelSelectorItem.scss';
 
 import { Trans } from '@lingui/macro';
 
-export const TestLevelsSelectorItem = ({ title, description }) => {
+export const TestLevelsSelectorItem = (props) => {
 
   return (
     <div className='test-level-selector-item'>
-      <div className='title'><Trans>{title}</Trans></div>
-      <div className='description'><Trans>{description}</Trans></div>
+      <div className='title'><Trans>{props.titleEN}{props.titleRU}</Trans></div>
+      <div className='description'><Trans>{props.descriptionEN}{props.descriptionRU}</Trans></div>
       <Button
         disableElevation
         className='btn'
@@ -27,6 +27,8 @@ export const TestLevelsSelectorItem = ({ title, description }) => {
 };
 
 TestLevelsSelectorItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  titleEN: PropTypes.string.isRequired,
+  descriptionEN: PropTypes.string.isRequired,
+  titleRU: PropTypes.string.isRequired,
+  descriptionRU: PropTypes.string.isRequired
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Avatar } from '@material-ui/core';
+import { Trans } from '@lingui/macro';
 import './ProfileInfo.scss';
 
 const ProfileInfo = () => {
@@ -14,7 +15,7 @@ const ProfileInfo = () => {
       {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
       <div className='profileData'>
         {fullname ? <h2 className='fullname'>{fullname}</h2> : null}
-        {email ? <p className='email'> <b>E-mail: </b>{email} </p> : null}
+        {email ? <p className='email'> <b><Trans>E-mail: </Trans></b>{email} </p> : null}
       </div>
     </div>
   );

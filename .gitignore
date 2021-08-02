@@ -10,8 +10,8 @@ package-lock.json
 
 # production
 /build
-src/locales/*/messages.js
 
+src/**/locales/*/messages.js
 # misc
 .DS_Store
 .env.local
