@@ -14,7 +14,8 @@ import Button from '@material-ui/core/Button';
 import './Test.scss';
 import {Trans} from '@lingui/macro';
 // import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
-import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
+// import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
+import {SpeakingReportMistake} from '../../components/Test/Modals/SpeakingReportMistake/SpeakingReportMistake';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -167,7 +168,8 @@ export const Test = () => {
             className='modal'>
             <div className='modal-content'>
               {/* <ListeningReportMistake tasks={listeningTasks}/>*/}
-              <EssayReportMistake/>
+              {/* <EssayReportMistake/>*/}
+              <SpeakingReportMistake/>
             </div>
           </Modal>
         </div>
