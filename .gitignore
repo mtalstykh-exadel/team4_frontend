@@ -11,6 +11,15 @@ package-lock.json
 # production
 /build
 src/locales/*/messages.js
+src/pages/Page404/locales/*/messages.js
+src/pages/AdminDistribution/locales/*/messages.js
+src/pages/Test/locales/*/messages.js
+src/components/EditTests/locales/*/messages.js
+src/components/header/locales/*/messages.js
+src/components/LoginForm/locales/*/messages.js
+src/components/TestsForVerificationTable/locales/*/messages.js
+src/components/TestLevelSelector/locales/*/messages.js
+src/components/TestsInfo/locales/*/messages.js
 
 # misc
 .DS_Store
