@@ -1,1 +1,0 @@
-/*eslint-disable*/module.exports={messages:{"Either something went wrong or the page doesn't exist anymore.":"Либо что-то пошло не так, либо страница больше не существует.","Go Home":"На главную","Oops, this page was not found!":"К сожалению, эта страница не найдена!"}};
