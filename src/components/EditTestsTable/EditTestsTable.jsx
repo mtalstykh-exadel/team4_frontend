@@ -64,7 +64,7 @@ export const EditTestsTable = (props) => {
                   <TableCell className='font-primary' component='th' scope='row' padding='none' size='small'>
                     {
                       row.module === 'Listening'
-                        ? <PlayCircleOutlineIcon color='primary' cursor='pointer' />
+                        ? <PlayCircleOutlineIcon className='icons-color-primary' cursor='pointer' />
                         : null
                     }
                   </TableCell>

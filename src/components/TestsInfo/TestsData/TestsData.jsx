@@ -49,7 +49,7 @@ const TestsData = (props) => {
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell className='font-primary base-color-elevated' key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
+                <TableCell key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
                   {column.label}
                 </TableCell>
               ))}
@@ -64,7 +64,7 @@ const TestsData = (props) => {
                       const value = row[column.id];
                       keysForColumns++;
                       return (
-                        <TableCell className='font-primary' key={keysForColumns} align={column.align} size='small'>
+                        <TableCell key={keysForColumns} align={column.align} size='small'>
                           {
                             column.id === 'action' ?
                               <Button color='primary' variant='contained' size='small'
@@ -82,7 +82,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination className='font-primary' rowsPerPageOptions={[10]} component='div' count={filteredRows.length} rowsPerPage={rowsPerPage}
+      <TablePagination rowsPerPageOptions={[10]} component='div' count={filteredRows.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );

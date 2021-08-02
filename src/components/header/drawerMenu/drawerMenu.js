@@ -45,12 +45,12 @@ const DrawerMenu = (props) => {
       {role !== 'ROLE_USER' && <Divider/>}
       <div className='drawerSplit'>
         <Button
-          className = 'font-primary'
+          className = 'drawerButtons font-primary'
           onClick={ () => switchLang('en')}>
           <Trans>English</Trans>
         </Button>
         <Button
-          className = 'font-primary'
+          className = 'drawerButtons font-primary'
           onClick={ () => switchLang('ru')}>
           <Trans>Russian</Trans>
         </Button>
@@ -58,13 +58,13 @@ const DrawerMenu = (props) => {
       <Divider/>
       <div className='drawerSplit'>
         <Button
-          className='font-primary'
+          className='drawerButtons font-primary'
           component={Link}
           to={'/profile'}>
           <Trans>Profile</Trans>
         </Button>
         <Button
-          className='font-primary'
+          className='drawerButtons font-primary'
           onClick={props.handleLogoutModal}>
           <Trans>Logout</Trans>
         </Button>
