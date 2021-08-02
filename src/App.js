@@ -28,6 +28,7 @@ const App = () => {
         <PrivateRoute path="/edit-tests" ><EditTests /></PrivateRoute>
         <PrivateRoute path="/tests-for-verification" ><TestsForVerification /></PrivateRoute>
         <PrivateRoute path="/admin-distribution"><AdminDistribution /></PrivateRoute>
+        <PrivateRoute path="/employees"><Employees /></PrivateRoute>
         <PrivateRoute path='/test'><Test /></PrivateRoute>
         <Route path="*" render={() => <Page404 />} />
       </Switch>

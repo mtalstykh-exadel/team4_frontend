@@ -2,3 +2,4 @@ export { TestsForVerification } from './TestsForVerification/TestsForVerificatio
 export { EditTests } from './EditTests/EditTests';
 export { Page404 } from './404/404';
 export { Test } from './Test/Test';
+export { Employees } from './Employees/Employees';
