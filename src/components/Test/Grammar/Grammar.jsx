@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Grammar.scss';
 import { Trans } from '@lingui/macro';
 
-const Grammar = ({ tasks }) => {
+export const Grammar = ({ tasks }) => {
 
   let questionCount = 0;
   const questions = tasks.map((question) => {
@@ -13,11 +13,12 @@ const Grammar = ({ tasks }) => {
       return (
         <div key={questionItem.option} className='test-question-option'>
           <input
+            id={questionItem.option + questionCount}
             type='radio'
             name={'group-' + questionCount}
             value={questionItem.option}
           />
-          <label> {questionItem.option}</label>
+          <label htmlFor={questionItem.option + questionCount}> {questionItem.option}</label>
         </div>
       );
     });
@@ -48,5 +49,3 @@ Grammar.propTypes = {
   tasks: PropTypes.array,
   questions: PropTypes.array,
 };
-
-export default Grammar;

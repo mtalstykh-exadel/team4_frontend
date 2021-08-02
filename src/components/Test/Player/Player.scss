@@ -26,8 +26,13 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 19px;
-    color: #828282;
     margin-right: 23px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    .player-time {
+      margin-top: 10px;
+    }
   }
 
   .player-button:hover {
@@ -50,7 +55,7 @@
 
   .progress {
     width: 100%;
-    border: 2px solid #828282;
+    border: 2px solid;
   }
 
   .progress-line {

@@ -11,6 +11,7 @@ const PrivateRoute = ({ children, ...rest }) => {
     )} />
   );
 };
+
 PrivateRoute.propTypes = {
   children: PropTypes.oneOfType([
     PrivateRoute.array,

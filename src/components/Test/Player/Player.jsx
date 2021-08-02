@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
+import { Paper } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
 import PropTypes from 'prop-types';
-import './player.scss';
+import './Player.scss';
 
-const Player = ({ src, audioDuration, id }) => {
+export const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
+  const [audioElement, setAudioElement] = useState({});
   const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
 
@@ -37,6 +38,7 @@ const Player = ({ src, audioDuration, id }) => {
 
   const AudioProgressBar = (e) => {
     const { currentTime, duration } = e.srcElement;
+    setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
 
     if (audioDuration) {
@@ -61,6 +63,12 @@ const Player = ({ src, audioDuration, id }) => {
     return `${minutes}:${seconds}`;
   };
 
+  const setAudioProgressBar = ( e ) => {
+    if (audioElement.currentTime !== null){
+      audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+    }
+  };
+
   if (audioDomElement) {
     audioDomElement.onended = () => {
       setAudioOn(false);
@@ -69,13 +77,11 @@ const Player = ({ src, audioDuration, id }) => {
 
   return (
     <Paper
-      elevation={2}
+      elevation={3}
       className='player'>
       <Paper
         elevation={2}
-        className={
-          showVolumeChanger === true ? 'volume-changer' : 'invisible'
-        }
+        className={showVolumeChanger === true ? 'volume-changer' : 'invisible'}
       >
         <input
           className='volume-range'
@@ -87,50 +93,47 @@ const Player = ({ src, audioDuration, id }) => {
           defaultValue='30'
         />
       </Paper>
-      <button className='player-button'>
+      <button
+        className='player-button'
+        onClick={() => {
+          if (audioOn === false) {
+            AudioController();
+          } else {
+            AudioStop();
+          }
+        }}
+      >
         {audioOn === false ? (
-          <PlayArrowIcon
-            className = 'icons-color-primary'
-            fontSize='medium'
-            onClick={AudioController}
-            alt='play'
-          />
+          <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
         ) : (
-          <PauseIcon
-            className = 'icons-color-primary'
-            fontSize='medium'
-            onClick={AudioStop}
-            alt='play'
-          />
+          <PauseIcon className='icons-color-primary' fontSize='medium' />
         )}
       </button>
-      <div className='player-time'>
+      <div className='player-time font-primary'>
         {audioCurrent === 0 ? '0:00' : audioCurrent} /
         {audioDuration === undefined
           ? checkTime(localeDuration)
           : checkTime(audioDuration)}
       </div>
-      <div className='progress-container'>
+      <div className='progress-container' onClick={setAudioProgressBar}>
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + '%' }}
           className='progress-line border-primary'
         />
-        <div className='progress' />
+        <div className='progress border-secondary' />
       </div>
-      <button className='player-button'>
-        <VolumeUpIcon
-          className='icons-color'
-          fontSize='medium'
-          onClick={() => {
-            if (showVolumeChanger === false) {
-              setShowVolumeChanger(true);
-            } else {
-              setShowVolumeChanger(false);
-            }
-          }}
-          alt='volume'
-        />
+      <button
+        className='player-button'
+        onClick={() => {
+          if (showVolumeChanger === false) {
+            setShowVolumeChanger(true);
+          } else {
+            setShowVolumeChanger(false);
+          }
+        }}
+      >
+        <VolumeUpIcon className='icons-color' fontSize='medium' />
       </button>
     </Paper>
   );
@@ -141,5 +144,3 @@ Player.propTypes = {
   audioDuration: PropTypes.number,
   id: PropTypes.string,
 };
-
-export default Player;

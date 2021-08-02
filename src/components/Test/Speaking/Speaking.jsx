@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { offRecAudio, onRecAudio } from '../../../services/voice-recorder';
-import { speakingTimerHandler } from '../../../services/speaking-timer';
+import { startTimer, createTimer, stopTimer } from '../../../services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
+import { Player } from '../../index';
 import { Trans } from '@lingui/macro';
-import Player from '../player/player';
 import './Speaking.scss';
 
-const Speaking = () => {
+export const Speaking = () => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -18,7 +18,7 @@ const Speaking = () => {
       if (element.textContent === '0:00') {
         setInvisible('off');
         setBlobURL(offRecAudio());
-        setAudioDuration(speakingTimerHandler(false));
+        setAudioDuration(stopTimer('speaking-timer'));
       }
     });
   };
@@ -30,30 +30,27 @@ const Speaking = () => {
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>
-      <div className={invisible === 'off' ? 'microphone base-color-primary' : 'base-color-error'}>
+      <div
+        className={
+          invisible === 'off' ? 'microphone base-color-primary' : 'microphone base-color-error'
+        }
+        onClick={() => {
+          if (invisible !== 'off') {
+            setInvisible('off');
+            setBlobURL(offRecAudio());
+            setAudioDuration(stopTimer('speaking-timer'));
+          } else {
+            setInvisible('on');
+            onRecAudio();
+            startTimer(createTimer({ domId: 'speaking-timer', minutes: 5 }));
+            checkSpeakingTimerHandler();
+          }
+        }}
+      >
         {invisible === 'off' ? (
-          <MicIcon
-            alt='microOn'
-            className='microphone-item'
-            name='onButton'
-            onClick={() => {
-              setInvisible('on');
-              onRecAudio();
-              speakingTimerHandler({timerOn: true, id: 'speaking-timer', minutes: 5});
-              checkSpeakingTimerHandler();
-            }}
-          />
+          <MicIcon alt='microOn' className='microphone-item' />
         ) : (
-          <MicOffIcon
-            alt='microOff'
-            className='microphone-item'
-            name='offButton'
-            onClick={() => {
-              setInvisible('off');
-              setBlobURL(offRecAudio());
-              setAudioDuration(speakingTimerHandler(false));
-            }}
-          />
+          <MicOffIcon alt='microOff' className='microphone-item' />
         )}
       </div>
       <Player
@@ -64,5 +61,3 @@ const Speaking = () => {
     </div>
   );
 };
-
-export default Speaking;

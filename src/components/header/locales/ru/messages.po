@@ -20,7 +20,7 @@ msgstr "Темный фон"
 msgid "Deadline:"
 msgstr "Срок сдачи: "
 
-#: src/components/header/userNavigation/userNavigation.js:55
+#: src/components/header/userNavigation/userNavigation.js:48
 msgid "Distribution of tests"
 msgstr "Распределение тестов"
 
@@ -65,8 +65,8 @@ msgid "See More"
 msgstr "Посмотреть больше"
 
 #: src/components/header/userNavigation/userNavigation.js:48
-msgid "Statistics"
-msgstr "Статистика"
+#~ msgid "Statistics"
+#~ msgstr "Статистика"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:53
 msgid "Take test"

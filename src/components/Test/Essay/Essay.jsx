@@ -3,7 +3,7 @@ import './Essay.scss';
 import { TextField } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 
-const Essay = () => {
+export const Essay = () => {
   const [characters, setCharacters] = useState('');
 
   const handleChange = (event) => {
@@ -11,7 +11,7 @@ const Essay = () => {
   };
 
   return (
-    <>
+    <div className='essay-step'>
       <div className='step-description'><Trans>Write an essay on a given topic</Trans></div>
       <div className='essay-topic'><Trans>Essay Topic</Trans></div>
       <TextField
@@ -36,9 +36,7 @@ const Essay = () => {
         inputProps={{ maxLength: 512 }}
       />
       <div className='essay-characters'>{characters.length} <Trans>out of 512 characters</Trans></div>
-    </>
+    </div>
   );
 };
-
-export default Essay;
 

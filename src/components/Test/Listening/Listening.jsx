@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Listening.scss';
-import Grammar from '../Grammar/Grammar';
-import Player from '../player/player';
+import { Grammar, Player } from '../../index';
 import { Trans } from '@lingui/macro';
 
-const Listening = ({ tasks }) => {
+export const Listening = ({ tasks }) => {
 
   return (
     <div className='listening-step'>
@@ -24,5 +23,3 @@ const Listening = ({ tasks }) => {
 Listening.propTypes = {
   tasks: PropTypes.array,
 };
-
-export default Listening;
