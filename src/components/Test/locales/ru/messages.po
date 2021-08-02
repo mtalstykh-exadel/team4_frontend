@@ -37,11 +37,11 @@ msgstr "Слушание"
 
 #: src/pages/Test/Test.jsx:139
 msgid "Next"
-msgstr ""
+msgstr "Следующий"
 
 #: src/pages/Test/Test.jsx:120
 msgid "Previous"
-msgstr ""
+msgstr "Предыдущий"
 
 #: src/pages/Test/Test.jsx:99
 #~ msgid "Previous step"
@@ -58,6 +58,10 @@ msgstr "Говорение"
 #: src/pages/Test/Speaking/Speaking.jsx:29
 #~ msgid "Speaking Topic"
 #~ msgstr "Тема Говорения"
+
+#: src/pages/Test/Test.jsx:148
+msgid "Submit"
+msgstr "Отправить"
 
 #: src/pages/Test/Essay/Essay.jsx:15
 #~ msgid "Write an essay on a given topic"

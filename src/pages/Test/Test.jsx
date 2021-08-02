@@ -145,7 +145,7 @@ export const Test = () => {
               color='primary'
               variant='contained'
             >
-              Submit
+              <Trans>Submit</Trans>
             </Button>
           </div>
           <div className='report-mistake' onClick={handleOpen}><Trans>Report a mistake</Trans></div>
