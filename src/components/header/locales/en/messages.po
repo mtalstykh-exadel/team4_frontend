@@ -20,7 +20,7 @@ msgstr "Dark mode"
 msgid "Deadline:"
 msgstr "Deadline:"
 
-#: src/components/header/userNavigation/userNavigation.js:55
+#: src/components/header/userNavigation/userNavigation.js:48
 msgid "Distribution of tests"
 msgstr "Distribution of tests"
 
@@ -65,8 +65,8 @@ msgid "See More"
 msgstr "See More"
 
 #: src/components/header/userNavigation/userNavigation.js:48
-msgid "Statistics"
-msgstr "Statistics"
+#~ msgid "Statistics"
+#~ msgstr "Statistics"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:53
 msgid "Take test"
