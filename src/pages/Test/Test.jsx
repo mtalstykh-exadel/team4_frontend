@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Modal } from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -21,16 +22,21 @@ export const Test = () => {
   const [prevButtonClass, setPrevButtonClass] = useState(
     'previous-step-button invisible'
   );
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const steps = [
     <Grammar key='0' tasks={grammarTasks} />,
     <Listening key='1' tasks={listeningTasks} />,
     <Essay key='2' />,
     <Speaking key='3' />,
-  ];
-
-  const reportAMistakeModals = [
-
   ];
 
   useEffect(() => {
@@ -141,7 +147,16 @@ export const Test = () => {
               Submit
             </Button>
           </div>
-          <div className='report-mistake'>Report a mistake</div>
+          <div className='report-mistake' onClick={handleOpen}>Report a mistake</div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby='simple-modal-title'
+            aria-describedby='simple-modal-description'
+            className='modal'>
+            <div className='modal-content'>
+            </div>
+          </Modal>
         </div>
       </div>
     </Layout>
