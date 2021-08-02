@@ -11,9 +11,10 @@ export const EditTests = () => {
 
   return (
     <Layout pageWrapperClass='edit-tests-selector'>
-      <EditTestsFilter setLevel={setLevel} setModule={setModule} setQuestId={setQuestId} />
+      <EditTestsFilter level={level} module={module} setLevel={setLevel} setModule={setModule}
+      setQuestId={setQuestId} />
       {
-        level || module || questId
+        (level && module) || questId
           ? <EditTestsTable level={level} module={module} questId={questId} />
           : <div className='edit-tests-placeholder'>
             <div className='edit-tests-selector-text'>Select the option at the top to see the questions.</div>

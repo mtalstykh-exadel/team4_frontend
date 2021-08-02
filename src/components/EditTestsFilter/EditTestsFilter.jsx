@@ -62,7 +62,8 @@ export const EditTestsFilter = (props) => {
         <TextField label='Question ID' className='edit-tests-search-id' variant='outlined' size='small'
           value={formik.values.QuestId} onChange={formik.handleChange} inputProps={{ name: 'questId' }} />
 
-        <Button color='primary' variant='contained' type='search' className='btn-search'>
+        <Button disabled={!props.level && !props.module} color='primary' variant='contained'
+        type='submit' className='btn-search'>
           Search
         </Button>
       </form>
@@ -72,6 +73,8 @@ export const EditTestsFilter = (props) => {
 };
 
 EditTestsFilter.propTypes = {
+  level: PropTypes.any,
+  module: PropTypes.any,
   setLevel: PropTypes.func,
   setModule: PropTypes.func,
   setQuestId: PropTypes.func
