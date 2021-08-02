@@ -40,7 +40,7 @@ export const TestsForVerificationTable = () => {
 
   return (
     <div className='tests-data-verification-wrapper'>
-      <Paper>
+      <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
@@ -57,7 +57,7 @@ export const TestsForVerificationTable = () => {
                   <TableCell align='left'>{row.testDeadlineDate}</TableCell>
                   <TableCell align='left'>{row.priority}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} >
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} >
                       Verify
                     </Button>
                   </TableCell>
