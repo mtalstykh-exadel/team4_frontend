@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Layout from '../../components/Layout/Layout.js';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
-import { rows } from "../../testData/rowsForAdminDistribution.js";
-import { coaches } from "./Coaches.js";
-import PropTypes from "prop-types";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from '@material-ui/core';
+import { rows } from '../../testData/rowsForAdminDistribution.js';
+import { coaches } from './Coaches.js';
+import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
 
 const AdminDistribution = (props) => {
   const columns = [
-    { id: "level", label: "Level", width: 50, align: "right" },
-    { id: "assigned", label: "Assigned", width: 130, align: "right" },
-    { id: "deadline", label: "Deadline", width: 130, align: "right" },
-    { id: "Coach", label: "Coach", width: 345, align: "right" },
-    { id: "action", label: "Action", width: 127, align: "right" },
+    { id: 'level', label: 'Level', width: 50, align: 'right' },
+    { id: 'assigned', label: 'Assigned', width: 130, align: 'right' },
+    { id: 'deadline', label: 'Deadline', width: 130, align: 'right' },
+    { id: 'Coach', label: 'Coach', width: 345, align: 'right' },
+    { id: 'action', label: 'Action', width: 127, align: 'right' },
   ];
 
   const filteredRows = rows.filter((r) =>
@@ -35,18 +35,18 @@ const AdminDistribution = (props) => {
   };
 
   return (
-    <div className="AdminDistribution">
+    <div className='AdminDistribution'>
       <Layout>
         <Paper
           elevation={2}>
-          <TableContainer className="paper">
-            <Table stickyHeader aria-label="sticky table">
+          <TableContainer className='paper'>
+            <Table stickyHeader aria-label='sticky table'>
               <TableHead>
                 <TableRow>
                   {columns.map((column) => (
                     <TableCell
-                      className="headItems font-primary base-color-elevated"
-                      size="small"
+                      className='headItems font-primary base-color-elevated'
+                      size='small'
                       key={column.id}
                       align={column.align}
                     >
@@ -60,26 +60,26 @@ const AdminDistribution = (props) => {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => {
                     return (
-                      <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      <TableRow hover role='checkbox' tabIndex={-1} key={row.id}>
                         {columns.map((column) => {
                           const value = row[column.id];
                           keysForColumns++;
                           return (
                             <TableCell
-                              className="font-primary"
+                              className='font-primary'
                               key={keysForColumns}
                               align={column.align}
-                              size="small"
+                              size='small'
                             >
-                              {column.id === "Coach" ? (
+                              {column.id === 'Coach' ? (
                                 <Select
-                                  className="selectCoachNames font-primary"
+                                  className='selectCoachNames font-primary'
                                   native
-                                  variant="outlined"
-                                  defaultValue="placeholder"
-                                  color="red"
+                                  variant='outlined'
+                                  defaultValue='placeholder'
+                                  color='red'
                                 >
-                                  <option aria-label="None" value="placeholder">name</option>
+                                  <option aria-label='None' value='placeholder'>name</option>
                                   {coaches.map((coachName) => {
                                     keysForOptions++;
                                     return (
@@ -93,12 +93,12 @@ const AdminDistribution = (props) => {
                                 null
                               )}
 
-                              {column.id === "action" ? (
+                              {column.id === 'action' ? (
                                 <Button
-                                  className="buttonAssign"
-                                  color="primary"
-                                  variant="outlined"
-                                  size="small"
+                                  className='buttonAssign'
+                                  color='primary'
+                                  variant='outlined'
+                                  size='small'
                                 >
                                   {value}
                                 </Button>
@@ -115,9 +115,9 @@ const AdminDistribution = (props) => {
             </Table>
           </TableContainer>
           <TablePagination
-            className="font-primary"
+            className='font-primary'
             rowsPerPageOptions={[10]}
-            component="div"
+            component='div'
             count={filteredRows.length}
             rowsPerPage={rowsPerPage}
             page={page}

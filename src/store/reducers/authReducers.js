@@ -1,5 +1,5 @@
-import { getJWTtoken } from "../../utils/jwt-parser";
-import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from "../actions/actionTypes";
+import { getJWTtoken } from '../../utils/jwt-parser';
+import { LOGIN_FAILURE, LOGIN_START, LOGIN_SUCCESS, LOGOUT_START } from '../actions/actionTypes';
 
 const initialToken = getJWTtoken();
 const authentication = !!initialToken;

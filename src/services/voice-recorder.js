@@ -7,7 +7,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
 
   mediaRecorder.onstop = function () {
     blobURL = window.URL.createObjectURL(
-      new Blob(chunks, { type: "audio/ogg; codecs=opus" })
+      new Blob(chunks, { type: 'audio/ogg; codecs=opus' })
     );
     chunks = [];
   };
