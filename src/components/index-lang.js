@@ -16,6 +16,9 @@ import loginRu from '@lingui/loader!./LoginForm/locales/ru/messages.po';
 import testInfoEn from '@lingui/loader!./TestsInfo/locales/en/messages.po';
 import testInfoRu from '@lingui/loader!./TestsInfo/locales/ru/messages.po';
 
+import testPageEn from '@lingui/loader!./Test/locales/en/messages.po';
+import testPageRu from '@lingui/loader!./Test/locales/ru/messages.po';
+
 export const componentsLangsArray = [
   {
     en: testVerifyEn,
@@ -41,4 +44,8 @@ export const componentsLangsArray = [
     en: testInfoEn,
     ru: testInfoRu,
   },
+  {
+    en: testPageEn,
+    ru: testPageRu,
+  }
 ];
