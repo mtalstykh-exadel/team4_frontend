@@ -121,7 +121,7 @@ export const Player = ({ src, audioDuration, id }) => {
           style={{ width: progressPercent + '%' }}
           className='progress-line border-primary'
         />
-        <div className='progress' />
+        <div className='progress border-secondary' />
       </div>
       <button
         className='player-button'

@@ -55,7 +55,7 @@
 
   .progress {
     width: 100%;
-    border: 2px solid #828282;
+    border: 2px solid;
   }
 
   .progress-line {
@@ -73,7 +73,6 @@
   .volume-changer {
     position: absolute;
     right: 8px;
-    background: white;
     box-shadow: 0 4px 15px rgba(11, 36, 92, 0.15);
     width: 33px;
     height: 97px;
