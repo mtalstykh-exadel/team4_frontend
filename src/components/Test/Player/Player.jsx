@@ -129,7 +129,7 @@ export const Player = ({ src, audioDuration, id }) => {
           }
         }}
       >
-        <VolumeUpIcon color='action' fontSize='medium' />
+        <VolumeUpIcon color='primary' fontSize='medium' />
       </button>
     </div>
   );

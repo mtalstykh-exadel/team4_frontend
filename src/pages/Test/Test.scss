@@ -54,7 +54,7 @@
   .buttons-wrapper {
     width: 100%;
     margin: 0 auto;
-    height: 80px;
+    height: 300px;
     padding-top: 40px;
 
     .buttons-wrapper :last-child {
@@ -87,9 +87,12 @@
     }
 
     .report-mistake {
+      margin: 0 auto;
       text-align: center;
       font-size: 14px;
       color: #828282;
+      height: 16px;
+      width: 106px;
       margin-bottom: 112px;
       margin-top: 20px;
       cursor: pointer;
@@ -107,7 +110,7 @@
         height: 40px;
         width: 14%;
         align-content: center;
-        box-shadow: none;;
+        box-shadow: none;
       }
 
       @media only screen and (max-width: 800px) {
