@@ -4,9 +4,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 1
   },
   {
@@ -14,9 +14,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 2
   },
   {
@@ -24,9 +24,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 3
   },
   {
@@ -34,9 +34,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 4
   },
   {
@@ -44,9 +44,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 5
   },
   {
@@ -54,9 +54,9 @@ const rows = [
     assigned: '19 Jun 2021, 10:52',
     deadline: '24 Jul 2021, 10:53',
     dateVerified: '24 Jul 2021, 10:54',
-    status: 'assigned',
-    result: 'not passed',
-    action: 'Take test',
+    status: ['assigned', 'назначен'],
+    result: ['not passed', 'не пройден'],
+    action: ['Take test', 'Пройти тест'],
     id: 6
   },
 ];

@@ -41,7 +41,7 @@ const Notifications = (props) => {
         {item.level}
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
-        {item.expiration}
+        <Trans>Deadline: </Trans>{item.expiration}
       </Typography>
       <Button
         component={Link}

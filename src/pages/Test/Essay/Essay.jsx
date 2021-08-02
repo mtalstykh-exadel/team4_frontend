@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Essay.scss';
 import { TextField } from '@material-ui/core';
+import { Trans } from '@lingui/macro';
 
 const Essay = () => {
   const [characters, setCharacters] = useState('');
@@ -11,8 +12,8 @@ const Essay = () => {
 
   return (
     <>
-      <div className='step-description'>Write an essay on a given topic</div>
-      <div className='essay-topic'>Essay Topic</div>
+      <div className='step-description'><Trans>Write an essay on a given topic</Trans></div>
+      <div className='essay-topic'><Trans>Essay Topic</Trans></div>
       <TextField
         onPaste={(event) => {
           event.preventDefault();
@@ -34,7 +35,7 @@ const Essay = () => {
         onChange={handleChange}
         inputProps={{ maxLength: 512 }}
       />
-      <div className='essay-characters'>{characters.length} out of 512 characters</div>
+      <div className='essay-characters'>{characters.length} <Trans>out of 512 characters</Trans></div>
     </>
   );
 };

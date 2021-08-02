@@ -1,0 +1,78 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:48
+msgid "Add question"
+msgstr "Add question"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:75
+msgid "Edit"
+msgstr "Edit"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:69
+msgid "In field 'Question Id' must be a number"
+msgstr "In field 'Question Id' must be a number"
+
+#: src/components/LoginForm/LoginForm.jsx:45
+#~ msgid "Invalid email"
+#~ msgstr "Invalid email"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:50
+msgid "Level"
+msgstr "Level"
+
+#: src/components/LoginForm/LoginForm.jsx:59
+#~ msgid "Log in"
+#~ msgstr "Log in"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:57
+msgid "Module"
+msgstr "Module"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:52
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:59
+msgid "None"
+msgstr "None"
+
+#: src/components/LoginForm/LoginForm.jsx:51
+#~ msgid "Password"
+#~ msgstr "Password"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:63
+msgid "Question ID"
+msgstr "Question ID"
+
+#: src/components/LoginForm/LoginForm.jsx:44
+#: src/components/LoginForm/LoginForm.jsx:52
+#~ msgid "Required field"
+#~ msgstr "Required field"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:86
+msgid "Rows per page:"
+msgstr "Rows per page:"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:66
+msgid "Search"
+msgstr "Search"
+
+#: src/components/EditTests/EditTests.jsx:20
+#~ msgid "Select the option at the top to see the questions."
+#~ msgstr "Select the option at the top to see the questions."
+
+#: src/components/LoginForm/LoginForm.jsx:53
+#~ msgid "Your email or password is incorrect. Please try again"
+#~ msgstr "Your email or password is incorrect. Please try again"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:56
+msgid "{0}{1}"
+msgstr "{0}"
