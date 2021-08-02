@@ -34,15 +34,15 @@ export const TestsForVerificationTable = () => {
 
   const tableHeadCells = rows.map((rowName) => {
     return (
-      <TableCell key={rowName} align="left" style={{ fontWeight: 700 }}>{rowName}</TableCell>
+      <TableCell className='font-primary base-color-elevated' key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
     );
   });
 
   return (
     <div className='tests-data-verification-wrapper'>
-      <Paper>
+      <Paper elevation={2}>
         <TableContainer>
-          <Table stickyHeader aria-label="sticky table">
+          <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 {tableHeadCells}
@@ -51,13 +51,13 @@ export const TestsForVerificationTable = () => {
             <TableBody>{testForVerification.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
-                  <TableCell component="th" scope="row">{row.id}</TableCell>
-                  <TableCell align="left">{row.level}</TableCell>
-                  <TableCell align="left">{row.assignedDate}</TableCell>
-                  <TableCell align="left">{row.testDeadlineDate}</TableCell>
-                  <TableCell align="left">{row.priority}</TableCell>
-                  <TableCell align="left">
-                    <Button color="primary" variant="outlined" size="small" style={{ width: 110, border: 'solid 2px #3F51B5' }} >
+                  <TableCell className='font-primary' component='th' scope='row'>{row.id}</TableCell>
+                  <TableCell className='font-primary' align='left'>{row.level}</TableCell>
+                  <TableCell className='font-primary' align='left'>{row.assignedDate}</TableCell>
+                  <TableCell className='font-primary' align='left'>{row.testDeadlineDate}</TableCell>
+                  <TableCell className='font-primary' align='left'>{row.priority}</TableCell>
+                  <TableCell className='font-primary' align='left'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} >
                       Verify
                     </Button>
                   </TableCell>
@@ -68,6 +68,7 @@ export const TestsForVerificationTable = () => {
           </Table>
         </TableContainer>
         <TablePagination
+          className='font-primary'
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={testForVerification.length}
