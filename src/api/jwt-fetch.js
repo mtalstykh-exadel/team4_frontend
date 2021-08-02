@@ -1,5 +1,5 @@
-import axiosInstance from "./axios";
-import { saveJWTtoLocalstorage } from "../utils/jwt-parser";
+import axiosInstance from './axios';
+import { saveJWTtoLocalstorage } from '../utils/jwt-parser';
 
 const handleJWT = async (data) => {
   return axiosInstance.post('/login', data )

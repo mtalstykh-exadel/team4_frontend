@@ -7,7 +7,7 @@ const onRecAudio = () => {
     const mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.onstop = function () {
       blobURL = window.URL.createObjectURL(
-        new Blob(chunks, {type: "audio/ogg; codecs=opus"})
+        new Blob(chunks, {type: 'audio/ogg; codecs=opus'})
       );
       chunks = [];
       stream.getTracks().forEach((track) => track.stop());

@@ -8,7 +8,7 @@ import './EditTestsFilter.scss';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
 const validation = Yup.object({
   questId: Yup.number()
@@ -45,24 +45,24 @@ export const EditTestsFilter = (props) => {
   return (
     <>
       <form className='edit-tests-search-form' onSubmit={formik.handleSubmit} >
-        <FormControl variant="outlined" className="edit-tests-search-level" size='small'>
-          <InputLabel htmlFor="level">Level</InputLabel>
-          <Select name='level' label="Level" value={formik.values.level} inputProps={{ name: 'level' }} onChange={formik.handleChange}>
-            <MenuItem value="" className='edit-tests-option edit-tests-option-none'>None</MenuItem>
+        <FormControl variant='outlined' className='edit-tests-search-level' size='small'>
+          <InputLabel htmlFor='level'>Level</InputLabel>
+          <Select name='level' label='Level' value={formik.values.level} inputProps={{ name: 'level' }} onChange={formik.handleChange}>
+            <MenuItem value='' className='edit-tests-option edit-tests-option-none'>None</MenuItem>
             {testLevelsList}
           </Select>
         </FormControl>
-        <FormControl variant="outlined" className="edit-tests-search-module" size='small'>
-          <InputLabel htmlFor="module">Module</InputLabel>
+        <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
+          <InputLabel htmlFor='module'>Module</InputLabel>
           <Select name='module' label='module' value={formik.values.module} inputProps={{ name: 'module' }} onChange={formik.handleChange}>
-            <MenuItem value="" className='edit-tests-option edit-tests-option-none'>None</MenuItem>
+            <MenuItem value='' className='edit-tests-option edit-tests-option-none'>None</MenuItem>
             {testModulesList}
           </Select>
         </FormControl>
-        <TextField label="Question ID" className="edit-tests-search-id" variant="outlined" size='small'
+        <TextField label='Question ID' className='edit-tests-search-id' variant='outlined' size='small'
           value={formik.values.QuestId} onChange={formik.handleChange} inputProps={{ name: 'questId' }} />
 
-        <Button color="primary" variant="contained" type="search" className='btn-search'>
+        <Button color='primary' variant='contained' type='search' className='btn-search'>
           Search
         </Button>
       </form>

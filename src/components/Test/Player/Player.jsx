@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import VolumeUpIcon from "@material-ui/icons/VolumeUp";
-import PauseIcon from "@material-ui/icons/Pause";
-import PropTypes from "prop-types";
-import "./Player.scss";
+import React, { useState } from 'react';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import VolumeUpIcon from '@material-ui/icons/VolumeUp';
+import PauseIcon from '@material-ui/icons/Pause';
+import PropTypes from 'prop-types';
+import './Player.scss';
 
 export const Player = ({ src, audioDuration, id }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
@@ -25,8 +25,8 @@ export const Player = ({ src, audioDuration, id }) => {
       setAudioCurrent(0);
       setAudioOn(true);
 
-      document.getElementById(id).removeEventListener("timeupdate", AudioProgressBar);
-      document.getElementById(id).addEventListener("timeupdate", AudioProgressBar);
+      document.getElementById(id).removeEventListener('timeupdate', AudioProgressBar);
+      document.getElementById(id).addEventListener('timeupdate', AudioProgressBar);
     }
   };
 
@@ -57,7 +57,7 @@ export const Player = ({ src, audioDuration, id }) => {
     let seconds = Math.floor(time % 60);
 
     if (seconds < 10) {
-      seconds = "0" + seconds;
+      seconds = '0' + seconds;
     }
     return `${minutes}:${seconds}`;
   };
@@ -75,22 +75,22 @@ export const Player = ({ src, audioDuration, id }) => {
   }
 
   return (
-    <div className="player">
+    <div className='player'>
       <div
-        className={showVolumeChanger === true ? "volume-changer" : "invisible"}
+        className={showVolumeChanger === true ? 'volume-changer' : 'invisible'}
       >
         <input
-          className="volume-range"
+          className='volume-range'
           onChange={AudioVolumeHandler}
-          type="range"
-          min="0"
-          step="10"
-          max="100"
-          defaultValue="30"
+          type='range'
+          min='0'
+          step='10'
+          max='100'
+          defaultValue='30'
         />
       </div>
       <button
-        className="player-button"
+        className='player-button'
         onClick={() => {
           if (audioOn === false) {
             AudioController();
@@ -100,27 +100,27 @@ export const Player = ({ src, audioDuration, id }) => {
         }}
       >
         {audioOn === false ? (
-          <PlayArrowIcon color="primary" fontSize="medium" />
+          <PlayArrowIcon color='primary' fontSize='medium' />
         ) : (
-          <PauseIcon color="primary" fontSize="medium" />
+          <PauseIcon color='primary' fontSize='medium' />
         )}
       </button>
-      <div className="player-time">
-        {audioCurrent === 0 ? "0:00" : audioCurrent} /
+      <div className='player-time'>
+        {audioCurrent === 0 ? '0:00' : audioCurrent} /
         {audioDuration === undefined
           ? checkTime(localeDuration)
           : checkTime(audioDuration)}
       </div>
-      <div className="progress-container" onClick={setAudioProgressBar}>
+      <div className='progress-container' onClick={setAudioProgressBar}>
         <audio id={id} src={src} />
         <div
-          style={{ width: progressPercent + "%" }}
-          className="progress-line"
+          style={{ width: progressPercent + '%' }}
+          className='progress-line'
         />
-        <div className="progress" />
+        <div className='progress' />
       </div>
       <button
-        className="player-button"
+        className='player-button'
         onClick={() => {
           if (showVolumeChanger === false) {
             setShowVolumeChanger(true);
@@ -129,7 +129,7 @@ export const Player = ({ src, audioDuration, id }) => {
           }
         }}
       >
-        <VolumeUpIcon color="action" fontSize="medium" />
+        <VolumeUpIcon color='action' fontSize='medium' />
       </button>
     </div>
   );

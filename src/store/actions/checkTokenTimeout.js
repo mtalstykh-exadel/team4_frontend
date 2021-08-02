@@ -1,5 +1,5 @@
-import { getJWTdata } from "../../utils/jwt-parser";
-import { logoutActions } from "./logoutActions";
+import { getJWTdata } from '../../utils/jwt-parser';
+import { logoutActions } from './logoutActions';
 
 export const checkTokenTimeout = () => (dispatch, getState) => {
   const state = getState();
