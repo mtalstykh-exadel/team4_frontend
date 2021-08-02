@@ -6,7 +6,7 @@ const token = getJWTtoken();
 const axiosInstance = axios.create({
   baseURL: 'https://untitled-testing-system.herokuapp.com',
   headers: {
-    "Authorization": `Bearer ${token}`
+    'Authorization': `Bearer ${token}`
   }
 });
 
