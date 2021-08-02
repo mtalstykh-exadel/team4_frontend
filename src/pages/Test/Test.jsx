@@ -30,7 +30,7 @@ export const Test = () => {
   useEffect(() => {
     startTimer(
       createTimer({
-        domId: "test-timer",
+        domId: 'test-timer',
         minutes: TestDurationInminutes,
       })
     );

@@ -3,8 +3,8 @@ const timers = [];
 
 const stopTimer = (domId) => {
   clearInterval(timers.pop());
-  if (domId !== "test-timer") {
-    document.getElementById(domId).textContent = "5:00";
+  if (domId !== 'test-timer') {
+    document.getElementById(domId).textContent = '5:00';
     return audioDuration;
   }
 };
@@ -18,14 +18,14 @@ const createTimer = ({ domId, minutes }) => {
       let localeSeconds = seconds % 60;
 
       if (localeSeconds < 10) {
-        localeSeconds = "0" + localeSeconds;
+        localeSeconds = '0' + localeSeconds;
       }
-      if (element.textContent === "0:00") {
-        element.textContent = "0:00";
+      if (element.textContent === '0:00') {
+        element.textContent = '0:00';
         stopTimer(domId);
       }
       seconds--;
-      if (domId !== "test-timer") {
+      if (domId !== 'test-timer') {
         ++audioDuration;
       }
       element.textContent = `${Math.floor(localeMinutes)}:${localeSeconds}`;

@@ -17,7 +17,7 @@ export const Speaking = () => {
       if (element.textContent === '0:00') {
         setInvisible('off');
         setBlobURL(offRecAudio());
-        setAudioDuration(stopTimer("speaking-timer"));
+        setAudioDuration(stopTimer('speaking-timer'));
       }
     });
   };

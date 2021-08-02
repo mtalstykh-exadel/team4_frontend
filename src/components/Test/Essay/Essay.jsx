@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Essay.scss';
 import { TextField } from '@material-ui/core';
 
-const Essay = () => {
+export const Essay = () => {
   const [characters, setCharacters] = useState('');
 
   const handleChange = (event) => {
