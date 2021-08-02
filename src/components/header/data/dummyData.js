@@ -1,8 +1,8 @@
 const notificationsData = [{
-  type: "asignment",
+  type: "assignment",
   date: "16.05.2012",
   level: "Level: B1 - Intermediate",
-  expiration: "Deadline: 28 Jun 2021"
+  expiration: "28 Jun 2021"
 },{
   type: "result",
   date: "20.05.2019",

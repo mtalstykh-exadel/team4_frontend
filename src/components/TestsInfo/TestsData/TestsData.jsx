@@ -7,24 +7,26 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import { rows } from './rows';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
+import { Trans } from "@lingui/macro";
+
+import { rows } from './rows';
 
 const TestsData = (props) => {
   const columns = [
-    { id: 'level', label: 'Level', minWidth: 50, align: 'center' },
-    { id: 'assigned', label: 'Assigned', minWidth: 130, align: 'center' },
-    { id: 'deadline', label: 'Deadline', minWidth: 130, align: 'center', },
-    { id: 'dateVerified', label: 'Date verified', minWidth: 130, align: 'center', },
-    { id: 'status', label: 'Status', minWidth: 40, align: 'center', },
-    { id: 'result', label: 'Result', minWidth: 80, align: 'center', },
-    { id: 'action', label: 'Action', minWidth: 100, align: 'center', },
+    { id: 'level', label: ['Level', 'Уровень'], minWidth: 50, align: 'center' },
+    { id: 'assigned', label: ['Assigned', 'Дата назначения'], minWidth: 130, align: 'center' },
+    { id: 'deadline', label: ['Deadline', 'Срок прохождения'], minWidth: 130, align: 'center', },
+    { id: 'dateVerified', label: ['Date verified', 'Дата проверки'], minWidth: 130, align: 'center', },
+    { id: 'status', label: ['Status', 'Статус'], minWidth: 40, align: 'center', },
+    { id: 'result', label: ['Result', 'Результат'], minWidth: 80, align: 'center', },
+    { id: 'action', label: ['Action', 'Действие'], minWidth: 100, align: 'center', },
   ];
 
-  const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
+  const filteredRowsEN = rows.filter((r) => props.filter ? r.level === props.filter : r);
 
-  let keysForColumns = 1;
+  const keysForColumns = 1;
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
@@ -45,33 +47,32 @@ const TestsData = (props) => {
   return (
     <Paper elevation={2}>
       <TableContainer>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
               {columns.map((column) => (
-                <TableCell className="font-primary base-color-elevated" key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
-                  {column.label}
+                <TableCell className='font-primary base-color-elevated' key={column.id} align={column.align} style={{ minWidth: column.minWidth }} >
+                  <Trans>{column.label[0]}{column.label[1]}</Trans>
                 </TableCell>
               ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {
-              filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              filteredRowsEN.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id} >
+                  <TableRow hover role='checkbox' tabIndex={-1} key={row.id} >
                     {columns.map((column) => {
                       const value = row[column.id];
-                      keysForColumns++;
                       return (
-                        <TableCell className="font-primary" key={keysForColumns} align={column.align} size="small">
+                        <TableCell className='font-primary' key={keysForColumns} align={column.align} size='small'>
                           {
                             column.id === 'action' ?
-                              <Button color="primary" variant="contained" size='small'
+                              <Button color='primary' variant='contained' size='small'
                                 onClick={() => testAction(row[column.id])} >
-                                {value}
+                                <Trans>{value[0]}{value[1]}</Trans>
                               </Button>
-                              : value
+                              : Array.isArray(value) ? <Trans>{value[0]}{value[1]}</Trans> : value
                           }
                         </TableCell>
                       );
@@ -82,7 +83,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination className="font-primary" rowsPerPageOptions={[10]} component="div" count={filteredRows.length} rowsPerPage={rowsPerPage}
+      <TablePagination className='font-primary' rowsPerPageOptions={[10]} component='div' count={filteredRowsEN.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );

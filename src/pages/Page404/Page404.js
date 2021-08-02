@@ -2,7 +2,8 @@ import React from 'react';
 import './Page404.scss';
 import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { Trans } from '@lingui/macro';
 
 const Page404 = () => {
   return (
@@ -13,11 +14,11 @@ const Page404 = () => {
         <span>4</span>
       </div>
       <div className='message-wrapper font-warning'>
-        <h1>Oops, this page was not found!</h1>
-        <h3>Either something went wrong or the page doesn't exist anymore.</h3>
+        <h1><Trans>Oops, this page was not found!</Trans></h1>
+        <h3><Trans>Either something went wrong or the page doesn't exist anymore.</Trans></h3>
       </div>
       <div className='button-wrapper'>
-        <Button color="primary" variant='contained' component={Link} to='/'>Go Home</Button>
+        <Button color='primary' variant='contained' component={Link} to='/'><Trans>Go Home</Trans></Button>
       </div>
     </div>
   );
