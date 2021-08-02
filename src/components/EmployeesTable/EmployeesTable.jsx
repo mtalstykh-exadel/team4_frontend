@@ -20,14 +20,14 @@ export const EmployeesTable = () => {
 
   return (
     <div>
-      <Paper>
+      <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
+                    <TableCell className='font-primary base-color-elevated' key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -35,11 +35,11 @@ export const EmployeesTable = () => {
             <TableBody>{filteredEmloyees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
-                  <TableCell component='th' scope='row'>{row.name}</TableCell>
-                  <TableCell align='left' size='small'>{row.level}</TableCell>
-                  <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
-                  <TableCell align='left' size='small'>{row.mail}</TableCell>
-                  <TableCell align='left'>
+                  <TableCell className='font-primary' component='th' scope='row'>{row.name}</TableCell>
+                  <TableCell className='font-primary' align='left' size='small'>{row.level}</TableCell>
+                  <TableCell className='font-primary' align='left' size='small'>{row.testDeadline}</TableCell>
+                  <TableCell className='font-primary' align='left' size='small'>{row.mail}</TableCell>
+                  <TableCell className='font-primary' align='left'>
                     {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 110 }} disabled type='search' className='btn-search' >
                       Deassign
                     </Button>
@@ -55,6 +55,7 @@ export const EmployeesTable = () => {
           </Table>
         </TableContainer>
         <TablePagination
+          className='font-primary'
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
           count={filteredEmloyees.length}
