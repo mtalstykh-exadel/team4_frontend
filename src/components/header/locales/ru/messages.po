@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/header/accountDropdown/accountDropdown.js:37
+#: src/components/header/drawerMenu/drawerMenu.js:74
+msgid "Dark mode"
+msgstr "Темный фон"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:44
+msgid "Deadline:"
+msgstr "Срок сдачи: "
+
+#: src/components/header/userNavigation/userNavigation.js:55
+msgid "Distribution of tests"
+msgstr "Распределение тестов"
+
+#: src/components/header/userNavigation/userNavigation.js:39
+msgid "Edit tests"
+msgstr "Редактировать тесты"
+
+#: src/components/header/userNavigation/userNavigation.js:23
+msgid "Employees"
+msgstr "Работники"
+
+#: src/components/header/drawerMenu/drawerMenu.js:50
+#: src/components/header/languageDropdown/languageDropdown.js:30
+msgid "English"
+msgstr "Английский"
+
+#: src/components/header/logoutModal/logoutModal.js:22
+msgid "Log out of account?"
+msgstr "Выйти из аккаунта?"
+
+#: src/components/header/accountDropdown/accountDropdown.js:43
+#: src/components/header/drawerMenu/drawerMenu.js:69
+msgid "Logout"
+msgstr "Выход"
+
+#: src/components/header/logoutModal/logoutModal.js:34
+msgid "No"
+msgstr "Нет"
+
+#: src/components/header/accountDropdown/accountDropdown.js:34
+#: src/components/header/drawerMenu/drawerMenu.js:64
+msgid "Profile"
+msgstr "Профиль"
+
+#: src/components/header/drawerMenu/drawerMenu.js:55
+#: src/components/header/languageDropdown/languageDropdown.js:35
+msgid "Russian"
+msgstr "Русский"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
+msgid "See More"
+msgstr "Посмотреть больше"
+
+#: src/components/header/userNavigation/userNavigation.js:48
+msgid "Statistics"
+msgstr "Статистика"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+msgid "Take test"
+msgstr "Пройти тест"
+
+#: src/components/header/userNavigation/userNavigation.js:32
+msgid "Tests for verification"
+msgstr "Тесты на проверку"
+
+#: src/components/header/logoutModal/logoutModal.js:28
+msgid "Yes"
+msgstr "Да"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
+msgid "notificationTestAsigned"
+msgstr "Тест на определение уровня знания Английского языка был опрделен на ваше имя"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
+msgid "notificationTestChecked"
+msgstr "Ваш тест по Английскому языку был проверен. Ваш уровень языка установлен:"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
+msgid "notificationsEmpty"
+msgstr "Оповещения отсутсвуют"

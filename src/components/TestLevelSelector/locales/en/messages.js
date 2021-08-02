@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"Take test":"Take test","Testing procedure":"Testing procedure","testLevel":"Choose a test according to the expected level of English. If you don't know your level, then start with the first test.","{0}{1}":[["0"]]}};

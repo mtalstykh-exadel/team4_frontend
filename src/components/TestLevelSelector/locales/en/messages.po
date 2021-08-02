@@ -1,0 +1,29 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:22
+msgid "Take test"
+msgstr "Take test"
+
+#: src/pages/Main/Main.jsx:10
+#~ msgid "Testing procedure"
+#~ msgstr "Testing procedure"
+
+#: src/pages/Main/Main.jsx:11
+#~ msgid "testLevel"
+#~ msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
+
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:12
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+msgid "{0}{1}"
+msgstr "{0}"

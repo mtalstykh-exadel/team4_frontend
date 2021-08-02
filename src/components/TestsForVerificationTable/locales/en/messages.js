@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"Rows per page:":"Rows per page:","Verify":"Verify","{0}{1}":[["0"]]}};

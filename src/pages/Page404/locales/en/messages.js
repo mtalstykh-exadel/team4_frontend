@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"Either something went wrong or the page doesn't exist anymore.":"Either something went wrong or the page doesn't exist anymore.","Go Home":"Go Home","Oops, this page was not found!":"Oops, this page was not found!"}};
