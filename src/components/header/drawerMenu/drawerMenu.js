@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Divider, Button, Avatar, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { Trans } from "@lingui/macro";
+import { Trans } from '@lingui/macro';
 
 import { switchLang } from '../../../utils/lang-service';
 import UserNavigation from '../userNavigation/userNavigation';

@@ -9,7 +9,7 @@ import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
-import { Trans } from "@lingui/macro";
+import { Trans } from '@lingui/macro';
 
 import { rows } from './rows';
 

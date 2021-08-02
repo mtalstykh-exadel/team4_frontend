@@ -8,7 +8,7 @@ import './EditTestsFilter.scss';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
-import * as Yup from "yup";
+import * as Yup from 'yup';
 import { Trans } from '@lingui/macro';
 
 const validation = Yup.object({

@@ -1,6 +1,6 @@
-import { getJWTdata } from "../../utils/jwt-parser";
+import { getJWTdata } from '../../utils/jwt-parser';
 
-import { JWT_ADD, JWT_REMOVE } from "../actions/actionTypes";
+import { JWT_ADD, JWT_REMOVE } from '../actions/actionTypes';
 
 const initialData = getJWTdata();
 

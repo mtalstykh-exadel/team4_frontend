@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import Layout from '../../components/Layout/Layout.js';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
-import { rows } from "../../testData/rowsForAdminDistribution.js";
-import { coaches } from "./Coaches.js";
-import PropTypes from "prop-types";
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from '@material-ui/core';
+import { rows } from '../../testData/rowsForAdminDistribution.js';
+import { coaches } from './Coaches.js';
+import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
 import { Trans } from '@lingui/macro';
 
@@ -41,7 +41,7 @@ const AdminDistribution = (props) => {
         <Paper
           elevation={2}>
           <TableContainer className='paper'>
-            <Table stickyHeader aria-label="sticky table">
+            <Table stickyHeader aria-label='sticky table'>
               <TableHead>
                 <TableRow>
                   {columns.map((column) => (
