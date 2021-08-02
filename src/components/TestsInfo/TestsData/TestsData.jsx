@@ -24,7 +24,7 @@ const TestsData = (props) => {
     { id: 'action', label: ['Action', 'Действие'], minWidth: 100, align: 'center', },
   ];
 
-  const filteredRowsEN = rows.filter((r) => props.filter ? r.level === props.filter : r);
+  const filteredRows = rows.filter((r) => props.filter ? r.level === props.filter : r);
 
   const keysForColumns = 1;
 
@@ -59,7 +59,7 @@ const TestsData = (props) => {
           </TableHead>
           <TableBody>
             {
-              filteredRowsEN.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
                 return (
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.id} >
                     {columns.map((column) => {
@@ -83,7 +83,7 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination className='font-primary' rowsPerPageOptions={[10]} component='div' count={filteredRowsEN.length} rowsPerPage={rowsPerPage}
+      <TablePagination className='font-primary' rowsPerPageOptions={[10]} component='div' count={filteredRows.length} rowsPerPage={rowsPerPage}
         page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );
