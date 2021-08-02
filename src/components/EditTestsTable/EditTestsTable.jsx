@@ -70,7 +70,7 @@ export const EditTestsTable = (props) => {
                   </TableCell>
                   <TableCell className='font-primary' align='left' size='small'>{row.question}</TableCell>
                   <TableCell className='font-primary' align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' className='btn-search'>
                       Edit
                     </Button>
                   </TableCell>

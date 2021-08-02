@@ -57,7 +57,7 @@ export const TestsForVerificationTable = () => {
                   <TableCell className='font-primary' align='left'>{row.testDeadlineDate}</TableCell>
                   <TableCell className='font-primary' align='left'>{row.priority}</TableCell>
                   <TableCell className='font-primary' align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} >
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110}} >
                       Verify
                     </Button>
                   </TableCell>

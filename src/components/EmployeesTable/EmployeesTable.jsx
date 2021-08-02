@@ -43,7 +43,7 @@ export const EmployeesTable = () => {
                     {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 110 }} disabled type='search' className='btn-search' >
                       Deassign
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search' >
+                      : <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' className='btn-search' >
                         Assign test
                       </Button>}
                   </TableCell>
