@@ -1,1 +1,0 @@
-/*eslint-disable*/module.exports={messages:{"E-mail: ":"Ел.почта: ","Level":"Уровень","{0}{1}":[["1"]]}};

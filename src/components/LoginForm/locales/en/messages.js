@@ -1,1 +1,0 @@
-/*eslint-disable*/module.exports={messages:{"Invalid email":"Invalid email","Log in":"Log in","Password":"Password","Required field":"Required field","Your email or password is incorrect. Please try again":"Your email or password is incorrect. Please try again"}};

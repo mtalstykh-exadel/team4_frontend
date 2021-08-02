@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:22
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:23
 msgid "Take test"
 msgstr "Take test"
 
@@ -23,7 +23,7 @@ msgstr "Take test"
 #~ msgid "testLevel"
 #~ msgstr "Choose a test according to the expected level of English. If you don't know your level, then start with the first test."
 
-#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:12
 #: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:13
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:14
 msgid "{0}{1}"
 msgstr "{0}"
