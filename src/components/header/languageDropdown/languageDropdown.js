@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Menu, MenuItem } from '@material-ui/core';
 
-import { Trans } from "@lingui/macro";
+import { Trans } from '@lingui/macro';
 
 import { switchLang } from '../../../utils/lang-service';
 

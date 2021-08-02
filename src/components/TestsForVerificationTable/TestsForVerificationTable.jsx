@@ -70,7 +70,7 @@ export const TestsForVerificationTable = () => {
         <TablePagination
           className='font-primary'
           rowsPerPageOptions={[10, 25, 100]}
-          component="div"
+          component='div'
           count={testForVerification.length}
           rowsPerPage={rowsPerPage}
           page={page}
