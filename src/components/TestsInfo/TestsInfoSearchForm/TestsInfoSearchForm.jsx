@@ -30,8 +30,8 @@ const TestInfoSearchForm = (props) => {
     <div className='searchForm'>
       <form onSubmit={formik.handleSubmit}>
         <FormControl variant='outlined' className='formControl' size='small'>
-          <InputLabel className='font-primary icons-color' htmlFor='level'><Trans>Level</Trans></InputLabel>
-          <Select className='icons-color font-primary' native value={formik.values.level} name='level' onChange={formik.handleChange}
+          <InputLabel className='icons-color' htmlFor='level'><Trans>Level</Trans></InputLabel>
+          <Select className='icons-color' native value={formik.values.level} name='level' onChange={formik.handleChange}
             label='Level'
             inputProps={{ name: 'level' }}
           >
