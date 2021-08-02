@@ -13,7 +13,8 @@ import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
 import {Trans} from '@lingui/macro';
-import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
+// import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
+import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -165,7 +166,8 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
-              <ListeningReportMistake tasks={listeningTasks}/>
+              {/* <ListeningReportMistake tasks={listeningTasks}/>*/}
+              <EssayReportMistake/>
             </div>
           </Modal>
         </div>
