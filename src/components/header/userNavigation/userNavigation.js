@@ -39,14 +39,7 @@ const UserNavigation = (props) => {
           <Trans>Edit tests</Trans>
         </Button>
       </>}
-      {role === 'ROLE_ADMIN' && <>
-        <Button
-          disableElevation
-          className={`${location.pathname === '/statistics' ? 'bold' : null} ${props.roleBtns}`}
-          component={Link}
-          to='/statistics'>
-          <Trans>Statistics</Trans>
-        </Button>
+      {role === 'ROLE_ADMIN' &&
         <Button
           disableElevation
           className={`${location.pathname === '/admin-distribution' ? 'bold' : null} ${props.roleBtns}`}
@@ -54,7 +47,7 @@ const UserNavigation = (props) => {
           to='/admin-distribution'>
           <Trans>Distribution of tests</Trans>
         </Button>
-      </>}
+      }
     </>
   );
 };
