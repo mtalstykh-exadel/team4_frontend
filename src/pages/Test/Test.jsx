@@ -13,9 +13,9 @@ import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
 import {Trans} from '@lingui/macro';
-// import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
-// import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
+import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
 import {SpeakingReportMistake} from '../../components/Test/Modals/SpeakingReportMistake/SpeakingReportMistake';
+import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -43,12 +43,12 @@ export const Test = () => {
     <Speaking key='3'/>,
   ];
 
-  /* const stepsModals = [
-    <Grammar key='0' tasks={grammarTasks} />,
-    <Listening key='1' tasks={listeningTasks} />,
-    <Essay key='2' />,
-    <Speaking key='3' />,
-  ];*/
+  const stepsModals = [
+    <Grammar key='0' tasks={grammarTasks}/>,
+    <ListeningReportMistake key='1' tasks={listeningTasks}/>,
+    <EssayReportMistake key='2'/>,
+    <SpeakingReportMistake key='3'/>,
+  ];
 
 
   useEffect(() => {
@@ -169,7 +169,8 @@ export const Test = () => {
             <div className='modal-content'>
               {/* <ListeningReportMistake tasks={listeningTasks}/>*/}
               {/* <EssayReportMistake/>*/}
-              <SpeakingReportMistake/>
+              {/* <SpeakingReportMistake/>*/}
+              {stepsModals[step]}
             </div>
           </Modal>
         </div>
