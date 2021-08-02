@@ -11,7 +11,7 @@ const AdminDistribution = (props) => {
   const columns = [
     { id: "level", label: "Level", width: 50, align: "right" },
     { id: "assigned", label: "Assigned", width: 130, align: "right" },
-    { id: "deadline", label: "Deadline", width: 130, align: "right" },
+    { id: "deadline", label: "Test deadline", width: 130, align: "right" },
     { id: "Coach", label: "Coach", width: 345, align: "right" },
     { id: "action", label: "Action", width: 127, align: "right" },
   ];

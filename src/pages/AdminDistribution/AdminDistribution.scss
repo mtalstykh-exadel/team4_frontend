@@ -3,6 +3,10 @@
     margin-top: 40px;
   }
 
+  .MuiPaper-rounded {
+    width: 1275px;
+  }
+
   .headItems {
     font-weight: bold;
   }
@@ -21,6 +25,8 @@
   .buttonAssign {
     min-width: 127px;
     font-weight: bold;
+    margin-right: 34px;
+    margin-left: 17px;
   }
 
   .buttonDeassign {
