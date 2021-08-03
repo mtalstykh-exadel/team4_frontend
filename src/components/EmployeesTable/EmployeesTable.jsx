@@ -20,14 +20,14 @@ export const EmployeesTable = () => {
 
   return (
     <div>
-      <Paper>
+      <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
+                    <TableCell key={rowName} align='left'>{rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -43,7 +43,7 @@ export const EmployeesTable = () => {
                     {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 110 }} disabled type='search' className='btn-search' >
                       Deassign
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search' >
+                      : <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' className='btn-search' >
                         Assign test
                       </Button>}
                   </TableCell>
