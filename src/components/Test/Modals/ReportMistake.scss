@@ -1,52 +1,78 @@
-.main {
+.report-mistake-modal {
   width: 949px;
-  height: 391px;
+  height: 400px;
 
-  .header {
-    font-family: "Roboto", sans-serif;
+  .report-header {
     font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0;
     text-align: center;
-    padding-top: 5%;
   }
 
-  .selector {
-    padding-top: 10px;
+  .level-module-info {
+    font-size: 16px;
+    color: #828282;
+    margin-left: 5%;
+    margin-top: 30px;
+    margin-bottom: 10px;
 
-    .select {
+    .level-info {
+      margin-right: 2%;
+    }
+  }
+
+  .selector-wrapper {
+    .question-selector {
       width: 90%;
       margin-left: 5%;
       margin-right: 5%;
     }
+
+    .MuiFormControlLabel-root {
+      color: black;
+    }
   }
 
-  .btn {
-    padding-top: 2%;
+  .add-question-to-report {
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #828282;
+    cursor: pointer;
+  }
+
+  .add-question-to-report:hover {
+    text-decoration: underline;
+  }
+
+  .report-textfield-wrapper {
+    margin-left: 5%;
+    margin-bottom: 20px;
+
+    .report-textfield {
+      width: 95%;
+
+      .report-textfield-label {
+        color: #828282;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .report-mistake-buttons-wrapper {
     padding-left: 70%;
     padding-right: 5%;
     display: flex;
     justify-content: space-between;
+    height: 30px;
 
     .delete-button {
-      width: 11.6%;
+      width: 110px;
+      box-shadow: none;
     }
 
     .report-button {
-      width: 11.6%;
-    }
-  }
-
-  .level-module {
-    font-size: 16px;
-    color: #828282;
-    padding-left: 5%;
-    padding-top: 2%;
-
-    .level {
-      margin-right: 2%;
+      width: 110px;
+      box-shadow: none;
     }
   }
 }

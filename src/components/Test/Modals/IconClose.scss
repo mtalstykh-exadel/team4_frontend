@@ -1,0 +1,14 @@
+.close-icon-wrapper {
+  height: 38px;
+  display: block;
+  position: relative;
+
+  .close-icon {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+}

@@ -16,6 +16,8 @@ import {Trans} from '@lingui/macro';
 import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
 import {SpeakingReportMistake} from '../../components/Test/Modals/SpeakingReportMistake/SpeakingReportMistake';
 import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
+import CloseIcon from '@material-ui/icons/Close';
+import '../../components/Test/Modals/IconClose.scss';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -167,9 +169,8 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
-              {/* <ListeningReportMistake tasks={listeningTasks}/>*/}
-              {/* <EssayReportMistake/>*/}
-              {/* <SpeakingReportMistake/>*/}
+              <div className='close-icon-wrapper'><CloseIcon fontSize='large' color='action' className='close-icon' onClick={handleClose}/>
+              </div>
               {stepsModals[step]}
             </div>
           </Modal>
