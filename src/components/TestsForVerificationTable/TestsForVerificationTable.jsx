@@ -35,7 +35,7 @@ export const TestsForVerificationTable = () => {
 
   const tableHeadCells = rows.map((rowName) => {
     return (
-      <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
+      <TableCell key={rowName} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
     );
   });
 
