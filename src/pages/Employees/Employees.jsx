@@ -5,7 +5,7 @@ import './Employees.scss';
 
 export const Employees = () => {
 
-  const [userName, setUserName] = useState(null);
+  const [userName, setUserName] = useState('');
 
   return (
     <Layout pageWrapperClass='employees-wrapper'>

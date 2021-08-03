@@ -19,6 +19,9 @@ import testInfoRu from '@lingui/loader!./TestsInfo/locales/ru/messages.po';
 import testPageEn from '@lingui/loader!./Test/locales/en/messages.po';
 import testPageRu from '@lingui/loader!./Test/locales/ru/messages.po';
 
+import EmployeesEn from '@lingui/loader!./Employees/locales/en/messages.po';
+import EmployeesRu from '@lingui/loader!./Employees/locales/ru/messages.po';
+
 export const componentsLangsArray = [
   {
     en: testVerifyEn,
@@ -47,5 +50,9 @@ export const componentsLangsArray = [
   {
     en: testPageEn,
     ru: testPageRu,
+  },
+  {
+    en: EmployeesEn,
+    ru: EmployeesRu,
   }
 ];
