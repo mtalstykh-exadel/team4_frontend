@@ -1,16 +1,10 @@
 .report-mistake-modal {
   width: 949px;
-  height: 400px;
+  height: 391px;
 
   .report-header {
     font-size: 18px;
     text-align: center;
-  }
-
-  .theme {
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 2%;
   }
 
   .level-module-info {
@@ -30,8 +24,6 @@
       width: 90%;
       margin-left: 5%;
       margin-right: 5%;
-      padding-top: 8px;
-      padding-bottom: 8px;
     }
   }
 
@@ -54,9 +46,6 @@
 
     .report-textfield {
       width: 95%;
-      border: 1px solid #bdbdbd;
-      box-sizing: border-box;
-      border-radius: 4px;
 
       .report-textfield-label {
         color: #828282;
@@ -66,8 +55,8 @@
   }
 
   .report-mistake-buttons-wrapper {
-    padding-left: 70%;
-    padding-right: 5%;
+    margin-left: 70%;
+    margin-right: 5%;
     display: flex;
     justify-content: space-between;
     height: 30px;

@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import './ListeningReportMistake.scss';
 
-export const ListeningReportMistake = ({tasks, level}) => {
+export const ListeningReportMistake = ({tasks, level, module}) => {
   let count = 0;
 
   return (
@@ -11,7 +12,7 @@ export const ListeningReportMistake = ({tasks, level}) => {
       <div className='report-header'>Report a mistake</div>
       <div className='level-module-info'>
         <span className='level-info'>Level: {level}</span>
-        <span className='module0'>Module: Listening</span>
+        <span className='module0'>Module: {module}</span>
       </div>
       <div className='selector-wrapper'>
         <FormControl variant='outlined' className='question-selector'>
@@ -30,7 +31,7 @@ export const ListeningReportMistake = ({tasks, level}) => {
           className='report-textfield'
           variant='outlined'
           multiline
-          rows={4}
+          rows={5}
           label='Enter your report'
         />
       </div>
@@ -45,4 +46,5 @@ export const ListeningReportMistake = ({tasks, level}) => {
 ListeningReportMistake.propTypes = {
   tasks: PropTypes.array,
   level: PropTypes.string,
+  module: PropTypes.string
 };

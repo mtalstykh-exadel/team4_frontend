@@ -1,26 +1,26 @@
 import React from 'react';
-import '../../../../styles/modal.scss';
+import '../../../styles/modal.scss';
 import Button from '@material-ui/core/Button';
-import '../ReportMistake.scss';
-import { TextField} from '@material-ui/core';
+import './EssayOrSpeakingReportMistake.scss';
+import { TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-export const EssayReportMistake = ({level, theme}) => {
+export const EssayOrSpeakingReportMistake = ({level, topic, module}) => {
 
   return (
     <div className='report-mistake-modal'>
       <div className='report-header'>Report a mistake</div>
       <div className='level-module-info'>
         <span className='level-info'>Level: {level}</span>
-        <span className='module0'>Module: Essay</span>
+        <span className='module0'>Module: {module}</span>
       </div>
-       <div className='theme'>{theme}</div>
+      <div className='topic-wrapper'><div className='topic'>{topic}</div></div>
       <div className='report-textfield-wrapper'>
         <TextField
           className='report-textfield'
           variant='outlined'
           multiline
-          rows={6}
+          rows={5}
           label='Enter your report'
         />
       </div>
@@ -32,7 +32,8 @@ export const EssayReportMistake = ({level, theme}) => {
   );
 };
 
-EssayReportMistake.propTypes = {
+EssayOrSpeakingReportMistake.propTypes = {
   level: PropTypes.string,
-  theme: PropTypes.string,
+  topic: PropTypes.string,
+  module: PropTypes.string,
 };
