@@ -7,6 +7,14 @@
     width: 1275px;
   }
 
+  .MuiTableCell-sizeSmall {
+    padding: 5px 0;
+  }
+
+  .MuiTableCell-sizeSmall:last-child {
+    padding-right: 50px;
+  }
+
   .headItems {
     font-weight: bold;
   }
@@ -24,13 +32,13 @@
 
   .buttonAssign {
     min-width: 127px;
+    max-height: 25px;
     font-weight: bold;
-    margin-right: 34px;
-    margin-left: 17px;
   }
 
   .buttonDeassign {
     min-width: 127px;
+    max-height: 25px;
     color: black;
     border-color: #828282;
     font-weight: bold;
