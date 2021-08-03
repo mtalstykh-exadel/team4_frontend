@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../../../styles/modal.scss';
-import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from '@material-ui/core';
-
+import '../../../styles/modal.scss';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 
 export const ListeningReportMistake = ({tasks, level}) => {
   let count = 0;

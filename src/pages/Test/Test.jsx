@@ -7,17 +7,15 @@ import {
   Listening,
   grammarTasks,
   listeningTasks,
+  ListeningReportMistake
 } from '../../components';
 import {startTimer, createTimer} from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
 import {Trans} from '@lingui/macro';
-import {EssayReportMistake} from '../../components/Test/Modals/EssayReportMistake/EssayReportMistake';
-import {SpeakingReportMistake} from '../../components/Test/Modals/SpeakingReportMistake/SpeakingReportMistake';
-import {ListeningReportMistake} from '../../components/Test/Modals/ListeningReportMistake/ListeningReportMistake';
 import CloseIcon from '@material-ui/icons/Close';
-import '../../components/Test/Modals/IconClose.scss';
+import './IconClose.scss';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -48,8 +46,8 @@ export const Test = () => {
   const stepsModals = [
     <Grammar key='0' tasks={grammarTasks}/>,
     <ListeningReportMistake key='1' tasks={listeningTasks} level={'A1'}/>,
-    <EssayReportMistake key='2'/>,
-    <SpeakingReportMistake key='3'/>,
+    <Essay key='2'/>,
+    <Speaking key='3'/>,
   ];
 
 
@@ -169,7 +167,8 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
-              <div className='close-icon-wrapper'><CloseIcon fontSize='large' color='action' className='close-icon' onClick={handleClose}/>
+              <div className='close-icon-wrapper'>
+                <CloseIcon fontSize='large' color='action' className='close-icon' onClick={handleClose}/>
               </div>
               {stepsModals[step]}
             </div>

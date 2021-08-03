@@ -24,10 +24,8 @@
       width: 90%;
       margin-left: 5%;
       margin-right: 5%;
-    }
-
-    .MuiFormControlLabel-root {
-      color: black;
+      padding-top: 8px;
+      padding-bottom: 8px;
     }
   }
 
@@ -50,6 +48,9 @@
 
     .report-textfield {
       width: 95%;
+      border: 1px solid #bdbdbd;
+      box-sizing: border-box;
+      border-radius: 4px;
 
       .report-textfield-label {
         color: #828282;

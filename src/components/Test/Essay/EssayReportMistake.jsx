@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import '../../../../styles/modal.scss';
+import '../../../styles/modal.scss';
 import Button from '@material-ui/core/Button';
 import { Trans } from '@lingui/macro';
-import '../ReportMistake.scss';
+import '../Listening/ListeningReportMistake.scss';
 import {TextField} from '@material-ui/core';
 
 export const EssayReportMistake = () => {
