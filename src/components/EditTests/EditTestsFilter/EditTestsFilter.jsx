@@ -18,7 +18,7 @@ const validation = Yup.object({
 export const EditTestsFilter = (props) => {
 
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  const testModules = ['Grammar', 'Listening', 'Essay', 'Speaking'];
+  const testModules = [['Grammar', 'Грамматика'], ['Listening', 'Слушание'], ['Essay', 'Сочинение'], ['Speaking', 'Говорение']];
 
   const testLevelsList = testLevels.map((elem) => {
     return (
@@ -28,7 +28,7 @@ export const EditTestsFilter = (props) => {
 
   const testModulesList = testModules.map((elem) => {
     return (
-      <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>
+      <MenuItem className='edit-tests-option' key={elem} value={elem}><Trans>{elem[0]}{elem[1]}</Trans></MenuItem>
     );
   });
 
