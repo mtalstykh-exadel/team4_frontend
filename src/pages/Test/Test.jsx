@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Modal} from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Modal } from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -10,11 +10,11 @@ import {
   GrammarOrListeningReportMistake,
   EssayOrSpeakingReportMistake,
 } from '../../components';
-import {startTimer, createTimer} from '../../services/timer';
+import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../components/Test/Modals/IconClose.scss';
 
@@ -50,7 +50,6 @@ export const Test = () => {
     <EssayOrSpeakingReportMistake key='2' level={'A1'} topic={'About Myself'} module={'Essay'}/>,
     <EssayOrSpeakingReportMistake key='3' level={'A1'} topic={'About Myself'} module={'Speaking'}/>,
   ];
-
 
   useEffect(() => {
     startTimer(
