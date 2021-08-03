@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from '@material-ui/core';
 import './GrammarOrListeningReportMistake.scss';
 
 export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
@@ -16,11 +16,14 @@ export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
       </div>
       <div className='selector-wrapper'>
         <FormControl variant='outlined' className='question-selector'>
-          <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
-          <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
+          <InputLabel id='questions-selector-label' style={{height: '16px', fontSize: '11px'}}>Select a question to
+            report</InputLabel>
+          <Select labelId='questions-selector-label' label='Select a question to report' id='select'
+                  style={{height: '16px', fontSize: '11px'}}>
             {tasks.map((item, index) => {
               count++;
-              return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
+              return <MenuItem key={count} value={index}
+                               style={{height: '16px', fontSize: '11px'}}>{count}. {item.sentence}</MenuItem>;
             })}
           </Select>
         </FormControl>

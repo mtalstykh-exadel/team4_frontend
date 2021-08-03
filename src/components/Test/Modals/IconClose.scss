@@ -12,3 +12,15 @@
     cursor: pointer;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .close-icon-wrapper {
+    height: 15px;
+
+    .close-icon {
+      right: 10px;
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
