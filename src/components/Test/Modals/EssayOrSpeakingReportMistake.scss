@@ -1,0 +1,80 @@
+.report-mistake-modal {
+  width: 949px;
+  height: 391px;
+
+  .report-header {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .level-module-info {
+    font-size: 16px;
+    color: #828282;
+    margin-left: 5%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    .level-info {
+      margin-right: 2%;
+    }
+  }
+
+  .topic-wrapper {
+    border: 1px solid #828282;
+    border-radius: 4px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 46px;
+    height: 35px;
+
+    .topic {
+      width: 90%;
+      margin: 8px 30px;
+    }
+  }
+
+  .add-question-to-report {
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #828282;
+    cursor: pointer;
+  }
+
+  .add-question-to-report:hover {
+    text-decoration: underline;
+  }
+
+  .report-textfield-wrapper {
+    margin-left: 5%;
+    margin-bottom: 30px;
+
+    .report-textfield {
+      width: 95%;
+
+      .report-textfield-label {
+        color: #828282;
+        font-size: 14px;
+      }
+    }
+  }
+
+  .report-mistake-buttons-wrapper {
+    margin-left: 70%;
+    margin-right: 5%;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+
+    .delete-button {
+      width: 110px;
+      box-shadow: none;
+    }
+
+    .report-button {
+      width: 110px;
+      box-shadow: none;
+    }
+  }
+}

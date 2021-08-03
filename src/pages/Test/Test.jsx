@@ -7,7 +7,8 @@ import {
   Listening,
   grammarTasks,
   listeningTasks,
-  ListeningReportMistake
+  GrammarOrListeningReportMistake,
+  EssayOrSpeakingReportMistake,
 } from '../../components';
 import {startTimer, createTimer} from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
@@ -15,7 +16,7 @@ import Button from '@material-ui/core/Button';
 import './Test.scss';
 import {Trans} from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
-import './IconClose.scss';
+import '../../components/Test/Modals/IconClose.scss';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -44,10 +45,10 @@ export const Test = () => {
   ];
 
   const stepsModals = [
-    <Grammar key='0' tasks={grammarTasks}/>,
-    <ListeningReportMistake key='1' tasks={listeningTasks} level={'A1'}/>,
-    <EssayReportMistake key='2' level={'A1'} theme={'About Myself'}/>,
-    <SpeakingReportMistake key='3' level={'A1'} theme={'About Myself'}/>,
+    <GrammarOrListeningReportMistake key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'}/>,
+    <GrammarOrListeningReportMistake key='1' tasks={listeningTasks} level={'A1'} module={'Listening'}/>,
+    <EssayOrSpeakingReportMistake key='2' level={'A1'} topic={'About Myself'} module={'Essay'}/>,
+    <EssayOrSpeakingReportMistake key='3' level={'A1'} topic={'About Myself'} module={'Speaking'}/>,
   ];
 
 

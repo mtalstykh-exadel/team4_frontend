@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import './ListeningReportMistake.scss';
+import './GrammarOrListeningReportMistake.scss';
 
-export const ListeningReportMistake = ({tasks, level, module}) => {
+export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
   let count = 0;
 
   return (
@@ -43,7 +43,7 @@ export const ListeningReportMistake = ({tasks, level, module}) => {
   );
 };
 
-ListeningReportMistake.propTypes = {
+GrammarOrListeningReportMistake.propTypes = {
   tasks: PropTypes.array,
   level: PropTypes.string,
   module: PropTypes.string
