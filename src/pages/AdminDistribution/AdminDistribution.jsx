@@ -16,7 +16,7 @@ import { rows } from '../../testData/rowsForAdminDistribution';
 import { coaches } from './Coaches';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
-import { AssignTest } from './adminDistributtion';
+import { assignTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 
 const AdminDistribution = (props) => {
@@ -58,10 +58,8 @@ const AdminDistribution = (props) => {
   };
 
   return (
-    <div className='AdminDistribution'>
-      <Layout>
-        <div className='paper'>
-          <Paper elevation={2}>
+      <Layout pageWrapperClass='AdminDistribution'>
+          <Paper elevation={2} className='paper'>
             <TableContainer>
               <Table stickyHeader aria-label='sticky table'>
                 <TableHead>
@@ -138,7 +136,7 @@ const AdminDistribution = (props) => {
                                     variant='outlined'
                                     size='small'
                                     onClick={() => {
-                                      AssignTest(index);
+                                      assignTest(index);
                                     }}
                                   >
                                     <Trans>
@@ -169,9 +167,7 @@ const AdminDistribution = (props) => {
               onRowsPerPageChange={handleChangeRowsPerPage}
             />
           </Paper>
-        </div>
       </Layout>
-    </div>
   );
 };
 

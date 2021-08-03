@@ -1,4 +1,4 @@
-const AssignTest = (id) => {
+const assignTest = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');
   const selectNames = document.getElementById('item-' + id + '-select');
   const divSelect = document.querySelectorAll('.selectCoachNames')[id];
@@ -12,4 +12,4 @@ const AssignTest = (id) => {
   }
 };
 
-export { AssignTest };
+export { assignTest };

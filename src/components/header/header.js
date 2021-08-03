@@ -93,7 +93,7 @@ const Header = () => {
             </>}
             { matches &&
               <Box className='logo-text-wrapper' component={Link} to={''}>
-                <img src={logo} alt='logo' width='60' />
+                <img src={logo} alt='logo' className={'logo'} />
                 <div className='logo-text font-primary bold'>
                   Untitled Testing <br/>
                   System
