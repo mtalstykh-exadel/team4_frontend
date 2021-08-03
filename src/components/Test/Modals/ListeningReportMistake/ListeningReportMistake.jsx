@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../../styles/modal.scss';
 import {Button, FormControl, InputLabel, MenuItem, Select, TextField} from '@material-ui/core';
-
+import '../ReportMistake.scss';
 
 export const ListeningReportMistake = ({tasks, level}) => {
   let count = 0;
-
   return (
     <div className='report-mistake-modal'>
       <div className='report-header'>Report a mistake</div>

@@ -39,8 +39,8 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks}/>,
-    <Listening key='1' tasks={listeningTasks}/>,
+    <Grammar key='0' tasks={grammarTasks} />,
+    <Listening key='1' tasks={listeningTasks} />,
     <Essay key='2'/>,
     <Speaking key='3'/>,
   ];
@@ -48,8 +48,8 @@ export const Test = () => {
   const stepsModals = [
     <Grammar key='0' tasks={grammarTasks}/>,
     <ListeningReportMistake key='1' tasks={listeningTasks} level={'A1'}/>,
-    <EssayReportMistake key='2'/>,
-    <SpeakingReportMistake key='3'/>,
+    <EssayReportMistake key='2' level={'A1'} theme={'About Myself'}/>,
+    <SpeakingReportMistake key='3' level={'A1'} theme={'About Myself'}/>,
   ];
 
 
