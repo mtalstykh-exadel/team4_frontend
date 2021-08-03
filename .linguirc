@@ -27,6 +27,9 @@
     }, {
         "path": "src/pages/AdminDistribution/locales/{locale}/messages",
         "include": "src/pages/AdminDistribution/"
+    }, {
+        "path": "src/components/Employees/locales/{locale}/messages",
+        "include": "src/components/Employees/"
     }],
    "format": "po",
    "sourceLocale": "en"
