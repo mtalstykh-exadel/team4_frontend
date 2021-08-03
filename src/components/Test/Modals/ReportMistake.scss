@@ -1,6 +1,6 @@
 .main {
-  width: 500px;
-  height: 150px;
+  width: 949px;
+  height: 391px;
 
   .header {
     font-family: "Roboto", sans-serif;
@@ -10,24 +10,43 @@
     line-height: 21px;
     letter-spacing: 0;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 5%;
   }
 
   .selector {
-    padding-left: 10px;
     padding-top: 10px;
+
+    .select {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
   }
 
   .btn {
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 2%;
+    padding-left: 70%;
+    padding-right: 5%;
+    display: flex;
+    justify-content: space-between;
 
     .delete-button {
-      margin-right: 50%;
+      width: 11.6%;
     }
 
     .report-button {
-      margin-left: 15%;
+      width: 11.6%;
+    }
+  }
+
+  .level-module {
+    font-size: 16px;
+    color: #828282;
+    padding-left: 5%;
+    padding-top: 2%;
+
+    .level {
+      margin-right: 2%;
     }
   }
 }

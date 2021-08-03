@@ -45,7 +45,7 @@ export const Test = () => {
 
   const stepsModals = [
     <Grammar key='0' tasks={grammarTasks}/>,
-    <ListeningReportMistake key='1' tasks={listeningTasks}/>,
+    <ListeningReportMistake key='1' tasks={listeningTasks} level={'A1'}/>,
     <EssayReportMistake key='2'/>,
     <SpeakingReportMistake key='3'/>,
   ];

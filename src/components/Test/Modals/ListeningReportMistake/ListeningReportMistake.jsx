@@ -3,25 +3,31 @@ import PropTypes from 'prop-types';
 import '../../../../styles/modal.scss';
 import Button from '@material-ui/core/Button';
 import '../ReportMistake.scss';
+import {TextField, MenuItem} from '@material-ui/core';
 
-export const ListeningReportMistake = ({tasks}) => {
+export const ListeningReportMistake = ({tasks, level}) => {
   let count = 0;
   return (
     <div className='main'>
       <div className='header'>Report a mistake</div>
+      <div className='level-module'>
+        <span className='level'>Level: {level}</span>
+        <span className='module0'>Module: Listening</span>
+      </div>
+
       <div className='selector'>
-        <select>
+        <TextField className='select' value='0' select>
           {tasks.map((item, index) => {
             count++;
-            return <option key={index} style={{fontSize: '16px',width: '949px'}}>{count}. {item.sentence}</option>;
+                     return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
           })}
-        </select>
+        </TextField>
       </div>
       <div className='btn'>
         <Button className='delete-button'
-                color='primary' size='small'>Delete</Button>
+                color='primary' >Delete</Button>
         <Button className='report-button'
-                color='primary' variant='contained' size='small'>Report</Button>
+                color='primary' variant='contained'>Report</Button>
       </div>
     </div>
   );
@@ -31,4 +37,5 @@ export const ListeningReportMistake = ({tasks}) => {
 
 ListeningReportMistake.propTypes = {
   tasks: PropTypes.array,
+  level: PropTypes.string,
 };
