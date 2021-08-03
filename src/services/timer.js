@@ -16,9 +16,9 @@ const createTimer = ({ domId, minutes }) => {
       const element = document.getElementById(domId);
       const localeMinutes = (seconds / 60) % 60;
       let localeSeconds = seconds % 60;
-      if (!element){
+      if (!element) {
         stopTimer(domId);
-      } else { 
+      } else {
         if (localeSeconds < 10) {
           localeSeconds = '0' + localeSeconds;
         }
