@@ -1,38 +1,38 @@
-import React, {useState} from 'react';
-import '../../../styles/modal.scss';
+import React from 'react';
+import '../../../../styles/modal.scss';
 import Button from '@material-ui/core/Button';
-import { Trans } from '@lingui/macro';
-import '../Listening/ListeningReportMistake.scss';
-import {TextField} from '@material-ui/core';
+import '../ReportMistake.scss';
+import { TextField} from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-export const EssayReportMistake = () => {
-  const [characters, setCharacters] = useState('');
+export const EssayReportMistake = ({level, theme}) => {
 
-  const handleChange = (event) => {
-    setCharacters(event.target.value);
-  };
   return (
-    <div className='main'>
-      <div className='header'>Report a mistake</div>
-      <div className='essay-topic' style = {{ fontSize: '16px',
-        paddingTop: '15px', textAlign: 'center'}}><Trans>Essay Topic</Trans></div>
-
-      <TextField
-        className='essay-input'
-        variant='outlined'
-        multiline
-        rows={10}
-        value={characters}
-        onChange={handleChange}
-        inputProps={{ maxLength: 512 }}
-      />
-      <div className='btn'>
-        <Button className='delete-button'
-                color='primary' size='small'>Delete</Button>
-        <Button className='report-button'
-                color='primary' variant='contained' size='small'>Report</Button>
+    <div className='report-mistake-modal'>
+      <div className='report-header'>Report a mistake</div>
+      <div className='level-module-info'>
+        <span className='level-info'>Level: {level}</span>
+        <span className='module0'>Module: Essay</span>
+      </div>
+       <div className='theme'>{theme}</div>
+      <div className='report-textfield-wrapper'>
+        <TextField
+          className='report-textfield'
+          variant='outlined'
+          multiline
+          rows={6}
+          label='Enter your report'
+        />
+      </div>
+      <div className='report-mistake-buttons-wrapper'>
+        <Button className='delete-button' color='primary' variant='outlined'>Delete</Button>
+        <Button className='report-button' color='primary' variant='contained'>Report</Button>
       </div>
     </div>
   );
 };
 
+EssayReportMistake.propTypes = {
+  level: PropTypes.string,
+  theme: PropTypes.string,
+};
