@@ -1,4 +1,4 @@
-import { SET_PROFILE_DATA } from "../actions/actionTypes";
+import { SET_PROFILE_DATA } from '../actions/actionTypes';
 
 const initialState = {
   avatar: null,

@@ -1,0 +1,29 @@
+.page404 {
+  .logo404-wrapper {
+    height: 50vh;
+    width: 100vw;
+    position: relative;
+    align-items: center;
+    font-size: 340px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+
+    .logo {
+      display: block;
+      margin: auto;
+      width: 270px;
+      height: 270px;
+    }
+  }
+
+  .message-wrapper {
+    text-align: center;
+  }
+
+  .button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

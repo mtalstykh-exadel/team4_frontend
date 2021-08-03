@@ -1,6 +1,6 @@
 .AdminDistribution {
   .paper {
-    margin-top: 40px;
+    margin-top: 40px; 
   }
 
   .MuiPaper-rounded {
@@ -34,6 +34,8 @@
     min-width: 127px;
     max-height: 25px;
     font-weight: bold;
+    color: #3E6DD7;
+    border-color: #3E6DD7;
   }
 
   .buttonDeassign {
@@ -56,5 +58,9 @@
 
   .selectCoachNames--disabled:focus {
     background-color: rgba(255, 255, 255, 0);
+  }
+
+  .MuiButtonBase-root.Mui-disabled {
+    background-color:rgba(255, 255, 255, 0);
   }
 }

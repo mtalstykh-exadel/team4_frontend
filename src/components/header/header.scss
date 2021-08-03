@@ -1,63 +1,95 @@
-body {
+.toolbar-wrapper {
+  max-width: 1328px;
+  width: 100%;
+  margin: 0 auto;
+
   .toolbar {
-    justify-content: space-around;
+    justify-content: space-between;
+  }
 
-    .icons-triangle {
+  .icons-triangle {
+    font-size: 15px;
+  }
+
+  .toolbar-sideLeft {
+    display: flex;
+
+    .roleBtns {
+      text-transform: none;
       font-size: 15px;
-    }
-
-    .toolbar-sideLeft {
-      display: flex;
-
-      .roleBtns {
-        padding: 20px;
-      }
-    }
-
-    .toolbar-sideRight {
-      display: flex;
-    }
-
-    .logoText {
-      max-width: 160px;
-    }
-
-    .logo {
-      max-width: 60px;
-      min-width: 50px;
+      padding: 20px;
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    .toolbar {
-      justify-content: space-between;
-    }
-  }
-
-  .drawer {
-    padding: 15px;
-    width: 200px;
-
-    .drawerSplit {
-      padding: 20px 40px 20px 10px;
-    }
-
-    .drawerIcons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+  .toolbar-sideRight {
+    display: flex;
   }
 
   .avatarHeader {
+    border: 2px solid;
     height: 30px;
     width: 30px;
   }
 
-  .bold {
-    font-weight: bold;
+  .logo-text-wrapper {
+    display: flex;
+    padding: 5px 20px 0 0;
+    height: 60px;
+    text-decoration: none;
   }
 
+  .logo-text {
+    height: 90%;
+    text-align: left;
+    margin: 10px 20px 0 20px;
+  }
+
+  .logo {
+    max-width: 50px;
+    min-width: 10px;
+  }
+
+  .logo-wrapper-small {
+    display: flex;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .toolbar {
+    justify-content: space-between;
+  }
+}
+
+.drawer {
+  padding: 15px;
+  max-width: 200px;
+  box-sizing: unset;
+
+  .drawerSplit {
+    padding: 20px 0 20px 5px;
+  }
+
+  .drawerIcons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+
+  .drawerButtons {
+    display: block;
+    margin: 0 auto 0 0;
+  }
+
+  .avatarDrawer {
+    border: 1px solid;
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.notifications-dropdown-menu {
   .notifications-test {
     padding: 15px 0 0 10px;
 
@@ -82,21 +114,20 @@ body {
     margin-right: 10px;
     text-transform: none;
   }
+}
 
-  .modal {
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .paper {
+    padding: 30px;
+  }
+
+  .modalBtns {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .paper {
-      padding: 30px;
-      background-color: white;
-    }
-
-    .modalBtns {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }

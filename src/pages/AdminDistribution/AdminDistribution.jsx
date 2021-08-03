@@ -1,19 +1,41 @@
-import React, { useState } from "react";
-import Layout from "../../components/Layout/Layout.js";
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Select, Button } from "@material-ui/core";
-import { rows } from "../../testData/rowsForAdminDistribution.js";
-import { coaches } from "./Coaches.js";
-import PropTypes from "prop-types";
-import "./AdminDistribution.scss";
-import { AssignTest } from "./adminDistributtion.js";
+import React, { useState } from 'react';
+import Layout from '../../components/Layout/Layout';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Select,
+  Button,
+} from '@material-ui/core';
+import { rows } from '../../testData/rowsForAdminDistribution';
+import { coaches } from './Coaches';
+import PropTypes from 'prop-types';
+import './AdminDistribution.scss';
+import { AssignTest } from './adminDistributtion';
+import { Trans } from '@lingui/macro';
 
 const AdminDistribution = (props) => {
   const columns = [
-    { id: "level", label: "Level", width: 83, align: "right" },
-    { id: "assigned", label: "Assigned", width: 237, align: "right" },
-    { id: "deadline", label: "Test deadline", width: 237, align: "right" },
-    { id: "Coach", label: "Coach", width: 444, align: "right" },
-    { id: "action", label: "Action", width: 270, align: "right" },
+    { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
+    {
+      id: 'assigned',
+      label: ['Assigned', 'Назначенный'],
+      width: 237,
+      align: 'right',
+    },
+    {
+      id: 'deadline',
+      label: ['Deadline', 'Срок сдачи'],
+      width: 237,
+      align: 'right',
+    },
+    { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
+    { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
 
   const filteredRows = rows.filter((r) =>
@@ -35,105 +57,120 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
-  // For Testing 
-  {rows.map((row) => (
-    console.log(row?.Coach)
-  ));}
-
   return (
-    <div className="AdminDistribution">
+    <div className='AdminDistribution'>
       <Layout>
-        <Paper>
-          <TableContainer className="paper">
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      className="headItems"
-                      size="small"
-                      key={column.id}
-                      align={column.align}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {filteredRows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    return (
-                      <TableRow hover role="checkbox" tabIndex={-1} key={index} >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          keysForColumns++;
-                          return (
-                            <TableCell
-                              key={keysForColumns}
-                              align={column.align}
-                              width={column.width + 'px'}
-                              size="small"
-                            >
-                              {column.id === "Coach" ? (
-                                <Select
-                                  id={"item-" + index + "-select"}
-                                  className="selectCoachNames"
-                                  native
-                                  variant="outlined"
-                                  defaultValue="placeholder"
-                                >
-                                  <option aria-label="None" value="placeholder">name</option>
-                                  {coaches.map((coachName) => {
-                                    keysForOptions++;
-                                    return (
-                                      <option key={keysForOptions} value={coachName}>
-                                        {coachName}
-                                      </option>
-                                    );
-                                  })}
-                                </Select>
-                              ) : (
-                                null
-                              )}
+        <div className='paper'>
+          <Paper elevation={2}>
+            <TableContainer>
+              <Table stickyHeader aria-label='sticky table'>
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        className='headItems font-primary base-color-elevated'
+                        size='small'
+                        key={column.id}
+                        align={column.align}
+                      >
+                        <Trans>
+                          {column.label[0]}
+                          {column.label[1]}
+                        </Trans>
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {filteredRows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row, index) => {
+                      return (
+                        <TableRow
+                          hover
+                          role='checkbox'
+                          tabIndex={-1}
+                          key={index}
+                        >
+                          {columns.map((column) => {
+                            const value = row[column.id];
+                            keysForColumns++;
+                            return (
+                              <TableCell
+                                className='font-primary'
+                                key={keysForColumns}
+                                align={column.align}
+                                width={column.width + 'px'}
+                                size='small'
+                              >
+                                {column.id === 'Coach' ? (
+                                  <Select
+                                    id={'item-' + index + '-select'}
+                                    className='selectCoachNames font-primary'
+                                    native
+                                    variant='outlined'
+                                    defaultValue='placeholder'
+                                  >
+                                    <option
+                                      aria-label='None'
+                                      value='placeholder'
+                                    >
+                                      name
+                                    </option>
+                                    {coaches.map((coachName) => {
+                                      keysForOptions++;
+                                      return (
+                                        <option
+                                          key={keysForOptions}
+                                          value={coachName}
+                                        >
+                                          {coachName}
+                                        </option>
+                                      );
+                                    })}
+                                  </Select>
+                                ) : null}
 
-                              {column.id === "action" ? (
-                                <Button
-                                  id={"item-" + index + "-button"}
-                                  className="buttonAssign"
-                                  variant="outlined"
-                                  color="primary"
-                                  size="small"
-                                  onClick={() => {
-                                    AssignTest(index);
-                                  }}
-                                >
-                                  {value}
-                                </Button>
-                              ) : (
-                                value
-                              )}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10]}
-            component="div"
-            count={filteredRows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </Layout >
+                                {column.id === 'action' ? (
+                                  <Button
+                                    id={'item-' + index + '-button'}
+                                    className='buttonAssign'
+                                    variant='outlined'
+                                    size='small'
+                                    onClick={() => {
+                                      AssignTest(index);
+                                    }}
+                                  >
+                                    <Trans>
+                                      {value[0]}
+                                      {value[1]}
+                                    </Trans>
+                                  </Button>
+                                ) : (
+                                  value
+                                )}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              className='font-primary'
+              rowsPerPageOptions={[10]}
+              component='div'
+              count={filteredRows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
+          </Paper>
+        </div>
+      </Layout>
     </div>
   );
 };
