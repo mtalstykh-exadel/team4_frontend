@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
-import {Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField} from '@material-ui/core';
+import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 
