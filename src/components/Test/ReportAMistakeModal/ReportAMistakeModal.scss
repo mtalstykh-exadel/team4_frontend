@@ -19,6 +19,20 @@
     }
   }
 
+  .topic-wrapper {
+    border: 1px solid #828282;
+    border-radius: 4px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 46px;
+    height: 35px;
+
+    .topic {
+      width: 90%;
+      margin: 8px 30px;
+    }
+  }
+
   .selector-wrapper {
     .question-selector {
       width: 90%;
@@ -111,6 +125,7 @@
       margin-left: 50%;
       margin-right: 5%;
       height: 20px;
+      font-size: 10px;
 
       .delete-button,
       .report-button {
