@@ -1,6 +1,18 @@
 .AdminDistribution {
   .paper {
-    margin-top: 40px;
+    margin-top: 40px; 
+  }
+
+  .MuiPaper-rounded {
+    width: 1275px;
+  }
+
+  .MuiTableCell-sizeSmall {
+    padding: 5px 0;
+  }
+
+  .MuiTableCell-sizeSmall:last-child {
+    padding-right: 50px;
   }
 
   .headItems {
@@ -20,5 +32,35 @@
 
   .buttonAssign {
     min-width: 127px;
+    max-height: 25px;
+    font-weight: bold;
+    color: #3E6DD7;
+    border-color: #3E6DD7;
+  }
+
+  .buttonDeassign {
+    min-width: 127px;
+    max-height: 25px;
+    color: black;
+    border-color: #828282;
+    font-weight: bold;
+  }
+
+  .buttonDeassign:hover {
+    background-color: #7a7a7a18;
+    border-color: #3a3a3a;
+  }
+
+  .selectCoachNames--disabled {
+    color: #828282;
+    pointer-events: none;
+  }
+
+  .selectCoachNames--disabled:focus {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  .MuiButtonBase-root.Mui-disabled {
+    background-color:rgba(255, 255, 255, 0);
   }
 }
