@@ -4,9 +4,11 @@ import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
+// import ResultTest from '../../components/ResultTest/ResultTest';
 
 export const Page404 = () => {
   return (
+    // <ResultTest/>
     <div className='page404'>
       <div className='logo404-wrapper font-color'>
         <span>4</span>
