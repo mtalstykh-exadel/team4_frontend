@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Modal } from '@material-ui/core';
+import React, {useState, useEffect} from 'react';
+import {Modal} from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -9,11 +9,12 @@ import {
   listeningTasks,
   ReportAMistakeModal,
 } from '../../components';
-import { startTimer, createTimer } from '../../services/timer';
+import {startTimer, createTimer} from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
+import {IconButton} from '@material-ui/core';
 import './Test.scss';
-import { Trans } from '@lingui/macro';
+import {Trans} from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../components/Test/ReportAMistakeModal/IconClose.scss';
 
@@ -37,8 +38,8 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks} />,
-    <Listening key='1' tasks={listeningTasks} />,
+    <Grammar key='0' tasks={grammarTasks}/>,
+    <Listening key='1' tasks={listeningTasks}/>,
     <Essay key='2'/>,
     <Speaking key='3'/>,
   ];
@@ -166,9 +167,9 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
-              <div className='close-icon-wrapper'>
-                <CloseIcon fontSize='large' color='action' className='close-icon' onClick={handleClose}/>
-              </div>
+              <IconButton aria-label='close' onClick={handleClose}>
+                <CloseIcon className='close-icon'/>
+              </IconButton>
               {stepsModals[step]}
             </div>
           </Modal>

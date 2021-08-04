@@ -1,4 +1,4 @@
-.close-icon-wrapper {
+.MuiIconButton-root {
   height: 38px;
   display: block;
   position: relative;
@@ -6,7 +6,7 @@
   .close-icon {
     position: absolute;
     bottom: 0;
-    right: 10px;
+    left: 890px;
     width: 30px;
     height: 30px;
     cursor: pointer;
@@ -14,13 +14,13 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .close-icon-wrapper {
-    height: 15px;
+  .MuiIconButton-root {
+    height: 20px;
 
     .close-icon {
-      right: 10px;
+      left: 280px;
       width: 15px;
-      height: 15px;
+      height: 20px;
     }
   }
 }
