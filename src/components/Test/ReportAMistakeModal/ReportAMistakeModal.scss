@@ -1,6 +1,24 @@
 .report-mistake-modal {
   width: 949px;
-  height: 391px;
+  height: 420px;
+
+  .close-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-left: 895px;
+
+    .MuiIconButton-root {
+      height: 35px;
+
+      .close-icon {
+        position: absolute;
+        bottom: 0;
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+      }
+    }
+  }
 
   .report-header {
     font-size: 18px;
@@ -75,11 +93,7 @@
     justify-content: space-between;
     height: 30px;
 
-    .delete-button {
-      width: 110px;
-      box-shadow: none;
-    }
-
+    .delete-button,
     .report-button {
       width: 110px;
       box-shadow: none;
@@ -90,7 +104,17 @@
 @media only screen and (max-width: 800px) {
   .report-mistake-modal {
     width: 360px;
-    height: 320px;
+    height: 345px;
+
+    .MuiIconButton-root {
+      height: 20px;
+
+      .close-icon {
+        left: 330px;
+        width: 20px;
+        height: 20px;
+      }
+    }
 
     .report-header {
       font-size: 16px;

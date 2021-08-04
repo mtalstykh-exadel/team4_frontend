@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
-import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import {Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField} from '@material-ui/core';
 import './ReportAMistakeModal.scss';
+import CloseIcon from '@material-ui/icons/Close';
 
-export const ReportAMistakeModal = ({ tasks, topic, level, module }) => {
+export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
   let count = 0;
   let HTMLCodeForStep;
   if (module === 'Grammar' || module === 'Listening') {
@@ -29,6 +30,9 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module }) => {
 
   return (
     <div className='report-mistake-modal'>
+      <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+        <CloseIcon className='close-icon'/>
+      </IconButton>
       <div className='report-header'>Report a mistake</div>
       <div className='level-module-info'>
         <span className='level-info'>Level: {level}</span>
@@ -56,5 +60,6 @@ ReportAMistakeModal.propTypes = {
   tasks: PropTypes.array,
   topic: PropTypes.string,
   level: PropTypes.string,
-  module: PropTypes.string
+  module: PropTypes.string,
+  handleClose: PropTypes.func
 };

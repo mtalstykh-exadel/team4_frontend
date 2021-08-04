@@ -8,19 +8,18 @@ import {
   grammarTasks,
   listeningTasks,
   ReportAMistakeModal,
+  SubmitModal
 } from '../../components';
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
-import { IconButton } from '@material-ui/core';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
-import CloseIcon from '@material-ui/icons/Close';
-import '../../components/Test/ReportAMistakeModal/IconClose.scss';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
   const [step, setStep] = useState(0);
+  const [modalIndex, setModalIndex] = useState(0);
   const [nextButtonClass, setNextButtonClass] = useState(
     'next-step-button'
   );
@@ -44,11 +43,12 @@ export const Test = () => {
     <Speaking key='3'/>,
   ];
 
-  const stepsModals = [
-    <ReportAMistakeModal key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'}/>,
-    <ReportAMistakeModal key='1' tasks={listeningTasks} level={'A1'} module={'Listening'}/>,
-    <ReportAMistakeModal key='2' level={'A1'} topic={'About Myself'} module={'Essay'}/>,
-    <ReportAMistakeModal key='3' level={'A1'} topic={'About Myself'} module={'Speaking'}/>,
+  const modals = [
+    <ReportAMistakeModal key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='1' tasks={listeningTasks} level={'A1'} module={'Listening'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='2' level={'A1'} topic={'About Myself'} module={'Essay'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='3' level={'A1'} topic={'About Myself'} module={'Speaking'} handleClose={handleClose}/>,
+    <SubmitModal key='4' handleClose={handleClose}/>,
   ];
 
   useEffect(() => {
@@ -155,11 +155,12 @@ export const Test = () => {
               className='submit-button'
               color='primary'
               variant='contained'
+              onClick={() => {setModalIndex(4); handleOpen();}}
             >
               Submit
             </Button>
           </div>
-          <div className='report-mistake' onClick={handleOpen}><Trans>Report a mistake</Trans></div>
+          <div className='report-mistake' onClick={() => {setModalIndex(step); handleOpen();}}><Trans>Report a mistake</Trans></div>
           <Modal
             open={open}
             onClose={handleClose}
@@ -167,10 +168,7 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
-              <IconButton aria-label='close' onClick={handleClose}>
-                <CloseIcon className='close-icon'/>
-              </IconButton>
-              {stepsModals[step]}
+              {modals[modalIndex]}
             </div>
           </Modal>
         </div>
