@@ -78,3 +78,51 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .report-mistake-modal {
+    width: 300px;
+    height: 300px;
+
+    .report-header {
+      font-size: 12px;
+    }
+
+    .level-module-info {
+      font-size: 12px;
+      margin-left: 5%;
+      margin-top: 5px;
+      margin-bottom: 2px;
+      padding-bottom: 3px;
+    }
+
+    .add-question-to-report {
+      font-size: 15px;
+    }
+
+    .selector-wrapper {
+      .report-textfield-wrapper {
+        margin-left: 5%;
+        margin-bottom: 5px;
+
+        .report-textfield {
+          .report-textfield-label {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .report-mistake-buttons-wrapper {
+      margin-left: 50%;
+      margin-right: 5%;
+      height: 20px;
+      font-size: 10px;
+
+      .delete-button,
+      .report-button {
+        width: 30px;
+      }
+    }
+  }
+}
