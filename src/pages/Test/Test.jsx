@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Modal} from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Modal } from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -9,12 +9,12 @@ import {
   listeningTasks,
   ReportAMistakeModal,
 } from '../../components';
-import {startTimer, createTimer} from '../../services/timer';
+import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
-import {IconButton} from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import './Test.scss';
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
 import '../../components/Test/ReportAMistakeModal/IconClose.scss';
 

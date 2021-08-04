@@ -4,7 +4,7 @@ import '../../../styles/modal.scss';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import './ReportAMistakeModal.scss';
 
-export const ReportAMistakeModal = ({tasks, topic, level, module}) => {
+export const ReportAMistakeModal = ({ tasks, topic, level, module }) => {
   let count = 0;
   let HTMLCodeForStep;
   if (module === 'Grammar' || module === 'Listening') {
