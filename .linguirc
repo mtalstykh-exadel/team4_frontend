@@ -13,7 +13,7 @@
         "path": "src/components/TestsInfo/locales/{locale}/messages",
         "include": "src/components/TestsInfo/"
     }, {
-        "path": "src/pages/Test/locales/{locale}/messages",
+        "path": "src/components/Test/locales/{locale}/messages",
         "include": "src/pages/Test/"
     }, {
         "path": "src/pages/Page404/locales/{locale}/messages",
@@ -27,7 +27,10 @@
     }, {
         "path": "src/pages/AdminDistribution/locales/{locale}/messages",
         "include": "src/pages/AdminDistribution/"
+    }, {
+        "path": "src/components/Employees/locales/{locale}/messages",
+        "include": "src/components/Employees/"
     }],
    "format": "po",
-   "sourceLocale": "en" 
+   "sourceLocale": "en"
 }

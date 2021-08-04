@@ -30,7 +30,6 @@ export const EditTestsTable = (props) => {
 
   const filteredRows = [];
   if (props.module !== 'Listening') {
-    debugger;
     rows.filter((el) => {
       Array.isArray(el)
         ? el[0] !== 'Player' && filteredRows.push(el)
@@ -90,7 +89,7 @@ export const EditTestsTable = (props) => {
                   }
                   <TableCell align='left' size='small'>{row.question}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' className='btn-search'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 140 }} type='search' className='btn-search'>
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
