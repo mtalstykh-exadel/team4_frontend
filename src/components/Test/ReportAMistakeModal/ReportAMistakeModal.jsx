@@ -2,10 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import './GrammarOrListeningReportMistake.scss';
+import './ReportAMistakeModal.scss';
 
-export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
+export const ReportAMistakeModal = ({tasks, topic, level, module}) => {
   let count = 0;
+  let HTMLCodeForStep;
+  if (module === 'Grammar' || module === 'Listening') {
+    HTMLCodeForStep =
+      <>
+        <div className='selector-wrapper'>
+          <FormControl variant='outlined' className='question-selector'>
+            <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
+            <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
+              {tasks.map((item, index) => {
+                count++;
+                return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
+              })}
+            </Select>
+          </FormControl>
+        </div>
+        <div className='add-question-to-report'>Add question</div>
+      </>;
+  } else {
+    HTMLCodeForStep = <div className='topic-wrapper'><div className='topic'>{topic}</div></div>;
+  }
 
   return (
     <div className='report-mistake-modal'>
@@ -14,18 +34,7 @@ export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
         <span className='level-info'>Level: {level}</span>
         <span className='module0'>Module: {module}</span>
       </div>
-      <div className='selector-wrapper'>
-        <FormControl variant='outlined' className='question-selector'>
-          <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
-          <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
-            {tasks.map((item, index) => {
-              count++;
-              return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
-            })}
-          </Select>
-        </FormControl>
-      </div>
-      <div className='add-question-to-report'>Add question</div>
+      {HTMLCodeForStep}
       <div className='report-textfield-wrapper'>
         <TextField
           className='report-textfield'
@@ -43,8 +52,9 @@ export const GrammarOrListeningReportMistake = ({tasks, level, module}) => {
   );
 };
 
-GrammarOrListeningReportMistake.propTypes = {
+ReportAMistakeModal.propTypes = {
   tasks: PropTypes.array,
+  topic: PropTypes.string,
   level: PropTypes.string,
   module: PropTypes.string
 };

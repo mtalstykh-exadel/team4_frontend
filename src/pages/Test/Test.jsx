@@ -7,8 +7,7 @@ import {
   Listening,
   grammarTasks,
   listeningTasks,
-  GrammarOrListeningReportMistake,
-  EssayOrSpeakingReportMistake,
+  ReportAMistakeModal,
 } from '../../components';
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
@@ -16,7 +15,7 @@ import Button from '@material-ui/core/Button';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
-import '../../components/Test/Modals/IconClose.scss';
+import '../../components/Test/ReportAMistakeModal/IconClose.scss';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -45,10 +44,10 @@ export const Test = () => {
   ];
 
   const stepsModals = [
-    <GrammarOrListeningReportMistake key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'}/>,
-    <GrammarOrListeningReportMistake key='1' tasks={listeningTasks} level={'A1'} module={'Listening'}/>,
-    <EssayOrSpeakingReportMistake key='2' level={'A1'} topic={'About Myself'} module={'Essay'}/>,
-    <EssayOrSpeakingReportMistake key='3' level={'A1'} topic={'About Myself'} module={'Speaking'}/>,
+    <ReportAMistakeModal key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'}/>,
+    <ReportAMistakeModal key='1' tasks={listeningTasks} level={'A1'} module={'Listening'}/>,
+    <ReportAMistakeModal key='2' level={'A1'} topic={'About Myself'} module={'Essay'}/>,
+    <ReportAMistakeModal key='3' level={'A1'} topic={'About Myself'} module={'Speaking'}/>,
   ];
 
   useEffect(() => {

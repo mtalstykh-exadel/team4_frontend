@@ -33,6 +33,14 @@
     }
   }
 
+  .selector-wrapper {
+    .question-selector {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+
   .add-question-to-report {
     margin-left: 5%;
     margin-top: 10px;
@@ -48,7 +56,7 @@
 
   .report-textfield-wrapper {
     margin-left: 5%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 
     .report-textfield {
       width: 95%;
