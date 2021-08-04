@@ -5,14 +5,15 @@ import { rows } from '../../testData/rowsForAdminDistribution.js';
 import { coaches } from './Coaches.js';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
+import { Trans } from '@lingui/macro';
 
 const AdminDistribution = (props) => {
   const columns = [
-    { id: 'level', label: 'Level', width: 50, align: 'right' },
-    { id: 'assigned', label: 'Assigned', width: 130, align: 'right' },
-    { id: 'deadline', label: 'Deadline', width: 130, align: 'right' },
-    { id: 'Coach', label: 'Coach', width: 345, align: 'right' },
-    { id: 'action', label: 'Action', width: 127, align: 'right' },
+    { id: 'level', label: ['Level', 'Уровень'], width: 50, align: 'right' },
+    { id: 'assigned', label: ['Assigned', 'Назначенный'], width: 130, align: 'right' },
+    { id: 'deadline', label: ['Deadline', 'Срок сдачи'], width: 130, align: 'right' },
+    { id: 'Coach', label: ['Coach', 'Тренер'], width: 345, align: 'right' },
+    { id: 'action', label: ['Action', 'Действие'], width: 127, align: 'right' },
   ];
 
   const filteredRows = rows.filter((r) =>
@@ -50,7 +51,7 @@ const AdminDistribution = (props) => {
                       key={column.id}
                       align={column.align}
                     >
-                      {column.label}
+                      <Trans>{column.label[0]}{column.label[1]}</Trans>
                     </TableCell>
                   ))}
                 </TableRow>
@@ -100,7 +101,7 @@ const AdminDistribution = (props) => {
                                   variant='outlined'
                                   size='small'
                                 >
-                                  {value}
+                                  <Trans>{value[0]}{value[1]}</Trans>
                                 </Button>
                               ) : (
                                 value

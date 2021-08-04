@@ -4,8 +4,9 @@ import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, requestQuestionsList } from '../../store/actions/coachActions';
+import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
+import { Trans } from '@lingui/macro';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +22,24 @@ export const EditTestsTable = (props) => {
     .filter((el) => props.questId && !!Number(props.questId) ? Number(props.questId) === el.id : el)
     : [];
 
-  const rows = ['ID', '', 'Question', 'Action', 'Add archive'];
+  const rows = ['ID',
+    ['Player', 'Проигрователь'],
+    ['Question', 'Вопрос'],
+    ['Action', 'Действие'],
+    ['Archive', 'Архив']];
+
+  const filteredRows = [];
+  if (props.module !== 'Listening') {
+    debugger;
+    rows.filter((el) => {
+      Array.isArray(el)
+        ? el[0] !== 'Player' && filteredRows.push(el)
+        : el !== 'Player' && filteredRows.push(el);
+    });
+  } else {
+    rows.map((el) => filteredRows.push(el));
+  }
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -44,15 +62,17 @@ export const EditTestsTable = (props) => {
 
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color='primary' variant='contained' type='search' className='btn-add-question'>Add question</Button>
-      <Paper>
+      <Button color='primary' variant='contained' type='search' className='btn-add-question'><Trans>Add question</Trans></Button>
+      <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
-                {rows.map((rowName) => {
+                {filteredRows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
+                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{Array.isArray(rowName)
+                      ? <Trans>{rowName[0]}{rowName[1]}</Trans>
+                      : rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -61,20 +81,20 @@ export const EditTestsTable = (props) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>{row.id}</TableCell>
-                  <TableCell component='th' scope='row' padding='none' size='small'>
-                    {
-                      row.module === 'Listening'
-                        ? <PlayCircleOutlineIcon color='primary' cursor='pointer' />
-                        : null
-                    }
-                  </TableCell>
+                  {
+                    row.module === 'Listening'
+                      ? <TableCell component='th' scope='row' size='small'>
+                        <PlayCircleOutlineIcon className='icons-color-primary' cursor='pointer' />
+                      </TableCell>
+                      : null
+                  }
                   <TableCell align='left' size='small'>{row.question}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search'>
-                      Edit
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' className='btn-search'>
+                      <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='left'>{<ArchiveOutlinedIcon color='primary' className='archiveBtn' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
+                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
                 </TableRow>
               );
             })}
@@ -82,6 +102,7 @@ export const EditTestsTable = (props) => {
           </Table>
         </TableContainer>
         <TablePagination
+          labelRowsPerPage={<Trans>Rows per page: </Trans>}
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
           count={filteredQuestions.length}
