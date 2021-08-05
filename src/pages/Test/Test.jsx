@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import './Test.scss';
+import { Modal } from '@material-ui/core';
+import {
+  Speaking,
+  Essay,
+  Grammar,
+  Listening,
+  grammarTasks,
+  listeningTasks,
+} from '../../components';
+import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
-import Speaking from './Speaking/Speaking';
-import Essay from './Essay/Essay';
-import Grammar from './Grammar/Grammar';
-import Listening from './Listening/Listening';
 import Button from '@material-ui/core/Button';
+import './Test.scss';
 import { Trans } from '@lingui/macro';
-import grammarTasks from './testData/GrammarTasks';
-import listeningTasks from './testData/ListeningTasks';
-import { testTimerHandler } from '../../services/test-timer';
 
-const Test = () => {
-  const minutes = 40;
+export const Test = () => {
+  const TestDurationInMinutes = 40;
   const [step, setStep] = useState(0);
-  const [nextButtonText, setNextButtonText] = useState(['Next step', 'Следующий этап']);
+  const [nextButtonClass, setNextButtonClass] = useState(
+    'next-step-button'
+  );
   const [prevButtonClass, setPrevButtonClass] = useState(
     'previous-step-button invisible'
   );
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const steps = [
     <Grammar key='0' tasks={grammarTasks} />,
@@ -27,8 +41,13 @@ const Test = () => {
   ];
 
   useEffect(() => {
-    testTimerHandler(minutes);
-  },[minutes]);
+    startTimer(
+      createTimer({
+        domId: 'test-timer',
+        minutes: TestDurationInMinutes,
+      })
+    );
+  }, [TestDurationInMinutes]);
 
   return (
     <Layout>
@@ -38,7 +57,7 @@ const Test = () => {
             className={`${step === 0 ? 'test-step active' : 'test-step'}`}
             onClick={() => {
               setStep(0);
-              setNextButtonText(['Next step', 'Следующий этап']);
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button invisible');
             }}
           >
@@ -48,7 +67,7 @@ const Test = () => {
             className={step === 1 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(1);
-              setNextButtonText(['Next step', 'Следующий этап']);
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
             }}
           >
@@ -58,7 +77,7 @@ const Test = () => {
             className={step === 2 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(2);
-              setNextButtonText(['Next step', 'Следующий этап']);
+              setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
             }}
           >
@@ -68,17 +87,19 @@ const Test = () => {
             className={step === 3 ? 'test-step active' : 'test-step'}
             onClick={() => {
               setStep(3);
-              setNextButtonText(['Submit', 'Отправить']);
+              setNextButtonClass('next-step-button invisible');
               setPrevButtonClass('previous-step-button');
             }}
           >
             <Trans>Speaking</Trans>
           </div>
-          <div className='test-step time' id='test-timer'>{minutes}:00</div>
+          <div className='test-step time' id='test-timer'>
+            {TestDurationInMinutes}:00
+          </div>
         </div>
         <div className='test-task-wrapper'>{steps[step]}</div>
         <div className='buttons-wrapper'>
-          <div className='test-buttons'>
+          <div className='step-navigation-buttons'>
             <Button
               className={prevButtonClass}
               color='primary'
@@ -91,38 +112,54 @@ const Test = () => {
                   if (prev === 0) {
                     setPrevButtonClass('previous-step-button invisible');
                   }
-                  setNextButtonText(['Next step', 'Следующий этап']);
+                  setNextButtonClass('next-step-button');
                   return prev;
                 });
               }}
             >
-              <Trans>Previous step</Trans>
+              <Trans>Previous</Trans>
             </Button>
             <Button
-              className='next-step-button'
+              className={nextButtonClass}
               color='primary'
-              variant='contained'
+              variant='outlined'
               onClick={() => {
                 setStep((next) => {
                   if (next < 3) {
                     next++;
                   }
                   if (next === 3) {
-                    setNextButtonText(['Submit', 'Отправить']);
+                    setNextButtonClass('next-step-button invisible');
                   }
                   setPrevButtonClass('previous-step-button');
                   return next;
                 });
               }}
             >
-              <Trans>{nextButtonText[0]}{nextButtonText[1]}</Trans>
+              <Trans>Next</Trans>
             </Button>
           </div>
-          <div className='report-mistake'><Trans>Report a mistake</Trans></div>
+          <div className='submit-button-wrapper'>
+            <Button
+              className='submit-button'
+              color='primary'
+              variant='contained'
+            >
+              <Trans>Submit</Trans>
+            </Button>
+          </div>
+          <div className='report-mistake' onClick={handleOpen}><Trans>Report a mistake</Trans></div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby='simple-modal-title'
+            aria-describedby='simple-modal-description'
+            className='modal'>
+            <div className='modal-content'>
+            </div>
+          </Modal>
         </div>
       </div>
     </Layout>
   );
 };
-
-export default Test;
