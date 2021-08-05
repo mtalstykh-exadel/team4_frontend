@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import Button from '@material-ui/core/Button';
-import { TextField } from '@material-ui/core';
+import {TextField} from '@material-ui/core';
 
 const Results = () => {
   const [resultQuote, setResultQuote] = useState(<>
@@ -40,23 +40,23 @@ const Results = () => {
     );
   };
 
-  const setStyle = (number) => {
-    if (number === 'waiting') return 'res-waiting';
-    else if (number === '0') return 'res-null';
-    else if (number === '10') return 'res-ten';
-    else if (number >= '1' && number <= '5') {
-      if (number <= '3') return 'res-red-under-3';
-      return 'res-red-upper-3';
-    } else if (number > '5' && number <= '9') {
-      return 'res-blue-upper-5';
+  const setStyle = (res) => {
+    if (res === 'waiting') return 'res-waiting';
+    else if (res === '0') return 'res-null';
+    else if (res === '10') return 'res-ten';
+    else if (res >= '1' && res <= '5') {
+      if (res < '5') return 'res-red-under-five';
+      return 'res-red-five';
+    } else if (res > '5' && res <= '9') {
+      return 'res-blue-upper-five';
     }
   };
 
-  const bodyResult = [...result].map((number, key) => {
-    let children = number;
-    if (number !== 'waiting') children = children + '/10';
+  const bodyResult = [...result].map((res, key) => {
+    let children = res;
+    if (res !== 'waiting') children = children + '/10';
     return (
-        <div key={key} className={setStyle(number)}>
+        <div key={key} className={setStyle(res)}>
           <p className='result'>{children}</p>
         </div>
     );
@@ -67,19 +67,19 @@ const Results = () => {
     <Layout>
       <Button className='btn' onClick={() => {
         statusChange();
-        setResult(result.splice(0, 2).concat(['7', '4']));
+        setResult(result.splice(0, 2).concat(['7', '5']));
       }
       }>Checked</Button>
-      <div className='wrapper1'>
+      <div className='result-header'>
         English Language Proficiency Test results
       </div>
-      <div className='wrapper2'>
+      <div className='result-body'>
         {bodyResult}
       </div>
-      <div className='array'> {stepTest}</div>
-      <div className='wrapper3'> {resultQuote}</div>
+      <div className='step-test'> {stepTest}</div>
+      <div className='result-quote'> {resultQuote}</div>
     </Layout>
   );
 };
 
-export default Result
+export default Results;
