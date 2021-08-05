@@ -41,31 +41,14 @@ const Results = () => {
   };
 
   const setStyle = (number) => {
-    if (number === 'waiting') return {backgroundColor: '#e2e9f9', border: '5px solid #e2e9f9'};
-    else if (number === '10') return {backgroundColor: '#21965333', border: '5px solid #219653'};
-    else if (number === '0') return {backgroundColor: '#eb575733', border: '5px solid #eb575733',};
-    else if ( number >= '1' && number <= '5') {
-      if (number <= '3') {
-        return {
-          backgroundColor: '#eb575733',
-          border: '5px solid #eb575733',
-          borderRight: '5px solid #eb5757'
-        };
-      }
-      return {
-        backgroundColor: '#eb575733',
-        border: '5px solid #eb575733',
-        borderRight: '5px solid #eb5757',
-        borderBottom: '5px solid #eb5757'
-      };
+    if (number === 'waiting') return 'res-waiting';
+    else if (number === '0') return 'res-null';
+    else if (number === '10') return 'res-ten';
+    else if (number >= '1' && number <= '5') {
+      if (number <= '3') return 'res-red-under-3';
+      return 'res-red-upper-3';
     } else if (number > '5' && number <= '9') {
-      return ({
-        backgroundColor: '#21965333',
-        border: '5px solid #21965333',
-        borderLeft: '5px solid #219653',
-        borderBottom: '5px solid #219653',
-        borderRight: '5px solid #219653',
-      });
+      return 'res-blue-upper-5';
     }
   };
 
@@ -73,9 +56,9 @@ const Results = () => {
     let children = number;
     if (number !== 'waiting') children = children + '/10';
     return (
-      <div key={key} className='res' style={setStyle(number)}>
-        <p className='result'>{children}</p>
-      </div>
+        <div key={key} className={setStyle(number)}>
+          <p className='result'>{children}</p>
+        </div>
     );
   });
 
@@ -84,7 +67,7 @@ const Results = () => {
     <Layout>
       <Button className='btn' onClick={() => {
         statusChange();
-        setResult(result.splice(0,2).concat(['7','4']));
+        setResult(result.splice(0, 2).concat(['7', '4']));
       }
       }>Checked</Button>
       <div className='wrapper1'>
@@ -99,4 +82,4 @@ const Results = () => {
   );
 };
 
-export default Results;
+export default Result
