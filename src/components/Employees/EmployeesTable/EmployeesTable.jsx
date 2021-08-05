@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-// import { filteredEmloyees } from './mock-data-employees';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
