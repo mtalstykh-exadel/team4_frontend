@@ -1,7 +1,7 @@
 import { SET_USER_TESTS_HISTORY } from '../actions/actionTypes';
 
 const initialState = {
-  testsHistory: []
+  testsHistory: null
 };
 
 const profileReducer = (state = initialState, action) => {
