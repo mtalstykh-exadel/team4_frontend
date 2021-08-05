@@ -1,9 +1,33 @@
 {
    "locales": ["en", "ru"],
    "catalogs": [{
-      "path": "src/locales/{locale}/messages",
-      "include": ["src"]
-   }],
+        "path": "src/components/TestLevelSelector/locales/{locale}/messages",
+        "include": "src/components/TestLevelSelector/"
+    }, {
+        "path": "src/components/header/locales/{locale}/messages",
+        "include": "src/components/header/"
+    }, {
+        "path": "src/components/LoginForm/locales/{locale}/messages",
+        "include": "src/components/LoginForm/"
+    }, {
+        "path": "src/components/TestsInfo/locales/{locale}/messages",
+        "include": "src/components/TestsInfo/"
+    }, {
+        "path": "src/pages/Test/locales/{locale}/messages",
+        "include": "src/pages/Test/"
+    }, {
+        "path": "src/pages/Page404/locales/{locale}/messages",
+        "include": "src/pages/Page404/"
+    }, {
+        "path": "src/components/TestsForVerificationTable/locales/{locale}/messages",
+        "include": "src/components/TestsForVerificationTable/"
+    }, {
+        "path": "src/components/EditTests/locales/{locale}/messages",
+        "include": "src/components/EditTests/"
+    }, {
+        "path": "src/pages/AdminDistribution/locales/{locale}/messages",
+        "include": "src/pages/AdminDistribution/"
+    }],
    "format": "po",
    "sourceLocale": "en" 
 }

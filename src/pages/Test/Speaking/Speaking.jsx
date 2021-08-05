@@ -3,6 +3,7 @@ import { offRecAudio, onRecAudio } from '../../../services/voice-recorder';
 import { speakingTimerHandler } from '../../../services/speaking-timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
+import { Trans } from '@lingui/macro';
 import Player from '../player/player';
 import './Speaking.scss';
 
@@ -24,8 +25,8 @@ const Speaking = () => {
 
   return (
     <div className='speaking-step'>
-      <div className='step-description'>Write down record</div>
-      <div className='speaking-topic'>Speaking Topic</div>
+      <div className='step-description'><Trans>Write down record</Trans></div>
+      <div className='speaking-topic'><Trans>Speaking Topic</Trans></div>
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>

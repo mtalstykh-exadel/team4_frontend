@@ -130,6 +130,8 @@ body {
   }
 
   .MuiInputBase-root {
+    color: var(--font-color-primary);
+
     .MuiSelect-root {
       border-color: var(--secondary-color);
     }
@@ -155,8 +157,21 @@ body {
     }
   }
 
+  .MuiList-root {
+    .MuiListItem-root {
+      background-color: var(--base-color-elevation);
+      color: var(--font-color-primary);
+
+      &:hover {
+        background-color: rgba(var(--primary-color-rgb), 0.1);
+      }
+    }
+  }
+
   .MuiFormControl-root {
     .MuiFormLabel-root {
+      color: var(--font-color-primary);
+
       &.Mui-focused {
         color: var(--primary-color);
       }
@@ -185,6 +200,18 @@ body {
     &.MuiPaper-elevation2 {
       background-color: var(--base-color-elevation);
       border: 1px solid rgba(var(--border-color), 0.5);
+    }
+
+    .MuiTableContainer-root {
+      .MuiTableCell-root {
+        background-color: var(--base-color-elevation);
+        color: var(--font-color-primary);
+      }
+    }
+
+    .MuiTablePagination-root {
+      background-color: var(--base-color-elevation);
+      color: var(--font-color-primary);
     }
   }
 
@@ -225,6 +252,11 @@ body {
         border-color: var(--secondary-color);
         background-color: rgba(var(secondary-color-rgb), 0.1);
       }
+    }
+
+    &.Mui-disabled {
+      color: var(--font-color-primary);
+      background-color: rgba(var(--border-color), 0.12);
     }
   }
 
