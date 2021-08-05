@@ -6,7 +6,7 @@ import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
-  let count = 0;
+  let number = 0;
   let HTMLCodeForStep;
   if (module === 'Grammar' || module === 'Listening') {
     HTMLCodeForStep =
@@ -17,7 +17,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
             <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
               {tasks.map((item, index) => {
                 count++;
-                return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
+                return <MenuItem key={count} value={index}>{number}. {item.sentence}</MenuItem>;
               })}
             </Select>
           </FormControl>
