@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import Button from '@material-ui/core/Button';
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 const Results = () => {
   const [resultQuote, setResultQuote] = useState(<>
@@ -10,7 +10,13 @@ const Results = () => {
     <p>You will receive a message in your personal account and by e-mail.</p>
   </>);
 
-  const [result, setResult] = useState(['waiting','waiting']);
+  const [result, setResult] = useState(['0', '7', 'waiting', 'waiting']);
+
+  const stepTest = ['Grammar', 'Listening', 'Essay', 'Speaking'].map((step, key) => {
+    return (
+      <div key={key}>{step}</div>
+    );
+  });
 
   const level = 'A2 (Pre-Intermediate)';
 
@@ -34,36 +40,60 @@ const Results = () => {
     );
   };
 
+  const setStyle = (number) => {
+    if (number === 'waiting') return {backgroundColor: '#e2e9f9', border: '5px solid #e2e9f9'};
+    else if (number === '10') return {backgroundColor: '#21965333', border: '5px solid #219653'};
+    else if (number === '0') return {backgroundColor: '#eb575733', border: '5px solid #eb575733',};
+    else if ( number >= '1' && number <= '5') {
+      if (number <= '3') {
+        return {
+          backgroundColor: '#eb575733',
+          border: '5px solid #eb575733',
+          borderRight: '5px solid #eb5757'
+        };
+      }
+      return {
+        backgroundColor: '#eb575733',
+        border: '5px solid #eb575733',
+        borderRight: '5px solid #eb5757',
+        borderBottom: '5px solid #eb5757'
+      };
+    } else if (number > '5' && number <= '9') {
+      return ({
+        backgroundColor: '#21965333',
+        border: '5px solid #21965333',
+        borderLeft: '5px solid #219653',
+        borderBottom: '5px solid #219653',
+        borderRight: '5px solid #219653',
+      });
+    }
+  };
 
-  const example1 = [5, 8].map((number, key) => {
+  const bodyResult = [...result].map((number, key) => {
+    let children = number;
+    if (number !== 'waiting') children = children + '/10';
     return (
-      <div key={key++} className='sum' style={{backgroundColor: number <= 5 ? '#EB575733' : '#21965333'}}><p
-        className='result'>{number}/10</p>
+      <div key={key} className='res' style={setStyle(number)}>
+        <p className='result'>{children}</p>
       </div>
     );
   });
 
-  const example2 = [result[0], result[1]].map((number, key) => {
-    return (
-      <div key={key--} className='sum' style={{backgroundColor: number <= '5/10' ? '#EB575733' : '#21965333'}}><p
-        className='result'>{number}</p>
-      </div>
-    );
-  });
+
   return (
     <Layout>
       <Button className='btn' onClick={() => {
         statusChange();
-        setResult(['8/10','5/10']);
+        setResult(result.splice(0,2).concat(['7','4']));
       }
       }>Checked</Button>
       <div className='wrapper1'>
         English Language Proficiency Test results
       </div>
       <div className='wrapper2'>
-        {example1}
-        {example2}
+        {bodyResult}
       </div>
+      <div className='array'> {stepTest}</div>
       <div className='wrapper3'> {resultQuote}</div>
     </Layout>
   );
