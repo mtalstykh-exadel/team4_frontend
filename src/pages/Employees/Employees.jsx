@@ -5,12 +5,12 @@ import './Employees.scss';
 
 export const Employees = () => {
 
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState(null);
 
   return (
     <Layout pageWrapperClass='employees-wrapper'>
-      <EmployeesFilter userName={userName} setUserName={setUserName}/>
-      <EmployeesTable />
+      <EmployeesFilter setUserName={setUserName}/>
+      <EmployeesTable userName={userName} />
     </Layout>
   );
 };
