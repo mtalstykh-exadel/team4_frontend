@@ -1,4 +1,4 @@
-export const filteredEmloyees = [
+export const filteredEmployees = [
   {
     name: 'Ivanov Ivan',
     level: 'A2',

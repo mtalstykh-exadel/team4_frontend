@@ -20,3 +20,6 @@ export const JWT_REMOVE = 'JWT_REMOVE';
 
 // theme actiontypes
 export const THEME_CHANGE = 'THEME_CHANGE';
+
+// HR actionTypes
+export const REQUEST_EMPLOYEES_LIST = 'REQUEST_EMPLOYEES_LIST';
