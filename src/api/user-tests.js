@@ -1,8 +1,7 @@
-import axiosInstance from "./axios";
+import axiosInstance from './axios';
 
-const getUserTests = async (data) => {
-  return axiosInstance.post('/tests', data )
-    .then((response) => response.data);
+const getUserTests = () => {
+  return axiosInstance.get('/tests/').then((response) => response.data);
 };
 
 export default getUserTests;

@@ -43,7 +43,7 @@ const TestsData = (props) => {
   const testAction = (action) => {
     console.log(action);
   };
-
+  console.log(testsHistory);
   return (
     <Paper elevation={2}>
       <TableContainer>

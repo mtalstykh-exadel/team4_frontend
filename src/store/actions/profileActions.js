@@ -7,6 +7,5 @@ export const setProfileData = (testsHistory) => ({
 
 export const requestUserTestsHistory = () => async (dispatch) => {
   const data = await getUserTests();
-
   dispatch(setProfileData(data));
 };

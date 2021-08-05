@@ -13,6 +13,7 @@ const TestsInfo = () => {
   useEffect(() => {
     dispatch(requestUserTestsHistory());
   }, []);
+
   return (
     <div>
       <TestInfoSearchForm setFilter={setFilter} />
