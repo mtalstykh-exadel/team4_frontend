@@ -69,7 +69,7 @@ export const EditTestsTable = (props) => {
               <TableRow>
                 {filteredRows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{Array.isArray(rowName)
+                    <TableCell key={rowName} align='left' className='tableRowHeading'>{Array.isArray(rowName)
                       ? <Trans>{rowName[0]}{rowName[1]}</Trans>
                       : rowName}</TableCell>
                   );
