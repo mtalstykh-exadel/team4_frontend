@@ -1,4 +1,4 @@
-.wrapper1 {
+.result-header {
   width: 100%;
   height: 28px;
   font-size: 24px;
@@ -8,7 +8,7 @@
   padding-top: 40px;
 }
 
-.wrapper2 {
+.result-body {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   width: 500px;
@@ -17,7 +17,7 @@
   margin: 0 auto 0 auto;
   padding-top: 100px;
 
-  .res-red-under-3 {
+  .res-red-under-five {
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -31,7 +31,7 @@
     }
   }
 
-  .res-red-upper-3 {
+  .res-red-five {
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -46,7 +46,7 @@
     }
   }
 
-  .res-blue-upper-5 {
+  .res-blue-upper-five {
     height: 100px;
     width: 100px;
     border-radius: 50%;
@@ -100,7 +100,7 @@
   }
 }
 
-.wrapper3 {
+.result-quote {
   width: 100%;
   height: 90px;
   font-size: 18px;
@@ -115,7 +115,7 @@
   }
 }
 
-.array {
+.step-test {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   width: 500px;
@@ -126,19 +126,20 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .wrapper2 {
+  .result-body {
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
     width: 80%;
     height: 250px;
   }
 
-  .wrapper3 {
+  .result-quote {
     height: 60px;
     font-size: 13px;
   }
 
-  .wrapper1 {
+  .result-header {
     font-size: 18px;
   }
 }
+
