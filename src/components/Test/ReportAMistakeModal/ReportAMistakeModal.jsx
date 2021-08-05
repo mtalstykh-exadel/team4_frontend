@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
 import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
@@ -9,24 +9,36 @@ import { Trans } from '@lingui/macro';
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
   let count = 0;
   let HTMLCodeForStep;
+  const selectorHTML =
+    <div className='selector-wrapper'>
+      <FormControl variant='outlined' className='question-selector'>
+        <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
+        <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
+          {tasks.map((item, index) => {
+            count++;
+            return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
+    </div>;
+
+  const [selector, setSelector] = useState([selectorHTML]);
+
+  const addSelector = () => {
+    setSelector(selector.concat(selectorHTML));
+  };
   if (module === 'Grammar' || module === 'Listening') {
     HTMLCodeForStep =
       <>
-        <div className='selector-wrapper'>
-          <FormControl variant='outlined' className='question-selector'>
-            <InputLabel id='questions-selector-label'><Trans>Select a question to report</Trans></InputLabel>
-            <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
-              {tasks.map((item, index) => {
-                count++;
-                return <MenuItem key={count} value={index}>{count}. {item.sentence}</MenuItem>;
-              })}
-            </Select>
-          </FormControl>
-        </div>
-        <div className='add-question-to-report'><Trans>Add question</Trans></div>
+        {selector}
+        <div className={selector.length === 9 ? 'add-question-to-report invisible' : 'add-question-to-report'}
+             onClick={addSelector}
+        >Add question</div>
       </>;
   } else {
-    HTMLCodeForStep = <div className='topic-wrapper'><div className='topic'>{topic}</div></div>;
+    HTMLCodeForStep = <div className='topic-wrapper'>
+      <div className='topic'>{topic}</div>
+    </div>;
   }
 
   return (

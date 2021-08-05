@@ -30,7 +30,6 @@
     color: #828282;
     margin-left: 5%;
     margin-top: 30px;
-    margin-bottom: 10px;
 
     .level-info {
       margin-right: 2%;
@@ -52,6 +51,8 @@
   }
 
   .selector-wrapper {
+    margin-top: 10px;
+
     .question-selector {
       width: 90%;
       margin-left: 5%;
@@ -62,10 +63,13 @@
   .add-question-to-report {
     margin-left: 5%;
     margin-top: 10px;
-    margin-bottom: 20px;
     font-size: 14px;
     color: #828282;
     cursor: pointer;
+  }
+
+  .add-question-to-report.invisible {
+    display: none;
   }
 
   .add-question-to-report:hover {
@@ -75,6 +79,7 @@
   .report-textfield-wrapper {
     margin-left: 5%;
     margin-bottom: 20px;
+    margin-top: 20px;
 
     .report-textfield {
       width: 95%;
