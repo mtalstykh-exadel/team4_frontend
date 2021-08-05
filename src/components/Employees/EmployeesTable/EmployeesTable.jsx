@@ -6,9 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
 
-
 export const EmployeesTable = (props) => {
-
 
   const dispatch = useDispatch();
 
