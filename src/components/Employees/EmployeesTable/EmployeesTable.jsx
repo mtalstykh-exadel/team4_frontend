@@ -15,7 +15,6 @@ export const EmployeesTable = (props) => {
   }, []);
 
   const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
-  console.log(filteredEmployees);
 
   const filterEmployees = filteredEmployees ? filteredEmployees
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
