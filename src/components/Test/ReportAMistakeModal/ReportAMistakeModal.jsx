@@ -4,6 +4,7 @@ import '../../../styles/modal.scss';
 import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
+import { Trans } from '@lingui/macro';
 
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
   let count = 0;
@@ -13,7 +14,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <>
         <div className='selector-wrapper'>
           <FormControl variant='outlined' className='question-selector'>
-            <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
+            <InputLabel id='questions-selector-label'><Trans>Select a question to report</Trans></InputLabel>
             <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
               {tasks.map((item, index) => {
                 count++;
@@ -22,7 +23,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
             </Select>
           </FormControl>
         </div>
-        <div className='add-question-to-report'>Add question</div>
+        <div className='add-question-to-report'><Trans>Add question</Trans></div>
       </>;
   } else {
     HTMLCodeForStep = <div className='topic-wrapper'><div className='topic'>{topic}</div></div>;
@@ -33,10 +34,10 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
         <CloseIcon className='close-icon'/>
       </IconButton>
-      <div className='report-header'>Report a mistake</div>
+      <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>
-        <span className='level-info'>Level: {level}</span>
-        <span className='module0'>Module: {module}</span>
+        <span className='level-info'><Trans>Level</Trans>: {level}</span>
+        <span className='module'><Trans>Module</Trans>: {module}</span>
       </div>
       {HTMLCodeForStep}
       <div className='report-textfield-wrapper'>
@@ -49,8 +50,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
         />
       </div>
       <div className='report-mistake-buttons-wrapper'>
-        <Button className='delete-button' color='primary' variant='outlined'>Delete</Button>
-        <Button className='report-button' color='primary' variant='contained'>Report</Button>
+        <Button className='delete-button' color='primary' variant='outlined'><Trans>Delete</Trans></Button>
+        <Button className='report-button' color='primary' variant='contained'><Trans>Report</Trans></Button>
       </div>
     </div>
   );

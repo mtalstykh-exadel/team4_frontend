@@ -1,6 +1,6 @@
 .report-mistake-modal {
   width: 949px;
-  height: 420px;
+  height: auto;
 
   .close-icon-wrapper {
     position: relative;
@@ -89,6 +89,7 @@
   .report-mistake-buttons-wrapper {
     margin-left: 70%;
     margin-right: 5%;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     height: 30px;
