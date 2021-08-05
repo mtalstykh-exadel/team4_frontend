@@ -59,6 +59,10 @@ msgstr "Speaking"
 #~ msgid "Speaking Topic"
 #~ msgstr "Speaking Topic"
 
+#: src/pages/Test/Test.jsx:148
+msgid "Submit"
+msgstr "Submit"
+
 #: src/pages/Test/Essay/Essay.jsx:15
 #~ msgid "Write an essay on a given topic"
 #~ msgstr "Write an essay on a given topic"

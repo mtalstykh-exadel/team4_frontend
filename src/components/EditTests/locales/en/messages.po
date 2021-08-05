@@ -73,6 +73,7 @@ msgstr "Search"
 #~ msgid "Your email or password is incorrect. Please try again"
 #~ msgstr "Your email or password is incorrect. Please try again"
 
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:31
 #: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:56
 msgid "{0}{1}"
 msgstr "{0}"

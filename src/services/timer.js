@@ -16,19 +16,22 @@ const createTimer = ({ domId, minutes }) => {
       const element = document.getElementById(domId);
       const localeMinutes = (seconds / 60) % 60;
       let localeSeconds = seconds % 60;
-
-      if (localeSeconds < 10) {
-        localeSeconds = '0' + localeSeconds;
-      }
-      if (element.textContent === '0:00') {
-        element.textContent = '0:00';
+      if (!element) {
         stopTimer(domId);
+      } else {
+        if (localeSeconds < 10) {
+          localeSeconds = '0' + localeSeconds;
+        }
+        if (element.textContent === '0:00') {
+          element.textContent = '0:00';
+          stopTimer(domId);
+        }
+        seconds--;
+        if (domId !== 'test-timer') {
+          ++audioDuration;
+        }
+        element.textContent = `${Math.floor(localeMinutes)}:${localeSeconds}`;
       }
-      seconds--;
-      if (domId !== 'test-timer') {
-        ++audioDuration;
-      }
-      element.textContent = `${Math.floor(localeMinutes)}:${localeSeconds}`;
     }, 1000)
   );
   return { id: timers.length - 1 };

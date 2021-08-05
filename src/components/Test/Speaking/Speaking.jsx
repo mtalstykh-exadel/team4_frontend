@@ -32,7 +32,7 @@ export const Speaking = () => {
       </div>
       <div
         className={
-          invisible === 'off' ? 'microphone' : 'microphone microphone-off'
+          invisible === 'off' ? 'microphone base-color-primary' : 'microphone base-color-error'
         }
         onClick={() => {
           if (invisible !== 'off') {

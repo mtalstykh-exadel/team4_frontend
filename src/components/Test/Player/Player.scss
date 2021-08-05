@@ -26,7 +26,6 @@
     margin-top: 20px;
     font-size: 16px;
     line-height: 19px;
-    color: #828282;
     margin-right: 23px;
   }
 
@@ -56,13 +55,13 @@
 
   .progress {
     width: 100%;
-    border: 2px solid #828282;
+    border: 2px solid;
   }
 
   .progress-line {
     position: absolute;
     width: 10%;
-    border: 2px solid #3f51b5;
+    border: 2px solid;
     border-radius: 5px;
     max-width: 100%;
   }
@@ -74,7 +73,6 @@
   .volume-changer {
     position: absolute;
     right: 8px;
-    background: white;
     box-shadow: 0 4px 15px rgba(11, 36, 92, 0.15);
     width: 33px;
     height: 97px;

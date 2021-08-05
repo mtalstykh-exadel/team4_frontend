@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Paper } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
@@ -75,8 +76,11 @@ export const Player = ({ src, audioDuration, id }) => {
   }
 
   return (
-    <div className='player'>
-      <div
+    <Paper
+      elevation={3}
+      className='player'>
+      <Paper
+        elevation={2}
         className={showVolumeChanger === true ? 'volume-changer' : 'invisible'}
       >
         <input
@@ -88,7 +92,7 @@ export const Player = ({ src, audioDuration, id }) => {
           max='100'
           defaultValue='30'
         />
-      </div>
+      </Paper>
       <button
         className='player-button'
         onClick={() => {
@@ -100,12 +104,12 @@ export const Player = ({ src, audioDuration, id }) => {
         }}
       >
         {audioOn === false ? (
-          <PlayArrowIcon color='primary' fontSize='medium' />
+          <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
         ) : (
-          <PauseIcon color='primary' fontSize='medium' />
+          <PauseIcon className='icons-color-primary' fontSize='medium' />
         )}
       </button>
-      <div className='player-time'>
+      <div className='player-time font-primary'>
         {audioCurrent === 0 ? '0:00' : audioCurrent} /
         {audioDuration === undefined
           ? checkTime(localeDuration)
@@ -115,9 +119,9 @@ export const Player = ({ src, audioDuration, id }) => {
         <audio id={id} src={src} />
         <div
           style={{ width: progressPercent + '%' }}
-          className='progress-line'
+          className='progress-line border-primary'
         />
-        <div className='progress' />
+        <div className='progress border-secondary' />
       </div>
       <button
         className='player-button'
@@ -129,9 +133,9 @@ export const Player = ({ src, audioDuration, id }) => {
           }
         }}
       >
-        <VolumeUpIcon color='primary' fontSize='medium' />
+        <VolumeUpIcon className='icons-color' fontSize='medium' />
       </button>
-    </div>
+    </Paper>
   );
 };
 

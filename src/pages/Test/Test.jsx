@@ -157,7 +157,7 @@ export const Test = () => {
               variant='contained'
               onClick={() => {setModalIndex(4); handleOpen();}}
             >
-              Submit
+              <Trans>Submit</Trans>
             </Button>
           </div>
           <div className='report-mistake' onClick={() => {setModalIndex(step); handleOpen();}}><Trans>Report a mistake</Trans></div>

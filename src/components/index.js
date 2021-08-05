@@ -10,5 +10,5 @@ export { Speaking } from './Test/Speaking/Speaking';
 export { Player } from './Test/Player/Player';
 export { listeningTasks } from './Test/testData/ListeningTasks';
 export { grammarTasks } from './Test/testData/GrammarTasks';
-export { EmployeesTable } from './EmployeesTable/EmployeesTable';
-export { EmployeesFilter } from './EmployeesFilter/EmployeesFilter';
+export { EmployeesTable } from './Employees/EmployeesTable/EmployeesTable';
+export { EmployeesFilter } from './Employees/EmployeesFilter/EmployeesFilter';

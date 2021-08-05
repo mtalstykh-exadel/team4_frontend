@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
 import { filteredEmloyees } from './mock-data-employees';
+import { Trans } from '@lingui/macro';
 
 export const EmployeesTable = () => {
 
-  const rows = ['Name', 'Level', 'Test deadline', 'E-mail', 'Action', 'History'];
+  const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -20,14 +21,14 @@ export const EmployeesTable = () => {
 
   return (
     <div>
-      <Paper>
+      <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{rowName}</TableCell>
+                    <TableCell key={rowName} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
                   );
                 })}
               </TableRow>
@@ -40,11 +41,11 @@ export const EmployeesTable = () => {
                   <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
                   <TableCell align='left' size='small'>{row.mail}</TableCell>
                   <TableCell align='left'>
-                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 110 }} disabled type='search' className='btn-search' >
-                      Deassign
+                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 140 }} disabled type='search' className='btn-search' >
+                      <Trans>Deassign</Trans>
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' style={{ width: 110, border: 'solid 2px #3F51B5' }} type='search' className='btn-search' >
-                        Assign test
+                      : <Button color='primary' variant='outlined' size='small' style={{ width: 140 }} type='search' className='btn-search' >
+                        <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
                   <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn' />}</TableCell>

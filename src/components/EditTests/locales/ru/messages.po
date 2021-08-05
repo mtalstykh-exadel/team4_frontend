@@ -52,6 +52,7 @@ msgstr "Поиск"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:31
 #: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:56
 msgid "{0}{1}"
 msgstr "{1}"
