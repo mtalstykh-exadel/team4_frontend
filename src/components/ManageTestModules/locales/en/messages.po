@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/ManageTestModules/manageModule.js:68
+msgid "'Add topic for an Essay'"
+msgstr "'Add topic for an Essay'"
+
+#: src/components/ManageTestModules/manageModule.js:62
+msgid "'Add topic for an Speaking'"
+msgstr "'Add topic for an Speaking'"
+
+#: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:56
+msgid "Answer"
+msgstr "Answer"
+
+#: src/components/ManageTestModules/manageModule.js:80
+msgid "Back"
+msgstr "Back"
+
+#: src/components/ManageTestModules/manageModule.js:90
+msgid "Save"
+msgstr "Save"
+
+#: src/components/ManageTestModules/ManageTopic/manageTopic.js:16
+msgid "Topic"
+msgstr "Topic"
+
+#: src/components/ManageTestModules/ManageListening/manageListening.js:57
+msgid "Upload Audio"
+msgstr "Upload Audio"
+
+#: src/components/ManageTestModules/ManageListening/manageListening.js:55
+msgid "Upload an audio file for listening task"
+msgstr "Upload an audio file for listening task"
+
+#: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:40
+msgid "{0} Question"
+msgstr "{0} Question"

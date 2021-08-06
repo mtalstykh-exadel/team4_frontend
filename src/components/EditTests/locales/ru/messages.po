@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:48
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:49
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:75
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:76
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -40,7 +40,7 @@ msgstr "Любое"
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:86
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:87
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -52,6 +52,6 @@ msgstr "Поиск"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:56
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:57
 msgid "{0}{1}"
 msgstr "{1}"
