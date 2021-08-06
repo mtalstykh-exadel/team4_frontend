@@ -16,7 +16,7 @@ import {Trans} from '@lingui/macro';
 import {useDispatch, useSelector} from 'react-redux';
 import {requestEmployeesList} from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import {HRmodalWindows} from './HRmodalWindows/HRmodalWindows';
+import {HRmodalWindow} from './HRmodalWindows/HRmodalWindow';
 
 export const EmployeesTable = (props) => {
 
@@ -51,8 +51,6 @@ export const EmployeesTable = (props) => {
 
 
   const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [modalIndex, setModalIndex] = useState(0);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -63,10 +61,8 @@ export const EmployeesTable = (props) => {
     setOpen(false);
   };
 
-
   const modals = [
-    <HRmodalWindows key={0} name={name} handleClose={handleClose}/>,
-    <HRmodalWindows key={1} name={name} email={email} handleClose={handleClose}/>,
+    <HRmodalWindow key={0} name={name} handleClose={handleClose}/>,
   ];
 
 
@@ -75,6 +71,16 @@ export const EmployeesTable = (props) => {
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby='simple-modal-title'
+              aria-describedby='simple-modal-description'
+              className='modal'>
+              <div className='modal-content'>
+                {modals[0]}
+              </div>
+            </Modal>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
@@ -89,7 +95,6 @@ export const EmployeesTable = (props) => {
                   <TableRow key={row.id}>
                     <TableCell component='th' scope='row' onClick={() => {
                       setName(row.name);
-                      setModalIndex(0);
                       handleOpen();
                     }}>{row.name}</TableCell>
                     <TableCell align='left' size='small'>{row.level}</TableCell>
@@ -102,26 +107,10 @@ export const EmployeesTable = (props) => {
                           <Trans>Deassign</Trans>
                         </Button>
                         : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                                  className='btn-search' onClick={() => {
-                          setName(row.name);
-                          setEmail(row.email);
-                          setModalIndex(1);
-                          handleOpen();
-                        }
-                        }>
+                                  className='btn-search'>
                           <Trans>Assign test</Trans>
                         </Button>}
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby='simple-modal-title'
-                        aria-describedby='simple-modal-description'
-                        className='modal'>
-                        <div className='modal-content'>
-                          {modals[modalIndex]}
-                        </div>
-                      </Modal>
-                    </TableCell>
+                      </TableCell>
                     <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
                   </TableRow>
                 );

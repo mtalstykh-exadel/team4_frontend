@@ -1,0 +1,93 @@
+.hr-modal {
+  min-width: 450px;
+  min-height: 278px;
+
+  .close-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-left: 89%;
+
+    .MuiIconButton-root {
+      height: 35px;
+
+      .close-icon {
+        position: absolute;
+        bottom: 0;
+        width: 21px;
+        height: 21px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .assign-level {
+    padding-left: 5%;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0;
+    text-align: left;
+  }
+
+  .test-level-selector-wrapper {
+    margin-top: 10px;
+
+    .level-selector {
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
+
+  .deadline-priority {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    min-width: 450px;
+    justify-items: center;
+    align-items: center;
+
+    .deadline {
+      padding-left: 5%;
+
+      .test-deadline {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        padding-top: 5px;
+      }
+    }
+
+    .priority-selector-wrapper {
+      font-size: 10px;
+      height: 65px;
+      width: 100%;
+
+      .priority {
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+      }
+
+      .priority-selector {
+        width: 200px;
+        font-size: 5px;
+
+        .sel {
+          height: 29px;
+        }
+      }
+    }
+  }
+
+  .MuiButton-root {
+    height: 27px;
+    width: 90px;
+    margin-left: 337px;
+    margin-right: 5px;
+    margin-top: 30px;
+  }
+}
