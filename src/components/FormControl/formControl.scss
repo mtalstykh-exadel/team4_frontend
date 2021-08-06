@@ -1,0 +1,22 @@
+.form-control-wrapper {
+  display: flex;
+  text-align: left;
+  padding: 20px 0;
+
+  .form-control {
+    width: 210px;
+    margin-right: 10px;
+  }
+
+  @media screen and (max-width: 380px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    display: block;
+
+    .form-control {
+      display: flex;
+      width: 90%;
+      margin: 5px auto;
+    }
+  }
+}
