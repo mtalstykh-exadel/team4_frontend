@@ -11,7 +11,7 @@ export { Player } from './Test/Player/Player';
 export { listeningTasks } from './Test/testData/ListeningTasks';
 export { grammarTasks } from './Test/testData/GrammarTasks';
 
-export { EmployeesTable } from './EmployeesTable/EmployeesTable';
-export { EmployeesFilter } from './EmployeesFilter/EmployeesFilter';
-
 export { ManageModule } from './ManageTestModules/manageModule.js';
+
+export { EmployeesTable } from './Employees/EmployeesTable/EmployeesTable';
+export { EmployeesFilter } from './Employees/EmployeesFilter/EmployeesFilter';

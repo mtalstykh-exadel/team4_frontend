@@ -54,7 +54,7 @@ export const EditTestsTable = (props) => {
               <TableRow>
                 {rows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' style={{ fontWeight: 700 }}>{Array.isArray(rowName) ? <Trans>{rowName[0]}{rowName[1]}</Trans> : rowName }</TableCell>
+                    <TableCell key={rowName} align='left'>{Array.isArray(rowName) ? <Trans>{rowName[0]}{rowName[1]}</Trans> : rowName }</TableCell>
                   );
                 })}
               </TableRow>

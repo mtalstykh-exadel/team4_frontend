@@ -30,6 +30,9 @@
     }, {
         "path": "src/components/ManageTestModules/locales/{locale}/messages",
         "include": "src/components/ManageTestModules/"
+    }, {
+        "path": "src/components/Employees/locales/{locale}/messages",
+        "include": "src/components/Employees/"
     }],
    "format": "po",
    "sourceLocale": "en"
