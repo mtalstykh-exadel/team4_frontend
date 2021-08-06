@@ -155,6 +155,16 @@ body {
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
       border-color: var(--secondary-color);
     }
+
+    &.MuiInput-underline {
+      &::before {
+        border-bottom-color: var(--font-color-primary);
+      }
+
+      &::after {
+        border-bottom-color: var(--primary-color);
+      }
+    }
   }
 
   .MuiList-root {
