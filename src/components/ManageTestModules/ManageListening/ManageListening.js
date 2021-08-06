@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 
-import './ManageListenings.scss';
+import './ManageListening.scss';
 
-import { ManageTopic } from '../ManageTopic/ManageTopics';
-import { ManageGrammar } from '../ManageGrammar/ManageGrammars';
+import { ManageTopic } from '../ManageTopic/ManageTopic';
+import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
 import { Player } from '../../Test/Player/Player';
 
 export const ManageListening = (props) => {

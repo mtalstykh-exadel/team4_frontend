@@ -7,9 +7,9 @@ import { Trans } from '@lingui/macro';
 
 import './ManageTestModules.scss';
 
-import { ManageGrammar } from './ManageGrammar/ManageGrammars';
-import { ManageListening } from './ManageListening/ManageListenings';
-import { ManageTopic } from './ManageTopic/ManageTopics';
+import { ManageGrammar } from './ManageGrammar/ManageGrammar';
+import { ManageListening } from './ManageListening/ManageListening';
+import { ManageTopic } from './ManageTopic/ManageTopic';
 
 import { filterLevels, filterModules } from '../../constants/constants';
 import { FilterFormControl } from '../FormControl/formControl';
