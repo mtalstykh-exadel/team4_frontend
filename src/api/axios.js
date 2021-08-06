@@ -3,7 +3,6 @@ import { getJWTtoken } from '../utils/jwt-parser';
 
 const axiosInstance = axios.create({
   baseURL: 'https://untitled-testing-system.herokuapp.com',
-  timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
