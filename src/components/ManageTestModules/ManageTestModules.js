@@ -5,13 +5,13 @@ import { Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Trans } from '@lingui/macro';
 
-import './manageModule.scss';
+import './ManageTestModules.scss';
 
-import { ManageGrammar } from './ManageGrammar/manageGrammar';
-import { ManageListening } from './ManageListening/manageListening';
-import { ManageTopic } from './ManageTopic/manageTopic';
+import { ManageGrammar } from './ManageGrammar/ManageGrammar';
+import { ManageListening } from './ManageListening/ManageListening';
+import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevels, filterModules } from '../FilterData/filterData';
+import { filterLevels, filterModules } from '../../constants/constants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleData, questionModuleDataEmpty, listeningModuleData, listeningModuleDataEmpty, topicData } from './data/dummyData';
@@ -49,25 +49,25 @@ export const ManageModule = () => {
         {formik.values.module === 'Grammar' ?
           <ManageGrammar
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test' ? questionModuleDataEmpty : questionModuleData}
+            moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : questionModuleData}
           /> : null}
         {formik.values.module === 'Listening' ?
           <ManageListening
             handleModule={setModuleData}
             handleAudio={setAduioFile}
-            moduleData={location.pathname === '/add-test' ? listeningModuleDataEmpty : listeningModuleData}
+            moduleData={location.pathname === '/add-test-modules' ? listeningModuleDataEmpty : listeningModuleData}
           /> : null}
         {formik.values.module === 'Speaking' ?
           <ManageTopic
             moduleDescription={<Trans>'Add topic for an Speaking'</Trans>}
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test' ? '' : topicData}
+            moduleData={location.pathname === '/add-test-modules' ? '' : topicData}
           /> : null}
         {formik.values.module === 'Essay' ?
           <ManageTopic
             moduleDescription={<Trans>'Add topic for an Essay'</Trans>}
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test' ? '' : topicData}
+            moduleData={location.pathname === '/add-test-modules' ? '' : topicData}
           /> : null}
       </div>
       <div className='module-buttons-wrapper'>
