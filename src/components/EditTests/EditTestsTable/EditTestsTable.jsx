@@ -19,7 +19,7 @@ export const EditTestsTable = (props) => {
   const filteredQuestions = questions ? questions
     .filter((el) => props.level ? props.level === el.level : el)
     .filter((el) => props.module ? props.module === el.module : el)
-    .filter((el) => props.questId && !!Number(props.questId) ? Number(props.questId) === el.id : el)
+    .filter((el) => props.questionId && !!Number(props.questionId) ? Number(props.questionId) === el.id : el)
     : [];
 
   const rows = ['ID',
@@ -42,8 +42,8 @@ export const EditTestsTable = (props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const archiveTheQuestion = (questId) => {
-    dispatch(archiveQuestion(questId));
+  const archiveTheQuestion = (questionId) => {
+    dispatch(archiveQuestion(questionId));
   };
 
   const handleChangePage = (event, newPage) => {
@@ -118,5 +118,5 @@ export const EditTestsTable = (props) => {
 EditTestsTable.propTypes = {
   level: PropTypes.any,
   module: PropTypes.any,
-  questId: PropTypes.any
+  questionId: PropTypes.any
 };

@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 import { Trans } from '@lingui/macro';
 
 const validation = Yup.object({
-  questId: Yup.number()
+  questionId: Yup.number()
 });
 
 export const EditTestsFilter = (props) => {
@@ -35,11 +35,11 @@ export const EditTestsFilter = (props) => {
   const onSubmit = (values) => {
     props.setLevel(values.level);
     props.setModule(values.module);
-    props.setQuestId(values.questId);
+    props.setQuestionId(values.questionId);
   };
 
   const formik = useFormik({
-    initialValues: { level: null, module: null, questId: '' },
+    initialValues: { level: null, module: null, questionId: '' },
     validationSchema: validation, onSubmit
   });
 
@@ -61,21 +61,21 @@ export const EditTestsFilter = (props) => {
           </Select>
         </FormControl>
         <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'
-          value={formik.values.QuestId} inputProps={{ name: 'questId' }} onChange={formik.handleChange} />
+          value={formik.values.questionId} inputProps={{ name: 'questionId' }} onChange={formik.handleChange} />
 
-        <Button disabled={(!!formik.errors.questId || !formik.values.questId) && (!formik.values.level || !formik.values.module)} color='primary' variant='contained'
+        <Button disabled={(!!formik.errors.questionId || !formik.values.questionId) && (!formik.values.level || !formik.values.module)} color='primary' variant='contained'
           type='search' className='btn-search'>
           <Trans>Search</Trans>
         </Button>
       </form>
-      {formik.errors.questId ? <div><Trans>In field 'Question Id' must be a number</Trans></div> : null}
+      {formik.errors.questionId ? <div><Trans>In field 'Question Id' must be a number</Trans></div> : null}
     </>
   );
 };
 
 EditTestsFilter.propTypes = {
-  questId: PropTypes.any,
+  questionId: PropTypes.any,
   setLevel: PropTypes.func,
   setModule: PropTypes.func,
-  setQuestId: PropTypes.func
+  setQuestionId: PropTypes.func
 };
