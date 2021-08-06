@@ -1,10 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import {Modal} from '@material-ui/core';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow
+} from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-import { Trans } from '@lingui/macro';
-import { useDispatch, useSelector } from 'react-redux';
-import { requestEmployeesList } from '../../../store/actions/employeesActions';
+import {Trans} from '@lingui/macro';
+import {useDispatch, useSelector} from 'react-redux';
+import {requestEmployeesList} from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
+import {HRmodalWindows} from './HRmodalWindows/HRmodalWindows';
 
 export const EmployeesTable = (props) => {
 
@@ -17,7 +29,7 @@ export const EmployeesTable = (props) => {
   const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
 
   const filterEmployees = filteredEmployees ? filteredEmployees
-    .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
+      .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
@@ -37,6 +49,27 @@ export const EmployeesTable = (props) => {
     filterEmployees.length < rowsPerPage && setPage(0);
   }, [filterEmployees]);
 
+
+  const [name, setName] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [modalIndex, setModalIndex] = useState(0);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+
+  const modals = [
+    <HRmodalWindows key={0} name={name} handleClose={handleClose}/>,
+    <HRmodalWindows key={1} name={name} email={email} handleClose={handleClose}/>,
+  ];
+
+
   return (
     <div>
       <Paper elevation={2}>
@@ -52,24 +85,48 @@ export const EmployeesTable = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-              return (
-                <TableRow key={row.id}>
-                  <TableCell component='th' scope='row'>{row.name}</TableCell>
-                  <TableCell align='left' size='small'>{row.level}</TableCell>
-                  <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
-                  <TableCell align='left' size='small'>{row.mail}</TableCell>
-                  <TableCell align='left'>
-                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 140 }} disabled type='search' className='btn-search' >
-                      <Trans>Deassign</Trans>
-                    </Button>
-                      : <Button color='primary' variant='outlined' size='small' style={{ width: 140 }} type='search' className='btn-search' >
-                        <Trans>Assign test</Trans>
-                      </Button>}
-                  </TableCell>
-                  <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn' />}</TableCell>
-                </TableRow>
-              );
-            })}
+                return (
+                  <TableRow key={row.id}>
+                    <TableCell component='th' scope='row' onClick={() => {
+                      setName(row.name);
+                      setModalIndex(0);
+                      handleOpen();
+                    }}>{row.name}</TableCell>
+                    <TableCell align='left' size='small'>{row.level}</TableCell>
+                    <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
+                    <TableCell align='left' size='small'>{row.mail}</TableCell>
+                    <TableCell align='left'>
+                      {row.assigne ?
+                        <Button color='secondary' variant='outlined' size='small' style={{width: 140}} disabled
+                                type='search' className='btn-search'>
+                          <Trans>Deassign</Trans>
+                        </Button>
+                        : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
+                                  className='btn-search' onClick={() => {
+                          setName(row.name);
+                          setEmail(row.email);
+                          setModalIndex(1);
+                          handleOpen();
+                        }
+                        }>
+                          <Trans>Assign test</Trans>
+                        </Button>}
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby='simple-modal-title'
+                        aria-describedby='simple-modal-description'
+                        className='modal'>
+                        <div className='modal-content'>
+                          {modals[modalIndex]}
+                        </div>
+                      </Modal>
+                    </TableCell>
+                    <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
+                  </TableRow>
+                );
+              }
+            )}
             </TableBody>
           </Table>
         </TableContainer>
