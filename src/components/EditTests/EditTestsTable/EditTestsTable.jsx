@@ -46,7 +46,7 @@ export const EditTestsTable = (props) => {
 
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test' className='btn-add-question'><Trans>Add question</Trans></Button>
+      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question'><Trans>Add question</Trans></Button>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
@@ -72,7 +72,7 @@ export const EditTestsTable = (props) => {
                   </TableCell>
                   <TableCell align='left' size='small'>{row.question}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' component={Link} to='/edit-test' className='btn-search'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' component={Link} to='/edit-test-modules' className='btn-search'>
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>

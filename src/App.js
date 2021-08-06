@@ -30,8 +30,8 @@ const App = () => {
         <PrivateRoute path='/admin-distribution'><AdminDistribution /></PrivateRoute>
         <PrivateRoute path='/employees'><Employees /></PrivateRoute>
         <PrivateRoute path='/test'><Test /></PrivateRoute>
-        <PrivateRoute path='/edit-test'><ManageTest /></PrivateRoute>
-        <PrivateRoute path='/add-test'><ManageTest /></PrivateRoute>
+        <PrivateRoute path='/edit-test-modules'><ManageTest /></PrivateRoute>
+        <PrivateRoute path='/add-test-modules'><ManageTest /></PrivateRoute>
         <Route path='*' render={() => <Page404 />} />
       </Switch>
     </div>
