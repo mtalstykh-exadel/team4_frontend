@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { TextField } from '@material-ui/core';
 
-import './ManageGrammar.scss';
+import './ManageGrammars.scss';
 
 export const ManageGrammar = (props) => {
 
