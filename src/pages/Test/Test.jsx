@@ -13,7 +13,6 @@ import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
-import {CoachTestVerification} from '../../components/Test/CoachTestVerification/CoachTestVerification';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -52,7 +51,6 @@ export const Test = () => {
 
   return (
     <Layout>
-      <CoachTestVerification/>
       <div className='test-page font-primary'>
         <div className='test-navigation-wrapper'>
           <div
