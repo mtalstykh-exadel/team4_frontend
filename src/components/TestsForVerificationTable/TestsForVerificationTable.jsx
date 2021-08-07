@@ -1,12 +1,16 @@
+
 import React, { useState } from 'react';
-import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper } from '@material-ui/core';
+import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, Modal } from '@material-ui/core';
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
+import { TestsForVerificationModal } from './Modals/TestsForVerificationModal';
 
 export const TestsForVerificationTable = () => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [open, setOpen] = useState(false);
+  const [levelAndID, setLevelAndID] = useState(['id','level']);
 
   const rows = [['ID','ID'], ['Level','Уровень'], ['Assigned','Дата назначения'], ['Test deadline', 'Крайний срок сдачи'], ['Priority', 'Приоритет'], ['Action','Действие']];
   const testForVerification = [
@@ -31,6 +35,14 @@ export const TestsForVerificationTable = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   const tableHeadCells = rows.map((rowName) => {
@@ -58,7 +70,15 @@ export const TestsForVerificationTable = () => {
                   <TableCell align='left'>{row.testDeadlineDate}</TableCell>
                   <TableCell align='left'><Trans>{row.priority[0]}{row.priority[1]}</Trans></TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} >
+                    <Button color='primary'
+                            variant='outlined'
+                            size='small'
+                            style={{ width: 110 }}
+                            onClick={() => {
+                              setLevelAndID([row.id,row.level]);
+                              handleOpen();
+                            }}
+                    >
                       <Trans>Verify</Trans>
                     </Button>
                   </TableCell>
@@ -78,6 +98,16 @@ export const TestsForVerificationTable = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby='simple-modal-title'
+          aria-describedby='simple-modal-description'
+          className='modal'>
+          <div className='modal-content'>
+            <TestsForVerificationModal id={levelAndID[0]} level={levelAndID[1]} handleClose={handleClose}/>
+          </div>
+        </Modal>
       </Paper>
     </div>
   );

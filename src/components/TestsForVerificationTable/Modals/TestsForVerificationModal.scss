@@ -1,0 +1,87 @@
+.tests-verification-modal {
+  width: 666px;
+
+  .tests-verification-modal-header {
+    display: flex;
+    justify-content: space-between;
+    height: 59px;
+    border-bottom: 1px solid #bdbdbd;
+
+    .test-information {
+      text-align: center;
+      margin-top: 20px;
+      margin-left: 39px;
+      font-size: 15px;
+      color: #828282;
+
+      .test-id-verification-modal {
+        margin-right: 30px;
+      }
+    }
+
+    .close-icon-wrapper {
+      width: 14.16px;
+      height: 14.16px;
+      margin-top: 16.52px;
+      margin-right: 16.52px;
+    }
+  }
+
+  .tests-verification-modal-navigation {
+    height: 30px;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #ebebeb;
+
+    .reported-mistake-navigation {
+      width: 222px;
+      border-right: 1px solid #bdbdbd;
+      border-bottom: 1px solid #bdbdbd;
+      cursor: pointer;
+    }
+
+    .essay-navigation {
+      width: 222px;
+      border-right: 1px solid #bdbdbd;
+      border-bottom: 1px solid #bdbdbd;
+      cursor: pointer;
+    }
+
+    .speaking-navigation {
+      width: 222px;
+      border-bottom: 1px solid #bdbdbd;
+      cursor: pointer;
+    }
+
+    .reported-mistake-navigation.chosen,
+    .essay-navigation.chosen,
+    .speaking-navigation.chosen {
+      border-bottom: none;
+      background-color: white;
+      cursor: initial;
+    }
+
+    .navigation-text {
+      margin-top: 5px;
+    }
+  }
+
+  .tests-verification-modal-buttons-wrapper {
+    height: 25px;
+    margin: 20px 5.6% 30px 58.6%;
+    display: flex;
+    justify-content: space-between;
+
+    .save-button {
+      width: 110px;
+      box-shadow: none;
+    }
+
+    .submit-button {
+      width: 110px;
+      box-shadow: none;
+    }
+  }
+}
