@@ -1,10 +1,11 @@
 import React from 'react';
 import '../../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import {IconButton, FormControl, InputLabel, MenuItem, Select} from '@material-ui/core';
+import { IconButton, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './HRmodalWindow.scss';
 import Button from '@material-ui/core/Button';
+import { Paper } from '@material-ui/core';
 
 export const HRmodalWindow = ({name, handleClose}) => {
 
@@ -49,12 +50,14 @@ export const HRmodalWindow = ({name, handleClose}) => {
 
 
   return (
+<Paper elevation={2}>
     <div className='hr-modal'>
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
         <CloseIcon className='close-icon'/>
       </IconButton>
       {modalBody}
-    </div>);
+    </div>
+</Paper>);
 };
 
 HRmodalWindow.propTypes =

@@ -1,10 +1,12 @@
 import React from 'react';
 import '../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import {IconButton, Modal} from '@material-ui/core';
+import { IconButton, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import './CoachTestVerification.scss';
+import { Paper } from '@material-ui/core';
+
 export const CoachTestVerification = () => {
   const [open, setOpen] = React.useState(true);
 
@@ -13,6 +15,7 @@ export const CoachTestVerification = () => {
   };
 
   return (
+    <Paper elevation={2}>
     <Modal
       open={open}
       onClose={handleClose}
@@ -29,6 +32,7 @@ export const CoachTestVerification = () => {
         </div>
       </div>
     </Modal>
+    </Paper>
   );
 };
 
