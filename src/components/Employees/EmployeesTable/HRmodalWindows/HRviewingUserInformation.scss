@@ -1,0 +1,74 @@
+.hr-modal {
+  width: 1042px;
+  height: 510px;
+
+  .close-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-left: 95%;
+
+    .MuiIconButton-root {
+      height: 35px;
+
+      .close-icon {
+        position: absolute;
+        bottom: 0;
+        width: 21px;
+        height: 21px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .information {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 80% 20%;
+    height: 200px;
+
+    .photo-test-level {
+      .photo {
+        width: 80px;
+        height: 80px;
+        padding-left: 15px;
+      }
+
+      .test-level-selector-wrapper {
+        .item {
+          width: 140px;
+          height: 30px;
+        }
+      }
+    }
+
+    .name-profession {
+      text-align: left;
+
+      .name {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      .profession,
+      .gmail {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .container {
+    padding: 10px;
+
+    .MuiTableContainer-root {
+      border-top: 1px solid rgba(224, 224, 224, 1);
+      border-left: 1px solid rgba(224, 224, 224, 1);
+      border-right: 1px solid rgba(224, 224, 224, 1);
+    }
+  }
+}

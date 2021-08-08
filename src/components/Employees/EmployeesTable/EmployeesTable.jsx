@@ -17,6 +17,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {requestEmployeesList} from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
 import {HRassignTest} from './HRmodalWindows/HRassignTest';
+import {HRviewingUserInformation} from './HRmodalWindows/HRviewingUserInformation';
 
 export const EmployeesTable = (props) => {
 
@@ -51,7 +52,9 @@ export const EmployeesTable = (props) => {
 
 
   const [name, setName] = React.useState('');
+  const [gmail, setGmail] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const [indexItem, setIndexItem] = React.useState(0);
 
   const handleOpen = () => {
     setOpen(true);
@@ -63,6 +66,7 @@ export const EmployeesTable = (props) => {
 
   const modals = [
     <HRassignTest key={0} name={name} handleClose={handleClose}/>,
+    <HRviewingUserInformation key={1} name={name} handleClose={handleClose} gmail={gmail}/>
   ];
 
 
@@ -78,7 +82,7 @@ export const EmployeesTable = (props) => {
               aria-describedby='simple-modal-description'
               className='modal'>
               <div className='modal-content'>
-                {modals[0]}
+                {modals[indexItem]}
               </div>
             </Modal>
             <TableHead>
@@ -96,6 +100,7 @@ export const EmployeesTable = (props) => {
                     <TableCell component='th' scope='row' onClick={() => {
                       setName(row.name);
                       handleOpen();
+                      setIndexItem(0);
                     }}>{row.name}</TableCell>
                     <TableCell align='left' size='small'>{row.level}</TableCell>
                     <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
@@ -107,10 +112,16 @@ export const EmployeesTable = (props) => {
                           <Trans>Deassign</Trans>
                         </Button>
                         : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                                  className='btn-search'>
+                                  className='btn-search' onClick={() => {
+                          setName(row.name);
+                          setGmail(row.mail);
+                          setIndexItem(1);
+                          handleOpen();
+                        }}>
+
                           <Trans>Assign test</Trans>
                         </Button>}
-                      </TableCell>
+                    </TableCell>
                     <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
                   </TableRow>
                 );
