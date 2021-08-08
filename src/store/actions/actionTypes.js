@@ -11,6 +11,9 @@ export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 // logout actiontypes
 export const LOGOUT_START = 'LOGOUT_START';
 
+// admin actionTypes
+// export const
+
 // coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';
 

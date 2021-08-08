@@ -1,25 +1,23 @@
 import React, { useState } from 'react';
 import Layout from '../../components/Layout/Layout';
 import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Select,
-  Button,
+  Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
+  Select, Button,
 } from '@material-ui/core';
-import { rows } from '../../testData/rowsForAdminDistribution';
+// import { rows } from '../../testData/rowsForAdminDistribution';
 import { coaches } from './Coaches';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
 import { assignTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { requestQuestionsList } from '../../store/actions/adminActions';
 
 const AdminDistribution = (props) => {
+
+  const dispatch = useDispatch();
+
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
     {
@@ -37,6 +35,8 @@ const AdminDistribution = (props) => {
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
+
+  const rows = useSelector((state) => state.admin.testsList);
 
   const filteredRows = rows.filter((r) =>
     props.filter ? r.level === props.filter : r
@@ -56,6 +56,10 @@ const AdminDistribution = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect(() => {
+    dispatch(requestQuestionsList());
+  }, []);
 
   return (
     <Layout pageWrapperClass='AdminDistribution'>
@@ -84,44 +88,23 @@ const AdminDistribution = (props) => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   return (
-                    <TableRow
-                      hover
-                      role='checkbox'
-                      tabIndex={-1}
-                      key={index}
-                    >
+                    <TableRow hover role='checkbox' tabIndex={-1} key={index} >
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
                         return (
-                          <TableCell
-                            className='font-primary'
-                            key={keysForColumns}
-                            align={column.align}
-                            width={column.width + 'px'}
-                            size='small'
-                          >
+                          <TableCell className='font-primary' key={keysForColumns} align={column.align}
+                            width={column.width + 'px'} size='small' >
                             {column.id === 'Coach' ? (
-                              <Select
-                                id={'item-' + index + '-select'}
-                                className='selectCoachNames font-primary'
-                                native
-                                variant='outlined'
-                                defaultValue='placeholder'
-                              >
-                                <option
-                                  aria-label='None'
-                                  value='placeholder'
-                                >
+                              <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
+                                native variant='outlined' defaultValue='placeholder'>
+                                <option aria-label='None' value='placeholder' >
                                   name
                                 </option>
                                 {coaches.map((coachName) => {
                                   keysForOptions++;
                                   return (
-                                    <option
-                                      key={keysForOptions}
-                                      value={coachName}
-                                    >
+                                    <option key={keysForOptions} value={coachName} >
                                       {coachName}
                                     </option>
                                   );
@@ -130,12 +113,8 @@ const AdminDistribution = (props) => {
                             ) : null}
 
                             {column.id === 'action' ? (
-                              <Button
-                                id={'item-' + index + '-button'}
-                                className='buttonAssign'
-                                variant='outlined'
-                                size='small'
-                                onClick={() => {
+                              <Button id={'item-' + index + '-button'} className='buttonAssign'
+                                variant='outlined' size='small' onClick={() => {
                                   assignTest(index);
                                 }}
                               >
