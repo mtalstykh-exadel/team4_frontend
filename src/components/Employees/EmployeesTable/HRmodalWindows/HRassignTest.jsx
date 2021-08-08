@@ -3,11 +3,11 @@ import '../../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, FormControl, InputLabel, MenuItem, Select } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import './HRmodalWindow.scss';
+import './HRassignTest.scss';
 import Button from '@material-ui/core/Button';
 import { Paper } from '@material-ui/core';
 
-export const HRmodalWindow = ({name, handleClose}) => {
+export const HRassignTest = ({name, handleClose}) => {
 
   const englishLevel = ['Beginner(A1)', 'Elementary(A2)', 'Intermediate(B1)', 'Upper Intermediate(B2)', 'Advanced(C1)', 'Proficiency(C2)'];
   const priority = ['low', 'high'];
@@ -60,7 +60,7 @@ export const HRmodalWindow = ({name, handleClose}) => {
 </Paper>);
 };
 
-HRmodalWindow.propTypes =
+HRassignTest.propTypes =
   {
     name: PropTypes.string,
     handleClose: PropTypes.func
