@@ -36,10 +36,10 @@ export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
         <h1 className='priority'>Priority:</h1>
         <FormControl variant='outlined' className='priority-selector'>
           <InputLabel id='priority-selector-label'/>
-          <Select labelId='priority-selector-label' label='Select priority' id='select' className='sel' >
+          <Select labelId='priority-selector-label' label='Select priority' id='select' className='item' >
             {priority.map((item, index) => {
               itemKey++;
-              return <MenuItem key={itemKey} value={index} className='sel'> {item}</MenuItem>;
+              return <MenuItem key={itemKey} value={index} className='item'> {item}</MenuItem>;
             })}
           </Select>
         </FormControl>
