@@ -49,7 +49,7 @@ export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
 
   return (
 <Paper elevation={2}>
-    <div className='hr-modal'>
+    <div className='hr-modal-test-assign'>
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
         <CloseIcon className='close-icon'/>
       </IconButton>
