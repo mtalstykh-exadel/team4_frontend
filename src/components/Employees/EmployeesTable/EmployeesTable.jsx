@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {Modal} from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Modal } from '@material-ui/core';
 import {
   Button,
   Paper,
@@ -12,12 +12,12 @@ import {
   TableRow
 } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-import {Trans} from '@lingui/macro';
-import {useDispatch, useSelector} from 'react-redux';
-import {requestEmployeesList} from '../../../store/actions/employeesActions';
+import { Trans } from '@lingui/macro';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import {HRmodalWindowTestAssignment} from './HRmodalWindows/HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
-import {HRmodalWindowViewingUserInformation} from './HRmodalWindows/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
+import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
+import { HRmodalWindowViewingUserInformation } from './HRmodalWindows/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 
 export const EmployeesTable = (props) => {
 
