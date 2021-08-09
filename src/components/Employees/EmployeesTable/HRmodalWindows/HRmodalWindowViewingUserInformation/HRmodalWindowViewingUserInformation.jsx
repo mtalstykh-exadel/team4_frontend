@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../../../styles/modal.scss';
+import '../../../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import {FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
 import PropTypes from 'prop-types';
-import './HRassignTest.scss';
+import '../HRmodalWindowTestAssignment/HRmodalWindowTestAssignment.scss';
 import {
   Paper,
   Table,
@@ -14,10 +14,10 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-import {filteredEmployees} from '../mock-data-employees';
-import './HRviewingUserInformation.scss';
+import {filteredEmployees} from '../../mock-data-employees';
+import './HRmodalWindowViewingUserInformation.scss';
 
-export const HRviewingUserInformation = ({name, gmail, handleClose}) => {
+export const HRmodalWindowViewingUserInformation = ({name, gmail, handleClose}) => {
   const rows = ['Level', 'Assigned', 'Test deadline', 'Date verified', 'Status', 'Result'];
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
@@ -40,7 +40,7 @@ export const HRviewingUserInformation = ({name, gmail, handleClose}) => {
   const modalBody = <>
     <div className='information'>
       <div className='photo-test-level'>
-        <img src='user.svg' className='photo'/>
+        <img src='../user.svg' className='photo'/>
         <div className='test-level-selector-wrapper'>
           <FormControl variant='outlined' className='level-selector'>
             <Select labelId='test-level-selector-label' label='Select the test level' id='select' className='item'>
@@ -127,7 +127,7 @@ export const HRviewingUserInformation = ({name, gmail, handleClose}) => {
     </Paper>);
 };
 
-HRviewingUserInformation.propTypes =
+HRmodalWindowViewingUserInformation.propTypes =
   {
     name: PropTypes.string,
     gmail: PropTypes.string,

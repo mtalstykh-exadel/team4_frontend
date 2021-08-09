@@ -16,8 +16,8 @@ import {Trans} from '@lingui/macro';
 import {useDispatch, useSelector} from 'react-redux';
 import {requestEmployeesList} from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import {HRassignTest} from './HRmodalWindows/HRassignTest';
-import {HRviewingUserInformation} from './HRmodalWindows/HRviewingUserInformation';
+import {HRmodalWindowTestAssignment} from './HRmodalWindows/HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
+import {HRmodalWindowViewingUserInformation} from './HRmodalWindows/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 
 export const EmployeesTable = (props) => {
 
@@ -65,8 +65,8 @@ export const EmployeesTable = (props) => {
   };
 
   const modals = [
-    <HRassignTest key={0} name={name} handleClose={handleClose}/>,
-    <HRviewingUserInformation key={1} name={name} handleClose={handleClose} gmail={gmail}/>
+    <HRmodalWindowTestAssignment key={0} name={name} handleClose={handleClose}/>,
+    <HRmodalWindowViewingUserInformation key={1} name={name} handleClose={handleClose} gmail={gmail}/>
   ];
 
 
