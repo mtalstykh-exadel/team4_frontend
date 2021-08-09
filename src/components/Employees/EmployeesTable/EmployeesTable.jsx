@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Modal} from '@material-ui/core';
+import { Modal } from '@material-ui/core';
 import {
   Button,
   Paper,
@@ -12,11 +12,11 @@ import {
   TableRow
 } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-import {Trans} from '@lingui/macro';
-import {useDispatch, useSelector} from 'react-redux';
-import {requestEmployeesList} from '../../../store/actions/employeesActions';
+import { Trans } from '@lingui/macro';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import {HRmodalWindowTestAssignment} from './HRmodalWindows/HRmodalWindowTestAssignment';
+import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
 
 export const EmployeesTable = (props) => {
 
@@ -29,7 +29,7 @@ export const EmployeesTable = (props) => {
   const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
 
   const filterEmployees = filteredEmployees ? filteredEmployees
-   .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
+    .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
