@@ -4,8 +4,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import {IconButton, Modal} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
-import './CoachTestVerification.scss';
-export const CoachTestVerification = () => {
+import './CoachModalWindowTestVerificationStatus.scss';
+export const CoachModalWindowTestVerificationStatus = () => {
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -32,7 +32,7 @@ export const CoachTestVerification = () => {
   );
 };
 
-CoachTestVerification.propTypes =
+CoachModalWindowTestVerificationStatus.propTypes =
   {
     status: PropTypes.bool,
   };
