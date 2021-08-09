@@ -110,7 +110,7 @@ export const Player = ({ src, audioDuration, id }) => {
         )}
       </button>
       <div className='player-time font-primary'>
-        {audioCurrent === 0 ? '0:00' : audioCurrent} /
+        {audioCurrent === 0 ? '0:00' : audioCurrent}/
         {audioDuration === undefined
           ? checkTime(localeDuration)
           : checkTime(audioDuration)}

@@ -68,6 +68,68 @@
     }
   }
 
+  .essay-wrapper {
+    .topic-title {
+      margin-top: 17px;
+      margin-left: 39px;
+      font-size: 16px;
+      color: #828282;
+    }
+
+    .topic-text {
+      margin: 10px 39px 20px 39px;
+    }
+
+    .users-essay {
+      margin: 0 39px 20px 39px;
+      height: 198px;
+      border: 1px solid #bdbdbd;
+      padding: 12px 14px;
+      font-size: 16px;
+    }
+  }
+
+  .speaking-wrapper {
+    .topic-title {
+      margin-top: 17px;
+      margin-left: 39px;
+      font-size: 16px;
+      color: #828282;
+    }
+
+    .topic-text {
+      margin: 10px 39px 20px 39px;
+    }
+
+    .audio {
+      width: 590px;
+      margin-bottom: 50px;
+      margin-left: 39px;
+    }
+  }
+
+  .grades-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 39px 20px 39px;
+
+    .grade {
+      height: 35px;
+      width: 45px;
+      text-align: center;
+      font-size: 14px;
+      border: 1px solid #828282;
+      padding-top: 9px;
+      cursor: pointer;
+    }
+
+    .grade.chosen {
+      border: none;
+      background-color: #3e6dd7;
+      color: white;
+    }
+  }
+
   .tests-verification-modal-buttons-wrapper {
     height: 25px;
     margin: 20px 5.6% 30px 58.6%;
