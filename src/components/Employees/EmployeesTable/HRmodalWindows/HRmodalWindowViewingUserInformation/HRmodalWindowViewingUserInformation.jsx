@@ -16,9 +16,9 @@ import {
 } from '@material-ui/core';
 import {filteredEmployees} from '../../mock-data-employees';
 import './HRmodalWindowViewingUserInformation.scss';
+import {rows, shortEnglishLevel} from '../HRmodalWindowTestAssignment/constans/constans';
 
 export const HRmodalWindowViewingUserInformation = ({name, gmail, handleClose}) => {
-  const rows = ['Level', 'Assigned', 'Test deadline', 'Date verified', 'Status', 'Result'];
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(3);
 
@@ -32,7 +32,6 @@ export const HRmodalWindowViewingUserInformation = ({name, gmail, handleClose}) 
   };
 
   let itemKey = 0;
-  const englishLevel = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   const [filter, setFilter] = React.useState('null');
 
@@ -44,7 +43,7 @@ export const HRmodalWindowViewingUserInformation = ({name, gmail, handleClose}) 
         <div className='test-level-selector-wrapper'>
           <FormControl variant='outlined' className='level-selector'>
             <Select labelId='test-level-selector-label' label='Select the test level' id='select' className='item'>
-              {englishLevel.map((item, index) => {
+              {shortEnglishLevel.map((item, index) => {
                 itemKey++;
                 return <MenuItem key={itemKey} value={index} className='item'
                                  onClick={() => {
