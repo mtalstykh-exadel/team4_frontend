@@ -3,8 +3,8 @@ import { LangsArray } from './lang-import-data';
 
 import setLanguage from '../api/language_set';
 
-const currentLang = localStorage.getItem('user=language');
-const langKey = 'user=language';
+const currentLang = localStorage.getItem('language');
+const langKey = 'language';
 
 const switchLang = (lang) => {
   switch (lang) {

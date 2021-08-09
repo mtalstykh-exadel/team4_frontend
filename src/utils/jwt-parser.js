@@ -1,7 +1,7 @@
 import jwt_decode from 'jwt-decode';
 const jwtTokenKey = 'jwt=token';
 const jwtDataKey = 'jwt=data';
-const userLanguage = 'user=language';
+const userLanguage = 'language';
 
 const saveJWTtoLocalstorage = (token) => {
   localStorage.setItem(jwtTokenKey, JSON.stringify(token.token));
