@@ -22,12 +22,10 @@ export const EmployeesFilter = (props) => {
   });
 
   return (
-    <>
-      <form className='employees-filter-form' onSubmit={formik.handleSubmit} >
-        <TextField label={<Trans>Name</Trans>} className='employees-filter-form' variant='outlined' size='small'
-          value={formik.values.userName} onChange={formik.handleChange} inputProps={{ name: 'userName' }} />
-      </form>
-    </>
+    <form className='employees-filter-form' onSubmit={formik.handleSubmit} >
+      <TextField type='text' label={<Trans>Name</Trans>} className='employees-filter-form' variant='outlined' size='small'
+        value={formik.values.userName} onChange={formik.handleChange} inputProps={{ name: 'userName' }} />
+    </form>
   );
 };
 

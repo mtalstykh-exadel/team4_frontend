@@ -1,6 +1,6 @@
 .report-mistake-modal {
   width: 949px;
-  height: 420px;
+  height: auto;
 
   .close-icon-wrapper {
     position: relative;
@@ -30,7 +30,6 @@
     color: #828282;
     margin-left: 5%;
     margin-top: 30px;
-    margin-bottom: 10px;
 
     .level-info {
       margin-right: 2%;
@@ -52,6 +51,7 @@
   }
 
   .selector-wrapper {
+    margin-top: 10px;
     .question-selector {
       width: 90%;
       margin-left: 5%;
@@ -62,11 +62,16 @@
   .add-question-to-report {
     margin-left: 5%;
     margin-top: 10px;
-    margin-bottom: 20px;
+
     font-size: 14px;
     color: #828282;
     cursor: pointer;
   }
+
+  .add-question-to-report.invisible {
+    display: none;
+  }
+
 
   .add-question-to-report:hover {
     text-decoration: underline;
@@ -75,6 +80,8 @@
   .report-textfield-wrapper {
     margin-left: 5%;
     margin-bottom: 20px;
+    margin-top: 20px;
+
 
     .report-textfield {
       width: 95%;
@@ -89,6 +96,8 @@
   .report-mistake-buttons-wrapper {
     margin-left: 70%;
     margin-right: 5%;
+    margin-bottom: 30px;
+
     display: flex;
     justify-content: space-between;
     height: 30px;

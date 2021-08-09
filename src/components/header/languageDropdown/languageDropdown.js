@@ -7,6 +7,8 @@ import { Trans } from '@lingui/macro';
 
 import { switchLang } from '../../../utils/lang-service';
 
+import { language_english, language_russian } from '../../../constants/languageConstants';
+
 const LanguageMenu = (props) => {
 
   return (
@@ -26,12 +28,12 @@ const LanguageMenu = (props) => {
       }}>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); switchLang('en');}}>
+        onClick={ () => {props.handleLangClose(); switchLang(language_english);}}>
         <Trans>English</Trans>
       </MenuItem>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
+        onClick={ () => {props.handleLangClose(); switchLang(language_russian);}}>
         <Trans>Russian</Trans>
       </MenuItem>
     </Menu>);

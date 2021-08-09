@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-import { filteredEmloyees } from './mock-data-employees';
 import { Trans } from '@lingui/macro';
+import { useDispatch, useSelector } from 'react-redux';
+import { requestEmployeesList } from '../../../store/actions/employeesActions';
+import PropTypes from 'prop-types';
 
-export const EmployeesTable = () => {
+export const EmployeesTable = (props) => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(requestEmployeesList());
+  }, []);
+
+  const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
+
+  const filterEmployees = filteredEmployees ? filteredEmployees
+    .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
+    : [];
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
   const [page, setPage] = useState(0);
@@ -18,6 +32,10 @@ export const EmployeesTable = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect(() => {
+    filterEmployees.length < rowsPerPage && setPage(0);
+  }, [filterEmployees]);
 
   return (
     <div>
@@ -33,7 +51,7 @@ export const EmployeesTable = () => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filteredEmloyees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>{row.name}</TableCell>
@@ -58,7 +76,7 @@ export const EmployeesTable = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
-          count={filteredEmloyees.length}
+          count={filterEmployees.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -67,4 +85,8 @@ export const EmployeesTable = () => {
       </Paper>
     </div>
   );
+};
+
+EmployeesTable.propTypes = {
+  userName: PropTypes.string
 };

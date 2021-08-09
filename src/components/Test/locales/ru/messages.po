@@ -11,29 +11,53 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/pages/SubmitModal/SubmitModal.jsx:11
+msgid "Are you sure you want to finish the test?"
+msgstr "Вы уверены, что хотите завершить тест?"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:26
+msgid "Add question"
+msgstr "Добавить вопрос"
+
+#: src/pages/SubmitModal/SubmitModal.jsx:13
+msgid "Cancel"
+msgstr "Отмена"
+
 #: src/pages/Test/Grammar/Grammar.jsx:40
-#~ msgid "Choose the correct option to complete the sentence"
-#~ msgstr "Выберите правильный вариант, чтобы завершить предложение"
+msgid "Choose the correct option to complete the sentence"
+msgstr "Выберите правильный вариант, чтобы завершить предложение"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:53
+msgid "Delete"
+msgstr "Удалить"
 
 #: src/pages/Test/Test.jsx:84
 msgid "Essay"
-msgstr "Сочинение"
-
-#: src/pages/Test/Essay/Essay.jsx:16
-#~ msgid "Essay Topic"
-#~ msgstr "Тема Эссе"
+msgstr "Эссе"
 
 #: src/pages/Test/Test.jsx:64
 msgid "Grammar"
 msgstr "Грамматика"
 
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:40
+msgid "Grammar"
+msgstr "Грамматика"
+
 #: src/pages/Test/Listening/Listening.jsx:12
-#~ msgid "Listen and choose an answer option"
-#~ msgstr "Послушайте и выберите вариант ответа"
+msgid "Listen and choose an answer option"
+msgstr "Послушайте и выберите вариант ответа"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:39
+msgid "Level"
+msgstr "Уровень"
 
 #: src/pages/Test/Test.jsx:74
 msgid "Listening"
-msgstr "Слушание"
+msgstr "Аудирование"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:40
+msgid "Module"
+msgstr "Модуль"
 
 #: src/pages/Test/Test.jsx:139
 msgid "Next"
@@ -43,38 +67,42 @@ msgstr "Следующий"
 msgid "Previous"
 msgstr "Предыдущий"
 
-#: src/pages/Test/Test.jsx:99
-#~ msgid "Previous step"
-#~ msgstr "Предыдущий этап"
-
 #: src/pages/Test/Test.jsx:151
 msgid "Report a mistake"
 msgstr "Сообщить об ошибке"
 
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:36
+msgid "Report a mistake"
+msgstr "Сообщить об ошибке"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:54
+msgid "Report"
+msgstr "Сообщить"
+
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:17
+msgid "Select a question to report"
+msgstr "Выберите вопрос"
+
 #: src/pages/Test/Test.jsx:94
 msgid "Speaking"
 msgstr "Говорение"
-
-#: src/pages/Test/Speaking/Speaking.jsx:29
-#~ msgid "Speaking Topic"
-#~ msgstr "Тема Говорения"
 
 #: src/pages/Test/Test.jsx:148
 msgid "Submit"
 msgstr "Отправить"
 
 #: src/pages/Test/Essay/Essay.jsx:15
-#~ msgid "Write an essay on a given topic"
-#~ msgstr "Напишите эссе по заданной теме"
+msgid "Write an essay on a given topic"
+msgstr "Напишите эссе по заданной теме"
 
 #: src/pages/Test/Speaking/Speaking.jsx:28
-#~ msgid "Write down record"
-#~ msgstr "Запишите запись"
+msgid "Write down record"
+msgstr "Сделайте запись"
 
 #: src/pages/Test/Essay/Essay.jsx:38
-#~ msgid "out of 512 characters"
-#~ msgstr "из 512 символов"
+msgid "out of 512 characters"
+msgstr "из 512 символов"
 
 #: src/pages/Test/Test.jsx:118
-#~ msgid "{0}{1}"
-#~ msgstr "{1}"
+msgid "{0}{1}"
+msgstr "{1}"

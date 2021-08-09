@@ -1,0 +1,14 @@
+.listening-topic {
+  display: inline;
+  width: 66%;
+}
+
+.audio-wrapper {
+  padding: 20px 0;
+}
+
+@media screen and (max-width: 430px) {
+  .listening-topic {
+    width: 100%;
+  }
+}
