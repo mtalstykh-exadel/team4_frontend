@@ -1,10 +1,12 @@
 import jwt_decode from 'jwt-decode';
 const jwtTokenKey = 'jwt=token';
 const jwtDataKey = 'jwt=data';
+const userLanguage = 'user=language';
 
 const saveJWTtoLocalstorage = (token) => {
-  localStorage.setItem(jwtTokenKey, JSON.stringify(token));
-  localStorage.setItem(jwtDataKey, JSON.stringify(jwt_decode(token)));
+  localStorage.setItem(jwtTokenKey, JSON.stringify(token.token));
+  localStorage.setItem(jwtDataKey, JSON.stringify(jwt_decode(token.token)));
+  localStorage.setItem(userLanguage, JSON.stringify(token.language));
 };
 
 const getJWTdata = () => {

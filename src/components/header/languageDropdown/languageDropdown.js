@@ -26,12 +26,12 @@ const LanguageMenu = (props) => {
       }}>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); switchLang('en');}}>
+        onClick={ () => {props.handleLangClose(); switchLang('eng');}}>
         <Trans>English</Trans>
       </MenuItem>
       <MenuItem
         className='font-primary'
-        onClick={ () => {props.handleLangClose(); switchLang('ru');}}>
+        onClick={ () => {props.handleLangClose(); switchLang('rus');}}>
         <Trans>Russian</Trans>
       </MenuItem>
     </Menu>);

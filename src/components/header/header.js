@@ -151,7 +151,7 @@ const Header = () => {
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>
                 <Button className='bold font-primary' onClick={handleLanguage}>
-                  {localStorage.getItem('lang')}
+                  {localStorage.getItem('user=language') === 'eng' ? 'EN' : 'RU'}
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>
               </>

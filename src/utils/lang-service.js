@@ -1,26 +1,30 @@
 import { i18n } from '@lingui/core';
 import { LangsArray } from './lang-import-data';
 
-const currentLang = JSON.parse(localStorage.getItem('jwt=data'));
-const langKey = 'lang';
+import setLanguage from '../api/language_set';
+
+const currentLang = localStorage.getItem('user=language');
+const langKey = 'user=language';
 
 const switchLang = (lang) => {
   switch (lang) {
-    case 'ru':
+    case 'rus':
       LangsArray.forEach((langs) => {
         i18n.load('ru', langs.ru.messages);
       });
       i18n.activate('ru');
+      setLanguage('rus');
       break;
-    case 'en':
+    case 'eng':
       LangsArray.forEach((langs) => {
         i18n.load('en', langs.en.messages);
       });
       i18n.activate('en');
+      setLanguage('eng');
       break;
     default:
-      switchLang('en');
-      lang = 'en';
+      switchLang('eng');
+      lang = 'eng';
       break;
   }
   localStorage.setItem(langKey, lang);
@@ -32,7 +36,7 @@ const defineLang = () => {
   } else if (localStorage.getItem(langKey)) {
     switchLang(localStorage.getItem(langKey));
   } else {
-    switchLang('en');
+    switchLang('eng');
   }
 };
 

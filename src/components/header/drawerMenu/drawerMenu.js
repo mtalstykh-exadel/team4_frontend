@@ -46,12 +46,12 @@ const DrawerMenu = (props) => {
       <div className='drawerSplit'>
         <Button
           className = 'drawerButtons font-primary'
-          onClick={ () => switchLang('en')}>
+          onClick={ () => switchLang('eng')}>
           <Trans>English</Trans>
         </Button>
         <Button
           className = 'drawerButtons font-primary'
-          onClick={ () => switchLang('ru')}>
+          onClick={ () => switchLang('rus')}>
           <Trans>Russian</Trans>
         </Button>
       </div>
