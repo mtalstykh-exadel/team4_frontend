@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import Layout from '../../components/Layout/Layout';
 import {
   Paper,
@@ -47,6 +50,7 @@ const AdminDistribution = (props) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
+  const role = useSelector((state) => state.jwt.role);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -57,6 +61,7 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+  if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
   return (
     <Layout pageWrapperClass='AdminDistribution'>
       <Paper elevation={2} className='paper'>
