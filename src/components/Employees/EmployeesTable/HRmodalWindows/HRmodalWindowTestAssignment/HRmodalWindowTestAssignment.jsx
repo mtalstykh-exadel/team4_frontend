@@ -6,11 +6,9 @@ import PropTypes from 'prop-types';
 import './HRmodalWindowTestAssignment.scss';
 import Button from '@material-ui/core/Button';
 import { Paper } from '@material-ui/core';
+import {englishLevel,priority} from './constans/constans';
 
 export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
-
-  const englishLevel = ['Beginner(A1)', 'Elementary(A2)', 'Intermediate(B1)', 'Upper Intermediate(B2)', 'Advanced(C1)', 'Proficiency(C2)'];
-  const priority = ['low', 'high'];
 
   let itemKey = 0;
   const modalBody = <>
