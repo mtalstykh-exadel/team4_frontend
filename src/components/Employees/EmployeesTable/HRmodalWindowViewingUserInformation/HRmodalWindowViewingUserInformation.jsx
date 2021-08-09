@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../../styles/modal.scss';
+import '../../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import {FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
 import PropTypes from 'prop-types';
@@ -14,7 +14,7 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-import {filteredEmployees} from '../../mock-data-employees';
+import {filteredEmployees} from '../mock-data-employees';
 import './HRmodalWindowViewingUserInformation.scss';
 import {rows, shortEnglishLevel} from '../HRmodalWindowTestAssignment/constans/constans';
 

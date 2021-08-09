@@ -16,8 +16,8 @@ import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
-import { HRmodalWindowViewingUserInformation } from './HRmodalWindows/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
+import { HRmodalWindowTestAssignment } from './HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
+import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 
 export const EmployeesTable = (props) => {
 
