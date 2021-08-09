@@ -48,7 +48,7 @@ const Notifications = (props) => {
         to='/test'
         color='primary'
         variant='contained'
-        className='notifications-takeTestBtn'
+        className='notifications-takeTestBtn button-standard'
         onClick={props.handleNotifClose}>
         <Trans>Take test</Trans>
       </Button>

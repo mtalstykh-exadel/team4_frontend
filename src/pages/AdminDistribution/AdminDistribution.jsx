@@ -137,7 +137,7 @@ const AdminDistribution = (props) => {
                             {column.id === 'action' ? (
                               <Button
                                 id={'item-' + index + '-button'}
-                                className='buttonAssign'
+                                className='buttonAssign button-standard'
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {

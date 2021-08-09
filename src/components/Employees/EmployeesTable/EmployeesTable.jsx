@@ -59,10 +59,10 @@ export const EmployeesTable = (props) => {
                   <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
                   <TableCell align='left' size='small'>{row.mail}</TableCell>
                   <TableCell align='left'>
-                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' style={{ width: 140 }} disabled type='search' className='btn-search' >
+                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' >
                       <Trans>Deassign</Trans>
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' style={{ width: 140 }} type='search' className='btn-search' >
+                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard' >
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
