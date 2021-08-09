@@ -14,6 +14,8 @@ import ThemeSwitch from '../themeSwitch/themeSwitch';
 
 import avatar from '../../../assets/images/goose.svg';
 
+import { language_english, language_russian } from '../../../constants/languageConstants';
+
 const DrawerMenu = (props) => {
   const role = useSelector((state) => state.jwt.role);
 
@@ -46,12 +48,12 @@ const DrawerMenu = (props) => {
       <div className='drawerSplit'>
         <Button
           className = 'drawerButtons font-primary'
-          onClick={ () => switchLang('eng')}>
+          onClick={ () => switchLang(language_english)}>
           <Trans>English</Trans>
         </Button>
         <Button
           className = 'drawerButtons font-primary'
-          onClick={ () => switchLang('rus')}>
+          onClick={ () => switchLang(language_russian)}>
           <Trans>Russian</Trans>
         </Button>
       </div>

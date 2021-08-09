@@ -16,7 +16,6 @@ import { Link } from 'react-router-dom';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MenuIcon from '@material-ui/icons/Menu';
-
 import './header.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
@@ -28,6 +27,9 @@ import DrawerMenu from './drawerMenu/drawerMenu';
 import LanguageMenu from './languageDropdown/languageDropdown';
 import Notifications from './notificationsDropdown/notificationsDropdown';
 import UserNavigation from './userNavigation/userNavigation';
+
+import { userLanguageKey } from '../../constants/localStorageConstants';
+import { language_russian } from '../../constants/languageConstants';
 
 const Header = () => {
   const matches = useMediaQuery('(min-width:1024px)');
@@ -151,7 +153,7 @@ const Header = () => {
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>
                 <Button className='bold font-primary' onClick={handleLanguage}>
-                  {localStorage.getItem('language') === 'eng' ? 'EN' : 'RU'}
+                  {localStorage.getItem(userLanguageKey) === language_russian ? 'RU' : 'EN'}
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>
               </>
