@@ -3,10 +3,10 @@ const jwtTokenKey = 'jwt=token';
 const jwtDataKey = 'jwt=data';
 const userLanguage = 'language';
 
-const saveJWTtoLocalstorage = (token) => {
-  localStorage.setItem(jwtTokenKey, JSON.stringify(token.token));
-  localStorage.setItem(jwtDataKey, JSON.stringify(jwt_decode(token.token)));
-  localStorage.setItem(userLanguage, JSON.stringify(token.language));
+const saveJWTtoLocalstorage = (responseData) => {
+  localStorage.setItem(jwtTokenKey, JSON.stringify(responseData.token));
+  localStorage.setItem(jwtDataKey, JSON.stringify(jwt_decode(responseData.token)));
+  localStorage.setItem(userLanguage, JSON.stringify(responseData.language));
 };
 
 const getJWTdata = () => {
