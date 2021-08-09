@@ -167,6 +167,11 @@ body {
     }
   }
 
+  .MuiInputBase-input {
+    background-color: var(--base-color-elevation);
+    color: var(--font-color-primary);
+  }
+
   .MuiList-root {
     .MuiListItem-root {
       background-color: var(--base-color-elevation);
