@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import {IconButton} from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import {Paper} from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 import './ModalWindowWarningArchive.scss';
 
 export const ModalWindowWarningArchive = ({handleClose}) => {
