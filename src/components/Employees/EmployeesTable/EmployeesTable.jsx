@@ -30,7 +30,7 @@ export const EmployeesTable = (props) => {
   const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
 
   const filterEmployees = filteredEmployees ? filteredEmployees
-     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
+    .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
