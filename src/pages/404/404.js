@@ -1,16 +1,13 @@
 import React from 'react';
-//import './404.scss';
-//import {EmployeesTable} from '../../components';
-import {CoachTestVerification} from '../../components/Test/CoachTestVerification/CoachTestVerification';
- /* import logo from '../../assets/images/logo/logo.svg';
+import './404.scss';
+import logo from '../../assets/images/logo/logo.svg';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import { Trans } from '@lingui/macro';*/
+import { Trans } from '@lingui/macro';
 
 export const Page404 = () => {
   return (
-    <CoachTestVerification/>
-    /*<div className='page404'>
+    <div className='page404'>
       <div className='logo404-wrapper font-color'>
         <span>4</span>
         <span><img src={logo} alt='logo' className='logo'/></span>
@@ -23,6 +20,6 @@ export const Page404 = () => {
       <div className='button-wrapper'>
         <Button color='primary' variant='contained' component={Link} to='/'><Trans>Go Home</Trans></Button>
       </div>
-    </div>*/
+    </div>
   );
 };
