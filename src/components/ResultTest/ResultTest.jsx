@@ -3,8 +3,9 @@ import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import Button from '@material-ui/core/Button';
 import {TextField} from '@material-ui/core';
+import PropTypes from 'prop-types';
 
-const Results = () => {
+const Results = ({level}) => {
   const [resultQuote, setResultQuote] = useState(<>
     <p>Your level of English knowledge will be confirmed after checking by the coach.</p>
     <p>You will receive a message in your personal account and by e-mail.</p>
@@ -17,8 +18,6 @@ const Results = () => {
       <div key={key}>{step}</div>
     );
   });
-
-  const level = 'A2 (Pre-Intermediate)';
 
   const statusChange = () => {
     setResultQuote(
@@ -53,12 +52,11 @@ const Results = () => {
   };
 
   const bodyResult = [...result].map((res, key) => {
-    let children = res;
-    if (res !== 'waiting') children = children + '/10';
+    if (res !== 'waiting') res = res + '/10';
     return (
-        <div key={key} className={setStyle(res)}>
-          <p className='result'>{children}</p>
-        </div>
+      <div key={key} className={setStyle(res)}>
+        <p className='result'>{res}</p>
+      </div>
     );
   });
 
@@ -80,6 +78,10 @@ const Results = () => {
       <div className='result-quote'> {resultQuote}</div>
     </Layout>
   );
+};
+
+Results.propTypes = {
+  level: PropTypes.string,
 };
 
 export default Results;
