@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import './TestLevelSelectorItem.scss';
@@ -9,7 +10,8 @@ import { currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 
 export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descriptionRU, level}) => {
-
+  const history = useHistory();
+  
   return (
     <div className='test-level-selector-item'>
       <div className='title'>
@@ -27,7 +29,7 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
           localStorage.removeItem(currentTest);
           startTest(level).then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
-              window.location.href = '/test';
+              history.push('/test');
             });
           }
         }
