@@ -4,7 +4,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 // profile actionTypes
-export const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
+export const SET_USER_TESTS_HISTORY = 'SET_USER_TESTS_HISTORY';
 // header actionTypes
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 

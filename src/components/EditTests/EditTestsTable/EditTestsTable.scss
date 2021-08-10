@@ -4,11 +4,19 @@
   flex-direction: column;
   text-align: left;
 
+  .tableRowHeading {
+    font-weight: 700;
+  }
+
   .btn-add-question {
     align-self: flex-end;
     width: 180px;
     height: 40px;
     margin: 20px 0 40px;
+  }
+
+  .icons-color-primary {
+    cursor: pointer;
   }
 
   .archiveBtn {
