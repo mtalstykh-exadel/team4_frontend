@@ -68,6 +68,47 @@
     }
   }
 
+  .reported-mistake-wrapper {
+    .error-messages {
+      font-size: 16px;
+      margin: 20px 0 0 40px;
+    }
+
+    .module-name {
+      margin: 26px 0 10px 39px;
+      font-size: 16px;
+      color: #828282;
+    }
+
+    .users-message {
+      margin: 0 39px;
+      padding: 12px 14px;
+      border: 1px solid #bdbdbd;
+      box-sizing: border-box;
+    }
+
+    .question-id {
+      margin: 20px 0 11px 39px;
+      font-size: 16px;
+      color: #828282;
+    }
+
+    .question-context {
+      font-size: 16px;
+      margin: 0 39px 15px 39px;
+    }
+
+    .edit-button-wrapper {
+      display: flex;
+      height: 25px;
+      margin: 0 37px 0 520px;
+
+      .edit-button {
+        width: 110px;
+      }
+    }
+  }
+
   .essay-wrapper {
     .topic-title {
       margin-top: 17px;
@@ -111,7 +152,7 @@
   .grades-wrapper {
     display: flex;
     justify-content: space-between;
-    margin: 0 39px 20px 39px;
+    margin: 0 39px;
 
     .grade {
       height: 35px;
@@ -128,6 +169,19 @@
       background-color: #3e6dd7;
       color: white;
     }
+  }
+
+  .comment-section {
+    margin: 24px 39px 0 39px;
+    width: 588px;
+  }
+
+  .MuiOutlinedInput-multiline {
+    padding: 10px 20px;
+  }
+
+  .MuiOutlinedInput-root {
+    border-radius: 0;
   }
 
   .tests-verification-modal-buttons-wrapper {

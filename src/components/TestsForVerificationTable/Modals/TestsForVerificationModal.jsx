@@ -2,29 +2,85 @@ import React, { useState } from 'react';
 import '../../../styles/modal.scss';
 import PropTypes from 'prop-types';
 import './TestsForVerificationModal.scss';
-import { IconButton, Button } from '@material-ui/core';
+import { IconButton, Button, TextField } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { Player } from '../../index';
+import { Link } from 'react-router-dom';
 
 export const TestsForVerificationModal = ({id, level, handleClose}) => {
   const [essayGrade, setEssayGrade] = useState(-1);
   const [speakingGrade, setSpeakingGrade] = useState(-1);
 
-  const ReportedMistake = <div>Reported Mistake</div>;
-  const Essay =
+  const ReportedMistakes = [
+    {
+      module: 'Listening',
+      message: 'Hello! This question contains an error. The correct answer is not so-and-so, but so-and-so.',
+      questionID: 1258454,
+      question: 'An obstetrician/gynecologist at the pre-conception clinic suggests we ............. some further tests.'
+    },
+    {
+      module: 'Essay',
+      message: 'Hello! This topic contains an error. It is right to write birTHday.',
+      questionID: 1908632,
+      question: 'Happy birzday to you!'
+    }
+  ];
+
+  const ReportedMistakesHTML =
+    <div className='reported-mistake-wrapper'>
+      <div className='error-messages'>Error messages from the user:</div>
+      {
+        ReportedMistakes.map((item) => {
+          return (
+            <>
+              <div className='module-name'>Module {item.module}</div>
+              <div className='users-message'>{item.message}</div>
+              <div className='question-id'>Question ID {item.questionID}</div>
+              <div className='question-context'>{item.question}</div>
+              <div className='edit-button-wrapper'>
+                <Button
+                  variant='outlined'
+                  color='primary'
+                  className='edit-button'
+                  component={Link}
+                  to='/edit-test-modules'
+                >Edit</Button>
+              </div>
+            </>
+          );
+        })
+      }
+      <TextField
+        label='Comment'
+        variant='outlined'
+        className='comment-section'
+        multiline
+        rows={4}
+      />
+    </div>;
+  const EssayHTML =
     <div className='essay-wrapper'>
       <div className='topic-title'>Topic</div>
       <div className='topic-text'>Essay topic</div>
       <div className='users-essay'>User's essay</div>
       <div className='grades-wrapper'>
-        {[0,1,2,3,4,5,6,7,8,9,10].map((item) => {
-          return (
-            <div key={item} className={essayGrade === item ? 'grade chosen' : 'grade'} onClick={() => {setEssayGrade(item);}}>{item}</div>
-          );
-        })}
+        {
+          [0,1,2,3,4,5,6,7,8,9,10].map((item) => {
+            return (
+              <div key={item} className={essayGrade === item ? 'grade chosen' : 'grade'} onClick={() => {setEssayGrade(item);}}>{item}</div>
+            );
+          })
+        }
       </div>
+      <TextField
+        label='Comment'
+        variant='outlined'
+        className='comment-section'
+        multiline
+        rows={4}
+      />
     </div>;
-  const Speaking =
+  const SpeakingHTML =
     <div className='speaking-wrapper'>
       <div className='topic-title'>Topic</div>
       <div className='topic-text'>Speaking topic</div>
@@ -41,12 +97,19 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
           );
         })}
       </div>
+      <TextField
+        label='Comment'
+        variant='outlined'
+        className='comment-section'
+        multiline
+        rows={4}
+      />
     </div>;
 
   const steps = [
-    ReportedMistake,
-    Essay,
-    Speaking
+    ReportedMistakesHTML,
+    EssayHTML,
+    SpeakingHTML
   ];
 
   const [step, setStep] = useState(0);
@@ -63,7 +126,7 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
         </IconButton>
       </div>
       <div className='tests-verification-modal-navigation'>
-        <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={() => {setStep(0);}}><div className='navigation-text'>Reported mistake</div></div>
+        <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={() => {setStep(0);}}><div className='navigation-text'>Reported mistakes</div></div>
         <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => {setStep(1);}}><div className='navigation-text'>Essay</div></div>
         <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} onClick={() => {setStep(2);}}><div className='navigation-text'>Speaking</div></div>
       </div>
