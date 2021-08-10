@@ -16,7 +16,6 @@ import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
-  const testData = JSON.parse(localStorage.getItem(currentTest));
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
@@ -88,6 +87,7 @@ export const Test = () => {
       })
     );
     const checkData = async () => {
+      const testData = JSON.parse(localStorage.getItem(currentTest));
       if (await testData !== null) {
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
