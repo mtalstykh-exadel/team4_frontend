@@ -9,7 +9,7 @@ import { Trans } from '@lingui/macro';
 import '../../../../styles/modal.scss';
 import './HRmodalWindowTestAssignment.scss';
 
-import {englishLevel,priority} from './constans/constans';
+import { filterLevelsLong, priority } from '../../../../constants/filterConstants';
 
 export const HRmodalWindowTestAssignment = (props) => {
 
@@ -22,7 +22,7 @@ export const HRmodalWindowTestAssignment = (props) => {
         <FormControl variant='outlined' className='level-selector' size='small'>
           <InputLabel id='test-level-selector-label'><Trans>Level</Trans></InputLabel>
           <Select labelId='test-level-selector-label' label='Select the test level' id='select' className='item'>
-            {englishLevel.map((item, index) => {
+            {filterLevelsLong.map((item, index) => {
               itemKey++;
               return <MenuItem key={itemKey} value={index}> {item}</MenuItem>;
             })}
