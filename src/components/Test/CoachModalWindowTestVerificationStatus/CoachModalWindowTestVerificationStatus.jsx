@@ -19,7 +19,7 @@ export const CoachModalWindowTestVerificationStatus = () => {
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
-      <div className='modal-content'>
+      <div className='modal-content base-color'>
         <div className='coach-modal'>
           <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
             <CloseIcon className='close-icon'/>

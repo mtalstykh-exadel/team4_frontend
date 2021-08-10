@@ -3,9 +3,9 @@
   min-height: 278px;
 
   .close-icon-wrapper {
-    position: relative;
     display: block;
-    margin-left: 89%;
+    margin-left: auto;
+    padding: 0;
 
     .MuiIconButton-root {
       height: 35px;
@@ -32,12 +32,11 @@
   }
 
   .test-level-selector-wrapper {
-    margin-top: 10px;
+    margin: 10px 0;
 
     .level-selector {
       width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
+      margin: 0 5%;
     }
   }
 
