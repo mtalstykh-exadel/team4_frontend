@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import Button from '@material-ui/core/Button';
-import {TextField} from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 const Results = ({level}) => {
