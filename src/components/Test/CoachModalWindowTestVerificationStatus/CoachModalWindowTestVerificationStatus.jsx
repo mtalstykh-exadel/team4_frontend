@@ -5,28 +5,21 @@ import {IconButton, Modal} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import './CoachModalWindowTestVerificationStatus.scss';
-export const CoachModalWindowTestVerificationStatus = () => {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+export const CoachModalWindowTestVerificationStatus = (props) => {
 
   return (
     <Modal
-      open={open}
-      onClose={handleClose}
+      open={props.open}
+      onClose={props.handleClose}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
-      <div className='modal-content base-color'>
-        <div className='coach-modal'>
-          <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-            <CloseIcon className='close-icon'/>
-          </IconButton>
-          <div className='test-ver'>This test is currently in the verification status</div>
-          <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
-        </div>
+      <div className='modal-content base-color coach-modal'>
+        <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
+          <CloseIcon className='close-icon icons-color'/>
+        </IconButton>
+        <div className='test-ver'>This test is currently in the verification status</div>
+        <Button className='button-medium close-button' variant='outlined' color='primary' onClick={props.handleClose}>Close</Button>
       </div>
     </Modal>
   );
@@ -34,5 +27,6 @@ export const CoachModalWindowTestVerificationStatus = () => {
 
 CoachModalWindowTestVerificationStatus.propTypes =
   {
-    status: PropTypes.bool,
+    open: PropTypes.bool,
+    handleClose: PropTypes.func
   };

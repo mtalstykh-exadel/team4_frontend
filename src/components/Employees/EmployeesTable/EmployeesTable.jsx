@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { Modal } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
-  Backdrop,
   Button,
   Paper,
   Table,
@@ -13,10 +14,10 @@ import {
   TableRow
 } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
+
 import { Trans } from '@lingui/macro';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
-import PropTypes from 'prop-types';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
 
 export const EmployeesTable = (props) => {
@@ -62,26 +63,11 @@ export const EmployeesTable = (props) => {
     setOpen(false);
   };
 
-  const modals = [
-    <HRmodalWindowTestAssignment key={0} name={name} handleClose={handleClose}/>,
-  ];
-
 
   return (
     <Paper elevation={2}>
       <TableContainer>
         <Table stickyHeader aria-label='sticky table'>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            BackdropComponent={Backdrop}
-            aria-labelledby='simple-modal-title'
-            aria-describedby='simple-modal-description'
-            className='modal'>
-            <div className='modal-content base-color'>
-              {modals[0]}
-            </div>
-          </Modal>
           <TableHead>
             <TableRow>
               {rows.map((rowName) => {
@@ -94,10 +80,7 @@ export const EmployeesTable = (props) => {
           <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
             return (
               <TableRow key={row.id}>
-                <TableCell component='th' scope='row' onClick={() => {
-                  setName(row.name);
-                  handleOpen();
-                }}>{row.name}</TableCell>
+                <TableCell component='th' scope='row'>{row.name}</TableCell>
                 <TableCell align='left' size='small'>{row.level}</TableCell>
                 <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
                 <TableCell align='left' size='small'>{row.mail}</TableCell>
@@ -108,7 +91,10 @@ export const EmployeesTable = (props) => {
                       <Trans>Deassign</Trans>
                     </Button>
                     : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                      className='btn-search'>
+                      className='btn-search' onClick={() => {
+                        setName(row.name);
+                        handleOpen();
+                      }}>
                       <Trans>Assign test</Trans>
                     </Button>}
                 </TableCell>
@@ -129,6 +115,7 @@ export const EmployeesTable = (props) => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
     </Paper>
   );
 };

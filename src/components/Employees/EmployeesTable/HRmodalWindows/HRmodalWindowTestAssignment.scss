@@ -1,6 +1,6 @@
 .hr-modal {
   min-width: 450px;
-  min-height: 278px;
+  min-height: 268px;
 
   .close-icon-wrapper {
     display: block;
@@ -9,84 +9,61 @@
 
     .MuiIconButton-root {
       height: 35px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 21px;
-        height: 21px;
-        cursor: pointer;
-      }
     }
   }
 
   .assign-level {
-    padding-left: 5%;
     font-family: "Roboto", sans-serif;
+    height: 30px;
     font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0;
     text-align: left;
   }
 
-  .test-level-selector-wrapper {
-    margin: 10px 0;
+  .level-selector-wrapper {
+    margin: 10px auto;
+    justify-content: center;
 
     .level-selector {
-      width: 90%;
-      margin: 0 5%;
+      width: 100%;
     }
   }
 
-  .deadline-priority {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    min-width: 450px;
-    justify-items: center;
-    align-items: center;
+  .setting-label {
+    height: 20px;
+    margin-bottom: 0;
+  }
 
-    .deadline {
-      padding-left: 5%;
+  .settings-wrapper {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
 
-      .test-deadline {
-        font-family: "Roboto", sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        padding-top: 5px;
-      }
-    }
+    .setting {
+      height: 80px;
+      width: 180px;
 
-    .priority-selector-wrapper {
-      font-size: 10px;
-      height: 65px;
-      width: 100%;
-
-      .priority {
-        font-family: "Roboto", sans-serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-      }
-
-      .priority-selector {
-        width: 200px;
-        font-size: 5px;
+      .setting-select {
+        padding-top: 0;
+        width: 100%;
+        height: 50%;
 
         .item {
           height: 30px;
         }
       }
+
+      input[type="date" i] {
+        border: 1px solid var(--secondary-color);
+        border-radius: 4px;
+        color: var(--font-color-primary);
+        background-color: var(--base-color);
+        height: 40px;
+      }
     }
   }
 
-  .MuiButton-root {
-    height: 27px;
-    width: 90px;
-    margin-left: 337px;
-    margin-right: 5px;
-    margin-top: 30px;
+  .assign-button {
+    display: flex;
+    margin: 20px 5px 0 auto;
   }
 }

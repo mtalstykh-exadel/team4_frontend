@@ -113,14 +113,6 @@ body {
 
   // misc
 
-  input[type="date" i] {
-    border: 1px solid var(--secondary-color);
-    border-radius: 4px;
-    color: var(--font-color-primary);
-    background-color: var(--base-color);
-    height: 30px;
-  }
-
   .MuiSwitch-root {
     &.MuiSwitch-sizeSmall {
       .MuiSwitch-switchBase {
