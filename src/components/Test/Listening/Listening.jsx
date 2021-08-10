@@ -9,7 +9,7 @@ export const Listening = ({ tasks, contentFile }) => {
 
   const [url, setUrl] = useState('');
   useEffect(() => {
-    axiosInstance.get('/files/' + contentFile, {
+    axiosInstance.get('/files/' + contentFile.url, {
       responseType: 'blob',
     }).then((response) => {
       setUrl(URL.createObjectURL(new Blob([response.data], {type: 'audio/ogg'})));
@@ -33,6 +33,6 @@ export const Listening = ({ tasks, contentFile }) => {
 };
 
 Listening.propTypes = {
-  contentFile: PropTypes.string,
+  contentFile: PropTypes.any,
   tasks: PropTypes.array,
 };

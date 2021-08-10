@@ -11,11 +11,12 @@ import {
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
+import { currentTest } from '../../constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
-  const testData = JSON.parse(localStorage.getItem('test=started'));
+  const testData = JSON.parse(localStorage.getItem(currentTest));
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
@@ -95,6 +96,7 @@ export const Test = () => {
         setEssayTask(testData.questions.Essay);
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
+        console.log(testData);
       }
     };
     checkData();
