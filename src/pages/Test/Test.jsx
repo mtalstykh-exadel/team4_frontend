@@ -17,16 +17,18 @@ import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
-  const TestDurationInMinutes = 40;
-  const [step, setStep] = useState(0);
   const [modalIndex, setModalIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [step, setStep] = useState(0);
+  const TestDurationInMinutes = 40;
+  
   const [nextButtonClass, setNextButtonClass] = useState(
     'next-step-button'
   );
+  
   const [prevButtonClass, setPrevButtonClass] = useState(
     'previous-step-button invisible'
   );
-  const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);

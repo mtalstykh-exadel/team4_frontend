@@ -11,15 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:49
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:65
 msgid "Add question"
 msgstr "Add question"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:76
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:94
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:69
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:71
 msgid "In field 'Question Id' must be a number"
 msgstr "In field 'Question Id' must be a number"
 
@@ -57,11 +57,11 @@ msgstr "Question ID"
 #~ msgid "Required field"
 #~ msgstr "Required field"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:87
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:105
 msgid "Rows per page:"
 msgstr "Rows per page:"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:66
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:68
 msgid "Search"
 msgstr "Search"
 
@@ -73,6 +73,6 @@ msgstr "Search"
 #~ msgid "Your email or password is incorrect. Please try again"
 #~ msgstr "Your email or password is incorrect. Please try again"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:57
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:74
 msgid "{0}{1}"
 msgstr "{0}"
