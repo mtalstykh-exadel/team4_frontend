@@ -87,16 +87,15 @@ export const Test = () => {
       })
     );
     const checkData = async () => {
-      const testData = JSON.parse(localStorage.getItem(currentTest));
-      if (await testData) {
-        setGrammarTasks(testData.questions.Grammar);
-        setListeningTasks(testData.questions.Listening);
-        setEssayTask(testData.questions.Essay);
-        setSpeakingTask(testData.questions.Speaking);
-        setContentFile(testData.contentFile);
-        console.log(testData);
-      }
-    };
+        const testData = JSON.parse(localStorage.getItem(currentTest));
+        if ( testData !== null ) {
+          setGrammarTasks(testData.questions.Grammar);
+          setListeningTasks(testData.questions.Listening);
+          setEssayTask(testData.questions.Essay);
+          setSpeakingTask(testData.questions.Speaking);
+          setContentFile(testData.contentFile);
+        }
+      };
     checkData();
   }, [TestDurationInMinutes]);
 

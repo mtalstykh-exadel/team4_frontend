@@ -26,10 +26,14 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         variant='contained'
         component={Link}
         to='/test'
-        onClick={() => startTest(level).then((response) => {
+        onClick={() => {
           localStorage.removeItem(currentTest);
-          localStorage.setItem(currentTest, JSON.stringify(response));
-        })}
+          startTest(level).then((response) => {
+              localStorage.setItem(currentTest, JSON.stringify(response));
+              window.location.reload();
+            });
+          }
+        }
       >
         <Trans>Take test</Trans>
       </Button>
