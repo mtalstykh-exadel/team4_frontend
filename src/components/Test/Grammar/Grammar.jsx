@@ -9,16 +9,16 @@ export const Grammar = ({ tasks }) => {
   const questions = tasks.map((question) => {
 
     questionCount++;
-    const options = question.options.map((questionItem) => {
+    const options = question.answers.map((questionItem) => {
       return (
-        <div key={questionItem.option} className='test-question-option'>
+        <div key={questionItem.answer} className='test-question-option'>
           <input
-            id={questionItem.option + questionCount}
+            id={questionItem.answer + questionCount}
             type='radio'
             name={'group-' + questionCount}
-            value={questionItem.option}
+            value={questionItem.answer}
           />
-          <label htmlFor={questionItem.option + questionCount}> {questionItem.option}</label>
+          <label htmlFor={questionItem.answer + questionCount}> {questionItem.answer}</label>
         </div>
       );
     });
@@ -27,7 +27,7 @@ export const Grammar = ({ tasks }) => {
       <div key={questionCount} className='grammar-step'>
         <div className='test-question'>
           <span className='test-question number'>{questionCount}. </span>
-          <span className='test-question sentence'>{question.sentence}</span>
+          <span className='test-question sentence'>{question.questionBody}</span>
         </div>
         {options}
       </div>

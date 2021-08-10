@@ -5,8 +5,6 @@ import {
   Essay,
   Grammar,
   Listening,
-  grammarTasks,
-  listeningTasks,
   ReportAMistakeModal,
   SubmitModal
 } from '../../components';
@@ -17,7 +15,12 @@ import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
+  const testData = JSON.parse(localStorage.getItem('test=started'));
+  const [listeningTasks, setListeningTasks] = useState([]);
+  const [speakingTask, setSpeakingTask] = useState([]);
+  const [grammarTasks, setGrammarTasks] = useState([]);
   const [modalIndex, setModalIndex] = useState(0);
+  const [essayTask, setEssayTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const TestDurationInMinutes = 40;
@@ -41,8 +44,8 @@ export const Test = () => {
   const steps = [
     <Grammar key='0' tasks={grammarTasks}/>,
     <Listening key='1' tasks={listeningTasks}/>,
-    <Essay key='2'/>,
-    <Speaking key='3'/>,
+    <Essay key='2' task={essayTask} />,
+    <Speaking key='3' task={speakingTask}/>,
   ];
 
   const modals = [
@@ -60,6 +63,18 @@ export const Test = () => {
         minutes: TestDurationInMinutes,
       })
     );
+    const checkData = () => {
+      if (testData === null){  
+        checkData(); 
+      } else { 
+        setGrammarTasks(testData.questions.Grammar);
+        setListeningTasks(testData.questions.Listening);
+        setEssayTask(testData.questions.Essay);
+        setSpeakingTask(testData.questions.Speaking);
+        console.log(testData.questions);
+      }
+    }; 
+    checkData();
   }, [TestDurationInMinutes]);
 
   return (

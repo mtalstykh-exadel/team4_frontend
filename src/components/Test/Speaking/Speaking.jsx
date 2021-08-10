@@ -5,9 +5,10 @@ import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
 import { Player } from '../../index';
 import { Trans } from '@lingui/macro';
+import PropTypes from 'prop-types';
 import './Speaking.scss';
 
-export const Speaking = () => {
+export const Speaking = ({task}) => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -26,7 +27,7 @@ export const Speaking = () => {
   return (
     <div className='speaking-step'>
       <div className='step-description'><Trans>Write down record</Trans></div>
-      <div className='speaking-topic'><Trans>Speaking Topic</Trans></div>
+      <div className='speaking-topic'>{task[0].questionBody}</div>
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>
@@ -60,4 +61,8 @@ export const Speaking = () => {
       />
     </div>
   );
+};
+
+Speaking.propTypes = {
+  task: PropTypes.array,
 };
