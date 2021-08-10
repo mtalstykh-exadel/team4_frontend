@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import './TestLevelSelectorItem.scss';
 import { startTest } from '../../../api/start-test';
 import { language_english } from '../../../constants/languageConstants';
@@ -24,13 +23,11 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         className='btn'
         color='primary'
         variant='contained'
-        component={Link}
-        to='/test'
         onClick={() => {
           localStorage.removeItem(currentTest);
           startTest(level).then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
-              window.location.reload();
+              window.location.href = '/test';
             });
           }
         }
