@@ -12,7 +12,7 @@ export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 export const LOGOUT_START = 'LOGOUT_START';
 
 // admin actionTypes
-// export const
+export const REQUEST_QUESTION = 'REQUEST_QUESTION';
 
 // coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';

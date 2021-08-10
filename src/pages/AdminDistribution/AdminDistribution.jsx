@@ -4,7 +4,6 @@ import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
 } from '@material-ui/core';
-// import { rows } from '../../testData/rowsForAdminDistribution';
 import { coaches } from './Coaches';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
