@@ -88,7 +88,7 @@ export const Test = () => {
     );
     const checkData = async () => {
       const testData = JSON.parse(localStorage.getItem(currentTest));
-      if (await testData !== null) {
+      if (await testData) {
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
         setEssayTask(testData.questions.Essay);

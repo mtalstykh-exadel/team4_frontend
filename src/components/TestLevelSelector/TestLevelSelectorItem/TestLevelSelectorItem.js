@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './TestLevelSelectorItem.scss';
 import { startTest } from '../../../api/start-test';
 import { language_english } from '../../../constants/languageConstants';
+import { userLanguageKey } from '../../../constants/localStorageConstants';
 import { currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 
@@ -13,10 +14,10 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
   return (
     <div className='test-level-selector-item'>
       <div className='title'>
-        {localStorage.getItem('language') === language_english ? titleEN : titleRU}
+        {localStorage.getItem(userLanguageKey) === language_english ? titleEN : titleRU}
       </div>
       <div className='description'>
-        {localStorage.getItem('language') === language_english ? descriptionEN : descriptionRU}
+        {localStorage.getItem(userLanguageKey) === language_english ? descriptionEN : descriptionRU}
       </div>
       <Button
         disableElevation
@@ -25,7 +26,10 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         variant='contained'
         component={Link}
         to='/test'
-        onClick={() => startTest(level).then((response) => localStorage.setItem(currentTest, JSON.stringify(response)))}
+        onClick={() => startTest(level).then((response) => {
+          localStorage.removeItem(currentTest);
+          localStorage.setItem(currentTest, JSON.stringify(response));
+        })}
       >
         <Trans>Take test</Trans>
       </Button>
