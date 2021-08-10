@@ -8,8 +8,14 @@ import { getAudioFile } from '../../../api/get-audioFIle';
 export const Listening = ({ tasks, contentFile }) => {
 
   const [url, setUrl] = useState('');
-  useEffect(() => {
-    setUrl(getAudioFile(contentFile.url));
+  useEffect( async function() {
+    setUrl(await getAudioFile(contentFile.url).then((response) => {
+      return URL.createObjectURL(
+          new Blob([response.data], { type: 'audio/ogg' })
+        );
+      })
+    );
+    console.log(url);
   },[setUrl]);
 
   return (
