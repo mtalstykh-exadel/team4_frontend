@@ -64,7 +64,7 @@ export const EditTestsFilter = (props) => {
           value={formik.values.questionId} inputProps={{ name: 'questionId' }} onChange={formik.handleChange} />
 
         <Button disabled={(!!formik.errors.questionId || !formik.values.questionId) && (!formik.values.level || !formik.values.module)} color='primary' variant='contained'
-          type='search' className='btn-search'>
+          type='search' className='btn-search button-standard'>
           <Trans>Search</Trans>
         </Button>
       </form>
