@@ -151,7 +151,7 @@ export const Test = () => {
         <div className='buttons-wrapper'>
           <div className='step-navigation-buttons'>
             <Button
-              className={prevButtonClass}
+              className={`${prevButtonClass} button-wide`}
               color='primary'
               variant='outlined'
               onClick={() => {
@@ -170,7 +170,7 @@ export const Test = () => {
               <Trans>Previous</Trans>
             </Button>
             <Button
-              className={nextButtonClass}
+              className={`${nextButtonClass} button-wide`}
               color='primary'
               variant='outlined'
               onClick={() => {
@@ -191,7 +191,7 @@ export const Test = () => {
           </div>
           <div className='submit-button-wrapper'>
             <Button
-              className='submit-button'
+              className='submit-button button-wide'
               color='primary'
               variant='contained'
               onClick={() => {

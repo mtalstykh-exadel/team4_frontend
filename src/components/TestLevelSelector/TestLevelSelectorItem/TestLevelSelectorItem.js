@@ -24,7 +24,7 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
       </div>
       <Button
         disableElevation
-        className='btn'
+        className='btn button-wide'
         color='primary'
         disabled={loading ? true : false}
         variant='contained'
