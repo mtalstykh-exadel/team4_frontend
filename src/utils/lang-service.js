@@ -3,14 +3,14 @@ import { LangsArray } from './lang-import-data';
 
 import setLanguage from '../api/language_set';
 
+import { en, ru } from 'make-plural/plurals';
+
 import { userLanguageKey } from '../constants/localStorageConstants';
 import { language_english, language_russian } from '../constants/languageConstants';
 
 const saveLanguageToLocalstorage = (responseData) => {
-  localStorage.setItem(userLanguageKey, JSON.stringify(responseData.language));
+  localStorage.setItem(userLanguageKey, responseData.language);
 };
-
-const currentLang = localStorage.getItem(userLanguageKey);
 
 const switchLang = (lang) => {
   switch (lang) {
@@ -33,13 +33,15 @@ const switchLang = (lang) => {
       lang = language_english;
       break;
   }
+  i18n.loadLocaleData({
+    en: { plurals: en },
+    ru: { plurals: ru },
+  });
   localStorage.setItem(userLanguageKey, lang);
 };
 
 const defineLang = () => {
-  if (currentLang) {
-    switchLang(currentLang);
-  } else if (localStorage.getItem(userLanguageKey)) {
+  if (localStorage.getItem(userLanguageKey)) {
     switchLang(localStorage.getItem(userLanguageKey));
   } else {
     switchLang(language_english);
