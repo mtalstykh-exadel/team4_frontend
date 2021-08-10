@@ -175,6 +175,11 @@ body {
     }
   }
 
+  .MuiInputBase-input {
+    background-color: var(--base-color-elevation);
+    color: var(--font-color-primary);
+  }
+
   .MuiList-root {
     .MuiListItem-root {
       background-color: var(--base-color-elevation);
@@ -236,51 +241,6 @@ body {
     .MuiTablePagination-root {
       background-color: var(--base-color-elevation);
       color: var(--font-color-primary);
-    }
-  }
-
-  .MuiButtonBase-root {
-    &.MuiButton-containedPrimary {
-      background-color: var(--primary-color);
-      color: var(--font-color-secondary);
-
-      &:hover {
-        background-color: rgba(var(--primary-color-rgb), 0.8);
-      }
-    }
-
-    &.MuiButton-outlinedPrimary {
-      border-color: var(--primary-color);
-      color: var(--primary-color);
-
-      &:hover {
-        border-color: var(--primary-color);
-        background-color: rgba(var(--primary-color-rgb), 0.1);
-      }
-    }
-
-    &.MuiButton-containedSecondary {
-      background-color: var(--secondary-color);
-      color: var(--font-color-secondary);
-
-      &:hover {
-        background-color: rgba(var(--primary-color-rgb), 0.8);
-      }
-    }
-
-    &.MuiButton-outlinedSecondary {
-      border-color: var(--secondary-color);
-      color: var(--secondary-color);
-
-      &:hover {
-        border-color: var(--secondary-color);
-        background-color: rgba(var(secondary-color-rgb), 0.1);
-      }
-    }
-
-    &.Mui-disabled {
-      color: var(--font-color-primary);
-      background-color: rgba(var(--border-color), 0.12);
     }
   }
 
