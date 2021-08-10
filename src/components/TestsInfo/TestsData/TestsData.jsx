@@ -102,9 +102,9 @@ const TestsData = (props) => {
                         <TableCell key={keysForColumns} align={column.align} size='small'>
                           {
                             column.id === 'action' && value ?
-                              <Button color='primary' variant='contained' size='small'
+                              <Button className='button-standard' color='primary' variant='contained' size='small'
                                 onClick={() => testAction(row[column.id])} >
-                                <Trans>{value[0]}{value[1]}</Trans>
+                                <Trans>Take Test</Trans>
                               </Button>
                               : Array.isArray(value) ? <Trans>{value[0]}{value[1]}</Trans> : value
                           }
