@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -8,10 +8,12 @@ import { language_english } from '../../../constants/languageConstants';
 import { userLanguageKey } from '../../../constants/localStorageConstants';
 import { currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
+import { CircularProgress } from '@material-ui/core';
 
 export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descriptionRU, level}) => {
   const history = useHistory();
-  
+  const [loading, setLoading] = useState(false);
+
   return (
     <div className='test-level-selector-item'>
       <div className='title'>
@@ -24,17 +26,19 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         disableElevation
         className='btn'
         color='primary'
+        disabled={loading ? true : false}
         variant='contained'
         onClick={() => {
+          setLoading(true);
           localStorage.removeItem(currentTest);
           startTest(level).then((response) => {
-              localStorage.setItem(currentTest, JSON.stringify(response));
-              history.push('/test');
-            });
-          }
+            localStorage.setItem(currentTest, JSON.stringify(response));
+            history.push('/test');
+          });
+        }
         }
       >
-        <Trans>Take test</Trans>
+        {loading ? <CircularProgress className='border-primary'/> : <Trans>Take test</Trans>}
       </Button>
     </div>
   );
