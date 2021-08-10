@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import './TestLevelSelectorItem.scss';
 import { startTest } from '../../../api/start-test';
-
+import { language_english } from '../../../constants/languageConstants';
+import { currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 
 export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descriptionRU, level}) => {
@@ -12,10 +13,10 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
   return (
     <div className='test-level-selector-item'>
       <div className='title'>
-        {localStorage.getItem('language') === 'eng' ? titleEN : titleRU}
+        {localStorage.getItem('language') === language_english ? titleEN : titleRU}
       </div>
       <div className='description'>
-        {localStorage.getItem('language') === 'eng' ? descriptionEN : descriptionRU}
+        {localStorage.getItem('language') === language_english ? descriptionEN : descriptionRU}
       </div>
       <Button
         disableElevation
@@ -24,7 +25,7 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         variant='contained'
         component={Link}
         to='/test'
-        onClick={() => startTest(level).then((response) => localStorage.setItem('test=started', JSON.stringify(response)))}
+        onClick={() => startTest(level).then((response) => localStorage.setItem(currentTest, JSON.stringify(response)))}
       >
         <Trans>Take test</Trans>
       </Button>
