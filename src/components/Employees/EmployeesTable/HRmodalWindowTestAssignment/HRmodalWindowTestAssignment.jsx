@@ -11,8 +11,13 @@ import {englishLevel,priority} from './constans/constans';
 export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
 
   let itemKey = 0;
-  const modalBody = <>
-    <div className='assign-level'>You want to assign a test for {name}</div>
+  return (
+  <Paper elevation={2}>
+    <div className='hr-modal-test-assign'>
+      <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+        <CloseIcon className='close-icon'/>
+      </IconButton>
+       <div className='assign-level'>You want to assign a test for {name}</div>
     <div className='test-level-selector-wrapper'>
       <FormControl variant='outlined' className='level-selector'>
         <InputLabel id='test-level-selector-label'>Select the test level:</InputLabel>
@@ -44,18 +49,8 @@ export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
       </div>
     </div>
     <Button variant='contained' color='primary' onClick={handleClose}>Assign</Button>
-  </>;
-
-
-  return (
-<Paper elevation={2}>
-    <div className='hr-modal-test-assign'>
-      <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-        <CloseIcon className='close-icon'/>
-      </IconButton>
-      {modalBody}
     </div>
-</Paper>);
+ </Paper>);
 };
 
 HRmodalWindowTestAssignment.propTypes =
