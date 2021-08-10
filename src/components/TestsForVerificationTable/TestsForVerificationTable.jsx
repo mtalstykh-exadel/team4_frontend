@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, Modal } from '@material-ui/core';
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
-import { TestsForVerificationModal } from './Modals/TestsForVerificationModal';
+import { TestsForVerificationModal } from './Component/TestsForVerificationModal';
 
 export const TestsForVerificationTable = () => {
 
