@@ -15,7 +15,6 @@ export const Listening = ({ tasks, contentFile }) => {
         );
       })
     );
-    console.log(url);
   },[setUrl]);
 
   return (
