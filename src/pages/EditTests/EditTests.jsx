@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Redirect } from 'react-router';
+
 import Layout from '../../components/Layout/Layout';
 import { EditTestsFilter, EditTestsTable } from '../../components';
 import imageSrc from '../../assets/images/goose.svg';
@@ -10,10 +13,12 @@ export const EditTests = () => {
   const [module, setModule] = useState(null);
   const [questionId, setQuestionId] = useState(null);
 
+  const role = useSelector((state) => state.jwt.role);
+  if (role !== 'ROLE_COACH') return <Redirect to='/' />;
   return (
     <Layout pageWrapperClass='edit-tests-selector'>
       <EditTestsFilter questionId={questionId} setLevel={setLevel} setModule={setModule}
-      setQuestionId={setQuestionId} />
+        setQuestionId={setQuestionId} />
       {
         (level && module) || questionId
           ? <EditTestsTable level={level} module={module} questionId={questionId} />
