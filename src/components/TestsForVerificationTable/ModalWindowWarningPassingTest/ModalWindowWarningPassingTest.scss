@@ -1,0 +1,38 @@
+.modal-warning-passing-test {
+  width: 440px;
+  height: 160px;
+
+  .close-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-left: 89%;
+
+    .MuiIconButton-root {
+      height: 15px;
+
+      .close-icon {
+        position: absolute;
+        bottom: 0;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .warning-text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    padding-left: 4%;
+  }
+
+  .MuiButton-root {
+    height: 27px;
+    width: 90px;
+    margin-left: 337px;
+    margin-right: 5px;
+    margin-top: 30px;
+  }
+}
