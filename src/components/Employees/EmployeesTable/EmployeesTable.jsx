@@ -57,7 +57,7 @@ export const EmployeesTable = (props) => {
                   <TableCell component='th' scope='row'>{row.name}</TableCell>
                   <TableCell align='left' size='small'>{row.level}</TableCell>
                   <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
-                  <TableCell align='left' size='small'>{row.mail}</TableCell>
+                  <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
                     {row.assigne ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' >
                       <Trans>Deassign</Trans>
