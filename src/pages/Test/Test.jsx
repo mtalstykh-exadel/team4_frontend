@@ -6,7 +6,7 @@ import {
   Grammar,
   Listening,
   ReportAMistakeModal,
-  SubmitModal
+  SubmitModal,
 } from '../../components';
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
@@ -19,16 +19,15 @@ export const Test = () => {
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
+  const [contentFile, setContentFile] = useState('');
   const [modalIndex, setModalIndex] = useState(0);
   const [essayTask, setEssayTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
   const TestDurationInMinutes = 40;
-  
-  const [nextButtonClass, setNextButtonClass] = useState(
-    'next-step-button'
-  );
-  
+
+  const [nextButtonClass, setNextButtonClass] = useState('next-step-button');
+
   const [prevButtonClass, setPrevButtonClass] = useState(
     'previous-step-button invisible'
   );
@@ -42,18 +41,42 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks}/>,
-    <Listening key='1' tasks={listeningTasks}/>,
+    <Grammar key='0' tasks={grammarTasks} />,
+    <Listening key='1' tasks={listeningTasks} contentFile={contentFile} />,
     <Essay key='2' task={essayTask} />,
-    <Speaking key='3' task={speakingTask}/>,
+    <Speaking key='3' task={speakingTask} />,
   ];
 
   const modals = [
-    <ReportAMistakeModal key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'} handleClose={handleClose}/>,
-    <ReportAMistakeModal key='1' tasks={listeningTasks} level={'A1'} module={'Listening'} handleClose={handleClose}/>,
-    <ReportAMistakeModal key='2' level={'A1'} topic={'About Myself'} module={'Essay'} handleClose={handleClose}/>,
-    <ReportAMistakeModal key='3' level={'A1'} topic={'About Myself'} module={'Speaking'} handleClose={handleClose}/>,
-    <SubmitModal key='4' handleClose={handleClose}/>,
+    <ReportAMistakeModal
+      key='0'
+      tasks={grammarTasks}
+      level={'A1'}
+      module={'Grammar'}
+      handleClose={handleClose}
+    />,
+    <ReportAMistakeModal
+      key='1'
+      tasks={listeningTasks}
+      level={'A1'}
+      module={'Listening'}
+      handleClose={handleClose}
+    />,
+    <ReportAMistakeModal
+      key='2'
+      level={'A1'}
+      topic={'About Myself'}
+      module={'Essay'}
+      handleClose={handleClose}
+    />,
+    <ReportAMistakeModal
+      key='3'
+      level={'A1'}
+      topic={'About Myself'}
+      module={'Speaking'}
+      handleClose={handleClose}
+    />,
+    <SubmitModal key='4' handleClose={handleClose} />,
   ];
 
   useEffect(() => {
@@ -64,16 +87,16 @@ export const Test = () => {
       })
     );
     const checkData = () => {
-      if (testData === null){  
-        checkData(); 
-      } else { 
+      if (testData === null) {
+        checkData();
+      } else {
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
         setEssayTask(testData.questions.Essay);
         setSpeakingTask(testData.questions.Speaking);
-        console.log(testData.questions);
+        setContentFile(testData.contentFile);
       }
-    }; 
+    };
     checkData();
   }, [TestDurationInMinutes]);
 
@@ -172,21 +195,31 @@ export const Test = () => {
               className='submit-button'
               color='primary'
               variant='contained'
-              onClick={() => {setModalIndex(4); handleOpen();}}
+              onClick={() => {
+                setModalIndex(4);
+                handleOpen();
+              }}
             >
               <Trans>Submit</Trans>
             </Button>
           </div>
-          <div className='report-mistake' onClick={() => {setModalIndex(step); handleOpen();}}><Trans>Report a mistake</Trans></div>
+          <div
+            className='report-mistake'
+            onClick={() => {
+              setModalIndex(step);
+              handleOpen();
+            }}
+          >
+            <Trans>Report a mistake</Trans>
+          </div>
           <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
-            className='modal'>
-            <div className='modal-content'>
-              {modals[modalIndex]}
-            </div>
+            className='modal'
+          >
+            <div className='modal-content'>{modals[modalIndex]}</div>
           </Modal>
         </div>
       </div>
