@@ -32,7 +32,7 @@ export const HRmodalWindowTestAssignment = ({name, handleClose}) => {
       </div>
       <div className='priority-selector-wrapper'>
         <h1 className='priority'><Trans>Priority:</Trans></h1>
-        <FormControl variant='outlined' className='priority-selector'>
+        <FormControl variant='outlined' className='priority-selector' size='small'>
           <InputLabel id='priority-selector-label'/>
           <Select labelId='priority-selector-label' label='Select priority' id='select' className='item' >
             {priority.map((item, index) => {
