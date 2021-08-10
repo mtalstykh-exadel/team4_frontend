@@ -87,10 +87,8 @@ export const Test = () => {
         minutes: TestDurationInMinutes,
       })
     );
-    const checkData = () => {
-      if (testData === null) {
-        checkData();
-      } else {
+    const checkData = async () => {
+      if (await testData !== null) {
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
         setEssayTask(testData.questions.Essay);
