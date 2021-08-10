@@ -1,0 +1,47 @@
+.submit-modal {
+  width: 440px;
+  height: 118px;
+
+  .submit-text {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 40px;
+  }
+
+  .submit-buttons-wrapper {
+    margin-left: 36%;
+    margin-right: 11%;
+    display: flex;
+    justify-content: space-between;
+    height: 25px;
+
+    .cancel-button,
+    .submit-button {
+      width: 110px;
+      box-shadow: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .submit-modal {
+    width: 360px;
+    height: 110px;
+
+    .submit-text {
+      font-size: 18px;
+      margin-top: 40px;
+    }
+
+    .submit-buttons-wrapper {
+      margin-left: 30%;
+      margin-right: 11%;
+
+      .cancel-button,
+      .submit-button {
+        width: 100px;
+      }
+    }
+  }
+}

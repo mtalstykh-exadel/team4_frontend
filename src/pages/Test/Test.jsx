@@ -7,6 +7,8 @@ import {
   Listening,
   grammarTasks,
   listeningTasks,
+  ReportAMistakeModal,
+  SubmitModal
 } from '../../components';
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
@@ -17,6 +19,7 @@ import { Trans } from '@lingui/macro';
 export const Test = () => {
   const TestDurationInMinutes = 40;
   const [step, setStep] = useState(0);
+  const [modalIndex, setModalIndex] = useState(0);
   const [nextButtonClass, setNextButtonClass] = useState(
     'next-step-button'
   );
@@ -34,10 +37,18 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks} />,
-    <Listening key='1' tasks={listeningTasks} />,
-    <Essay key='2' />,
-    <Speaking key='3' />,
+    <Grammar key='0' tasks={grammarTasks}/>,
+    <Listening key='1' tasks={listeningTasks}/>,
+    <Essay key='2'/>,
+    <Speaking key='3'/>,
+  ];
+
+  const modals = [
+    <ReportAMistakeModal key='0' tasks={grammarTasks} level={'A1'} module={'Grammar'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='1' tasks={listeningTasks} level={'A1'} module={'Listening'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='2' level={'A1'} topic={'About Myself'} module={'Essay'} handleClose={handleClose}/>,
+    <ReportAMistakeModal key='3' level={'A1'} topic={'About Myself'} module={'Speaking'} handleClose={handleClose}/>,
+    <SubmitModal key='4' handleClose={handleClose}/>,
   ];
 
   useEffect(() => {
@@ -144,11 +155,12 @@ export const Test = () => {
               className='submit-button'
               color='primary'
               variant='contained'
+              onClick={() => {setModalIndex(4); handleOpen();}}
             >
               <Trans>Submit</Trans>
             </Button>
           </div>
-          <div className='report-mistake' onClick={handleOpen}><Trans>Report a mistake</Trans></div>
+          <div className='report-mistake' onClick={() => {setModalIndex(step); handleOpen();}}><Trans>Report a mistake</Trans></div>
           <Modal
             open={open}
             onClose={handleClose}
@@ -156,6 +168,7 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content'>
+              {modals[modalIndex]}
             </div>
           </Modal>
         </div>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
@@ -10,7 +11,6 @@ import './AdminDistribution.scss';
 import { assignTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 
 const AdminDistribution = (props) => {
@@ -46,6 +46,7 @@ const AdminDistribution = (props) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
+  const role = useSelector((state) => state.jwt.role);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -60,6 +61,7 @@ const AdminDistribution = (props) => {
     dispatch(requestQuestionsList());
   }, []);
 
+  if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
   return (
     <Layout pageWrapperClass='AdminDistribution'>
       <Paper elevation={2} className='paper'>
