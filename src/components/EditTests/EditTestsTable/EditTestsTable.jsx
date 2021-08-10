@@ -30,9 +30,9 @@ export const EditTestsTable = (props) => {
   const questions = useSelector((state) => state.coach.questions);
 
   const filteredQuestions = questions ? questions
-     .filter((el) => props.level ? props.level === el.level : el)
-     .filter((el) => props.module ? props.module === el.module : el)
-     .filter((el) => props.questionId && !!Number(props.questionId) ? Number(props.questionId) === el.id : el)
+    .filter((el) => props.level ? props.level === el.level : el)
+    .filter((el) => props.module ? props.module === el.module : el)
+    .filter((el) => props.questionId && !!Number(props.questionId) ? Number(props.questionId) === el.id : el)
     : [];
 
   const rows = ['ID',
