@@ -14,7 +14,7 @@ export const TestLevelsSelectorItem = (props) => {
       <div className='description'><Trans>{props.descriptionEN}{props.descriptionRU}</Trans></div>
       <Button
         disableElevation
-        className='btn'
+        className='btn button-wide'
         color='primary'
         variant='contained'
         component={Link}

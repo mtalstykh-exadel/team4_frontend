@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import './App.scss';
 import '../src/styles/theme.scss';
+import '../src/styles/buttons.scss';
 import '../src/styles/modal.scss';
 
 import Login from './pages/Login/Login';
