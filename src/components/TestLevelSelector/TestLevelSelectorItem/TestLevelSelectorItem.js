@@ -35,8 +35,12 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
             localStorage.setItem(currentTest, JSON.stringify(response));
             history.push('/test');
             window.scrollTo(0, 0);
-          });
-        }
+          }).catch((err) => {
+                alert('Попытки закончились, приходите завтра');
+                setLoading(false);
+                console.log(level, err);
+            });
+          }
         }
       >
         {loading ? <CircularProgress className='border-primary'/> : <Trans>Take test</Trans>}

@@ -19,7 +19,7 @@ import { initApp } from './store/actions/initActions/initActions';
 const App = () => {
   const dispatch = useDispatch();
   dispatch(initApp());
-
+  
   return (
     <div className='App'>
       <Switch>
