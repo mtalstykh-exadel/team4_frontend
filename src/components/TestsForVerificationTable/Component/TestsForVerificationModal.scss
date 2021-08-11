@@ -5,7 +5,7 @@
     display: flex;
     justify-content: space-between;
     height: 59px;
-    border-bottom: 1px solid #bdbdbd;
+    border-bottom: 2px solid #bdbdbd;
 
     .test-information {
       text-align: center;
@@ -33,25 +33,25 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
-    background-color: #ebebeb;
+    background-color: var(--secondary-color);
 
     .reported-mistake-navigation {
       width: 222px;
-      border-right: 1px solid #bdbdbd;
-      border-bottom: 1px solid #bdbdbd;
+      border-right: 2px solid #bdbdbd;
+      border-bottom: 2px solid #bdbdbd;
       cursor: pointer;
     }
 
     .essay-navigation {
       width: 222px;
-      border-right: 1px solid #bdbdbd;
-      border-bottom: 1px solid #bdbdbd;
+      border-right: 2px solid #bdbdbd;
+      border-bottom: 2px solid #bdbdbd;
       cursor: pointer;
     }
 
     .speaking-navigation {
       width: 222px;
-      border-bottom: 1px solid #bdbdbd;
+      border-bottom: 2px solid #bdbdbd;
       cursor: pointer;
     }
 
@@ -59,8 +59,9 @@
     .essay-navigation.chosen,
     .speaking-navigation.chosen {
       border-bottom: none;
-      background-color: white;
+      background-color: var(--base-color-elevation);
       cursor: initial;
+      color: var(--font-color-primary);
     }
 
     .navigation-text {
@@ -69,6 +70,8 @@
   }
 
   .reported-mistake-wrapper {
+    color: var(--font-color-primary);
+
     .error-messages {
       font-size: 16px;
       margin: 20px 0 0 40px;
@@ -110,6 +113,8 @@
   }
 
   .essay-wrapper {
+    color: var(--font-color-primary);
+
     .topic-title {
       margin-top: 17px;
       margin-left: 39px;
@@ -131,6 +136,8 @@
   }
 
   .speaking-wrapper {
+    color: var(--font-color-primary);
+
     .topic-title {
       margin-top: 17px;
       margin-left: 39px;
@@ -159,7 +166,7 @@
       width: 45px;
       text-align: center;
       font-size: 14px;
-      border: 1px solid #828282;
+      border: 1px solid var(--secondary-color);
       padding-top: 9px;
       cursor: pointer;
     }
