@@ -47,7 +47,7 @@ const AdminDistribution = (props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
   const role = useSelector((state) => state.jwt.role);
-  const [Coaches, setCoaches] = useState();
+  const [coaches, setCoaches] = useState();
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
@@ -55,9 +55,9 @@ const AdminDistribution = (props) => {
 
   const coachNames = [];
 
-  if (Coaches !== undefined) {
-    for (let i = 0; i < Coaches.length; i++) {
-      coachNames[i] = Coaches[i].name;
+  if (coaches !== undefined) {
+    for (let i = 0; i < coaches.length; i++) {
+      coachNames[i] = coaches[i].name;
     }
   }
 
