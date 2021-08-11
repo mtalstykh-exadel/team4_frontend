@@ -9,23 +9,26 @@ export const ManageGrammar = (props) => {
 
   const [question, setQuestion] = useState(props.moduleData);
 
-  useEffect(() => {props.handleModule(question);}, [question]);
+  useEffect(() => { props.handleModule(question); }, [question]);
 
   const handleSentence = (event) => {
     setQuestion(Object.assign({}, question, {
-      sentence: event.target.value}));
+      questionBody: event.target.value
+    }));
   };
 
   const handleRadio = (event) => {
     setQuestion(Object.assign({}, question, {
-      radiovalue: event.target.value}));
+      radiovalue: event.target.value
+    }));
   };
 
   const handleAnswersChange = (index) => (event) => {
-    const optionsArray = [...question.options];
-    optionsArray[index].option = event.target.value;
+    const optionsArray = [...question.answers];
+    optionsArray[index].answer = event.target.value;
     setQuestion(Object.assign({}, question, {
-      options: optionsArray}));
+      asnwers: optionsArray
+    }));
   };
 
   return (
@@ -37,10 +40,10 @@ export const ManageGrammar = (props) => {
         id='outlined-required'
         name='questionName'
         placeholder={`${props.questionIndex ? props.questionIndex + '.' : ''} Question`}
-        value={question.sentence}
+        value={question.questionBody}
         variant='outlined'
       />
-      {question.options.map((values , index) => {
+      {question.answers.map((values, index) => {
         return (
           <div className='manage-option' key={index}>
             <input
@@ -49,12 +52,12 @@ export const ManageGrammar = (props) => {
               required
               name={`answerIndex${props.questionIndex}`}
               value={index}
-              checked={+question.radiovalue === index && question.radiovalue !== '' ? 'checked' : null}
-              onChange={handleRadio}/>
+              checked={values.correct ? 'checked' : null}
+              onChange={handleRadio} />
             <TextField
               placeholder='Answer'
-              value={values.option}
-              onChange={handleAnswersChange(index)}/>
+              value={values.answer}
+              onChange={handleAnswersChange(index)} />
           </div>);
       })}
     </div>

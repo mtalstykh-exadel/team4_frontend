@@ -14,60 +14,83 @@ import { ManageTopic } from './ManageTopic/ManageTopic';
 import { filterLevels, filterModules } from '../../constants/constants';
 import { FilterFormControl } from '../FormControl/formControl';
 
-import { questionModuleData, questionModuleDataEmpty, listeningModuleData, listeningModuleDataEmpty, topicData } from './data/dummyData';
+import { questionModuleDataEmpty, listeningModuleDataEmpty } from './data/dummyData';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-export const ManageModule = () => {
+export const ManageModule = (props) => {
+
+  const question = useSelector((state) => state.coach.question);
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
   const [audioFile, setAduioFile] = useState();
 
   const onSubmit = (values) => {
-    return {values, module: moduleData, file: audioFile};
+    return { values, module: moduleData, file: audioFile };
   };
 
   const formik = useFormik({
-    initialValues: { level: '', module: ''},
+    initialValues: { level: props.level, module: props.module },
     validationSchema: null, onSubmit
   });
+
+  console.log(question);
 
   return (
     <form onSubmit={formik.handleSubmit} className='modifyTest'>
       <div className='form-control-wrapper'>
-        <FilterFormControl
-          value={formik.values.level}
-          filterName='level'
-          filterData={filterLevels}
-          onChange={formik.handleChange}/>
-        <FilterFormControl
-          value={formik.values.module}
-          filterName='module'
-          filterData={filterModules}
-          onChange={formik.handleChange}/>
+        {location.pathname === '/add-test-modules' ?
+          <>
+            <FilterFormControl
+              value={formik.values.level}
+              filterName='level'
+              filterData={filterLevels}
+              onChange={formik.handleChange} />
+            <FilterFormControl
+              value={formik.values.module}
+              filterName='module'
+              filterData={filterModules}
+              onChange={formik.handleChange} />
+          </>
+          : question && <>
+            <span className='questionInfo'>Level: {question.level}</span>
+            <span className='questionInfo'>Module: {question.module}</span>
+            <span className='questionInfo'>Question-ID: {question.id}</span>
+          </>
+        }
       </div>
       <div className='module-wrapper'>
         {formik.values.module === 'Grammar' ?
           <ManageGrammar
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : questionModuleData}
-          /> : null}
+            moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : question} />
+          : null}
         {formik.values.module === 'Listening' ?
           <ManageListening
             handleModule={setModuleData}
             handleAudio={setAduioFile}
-            moduleData={location.pathname === '/add-test-modules' ? listeningModuleDataEmpty : listeningModuleData}
+            moduleData={location.pathname === '/add-test-modules' ? listeningModuleDataEmpty : question}
           /> : null}
         {formik.values.module === 'Speaking' ?
           <ManageTopic
-            moduleDescription={<Trans>'Add topic for an Speaking'</Trans>}
+            moduleDescription={
+              location.pathname === '/add-test-modules'
+                ? <Trans>'Add topic for an Speaking'</Trans>
+                : <Trans>'Edit topic for an Speaking'</Trans>
+            }
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test-modules' ? '' : topicData}
+            moduleData={location.pathname === '/add-test-modules' ? '' : question}
           /> : null}
         {formik.values.module === 'Essay' ?
           <ManageTopic
-            moduleDescription={<Trans>'Add topic for an Essay'</Trans>}
+            moduleDescription={
+              location.pathname === '/add-test-modules'
+                ? <Trans>'Add topic for an Essay'</Trans>
+                : <Trans>'Edit topic for an Essay'</Trans>
+            }
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test-modules' ? '' : topicData}
+            moduleData={location.pathname === '/add-test-modules' ? '' : question}
           /> : null}
       </div>
       <div className='module-buttons-wrapper'>
@@ -92,4 +115,9 @@ export const ManageModule = () => {
       </div>
     </form>
   );
+};
+
+ManageModule.propTypes = {
+  level: PropTypes.any,
+  module: PropTypes.any,
 };

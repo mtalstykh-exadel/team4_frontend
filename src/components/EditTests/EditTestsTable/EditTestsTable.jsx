@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
@@ -11,6 +11,9 @@ import { Trans } from '@lingui/macro';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
+
+  const history = useHistory();
+  const queryString = require('query-string');
 
   useEffect(() => {
     dispatch(requestQuestionsList());
@@ -56,13 +59,23 @@ export const EditTestsTable = (props) => {
     setPage(0);
   };
 
+  const handleClickEdit = (path, id) => {
+    history.push({
+      pathname: path,
+      search: queryString.stringify({ id: id })
+    });
+  };
+
   useEffect(() => {
     filteredQuestions.length < rowsPerPage && setPage(0);
   }, [filteredQuestions]);
 
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question'><Trans>Add question</Trans></Button>
+      <Button color='primary' variant='contained' type='search' onClick={() => handleClickEdit('/add-test-modules')}
+        className='btn-add-question'>
+        <Trans>Add question</Trans>
+      </Button>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
@@ -90,11 +103,13 @@ export const EditTestsTable = (props) => {
                   }
                   <TableCell align='left' size='small'>{row.question}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' component={Link} to='/edit-test-modules' className='btn-search'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search'
+                      onClick={() => handleClickEdit('/edit-test-modules', row.id)} className='btn-search'>
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
+                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
+                    onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
                 </TableRow>
               );
             })}

@@ -20,7 +20,7 @@ export const ManageTopic = (props) => {
         className='listening-topic'
         required
         size='small'
-        value={moduleData}
+        value={moduleData.questionBody}
         onChange={handleField}
         id='outlined-required'
         name='questionName'

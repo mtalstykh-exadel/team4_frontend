@@ -15,6 +15,8 @@
     "jwt-decode": "^3.1.2",
     "min-indent": "^1.0.1",
     "node-sass": "^6.0.1",
+    "query-string": "^7.0.1",
+    "querystring": "^0.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",

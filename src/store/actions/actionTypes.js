@@ -13,6 +13,7 @@ export const LOGOUT_START = 'LOGOUT_START';
 
 // coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';
+export const REQUEST_QUESTION = 'REQUEST_QUESTIONS';
 
 // jwt actiontypes
 export const JWT_ADD = 'JWT_ADD';
