@@ -1,13 +1,16 @@
-export const testController = ({ tasks, questionID, answerID, domID }) => {
+export const testController = ({ tasks, testModule, questionID, answerID, domID }) => {
+  console.log(testModule);
   tasks.map((el) => {
     if (el.id === questionID) {
-      if (localStorage.getItem('grammar') !== null) {
+      if (localStorage.getItem(testModule) !== null) {
         localStorage.setItem(
-          'grammar',
+          testModule,
           JSON.stringify([
-            ...JSON.parse(localStorage.getItem('grammar')), { qID: questionID, aID: answerID, domID: domID },
+            ...JSON.parse(localStorage.getItem(testModule)), { qID: questionID, aID: answerID, domID: domID },
           ])
         );
+      } else {
+        localStorage.setItem(testModule, JSON.stringify([{ qID: questionID, aID: answerID, domID: domID }]));
       }
     }
   });

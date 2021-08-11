@@ -5,7 +5,7 @@ import { Grammar, Player } from '../../index';
 import { Trans } from '@lingui/macro';
 import { getAudioFile } from '../../../api/get-audioFIle';
 
-export const Listening = ({ tasks, contentFile }) => {
+export const Listening = ({ tasks, contentFile, testModule }) => {
   const [url, setUrl] = useState('');
   useEffect(
     async function () {
@@ -28,7 +28,7 @@ export const Listening = ({ tasks, contentFile }) => {
       <div className='audio'>
         <Player id='player-listening' src={url} />
       </div>
-      <Grammar tasks={tasks} />
+      <Grammar tasks={tasks} testModule={testModule} />
     </div>
   );
 };
@@ -36,4 +36,5 @@ export const Listening = ({ tasks, contentFile }) => {
 Listening.propTypes = {
   contentFile: PropTypes.any,
   tasks: PropTypes.array,
+  testModule: PropTypes.string,
 };

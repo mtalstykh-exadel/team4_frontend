@@ -41,8 +41,8 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks}/>,
-    <Listening key='1' tasks={listeningTasks} contentFile={contentFile} />,
+    <Grammar key='0' tasks={grammarTasks} testModule='grammar'/>,
+    <Listening key='1' tasks={listeningTasks} contentFile={contentFile} testModule='listening'/>,
     <Essay key='2' task={essayTask} />,
     <Speaking key='3' task={speakingTask} />,
   ];

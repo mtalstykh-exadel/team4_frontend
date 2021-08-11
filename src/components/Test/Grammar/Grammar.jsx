@@ -4,9 +4,9 @@ import './Grammar.scss';
 import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 
-export const Grammar = ({ tasks }) => {
+export const Grammar = ({ tasks, testModule }) => {
   
-  const saveDataArray = localStorage.getItem('grammar');
+  const saveDataArray = localStorage.getItem(testModule);
 
   setTimeout(() => {
     if (saveDataArray !== null) {
@@ -29,7 +29,7 @@ export const Grammar = ({ tasks }) => {
             name={'group-' + questionCount}
             value={questionItem.answer}
           />
-          <label onClick={() => testController({tasks: tasks, questionID: question.id, answerID: questionItem.id, domID: domID})} htmlFor={domID} className='question-answer'> {questionItem.answer}</label>
+          <label onClick={() => testController({testModule: testModule, tasks: tasks, questionID: question.id, answerID: questionItem.id, domID: domID})} htmlFor={domID} className='question-answer'> {questionItem.answer}</label>
         </div>
       );
     });
@@ -59,4 +59,5 @@ export const Grammar = ({ tasks }) => {
 Grammar.propTypes = {
   tasks: PropTypes.array,
   questions: PropTypes.array,
+  testModule: PropTypes.string,
 };
