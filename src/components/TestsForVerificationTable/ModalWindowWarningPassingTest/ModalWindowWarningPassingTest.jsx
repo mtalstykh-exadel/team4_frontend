@@ -21,8 +21,8 @@ export const ModalWindowWarningPassingTest = () => {
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
+     <Paper elevation={2}>
       <div className='modal-content'>
-        <Paper elevation={2}>
           <div className='modal-warning-passing-test'>
             <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
               <CloseIcon className='close-icon'/>
@@ -32,8 +32,8 @@ export const ModalWindowWarningPassingTest = () => {
               <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
             </div>
           </div>
-        </Paper>
-      </div>
+        </div>
+      </Paper>
     </Modal>
   );
 };
