@@ -5,8 +5,7 @@ import Button from '@material-ui/core/Button';
 import './TestLevelSelectorItem.scss';
 import { startTest } from '../../../api/start-test';
 import { language_english } from '../../../constants/languageConstants';
-import { userLanguageKey } from '../../../constants/localStorageConstants';
-import { currentTest } from '../../../constants/localStorageConstants';
+import { userLanguageKey, currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 import { CircularProgress } from '@material-ui/core';
 
