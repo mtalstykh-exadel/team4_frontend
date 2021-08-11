@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 import { assignTest, deassignTest } from '../../../api/employees-fetch';
 
+
 export const EmployeesTable = (props) => {
 
   const dispatch = useDispatch();
@@ -61,10 +62,14 @@ export const EmployeesTable = (props) => {
                   <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.deadline[6] : null}</TableCell>
                   <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
-                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' onClick={() => deassignTest()}>
+                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'
+                      onClick={() => {deassignTest(row.assignedTest.testId)
+                        .then(dispatch(requestEmployeesList()));}}>
                       <Trans>Deassign</Trans>
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard' onClick={() => assignTest(row.id)}>
+                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard'
+                        onClick={() => {assignTest(row.id)
+                          .then(dispatch(requestEmployeesList()));}}>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>

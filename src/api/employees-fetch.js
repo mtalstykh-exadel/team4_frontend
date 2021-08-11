@@ -6,7 +6,6 @@ const getEmployees = () => {
 };
 
 const assignTest = (id) => {
-  console.log('assign', id);
   return axiosInstance.post(`/tests/assign/${id}`, {
     deadline: '2021-08-11T14:53:18.604Z',
     level: 'A1',
@@ -16,8 +15,7 @@ const assignTest = (id) => {
 
 
 const deassignTest = (id) => {
-  console.log('deassign', id);
-  return axiosInstance.post('/tests/deassign/171');
+  return axiosInstance.post(`/tests/deassign/${id}`);
 };
 
 export { getEmployees, assignTest, deassignTest };
