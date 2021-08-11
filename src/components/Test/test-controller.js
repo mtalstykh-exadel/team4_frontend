@@ -1,5 +1,4 @@
 export const testController = ({ tasks, testModule, questionID, answerID, domID }) => {
-  console.log(testModule);
   tasks.map((el) => {
     if (el.id === questionID) {
       if (localStorage.getItem(testModule) !== null) {

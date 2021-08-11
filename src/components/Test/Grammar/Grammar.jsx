@@ -7,7 +7,6 @@ import { testController } from '../test-controller';
 export const Grammar = ({ tasks, testModule }) => {
   
   const saveDataArray = localStorage.getItem(testModule);
-
   setTimeout(() => {
     if (saveDataArray !== null) {
       JSON.parse(saveDataArray).map((item) => {
