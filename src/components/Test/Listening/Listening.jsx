@@ -6,16 +6,19 @@ import { Trans } from '@lingui/macro';
 import { getAudioFile } from '../../../api/get-audioFIle';
 
 export const Listening = ({ tasks, contentFile }) => {
-
   const [url, setUrl] = useState('');
-  useEffect( async function() {
-    setUrl(await getAudioFile(contentFile.url).then((response) => {
-      return URL.createObjectURL(
-          new Blob([response.data], { type: 'audio/ogg' })
-        );
-      })
-    );
-  },[setUrl]);
+  useEffect(
+    async function () {
+      setUrl(
+        await getAudioFile(contentFile.url).then((response) => {
+          return URL.createObjectURL(
+            new Blob([response.data], { type: 'audio/ogg' })
+          );
+        })
+      );
+    },
+    [setUrl]
+  );
 
   return (
     <div className='listening-step'>
@@ -23,10 +26,7 @@ export const Listening = ({ tasks, contentFile }) => {
         <Trans>Listen and choose an answer option</Trans>
       </div>
       <div className='audio'>
-        <Player
-          id='player-listening'
-          src={ url }
-        />
+        <Player id='player-listening' src={url} />
       </div>
       <Grammar tasks={tasks} />
     </div>

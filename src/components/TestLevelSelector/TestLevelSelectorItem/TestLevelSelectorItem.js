@@ -10,17 +10,27 @@ import { currentTest } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 import { CircularProgress } from '@material-ui/core';
 
-export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descriptionRU, level}) => {
+export const TestLevelsSelectorItem = ({
+  titleEN,
+  titleRU,
+  descriptionEN,
+  descriptionRU,
+  level,
+}) => {
   const history = useHistory();
   const [loading, setLoading] = useState(false);
 
   return (
     <div className='test-level-selector-item'>
       <div className='title'>
-        {localStorage.getItem(userLanguageKey) === language_english ? titleEN : titleRU}
+        {localStorage.getItem(userLanguageKey) === language_english
+          ? titleEN
+          : titleRU}
       </div>
       <div className='description'>
-        {localStorage.getItem(userLanguageKey) === language_english ? descriptionEN : descriptionRU}
+        {localStorage.getItem(userLanguageKey) === language_english
+          ? descriptionEN
+          : descriptionRU}
       </div>
       <Button
         disableElevation
@@ -31,19 +41,25 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
         onClick={() => {
           setLoading(true);
           localStorage.removeItem(currentTest);
-          startTest(level).then((response) => {
-            localStorage.setItem(currentTest, JSON.stringify(response));
-            history.push('/test');
-            window.scrollTo(0, 0);
-          }).catch((err) => {
+          startTest(level)
+            .then((response) => {
+              localStorage.setItem(currentTest, JSON.stringify(response));
+              history.push('/test');
+              window.scrollTo(0, 0);
+            })
+            .catch((err) => {
+              setLoading(false);
+              if (err.code === 409) {
                 alert('Попытки закончились, приходите завтра');
-                setLoading(false);
-                console.log(level, err);
+              }
             });
-          }
-        }
+        }}
       >
-        {loading ? <CircularProgress className='border-primary'/> : <Trans>Take test</Trans>}
+        {loading ? (
+          <CircularProgress className='border-primary' />
+        ) : (
+          <Trans>Take test</Trans>
+        )}
       </Button>
     </div>
   );
@@ -54,5 +70,5 @@ TestLevelsSelectorItem.propTypes = {
   titleEN: PropTypes.string.isRequired,
   descriptionEN: PropTypes.string.isRequired,
   titleRU: PropTypes.string.isRequired,
-  descriptionRU: PropTypes.string.isRequired
+  descriptionRU: PropTypes.string.isRequired,
 };
