@@ -82,7 +82,18 @@ export const EditTestsTable = (props) => {
 
   return (
     <div className='edit-tests-data-wrapper'>
-              className='btn-add-question'><Trans>Add question</Trans></Button>
+     <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <Paper elevation={2}>
+         <div className='modal-content'>
+          <ModalWindowWarningArchive handleClose={handleClose}/>
+         </div>
+        </Paper>
+      </Modal>
       <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question button-standard'><Trans>Add question</Trans></Button>
       <Paper elevation={2}>
         <TableContainer>
