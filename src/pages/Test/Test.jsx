@@ -109,6 +109,7 @@ export const Test = () => {
               setStep(0);
               setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button invisible');
+              window.scrollTo(0, 0);
             }}
           >
             <Trans>Grammar</Trans>
@@ -119,6 +120,7 @@ export const Test = () => {
               setStep(1);
               setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
+              window.scrollTo(0, 0);
             }}
           >
             <Trans>Listening</Trans>
@@ -129,6 +131,7 @@ export const Test = () => {
               setStep(2);
               setNextButtonClass('next-step-button');
               setPrevButtonClass('previous-step-button');
+              window.scrollTo(0, 0);
             }}
           >
             <Trans>Essay</Trans>
@@ -139,6 +142,7 @@ export const Test = () => {
               setStep(3);
               setNextButtonClass('next-step-button invisible');
               setPrevButtonClass('previous-step-button');
+              window.scrollTo(0, 0);
             }}
           >
             <Trans>Speaking</Trans>
@@ -163,6 +167,7 @@ export const Test = () => {
                     setPrevButtonClass('previous-step-button invisible');
                   }
                   setNextButtonClass('next-step-button');
+                  window.scrollTo(0, 0);
                   return prev;
                 });
               }}
@@ -182,6 +187,7 @@ export const Test = () => {
                     setNextButtonClass('next-step-button invisible');
                   }
                   setPrevButtonClass('previous-step-button');
+                  window.scrollTo(0, 0);
                   return next;
                 });
               }}
