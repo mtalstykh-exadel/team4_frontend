@@ -11,7 +11,7 @@ import {
 import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
-import { currentTest, testEassyUserAnswers, testListeningUserAnswers, testGrammarUserAnswers, testSpeakingAnswers } from '../../constants/localStorageConstants';
+import { currentTest, testEassyUserAnswers, testListeningUserAnswers, testGrammarUserAnswers } from '../../constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
@@ -42,7 +42,7 @@ export const Test = () => {
     <Grammar key='0' tasks={grammarTasks} testModule={testGrammarUserAnswers}/>,
     <Listening key='1' tasks={listeningTasks} contentFile={contentFile} testModule={testListeningUserAnswers}/>,
     <Essay key='2' task={essayTask} testModule={testEassyUserAnswers}/>,
-    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers}/>,
+    <Speaking key='3' task={speakingTask} />,
   ];
 
   const modals = [
