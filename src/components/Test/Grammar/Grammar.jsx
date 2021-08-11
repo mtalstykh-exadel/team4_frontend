@@ -18,7 +18,7 @@ export const Grammar = ({ tasks }) => {
             name={'group-' + questionCount}
             value={questionItem.answer}
           />
-          <label htmlFor={questionItem.answer + questionCount}> {questionItem.answer}</label>
+          <label htmlFor={questionItem.answer + questionCount} className='question-answer'> {questionItem.answer}</label>
         </div>
       );
     });
