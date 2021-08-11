@@ -26,5 +26,8 @@ const offRecAudio = () => {
   rec.onstop();
   return blobURL;
 };
+const saveBlobUrl = (testModule) => {
+  localStorage.setItem(testModule, JSON.stringify({blob: blobURL}));
+};
 
-export {onRecAudio, offRecAudio};
+export {onRecAudio, offRecAudio, saveBlobUrl};
