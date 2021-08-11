@@ -5,8 +5,8 @@ import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 
 export const Grammar = ({ tasks, testModule }) => {
-  
   const saveDataArray = localStorage.getItem(testModule);
+
   setTimeout(() => {
     if (saveDataArray !== null) {
       JSON.parse(saveDataArray).map((item) => {
@@ -28,7 +28,22 @@ export const Grammar = ({ tasks, testModule }) => {
             name={'group-' + questionCount}
             value={questionItem.answer}
           />
-          <label onClick={() => testController({testModule: testModule, tasks: tasks, questionID: question.id, answerID: questionItem.id, domID: domID})} htmlFor={domID} className='question-answer'> {questionItem.answer}</label>
+          <label
+            onClick={() =>
+              testController({
+                testModule: testModule,
+                tasks: tasks,
+                questionID: question.id,
+                answerID: questionItem.id,
+                domID: domID,
+              })
+            }
+            htmlFor={domID}
+            className='question-answer'
+          >
+            {' '}
+            {questionItem.answer}
+          </label>
         </div>
       );
     });
@@ -37,12 +52,13 @@ export const Grammar = ({ tasks, testModule }) => {
       <div key={questionCount} className='grammar-step'>
         <div className='test-question'>
           <span className='test-question number'>{questionCount}. </span>
-          <span className='test-question sentence'>{question.questionBody}</span>
+          <span className='test-question sentence'>
+            {question.questionBody}
+          </span>
         </div>
         {options}
       </div>
     );
-
   });
 
   return (
