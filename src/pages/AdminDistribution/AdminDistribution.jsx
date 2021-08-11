@@ -5,7 +5,6 @@ import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
 } from '@material-ui/core';
-import { coaches } from './Coaches';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
 import { assignTest } from './ScriptsAdminDistributtion';
@@ -53,7 +52,12 @@ const AdminDistribution = (props) => {
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
-  console.log(Coaches);
+  const coachNames = [];
+  if (Coaches !== undefined) {
+    for (let i = 0; i < Coaches.length; i++) {
+      coachNames[i] = Coaches[i].name;
+    }
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -109,7 +113,7 @@ const AdminDistribution = (props) => {
                                 <option aria-label='None' value='placeholder' >
                                   name
                                 </option>
-                                {coaches.map((coachName) => {
+                                {coachNames.map((coachName) => {
                                   keysForOptions++;
                                   return (
                                     <option key={keysForOptions} value={coachName} >
