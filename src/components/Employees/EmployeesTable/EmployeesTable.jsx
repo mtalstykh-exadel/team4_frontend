@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Modal } from '@material-ui/core';
+// import { Modal } from '@material-ui/core';
+// import { useSelector } from 'react-redux';
 import {
   Button,
   Paper,
@@ -16,7 +17,6 @@ import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
-import { HRmodalWindowTestAssignment } from './HRmodalWindowTestAssignment/HRmodalWindowTestAssignment';
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 
 export const EmployeesTable = (props) => {
@@ -54,7 +54,6 @@ export const EmployeesTable = (props) => {
   const [name, setName] = React.useState('');
   const [gmail, setGmail] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const [indexItem, setIndexItem] = React.useState(0);
 
   const handleOpen = () => {
     setOpen(true);
@@ -64,27 +63,11 @@ export const EmployeesTable = (props) => {
     setOpen(false);
   };
 
-  const modals = [
-    <HRmodalWindowTestAssignment key={0} name={name} handleClose={handleClose}/>,
-    <HRmodalWindowViewingUserInformation key={1} name={name} handleClose={handleClose} gmail={gmail}/>
-  ];
-
-
   return (
     <div>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby='simple-modal-title'
-              aria-describedby='simple-modal-description'
-              className='modal'>
-              <div className='modal-content'>
-                {modals[indexItem]}
-              </div>
-            </Modal>
             <TableHead>
               <TableRow>
                 {rows.map((rowName) => {
@@ -97,11 +80,7 @@ export const EmployeesTable = (props) => {
             <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
-                  <TableCell component='th' scope='row' onClick={() => {
-                    setName(row.name);
-                    handleOpen();
-                    setIndexItem(0);
-                  }}>{row.name}</TableCell>
+                  <TableCell component='th' scope='row'>{row.name}</TableCell>
                   <TableCell align='left' size='small'>{row.level}</TableCell>
                   <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
                   <TableCell align='left' size='small'>{row.mail}</TableCell>
@@ -112,17 +91,15 @@ export const EmployeesTable = (props) => {
                         <Trans>Deassign</Trans>
                       </Button>
                       : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                        className='btn-search' onClick={() => {
-                          setName(row.name);
-                          setGmail(row.mail);
-                          setIndexItem(1);
-                          handleOpen();
-                        }}>
-
+                        className='btn-search'>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
-                  <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
+                  <TableCell align='left'>{<RestoreOutlinedIcon className='icons-color-primary archiveBtn' onClick={() => {
+                    setName(row.name);
+                    setGmail(row.mail);
+                    handleOpen();
+                  }}/> }</TableCell>
                 </TableRow>
               );
             }
@@ -140,6 +117,7 @@ export const EmployeesTable = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
     </div>
   );
 };

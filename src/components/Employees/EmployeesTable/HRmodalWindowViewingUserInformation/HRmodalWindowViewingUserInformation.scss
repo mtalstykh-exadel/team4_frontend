@@ -1,74 +1,41 @@
-.hr-modal-view-user-info {
-  width: 1042px;
-  height: 510px;
+.modal-content .hr-modal-view-user-info {
+  max-width: 1042px;
+  min-height: 410px;
 
   .close-icon-wrapper {
-    position: relative;
     display: block;
-    margin-left: 95%;
+    margin-left: auto;
+    padding: 0;
 
     .MuiIconButton-root {
       height: 35px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 21px;
-        height: 21px;
-        cursor: pointer;
-      }
     }
   }
 
-  .information {
-    display: grid;
-    grid-template-columns: 20% 80%;
-    grid-template-rows: 80% 20%;
-    height: 200px;
+  .info {
+    display: flex;
+    margin-bottom: 20px;
 
-    .photo-test-level {
-      .photo {
+    .info-avatar-wrapper {
+      padding-right: 20px;
+
+      .info-avatar {
         width: 80px;
         height: 80px;
-        padding-left: 15px;
-      }
-
-      .test-level-selector-wrapper {
-        .item {
-          width: 140px;
-          height: 30px;
-        }
       }
     }
 
-    .name-profession {
+    .info-name {
+      margin: 0;
+    }
+
+    .info-text {
       text-align: left;
-
-      .name {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 28px;
-      }
-
-      .profession,
-      .gmail {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 21px;
-        margin-top: 10px;
-      }
     }
   }
 
-  .container {
-    padding: 10px;
-
-    .MuiTableContainer-root {
-      border-top: 1px solid rgba(224, 224, 224, 1);
-      border-left: 1px solid rgba(224, 224, 224, 1);
-      border-right: 1px solid rgba(224, 224, 224, 1);
-    }
+  .level-select {
+    width: 140px;
+    padding: 0 0 20px 0;
   }
 }
