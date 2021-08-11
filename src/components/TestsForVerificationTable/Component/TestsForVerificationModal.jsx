@@ -23,40 +23,54 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
       message: 'Hello! This topic contains an error. It is right to write birTHday.',
       questionID: 1908632,
       question: 'Happy birzday to you!'
+    },
+    {
+      module: 'Essay',
+      message: 'Hello! This topic contains an error. It is right to write birTHday.',
+      questionID: 1908632,
+      question: 'Happy birzday to you!'
+    },
+    {
+      module: 'Essay',
+      message: 'Hello! This topic contains an error. It is right to write birTHday.',
+      questionID: 1908632,
+      question: 'Happy birzday to you!'
     }
   ];
 
   const ReportedMistakesHTML =
     <div className='reported-mistake-wrapper'>
       <div className='error-messages'>Error messages from the user:</div>
-      {
-        ReportedMistakes.map((item) => {
-          return (
-            <>
-              <div className='module-name'>Module {item.module}</div>
-              <div className='users-message'>{item.message}</div>
-              <div className='question-id'>Question ID {item.questionID}</div>
-              <div className='question-context'>{item.question}</div>
-              <div className='edit-button-wrapper'>
-                <Button
+      <div className='scroll-container'>
+        {
+          ReportedMistakes.map((item) => {
+            return (
+              <>
+                <div className='module-name'>Module {item.module}</div>
+                <div className='users-message'>{item.message}</div>
+                <div className='question-id'>Question ID {item.questionID}</div>
+                <div className='question-context'>{item.question}</div>
+                <div className='edit-button-wrapper'>
+                  <Button
+                    variant='outlined'
+                    color='primary'
+                    className='edit-button'
+                    component={Link}
+                    to='/edit-test-modules'
+                  >Edit</Button>
+                </div>
+                <TextField
+                  label='Comment'
                   variant='outlined'
-                  color='primary'
-                  className='edit-button'
-                  component={Link}
-                  to='/edit-test-modules'
-                >Edit</Button>
-              </div>
-              <TextField
-                label='Comment'
-                variant='outlined'
-                className='comment-section'
-                multiline
-                rows={3}
-              />
-            </>
-          );
-        })
-      }
+                  className='comment-section'
+                  multiline
+                  rows={3}
+                />
+              </>
+            );
+          })
+        }
+      </div>
     </div>;
   const EssayHTML =
     <div className='essay-wrapper'>

@@ -74,40 +74,47 @@
 
     .error-messages {
       font-size: 16px;
-      margin: 20px 0 0 40px;
+      margin: 20px 0 13px 40px;
     }
 
-    .module-name {
-      margin: 26px 0 10px 39px;
-      font-size: 16px;
-      color: #828282;
-    }
+    .scroll-container {
+      height: 650px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
 
-    .users-message {
-      margin: 0 39px;
-      padding: 12px 14px;
-      border: 1px solid #bdbdbd;
-      box-sizing: border-box;
-    }
+      .module-name {
+        margin: 13px 0 10px 39px;
+        font-size: 16px;
+        color: #828282;
+      }
 
-    .question-id {
-      margin: 20px 0 11px 39px;
-      font-size: 16px;
-      color: #828282;
-    }
+      .users-message {
+        margin: 0 39px;
+        padding: 12px 14px;
+        border: 1px solid #bdbdbd;
+        box-sizing: border-box;
+      }
 
-    .question-context {
-      font-size: 16px;
-      margin: 0 39px 15px 39px;
-    }
+      .question-id {
+        margin: 20px 0 11px 39px;
+        font-size: 16px;
+        color: #828282;
+      }
 
-    .edit-button-wrapper {
-      display: flex;
-      height: 25px;
-      margin: 0 37px 0 520px;
+      .question-context {
+        font-size: 16px;
+        margin: 0 39px 15px 39px;
+      }
 
-      .edit-button {
-        width: 110px;
+      .edit-button-wrapper {
+        display: flex;
+        height: 25px;
+        margin: 0 37px 0 520px;
+
+        .edit-button {
+          width: 110px;
+        }
       }
     }
   }
@@ -179,7 +186,7 @@
   }
 
   .comment-section {
-    margin: 24px 39px 0 39px;
+    margin: 24px 39px 13px 39px;
     width: 588px;
   }
 
