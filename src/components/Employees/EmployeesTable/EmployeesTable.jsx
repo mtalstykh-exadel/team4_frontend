@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
 
+import { assignTest, deassignTest } from '../../../api/employees-fetch';
+
 export const EmployeesTable = (props) => {
 
   const dispatch = useDispatch();
@@ -55,14 +57,14 @@ export const EmployeesTable = (props) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>{row.name}</TableCell>
-                  <TableCell align='left' size='small'>{row.level}</TableCell>
-                  <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
+                  <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.level : null}</TableCell>
+                  <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.deadline[6] : null}</TableCell>
                   <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
-                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' >
+                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' onClick={() => deassignTest()}>
                       <Trans>Deassign</Trans>
                     </Button>
-                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard' >
+                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard' onClick={() => assignTest(row.id)}>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>

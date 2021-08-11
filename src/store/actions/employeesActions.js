@@ -1,5 +1,5 @@
 import { REQUEST_EMPLOYEES_LIST } from './actionTypes';
-import getEmployees from '../../api/employees-fetch';
+import { getEmployees } from '../../api/employees-fetch';
 
 export const setEmployeesList = (filteredEmployees) => ({ type: REQUEST_EMPLOYEES_LIST, filteredEmployees });
 
