@@ -1,5 +1,11 @@
-import { SET_PROFILE_DATA } from './actionTypes';
+import getUserTests from '../../api/user-tests';
+import { SET_USER_TESTS_HISTORY } from './actionTypes';
 
-export const setProfileData = (avatar, fullname, occupation, email) => ({
-  type: SET_PROFILE_DATA, avatar, fullname, occupation, email
+export const setProfileData = (testsHistory) => ({
+  type: SET_USER_TESTS_HISTORY, testsHistory
 });
+
+export const requestUserTestsHistory = () => async (dispatch) => {
+  const data = await getUserTests();
+  dispatch(setProfileData(data));
+};

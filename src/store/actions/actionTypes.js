@@ -4,12 +4,15 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
 // profile actionTypes
-export const SET_PROFILE_DATA = 'SET_PROFILE_DATA';
+export const SET_USER_TESTS_HISTORY = 'SET_USER_TESTS_HISTORY';
 // header actionTypes
 export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 
 // logout actiontypes
 export const LOGOUT_START = 'LOGOUT_START';
+
+// admin actionTypes
+export const REQUEST_TESTS_FOR_DISTRIBUTION = 'REQUEST_TESTS_FOR_DISTRIBUTION';
 
 // coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';

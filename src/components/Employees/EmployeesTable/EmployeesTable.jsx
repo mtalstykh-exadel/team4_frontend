@@ -95,37 +95,37 @@ export const EmployeesTable = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                return (
-                  <TableRow key={row.id}>
-                    <TableCell component='th' scope='row' onClick={() => {
-                      setName(row.name);
-                      handleOpen();
-                      setIndexItem(0);
-                    }}>{row.name}</TableCell>
-                    <TableCell align='left' size='small'>{row.level}</TableCell>
-                    <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
-                    <TableCell align='left' size='small'>{row.mail}</TableCell>
-                    <TableCell align='left'>
-                      {row.assigne ?
-                        <Button color='secondary' variant='outlined' size='small' style={{width: 140}} disabled
-                                type='search' className='btn-search'>
-                          <Trans>Deassign</Trans>
-                        </Button>
-                        : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                                  className='btn-search' onClick={() => {
+              return (
+                <TableRow key={row.id}>
+                  <TableCell component='th' scope='row' onClick={() => {
+                    setName(row.name);
+                    handleOpen();
+                    setIndexItem(0);
+                  }}>{row.name}</TableCell>
+                  <TableCell align='left' size='small'>{row.level}</TableCell>
+                  <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
+                  <TableCell align='left' size='small'>{row.mail}</TableCell>
+                  <TableCell align='left'>
+                    {row.assigne ?
+                      <Button color='secondary' variant='outlined' size='small' style={{width: 140}} disabled
+                        type='search' className='btn-search'>
+                        <Trans>Deassign</Trans>
+                      </Button>
+                      : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
+                        className='btn-search' onClick={() => {
                           setName(row.name);
                           setGmail(row.mail);
                           setIndexItem(1);
                           handleOpen();
                         }}>
 
-                          <Trans>Assign test</Trans>
-                        </Button>}
-                    </TableCell>
-                    <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
-                  </TableRow>
-                );
-              }
+                        <Trans>Assign test</Trans>
+                      </Button>}
+                  </TableCell>
+                  <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
+                </TableRow>
+              );
+            }
             )}
             </TableBody>
           </Table>
