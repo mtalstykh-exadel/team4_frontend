@@ -52,7 +52,9 @@ const AdminDistribution = (props) => {
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
+
   const coachNames = [];
+
   if (Coaches !== undefined) {
     for (let i = 0; i < Coaches.length; i++) {
       coachNames[i] = Coaches[i].name;
