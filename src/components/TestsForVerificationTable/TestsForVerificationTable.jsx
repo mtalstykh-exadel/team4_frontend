@@ -3,30 +3,33 @@ import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePa
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
 
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useEffect } from 'react';
+
+import { requestUnverifiedTests } from '../../store/actions/unverifiedTestActions';
+
 export const TestsForVerificationTable = () => {
 
+  const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
+
+  useEffect(() => {
+    dispatch(requestUnverifiedTests());
+  }, []);
+
   const rows = [['ID','ID'], ['Level','Уровень'], ['Assigned','Дата назначения'], ['Test deadline', 'Крайний срок сдачи'], ['Priority', 'Приоритет'], ['Action','Действие']];
-  const testForVerification = [
-    { id: 765987, level: 'A1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['medium','средний'] },
-    { id: 765988, level: 'A2', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-    { id: 765989, level: 'B1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-    { id: 765990, level: 'A1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['medium','средний'] },
-    { id: 765991, level: 'C1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['low', 'низкий'] },
-    { id: 765992, level: 'B2', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-    { id: 765993, level: 'A1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['medium','средний'] },
-    { id: 765994, level: 'A2', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-    { id: 765995, level: 'B1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-    { id: 765996, level: 'A1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['medium','средний'] },
-    { id: 765997, level: 'C1', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['low', 'низкий'] },
-    { id: 765998, level: 'B2', assignedDate: '19 Jun 2021, 10:54', testDeadlineDate: '30 Jun 2021, 10:54', priority: ['high','высокий'] },
-  ];
+  const testForVerification = useSelector((state) => state.unverifiedTests.tests);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
+
+  useEffect(() => {
+    testForVerification.length < rowsPerPage && setPage(0);
+  }, [testForVerification]);
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -56,7 +59,7 @@ export const TestsForVerificationTable = () => {
                   <TableCell align='left'>{row.level}</TableCell>
                   <TableCell align='left'>{row.assignedDate}</TableCell>
                   <TableCell align='left'>{row.testDeadlineDate}</TableCell>
-                  <TableCell align='left'><Trans>{row.priority[0]}{row.priority[1]}</Trans></TableCell>
+                  <TableCell align='left'><Trans>{row.priority}</Trans></TableCell>
                   <TableCell align='left'>
                     <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} >
                       <Trans>Verify</Trans>
