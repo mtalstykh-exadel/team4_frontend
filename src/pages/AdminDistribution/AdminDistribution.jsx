@@ -12,6 +12,7 @@ import { assignTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
+import getCoaches from '../../api/get-coaches';
 
 const AdminDistribution = (props) => {
 
@@ -47,6 +48,12 @@ const AdminDistribution = (props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
   const role = useSelector((state) => state.jwt.role);
+  const [Coaches, setCoaches] = useState();
+
+  useEffect(() => {
+    getCoaches().then((response) => setCoaches(response));
+  }, [getCoaches]);
+  console.log(Coaches);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
