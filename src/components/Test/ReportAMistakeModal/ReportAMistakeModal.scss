@@ -1,6 +1,9 @@
 .report-mistake-modal {
   width: 949px;
+  max-height: 500px;
   height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   .close-icon-wrapper {
     position: relative;

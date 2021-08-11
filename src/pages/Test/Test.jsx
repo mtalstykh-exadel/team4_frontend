@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Modal } from '@material-ui/core';
+import React, {useState, useEffect} from 'react';
+import { Modal, Paper } from '@material-ui/core';
 import {
   Speaking,
   Essay,
@@ -14,7 +14,7 @@ import { startTimer, createTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import './Test.scss';
-import { Trans } from '@lingui/macro';
+import {Trans} from '@lingui/macro';
 
 export const Test = () => {
   const TestDurationInMinutes = 40;
@@ -155,21 +155,29 @@ export const Test = () => {
               className='submit-button button-wide'
               color='primary'
               variant='contained'
-              onClick={() => {setModalIndex(4); handleOpen();}}
+              onClick={() => {
+                setModalIndex(4);
+                handleOpen();
+              }}
             >
               <Trans>Submit</Trans>
             </Button>
           </div>
-          <div className='report-mistake' onClick={() => {setModalIndex(step); handleOpen();}}><Trans>Report a mistake</Trans></div>
+          <div className='report-mistake' onClick={() => {
+            setModalIndex(step);
+            handleOpen();
+          }}><Trans>Report a mistake</Trans></div>
           <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
             className='modal'>
-            <div className='modal-content'>
-              {modals[modalIndex]}
-            </div>
+            <Paper elevation={2}>
+              <div className='modal-content'>
+                {modals[modalIndex]}
+              </div>
+            </Paper>
           </Modal>
         </div>
       </div>
