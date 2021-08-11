@@ -5,11 +5,15 @@ export const testController = ({ tasks, testModule, questionID, answerID, domID 
         localStorage.setItem(
           testModule,
           JSON.stringify([
-            ...JSON.parse(localStorage.getItem(testModule)), { qID: questionID, aID: answerID, domID: domID },
+            ...JSON.parse(localStorage.getItem(testModule)),
+            { qID: questionID, aID: answerID, domID: domID },
           ])
         );
       } else {
-        localStorage.setItem(testModule, JSON.stringify([{ qID: questionID, aID: answerID, domID: domID }]));
+        localStorage.setItem(
+          testModule,
+          JSON.stringify([{ qID: questionID, aID: answerID, domID: domID }])
+        );
       }
     }
   });
