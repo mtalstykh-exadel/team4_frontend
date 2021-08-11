@@ -1,7 +1,7 @@
 import axiosInstance from './axios';
 
 const getEmployees = () => {
-  return axiosInstance.get('/users/coaches').then((response) => response.data);
+  return axiosInstance.get('/employees').then((response) => response.data);
 };
 
 export default getEmployees;
