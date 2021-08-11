@@ -34,6 +34,7 @@ export const TestLevelsSelectorItem = ({titleEN, titleRU, descriptionEN, descrip
           startTest(level).then((response) => {
             localStorage.setItem(currentTest, JSON.stringify(response));
             history.push('/test');
+            window.scrollTo(0, 0);
           });
         }
         }
