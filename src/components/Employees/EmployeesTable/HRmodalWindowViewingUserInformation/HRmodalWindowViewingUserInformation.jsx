@@ -1,10 +1,13 @@
 import React from 'react';
 import '../../../../styles/modal.scss';
-import CloseIcon from '@material-ui/icons/Close';
-import {FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import ava from '../../../../assets/user.svg';
+import CloseIcon from '@material-ui/icons/Close';
+import { FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
+
+import { Trans } from '@lingui/macro';
+
+import avatar from '../../../../assets/user.svg';
 
 import {
   InputLabel,
@@ -44,16 +47,16 @@ export const HRmodalWindowViewingUserInformation = (props) => {
   const modalBody = <>
     <div className='info'>
       <div className='info-avatar-wrapper'>
-        <Avatar src={ava} className='info-avatar'/>
+        <Avatar src={avatar} className='info-avatar'/>
       </div>
       <div className='info-text'>
         <h2 className='bold info-name'>{props.name}</h2>
-        <p>front-end developer</p>
-        <p>Email: {props.gmail}</p>
+        <p><Trans>front-end developer</Trans></p>
+        <p><Trans>Email: {props.gmail}</Trans></p>
       </div>
     </div>
     <FormControl variant='outlined' className='level-select' size='small'>
-      <InputLabel id='select-label'>Level</InputLabel>
+      <InputLabel id='select-label'><Trans>Level</Trans></InputLabel>
       <Select labelId='select-label' label='Select the test level' id='select' className='item'>
         {filterLevelsShort.map((item, index) => {
           itemKey++;
