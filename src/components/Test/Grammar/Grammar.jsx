@@ -2,23 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Grammar.scss';
 import { Trans } from '@lingui/macro';
+import { testController } from '../test-controller';
 
-export const Grammar = ({ tasks }) => {
+export const Grammar = ({ tasks, testModule }) => {
+  
+  const saveDataArray = localStorage.getItem('grammar');
+
+  setTimeout(() => {
+    if (saveDataArray !== null) {
+      JSON.parse(saveDataArray).map((item) => {
+        document.getElementById(item.domID).checked = true;
+        console.log(item.domID);
+      });
+    }
+  }, 0);
 
   let questionCount = 0;
   const questions = tasks.map((question) => {
-
     questionCount++;
     const options = question.answers.map((questionItem) => {
+      const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
         <div key={questionItem.answer} className='test-question-option'>
           <input
-            id={questionItem.answer + questionCount}
+            id={domID}
             type='radio'
             name={'group-' + questionCount}
             value={questionItem.answer}
           />
-          <label htmlFor={questionItem.answer + questionCount} className='question-answer'> {questionItem.answer}</label>
+          <label onClick={() => testController({tasks: tasks, testModule: testModule, questionID: question.id, answerID: questionItem.id, domID: domID})} htmlFor={domID} className='question-answer'> {questionItem.answer}</label>
         </div>
       );
     });
@@ -48,4 +60,5 @@ export const Grammar = ({ tasks }) => {
 Grammar.propTypes = {
   tasks: PropTypes.array,
   questions: PropTypes.array,
+  testModule: PropTypes.array,
 };

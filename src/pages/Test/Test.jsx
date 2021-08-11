@@ -41,7 +41,7 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks} />,
+    <Grammar key='0' tasks={grammarTasks} testModule={[]} />,
     <Listening key='1' tasks={listeningTasks} contentFile={contentFile} />,
     <Essay key='2' task={essayTask} />,
     <Speaking key='3' task={speakingTask} />,
@@ -96,7 +96,8 @@ export const Test = () => {
         setContentFile(testData.contentFile);
       }
     };
-    checkData();
+    checkData();    
+
   }, [TestDurationInMinutes]);
 
   return (
