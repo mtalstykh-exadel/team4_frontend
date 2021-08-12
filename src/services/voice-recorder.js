@@ -1,4 +1,4 @@
-import { saveSpeaking } from '../api/test-fetch';
+import { saveSpeaking } from '../api/test-set';
 
 let chunks = [];
 let blobURL;
