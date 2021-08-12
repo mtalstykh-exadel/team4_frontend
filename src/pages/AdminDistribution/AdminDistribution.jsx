@@ -58,7 +58,6 @@ const AdminDistribution = (props) => {
   if (coaches !== undefined) {
     coachNames = coaches.map((coach) => coach.name);
   }
-  console.log(coachNames);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
