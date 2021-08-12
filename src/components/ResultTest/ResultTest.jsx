@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
-// import { TextField } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { getResultTest } from '../../api/result-test';
 import { getTest } from '../../api/get-status-test';
