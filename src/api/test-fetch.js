@@ -10,10 +10,10 @@ const saveListeningAndGrammar = ( arrayAnswers ) => {
 };
 
 const saveSpeaking = ( blob ) => {
-    const FormData = new FormData();
-    FormData.append('file', blob, {type: blob.type});
+    const formData = new FormData();
+    formData.append('file', blob, {type: blob.type});
 
-    return axiosInstance.post('/answer/speaking/' + JSON.parse(localStorage.getItem(currentTest)).id, FormData,
+    return axiosInstance.post('/answer/speaking/' + JSON.parse(localStorage.getItem(currentTest)).id, formData,
         {
             headers: { 'Content-Type': 'multipart/form-data;'
         }

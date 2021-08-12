@@ -1,4 +1,3 @@
-import { testSpeakingAnswers } from '../constants/localStorageConstants';
 import { saveSpeaking } from '../api/test-fetch';
 
 let chunks = [];
@@ -27,7 +26,6 @@ const onRecAudio = () => {
 const offRecAudio = () => {
   rec.stop();
   rec.onstop();
-  saveBlobUrl({ testModule: testSpeakingAnswers });
   return blobURL;
 };
 
