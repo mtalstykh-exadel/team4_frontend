@@ -22,7 +22,7 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-import {filteredEmployees} from '../mock-data-employees';
+
 import './HRmodalWindowViewingUserInformation.scss';
 import { filterLevelsShort, tableHeader } from '../../../../constants/constants';
 
@@ -79,7 +79,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+          {[].slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
             if (filter === row.level) {
               return (
                 <TableRow key={row.id} className='row'>
@@ -110,7 +110,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
     <TablePagination
       className='base-color-elevated font-primary'
       component='div'
-      count={filteredEmployees.length}
+      count={0}
       rowsPerPage={rowsPerPage}
       rowsPerPageOptions={[]}
       labelRowsPerPage=''
