@@ -111,7 +111,6 @@ const Results = ({idTest}) => {
 
 Results.propTypes =
   {
-    level: PropTypes.string,
     idTest: PropTypes.number,
   };
 
