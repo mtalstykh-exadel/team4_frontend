@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { Modal } from '@material-ui/core';
-// import { useSelector } from 'react-redux';
 import {
   Button,
   Paper,
