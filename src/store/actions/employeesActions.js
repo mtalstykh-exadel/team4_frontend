@@ -1,9 +1,9 @@
 import { REQUEST_EMPLOYEES_LIST } from './actionTypes';
-import { filteredEmployees } from '../../components/Employees/EmployeesTable/mock-data-employees';
+import getEmployees from '../../api/employees-fetch';
 
 export const setEmployeesList = (filteredEmployees) => ({ type: REQUEST_EMPLOYEES_LIST, filteredEmployees });
 
 export const requestEmployeesList = () => (dispatch) => {
-  // TODO make a request to the server for employees list
-  dispatch(setEmployeesList(filteredEmployees));
+  getEmployees()
+    .then((data) => (dispatch(setEmployeesList(data))));
 };
