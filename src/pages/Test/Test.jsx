@@ -16,6 +16,7 @@ import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
+  const [level, setLevel] = useState('');
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
@@ -56,21 +57,21 @@ export const Test = () => {
     <ReportAMistakeModal
       key='1'
       tasks={listeningTasks}
-      level={'A1'}
+      level={level}
       module={'Listening'}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
       key='2'
-      level={'A1'}
-      topic={'About Myself'}
+      level={level}
+      topic={essayTask}
       module={'Essay'}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
       key='3'
-      level={'A1'}
-      topic={'About Myself'}
+      level={level}
+      topic={speakingTask}
       module={'Speaking'}
       handleClose={handleClose}
     />,
@@ -92,6 +93,7 @@ export const Test = () => {
         setEssayTask(testData.questions.Essay);
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
+        setLevel(testData.level);
       }
     };
     checkData();

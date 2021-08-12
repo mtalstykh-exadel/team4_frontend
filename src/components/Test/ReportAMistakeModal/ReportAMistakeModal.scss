@@ -1,9 +1,5 @@
 .report-mistake-modal {
   width: 949px;
-  max-height: 500px;
-  height: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
 
   .close-icon-wrapper {
     display: block;
@@ -30,42 +26,48 @@
     }
   }
 
+  .scroll-container {
+    max-height: 500px;
+    height: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    .selector-wrapper {
+      margin-top: 10px;
+
+      .question-selector {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+    }
+
+    .add-question-to-report {
+      margin-left: 5%;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .add-question-to-report.invisible {
+      display: none;
+    }
+
+    .add-question-to-report:hover {
+      text-decoration: underline;
+    }
+  }
+
   .topic-wrapper {
+    border: 1px solid var(--secondary-color);
     border-radius: 4px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 46px;
+    margin: 5px 5% 20px 5%;
     height: 35px;
 
     .topic {
       width: 90%;
       margin: 8px 30px;
     }
-  }
-
-  .selector-wrapper {
-    margin-top: 10px;
-
-    .question-selector {
-      width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-  }
-
-  .add-question-to-report {
-    margin-left: 5%;
-    margin-top: 10px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .add-question-to-report.invisible {
-    display: none;
-  }
-
-  .add-question-to-report:hover {
-    text-decoration: underline;
   }
 
   .report-textfield-wrapper {
