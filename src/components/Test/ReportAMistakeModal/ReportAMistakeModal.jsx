@@ -9,12 +9,12 @@ import { Trans } from '@lingui/macro';
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
   let HTMLCodeForStep;
 
-  if (module === 'Grammar' || module === 'Listening') {
+  if (module[0] === 'Grammar' || module[0] === 'Listening') {
     let count = 0;
     const selectorHTML =
       <div className='selector-wrapper'>
         <FormControl variant='outlined' className='question-selector'>
-          <InputLabel id='questions-selector-label'>Select a question to report</InputLabel>
+          <InputLabel id='questions-selector-label'><Trans>Select a question to report</Trans></InputLabel>
           <Select labelId='questions-selector-label' label='Select a question to report' id='select'>
             {tasks.map((item, index) => {
               count++;
@@ -45,7 +45,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
         <div
           className={selector.length === tasks.length ? 'add-question-to-report invisible' : 'add-question-to-report'}
           onClick={addSelector}
-        >Add question</div>
+        ><Trans>Add question</Trans></div>
       </div>;
   } else {
     HTMLCodeForStep =
@@ -73,7 +73,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>
         <span className='level-info'><Trans>Level</Trans>: {level}</span>
-        <span className='module'><Trans>Module</Trans>: {module}</span>
+        <span className='module'><Trans>Module</Trans>: <Trans>{module[0]}{module[1]}</Trans></span>
       </div>
       {HTMLCodeForStep}
       <div className='report-mistake-buttons-wrapper'>
@@ -88,6 +88,6 @@ ReportAMistakeModal.propTypes = {
   tasks: PropTypes.array,
   topic: PropTypes.array,
   level: PropTypes.string,
-  module: PropTypes.string,
+  module: PropTypes.array,
   handleClose: PropTypes.func
 };

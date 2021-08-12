@@ -51,28 +51,28 @@ export const Test = () => {
       key='0'
       tasks={grammarTasks}
       level={'A1'}
-      module={'Grammar'}
+      module={['Grammar','Грамматика']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
       key='1'
       tasks={listeningTasks}
       level={level}
-      module={'Listening'}
+      module={['Listening','Аудирование']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
       key='2'
       level={level}
       topic={essayTask}
-      module={'Essay'}
+      module={['Essay','Эссе']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
       key='3'
       level={level}
       topic={speakingTask}
-      module={'Speaking'}
+      module={['Speaking','Говорение']}
       handleClose={handleClose}
     />,
     <SubmitModal key='4' handleClose={handleClose} />,
