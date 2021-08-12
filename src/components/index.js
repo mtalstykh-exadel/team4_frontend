@@ -9,7 +9,7 @@ export { SubmitModal } from './Test/SubmitModal/SubmitModal';
 export { Grammar } from './Test/Grammar/Grammar';
 export { Listening } from './Test/Listening/Listening';
 export { Speaking } from './Test/Speaking/Speaking';
-export { Player } from './Test/Player/Player';
+export { Player } from './Player/Player';
 export { listeningTasks } from './Test/testData/ListeningTasks';
 export { grammarTasks } from './Test/testData/GrammarTasks';
 
