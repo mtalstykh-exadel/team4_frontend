@@ -50,14 +50,16 @@ export const TestsForVerificationModal = (props) => {
       <div className='error-messages'><Trans>Error messages from the user:</Trans></div>
       <div className='scroll-container'>
         {
-          ReportedMistakes.map((item) => {
-            const reportedQuestion = props.test.questions.Listening.find((o) => o.id === item.questionId);
+          ReportedMistakes.map((item, index) => {
+            const reportedQuestionGrammar = props.test.questions.Grammar.find((o) => o.id === item.questionId);
+            const reportedQuestionListening = props.test.questions.Listening.find((o) => o.id === item.questionId);
+            const reportedQuestion = reportedQuestionGrammar ? reportedQuestionGrammar : reportedQuestionListening;
             return (
-              <>
+              <div key={index}>
                 <div className='module-name'><Trans>Module</Trans> <Trans>{item.module}</Trans></div>
                 <div className='users-message'>{item.reportBody}</div>
                 <div className='question-id'><Trans>Question ID</Trans> {item.questionId}</div>
-                <div className='question-context'>{reportedQuestion}</div>
+                <div className='question-context'>{reportedQuestion.questionBody}</div>
                 <div className='edit-button-wrapper'>
                   <Button
                     variant='outlined'
@@ -74,7 +76,7 @@ export const TestsForVerificationModal = (props) => {
                   multiline
                   rows={3}
                 />
-              </>
+              </div>
             );
           })
         }
@@ -180,6 +182,6 @@ export const TestsForVerificationModal = (props) => {
 };
 
 TestsForVerificationModal.propTypes = {
-  test: PropTypes.object,
+  test: PropTypes.any,
   handleClose: PropTypes.func,
 };
