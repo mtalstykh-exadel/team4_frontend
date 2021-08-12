@@ -4,5 +4,5 @@ const getResultTest = (idTest) => {
   return axiosInstance.get('/tests/grades/' + idTest).then((response) => response.data);
 };
 
-export {getResultTest};
+export { getResultTest };
 
