@@ -31,6 +31,23 @@ msgstr "Уровень"
 msgid "Name"
 msgstr "Имя"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:34
+msgid "Priority:"
+msgstr "Приоритет:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:18
+msgid "Select the test level:"
+msgstr "Выбрать уровень теста:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:29
+msgid "Test deadline:"
+msgstr "Крайний срок:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:15
+msgid "You want to assign a test for {name}"
+msgstr "Вы хотите назначить тест для {name}"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:88
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
 msgid "front-end developer"
 msgstr "front-end developer"

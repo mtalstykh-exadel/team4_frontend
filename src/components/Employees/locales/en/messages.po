@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:46
+msgid "Assign"
+msgstr "Assign"
+
 #: src/components/Employees/EmployeesTable/EmployeesTable.jsx:95
 msgid "Assign test"
 msgstr "Assign test"
@@ -31,6 +35,23 @@ msgstr "Level"
 msgid "Name"
 msgstr "Name"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:34
+msgid "Priority:"
+msgstr "Priority:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:18
+msgid "Select the test level:"
+msgstr "Select the test level:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:29
+msgid "Test deadline:"
+msgstr "Test deadline:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:15
+msgid "You want to assign a test for {name}"
+msgstr "You want to assign a test for {name}"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:88
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
 msgid "front-end developer"
 msgstr "front-end developer"

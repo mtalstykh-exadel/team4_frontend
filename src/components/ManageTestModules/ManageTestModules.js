@@ -11,7 +11,7 @@ import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevelsShort, filterModules } from '../../constants/constants';
+import { filterLevelsLong, filterModules } from '../../constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleData, questionModuleDataEmpty, listeningModuleData, listeningModuleDataEmpty, topicData } from './data/dummyData';
@@ -37,7 +37,7 @@ export const ManageModule = () => {
         <FilterFormControl
           value={formik.values.level}
           filterName='level'
-          filterData={filterLevelsShort}
+          filterData={filterLevelsLong}
           onChange={formik.handleChange}/>
         <FilterFormControl
           value={formik.values.module}
