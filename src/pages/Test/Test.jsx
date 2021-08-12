@@ -8,7 +8,7 @@ import {
   ReportAMistakeModal,
   SubmitModal,
 } from '../../components';
-import { startTimer, createTimer } from '../../services/timer';
+import { startTimer, createTimer, stopTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import { currentTest, testEassyUserAnswers, testListeningUserAnswers, testGrammarUserAnswers, testSpeakingAnswers } from '../../constants/localStorageConstants';
@@ -25,7 +25,7 @@ export const Test = () => {
   const [essayTask, setEssayTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
-  const TestDurationInMinutes = 40;
+  const [testDurationInSeconds, setTestDurationInSeconds] = useState(2400);
 
   const [nextButtonClass, setNextButtonClass] = useState('next-step-button');
 
@@ -79,12 +79,7 @@ export const Test = () => {
   ];
 
   useEffect(() => {
-    startTimer(
-      createTimer({
-        domId: 'test-timer',
-        minutes: TestDurationInMinutes,
-      })
-    );
+    stopTimer('test-timer');
     const checkData = async () => {
       const testData = JSON.parse(localStorage.getItem(currentTest));
       if (testData !== null) {
@@ -94,11 +89,17 @@ export const Test = () => {
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
         setLevel(testData.level);
+        setTestDurationInSeconds(40 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
       }
     };
     checkData();
-
-  }, [TestDurationInMinutes]);
+    startTimer(
+      createTimer({
+        domId: 'test-timer',
+        seconds: testDurationInSeconds,
+      })
+    );
+  }, [testDurationInSeconds]);
 
   return (
     <Layout>
@@ -149,7 +150,7 @@ export const Test = () => {
             <Trans>Speaking</Trans>
           </div>
           <div className='test-step time' id='test-timer'>
-            {TestDurationInMinutes}:00
+            {Math.trunc(testDurationInSeconds / 60)}:{testDurationInSeconds % 60}
           </div>
         </div>
         <div className='test-task-wrapper'>{steps[step]}</div>
