@@ -16,7 +16,7 @@ export const TestsForVerificationTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [open, setOpen] = useState(false);
-  const [levelAndID, setLevelAndID] = useState(['id','level']);
+  const [test, setTest] = useState('');
 
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export const TestsForVerificationTable = () => {
   }, []);
 
   const rows = [['ID','ID'], ['Level','Уровень'], ['Assigned','Дата назначения'], ['Test deadline', 'Крайний срок сдачи'], ['Priority', 'Приоритет'], ['Action','Действие']];
-  const testForVerification = useSelector((state) => state.unverifiedTests.tests);
+  const testForVerification = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -73,13 +73,13 @@ export const TestsForVerificationTable = () => {
                   <TableCell align='left'><Trans>{row.priority}</Trans></TableCell>
                   <TableCell align='left'>
                     <Button color='primary'
-                            variant='outlined'
-                            size='small'
-                            style={{ width: 110 }}
-                            onClick={() => {
-                              setLevelAndID([row.id,row.level]);
-                              handleOpen();
-                            }}
+                      variant='outlined'
+                      size='small'
+                      style={{ width: 110 }}
+                      onClick={() => {
+                        setTest(row);
+                        handleOpen();
+                      }}
                     >
                       <Trans>Verify</Trans>
                     </Button>
@@ -107,7 +107,7 @@ export const TestsForVerificationTable = () => {
           aria-describedby='simple-modal-description'
           className='modal'>
           <div className='modal-content'>
-            <TestsForVerificationModal id={levelAndID[0]} level={levelAndID[1]} handleClose={handleClose}/>
+            <TestsForVerificationModal test={test} handleClose={handleClose}/>
           </div>
         </Modal>
       </Paper>

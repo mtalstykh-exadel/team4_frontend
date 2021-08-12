@@ -21,9 +21,9 @@ export const ModalWindowRemovedFromYourPost = () => {
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
-     <Paper elevation={2}>
-      <div className='modal-content'>
-        <div className='modal-remove-post'>
+      <Paper elevation={2}>
+        <div className='modal-content'>
+          <div className='modal-remove-post'>
             <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
               <CloseIcon className='close-icon'/>
             </IconButton>
@@ -32,7 +32,7 @@ export const ModalWindowRemovedFromYourPost = () => {
               <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
             </div>
           </div>
-        </div> 
+        </div>
       </Paper>
     </Modal>
   );

@@ -8,36 +8,42 @@ import { Player } from '../../index';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-export const TestsForVerificationModal = ({id, level, handleClose}) => {
+import { getAudioFile } from '../../../api/get-audioFIle';
+
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { requestReports } from '../../../store/actions/unverifiedTestActions';
+
+export const TestsForVerificationModal = (props) => {
   const [essayGrade, setEssayGrade] = useState(-1);
   const [speakingGrade, setSpeakingGrade] = useState(-1);
 
-  const ReportedMistakes = [
-    {
-      module: ['Listening','Аудирование'],
-      message: 'Hello! This question contains an error. The correct answer is not so-and-so, but so-and-so.',
-      questionID: 1258454,
-      question: 'An obstetrician/gynecologist at the pre-conception clinic suggests we ............. some further tests.'
+  const [url, setUrl] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(requestReports(props.test.id));
+  }, []);
+
+  useEffect(
+    async function () {
+      setUrl(
+        await getAudioFile(props.test.contentFile.url).then((response) => {
+          return URL.createObjectURL(
+            new Blob([response.data], { type: 'audio/ogg' })
+          );
+        })
+      );
     },
-    {
-      module: ['Essay','Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    },
-    {
-      module: ['Essay','Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    },
-    {
-      module: ['Essay','Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    }
-  ];
+    [setUrl]
+  );
+
+
+
+  const ReportedMistakes = useSelector((state) => state.reports);
 
   const ReportedMistakesHTML =
     <div className='reported-mistake-wrapper'>
@@ -45,12 +51,13 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
       <div className='scroll-container'>
         {
           ReportedMistakes.map((item) => {
+            const reportedQuestion = props.test.questions.Listening.find((o) => o.id === item.questionId);
             return (
               <>
-                <div className='module-name'><Trans>Module</Trans> <Trans>{item.module[0]}{item.module[1]}</Trans></div>
-                <div className='users-message'>{item.message}</div>
-                <div className='question-id'><Trans>Question ID</Trans> {item.questionID}</div>
-                <div className='question-context'>{item.question}</div>
+                <div className='module-name'><Trans>Module</Trans> <Trans>{item.module}</Trans></div>
+                <div className='users-message'>{item.reportBody}</div>
+                <div className='question-id'><Trans>Question ID</Trans> {item.questionId}</div>
+                <div className='question-context'>{reportedQuestion}</div>
                 <div className='edit-button-wrapper'>
                   <Button
                     variant='outlined'
@@ -76,8 +83,8 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
   const EssayHTML =
     <div className='essay-wrapper'>
       <div className='topic-title'><Trans>Topic</Trans></div>
-      <div className='topic-text'>Essay topic</div>
-      <div className='users-essay'>User's essay</div>
+      <div className='topic-text'>{props.test.questions.Essay[0].questionBody}</div>
+      <div className='users-essay'>{props.test.questions.Essay[0].answers}</div>
       <div className='grades-wrapper'>
         {
           [0,1,2,3,4,5,6,7,8,9,10].map((item) => {
@@ -98,11 +105,11 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
   const SpeakingHTML =
     <div className='speaking-wrapper'>
       <div className='topic-title'><Trans>Topic</Trans></div>
-      <div className='topic-text'>Speaking topic</div>
+      <div className='topic-text'>{props.test.contentFile.topic}</div>
       <div className='audio'>
         <Player
           id='player-speaking'
-          src='https://www.signalogic.com/melp/EngSamples/Orig/male.wav'
+          src={url}
         />
       </div>
       <div className='grades-wrapper'>
@@ -134,17 +141,31 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
       <Paper elevation={2}>
         <div className='tests-verification-modal-header'>
           <div className='test-information'>
-            <span className='test-id-verification-modal'><Trans>Test ID</Trans> {id}</span>
-            <span><Trans>Level</Trans> {level}</span>
+            <span className='test-id-verification-modal'><Trans>Test ID</Trans> {props.test.id}</span>
+            <span><Trans>Level</Trans> {props.test.level}</span>
           </div>
-          <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
             <CloseIcon/>
           </IconButton>
         </div>
         <div className='tests-verification-modal-navigation'>
-          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={() => {setStep(0);}}><div className='navigation-text'><Trans>Reported mistakes</Trans></div></div>
-          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => {setStep(1);}}><div className='navigation-text'><Trans>Essay</Trans></div></div>
-          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} onClick={() => {setStep(2);}}><div className='navigation-text'><Trans>Speaking</Trans></div></div>
+          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'}
+            onClick={() => {setStep(0);}}>
+            <div className='navigation-text'>
+              <Trans>Reported mistakes</Trans>
+            </div>
+          </div>
+          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => {setStep(1);}}>
+            <div className='navigation-text'>
+              <Trans>Essay</Trans>
+            </div>
+          </div>
+          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} 
+            onClick={() => {setStep(2);}}>
+            <div className='navigation-text'>
+              <Trans>Speaking</Trans>
+            </div>
+          </div>
         </div>
         <div className='tests-verification-modal-context'>
           {steps[step]}
@@ -159,7 +180,6 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
 };
 
 TestsForVerificationModal.propTypes = {
-  id: PropTypes.string,
-  level: PropTypes.string,
+  test: PropTypes.object,
   handleClose: PropTypes.func,
 };

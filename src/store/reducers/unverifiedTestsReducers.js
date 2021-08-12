@@ -1,15 +1,18 @@
-import { REQUEST_UNVERIFIED_TESTS } from '../actions/actionTypes';
+import { REQUEST_UNVERIFIED_TESTS, REQUEST_REPORTS } from '../actions/actionTypes';
 
-const initialState = {
-  tests: []
-};
-
-export const unverifiedTestsReducer = (state = initialState, action) => {
+export const unverifiedTestsReducer = (state = [], action) => {
   switch (action.type) {
     case REQUEST_UNVERIFIED_TESTS:
-      return Object.assign({}, state, {
-        tests: action.filteredEmployees,
-      });
+      return action.filteredEmployees;
+    default:
+      return state;
+  }
+};
+
+export const reportsReducer = (state = [], action) => {
+  switch (action.type) {
+    case REQUEST_REPORTS:
+      return action.filteredEmployees;
     default:
       return state;
   }

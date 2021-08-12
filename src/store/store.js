@@ -8,7 +8,7 @@ import { profileReducer } from './reducers/profileReducers';
 import { coachReducer } from './reducers/coachReducer';
 import { employeesReducer } from './reducers/employeesReducer';
 import { adminReducer } from './reducers/adminReducer';
-import { unverifiedTestsReducer } from './reducers/unverifiedTestsReducers';
+import { unverifiedTestsReducer, reportsReducer } from './reducers/unverifiedTestsReducers';
 
 const rootReducers = combineReducers({
   profile: profileReducer,
@@ -18,7 +18,8 @@ const rootReducers = combineReducers({
   coach: coachReducer,
   theme: themeReducer,
   employees: employeesReducer,
-  unverifiedTests: unverifiedTestsReducer
+  unverifiedTests: unverifiedTestsReducer,
+  reports: reportsReducer
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));
