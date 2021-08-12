@@ -7,11 +7,13 @@ import { themeReducer } from './reducers/themeReducers';
 import { profileReducer } from './reducers/profileReducers';
 import { coachReducer } from './reducers/coachReducer';
 import { employeesReducer } from './reducers/employeesReducer';
+import { adminReducer } from './reducers/adminReducer';
 
 const rootReducers = combineReducers({
   profile: profileReducer,
   auth: authReducer,
   jwt: jwtReducer,
+  admin: adminReducer,
   coach: coachReducer,
   theme: themeReducer,
   employees: employeesReducer

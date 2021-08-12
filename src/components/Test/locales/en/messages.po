@@ -11,98 +11,91 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/pages/SubmitModal/SubmitModal.jsx:11
-msgid "Are you sure you want to finish the test?"
-msgstr "Are you sure you want to finish the test?"
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:48
+#~ msgid "Add question"
+#~ msgstr "Add question"
 
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:26
-msgid "Add question"
-msgstr "Add question"
+#: src/pages/SubmitModal/SubmitModal.jsx:11
+#~ msgid "Are you sure you want to finish the test?"
+#~ msgstr "Are you sure you want to finish the test?"
 
 #: src/pages/SubmitModal/SubmitModal.jsx:13
-msgid "Cancel"
-msgstr "Cancel"
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
 
 #: src/pages/Test/Grammar/Grammar.jsx:40
-msgid "Choose the correct option to complete the sentence"
-msgstr "Choose the correct option to complete the sentence"
+#~ msgid "Choose the correct option to complete the sentence"
+#~ msgstr "Choose the correct option to complete the sentence"
 
 #: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:53
-msgid "Delete"
-msgstr "Delete"
+#~ msgid "Delete"
+#~ msgstr "Delete"
 
-#: src/pages/Test/Test.jsx:84
+#: src/pages/Test/Test.jsx:97
 msgid "Essay"
 msgstr "Essay"
 
-#: src/pages/Test/Test.jsx:64
+#: src/pages/Test/Test.jsx:75
 msgid "Grammar"
 msgstr "Grammar"
 
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:40
-msgid "Grammar"
-msgstr "Grammar"
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:39
+#~ msgid "Level"
+#~ msgstr "Level"
 
 #: src/pages/Test/Listening/Listening.jsx:12
-msgid "Listen and choose an answer option"
-msgstr "Listen and choose an answer option"
+#~ msgid "Listen and choose an answer option"
+#~ msgstr "Listen and choose an answer option"
 
-#: src/pages/Test/Test.jsx:74
+#: src/pages/Test/Test.jsx:87
 msgid "Listening"
 msgstr "Listening"
 
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:39
-msgid "Level"
-msgstr "Level"
-
 #: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:40
-msgid "Module"
-msgstr "Module"
+#~ msgid "Module"
+#~ msgstr "Module"
 
-#: src/pages/Test/Test.jsx:139
+
+#: src/pages/Test/Test.jsx:152
 msgid "Next"
 msgstr "Next"
 
-#: src/pages/Test/Test.jsx:120
 msgid "Previous"
 msgstr "Previous"
 
 #: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:54
-msgid "Report"
-msgstr "Report"
+#~ msgid "Report"
+#~ msgstr "Report"
 
-#: src/pages/Test/Test.jsx:151
-msgid "Report a mistake"
-msgstr "Report a mistake"
-
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:36
+#: src/pages/Test/Test.jsx:165
 msgid "Report a mistake"
 msgstr "Report a mistake"
 
 #: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:17
-msgid "Select a question to report"
-msgstr "Select a question to report"
+#~ msgid "Select a question to report"
+#~ msgstr "Select a question to report"
 
-#: src/pages/Test/Test.jsx:94
+
+#: src/pages/Test/Test.jsx:107
 msgid "Speaking"
 msgstr "Speaking"
 
-#: src/pages/Test/Test.jsx:148
 msgid "Submit"
 msgstr "Submit"
 
 #: src/pages/Test/Essay/Essay.jsx:15
-msgid "Write an essay on a given topic"
-msgstr "Write an essay on a given topic"
+#~ msgid "Write an essay on a given topic"
+#~ msgstr "Write an essay on a given topic"
 
 #: src/pages/Test/Speaking/Speaking.jsx:28
-msgid "Write down record"
-msgstr "Write down record"
+#~ msgid "Write down record"
+#~ msgstr "Write down record"
 
 #: src/pages/Test/Essay/Essay.jsx:38
-msgid "out of 512 characters"
-msgstr "out of 512 characters"
+#~ msgid "out of 512 characters"
+#~ msgstr "out of 512 characters"
 
 #: src/pages/Test/Test.jsx:118
-msgid "{0}{1}"
-msgstr "{0}"
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:76
+#~ msgid "{0}{1}"
+#~ msgstr "{0}"

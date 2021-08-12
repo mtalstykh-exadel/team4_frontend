@@ -8,7 +8,7 @@ import './ManageListening.scss';
 
 import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
-import { Player } from '../../Test/Player/Player';
+import { Player } from '../../Player/Player';
 
 export const ManageListening = (props) => {
 

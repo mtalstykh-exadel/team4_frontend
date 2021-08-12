@@ -2,6 +2,7 @@ import handleJWT from '../../api/jwt-fetch';
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_ADD, JWT_REMOVE } from '../actions/actionTypes';
 import { getJWTdata, getJWTtoken, removeJWTfromLocalstorage } from '../../utils/jwt-parser';
 import { checkTokenTimeout } from './checkTokenTimeout';
+import { defineLang } from '../../utils/lang-service';
 
 export const fetchLoginStart = () => {
   return { type: LOGIN_START };
@@ -9,6 +10,7 @@ export const fetchLoginStart = () => {
 
 export const fetchLoginSuccess = () => {
   const token = getJWTtoken();
+  defineLang();
   return { type: LOGIN_SUCCESS, token };
 };
 
@@ -23,6 +25,7 @@ export const addJWT = () => {
 
 export const removeJWT = () => {
   removeJWTfromLocalstorage();
+  localStorage.clear();
   return { type: JWT_REMOVE };
 };
 

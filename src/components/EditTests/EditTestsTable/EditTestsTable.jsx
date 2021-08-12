@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Modal
+} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
@@ -8,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
+import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
@@ -60,9 +72,29 @@ export const EditTestsTable = (props) => {
     filteredQuestions.length < rowsPerPage && setPage(0);
   }, [filteredQuestions]);
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question'><Trans>Add question</Trans></Button>
+     <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <Paper elevation={2}>
+         <div className='modal-content'>
+          <ModalWindowWarningArchive handleClose={handleClose}/>
+         </div>
+        </Paper>
+      </Modal>
+      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question button-standard'><Trans>Add question</Trans></Button>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
@@ -84,17 +116,21 @@ export const EditTestsTable = (props) => {
                   {
                     row.module === 'Listening'
                       ? <TableCell component='th' scope='row' size='small'>
-                        <PlayCircleOutlineIcon className='icons-color-primary' />
+                        <PlayCircleOutlineIcon className='icons-color-primary'/>
                       </TableCell>
                       : null
                   }
                   <TableCell align='left' size='small'>{row.question}</TableCell>
                   <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search' component={Link} to='/edit-test-modules' className='btn-search'>
+                    <Button color='primary' variant='outlined' size='small' type='search' component={Link} to='/edit-test-modules' className='btn-search button-standard'>
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary' onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
+                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
+                                                                onClick={() => {
+                                                                  archiveTheQuestion(row.id);
+                                                                  handleOpen();
+                                                                }}/>}</TableCell>
                 </TableRow>
               );
             })}
@@ -116,8 +152,9 @@ export const EditTestsTable = (props) => {
   );
 };
 
-EditTestsTable.propTypes = {
-  level: PropTypes.any,
-  module: PropTypes.any,
-  questionId: PropTypes.any
-};
+EditTestsTable.propTypes =
+  {
+    level: PropTypes.any,
+    module: PropTypes.any,
+    questionId: PropTypes.any,
+  };
