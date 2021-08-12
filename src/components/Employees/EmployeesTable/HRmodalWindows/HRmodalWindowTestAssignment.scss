@@ -1,0 +1,69 @@
+.hr-modal {
+  min-width: 450px;
+  min-height: 268px;
+
+  .close-icon-wrapper {
+    display: block;
+    margin-left: auto;
+    padding: 0;
+
+    .MuiIconButton-root {
+      height: 35px;
+    }
+  }
+
+  .assign-level {
+    font-family: "Roboto", sans-serif;
+    height: 30px;
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .level-selector-wrapper {
+    margin: 10px auto;
+    justify-content: center;
+
+    .level-selector {
+      width: 100%;
+    }
+  }
+
+  .setting-label {
+    height: 20px;
+    margin-bottom: 0;
+  }
+
+  .settings-wrapper {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+
+    .setting {
+      height: 80px;
+      width: 180px;
+
+      .setting-select {
+        padding-top: 0;
+        width: 100%;
+        height: 50%;
+
+        .item {
+          height: 30px;
+        }
+      }
+
+      input[type="date" i] {
+        border: 1px solid var(--secondary-color);
+        border-radius: 4px;
+        color: var(--font-color-primary);
+        background-color: var(--base-color);
+        height: 40px;
+      }
+    }
+  }
+
+  .assign-button {
+    display: flex;
+    margin: 20px 5px 0 auto;
+  }
+}
