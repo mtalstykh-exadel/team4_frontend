@@ -46,7 +46,7 @@ msgstr "Log out of account?"
 msgid "Logout"
 msgstr "Logout"
 
-#: src/components/header/logoutModal/logoutModal.js:34
+#: src/components/header/logoutModal/logoutModal.js:36
 msgid "No"
 msgstr "No"
 
@@ -76,7 +76,7 @@ msgstr "Take test"
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
-#: src/components/header/logoutModal/logoutModal.js:28
+#: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"
 msgstr "Yes"
 

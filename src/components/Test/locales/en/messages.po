@@ -35,7 +35,7 @@ msgstr ""
 msgid "Essay"
 msgstr "Essay"
 
-#: src/pages/Test/Test.jsx:77
+#: src/pages/Test/Test.jsx:75
 msgid "Grammar"
 msgstr "Grammar"
 
@@ -55,11 +55,11 @@ msgstr "Listening"
 #~ msgid "Module"
 #~ msgstr "Module"
 
+
 #: src/pages/Test/Test.jsx:152
 msgid "Next"
 msgstr "Next"
 
-#: src/pages/Test/Test.jsx:133
 msgid "Previous"
 msgstr "Previous"
 
@@ -75,11 +75,11 @@ msgstr "Report a mistake"
 #~ msgid "Select a question to report"
 #~ msgstr "Select a question to report"
 
+
 #: src/pages/Test/Test.jsx:107
 msgid "Speaking"
 msgstr "Speaking"
 
-#: src/pages/Test/Test.jsx:162
 msgid "Submit"
 msgstr "Submit"
 

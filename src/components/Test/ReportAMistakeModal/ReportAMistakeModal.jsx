@@ -32,7 +32,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <>
         {selector}
         <div className={selector.length === 9 ? 'add-question-to-report invisible' : 'add-question-to-report'}
-             onClick={addSelector}
+          onClick={addSelector}
         >Add question</div>
       </>;
   } else {
@@ -44,7 +44,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
   return (
     <div className='report-mistake-modal'>
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-        <CloseIcon className='close-icon'/>
+        <CloseIcon className='close-icon icons-color'/>
       </IconButton>
       <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>

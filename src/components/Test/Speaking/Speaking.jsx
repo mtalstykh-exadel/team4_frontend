@@ -62,11 +62,13 @@ export const Speaking = ({task, testModule}) => {
           <MicOffIcon alt='microOff' className='microphone-item' />
         )}
       </div>
-      <Player
-        id='player-speaking'
-        src={blobURL}
-        audioDuration={audioDuration}
-      />
+      <div className='player-speaking'>
+        <Player
+          id='player-speaking'
+          src={blobURL}
+          audioDuration={audioDuration}
+        />
+      </div>
     </div>
   );
 };

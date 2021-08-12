@@ -11,7 +11,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/pages/AdminDistribution/AdminDistribution.jsx:79
 #: src/pages/AdminDistribution/AdminDistribution.jsx:147
 msgid "{0}{1}"
 msgstr "{1}"

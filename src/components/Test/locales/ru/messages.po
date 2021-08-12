@@ -31,11 +31,12 @@ msgstr ""
 #~ msgid "Delete"
 #~ msgstr "Удалить"
 
+
 #: src/pages/Test/Test.jsx:97
 msgid "Essay"
 msgstr "Эссе"
 
-#: src/pages/Test/Test.jsx:77
+#: src/pages/Test/Test.jsx:75
 msgid "Grammar"
 msgstr "Грамматика"
 
@@ -59,7 +60,7 @@ msgstr "Аудирование"
 msgid "Next"
 msgstr "Следующий"
 
-#: src/pages/Test/Test.jsx:133
+#: src/pages/Test/Test.jsx:131
 msgid "Previous"
 msgstr "Предыдущий"
 

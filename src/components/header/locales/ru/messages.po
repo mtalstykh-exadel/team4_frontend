@@ -46,7 +46,7 @@ msgstr "Выйти из аккаунта?"
 msgid "Logout"
 msgstr "Выход"
 
-#: src/components/header/logoutModal/logoutModal.js:34
+#: src/components/header/logoutModal/logoutModal.js:36
 msgid "No"
 msgstr "Нет"
 
@@ -76,7 +76,7 @@ msgstr "Пройти тест"
 msgid "Tests for verification"
 msgstr "Тесты на проверку"
 
-#: src/components/header/logoutModal/logoutModal.js:28
+#: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"
 msgstr "Да"
 

@@ -11,6 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+
 #: src/components/Employees/EmployeesTable/EmployeesTable.jsx:66
 msgid "Assign test"
 msgstr "Назначить тест"
@@ -19,10 +20,30 @@ msgstr "Назначить тест"
 msgid "Deassign"
 msgstr "Отменить тест"
 
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:95
+msgid "Assign test"
+msgstr "Назначить тест"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:91
+msgid "Deassign"
+msgstr "Отменить тест"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:55
+msgid "Email: {0}"
+msgstr "Почта: {0}"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:59
+msgid "Level"
+msgstr "Уровень"
+
 #: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:26
 msgid "Name"
 msgstr "Имя"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:49
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
+msgid "front-end developer"
+msgstr "front-end developer"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:75
 msgid "{0}{1}"
 msgstr "{1}"

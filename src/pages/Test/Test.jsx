@@ -221,9 +221,10 @@ export const Test = () => {
             onClose={handleClose}
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
-            className='modal'
-          >
-            <div className='modal-content'>{modals[modalIndex]}</div>
+            className='modal'>
+            <div className='modal-content base-color'>
+              {modals[modalIndex]}
+            </div>
           </Modal>
         </div>
       </div>
