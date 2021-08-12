@@ -16,8 +16,6 @@ const Results = ({idTest}) => {
     setResult(await getResultTest(idTest).then((res) => res));
   });
 
-  console.log(test);
-
   let resultQuote =
     [<><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message in your personal account and by e-mail</p></>,
      <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном кабинете и на электронную почту.</p></>
