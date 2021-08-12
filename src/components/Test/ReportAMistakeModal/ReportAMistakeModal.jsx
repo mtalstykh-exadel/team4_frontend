@@ -40,7 +40,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
     };
 
     HTMLCodeForStep =
-      <div className='scroll-container'>
+      <div className={selector.length >= 3 ? 'scroll-container visible' : 'scroll-container'}>
         {selector}
         <div
           className={selector.length === tasks.length ? 'add-question-to-report invisible' : 'add-question-to-report'}
