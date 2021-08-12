@@ -1,6 +1,5 @@
 import { testSpeakingAnswers } from '../constants/localStorageConstants';
 
-let blobObject = {};
 let chunks = [];
 let blobURL;
 let rec = {};
@@ -9,8 +8,7 @@ const onRecAudio = () => {
   navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
     const mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.onstop = function () {
-      blobObject = new Blob(chunks, {type: 'audio/ogg; codecs=opus'});
-      blobURL = window.URL.createObjectURL(blobObject);
+      blobURL = window.URL.createObjectURL(new Blob(chunks, {type: 'audio/ogg; codecs=opus'}));
       chunks = [];
       stream.getTracks().forEach((track) => track.stop());
     };

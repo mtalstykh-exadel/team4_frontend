@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { offRecAudio, onRecAudio, saveBlobUrl } from '../../../services/voice-recorder';
 import { startTimer, createTimer, stopTimer } from '../../../services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
@@ -9,7 +8,7 @@ import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import './Speaking.scss';
 
-export const Speaking = ({task}) => {
+export const Speaking = ({task, testModule}) => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -26,9 +25,9 @@ export const Speaking = ({task}) => {
   };
   
   useEffect(() => {
-    if (localStorage.getItem(testSpeakingAnswers) !== null) {
-      setBlobURL(JSON.parse(localStorage.getItem(testSpeakingAnswers)).blob);
-      setAudioDuration(JSON.parse(localStorage.getItem(testSpeakingAnswers)).duration);
+    if (localStorage.getItem(testModule) !== null) {
+      setBlobURL(JSON.parse(localStorage.getItem(testModule)).blob);
+      setAudioDuration(JSON.parse(localStorage.getItem(testModule)).duration);
     }
   }, [setBlobURL]);
 
@@ -48,7 +47,7 @@ export const Speaking = ({task}) => {
             setInvisible('off');
             setBlobURL(offRecAudio());
             setAudioDuration(stopTimer('speaking-timer'));
-            saveBlobUrl({testModule: testSpeakingAnswers, duration: stopTimer('speaking-timer')});
+            saveBlobUrl({testModule: testModule, duration: stopTimer('speaking-timer')});
           } else {
             setInvisible('on');
             onRecAudio();
@@ -74,4 +73,5 @@ export const Speaking = ({task}) => {
 
 Speaking.propTypes = {
   task: PropTypes.array,
+  testModule: PropTypes.string,
 };

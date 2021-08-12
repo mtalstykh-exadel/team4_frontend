@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import './TestLevelSelectorItem.scss';
 import { startTest } from '../../../api/start-test';
 import { language_english } from '../../../constants/languageConstants';
-import { userLanguageKey, currentTest } from '../../../constants/localStorageConstants';
+import { userLanguageKey, currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 import { CircularProgress } from '@material-ui/core';
 
@@ -40,6 +40,10 @@ export const TestLevelsSelectorItem = ({
         onClick={() => {
           setLoading(true);
           localStorage.removeItem(currentTest);
+          localStorage.removeItem(testGrammarUserAnswers);
+          localStorage.removeItem(testEassyUserAnswers);
+          localStorage.removeItem(testListeningUserAnswers);
+          localStorage.removeItem(testSpeakingAnswers);
           startTest(level)
             .then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
