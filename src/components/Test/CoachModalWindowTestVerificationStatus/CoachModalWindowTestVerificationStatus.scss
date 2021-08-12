@@ -1,0 +1,21 @@
+.coach-modal {
+  min-width: 440px;
+  min-height: 138px;
+
+  .close-icon-wrapper {
+    display: block;
+    margin-left: auto;
+    padding: 0;
+  }
+
+  .test-ver {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0;
+  }
+
+  .close-button {
+    display: block;
+    margin-left: auto;
+  }
+}

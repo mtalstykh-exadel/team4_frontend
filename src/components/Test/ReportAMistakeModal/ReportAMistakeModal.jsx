@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
-import {Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField, Paper} from '@material-ui/core';
+import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 
-export const ReportAMistakeModal = ({tasks, topic, level, module, handleClose}) => {
+export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
   let count = 0;
   let HTMLCodeForStep;
   const selectorHTML =
