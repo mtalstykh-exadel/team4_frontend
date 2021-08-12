@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { offRecAudio, onRecAudio } from '../../../services/voice-recorder';
+import React, { useEffect, useState } from 'react';
+import { offRecAudio, onRecAudio, saveBlobUrl } from '../../../services/voice-recorder';
 import { startTimer, createTimer, stopTimer } from '../../../services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
 import { Player } from '../../index';
 import { Trans } from '@lingui/macro';
+import PropTypes from 'prop-types';
 import './Speaking.scss';
 
-export const Speaking = () => {
+export const Speaking = ({task, testModule}) => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -22,11 +23,18 @@ export const Speaking = () => {
       }
     });
   };
+  
+  useEffect(() => {
+    if (localStorage.getItem(testModule) !== null) {
+      setBlobURL(JSON.parse(localStorage.getItem(testModule)).blob);
+      setAudioDuration(JSON.parse(localStorage.getItem(testModule)).duration);
+    }
+  }, [setBlobURL]);
 
   return (
     <div className='speaking-step'>
       <div className='step-description'><Trans>Write down record</Trans></div>
-      <div className='speaking-topic'><Trans>Speaking Topic</Trans></div>
+      <div className='speaking-topic'>{task[0].questionBody}</div>
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>
@@ -39,6 +47,7 @@ export const Speaking = () => {
             setInvisible('off');
             setBlobURL(offRecAudio());
             setAudioDuration(stopTimer('speaking-timer'));
+            saveBlobUrl({testModule: testModule, duration: stopTimer('speaking-timer')});
           } else {
             setInvisible('on');
             onRecAudio();
@@ -62,4 +71,9 @@ export const Speaking = () => {
       </div>
     </div>
   );
+};
+
+Speaking.propTypes = {
+  task: PropTypes.array,
+  testModule: PropTypes.string,
 };

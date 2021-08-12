@@ -19,11 +19,11 @@ msgstr ""
 msgid "Level"
 msgstr "Уровень"
 
+#: src/components/TestsInfo/TestsData/TestsData.jsx:89
 #: src/components/TestsInfo/TestsData/TestsData.jsx:107
 msgid "Take Test"
 msgstr ""
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:89
 #: src/components/TestsInfo/TestsData/TestsData.jsx:109
 msgid "{0}{1}"
 msgstr "{1}"

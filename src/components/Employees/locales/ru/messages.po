@@ -11,6 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:66
+msgid "Assign test"
+msgstr "Назначить тест"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:63
+msgid "Deassign"
+msgstr "Отменить тест"
+
 #: src/components/Employees/EmployeesTable/EmployeesTable.jsx:95
 msgid "Assign test"
 msgstr "Назначить тест"
