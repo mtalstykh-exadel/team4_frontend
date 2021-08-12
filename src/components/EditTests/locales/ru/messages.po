@@ -11,15 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:49
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:65
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:76
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:94
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:69
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:71
 msgid "In field 'Question Id' must be a number"
 msgstr "Поле 'ID Вопроса' должно содердать число"
 
@@ -40,11 +40,11 @@ msgstr "Любое"
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:87
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:105
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:66
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:68
 msgid "Search"
 msgstr "Поиск"
 
@@ -52,6 +52,6 @@ msgstr "Поиск"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:57
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:74
 msgid "{0}{1}"
 msgstr "{1}"

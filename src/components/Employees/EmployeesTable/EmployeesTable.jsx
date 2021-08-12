@@ -14,10 +14,9 @@ import {
   TableRow
 } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
-
 import { Trans } from '@lingui/macro';
-
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
+import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
 
 export const EmployeesTable = (props) => {
@@ -53,6 +52,7 @@ export const EmployeesTable = (props) => {
 
 
   const [name, setName] = React.useState('');
+  const [gmail, setGmail] = React.useState('');
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -98,7 +98,11 @@ export const EmployeesTable = (props) => {
                       <Trans>Assign test</Trans>
                     </Button>}
                 </TableCell>
-                <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
+                <TableCell align='left'>{<RestoreOutlinedIcon className='icons-color-primary archiveBtn' onClick={() => {
+                  setName(row.name);
+                  setGmail(row.mail);
+                  handleOpen();
+                }}/> }</TableCell>
               </TableRow>
             );
           }
@@ -116,6 +120,7 @@ export const EmployeesTable = (props) => {
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
       {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
+      {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
     </Paper>
   );
 };
