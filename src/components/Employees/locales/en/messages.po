@@ -11,18 +11,30 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:48
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:95
 msgid "Assign test"
 msgstr "Assign test"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:45
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:91
 msgid "Deassign"
 msgstr "Deassign"
 
-#: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:27
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:55
+msgid "Email: {0}"
+msgstr "Email: {0}"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:59
+msgid "Level"
+msgstr "Level"
+
+#: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:26
 msgid "Name"
 msgstr "Name"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:31
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
+msgid "front-end developer"
+msgstr "front-end developer"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:75
 msgid "{0}{1}"
 msgstr "{0}"

@@ -167,7 +167,7 @@ export const Test = () => {
             aria-labelledby='simple-modal-title'
             aria-describedby='simple-modal-description'
             className='modal'>
-            <div className='modal-content'>
+            <div className='modal-content base-color'>
               {modals[modalIndex]}
             </div>
           </Modal>
