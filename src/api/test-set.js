@@ -17,7 +17,8 @@ const saveSpeaking = ( blob ) => {
     {
       headers: { 'Content-Type': 'multipart/form-data;'
       }
-    });
+    }
+  );
 };
 
 export {saveSpeaking, saveListeningAndGrammar, saveEssay};
