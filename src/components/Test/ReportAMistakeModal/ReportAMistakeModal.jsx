@@ -20,15 +20,6 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
           })}
         </Select>
       </FormControl>
-      <div className='report-textfield-wrapper'>
-        <TextField
-          className='report-textfield'
-          variant='outlined'
-          multiline
-          rows={2}
-          label='Enter your report'
-        />
-      </div>
     </div>;
 
   const [selector, setSelector] = useState([selectorHTML]);
@@ -41,9 +32,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <>
         {selector}
         <div className={selector.length === 9 ? 'add-question-to-report invisible' : 'add-question-to-report'}
-          onClick={addSelector}
-        >Add question
-        </div>
+             onClick={addSelector}
+        >Add question</div>
       </>;
   } else {
     HTMLCodeForStep = <div className='topic-wrapper'>
@@ -52,23 +42,30 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
   }
 
   return (
-    <Paper elevation={2}>
-      <div className='report-mistake-modal'>
-        <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-          <CloseIcon className='close-icon'/>
-        </IconButton>
-        <div className='report-header'><Trans>Report a mistake</Trans></div>
-        <div className='level-module-info'>
-          <span className='level-info'><Trans>Level</Trans>: {level}</span>
-          <span className='module'><Trans>Module</Trans>: {module}</span>
-        </div>
-        {HTMLCodeForStep}
-        <div className='report-mistake-buttons-wrapper'>
-          <Button className='delete-button' color='primary' variant='outlined'><Trans>Delete</Trans></Button>
-          <Button className='report-button' color='primary' variant='contained'><Trans>Report</Trans></Button>
-        </div>
+    <div className='report-mistake-modal'>
+      <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+        <CloseIcon className='close-icon icons-color'/>
+      </IconButton>
+      <div className='report-header'><Trans>Report a mistake</Trans></div>
+      <div className='level-module-info'>
+        <span className='level-info'><Trans>Level</Trans>: {level}</span>
+        <span className='module'><Trans>Module</Trans>: {module}</span>
       </div>
-    </Paper>
+      {HTMLCodeForStep}
+      <div className='report-textfield-wrapper'>
+        <TextField
+          className='report-textfield'
+          variant='outlined'
+          multiline
+          rows={5}
+          label='Enter your report'
+        />
+      </div>
+      <div className='report-mistake-buttons-wrapper'>
+        <Button className='delete-button' color='primary' variant='outlined'><Trans>Delete</Trans></Button>
+        <Button className='report-button' color='primary' variant='contained'><Trans>Report</Trans></Button>
+      </div>
+    </div>
   );
 };
 
