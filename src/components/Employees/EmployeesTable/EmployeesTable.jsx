@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow
+} from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import PropTypes from 'prop-types';
+import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 
 export const EmployeesTable = (props) => {
 
@@ -37,6 +48,19 @@ export const EmployeesTable = (props) => {
     filterEmployees.length < rowsPerPage && setPage(0);
   }, [filterEmployees]);
 
+
+  const [name, setName] = React.useState('');
+  const [gmail, setGmail] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Paper elevation={2}>
@@ -59,17 +83,25 @@ export const EmployeesTable = (props) => {
                   <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
                   <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
-                    {row.assigne ? <Button color='secondary' variant='outlined' size='small' disabled type='search' className='btn-search button-standard' >
-                      <Trans>Deassign</Trans>
-                    </Button>
-                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard' >
+                    {row.assigne ?
+                      <Button color='secondary' variant='outlined' size='small' style={{width: 140}} disabled
+                        type='search' className='btn-search'>
+                        <Trans>Deassign</Trans>
+                      </Button>
+                      : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
+                        className='btn-search'>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
-                  <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn' />}</TableCell>
+                  <TableCell align='left'>{<RestoreOutlinedIcon className='icons-color-primary archiveBtn' onClick={() => {
+                    setName(row.name);
+                    setGmail(row.mail);
+                    handleOpen();
+                  }}/> }</TableCell>
                 </TableRow>
               );
-            })}
+            }
+            )}
             </TableBody>
           </Table>
         </TableContainer>
@@ -83,6 +115,7 @@ export const EmployeesTable = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
     </div>
   );
 };

@@ -11,38 +11,38 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/ManageTestModules/manageModule.js:68
+#: src/components/ManageTestModules/ManageTestModules.js:68
 msgid "'Add topic for an Essay'"
 msgstr "'Add topic for an Essay'"
 
-#: src/components/ManageTestModules/manageModule.js:62
+#: src/components/ManageTestModules/ManageTestModules.js:62
 msgid "'Add topic for an Speaking'"
 msgstr "'Add topic for an Speaking'"
 
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:56
-msgid "Answer"
-msgstr "Answer"
+#~ msgid "Answer"
+#~ msgstr "Answer"
 
-#: src/components/ManageTestModules/manageModule.js:80
+#: src/components/ManageTestModules/ManageTestModules.js:80
 msgid "Back"
 msgstr "Back"
 
-#: src/components/ManageTestModules/manageModule.js:90
+#: src/components/ManageTestModules/ManageTestModules.js:90
 msgid "Save"
 msgstr "Save"
 
 #: src/components/ManageTestModules/ManageTopic/manageTopic.js:16
-msgid "Topic"
-msgstr "Topic"
+#~ msgid "Topic"
+#~ msgstr "Topic"
 
-#: src/components/ManageTestModules/ManageListening/manageListening.js:57
+#: src/components/ManageTestModules/ManageListening/ManageListening.js:57
 msgid "Upload Audio"
 msgstr "Upload Audio"
 
-#: src/components/ManageTestModules/ManageListening/manageListening.js:55
+#: src/components/ManageTestModules/ManageListening/ManageListening.js:55
 msgid "Upload an audio file for listening task"
 msgstr "Upload an audio file for listening task"
 
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:40
-msgid "{0} Question"
-msgstr "{0} Question"
+#~ msgid "{0} Question"
+#~ msgstr "{0} Question"

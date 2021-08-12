@@ -1,0 +1,39 @@
+.coach-modal {
+  min-width: 440px;
+  min-height: 138px;
+
+  .close-icon-wrapper {
+    position: relative;
+    display: block;
+    margin-left: 88%;
+
+    .MuiIconButton-root {
+      height: 15px;
+
+      .close-icon {
+        position: absolute;
+        bottom: 0;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .test-ver {
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 23px;
+    letter-spacing: 0;
+  }
+
+  .MuiButton-root {
+    height: 27px;
+    width: 90px;
+    margin-left: 310px;
+    margin-right: 25px;
+    margin-top: 20px;
+  }
+}
