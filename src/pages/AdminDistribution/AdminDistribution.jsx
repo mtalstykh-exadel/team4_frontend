@@ -19,18 +19,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    {
-      id: 'assigned',
-      label: ['Assigned', 'Назначенный'],
-      width: 237,
-      align: 'right',
-    },
-    {
-      id: 'deadline',
-      label: ['Deadline', 'Срок сдачи'],
-      width: 237,
-      align: 'right',
-    },
+    { id: 'assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -134,10 +124,11 @@ const AdminDistribution = (props) => {
                                   assignTest(index);
                                 }}
                               >
-                                <Trans>
-                                  {value[0]}
-                                  {value[1]}
-                                </Trans>
+                                {/* <Trans> */}
+                                  testr
+                                  {/* {value[0]} */}
+                                  {/* {value[1]} */}
+                                {/* </Trans> */}
                               </Button>
                             ) : (
                               value
