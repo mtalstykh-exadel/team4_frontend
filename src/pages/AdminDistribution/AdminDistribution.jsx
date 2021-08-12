@@ -53,13 +53,12 @@ const AdminDistribution = (props) => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
-  const coachNames = [];
+  let coachNames = [];
 
   if (coaches !== undefined) {
-    for (let i = 0; i < coaches.length; i++) {
-      coachNames[i] = coaches[i].name;
-    }
+    coachNames = coaches.map((coach) => coach.name);
   }
+  console.log(coachNames);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
