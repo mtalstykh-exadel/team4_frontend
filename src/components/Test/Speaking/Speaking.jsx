@@ -23,7 +23,7 @@ export const Speaking = ({task, testModule}) => {
       }
     });
   };
-  
+
   useEffect(() => {
     if (localStorage.getItem(testModule) !== null) {
       setBlobURL(JSON.parse(localStorage.getItem(testModule)).blob);
@@ -51,7 +51,7 @@ export const Speaking = ({task, testModule}) => {
           } else {
             setInvisible('on');
             onRecAudio();
-            startTimer(createTimer({ domId: 'speaking-timer', minutes: 5 }));
+            startTimer(createTimer({ domId: 'speaking-timer', seconds: 300 }));
             checkSpeakingTimerHandler();
           }
         }}
