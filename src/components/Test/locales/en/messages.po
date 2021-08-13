@@ -80,8 +80,8 @@ msgstr "Report a mistake"
 msgid "Speaking"
 msgstr "Speaking"
 
-msgid "Submit"
-msgstr "Submit"
+msgid "Submit test"
+msgstr "Submit test"
 
 #: src/pages/Test/Essay/Essay.jsx:15
 #~ msgid "Write an essay on a given topic"

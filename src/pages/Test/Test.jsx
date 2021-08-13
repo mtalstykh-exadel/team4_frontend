@@ -207,7 +207,7 @@ export const Test = () => {
                 handleOpen();
               }}
             >
-              <Trans>Submit</Trans>
+              <Trans>Submit test</Trans>
             </Button>
           </div>
           <div
