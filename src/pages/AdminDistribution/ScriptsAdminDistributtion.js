@@ -1,7 +1,8 @@
 const assignTest = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');
   const selectNames = document.getElementById('item-' + id + '-select');
-  const divSelect = document.querySelectorAll('.selectCoachNames')[id];
+  const divSelect = document.querySelectorAll('.selectCoachNames')[0];
+
   if (selectNames.value !== 'placeholder') {
     buttonAssign.textContent = 'DEASSIGN';
     if (buttonAssign.classList.contains('buttonDeassign')) {

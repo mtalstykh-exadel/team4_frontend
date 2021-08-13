@@ -31,6 +31,8 @@ const AdminDistribution = (props) => {
     props.filter ? r.level === props.filter : r
   );
 
+  console.log(rows);
+
   let keysForColumns = 1;
   let keysForOptions = 1;
 
@@ -46,7 +48,7 @@ const AdminDistribution = (props) => {
   let coachNames = [];
 
   if (coaches !== undefined) {
-    coachNames = coaches.map((coach) => coach.name);
+    coachNames = coaches.map((coach) => {return {name: coach.name, id: coach.id};});
   }
 
   const handleChangePage = (event, newPage) => {
@@ -58,11 +60,25 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+  const handleChangeDeassignTest = (rows) => {
+    rows.map((unverifiedTest, i) => {
+      unverifiedTest?.coach ? (
+        document.getElementById('item-' + i + '-select').value = unverifiedTest.coach.name,
+        assignTest(i)
+      ) : ( null );
+    });
+  };
+
   useEffect(() => {
     dispatch(requestQuestionsList());
   }, []);
 
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
+  
+  setTimeout(() => {
+    handleChangeDeassignTest(rows);
+  }, 0);
+
   return (
     <Layout pageWrapperClass='AdminDistribution'>
       <Paper elevation={2} className='paper'>
@@ -94,14 +110,9 @@ const AdminDistribution = (props) => {
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
-                        console.log(column);
                         return (
                           <TableCell className='font-primary' key={keysForColumns} align={column.align}
                             width={column.width + 'px'} size='small' >
-                              
-                            { rows.map((undefinedTest) => { 
-                              {'coach' in undefinedTest ? (console.log('COACH')) : (console.log('BRUUUHHH'));}
-                            })}
 
                             {column.id === 'Coach' ? (
                               <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
@@ -111,9 +122,10 @@ const AdminDistribution = (props) => {
                                 </option>
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
+                                  
                                   return (
-                                    <option key={keysForOptions} value={coachName} >
-                                      {coachName}
+                                    <option key={keysForOptions} value={coachName.name} id={coachName.id}>
+                                      {coachName.name}
                                     </option>
                                   );
                                 })}
@@ -130,18 +142,18 @@ const AdminDistribution = (props) => {
                                   assignTest(index);
                                 }}
                               >
-                                {/* <Trans> */}
-                                  testr
-                                  {/* {value[0]} */}
-                                  {/* {value[1]} */}
-                                {/* </Trans> */}
+                                <Trans>
+                                  Assign
+                                </Trans>
                               </Button>
                             ) : (
                               value
                             )}
+                            
                           </TableCell>
                         );
                       })}
+                      
                     </TableRow>
                   );
                 })}
