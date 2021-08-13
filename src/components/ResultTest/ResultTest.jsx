@@ -38,14 +38,6 @@ const Results = ({idTest}) => {
     );
   });
 
-  const level = test.level;
-  const statusChange = () => {
-    resultQuote = [
-      'You have passed the English language test at the ' + level.toString() + ' level.',
-      'Вы сдали тест по английскому языку на уровне ' + level.toString()
-    ];
-  };
-
   const setStyle = (res) => {
     if (res === 'waiting') return 'res-waiting';
     else if (res === 0) return 'res-null';
@@ -91,7 +83,15 @@ const Results = ({idTest}) => {
   });
 
   if (test.status === 'VERIFIED') {
-    statusChange();
+    const level = test.level;
+    const essayComments = test.essayComment;
+    const speakingComments = test.speakingComments;
+    resultQuote = [
+      <><p>You have passed the English language test at the + {level.toString()} + level.</p><p>{essayComments}</p>
+        <p>{speakingComments}</p></>,
+      <><p>Вы сдали тест по английскому языку на уровне ' + {level.toString()}</p><p>{essayComments}</p>
+        <p>{speakingComments}</p></>
+    ];
   }
 
   return (
