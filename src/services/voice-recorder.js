@@ -1,5 +1,4 @@
-import { saveSpeaking } from '../api/test-set';
-
+import {testSpeakingFile} from '../constants/localStorageConstants';
 let chunks = [];
 let blobURL;
 let rec = {};
@@ -30,10 +29,16 @@ const offRecAudio = () => {
 };
 
 const saveBlobUrl = ({ testModule, duration }) => {
-  saveSpeaking(blob);
+  const reader = new FileReader();
+  
+  reader.onload = (event) => {
+    localStorage.setItem(testSpeakingFile, event.target.result);
+  };
+  reader.readAsDataURL(blob);
+
   localStorage.setItem(
     testModule,
-    JSON.stringify({ blob: blobURL, blobObj: blob, duration: duration })
+    JSON.stringify({ blob: blobURL, duration: duration })
   );
 
   return duration;
