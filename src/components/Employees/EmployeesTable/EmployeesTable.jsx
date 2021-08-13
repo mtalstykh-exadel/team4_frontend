@@ -1,12 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow
+} from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
 import { Trans } from '@lingui/macro';
-import { useDispatch, useSelector } from 'react-redux';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
-import PropTypes from 'prop-types';
+import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
+import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
 
-import { assignTest, deassignTest } from '../../../api/employees-fetch';
+// import { assignTest, deassignTest } from '../../../api/employees-fetch';
 
 
 export const EmployeesTable = (props) => {
@@ -40,6 +53,28 @@ export const EmployeesTable = (props) => {
     filterEmployees.length < rowsPerPage && setPage(0);
   }, [filterEmployees]);
 
+
+  const [open, setOpen] = React.useState(false);
+
+  const [openHistory, setOpenHistory] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen12 = () => {
+    setOpenHistory(true);
+  };
+
+  const handleClose12 = () => {
+    setOpenHistory(false);
+  };
+
+
   return (
     <div>
       <Paper elevation={2}>
@@ -62,18 +97,15 @@ export const EmployeesTable = (props) => {
                   <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.deadline[6] : null}</TableCell>
                   <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
-                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'
-                      onClick={() => {deassignTest(row.assignedTest.testId)
-                        .then(() => dispatch(requestEmployeesList()));}}>
+                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'>
                       <Trans>Deassign</Trans>
                     </Button>
                       : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard'
-                        onClick={() => {assignTest(row.id)
-                          .then(() => dispatch(requestEmployeesList()));}}>
+                        onClick={handleOpen}>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
-                  <TableCell align='left'>{<RestoreOutlinedIcon color='primary' className='archiveBtn' />}</TableCell>
+                  <TableCell align='left' onClick={() => handleOpen12}>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
                 </TableRow>
               );
             })}
@@ -89,6 +121,8 @@ export const EmployeesTable = (props) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
+        {<HRmodalWindowViewingUserInformation open={openHistory} key={1} name={name} handleClose={handleClose12} gmail={'grgrgr'}/>}
       </Paper>
     </div>
   );
@@ -97,3 +131,12 @@ export const EmployeesTable = (props) => {
 EmployeesTable.propTypes = {
   userName: PropTypes.string
 };
+
+/*
+onClick={() => {deassignTest(row.assignedTest.testId)
+  .then(() => {dispatch(requestEmployeesList());handleOpen;});}}>
+
+
+onClick={() => {assignTest(row.id)
+.then(() => dispatch(requestEmployeesList()));}}>
+*/

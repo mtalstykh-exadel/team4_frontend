@@ -9,8 +9,8 @@ const stopTimer = (domId) => {
   }
 };
 
-const createTimer = ({ domId, minutes }) => {
-  let seconds = minutes * 60 - 1;
+const createTimer = ({ domId, seconds }) => {
+  seconds--;
   timers.push(
     setInterval(() => {
       const element = document.getElementById(domId);

@@ -21,6 +21,11 @@ body {
       &:hover {
         background-color: rgba(var(--primary-color-rgb), 0.8);
       }
+
+      &.Mui-disabled {
+        color: var(--font-color-primary);
+        background-color: rgba(var(--border-color), 0.5);
+      }
     }
 
     &.MuiButton-outlinedPrimary {
@@ -31,6 +36,11 @@ body {
         border-color: var(--primary-color);
         background-color: rgba(var(--primary-color-rgb), 0.1);
       }
+
+      &.Mui-disabled {
+        color: var(--font-color-primary);
+        background-color: rgba(var(--border-color), 0.5);
+      }
     }
 
     &.MuiButton-containedSecondary {
@@ -39,6 +49,11 @@ body {
 
       &:hover {
         background-color: rgba(var(--primary-color-rgb), 0.8);
+      }
+
+      &.Mui-disabled {
+        color: var(--font-color-primary);
+        background-color: rgba(var(--border-color), 0.5);
       }
     }
 
@@ -50,11 +65,11 @@ body {
         border-color: var(--secondary-color);
         background-color: rgba(var(secondary-color-rgb), 0.1);
       }
-    }
 
-    &.Mui-disabled {
-      color: var(--font-color-primary);
-      background-color: rgba(var(--border-color), 0.5);
+      &.Mui-disabled {
+        color: var(--font-color-primary);
+        background-color: rgba(var(--border-color), 0.5);
+      }
     }
   }
 }

@@ -1,7 +1,12 @@
 import axiosInstance from './axios';
 
+import { getJWTtoken } from '../utils/jwt-parser';
+
 const setLanguage = (language) => {
-  return axiosInstance.put(`/language?language=${language}`);
+  const token = getJWTtoken();
+  if (token) {
+    return axiosInstance.put(`/language?language=${language}`);
+  }
 };
 
 export default setLanguage;

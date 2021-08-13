@@ -1,14 +1,16 @@
+import { saveSpeaking } from '../api/test-set';
+
 let chunks = [];
 let blobURL;
 let rec = {};
+let blob = {};
 
 const onRecAudio = () => {
-  navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+  navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     const mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.onstop = function () {
-      blobURL = window.URL.createObjectURL(
-        new Blob(chunks, {type: 'audio/ogg; codecs=opus'})
-      );
+      blob = new Blob(chunks, { type: 'audio/mpeg; codecs=opus' });
+      blobURL = window.URL.createObjectURL(blob);
       chunks = [];
       stream.getTracks().forEach((track) => track.stop());
     };
@@ -27,4 +29,14 @@ const offRecAudio = () => {
   return blobURL;
 };
 
-export {onRecAudio, offRecAudio};
+const saveBlobUrl = ({ testModule, duration }) => {
+  saveSpeaking(blob);
+  localStorage.setItem(
+    testModule,
+    JSON.stringify({ blob: blobURL, blobObj: blob, duration: duration })
+  );
+
+  return duration;
+};
+
+export { onRecAudio, offRecAudio, saveBlobUrl };

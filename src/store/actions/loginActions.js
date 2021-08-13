@@ -25,6 +25,7 @@ export const addJWT = () => {
 
 export const removeJWT = () => {
   removeJWTfromLocalstorage();
+  localStorage.clear();
   return { type: JWT_REMOVE };
 };
 
