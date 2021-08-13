@@ -6,7 +6,8 @@ import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 
-export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }) => {
+/*eslint-disable*/
+export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID }) => {
   let HTMLCodeForStep;
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
@@ -89,5 +90,6 @@ ReportAMistakeModal.propTypes = {
   topic: PropTypes.array,
   level: PropTypes.string,
   module: PropTypes.array,
-  handleClose: PropTypes.func
+  handleClose: PropTypes.func,
+  testID: PropTypes.number
 };

@@ -16,6 +16,7 @@ import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
+  const [testID, setTestID] = useState(0);
   const [level, setLevel] = useState('');
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
@@ -53,6 +54,7 @@ export const Test = () => {
       level={'A1'}
       module={['Grammar','Грамматика']}
       handleClose={handleClose}
+      testID={testID}
     />,
     <ReportAMistakeModal
       key='1'
@@ -60,6 +62,7 @@ export const Test = () => {
       level={level}
       module={['Listening','Аудирование']}
       handleClose={handleClose}
+      testID={testID}
     />,
     <ReportAMistakeModal
       key='2'
@@ -67,6 +70,7 @@ export const Test = () => {
       topic={essayTask}
       module={['Essay','Эссе']}
       handleClose={handleClose}
+      testID={testID}
     />,
     <ReportAMistakeModal
       key='3'
@@ -74,6 +78,7 @@ export const Test = () => {
       topic={speakingTask}
       module={['Speaking','Говорение']}
       handleClose={handleClose}
+      testID={testID}
     />,
     <SubmitModal key='4' handleClose={handleClose} />,
   ];
@@ -83,6 +88,7 @@ export const Test = () => {
     const checkData = async () => {
       const testData = JSON.parse(localStorage.getItem(currentTest));
       if (testData !== null) {
+        console.log(testData);
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
         setEssayTask(testData.questions.Essay);
