@@ -19,8 +19,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
+    { id: 'startedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'completedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -94,9 +94,15 @@ const AdminDistribution = (props) => {
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
+                        console.log(column);
                         return (
                           <TableCell className='font-primary' key={keysForColumns} align={column.align}
                             width={column.width + 'px'} size='small' >
+                              
+                            { rows.map((undefinedTest) => { 
+                              {'coach' in undefinedTest ? (console.log('COACH')) : (console.log('BRUUUHHH'));}
+                            })}
+
                             {column.id === 'Coach' ? (
                               <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
