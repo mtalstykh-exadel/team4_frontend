@@ -114,12 +114,18 @@ export const Test = () => {
       }
     };
     checkData();
-    startTimer(
-      createTimer({
-        domId: 'test-timer',
-        seconds: testDurationInSeconds,
-      })
-    );
+    if (testDurationInSeconds > 0) {
+      startTimer(
+        createTimer({
+          domId: 'test-timer',
+          seconds: testDurationInSeconds,
+        })
+      );
+    } else {
+      setTestDurationInSeconds(0);
+      stopTimer('test-timer');
+      document.getElementById('test-timer').textContent = '0:00';
+    }
   }, [testDurationInSeconds]);
 
   return (
