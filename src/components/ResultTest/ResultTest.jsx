@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import PropTypes from 'prop-types';
 import { getResultTest } from '../../api/result-test';
-import { getTest } from '../../api/get-test';
+import { getTest } from '../../api/get-status-test';
 import { Trans } from '@lingui/macro';
+
 
 const Results = ({idTest}) => {
   const [result, setResult] = useState();
@@ -15,10 +16,12 @@ const Results = ({idTest}) => {
     setResult(await getResultTest(idTest).then((res) => res));
   });
 
-  let resultQuote =[
-     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message in your personal account and by e-mail</p></>,
-     <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном кабинете и на электронную почту.</p></>
-    ];
+  let resultQuote = [
+    <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
+      in your personal account and by e-mail</p></>,
+    <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном
+      кабинете и на электронную почту.</p></>
+  ];
 
   const headerQuote = [
     'English Language Proficiency Test results',
@@ -77,7 +80,9 @@ const Results = ({idTest}) => {
     if (test.status === 'COMPLETED') {
       htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
       res = 'waiting';
-    } else htmlRes = res.toString() + '/10';
+    } else {
+      htmlRes = res.toString() + '/10';
+    }
     return (
       <div key={key} className={setStyle(res)}>
         <p className='result'>{htmlRes}</p>
@@ -106,8 +111,8 @@ const Results = ({idTest}) => {
   );
 };
 
-Results.propTypes =
-  {
+Results.propTypes = {
+    level: PropTypes.string,
     idTest: PropTypes.number,
   };
 
