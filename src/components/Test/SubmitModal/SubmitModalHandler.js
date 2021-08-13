@@ -28,6 +28,10 @@ const dataURItoBlob = (dataURI) => {
 };
 
 const changeArray = (array) => {
+  if (array === null) {
+    return [];
+  } 
+
   return array.map((element) => ({
     questionId: element.qID,
     answerId: element.aID,
@@ -36,7 +40,8 @@ const changeArray = (array) => {
 };
 
 const sendingHandler = () => {
-  saveEssay(JSON.parse(localStorage.getItem(testEassyUserAnswers)));
+  const essayAnswer = JSON.parse(localStorage.getItem(testEassyUserAnswers));
+  saveEssay(essayAnswer !== null ? essayAnswer.answer : '');
   saveListeningAndGrammar([
     ...changeArray(JSON.parse(localStorage.getItem(testListeningUserAnswers))),
     ...changeArray(JSON.parse(localStorage.getItem(testGrammarUserAnswers))),
