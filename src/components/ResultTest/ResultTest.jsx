@@ -15,8 +15,8 @@ const Results = ({idTest}) => {
     setResult(await getResultTest(idTest).then((res) => res));
   });
 
-  let resultQuote =
-    [<><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message in your personal account and by e-mail</p></>,
+  let resultQuote =[
+     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message in your personal account and by e-mail</p></>,
      <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном кабинете и на электронную почту.</p></>
     ];
 
@@ -77,7 +77,7 @@ const Results = ({idTest}) => {
     if (test.status === 'COMPLETED') {
       htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
       res = 'waiting';
-    } else if (test.status === 'VERIFIED') htmlRes = res.toString() + '/10';
+    } else htmlRes = res.toString() + '/10';
     return (
       <div key={key} className={setStyle(res)}>
         <p className='result'>{htmlRes}</p>
