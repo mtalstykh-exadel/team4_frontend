@@ -6,7 +6,6 @@ import { getResultTest } from '../../api/result-test';
 import { getTest } from '../../api/get-test';
 import { Trans } from '@lingui/macro';
 
-
 const Results = ({idTest}) => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
