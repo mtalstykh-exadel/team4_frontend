@@ -5,6 +5,11 @@ const saveEssay = ( essayAnswer ) => {
   return axiosInstance.post('/answer/essay/' + JSON.parse(localStorage.getItem(currentTest)).id, essayAnswer);
 };
 
+const testFinish = ( ) => {
+  return axiosInstance.post('/tests/finish/' + JSON.parse(localStorage.getItem(currentTest)).id);
+};
+
+
 const saveListeningAndGrammar = ( arrayAnswers ) => {
   return axiosInstance.post('/chosen_option/all/', arrayAnswers);
 };
@@ -18,4 +23,4 @@ const saveSpeaking = ( blob ) => {
   });
 };
 
-export {saveSpeaking, saveListeningAndGrammar, saveEssay};
+export {saveSpeaking, saveListeningAndGrammar, saveEssay, testFinish};
