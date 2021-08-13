@@ -5,10 +5,11 @@ import { Button, FormControl, IconButton, InputLabel, MenuItem, Select, TextFiel
 import './ReportAMistakeModal.scss';
 import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
+import { errorReport, deleteReport } from '../../../api/mistake-reports';
 
-/*eslint-disable*/
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID, reportModule }) => {
   let HTMLCodeForStep;
+  const saveDataArray = localStorage.getItem(reportModule);
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
     let count = 0;
@@ -49,20 +50,23 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
         ><Trans>Add question</Trans></div>
       </div>;
   } else {
-    const saveDataArray = localStorage.getItem(reportModule);
     const [characters, setCharacters] = useState('');
 
     const handleChange = (event) => {
       localStorage.setItem(
         reportModule,
-        JSON.stringify({ report: event.target.value })
+        JSON.stringify({
+          questionId: topic[0].id,
+          reportBody: event.target.value,
+          testId: testID
+        })
       );
       setCharacters(event.target.value);
     };
 
     setTimeout(() => {
       if (saveDataArray !== null) {
-        setCharacters(JSON.parse(saveDataArray).report);
+        setCharacters(JSON.parse(saveDataArray).reportBody);
       }
     }, 0);
 
@@ -97,8 +101,28 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
       </div>
       {HTMLCodeForStep}
       <div className='report-mistake-buttons-wrapper'>
-        <Button className='delete-button' color='primary' variant='outlined'><Trans>Delete</Trans></Button>
-        <Button className='report-button' color='primary' variant='contained'><Trans>Report</Trans></Button>
+        <Button
+          className='delete-button'
+          color='primary'
+          variant='outlined'
+          onClick={() => {
+            deleteReport(JSON.parse(saveDataArray).questionId, JSON.parse(saveDataArray).testId);
+            handleClose();
+          }}
+        >
+          <Trans>Delete</Trans>
+        </Button>
+        <Button
+          className='report-button'
+          color='primary'
+          variant='contained'
+          onClick={() => {
+            errorReport(JSON.parse(saveDataArray));
+            handleClose();
+          }}
+        >
+          <Trans>Report</Trans>
+        </Button>
       </div>
     </div>
   );
