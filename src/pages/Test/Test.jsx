@@ -11,7 +11,17 @@ import {
 import { startTimer, createTimer, stopTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
-import { currentTest, testEassyUserAnswers, testListeningUserAnswers, testGrammarUserAnswers, testSpeakingAnswers } from '../../constants/localStorageConstants';
+import {
+  currentTest,
+  testEassyUserAnswers,
+  testListeningUserAnswers,
+  testGrammarUserAnswers,
+  testSpeakingAnswers,
+  reportAMistakeSpeaking,
+  reportAMistakeEssay,
+  reportAMistakeListening,
+  reportAMistakeGrammar
+} from '../../constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
@@ -55,6 +65,7 @@ export const Test = () => {
       module={['Grammar','Грамматика']}
       handleClose={handleClose}
       testID={testID}
+      reportModule={reportAMistakeGrammar}
     />,
     <ReportAMistakeModal
       key='1'
@@ -63,6 +74,7 @@ export const Test = () => {
       module={['Listening','Аудирование']}
       handleClose={handleClose}
       testID={testID}
+      reportModule={reportAMistakeListening}
     />,
     <ReportAMistakeModal
       key='2'
@@ -71,6 +83,7 @@ export const Test = () => {
       module={['Essay','Эссе']}
       handleClose={handleClose}
       testID={testID}
+      reportModule={reportAMistakeEssay}
     />,
     <ReportAMistakeModal
       key='3'
@@ -79,6 +92,7 @@ export const Test = () => {
       module={['Speaking','Говорение']}
       handleClose={handleClose}
       testID={testID}
+      reportModule={reportAMistakeSpeaking}
     />,
     <SubmitModal key='4' handleClose={handleClose} />,
   ];
@@ -95,6 +109,7 @@ export const Test = () => {
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
         setLevel(testData.level);
+        setTestID(testData.id);
         setTestDurationInSeconds(40 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
       }
     };

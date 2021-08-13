@@ -21,26 +21,26 @@ export const Grammar = ({ tasks, testModule }) => {
     const options = question.answers.map((questionItem) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
-        <div key={questionItem.answer} className='test-question-option'>
+        <div
+          key={questionItem.answer}
+          className='test-question-option'
+          onClick={() =>
+            testController({
+              testModule: testModule,
+              tasks: tasks,
+              questionID: question.id,
+              answerID: questionItem.id,
+              domID: domID,
+            })
+          }
+        >
           <input
             id={domID}
             type='radio'
             name={'group-' + questionCount}
             value={questionItem.answer}
           />
-          <label
-            onClick={() =>
-              testController({
-                testModule: testModule,
-                tasks: tasks,
-                questionID: question.id,
-                answerID: questionItem.id,
-                domID: domID,
-              })
-            }
-            htmlFor={domID}
-            className='question-answer'
-          >
+          <label htmlFor={domID} className='question-answer'>
             {' '}
             {questionItem.answer}
           </label>

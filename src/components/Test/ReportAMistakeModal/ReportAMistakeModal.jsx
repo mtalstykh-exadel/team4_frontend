@@ -7,7 +7,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 
 /*eslint-disable*/
-export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID }) => {
+export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID, reportModule }) => {
   let HTMLCodeForStep;
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
@@ -49,6 +49,23 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
         ><Trans>Add question</Trans></div>
       </div>;
   } else {
+    const saveDataArray = localStorage.getItem(reportModule);
+    const [characters, setCharacters] = useState('');
+
+    const handleChange = (event) => {
+      localStorage.setItem(
+        reportModule,
+        JSON.stringify({ report: event.target.value })
+      );
+      setCharacters(event.target.value);
+    };
+
+    setTimeout(() => {
+      if (saveDataArray !== null) {
+        setCharacters(JSON.parse(saveDataArray).report);
+      }
+    }, 0);
+
     HTMLCodeForStep =
       <>
         <div className='topic-wrapper'>
@@ -61,6 +78,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
             multiline
             rows={5}
             label='Enter your report'
+            value={characters}
+            onChange={handleChange}
           />
         </div>
       </>;
@@ -91,5 +110,6 @@ ReportAMistakeModal.propTypes = {
   level: PropTypes.string,
   module: PropTypes.array,
   handleClose: PropTypes.func,
-  testID: PropTypes.number
+  testID: PropTypes.number,
+  reportModule: PropTypes.string
 };
