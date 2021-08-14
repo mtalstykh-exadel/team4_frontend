@@ -3,14 +3,15 @@ import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import PropTypes from 'prop-types';
 import { getResultTest } from '../../api/result-test';
-import { getTest } from '../../api/get-status-test';
+import { getTest } from '../../api/get-test';
 import { Trans } from '@lingui/macro';
+import { currentTest } from '../../constants/localStorageConstants';
 
-
-const Results = ({idTest}) => {
+const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
 
+  const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
   useEffect(async function () {
     setTest(await getTest(idTest).then((res) => res));
     setResult(await getResultTest(idTest).then((res) => res));
@@ -112,8 +113,8 @@ const Results = ({idTest}) => {
 };
 
 Results.propTypes = {
-    level: PropTypes.string,
-    idTest: PropTypes.number,
-  };
+  level: PropTypes.string,
+  idTest: PropTypes.number,
+};
 
 export default Results;
