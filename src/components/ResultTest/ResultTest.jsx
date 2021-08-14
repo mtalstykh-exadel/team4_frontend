@@ -112,9 +112,4 @@ const Results = () => {
   );
 };
 
-Results.propTypes = {
-  level: PropTypes.string,
-  idTest: PropTypes.number,
-};
-
 export default Results;
