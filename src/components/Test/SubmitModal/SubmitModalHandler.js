@@ -13,8 +13,6 @@ import {
   currentTest,
 } from '../../../constants/localStorageConstants';
 
-const testID = JSON.parse(localStorage.getItem(currentTest)).id;
-
 const dataURItoBlob = (dataURI) => {
   const byteString = atob(dataURI.split(',')[1]);
   const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
@@ -30,12 +28,12 @@ const dataURItoBlob = (dataURI) => {
 const changeArray = (array) => {
   if (array === null) {
     return [];
-  } 
+  }
 
   return array.map((element) => ({
     questionId: element.qID,
     answerId: element.aID,
-    testId: testID,
+    testId: JSON.parse(localStorage.getItem(currentTest)).id,
   }));
 };
 
