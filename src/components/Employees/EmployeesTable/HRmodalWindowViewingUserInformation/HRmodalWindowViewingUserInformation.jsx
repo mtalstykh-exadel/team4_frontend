@@ -24,7 +24,7 @@ import {
 } from '@material-ui/core';
 
 import './HRmodalWindowViewingUserInformation.scss';
-import { filterLevelsShort, tableHeader } from '../../../../constants/constants';
+import { filterLevelsShort, tableHeader } from '../../../../constants/filterConstants';
 
 export const HRmodalWindowViewingUserInformation = (props) => {
   const [page, setPage] = React.useState(0);

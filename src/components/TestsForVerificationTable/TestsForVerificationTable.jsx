@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Button, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, Modal } from '@material-ui/core';
+
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
 import { TestsForVerificationModal } from './Component/TestsForVerificationModal';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { useEffect } from 'react';
-
 import { requestUnverifiedTests } from '../../store/actions/unverifiedTestActions';
 
+import { requestReports } from '../../store/actions/unverifiedTestActions';
 export const TestsForVerificationTable = () => {
 
   const dispatch = useDispatch();
@@ -18,33 +18,24 @@ export const TestsForVerificationTable = () => {
   const [open, setOpen] = useState(false);
   const [test, setTest] = useState('');
 
-
   useEffect(() => {
     dispatch(requestUnverifiedTests());
   }, []);
 
   const rows = [['ID','ID'], ['Level','Уровень'], ['Assigned','Дата назначения'], ['Test deadline', 'Крайний срок сдачи'], ['Priority', 'Приоритет'], ['Action','Действие']];
-  const testForVerification = useSelector((state) => state.unverifiedTests);
+  const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
   useEffect(() => {
-    testForVerification.length < rowsPerPage && setPage(0);
-  }, [testForVerification]);
+    unverifiedTests.length < rowsPerPage && setPage(0);
+  }, [unverifiedTests]);
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
-  };
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   const tableHeadCells = rows.map((rowName) => {
@@ -63,7 +54,7 @@ export const TestsForVerificationTable = () => {
                 {tableHeadCells}
               </TableRow>
             </TableHead>
-            <TableBody>{testForVerification.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            <TableBody>{unverifiedTests.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>{row.id}</TableCell>
@@ -73,12 +64,14 @@ export const TestsForVerificationTable = () => {
                   <TableCell align='left'><Trans>{row.priority}</Trans></TableCell>
                   <TableCell align='left'>
                     <Button color='primary'
+                      className='button-standard'
                       variant='outlined'
                       size='small'
-                      style={{ width: 110 }}
                       onClick={() => {
-                        setTest(row);
-                        handleOpen();
+                        dispatch(requestUnverifiedTests())
+                          .then(() => setTest(row))
+                          .then(() => dispatch(requestReports(row.id))
+                            .then(() => setOpen(true)));
                       }}
                     >
                       <Trans>Verify</Trans>
@@ -94,7 +87,7 @@ export const TestsForVerificationTable = () => {
           labelRowsPerPage={<Trans>Rows per page: </Trans>}
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
-          count={testForVerification.length}
+          count={unverifiedTests.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -102,12 +95,12 @@ export const TestsForVerificationTable = () => {
         />
         <Modal
           open={open}
-          onClose={handleClose}
+          onClose={() => setOpen(false)}
           aria-labelledby='simple-modal-title'
           aria-describedby='simple-modal-description'
           className='modal'>
           <div className='modal-content'>
-            <TestsForVerificationModal test={test} handleClose={handleClose}/>
+            {unverifiedTests.find((x) => x.id === test.id) ? <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)}/> : 'Test was deassigned'}
           </div>
         </Modal>
       </Paper>
