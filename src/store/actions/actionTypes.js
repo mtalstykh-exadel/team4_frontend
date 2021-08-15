@@ -11,9 +11,16 @@ export const LANGUAGE_CHANGE = 'LANGUAGE_CHANGE';
 // logout actiontypes
 export const LOGOUT_START = 'LOGOUT_START';
 
+// admin actionTypes
+export const REQUEST_TESTS_FOR_DISTRIBUTION = 'REQUEST_TESTS_FOR_DISTRIBUTION';
+
 // coach actionTypes
 export const REQUEST_QUESTIONS_LIST = 'REQUEST_QUESTIONS_LIST';
 export const REQUEST_QUESTION = 'REQUEST_QUESTIONS';
+export const REMOVE_QUESTION = 'REMOVE_QUESTION';
+export const SET_EDITED_QUESTION = 'SET_EDITED_QUESTION';
+export const SET_LISTENING_AUDIO_FILE = 'SET_LISTENING_AUDIO_FILE';
+export const REMOVE_EDITED_QUESTION = 'REMOVE_EDITED_QUESTION';
 
 // jwt actiontypes
 export const JWT_ADD = 'JWT_ADD';

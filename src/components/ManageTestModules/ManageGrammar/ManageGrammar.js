@@ -9,7 +9,18 @@ export const ManageGrammar = (props) => {
 
   const [question, setQuestion] = useState(props.moduleData);
 
-  useEffect(() => { props.handleModule(question); }, [question]);
+  useEffect(() => {
+    props.handleModule(question);
+  }, [question]);
+
+  useEffect(() => {
+    if (!question.level && !question.module) {
+      setQuestion(Object.assign({}, question, {
+        level: props.level,
+        module: 'Grammar'
+      }));
+    }
+  }, []);
 
   const handleSentence = (event) => {
     setQuestion(Object.assign({}, question, {
@@ -18,8 +29,11 @@ export const ManageGrammar = (props) => {
   };
 
   const handleRadio = (event) => {
+    const optionsArray = [...question.answers];
+
+    optionsArray[event.target.value].correct = true;
     setQuestion(Object.assign({}, question, {
-      radiovalue: event.target.value
+      answers: optionsArray
     }));
   };
 
@@ -27,7 +41,7 @@ export const ManageGrammar = (props) => {
     const optionsArray = [...question.answers];
     optionsArray[index].answer = event.target.value;
     setQuestion(Object.assign({}, question, {
-      asnwers: optionsArray
+      answers: optionsArray
     }));
   };
 
@@ -55,6 +69,7 @@ export const ManageGrammar = (props) => {
               checked={values.correct ? 'checked' : null}
               onChange={handleRadio} />
             <TextField
+              required
               placeholder='Answer'
               value={values.answer}
               onChange={handleAnswersChange(index)} />
@@ -67,5 +82,6 @@ export const ManageGrammar = (props) => {
 ManageGrammar.propTypes = {
   handleModule: PropTypes.func,
   questionIndex: PropTypes.any,
-  moduleData: PropTypes.any
+  moduleData: PropTypes.any,
+  level: PropTypes.any
 };

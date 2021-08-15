@@ -10,12 +10,15 @@ import { useFormik } from 'formik';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Trans } from '@lingui/macro';
+import { useDispatch } from 'react-redux';
+import { requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 
 const validation = Yup.object({
   questionId: Yup.number()
 });
 
 export const EditTestsFilter = (props) => {
+  const dispatch = useDispatch();
 
   const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   const testModules = ['Grammar', 'Listening', 'Essay', 'Speaking'];
@@ -33,13 +36,23 @@ export const EditTestsFilter = (props) => {
   });
 
   const onSubmit = (values) => {
-    props.setLevel(values.level);
+    if (values.level && values.module) {
+      props.setLevel(values.level);
+      if (values.module === 'Listening') {
+        dispatch(requestListeningQuestionsList(values.level));
+      } else {
+        dispatch(requestQuestionsList(values.level, values.module.toUpperCase()));
+      }
+    }
+    if (values.questionId) {
+      dispatch(requestQuestion(values.questionId));
+    }
     props.setModule(values.module);
     props.setQuestionId(values.questionId);
   };
 
   const formik = useFormik({
-    initialValues: { level: null, module: null, questionId: '' },
+    initialValues: { level: null, module: null, dataType: 'Not archived', questionId: '' },
     validationSchema: validation, onSubmit
   });
 
@@ -60,11 +73,20 @@ export const EditTestsFilter = (props) => {
             {testModulesList}
           </Select>
         </FormControl>
+
+        <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
+          <InputLabel htmlFor='dataType'><Trans>Data type</Trans></InputLabel>
+          <Select name='dataType' label='module' value={formik.values.dataType} inputProps={{ name: 'dataType' }} onChange={formik.handleChange}>
+            <MenuItem value='Not archived' className='edit-tests-option edit-tests-option-none'><Trans>Not archived</Trans></MenuItem>
+            <MenuItem className='edit-tests-option' value='Archived'>Archived</MenuItem>
+          </Select>
+        </FormControl>
         <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'
           value={formik.values.questionId} inputProps={{ name: 'questionId' }} onChange={formik.handleChange} />
 
-        <Button disabled={(!!formik.errors.questionId || !formik.values.questionId) && (!formik.values.level || !formik.values.module)} color='primary' variant='contained'
-          type='search' className='btn-search'>
+        <Button disabled={(!!formik.errors.questionId || !formik.values.questionId) && !formik.values.level || !formik.values.module}
+          color='primary' variant='contained'
+          type='search' className='btn-search button-standard'>
           <Trans>Search</Trans>
         </Button>
       </form>
@@ -74,8 +96,7 @@ export const EditTestsFilter = (props) => {
 };
 
 EditTestsFilter.propTypes = {
-  questionId: PropTypes.any,
-  setLevel: PropTypes.func,
   setModule: PropTypes.func,
-  setQuestionId: PropTypes.func
+  setLevel: PropTypes.func,
+  setQuestionId: PropTypes.func,
 };

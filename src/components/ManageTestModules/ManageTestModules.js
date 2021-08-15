@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { Button } from '@material-ui/core';
 import { useFormik } from 'formik';
@@ -14,11 +14,18 @@ import { ManageTopic } from './ManageTopic/ManageTopic';
 import { filterLevels, filterModules } from '../../constants/constants';
 import { FilterFormControl } from '../FormControl/formControl';
 
-import { questionModuleDataEmpty, listeningModuleDataEmpty } from './data/dummyData';
-import { useSelector } from 'react-redux';
+import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removeEditedQuestion, removeQuestionForEdit } from '../../store/actions/coachActions';
 
 export const ManageModule = (props) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const editedQuestion = useSelector((state) => state.coach.editedQuestion);
+
+  const queryString = require('query-string');
 
   const question = useSelector((state) => state.coach.question);
 
@@ -26,8 +33,9 @@ export const ManageModule = (props) => {
   const [moduleData, setModuleData] = useState('');
   const [audioFile, setAduioFile] = useState();
 
-  const onSubmit = (values) => {
-    return { values, module: moduleData, file: audioFile };
+  const onSubmit = () => {
+    props.sendQuestionToEditOrAdd(moduleData);
+    debugger;
   };
 
   const formik = useFormik({
@@ -35,8 +43,20 @@ export const ManageModule = (props) => {
     validationSchema: null, onSubmit
   });
 
-  console.log(question);
+  const removeQuestion = () => {
+    dispatch(removeQuestionForEdit());
+    dispatch(removeEditedQuestion());
+  };
 
+  useEffect(() => {
+    const parsedId = queryString.parse(history.location.search.substr(1));
+    if (editedQuestion && +parsedId.id !== editedQuestion.id) {
+      history.push({
+        pathname: '/edit-test-modules',
+        search: queryString.stringify({ id: editedQuestion.id })
+      });
+    }
+  }, [editedQuestion]);
   return (
     <form onSubmit={formik.handleSubmit} className='modifyTest'>
       <div className='form-control-wrapper'>
@@ -64,6 +84,7 @@ export const ManageModule = (props) => {
         {formik.values.module === 'Grammar' ?
           <ManageGrammar
             handleModule={setModuleData}
+            level={formik.values.level}
             moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : question} />
           : null}
         {formik.values.module === 'Listening' ?
@@ -80,7 +101,9 @@ export const ManageModule = (props) => {
                 : <Trans>'Edit topic for an Speaking'</Trans>
             }
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test-modules' ? '' : question}
+            level={formik.values.level}
+            module={formik.values.module}
+            moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
           /> : null}
         {formik.values.module === 'Essay' ?
           <ManageTopic
@@ -90,7 +113,9 @@ export const ManageModule = (props) => {
                 : <Trans>'Edit topic for an Essay'</Trans>
             }
             handleModule={setModuleData}
-            moduleData={location.pathname === '/add-test-modules' ? '' : question}
+            level={formik.values.level}
+            module={formik.values.module}
+            moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
           /> : null}
       </div>
       <div className='module-buttons-wrapper'>
@@ -98,6 +123,7 @@ export const ManageModule = (props) => {
           className='module-buttons'
           color='primary'
           variant='outlined'
+          onClick={removeQuestion}
           component={Link}
           to={'/edit-tests'}>
           <Trans>Back</Trans>
@@ -120,4 +146,5 @@ export const ManageModule = (props) => {
 ManageModule.propTypes = {
   level: PropTypes.any,
   module: PropTypes.any,
+  sendQuestionToEditOrAdd: PropTypes.any,
 };
