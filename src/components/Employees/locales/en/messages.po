@@ -11,18 +11,58 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:48
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:66
 msgid "Assign test"
 msgstr "Assign test"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:45
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:63
+msgid "Deassign"
+msgstr "Deassign"
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:46
+msgid "Assign"
+msgstr "Assign"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:95
+msgid "Assign test"
+msgstr "Assign test"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:91
 msgid "Deassign"
 msgstr "Deassign"
 
-#: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:27
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:55
+msgid "Email: {0}"
+msgstr "Email: {0}"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:59
+msgid "Level"
+msgstr "Level"
+
+#: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:26
 msgid "Name"
 msgstr "Name"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:31
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:34
+msgid "Priority:"
+msgstr "Priority:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:18
+msgid "Select the test level:"
+msgstr "Select the test level:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:29
+msgid "Test deadline:"
+msgstr "Test deadline:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:15
+msgid "You want to assign a test for {name}"
+msgstr "You want to assign a test for {name}"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:88
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
+msgid "front-end developer"
+msgstr "front-end developer"
+
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:75
 msgid "{0}{1}"
 msgstr "{0}"

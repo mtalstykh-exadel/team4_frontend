@@ -1,14 +1,15 @@
+import {testSpeakingFile} from '../constants/localStorageConstants';
 let chunks = [];
 let blobURL;
 let rec = {};
+let blob = {};
 
 const onRecAudio = () => {
-  navigator.mediaDevices.getUserMedia({audio: true}).then((stream) => {
+  navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
     const mediaRecorder = new MediaRecorder(stream);
     mediaRecorder.onstop = function () {
-      blobURL = window.URL.createObjectURL(
-        new Blob(chunks, {type: 'audio/ogg; codecs=opus'})
-      );
+      blob = new Blob(chunks, { type: 'audio/mpeg; codecs=opus' });
+      blobURL = window.URL.createObjectURL(blob);
       chunks = [];
       stream.getTracks().forEach((track) => track.stop());
     };
@@ -27,4 +28,20 @@ const offRecAudio = () => {
   return blobURL;
 };
 
-export {onRecAudio, offRecAudio};
+const saveBlobUrl = ({ testModule, duration }) => {
+  const reader = new FileReader();
+
+  reader.onload = (event) => {
+    localStorage.setItem(testSpeakingFile, event.target.result);
+  };
+  reader.readAsDataURL(blob);
+
+  localStorage.setItem(
+    testModule,
+    JSON.stringify({ blob: blobURL, duration })
+  );
+
+  return duration;
+};
+
+export { onRecAudio, offRecAudio, saveBlobUrl };

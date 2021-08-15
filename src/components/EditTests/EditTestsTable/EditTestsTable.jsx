@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import {
+  Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
+  Modal
+} from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
@@ -8,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { archiveQuestion, removeQuestionForEdit } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
+import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
@@ -19,8 +23,8 @@ export const EditTestsTable = (props) => {
   const question = useSelector((state) => state.coach.question);
 
   const filteredQuestions = Number(props.questionId) > 0 && questions && question
-  ? questions.filter((el) => el.id === question.id) : Number(props.questionId) > 0
-  ? question ? [question] : [] : questions ? questions : [];
+    ? questions.filter((el) => el.id === question.id) : Number(props.questionId) > 0
+      ? question ? [question] : [] : questions ? questions : [];
 
   const rows = ['ID',
     ['Player', 'Проигрователь'],
@@ -70,12 +74,32 @@ export const EditTestsTable = (props) => {
     filteredQuestions.length < rowsPerPage && setPage(0);
   }, [filteredQuestions]);
 
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className='edit-tests-data-wrapper'>
       <Button color='primary' variant='contained' type='search' onClick={() => handleClickEdit('/add-test-modules')}
         className='btn-add-question button-standard'>
         <Trans>Add question</Trans>
       </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <Paper elevation={2}>
+          <div className='modal-content'>
+            <ModalWindowWarningArchive handleClose={handleClose} />
+          </div>
+        </Paper>
+      </Modal>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
@@ -110,7 +134,10 @@ export const EditTestsTable = (props) => {
                     </Button>
                   </TableCell>
                   <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
-                    onClick={() => archiveTheQuestion(row.id)} />}</TableCell>
+                    onClick={() => {
+                      archiveTheQuestion(row.id);
+                      handleOpen();
+                    }} />}</TableCell>
                 </TableRow>
               );
             })}

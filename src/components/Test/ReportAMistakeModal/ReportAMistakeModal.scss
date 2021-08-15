@@ -1,22 +1,13 @@
 .report-mistake-modal {
   width: 949px;
-  height: auto;
 
   .close-icon-wrapper {
-    position: relative;
     display: block;
-    margin-left: 895px;
+    margin-left: auto;
+    padding: 0;
 
     .MuiIconButton-root {
       height: 35px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-      }
     }
   }
 
@@ -27,7 +18,6 @@
 
   .level-module-info {
     font-size: 16px;
-    color: #828282;
     margin-left: 5%;
     margin-top: 30px;
 
@@ -36,44 +26,52 @@
     }
   }
 
+  .scroll-container {
+    max-height: 500px;
+    height: auto;
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    .selector-wrapper {
+      margin-top: 10px;
+
+      .question-selector {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+    }
+
+    .add-question-to-report {
+      margin-left: 5%;
+      margin-top: 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .add-question-to-report.invisible {
+      display: none;
+    }
+
+    .add-question-to-report:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .scroll-container.visible {
+    overflow-y: scroll;
+  }
+
   .topic-wrapper {
-    border: 1px solid #828282;
+    border: 1px solid var(--secondary-color);
     border-radius: 4px;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 46px;
+    margin: 10px 5% 20px 5%;
     height: 35px;
 
     .topic {
       width: 90%;
-      margin: 8px 30px;
+      margin: 8px 15px;
     }
-  }
-
-  .selector-wrapper {
-    margin-top: 10px;
-
-    .question-selector {
-      width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-  }
-
-  .add-question-to-report {
-    margin-left: 5%;
-    margin-top: 10px;
-    font-size: 14px;
-    color: #828282;
-    cursor: pointer;
-  }
-
-  .add-question-to-report.invisible {
-    display: none;
-  }
-
-  .add-question-to-report:hover {
-    text-decoration: underline;
   }
 
   .report-textfield-wrapper {
@@ -85,7 +83,6 @@
       width: 95%;
 
       .report-textfield-label {
-        color: #828282;
         font-size: 14px;
       }
     }

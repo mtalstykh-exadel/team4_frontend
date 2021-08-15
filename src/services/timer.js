@@ -9,8 +9,8 @@ const stopTimer = (domId) => {
   }
 };
 
-const createTimer = ({ domId, minutes }) => {
-  let seconds = minutes * 60 - 1;
+const createTimer = ({ domId, seconds }) => {
+  seconds--;
   timers.push(
     setInterval(() => {
       const element = document.getElementById(domId);
@@ -22,7 +22,7 @@ const createTimer = ({ domId, minutes }) => {
         if (localeSeconds < 10) {
           localeSeconds = '0' + localeSeconds;
         }
-        if (element.textContent === '0:00') {
+        if (seconds <= 0) {
           element.textContent = '0:00';
           stopTimer(domId);
         }

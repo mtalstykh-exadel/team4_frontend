@@ -5,13 +5,13 @@ import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
 } from '@material-ui/core';
-import { coaches } from './Coaches';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
 import { assignTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
+import getCoaches from '../../api/get-coaches';
 
 const AdminDistribution = (props) => {
 
@@ -47,6 +47,17 @@ const AdminDistribution = (props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(100);
   const role = useSelector((state) => state.jwt.role);
+  const [coaches, setCoaches] = useState();
+
+  useEffect(() => {
+    getCoaches().then((response) => setCoaches(response));
+  }, [getCoaches]);
+
+  let coachNames = [];
+
+  if (coaches !== undefined) {
+    coachNames = coaches.map((coach) => coach.name);
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -102,7 +113,7 @@ const AdminDistribution = (props) => {
                                 <option aria-label='None' value='placeholder' >
                                   name
                                 </option>
-                                {coaches.map((coachName) => {
+                                {coachNames.map((coachName) => {
                                   keysForOptions++;
                                   return (
                                     <option key={keysForOptions} value={coachName} >
