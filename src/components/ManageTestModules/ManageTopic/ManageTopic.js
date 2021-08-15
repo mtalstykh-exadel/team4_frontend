@@ -22,7 +22,7 @@ export const ManageTopic = (props) => {
     }
   }, []);
   useEffect(() => { props.handleModule(moduleData); }, [moduleData]);
-  debugger;
+
   return (
     <>
       <p>{props.moduleDescription}</p>

@@ -59,7 +59,6 @@ export const ManageListening = (props) => {
     };
     input.click();
   };
-  debugger;
 
   return (
     <>

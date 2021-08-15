@@ -18,14 +18,13 @@ import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeEditedQuestion, removeQuestionForEdit } from '../../store/actions/coachActions';
+import * as queryString from 'querystring';
 
 export const ManageModule = (props) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const editedQuestion = useSelector((state) => state.coach.editedQuestion);
-
-  const queryString = require('query-string');
 
   const question = useSelector((state) => state.coach.question);
 
@@ -35,7 +34,6 @@ export const ManageModule = (props) => {
 
   const onSubmit = () => {
     props.sendQuestionToEditOrAdd(moduleData);
-    debugger;
   };
 
   const formik = useFormik({
