@@ -14,13 +14,17 @@ import {
   TableRow
 } from '@material-ui/core';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
+
 import { Trans } from '@lingui/macro';
-import { requestEmployeesList } from '../../../store/actions/employeesActions';
+
+import { requestEmployeesList, requestEmployeeHistory } from '../../../store/actions/employeesActions';
+import { deassignTest } from '../../../api/employees-fetch';
+
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
+import { HRmodalWindowTestDeassigned } from './HRmodalWindows/HRmodalTestDeassigned';
 
-// import { assignTest, deassignTest } from '../../../api/employees-fetch';
-
+import { formatDate } from '../../../utils/data-formatter';
 
 export const EmployeesTable = (props) => {
 
@@ -30,7 +34,7 @@ export const EmployeesTable = (props) => {
     dispatch(requestEmployeesList());
   }, []);
 
-  const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
+  const filteredEmployees = useSelector((state) => state.employees);
 
   const filterEmployees = filteredEmployees ? filteredEmployees
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
@@ -53,28 +57,12 @@ export const EmployeesTable = (props) => {
     filterEmployees.length < rowsPerPage && setPage(0);
   }, [filterEmployees]);
 
-
-  const [open, setOpen] = React.useState(false);
-
-  const [openHistory, setOpenHistory] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleOpen12 = () => {
-    setOpenHistory(true);
-  };
-
-  const handleClose12 = () => {
-    setOpenHistory(false);
-  };
+  const [row, setRow] = useState([]);
 
 
+  const [open, setOpen] = useState(false);
+  const [openHistory, setOpenHistory] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
   return (
     <div>
       <Paper elevation={2}>
@@ -89,23 +77,33 @@ export const EmployeesTable = (props) => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row ) => {
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' scope='row'>{row.name}</TableCell>
                   <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.level : null}</TableCell>
-                  <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.deadline[6] : null}</TableCell>
+                  <TableCell align='left' size='small'>{row.assignedTest ? formatDate(row.assignedTest.deadline) : null}</TableCell>
                   <TableCell align='left' size='small'>{row.login}</TableCell>
                   <TableCell align='left'>
-                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'>
+                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'
+                      onClick={() => deassignTest(row.assignedTest.testId)
+                        .catch(() => setOpenDeassigned(true))
+                        .then(() => dispatch(requestEmployeesList()))
+                      }>
                       <Trans>Deassign</Trans>
                     </Button>
                       : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard'
-                        onClick={handleOpen}>
+                        onClick={() => {
+                          dispatch(requestEmployeesList())
+                            .then(() => setRow(row))
+                            .then(() => setOpen(true));
+                        }}>
                         <Trans>Assign test</Trans>
                       </Button>}
                   </TableCell>
-                  <TableCell align='left' onClick={() => handleOpen12}>{<RestoreOutlinedIcon color='primary' className='archiveBtn'/>}</TableCell>
+                  <TableCell align='left' onClick={() => {Promise.resolve(setRow(row))
+                    .then(() => dispatch(requestEmployeeHistory(row.id)))
+                    .then(() => setOpenHistory(true));}}>{<RestoreOutlinedIcon color='primary' className='archiveBtn icons-color-primary'/>}</TableCell>
                 </TableRow>
               );
             })}
@@ -121,8 +119,9 @@ export const EmployeesTable = (props) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
-        {<HRmodalWindowViewingUserInformation open={openHistory} key={1} name={name} handleClose={handleClose12} gmail={'grgrgr'}/>}
+        {<HRmodalWindowTestDeassigned open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
+        {<HRmodalWindowTestAssignment test={row} open={open} handleClose={() => setOpen(false)}/>}
+        {<HRmodalWindowViewingUserInformation test={row} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
       </Paper>
     </div>
   );
@@ -132,11 +131,3 @@ EmployeesTable.propTypes = {
   userName: PropTypes.string
 };
 
-/*
-onClick={() => {deassignTest(row.assignedTest.testId)
-  .then(() => {dispatch(requestEmployeesList());handleOpen;});}}>
-
-
-onClick={() => {assignTest(row.id)
-.then(() => dispatch(requestEmployeesList()));}}>
-*/

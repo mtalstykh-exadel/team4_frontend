@@ -1,10 +1,16 @@
-import { REQUEST_EMPLOYEES_LIST } from './actionTypes';
-import { getEmployees } from '../../api/employees-fetch';
+import { REQUEST_EMPLOYEES_LIST, REQUEST_EMPLOYEE_HISTORY } from './actionTypes';
+import { getEmployeesList, getEmployeeHistory } from '../../api/employees-fetch';
 
-export const setEmployeesList = (filteredEmployees) => ({ type: REQUEST_EMPLOYEES_LIST, filteredEmployees });
+export const setEmployeesList = (employee) => ({ type: REQUEST_EMPLOYEES_LIST, employee });
+export const setEmployee = (employee) => ({ type: REQUEST_EMPLOYEE_HISTORY, employee });
 
 export const requestEmployeesList = () => (dispatch) => {
-  // TODO make a request to the server for employees list
-  getEmployees()
+  return getEmployeesList()
     .then((data) => (dispatch(setEmployeesList(data))));
 };
+
+export const requestEmployeeHistory = (name) => (dispatch) => {
+  return getEmployeeHistory(name)
+    .then((data) => (dispatch(setEmployee(data))));
+};
+
