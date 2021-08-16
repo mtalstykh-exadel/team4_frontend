@@ -1,9 +1,11 @@
-import { REQUEST_UNVERIFIED_TESTS, REQUEST_REPORTS } from './actionTypes';
-import { getUnverifiedTests, getReports } from '../../api/unverifiedTests-fetch';
+import { REQUEST_UNVERIFIED_TESTS, REQUEST_UNVERIFIED_TEST, REQUEST_GRADES } from './actionTypes';
+import { getUnverifiedTests, getUnverifiedTest, getTestGrades } from '../../api/unverifiedTests-fetch';
 
 export const setUnverifiedTests = (unverifiedTests) => ({ type: REQUEST_UNVERIFIED_TESTS, unverifiedTests });
 
-export const setReports = (testReports) => ({ type: REQUEST_REPORTS, testReports });
+export const setReports = (test) => ({ type: REQUEST_UNVERIFIED_TEST, test });
+
+export const setGrades = (grades) => ({ type: REQUEST_GRADES, grades });
 
 export const requestUnverifiedTests = () => (dispatch) => {
   return getUnverifiedTests()
@@ -11,6 +13,11 @@ export const requestUnverifiedTests = () => (dispatch) => {
 };
 
 export const requestReports = (testId) => (dispatch) => {
-  return getReports(testId)
+  return getUnverifiedTest(testId)
     .then((data) => (dispatch(setReports(data))));
+};
+
+export const requestGrades = (testId) => (dispatch) => {
+  return getTestGrades(testId)
+    .then((data) => (dispatch(setGrades(data))));
 };

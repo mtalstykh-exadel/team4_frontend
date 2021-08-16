@@ -19,7 +19,7 @@ const rootReducers = combineReducers({
   theme: themeReducer,
   employees: employeesReducer,
   unverifiedTests: unverifiedTestsReducer,
-  reports: reportsReducer
+  unverifiedTest: reportsReducer
 });
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducers, composeEnhancers(applyMiddleware(thunk)));

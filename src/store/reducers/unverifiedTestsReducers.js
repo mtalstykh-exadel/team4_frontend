@@ -1,4 +1,4 @@
-import { REQUEST_UNVERIFIED_TESTS, REQUEST_REPORTS } from '../actions/actionTypes';
+import { REQUEST_UNVERIFIED_TESTS, REQUEST_UNVERIFIED_TEST, REQUEST_GRADES } from '../actions/actionTypes';
 
 export const unverifiedTestsReducer = (state = [], action) => {
   switch (action.type) {
@@ -11,8 +11,14 @@ export const unverifiedTestsReducer = (state = [], action) => {
 
 export const reportsReducer = (state = [], action) => {
   switch (action.type) {
-    case REQUEST_REPORTS:
-      return action.testReports;
+    case REQUEST_UNVERIFIED_TEST:
+      return Object.assign({}, state, {
+        test: action.test
+      });
+    case REQUEST_GRADES:
+      return Object.assign({}, state, {
+        grades: action.grades
+      });
     default:
       return state;
   }
