@@ -12,8 +12,6 @@ const stopTimer = (domId) => {
   if (document.getElementById(domId) !== null) {
     if (domId === 'test-timer' && document.getElementById(domId).textContent === '0:00') {
       sendingHandler();
-      console.log(document.getElementById(domId).textContent);
-      window.location.href = '/result';
     }
   }
 };
