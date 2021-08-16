@@ -1,4 +1,7 @@
 import React, {useEffect, useState} from 'react';
+
+import { CircularProgress } from '@material-ui/core';
+
 import { getResultTest } from '../../api/result-test';
 import { getTest } from '../../api/get-test';
 import Layout from '../Layout/Layout';
@@ -9,8 +12,10 @@ import { currentTest } from '../../constants/localStorageConstants';
 const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const getResults = async () => {
+    setLoading(true);
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
 
     if ( test === 0 ) {
@@ -20,12 +25,12 @@ const Results = () => {
     if ( result === undefined ) {
       await getResultTest(idTest).then((res) => setResult(res));
     }
-
+    setLoading(false);
   };
 
   useEffect( () => {
     getResults();
-  });  
+  });
 
   let resultQuote = [
     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
@@ -82,33 +87,38 @@ const Results = () => {
       <div className='result-header'>
         <Trans>{headerQuote[0]}{headerQuote[1]}</Trans>
       </div>
-      <div className='result-body'>
-        {[...arrayResult].splice(0, 2).map((res, key) => {
-          return (
-            <div key={key} className={setStyle(res)}>
-              <p className='result'>{res}/10</p>
-            </div>
-          );
-        })}
-        {[...arrayResult].splice(2, 2).map((res, key) => {
-          let htmlRes = ['waiting', 'ожидать'];
-          if (test.status === 'COMPLETED') {
-            htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
-            res = 'waiting';
-          } else {
-            htmlRes = res.toString() + '/10';
-          }
-          return (
-            <div key={key} className={setStyle(res)}>
-              <p className='result'>{htmlRes}</p>
-            </div>
-          );
-      })}
-      </div>
-      <div className='step-test'> {stepTest} </div>
-      <div className='result-quote'>
-        <Trans>{resultQuote[0]}{resultQuote[1]}</Trans>
-      </div>
+      {loading ? (
+        <CircularProgress className='border-primary'/>
+      ) : (
+        <>
+          <div className='result-body'>
+            {[...arrayResult].splice(0, 2).map((res, key) => {
+              return (
+                <div key={key} className={setStyle(res)}>
+                  <p className='result'>{res}/10</p>
+                </div>
+              );
+            })}
+            {[...arrayResult].splice(2, 2).map((res, key) => {
+              let htmlRes = ['waiting', 'ожидать'];
+              if (test.status === 'COMPLETED') {
+                htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
+                res = 'waiting';
+              } else {
+                htmlRes = res.toString() + '/10';
+              }
+              return (
+                <div key={key} className={setStyle(res)}>
+                  <p className='result'>{htmlRes}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className='step-test'> {stepTest} </div>
+          <div className='result-quote'>
+            <Trans>{resultQuote[0]}{resultQuote[1]}</Trans>
+          </div>
+        </>)}
     </Layout>
   );
 };

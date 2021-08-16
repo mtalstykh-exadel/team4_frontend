@@ -3,10 +3,11 @@ import {Paper} from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
+import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './Player.scss';
 
-export const Player = ({src, audioDuration, id}) => {
+export const Player = ({src, audioDuration, id, speaking = false}) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -14,6 +15,7 @@ export const Player = ({src, audioDuration, id}) => {
   const [audioElement, setAudioElement] = useState({});
   const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
+  const [loading, setloading] = useState(true);
 
   const AudioController = () => {
     if (document.getElementById(id)) {
@@ -78,6 +80,7 @@ export const Player = ({src, audioDuration, id}) => {
   setTimeout(() => {
     document.getElementById(id).addEventListener('loadeddata', () => {
       setLocaleDuration(document.getElementById(id).duration);
+      setloading(false);
     });
   }, 0);
 
@@ -111,7 +114,11 @@ export const Player = ({src, audioDuration, id}) => {
         }}
       >
         {audioOn === false ? (
-          <PlayArrowIcon className='icons-color-primary' fontSize='medium'/>
+          loading && !speaking ? (
+            <CircularProgress className='border-primary' size='23px' />
+          ) : (
+            <PlayArrowIcon className='icons-color-primary' fontSize='medium'/>
+          )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium'/>
         )}
@@ -150,4 +157,5 @@ Player.propTypes = {
   src: PropTypes.string,
   audioDuration: PropTypes.number,
   id: PropTypes.string,
+  speaking: PropTypes.bool,
 };
