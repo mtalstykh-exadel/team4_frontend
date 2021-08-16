@@ -31,11 +31,11 @@ export const Grammar = ({ tasks, testModule }) => {
           <label
             onClick={() =>
               testController({
-                testModule: testModule,
-                tasks: tasks,
+                testModule,
+                tasks,
                 questionID: question.id,
                 answerID: questionItem.id,
-                domID: domID,
+                domID,
               })
             }
             htmlFor={domID}
