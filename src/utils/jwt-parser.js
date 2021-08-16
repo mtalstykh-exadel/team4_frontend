@@ -20,4 +20,3 @@ const removeJWTfromLocalstorage = () => {
 };
 
 export { saveJWTtoLocalstorage , getJWTdata, getJWTtoken, removeJWTfromLocalstorage };
-
