@@ -17,9 +17,8 @@ import { Trans } from '@lingui/macro';
 
 import { getAudioFile } from '../../../api/get-audioFIle';
 
-import { setTestGrades } from '../../../api/unverifiedTests-fetch';
+import { submitTestGrades, saveTestGrades } from '../../../api/unverifiedTests-fetch';
 import { requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
-import { gradeEssay, gradeSpeaking } from '../../../constants/localStorageConstants';
 
 export const TestsForVerificationModal = (props) => {
 
@@ -29,20 +28,21 @@ export const TestsForVerificationModal = (props) => {
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [loadingSave, setLoadingSave] = useState(false);
 
-  const test = useSelector((state) => state.reports);
+  const test = useSelector((state) => state.unverifiedTest.test);
+  const grades = useSelector((state) => state.unverifiedTest.grades);
 
-  const commentEssay = JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`));
+  const commentEssay = grades.find((grade) => grade.questionId === test.essayQuestion.id);
   const [essay, setEssay] = useState({
-    comment: commentEssay !== null ? commentEssay.comment : '',
-    grade: commentEssay !== null ? commentEssay.grade : 0,
+    comment: commentEssay ? commentEssay.comment : '',
+    grade: commentEssay ? commentEssay.grade : 0,
     questionId: test.essayQuestion.id,
     testId: test.testId
   });
 
-  const commentSpeaking = JSON.parse(localStorage.getItem(`${gradeSpeaking}${test.testId}`));
+  const commentSpeaking = grades.find((grade) => grade.questionId === test.speakingQuestion.id);
   const [speaking, setSpeaking] = useState({
-    comment: commentSpeaking !== null ? commentSpeaking.comment : '',
-    grade: commentSpeaking !== null ? commentSpeaking.grade : 0,
+    comment: commentSpeaking ? commentSpeaking.comment : '',
+    grade: commentSpeaking ? commentSpeaking.grade : 0,
     questionId: test.speakingQuestion.id,
     testId: test.testId
   });
@@ -80,7 +80,9 @@ export const TestsForVerificationModal = (props) => {
     dispatch(requestUnverifiedTests())
       .then((response) => {
         if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
-          setTestGrades(test.testId)
+          saveTestGrades(essay);
+          saveTestGrades(speaking);
+          submitTestGrades(test.testId)
             .then(() => props.handleClose());
         }
       });
@@ -88,8 +90,8 @@ export const TestsForVerificationModal = (props) => {
 
   const handleSave = () => {
     setLoadingSave(true);
-    step === 1 && localStorage.setItem(`${gradeEssay}${test.testId}`, JSON.stringify(essay));
-    step === 2 && localStorage.setItem(`${gradeSpeaking}${test.testId}`, JSON.stringify(speaking));
+    step === 1 && saveTestGrades(essay);
+    step === 2 && saveTestGrades(speaking);
     dispatch(requestUnverifiedTests())
       .then(() => setLoadingSave(false));
   };
@@ -108,10 +110,8 @@ export const TestsForVerificationModal = (props) => {
   useEffect(
     async function () {
       setUrl(
-        await getAudioFile(props.test.contentFile.url).then((response) => {
-          return URL.createObjectURL(
-            new Blob([response.data], { type: 'audio/ogg' })
-          );
+        await getAudioFile(test.speakingUrl).then((response) => {
+          console.log(response);
         })
       );
     },
@@ -123,13 +123,13 @@ export const TestsForVerificationModal = (props) => {
       <div className='error-messages'><Trans>Error messages from the user:</Trans></div>
       <div className='scroll-container'>
         {
-          test.reportedQuestions.map((item, index) => {
+          test.reportedQuestions.map((reportedQuestion, index) => {
             return (
               <div key={index}>
-                <div className='module-name'><Trans>Module</Trans> <Trans>{item.question.module}</Trans></div>
-                <div className='users-message'>{item.report}</div>
-                <div className='question-id'><Trans>Question ID</Trans> {item.question.id}</div>
-                <div className='question-context'>{item.question.questionBody}</div>
+                <div className='module-name'><Trans>Module</Trans> <Trans>{reportedQuestion.question.module}</Trans></div>
+                <div className='users-message'>{reportedQuestion.report}</div>
+                <div className='question-id'><Trans>Question ID</Trans> {reportedQuestion.question.id}</div>
+                <div className='question-context'>{reportedQuestion.question.questionBody}</div>
                 <div className='edit-button-wrapper'>
                   <Button
                     variant='outlined'
@@ -143,7 +143,7 @@ export const TestsForVerificationModal = (props) => {
                   label='Comment'
                   variant='outlined'
                   className='comment-section'
-                  onChange={setGrammarReport(item.question.id)}
+                  onChange={setGrammarReport(reportedQuestion.question.id)}
                   multiline
                   rows={3}
                 />
@@ -160,9 +160,9 @@ export const TestsForVerificationModal = (props) => {
       <div className='users-essay'>{test.essayQuestion.answers}</div>
       <div className='grades-wrapper'>
         {
-          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
             return (
-              <div key={item} className={essay.grade === item ? 'grade chosen' : 'grade'} onClick={() => {handleEssayGrade(item);}}>{item}</div>
+              <div key={grade} className={essay.grade === grade ? 'grade chosen' : 'grade'} onClick={() => {handleEssayGrade(grade);}}>{grade}</div>
             );
           })
         }
@@ -188,13 +188,13 @@ export const TestsForVerificationModal = (props) => {
         />
       </div>
       <div className='grades-wrapper'>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
           return (
             <div
-              key={item}
-              className={speaking.grade === item ? 'grade chosen' : 'grade'}
-              onClick={() => {handleSpeakingGrade(item);}}>
-              {item}
+              key={grade}
+              className={speaking.grade === grade ? 'grade chosen' : 'grade'}
+              onClick={() => {handleSpeakingGrade(grade);}}>
+              {grade}
             </div>
           );
         })}
@@ -268,7 +268,7 @@ export const TestsForVerificationModal = (props) => {
             variant='contained'
             color='primary'
             className='submit-button'
-            disabled = {loadingSubmit || loadingSave || (JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`)) && JSON.parse(localStorage.getItem(`${gradeSpeaking}${test.testId}`)) ? false : true)}
+            disabled = {loadingSubmit || loadingSave}
             onClick={() => handleSubmit()}>
             {loadingSubmit ? (
               <CircularProgress className='border-primary' size='23px'/>

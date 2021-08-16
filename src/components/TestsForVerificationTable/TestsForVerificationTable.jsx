@@ -8,9 +8,9 @@ import { Trans } from '@lingui/macro';
 
 import { TestsForVerificationModal } from './Component/TestsForVerificationModal';
 import { TableRowTest } from './Component/tableRowTest/TableRowTest';
+import { ModalWindowRemovedFromYourPost } from './ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost';
 
-import { requestUnverifiedTests } from '../../store/actions/unverifiedTestActions';
-import { requestReports } from '../../store/actions/unverifiedTestActions';
+import { requestUnverifiedTests, requestGrades, requestReports } from '../../store/actions/unverifiedTestActions';
 
 export const TestsForVerificationTable = () => {
 
@@ -44,7 +44,8 @@ export const TestsForVerificationTable = () => {
     return dispatch(requestUnverifiedTests())
       .then(() => setTest(row))
       .then(() => dispatch(requestReports(row.id))
-        .then(() => Promise.resolve(setOpen(true))));
+        .then(() => dispatch(requestGrades(row.id))
+          .then(() => Promise.resolve(setOpen(true)))));
   };
 
   const tableHeadCells = rows.map((rowName) => {
@@ -88,7 +89,9 @@ export const TestsForVerificationTable = () => {
           aria-describedby='simple-modal-description'
           className='modal'>
           <div className='modal-content'>
-            {unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.id) ? <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)}/> : 'Test was deassigned'}
+            {unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.id) ?
+              <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)}/> :
+              <ModalWindowRemovedFromYourPost handleClose={() => setOpen(false)}/>}
           </div>
         </Modal>
       </Paper>
