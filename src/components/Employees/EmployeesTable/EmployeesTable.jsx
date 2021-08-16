@@ -122,7 +122,6 @@ export const EmployeesTable = (props) => {
       />
       {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
       {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
-      {<AdminModalWindowWarningDeassign open={open} key={2} handleClose={handleClose}/>}
     </Paper>
   );
 };
