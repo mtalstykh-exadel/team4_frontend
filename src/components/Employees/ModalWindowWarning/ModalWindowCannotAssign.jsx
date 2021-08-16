@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/modal.scss';
+import '../../../styles/buttons.scss';
 import './ModalWindowCannotAssign.scss';
 
 export const ModalWindowWarningCannotAssign = (props) => {
@@ -25,7 +25,7 @@ export const ModalWindowWarningCannotAssign = (props) => {
             </IconButton>
             <div className='text'>The test has already been assigned to this employee</div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={props.handleClose}>Close</Button>
+              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'>Close</Button>
             </div>
           </div>
         </div>

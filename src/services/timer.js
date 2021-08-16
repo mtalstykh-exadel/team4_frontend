@@ -9,10 +9,10 @@ const stopTimer = (domId) => {
     document.getElementById(domId).textContent = '5:00';
     return audioDuration;
   }
-  if (domId === 'test-timer' && document.getElementById(domId).textContent === '0:00') {
-    sendingHandler();
-    console.log(document.getElementById(domId).textContent);
-    window.location.href = '/result';
+  if (document.getElementById(domId) !== null) {
+    if (domId === 'test-timer' && document.getElementById(domId).textContent === '0:00') {
+      sendingHandler();
+    }
   }
 };
 
