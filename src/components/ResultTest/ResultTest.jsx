@@ -12,8 +12,8 @@ const Results = () => {
   
   setTimeout( async () => {
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
-    setTest(await getTest(idTest).then((res) => res));
-    setResult(await getResultTest(idTest).then((res) => res));
+    getTest(idTest).then((res) => setTest( res ));
+    getResultTest(idTest).then((res) => setResult( res ));
   }, 0);
 
   let resultQuote = [
