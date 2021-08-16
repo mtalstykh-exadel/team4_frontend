@@ -38,13 +38,18 @@ const changeArray = (array) => {
 
 const sendingHandler = () => {
   const essayAnswer = JSON.parse(localStorage.getItem(testEassyUserAnswers));
-  saveEssay(essayAnswer !== null ? essayAnswer.answer : '');
-  saveListeningAndGrammar([
+  
+  const promiseEssay = saveEssay(essayAnswer !== null ? essayAnswer.answer : 'The user has not completed this module');
+  const promiseListeningAndGrammar = saveListeningAndGrammar([
     ...changeArray(JSON.parse(localStorage.getItem(testListeningUserAnswers))),
     ...changeArray(JSON.parse(localStorage.getItem(testGrammarUserAnswers))),
   ]);
-  saveSpeaking(dataURItoBlob(localStorage.getItem(testSpeakingFile)));
-  testFinish().then(() => window.location.href = '/result');
+  const promiseSpeaking = saveSpeaking(dataURItoBlob(localStorage.getItem(testSpeakingFile)));
+
+  Promise.all([promiseEssay, promiseListeningAndGrammar, promiseSpeaking]).then(() => {
+    testFinish().then(() => window.location.href = '/result');
+  });
+
 };
 
 export {sendingHandler};
