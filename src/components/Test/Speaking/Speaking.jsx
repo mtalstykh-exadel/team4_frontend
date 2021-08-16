@@ -67,6 +67,7 @@ export const Speaking = ({ task, testModule }) => {
           id='player-speaking'
           src={blobURL}
           audioDuration={audioDuration}
+          speaking={true}
         />
       </div>
     </div>

@@ -66,3 +66,7 @@ msgstr "front-end developer"
 #: src/components/Employees/EmployeesTable/EmployeesTable.jsx:75
 msgid "{0}{1}"
 msgstr "{0}"
+
+#: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:27
+msgid "Are you sure you want to be removed from your position?"
+msgstr "Are you sure you want to be removed from your position?"
