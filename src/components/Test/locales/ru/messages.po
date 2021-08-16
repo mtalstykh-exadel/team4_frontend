@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:26
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:48
 #~ msgid "Add question"
 #~ msgstr "Добавить вопрос"
 
@@ -81,8 +81,8 @@ msgid "Speaking"
 msgstr "Говорение"
 
 #: src/pages/Test/Test.jsx:162
-msgid "Submit"
-msgstr "Отправить"
+msgid "Submit test"
+msgstr "Завершить тест"
 
 #: src/pages/Test/Essay/Essay.jsx:15
 #~ msgid "Write an essay on a given topic"
@@ -97,5 +97,6 @@ msgstr "Отправить"
 #~ msgstr "из 512 символов"
 
 #: src/pages/Test/Test.jsx:118
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:76
 #~ msgid "{0}{1}"
 #~ msgstr "{1}"

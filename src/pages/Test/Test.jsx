@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import { Modal } from '@material-ui/core';
 import {
   Speaking,
@@ -8,14 +8,21 @@ import {
   ReportAMistakeModal,
   SubmitModal,
 } from '../../components';
-import { startTimer, createTimer } from '../../services/timer';
+import { startTimer, createTimer, stopTimer } from '../../services/timer';
 import Layout from '../../components/Layout/Layout';
 import Button from '@material-ui/core/Button';
-import { currentTest, testEassyUserAnswers, testListeningUserAnswers, testGrammarUserAnswers, testSpeakingAnswers } from '../../constants/localStorageConstants';
+import {
+  currentTest,
+  testEassyUserAnswers,
+  testListeningUserAnswers,
+  testGrammarUserAnswers,
+  testSpeakingAnswers
+} from '../../constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
+  const [level, setLevel] = useState('');
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
@@ -24,7 +31,7 @@ export const Test = () => {
   const [essayTask, setEssayTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
-  const TestDurationInMinutes = 40;
+  const [testDurationInSeconds, setTestDurationInSeconds] = useState(2400);
 
   const [nextButtonClass, setNextButtonClass] = useState('next-step-button');
 
@@ -42,48 +49,43 @@ export const Test = () => {
     <Grammar key='0' tasks={grammarTasks} testModule={testGrammarUserAnswers}/>,
     <Listening key='1' tasks={listeningTasks} contentFile={contentFile} testModule={testListeningUserAnswers}/>,
     <Essay key='2' task={essayTask} testModule={testEassyUserAnswers}/>,
-    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers} />,
+    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers}/>,
   ];
 
   const modals = [
     <ReportAMistakeModal
-      key='0'
+      key='4'
       tasks={grammarTasks}
       level={'A1'}
-      module={'Grammar'}
+      module={['Grammar', 'Грамматика']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
-      key='1'
+      key='5'
       tasks={listeningTasks}
-      level={'A1'}
-      module={'Listening'}
+      level={level}
+      module={['Listening', 'Аудирование']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
-      key='2'
-      level={'A1'}
-      topic={'About Myself'}
-      module={'Essay'}
+      key='6'
+      level={level}
+      topic={essayTask}
+      module={['Essay', 'Эссе']}
       handleClose={handleClose}
     />,
     <ReportAMistakeModal
-      key='3'
-      level={'A1'}
-      topic={'About Myself'}
-      module={'Speaking'}
+      key='7'
+      level={level}
+      topic={speakingTask}
+      module={['Speaking', 'Говорение']}
       handleClose={handleClose}
     />,
-    <SubmitModal key='4' handleClose={handleClose} />,
+    <SubmitModal key='8' handleClose={handleClose}/>,
   ];
 
   useEffect(() => {
-    startTimer(
-      createTimer({
-        domId: 'test-timer',
-        minutes: TestDurationInMinutes,
-      })
-    );
+    stopTimer('test-timer');
     const checkData = async () => {
       const testData = JSON.parse(localStorage.getItem(currentTest));
       if (testData !== null) {
@@ -92,11 +94,19 @@ export const Test = () => {
         setEssayTask(testData.questions.Essay);
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
+        setLevel(testData.level);
+        setTestDurationInSeconds(2 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
       }
     };
-    checkData();    
+    checkData();
+    startTimer(
+      createTimer({
+        domId: 'test-timer',
+        seconds: testDurationInSeconds,
+      })
+    );
+  }, [testDurationInSeconds]);
 
-  }, [TestDurationInMinutes]);
 
   return (
     <Layout>
@@ -147,7 +157,7 @@ export const Test = () => {
             <Trans>Speaking</Trans>
           </div>
           <div className='test-step time' id='test-timer'>
-            {TestDurationInMinutes}:00
+            {Math.trunc(testDurationInSeconds / 60)}:{testDurationInSeconds % 60}
           </div>
         </div>
         <div className='test-task-wrapper'>{steps[step]}</div>
@@ -204,7 +214,7 @@ export const Test = () => {
                 handleOpen();
               }}
             >
-              <Trans>Submit</Trans>
+              <Trans>Submit test</Trans>
             </Button>
           </div>
           <div

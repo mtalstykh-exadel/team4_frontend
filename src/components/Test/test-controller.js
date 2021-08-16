@@ -5,14 +5,26 @@ export const testController = ({ tasks, testModule, questionID, answerID, domID 
         localStorage.setItem(
           testModule,
           JSON.stringify([
-            ...JSON.parse(localStorage.getItem(testModule)),
-            { qID: questionID, aID: answerID, domID: domID },
+            { qID: questionID, aID: answerID, domID },
+            ...JSON.parse(localStorage.getItem(testModule))
           ])
         );
+
+        const uniqueArray = JSON.parse(localStorage.getItem(testModule)).filter((el, index) => {
+          const currentElement = JSON.stringify(el.qID);
+          return index === JSON.parse(localStorage.getItem(testModule)).findIndex((obj) => {
+            if (JSON.stringify(obj.qID) === currentElement) {
+              return [{ qID: questionID, aID: answerID, domID }];
+            }
+          });
+        });
+
+        localStorage.setItem(testModule, JSON.stringify([...uniqueArray]));
+
       } else {
         localStorage.setItem(
           testModule,
-          JSON.stringify([{ qID: questionID, aID: answerID, domID: domID }])
+          JSON.stringify([{ qID: questionID, aID: answerID, domID }])
         );
       }
     }

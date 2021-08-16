@@ -160,7 +160,7 @@ export const TestsForVerificationModal = (props) => {
       <div className='users-essay'>{test.essayQuestion.answers}</div>
       <div className='grades-wrapper'>
         {
-          [0,1,2,3,4,5,6,7,8,9,10].map((item) => {
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
             return (
               <div key={item} className={essay.grade === item ? 'grade chosen' : 'grade'} onClick={() => {handleEssayGrade(item);}}>{item}</div>
             );
@@ -188,7 +188,7 @@ export const TestsForVerificationModal = (props) => {
         />
       </div>
       <div className='grades-wrapper'>
-        {[0,1,2,3,4,5,6,7,8,9,10].map((item) => {
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
           return (
             <div
               key={item}
@@ -254,12 +254,20 @@ export const TestsForVerificationModal = (props) => {
           {steps[step]}
         </div>
         <div className='tests-verification-modal-buttons-wrapper'>
-          <Button variant='outlined' color='primary' className='save-button' disabled={loadingSave} onClick={() => handleSave()}>{loadingSave ? (
-            <CircularProgress className='border-primary' size='23px'/>
-          ) : (
-            <Trans>Save</Trans>
-          )}</Button>
-          <Button variant='contained' color='primary' className='submit-button'
+          <Button
+            variant='outlined'
+            color='primary'
+            className='save-button'
+            disabled={loadingSave} onClick={() => handleSave()}>
+            {loadingSave ? (
+              <CircularProgress className='border-primary' size='23px'/>
+            ) : (
+              <Trans>Save</Trans>
+            )}</Button>
+          <Button
+            variant='contained'
+            color='primary'
+            className='submit-button'
             disabled = {loadingSubmit || loadingSave || (JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`)) && JSON.parse(localStorage.getItem(`${gradeSpeaking}${test.testId}`)) ? false : true)}
             onClick={() => handleSubmit()}>
             {loadingSubmit ? (

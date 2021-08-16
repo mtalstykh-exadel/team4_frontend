@@ -9,5 +9,6 @@ export const gradeSpeaking = 'grade=speaking';
 
 export const testGrammarUserAnswers = 'test=grammarUserAnswers';
 export const testListeningUserAnswers = 'test=listeningUserAnswers';
-export const testEassyUserAnswers = 'test=essayUserAnswers=';
-export const testSpeakingAnswers = 'test=speakingUserAnswers=';
+export const testEassyUserAnswers = 'test=essayUserAnswers';
+export const testSpeakingAnswers = 'test=speakingUserAnswers';
+export const testSpeakingFile = 'test=speakingFile';
