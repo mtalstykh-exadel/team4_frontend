@@ -1,3 +1,5 @@
+import {sendingHandler} from '../components/Test/SubmitModal/SubmitModalHandler';
+
 let audioDuration = 0;
 const timers = [];
 
@@ -7,9 +9,14 @@ const stopTimer = (domId) => {
     document.getElementById(domId).textContent = '5:00';
     return audioDuration;
   }
+  if (domId === 'test-timer' && document.getElementById(domId).textContent === '0:00') {
+    sendingHandler();
+    console.log(document.getElementById(domId).textContent);
+    window.location.href = '/result';
+  }
 };
 
-const createTimer = ({ domId, seconds }) => {
+const createTimer = ({domId, seconds}) => {
   seconds--;
   timers.push(
     setInterval(() => {
@@ -22,7 +29,7 @@ const createTimer = ({ domId, seconds }) => {
         if (localeSeconds < 10) {
           localeSeconds = '0' + localeSeconds;
         }
-        if (seconds <= 0) {
+        if (localeSeconds <= 0) {
           element.textContent = '0:00';
           stopTimer(domId);
         }
@@ -34,10 +41,10 @@ const createTimer = ({ domId, seconds }) => {
       }
     }, 1000)
   );
-  return { id: timers.length - 1 };
+  return {id: timers.length - 1};
 };
 
-const startTimer = ({ id }) => {
+const startTimer = ({id}) => {
   timers[id];
   audioDuration = 0;
 };
