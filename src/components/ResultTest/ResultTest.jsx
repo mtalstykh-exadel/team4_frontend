@@ -11,8 +11,8 @@ const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
 
-  const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
   useEffect(async function () {
+    const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
     setTest(await getTest(idTest).then((res) => res));
     setResult(await getResultTest(idTest).then((res) => res));
   });
