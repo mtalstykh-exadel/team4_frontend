@@ -46,14 +46,14 @@ const AdminDistribution = (props) => {
   let coachNames = [];
 
   if (coaches !== undefined) {
-    coachNames = coaches.map((coach) => {return {name: coach.name, id: coach.id};});
+    coachNames = coaches.map((coach) => { return { name: coach.name, id: coach.id }; });
   }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    console.log('перешел на другую страничку');
-    dispatch(requestQuestionsList());
-    handleChangeDeassignTest(rows); 
+    setTimeout(() => {
+      handleChangeDeassignTest(rows);
+    }, 0);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -64,10 +64,9 @@ const AdminDistribution = (props) => {
   const handleChangeDeassignTest = (rows) => {
     rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
-          assignTest(unverifiedTest.testId)
-      ) : ( 
-        null
-      );
+        document.getElementById('item-' + unverifiedTest.testId + '-select').value = unverifiedTest.coach.name,
+        assignTest(unverifiedTest.testId)
+      ) : (null);
     });
   };
 
@@ -76,7 +75,7 @@ const AdminDistribution = (props) => {
   }, []);
 
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
-  
+
   setTimeout(() => {
     handleChangeDeassignTest(rows);
   }, 0);
@@ -113,11 +112,11 @@ const AdminDistribution = (props) => {
                         const value = row[column.id];
                         keysForColumns++;
                         return (
-                          <TableCell 
-                            className='font-primary' 
-                            key={keysForColumns} 
+                          <TableCell
+                            className='font-primary'
+                            key={keysForColumns}
                             align={column.align}
-                            width={column.width + 'px'} 
+                            width={column.width + 'px'}
                             size='small'
                           >
                             {column.id === 'Coach' ? (
