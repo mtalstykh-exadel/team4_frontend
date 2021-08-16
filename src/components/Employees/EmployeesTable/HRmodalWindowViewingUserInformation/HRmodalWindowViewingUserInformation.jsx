@@ -9,9 +9,6 @@ import { Trans } from '@lingui/macro';
 
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import moment from 'moment';
-import 'moment/locale/ru';
-
 
 import {
   InputLabel,
@@ -27,6 +24,7 @@ import {
   TableRow
 } from '@material-ui/core';
 
+import { formatDate } from '../../../../utils/data-formatter';
 import './HRmodalWindowViewingUserInformation.scss';
 import { filterLevelsShort, userHistoryHeader } from '../../../../constants/filterConstants';
 
@@ -45,8 +43,6 @@ export const HRmodalWindowViewingUserInformation = (props) => {
 
   const employee = useSelector((state) => state.employee);
 
-  let itemKey = 0;
-
   const [filter, setFilter] = React.useState('');
 
 
@@ -61,7 +57,6 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       </div>
       <div className='info-text'>
         <h2 className='bold info-name'>{props.test.name}</h2>
-        <p><Trans>front-end developer</Trans></p>
         <p><Trans>Email: {props.test.login}</Trans></p>
       </div>
     </div>
@@ -69,11 +64,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       <InputLabel id='select-label'><Trans>Level</Trans></InputLabel>
       <Select labelId='select-label' label='Select the test level' id='select' className='ggr'>
         {filterLevelsShort.map((item, index) => {
-          itemKey++;
-          return <MenuItem key={itemKey} value={index} className='item'
-            onClick={() => {
-              setFilter(item);
-            }}> {item}</MenuItem>;
+          return <MenuItem key={index} value={index} className='item' onClick={() => setFilter(item)}> {item}</MenuItem>;
         })}
       </Select>
     </FormControl>
@@ -89,18 +80,32 @@ export const HRmodalWindowViewingUserInformation = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+          {filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
             {
-              return (
-                <TableRow key={row.id} className='row'>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{moment(row.completedAt).format('DD MMM YYYY, hh:mm')}</TableCell>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{moment(row.startedAt).format('DD MMM YYYY, hh:mm')}</TableCell>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.testDeadline}</TableCell>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
-                  <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
-                </TableRow>
-              );
+              if (row.status !== 'ASSIGNED') {
+                return (
+                  <TableRow key={index} className='row'>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.startedAt)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                  </TableRow>
+                );
+              } else
+              {
+                return (
+                  <TableRow key={index} className='row'>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.assigned)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.deadline)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                  </TableRow>
+                );
+              }
             }
           })}
         </TableBody>

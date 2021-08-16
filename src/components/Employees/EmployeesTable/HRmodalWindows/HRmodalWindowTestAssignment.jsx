@@ -17,7 +17,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 
 import { assignTest } from '../../../../api/employees-fetch';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import '../../../../styles/modal.scss';
 import './HRmodalWindowTestAssignment.scss';
@@ -32,8 +32,6 @@ export const HRmodalWindowTestAssignment = (props) => {
 
   const dispatch = useDispatch();
 
-  const filteredEmployees = useSelector((state) => state.employees);
-
   const onSubmit = (values) => {
     return values;
   };
@@ -45,7 +43,8 @@ export const HRmodalWindowTestAssignment = (props) => {
 
   let itemKey = 0;
   const modalBody =
-    <form onSubmit={() => { props.handleClose();
+    <form onSubmit={() => {
+      props.handleClose();
       assignTest(props.test.id, formik.values)
         .then(() => dispatch(requestEmployeesList()));}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
@@ -115,11 +114,17 @@ export const HRmodalWindowTestAssignment = (props) => {
       className='modal'>
       <div className='modal-content base-color'>
         <div className='hr-modal'>
-          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper' onSubmit={() => {props.handleClose();
-            dispatch(requestEmployeesList());}}>
+          <IconButton
+            aria-label='close'
+            onClick={props.handleClose}
+            className='close-icon-wrapper'
+            onSubmit={() => {
+              props.handleClose();
+              dispatch(requestEmployeesList());
+            }}>
             <CloseIcon className='close-icon icons-color'/>
           </IconButton>
-          {filteredEmployees && filteredEmployees.find((x) => x.name === props.test.name) && filteredEmployees.find((x) => x.name === props.test.name).assignedTest ? null : modalBody}
+          {modalBody}
         </div>
       </div>
     </Modal>);

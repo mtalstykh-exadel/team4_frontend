@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -13,7 +12,6 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
 
 import { Trans } from '@lingui/macro';
 
@@ -22,23 +20,28 @@ import { deassignTest } from '../../../api/employees-fetch';
 
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
-import { HRmodalWindowTestDeassigned } from './HRmodalWindows/HRmodalTestDeassigned';
+import { ModalWindowWarningCannotAssign } from '../ModalWindowWarning/ModalWindowCannotAssign';
+import { ModalWindowWarningCannotDeassign } from '../ModalWindowWarning/ModalWindowCannotDeassign';
 
-import { formatDate } from '../../../utils/data-formatter';
+import { TableEmployeeRow } from './TableEmployeeRow/TableEmployeeRow';
 
 export const EmployeesTable = (props) => {
 
   const dispatch = useDispatch();
 
+  const filteredEmployees = useSelector((state) => state.employees);
+
   useEffect(() => {
     dispatch(requestEmployeesList());
   }, []);
 
-  const filteredEmployees = useSelector((state) => state.employees);
-
   const filterEmployees = filteredEmployees ? filteredEmployees
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
+
+  useEffect(() => {
+    filterEmployees.length < rowsPerPage && setPage(0);
+  }, [filterEmployees]);
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
   const [page, setPage] = useState(0);
@@ -53,16 +56,45 @@ export const EmployeesTable = (props) => {
     setPage(0);
   };
 
-  useEffect(() => {
-    filterEmployees.length < rowsPerPage && setPage(0);
-  }, [filterEmployees]);
+  const [employee, setEmployee] = useState([]);
 
-  const [row, setRow] = useState([]);
-
-
-  const [open, setOpen] = useState(false);
+  const [openAssign, setOpenAssign] = useState(false);
   const [openHistory, setOpenHistory] = useState(false);
   const [openDeassigned, setOpenDeassigned] = useState(false);
+  const [openAssigned, setOpenAssigned] = useState(false);
+
+  const handleDeassign = (test) => {
+    return dispatch(requestEmployeesList())
+      .then((state) => {
+        const newEmployee = state.employee.find((x) => x.name === test.name);
+        if (newEmployee && newEmployee.assignedTest) {
+          deassignTest(test.assignedTest.testId)
+            .then(() => dispatch(requestEmployeesList()));
+        } else {
+          setOpenDeassigned(true);
+        }
+      });
+  };
+
+  const handleAssign = (test) => {
+    return dispatch(requestEmployeesList())
+      .then((state) => {
+        const newEmployee = state.employee.find((x) => x.name === test.name);
+        if (newEmployee && !newEmployee.assignedTest) {
+          setEmployee(test);
+          setOpenAssign(true);
+        } else {
+          setOpenAssigned(true);
+        }
+      });
+  };
+
+  const handleHistory = (test) => {
+    return Promise.resolve(setEmployee(test))
+      .then(() => dispatch(requestEmployeeHistory(test.id)))
+      .then(() => setOpenHistory(true));
+  };
+
   return (
     <div>
       <Paper elevation={2}>
@@ -77,34 +109,14 @@ export const EmployeesTable = (props) => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row ) => {
+            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((filterEmployee, index ) => {
               return (
-                <TableRow key={row.id}>
-                  <TableCell component='th' scope='row'>{row.name}</TableCell>
-                  <TableCell align='left' size='small'>{row.assignedTest ? row.assignedTest.level : null}</TableCell>
-                  <TableCell align='left' size='small'>{row.assignedTest ? formatDate(row.assignedTest.deadline) : null}</TableCell>
-                  <TableCell align='left' size='small'>{row.login}</TableCell>
-                  <TableCell align='left'>
-                    {row.assignedTest ? <Button color='secondary' variant='outlined' size='small' type='search' className='btn-search button-standard'
-                      onClick={() => deassignTest(row.assignedTest.testId)
-                        .catch(() => setOpenDeassigned(true))
-                        .then(() => dispatch(requestEmployeesList()))
-                      }>
-                      <Trans>Deassign</Trans>
-                    </Button>
-                      : <Button color='primary' variant='outlined' size='small' type='search' className='btn-search button-standard'
-                        onClick={() => {
-                          dispatch(requestEmployeesList())
-                            .then(() => setRow(row))
-                            .then(() => setOpen(true));
-                        }}>
-                        <Trans>Assign test</Trans>
-                      </Button>}
-                  </TableCell>
-                  <TableCell align='left' onClick={() => {Promise.resolve(setRow(row))
-                    .then(() => dispatch(requestEmployeeHistory(row.id)))
-                    .then(() => setOpenHistory(true));}}>{<RestoreOutlinedIcon color='primary' className='archiveBtn icons-color-primary'/>}</TableCell>
-                </TableRow>
+                <TableEmployeeRow
+                  key={index}
+                  handleAssign={handleAssign}
+                  handleDeassign={handleDeassign}
+                  handleHistory={handleHistory}
+                  employee={filterEmployee}/>
               );
             })}
             </TableBody>
@@ -119,9 +131,10 @@ export const EmployeesTable = (props) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        {<HRmodalWindowTestDeassigned open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
-        {<HRmodalWindowTestAssignment test={row} open={open} handleClose={() => setOpen(false)}/>}
-        {<HRmodalWindowViewingUserInformation test={row} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
+        {<ModalWindowWarningCannotAssign open={openAssigned} handleClose={() => setOpenAssigned(false)}/>}
+        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)}/>}
+        {<HRmodalWindowViewingUserInformation test={employee} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
+        {<ModalWindowWarningCannotDeassign open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
       </Paper>
     </div>
   );
@@ -130,4 +143,3 @@ export const EmployeesTable = (props) => {
 EmployeesTable.propTypes = {
   userName: PropTypes.string
 };
-
