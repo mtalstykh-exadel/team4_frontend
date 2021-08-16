@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../../styles/modal.scss';
 import PropTypes from 'prop-types';
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
 import {
   Modal,
