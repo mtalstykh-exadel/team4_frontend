@@ -35,7 +35,6 @@
     .selector-wrapper {
       margin-top: 10px;
 
-
       .question-selector {
         width: 90%;
         margin-left: 5%;
@@ -57,13 +56,11 @@
     .add-question-to-report:hover {
       text-decoration: underline;
     }
-
   }
 
   .scroll-container.visible {
     overflow-y: scroll;
   }
-
 
   .topic-wrapper {
     border: 1px solid var(--secondary-color);
@@ -82,7 +79,6 @@
     margin-bottom: 20px;
     margin-top: 20px;
 
-
     .report-textfield {
       width: 95%;
 
@@ -96,7 +92,6 @@
     margin-left: 70%;
     margin-right: 5%;
     margin-bottom: 30px;
-
     display: flex;
     justify-content: space-between;
     height: 30px;

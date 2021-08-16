@@ -82,16 +82,16 @@ export const EditTestsTable = (props) => {
 
   return (
     <div className='edit-tests-data-wrapper'>
-     <Modal
+      <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'>
         <Paper elevation={2}>
-         <div className='modal-content'>
-          <ModalWindowWarningArchive handleClose={handleClose}/>
-         </div>
+          <div className='modal-content'>
+            <ModalWindowWarningArchive handleClose={handleClose} />
+          </div>
         </Paper>
       </Modal>
       <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question button-standard'><Trans>Add question</Trans></Button>
@@ -116,7 +116,7 @@ export const EditTestsTable = (props) => {
                   {
                     row.module === 'Listening'
                       ? <TableCell component='th' scope='row' size='small'>
-                        <PlayCircleOutlineIcon className='icons-color-primary'/>
+                        <PlayCircleOutlineIcon className='icons-color-primary' />
                       </TableCell>
                       : null
                   }
@@ -127,10 +127,10 @@ export const EditTestsTable = (props) => {
                     </Button>
                   </TableCell>
                   <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
-                                                                onClick={() => {
-                                                                  archiveTheQuestion(row.id);
-                                                                  handleOpen();
-                                                                }}/>}</TableCell>
+                    onClick={() => {
+                      archiveTheQuestion(row.id);
+                      handleOpen();
+                    }} />}</TableCell>
                 </TableRow>
               );
             })}
@@ -153,8 +153,8 @@ export const EditTestsTable = (props) => {
 };
 
 EditTestsTable.propTypes =
-  {
-    level: PropTypes.any,
-    module: PropTypes.any,
-    questionId: PropTypes.any,
-  };
+{
+  level: PropTypes.any,
+  module: PropTypes.any,
+  questionId: PropTypes.any,
+};

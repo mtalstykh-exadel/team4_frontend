@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
-import PropTypes from 'prop-types';
 import { getResultTest } from '../../api/result-test';
 import { getTest } from '../../api/get-test';
 import { Trans } from '@lingui/macro';
@@ -30,15 +29,10 @@ const Results = () => {
   ];
 
   const stepTest = [
-    {en: 'Grammar', ru: 'Грамматика'},
-    {en: 'Listening', ru: 'Прослушивание'},
-    {en: 'Essay', ru: 'Эссе'},
-    {en: 'Speaking', ru: 'Говорение'}].map((step, key) => {
-    return (
-      <div key={key}><Trans>{step.en}{step.ru}</Trans></div>
-    );
-  });
-
+    { en: 'Grammar', ru: 'Грамматика' },
+    { en: 'Listening', ru: 'Прослушивание' },
+    { en: 'Essay', ru: 'Эссе' },
+    { en: 'Speaking', ru: 'Говорение' }].map((step, key) => { return (<div key={key}><Trans>{step.en}{step.ru}</Trans></div>); });
   const setStyle = (res) => {
     if (res === 'waiting') return 'res-waiting';
     else if (res === 0) return 'res-null';
