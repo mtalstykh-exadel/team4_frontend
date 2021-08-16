@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -13,26 +12,38 @@ import {
   TablePagination,
   TableRow
 } from '@material-ui/core';
-import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
+
 import { Trans } from '@lingui/macro';
-import { requestEmployeesList } from '../../../store/actions/employeesActions';
+
+import { requestEmployeesList, requestEmployeeHistory } from '../../../store/actions/employeesActions';
+import { deassignTest } from '../../../api/employees-fetch';
+
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
-import { AdminModalWindowWarningDeassign } from './AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign';
+
+import { ModalWindowWarningCannotAssign } from '../ModalWindowWarning/ModalWindowCannotAssign';
+import { ModalWindowWarningCannotDeassign } from '../ModalWindowWarning/ModalWindowCannotDeassign';
+
+import { TableEmployeeRow } from './TableEmployeeRow/TableEmployeeRow';
+
 
 export const EmployeesTable = (props) => {
 
   const dispatch = useDispatch();
 
+  const filteredEmployees = useSelector((state) => state.employees);
+
   useEffect(() => {
     dispatch(requestEmployeesList());
   }, []);
 
-  const filteredEmployees = useSelector((state) => state.employees.filteredEmployees);
-
   const filterEmployees = filteredEmployees ? filteredEmployees
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
+
+  useEffect(() => {
+    filterEmployees.length < rowsPerPage && setPage(0);
+  }, [filterEmployees]);
 
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
   const [page, setPage] = useState(0);
@@ -47,82 +58,87 @@ export const EmployeesTable = (props) => {
     setPage(0);
   };
 
-  useEffect(() => {
-    filterEmployees.length < rowsPerPage && setPage(0);
-  }, [filterEmployees]);
+  const [employee, setEmployee] = useState([]);
 
+  const [openAssign, setOpenAssign] = useState(false);
+  const [openHistory, setOpenHistory] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
+  const [openAssigned, setOpenAssigned] = useState(false);
 
-  const [name, setName] = React.useState('');
-  const [gmail, setGmail] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
+  const handleDeassign = (test) => {
+    return dispatch(requestEmployeesList())
+      .then((state) => {
+        const newEmployee = state.employee.find((x) => x.name === test.name);
+        if (newEmployee && newEmployee.assignedTest) {
+          deassignTest(test.assignedTest.testId)
+            .then(() => dispatch(requestEmployeesList()));
+        } else {
+          setOpenDeassigned(true);
+        }
+      });
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleAssign = (test) => {
+    return dispatch(requestEmployeesList())
+      .then((state) => {
+        const newEmployee = state.employee.find((x) => x.name === test.name);
+        if (newEmployee && !newEmployee.assignedTest) {
+          setEmployee(test);
+          setOpenAssign(true);
+        } else {
+          setOpenAssigned(true);
+        }
+      });
   };
 
+  const handleHistory = (test) => {
+    return Promise.resolve(setEmployee(test))
+      .then(() => dispatch(requestEmployeeHistory(test.id)))
+      .then(() => setOpenHistory(true));
+  };
 
   return (
-    <Paper elevation={2}>
-      <TableContainer>
-        <Table stickyHeader aria-label='sticky table'>
-          <TableHead>
-            <TableRow>
-              {rows.map((rowName) => {
-                return (
-                  <TableCell key={rowName} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
-                );
-              })}
-            </TableRow>
-          </TableHead>
-          <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-            return (
-              <TableRow key={row.id}>
-                <TableCell component='th' scope='row'>{row.name}</TableCell>
-                <TableCell align='left' size='small'>{row.level}</TableCell>
-                <TableCell align='left' size='small'>{row.testDeadline}</TableCell>
-                <TableCell align='left' size='small'>{row.mail}</TableCell>
-                <TableCell align='left'>
-                  {row.assigne ?
-                    <Button color='secondary' variant='outlined' size='small' style={{width: 140}} disabled
-                      type='search' className='btn-search'>
-                      <Trans>Deassign</Trans>
-                    </Button>
-                    : <Button color='primary' variant='outlined' size='small' style={{width: 140}} type='search'
-                      className='btn-search' onClick={() => {
-                        setName(row.name);
-                        handleOpen();
-                      }}>
-                      <Trans>Assign test</Trans>
-                    </Button>}
-                </TableCell>
-                <TableCell align='left'>{<RestoreOutlinedIcon className='icons-color-primary archiveBtn' onClick={() => {
-                  setName(row.name);
-                  setGmail(row.mail);
-                  handleOpen();
-                }}/> }</TableCell>
+    <div>
+      <Paper elevation={2}>
+        <TableContainer>
+          <Table stickyHeader aria-label='sticky table'>
+            <TableHead>
+              <TableRow>
+                {rows.map((rowName) => {
+                  return (
+                    <TableCell key={rowName} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
+                  );
+                })}
               </TableRow>
-            );
-          }
-          )}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component='div'
-        count={filterEmployees.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-      {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
-      {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
-    </Paper>
+            </TableHead>
+            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((filterEmployee, index ) => {
+              return (
+                <TableEmployeeRow
+                  key={index}
+                  handleAssign={handleAssign}
+                  handleDeassign={handleDeassign}
+                  handleHistory={handleHistory}
+                  employee={filterEmployee}/>
+              );
+            })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component='div'
+          count={filterEmployees.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+        {<ModalWindowWarningCannotAssign open={openAssigned} handleClose={() => setOpenAssigned(false)}/>}
+        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)}/>}
+        {<HRmodalWindowViewingUserInformation test={employee} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
+        {<ModalWindowWarningCannotDeassign open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
+      </Paper>
+    </div>
   );
 };
 
