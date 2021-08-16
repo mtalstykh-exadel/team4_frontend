@@ -54,47 +54,47 @@ export const Test = () => {
     <Grammar key='0' tasks={grammarTasks} testModule={testGrammarUserAnswers}/>,
     <Listening key='1' tasks={listeningTasks} contentFile={contentFile} testModule={testListeningUserAnswers}/>,
     <Essay key='2' task={essayTask} testModule={testEassyUserAnswers}/>,
-    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers} />,
+    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers}/>,
   ];
 
   const modals = [
     <ReportAMistakeModal
-      key='0'
+      key='4'
       tasks={grammarTasks}
       level={'A1'}
-      module={['Grammar','Грамматика']}
+      module={['Grammar', 'Грамматика']}
       handleClose={handleClose}
       testID={testID}
       reportModule={reportAMistakeGrammar}
     />,
     <ReportAMistakeModal
-      key='1'
+      key='5'
       tasks={listeningTasks}
       level={level}
-      module={['Listening','Аудирование']}
+      module={['Listening', 'Аудирование']}
       handleClose={handleClose}
       testID={testID}
       reportModule={reportAMistakeListening}
     />,
     <ReportAMistakeModal
-      key='2'
+      key='6'
       level={level}
       topic={essayTask}
-      module={['Essay','Эссе']}
+      module={['Essay', 'Эссе']}
       handleClose={handleClose}
       testID={testID}
       reportModule={reportAMistakeEssay}
     />,
     <ReportAMistakeModal
-      key='3'
+      key='7'
       level={level}
       topic={speakingTask}
-      module={['Speaking','Говорение']}
+      module={['Speaking', 'Говорение']}
       handleClose={handleClose}
       testID={testID}
       reportModule={reportAMistakeSpeaking}
     />,
-    <SubmitModal key='4' handleClose={handleClose} />,
+    <SubmitModal key='8' handleClose={handleClose}/>,
   ];
 
   useEffect(() => {

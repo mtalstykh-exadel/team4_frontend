@@ -15,6 +15,7 @@ import { TestsForVerification, EditTests, Employees, Page404, Test, ManageTest }
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 
 import { initApp } from './store/actions/initActions/initActions';
+import ResultTest from './components/ResultTest/ResultTest';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const App = () => {
         <PrivateRoute path='/test'><Test /></PrivateRoute>
         <PrivateRoute path='/edit-test-modules'><ManageTest /></PrivateRoute>
         <PrivateRoute path='/add-test-modules'><ManageTest /></PrivateRoute>
+        <PrivateRoute path='/result'>< ResultTest/></PrivateRoute>
         <Route path='*' render={() => <Page404 />} />
       </Switch>
     </div>

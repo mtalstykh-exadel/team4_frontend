@@ -1,4 +1,4 @@
-import {testSpeakingFile} from '../constants/localStorageConstants';
+import { testSpeakingFile } from '../constants/localStorageConstants';
 let chunks = [];
 let blobURL;
 let rec = {};
@@ -30,7 +30,7 @@ const offRecAudio = () => {
 
 const saveBlobUrl = ({ testModule, duration }) => {
   const reader = new FileReader();
-  
+
   reader.onload = (event) => {
     localStorage.setItem(testSpeakingFile, event.target.result);
   };
@@ -38,7 +38,7 @@ const saveBlobUrl = ({ testModule, duration }) => {
 
   localStorage.setItem(
     testModule,
-    JSON.stringify({ blob: blobURL, duration: duration })
+    JSON.stringify({ blob: blobURL, duration })
   );
 
   return duration;
