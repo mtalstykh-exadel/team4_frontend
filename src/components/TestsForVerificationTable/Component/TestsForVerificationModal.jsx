@@ -17,7 +17,7 @@ import { Trans } from '@lingui/macro';
 
 import { getAudioFile } from '../../../api/get-audioFIle';
 
-import { submitTestGrades, saveTestGrades } from '../../../api/unverifiedTests-fetch';
+import { submitTestGrades, saveTestGrades } from '../../../api/testsForVerification-fetch';
 import { requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
 
 export const TestsForVerificationModal = (props) => {
