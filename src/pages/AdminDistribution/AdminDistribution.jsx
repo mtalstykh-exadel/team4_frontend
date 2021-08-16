@@ -31,8 +31,6 @@ const AdminDistribution = (props) => {
     props.filter ? r.level === props.filter : r
   );
 
-  console.log(rows);
-
   let keysForColumns = 1;
   let keysForOptions = 1;
 
