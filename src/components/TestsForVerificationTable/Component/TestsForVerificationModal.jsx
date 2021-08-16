@@ -26,10 +26,10 @@ export const TestsForVerificationModal = (props) => {
   const dispatch = useDispatch();
 
   const [grammar, setGrammar] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [loadingSave, setLoadingSave] = useState(false);
 
   const test = useSelector((state) => state.reports);
-  const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const commentEssay = JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`));
   const [essay, setEssay] = useState({
@@ -73,6 +73,25 @@ export const TestsForVerificationModal = (props) => {
       ...speaking,
       grade: grade,
     });
+  };
+
+  const handleSubmit = () => {
+    setLoadingSubmit(true);
+    dispatch(requestUnverifiedTests())
+      .then((response) => {
+        if (response.filteredEmployees.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
+          setTestGrades(test.testId)
+            .then(() => props.handleClose());
+        }
+      });
+  };
+
+  const handleSave = () => {
+    setLoadingSave(true);
+    step === 1 && localStorage.setItem(`${gradeEssay}${test.testId}`, JSON.stringify(essay));
+    step === 2 && localStorage.setItem(`${gradeSpeaking}${test.testId}`, JSON.stringify(speaking));
+    dispatch(requestUnverifiedTests())
+      .then(() => setLoadingSave(false));
   };
 
   const setGrammarReport = (index) => (event) => {
@@ -171,7 +190,12 @@ export const TestsForVerificationModal = (props) => {
       <div className='grades-wrapper'>
         {[0,1,2,3,4,5,6,7,8,9,10].map((item) => {
           return (
-            <div key={item} className={speaking.grade === item ? 'grade chosen' : 'grade'} onClick={() => {handleSpeakingGrade(item);}}>{item}</div>
+            <div
+              key={item}
+              className={speaking.grade === item ? 'grade chosen' : 'grade'}
+              onClick={() => {handleSpeakingGrade(item);}}>
+              {item}
+            </div>
           );
         })}
       </div>
@@ -230,22 +254,15 @@ export const TestsForVerificationModal = (props) => {
           {steps[step]}
         </div>
         <div className='tests-verification-modal-buttons-wrapper'>
-          <Button variant='contained' color='primary' className='save-button' onClick={ () => {
-            dispatch(requestUnverifiedTests());
-            step === 1 && localStorage.setItem(`${gradeEssay}${test.testId}`, JSON.stringify(essay));
-            step === 2 && localStorage.setItem(`${gradeSpeaking}${test.testId}`, JSON.stringify(speaking));
-          }}><Trans>Save</Trans></Button>
-          <Button variant='contained' color='secondary' className='submit-button'
-            disabled = {loading || JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`)) && JSON.parse(localStorage.getItem(`${gradeSpeaking}${test.testId}`)) ? false : true}
-            onClick={() => {
-              setLoading(true);
-              dispatch(requestUnverifiedTests());
-              unverifiedTests.find((x) => x.id === test.testId) ?
-                setTestGrades(test.testId)
-                  .then(() => props.handleClose())
-                  .then(() => dispatch(requestUnverifiedTests())) :
-                props.handleClose();}}>
-            {loading ? (
+          <Button variant='outlined' color='primary' className='save-button' disabled={loadingSave} onClick={() => handleSave()}>{loadingSave ? (
+            <CircularProgress className='border-primary' size='23px'/>
+          ) : (
+            <Trans>Save</Trans>
+          )}</Button>
+          <Button variant='contained' color='primary' className='submit-button'
+            disabled = {loadingSubmit || loadingSave || (JSON.parse(localStorage.getItem(`${gradeEssay}${test.testId}`)) && JSON.parse(localStorage.getItem(`${gradeSpeaking}${test.testId}`)) ? false : true)}
+            onClick={() => handleSubmit()}>
+            {loadingSubmit ? (
               <CircularProgress className='border-primary' size='23px'/>
             ) : (
               <Trans>Submit</Trans>
