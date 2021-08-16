@@ -9,7 +9,7 @@ import { currentTest } from '../../constants/localStorageConstants';
 const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
-  
+
   const getResults = async () => {
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
 
@@ -81,7 +81,7 @@ const Results = () => {
         <p>{speakingComments}</p></>
     ];
   }
-  
+
   return (
     <Layout>
       <div className='result-header'>
