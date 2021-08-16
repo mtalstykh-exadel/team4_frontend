@@ -1,11 +1,14 @@
 import React from 'react';
-import '../../../styles/modal.scss';
+
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import './ModalWindowWarningPassingTest.scss';
 
-export const ModalWindowWarningPassingTest = () => {
+import '../../../styles/modal.scss';
+import './ModalWindowCannotAssign.scss';
+
+export const ModalWindowWarningCannotAssign = () => {
+
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -21,11 +24,11 @@ export const ModalWindowWarningPassingTest = () => {
       className='modal'>
       <Paper elevation={2}>
         <div className='modal-content'>
-          <div className='modal-warning-passing-test'>
+          <div className='modal-remove-post'>
             <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
               <CloseIcon className='close-icon' />
             </IconButton>
-            <div className='warning-text'>This functionality will be available to you only after passing the test</div>
+            <div className='text'>The test has already been assigned to this employee</div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
             </div>
