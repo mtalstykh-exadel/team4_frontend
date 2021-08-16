@@ -3,7 +3,7 @@ import { REQUEST_UNVERIFIED_TESTS, REQUEST_REPORTS } from '../actions/actionType
 export const unverifiedTestsReducer = (state = [], action) => {
   switch (action.type) {
     case REQUEST_UNVERIFIED_TESTS:
-      return action.filteredEmployees;
+      return action.unverifiedTests;
     default:
       return state;
   }
@@ -12,7 +12,7 @@ export const unverifiedTestsReducer = (state = [], action) => {
 export const reportsReducer = (state = [], action) => {
   switch (action.type) {
     case REQUEST_REPORTS:
-      return action.filteredEmployees;
+      return action.testReports;
     default:
       return state;
   }

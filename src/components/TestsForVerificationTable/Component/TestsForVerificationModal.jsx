@@ -79,7 +79,7 @@ export const TestsForVerificationModal = (props) => {
     setLoadingSubmit(true);
     dispatch(requestUnverifiedTests())
       .then((response) => {
-        if (response.filteredEmployees.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
+        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
           setTestGrades(test.testId)
             .then(() => props.handleClose());
         }
