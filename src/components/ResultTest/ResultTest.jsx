@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import Layout from '../Layout/Layout';
-import './ResultTest.scss';
+import React, {useEffect, useState} from 'react';
 import { getResultTest } from '../../api/result-test';
 import { getTest } from '../../api/get-test';
+import Layout from '../Layout/Layout';
+import './ResultTest.scss';
 import { Trans } from '@lingui/macro';
 import { currentTest } from '../../constants/localStorageConstants';
 
@@ -10,11 +10,22 @@ const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
   
-  setTimeout( async () => {
+  const getResults = async () => {
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
-    getTest(idTest).then((res) => setTest( res ));
-    getResultTest(idTest).then((res) => setResult( res ));
-  }, 0);
+
+    if ( test === 0 ) {
+      await getTest(idTest).then((res) => setTest(res));
+    }
+
+    if ( result === undefined ) {
+      await getResultTest(idTest).then((res) => setResult(res));
+    }
+
+  };
+
+  useEffect( () => {
+    getResults();
+  });  
 
   let resultQuote = [
     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
@@ -59,29 +70,6 @@ const Results = () => {
     arrayResult[3] = (result.speaking);
   }
 
-  const htmlResultGrammarAndListening = [...arrayResult].splice(0, 2).map((res, key) => {
-    return (
-      <div key={key} className={setStyle(res)}>
-        <p className='result'>{res}/10</p>
-      </div>
-    );
-  });
-
-  const htmlResultEssayAndSpeaking = [...arrayResult].splice(2, 2).map((res, key) => {
-    let htmlRes = ['waiting', 'ожидать'];
-    if (test.status === 'COMPLETED') {
-      htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
-      res = 'waiting';
-    } else {
-      htmlRes = res.toString() + '/10';
-    }
-    return (
-      <div key={key} className={setStyle(res)}>
-        <p className='result'>{htmlRes}</p>
-      </div>
-    );
-  });
-
   if (test.status === 'VERIFIED') {
     const level = test.level;
     const essayComments = test.essayComment;
@@ -100,8 +88,27 @@ const Results = () => {
         <Trans>{headerQuote[0]}{headerQuote[1]}</Trans>
       </div>
       <div className='result-body'>
-        {htmlResultGrammarAndListening}
-        {htmlResultEssayAndSpeaking}
+        {[...arrayResult].splice(0, 2).map((res, key) => {
+          return (
+            <div key={key} className={setStyle(res)}>
+              <p className='result'>{res}/10</p>
+            </div>
+          );
+        })}
+        {[...arrayResult].splice(2, 2).map((res, key) => {
+          let htmlRes = ['waiting', 'ожидать'];
+          if (test.status === 'COMPLETED') {
+            htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
+            res = 'waiting';
+          } else {
+            htmlRes = res.toString() + '/10';
+          }
+          return (
+            <div key={key} className={setStyle(res)}>
+              <p className='result'>{htmlRes}</p>
+            </div>
+          );
+      })}
       </div>
       <div className='step-test'> {stepTest} </div>
       <div className='result-quote'>
