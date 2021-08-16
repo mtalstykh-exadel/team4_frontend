@@ -3,12 +3,13 @@ import '../../../../styles/modal.scss';
 import PropTypes from 'prop-types';
 import {Trans} from '@lingui/macro';
 import CloseIcon from '@material-ui/icons/Close';
-import {IconButton} from '@material-ui/core';
 import {
   Modal,
   Backdrop,
+  Button,
+  IconButton
 } from '@material-ui/core';
-
+import './AdminModalWindowWarningDeassign.scss';
 
 export const AdminModalWindowWarningDeassign = (props) => {
   return (
@@ -20,11 +21,15 @@ export const AdminModalWindowWarningDeassign = (props) => {
       aria-describedby='simple-modal-description'
       className='modal'>
       <div className='modal-content base-color'>
-        <div className='hr-modal-view-user-info'>
+        <div className='admin-modal-w-warning'>
           <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
             <CloseIcon className='close-icon icons-color'/>
           </IconButton>
-          <div className='question'><Trans>Are you sure you want to be removed from your position?</Trans></div>
+          <div className='warning-question'><Trans>Do you want to deassign?</Trans></div>
+          <div className='choice-buttons'>
+            <Button variant='outlined' color='primary'>Yes</Button>
+            <Button variant='contained' color='primary'>No</Button>
+          </div>
         </div>
       </div>
     </Modal>);
