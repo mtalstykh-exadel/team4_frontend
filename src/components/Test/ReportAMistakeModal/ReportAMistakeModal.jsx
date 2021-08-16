@@ -7,40 +7,112 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 import { errorReport, deleteReport } from '../../../api/mistake-reports';
 
+const SelectorHTML = ({ tasks, index, reportModule }) => {
+  const saveDataArray = localStorage.getItem(reportModule);
+  const [select, setSelect] = useState('');
+  const [characters, setCharacters] = useState('');
+  const localeStorageArray = saveDataArray !== null ? JSON.parse(saveDataArray) : [];
+
+  setTimeout(() => {
+    if (saveDataArray !== null && JSON.parse(saveDataArray).length > index) {
+      setSelect(localeStorageArray[index].select);
+      setCharacters(localeStorageArray[index].textarea);
+    }
+  }, 0);
+
+
+  const handleSelect = (event) => {
+    setSelect(event.target.value);
+    if (localeStorageArray.length > 0 && localeStorageArray[index]) {
+      localeStorageArray[index].select = event.target.value;
+    } else {
+      localeStorageArray.push(
+        {
+          questionID: tasks[event.target.value].id,
+          select: event.target.value,
+          textarea: characters
+        }
+      );
+    }
+    localStorage.setItem(
+      reportModule,
+      JSON.stringify(localeStorageArray)
+    );
+  };
+
+  const handleInput = (event) => {
+    setCharacters(event.target.value);
+    if (localeStorageArray.length > 0 && localeStorageArray[index]) {
+      localeStorageArray[index].textarea = event.target.value;
+    } else {
+      localeStorageArray.push(
+        {
+          questionID: tasks[select].id,
+          select,
+          textarea: event.target.value
+        }
+      );
+    }
+    localStorage.setItem(
+      reportModule,
+      JSON.stringify(localeStorageArray)
+    );
+  };
+
+  return (
+    <div className='selector-wrapper'>
+      <FormControl variant='outlined' className='question-selector'>
+        <InputLabel id='questions-selector-label'><Trans>Select a question to report</Trans></InputLabel>
+        <Select
+          labelId='questions-selector-label'
+          label='Select a question to report'
+          value={select}
+          onChange={handleSelect}>
+          {tasks.map((item, index) => {
+            return <MenuItem key={index} value={index}>{index + 1}. {item.questionBody}</MenuItem>;
+          })}
+        </Select>
+      </FormControl>
+      <div className='report-textfield-wrapper'>
+        <TextField
+          className='report-textfield'
+          variant='outlined'
+          multiline
+          rows={5}
+          label='Enter your report'
+          value={characters}
+          onChange={handleInput}
+        />
+      </div>
+    </div>
+  );
+};
+
+SelectorHTML.propTypes = {
+  tasks: PropTypes.array,
+  index: PropTypes.number,
+  reportModule: PropTypes.string
+};
+
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID, reportModule }) => {
   let HTMLCodeForStep;
   const saveDataArray = localStorage.getItem(reportModule);
   const [characters, setCharacters] = useState('');
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
-    const selectorHTML =
-      <div className='selector-wrapper'>
-        <FormControl variant='outlined' className='question-selector'>
-          <InputLabel id='questions-selector-label'><Trans>Select a question to report</Trans></InputLabel>
-          <Select
-            labelId='questions-selector-label'
-            label='Select a question to report'
-            id='select0'>
-            {tasks.map((item, index) => {
-              return <MenuItem key={index} value={index}>{index + 1}. {item.questionBody}</MenuItem>;
-            })}
-          </Select>
-        </FormControl>
-        <div className='report-textfield-wrapper'>
-          <TextField
-            className='report-textfield'
-            variant='outlined'
-            multiline
-            rows={5}
-            label='Enter your report'
-          />
-        </div>
-      </div>;
+    const tmpSelector = [];
+    if (JSON.parse(saveDataArray) === null) {
+      tmpSelector.push(<SelectorHTML key={0} tasks={tasks} index={0} reportModule={reportModule}/>);
+    } else {
+      for (let i = 0; i < JSON.parse(saveDataArray).length; i++) {
+        tmpSelector.push(<SelectorHTML key={i} tasks={tasks} index={i} reportModule={reportModule}/>);
+      }
+    }
 
-    const [selector, setSelector] = useState([selectorHTML]);
+    const [selector, setSelector] = useState(tmpSelector);
 
     const addSelector = () => {
-      setSelector(selector.concat(selectorHTML));
+      setSelector(selector.concat(<SelectorHTML key={selector.length} tasks={tasks} index={selector.length} reportModule={reportModule}/>));
     };
 
     const deleteSelector = () => {
@@ -98,7 +170,6 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
         <CloseIcon className='close-icon icons-color'/>
       </IconButton>
-
       <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>
         <span className='level-info'><Trans>Level</Trans>: {level}</span>
@@ -111,9 +182,17 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
           color='primary'
           variant='outlined'
           onClick={() => {
-            deleteReport(JSON.parse(saveDataArray).questionId, JSON.parse(saveDataArray).testId);
-            handleClose();
-            setCharacters('');
+            if (JSON.parse(saveDataArray) !== null) {
+              if (module[0] === 'Essay' || module[0] === 'Speaking') {
+                deleteReport(JSON.parse(saveDataArray).questionId, JSON.parse(saveDataArray).testId);
+              } else {
+                JSON.parse(saveDataArray).map((item) => {
+                  deleteReport(item.questionId, item.testId);
+                });
+              }
+              handleClose();
+              setCharacters('');
+            }
           }}
         >
           <Trans>Delete</Trans>
@@ -123,8 +202,20 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
           color='primary'
           variant='contained'
           onClick={() => {
-            errorReport(JSON.parse(saveDataArray));
-            handleClose();
+            if (JSON.parse(saveDataArray) !== null) {
+              if (module[0] === 'Essay' || module[0] === 'Speaking') {
+                errorReport(JSON.parse(saveDataArray));
+              } else {
+                JSON.parse(saveDataArray).map((item) => {
+                  errorReport({
+                    questionId: item.questionID,
+                    reportBody: item.textarea,
+                    testId: testID
+                  });
+                });
+              }
+              handleClose();
+            }
           }}
         >
           <Trans>Report</Trans>
