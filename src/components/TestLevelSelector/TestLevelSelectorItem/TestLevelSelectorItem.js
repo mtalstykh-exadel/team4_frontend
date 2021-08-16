@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import './TestLevelSelectorItem.scss';
-import { startTest } from '../../../api/start-test';
+import { startTestByLevel } from '../../../api/start-test';
 import { language_english } from '../../../constants/languageConstants';
 import { userLanguageKey, currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
@@ -44,7 +44,7 @@ export const TestLevelsSelectorItem = ({
           localStorage.removeItem(testEassyUserAnswers);
           localStorage.removeItem(testListeningUserAnswers);
           localStorage.removeItem(testSpeakingAnswers);
-          startTest(level)
+          startTestByLevel(level)
             .then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
               history.push('/test');
