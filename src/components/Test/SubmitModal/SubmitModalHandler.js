@@ -44,7 +44,7 @@ const sendingHandler = () => {
     ...changeArray(JSON.parse(localStorage.getItem(testGrammarUserAnswers))),
   ]);
   saveSpeaking(dataURItoBlob(localStorage.getItem(testSpeakingFile)));
-  testFinish();
+  testFinish().then(() => window.location.href = '/result');
 };
 
 export {sendingHandler};

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import { getResultTest } from '../../api/result-test';
@@ -9,12 +9,12 @@ import { currentTest } from '../../constants/localStorageConstants';
 const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
-
-  useEffect(async function () {
+  
+  setTimeout( async () => {
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
     setTest(await getTest(idTest).then((res) => res));
     setResult(await getResultTest(idTest).then((res) => res));
-  });
+  }, 0);
 
   let resultQuote = [
     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
@@ -93,7 +93,7 @@ const Results = () => {
         <p>{speakingComments}</p></>
     ];
   }
-
+  
   return (
     <Layout>
       <div className='result-header'>

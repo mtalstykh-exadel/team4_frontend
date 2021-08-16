@@ -9,7 +9,6 @@ const testFinish = ( ) => {
   return axiosInstance.post('/tests/finish/' + JSON.parse(localStorage.getItem(currentTest)).id);
 };
 
-
 const saveListeningAndGrammar = ( arrayAnswers ) => {
   return axiosInstance.post('/chosen_option/all/', arrayAnswers);
 };
