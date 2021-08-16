@@ -51,6 +51,9 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    console.log('перешел на другую страничку');
+    dispatch(requestQuestionsList());
+    handleChangeDeassignTest(rows); 
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -59,11 +62,12 @@ const AdminDistribution = (props) => {
   };
 
   const handleChangeDeassignTest = (rows) => {
-    rows.map((unverifiedTest, i) => {
+    rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
-        document.getElementById('item-' + i + '-select').value = unverifiedTest.coach.name,
-        assignTest(i)
-      ) : ( null );
+          assignTest(unverifiedTest.testId)
+      ) : ( 
+        null
+      );
     });
   };
 
@@ -102,9 +106,9 @@ const AdminDistribution = (props) => {
             <TableBody>
               {filteredRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
+                .map((row) => {
                   return (
-                    <TableRow hover role='checkbox' tabIndex={-1} key={index} >
+                    <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
@@ -117,7 +121,7 @@ const AdminDistribution = (props) => {
                             size='small'
                           >
                             {column.id === 'Coach' ? (
-                              <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
+                              <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
                                 <option aria-label='None' value='placeholder' >
                                   name
@@ -134,12 +138,12 @@ const AdminDistribution = (props) => {
                             ) : null}
                             {column.id === 'action' ? (
                               <Button
-                                id={'item-' + index + '-button'}
+                                id={'item-' + row.testId + '-button'}
                                 className='buttonAssign button-standard'
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {
-                                  assignTest(index);
+                                  assignTest(row.testId);
                                 }}
                               >
                                 <Trans>
