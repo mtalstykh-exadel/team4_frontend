@@ -18,9 +18,9 @@ const Results = () => {
 
   let resultQuote = [
     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
-      in your personal account and by e-mail</p></>,
+      in your personal account and by e-mail</p><p onClick={() => window.location.href = './profile'} className='go-back'>Go back to your personal account</p></>,
     <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном
-      кабинете и на электронную почту.</p></>
+      кабинете и на электронную почту.</p><p onClick = {() => window.location.href = './profile'} className='go-back'>Вернуться на свой аккаунт</p></>
   ];
 
   const headerQuote = [
@@ -88,9 +88,9 @@ const Results = () => {
     const speakingComments = test.speakingComments;
     resultQuote = [
       <><p>You have passed the English language test at the + {level.toString()} + level.</p><p>{essayComments}</p>
-        <p>{speakingComments}</p></>,
+        <p>{speakingComments}</p><p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
       <><p>Вы сдали тест по английскому языку на уровне ' + {level.toString()}</p><p>{essayComments}</p>
-        <p>{speakingComments}</p></>
+        <p>{speakingComments}</p><p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
     ];
   }
 
