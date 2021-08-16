@@ -109,9 +109,13 @@ const AdminDistribution = (props) => {
                         const value = row[column.id];
                         keysForColumns++;
                         return (
-                          <TableCell className='font-primary' key={keysForColumns} align={column.align}
-                            width={column.width + 'px'} size='small' >
-
+                          <TableCell 
+                            className='font-primary' 
+                            key={keysForColumns} 
+                            align={column.align}
+                            width={column.width + 'px'} 
+                            size='small'
+                          >
                             {column.id === 'Coach' ? (
                               <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
@@ -120,7 +124,6 @@ const AdminDistribution = (props) => {
                                 </option>
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
-                                  
                                   return (
                                     <option key={keysForOptions} value={coachName.name} id={coachName.id}>
                                       {coachName.name}
@@ -129,7 +132,6 @@ const AdminDistribution = (props) => {
                                 })}
                               </Select>
                             ) : null}
-
                             {column.id === 'action' ? (
                               <Button
                                 id={'item-' + index + '-button'}
@@ -147,11 +149,9 @@ const AdminDistribution = (props) => {
                             ) : (
                               value
                             )}
-                            
                           </TableCell>
                         );
                       })}
-                      
                     </TableRow>
                   );
                 })}
