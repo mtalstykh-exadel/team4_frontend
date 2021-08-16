@@ -18,6 +18,7 @@ import { Trans } from '@lingui/macro';
 import { requestEmployeesList } from '../../../store/actions/employeesActions';
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
+import { AdminModalWindowWarningDeassign } from './AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign';
 
 export const EmployeesTable = (props) => {
 
@@ -121,6 +122,7 @@ export const EmployeesTable = (props) => {
       />
       {<HRmodalWindowTestAssignment open={open} key={0} name={name} handleClose={handleClose}/>}
       {<HRmodalWindowViewingUserInformation open={open} key={1} name={name} handleClose={handleClose} gmail={gmail}/>}
+      {<AdminModalWindowWarningDeassign open={open} key={2} handleClose={handleClose}/>}
     </Paper>
   );
 };
