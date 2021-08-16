@@ -8,31 +8,31 @@ import { Player } from '../../index';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-export const TestsForVerificationModal = ({id, level, handleClose}) => {
+export const TestsForVerificationModal = ({ id, level, handleClose }) => {
   const [essayGrade, setEssayGrade] = useState(-1);
   const [speakingGrade, setSpeakingGrade] = useState(-1);
 
   const ReportedMistakes = [
     {
-      module: ['Listening','Аудирование'],
+      module: ['Listening', 'Аудирование'],
       message: 'Hello! This question contains an error. The correct answer is not so-and-so, but so-and-so.',
       questionID: 1258454,
       question: 'An obstetrician/gynecologist at the pre-conception clinic suggests we ............. some further tests.'
     },
     {
-      module: ['Essay','Эссе'],
+      module: ['Essay', 'Эссе'],
       message: 'Hello! This topic contains an error. It is right to write birTHday.',
       questionID: 1908632,
       question: 'Happy birzday to you!'
     },
     {
-      module: ['Essay','Эссе'],
+      module: ['Essay', 'Эссе'],
       message: 'Hello! This topic contains an error. It is right to write birTHday.',
       questionID: 1908632,
       question: 'Happy birzday to you!'
     },
     {
-      module: ['Essay','Эссе'],
+      module: ['Essay', 'Эссе'],
       message: 'Hello! This topic contains an error. It is right to write birTHday.',
       questionID: 1908632,
       question: 'Happy birzday to you!'
@@ -80,9 +80,9 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
       <div className='users-essay'>User's essay</div>
       <div className='grades-wrapper'>
         {
-          [0,1,2,3,4,5,6,7,8,9,10].map((item) => {
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
             return (
-              <div key={item} className={essayGrade === item ? 'grade chosen' : 'grade'} onClick={() => {setEssayGrade(item);}}>{item}</div>
+              <div key={item} className={essayGrade === item ? 'grade chosen' : 'grade'} onClick={() => { setEssayGrade(item); }}>{item}</div>
             );
           })
         }
@@ -106,9 +106,9 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
         />
       </div>
       <div className='grades-wrapper'>
-        {[0,1,2,3,4,5,6,7,8,9,10].map((item) => {
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
           return (
-            <div key={item} className={speakingGrade === item ? 'grade chosen' : 'grade'} onClick={() => {setSpeakingGrade(item);}}>{item}</div>
+            <div key={item} className={speakingGrade === item ? 'grade chosen' : 'grade'} onClick={() => { setSpeakingGrade(item); }}>{item}</div>
           );
         })}
       </div>
@@ -138,13 +138,14 @@ export const TestsForVerificationModal = ({id, level, handleClose}) => {
             <span><Trans>Level</Trans> {level}</span>
           </div>
           <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-            <CloseIcon/>
+            <CloseIcon />
           </IconButton>
         </div>
         <div className='tests-verification-modal-navigation'>
-          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={() => {setStep(0);}}><div className='navigation-text'><Trans>Reported mistakes</Trans></div></div>
-          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => {setStep(1);}}><div className='navigation-text'><Trans>Essay</Trans></div></div>
-          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} onClick={() => {setStep(2);}}><div className='navigation-text'><Trans>Speaking</Trans></div></div>
+          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={
+            () => { setStep(0); }}><div className='navigation-text'><Trans>Reported mistakes</Trans></div></div>
+          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => { setStep(1); }}><div className='navigation-text'><Trans>Essay</Trans></div></div>
+          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} onClick={() => { setStep(2); }}><div className='navigation-text'><Trans>Speaking</Trans></div></div>
         </div>
         <div className='tests-verification-modal-context'>
           {steps[step]}

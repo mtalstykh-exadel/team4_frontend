@@ -81,8 +81,8 @@ msgid "Speaking"
 msgstr "Говорение"
 
 #: src/pages/Test/Test.jsx:162
-msgid "Submit"
-msgstr "Отправить"
+msgid "Submit test"
+msgstr "Завершить тест"
 
 #: src/pages/Test/Essay/Essay.jsx:15
 #~ msgid "Write an essay on a given topic"

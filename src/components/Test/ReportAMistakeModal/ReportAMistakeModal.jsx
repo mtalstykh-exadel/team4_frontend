@@ -70,6 +70,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose }
       <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
         <CloseIcon className='close-icon icons-color'/>
       </IconButton>
+
       <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>
         <span className='level-info'><Trans>Level</Trans>: {level}</span>
