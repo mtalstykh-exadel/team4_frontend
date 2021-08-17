@@ -21,9 +21,7 @@ export const requestQuestionsList = (level, module, status) => async (dispatch) 
 };
 
 export const requestListeningQuestionsList = (level, status) => async (dispatch) => {
-  debugger;
   const data = await getListeningQuestionsList(level, status);
-  debugger;
   dispatch(setQuestionsList(data));
 };
 
@@ -44,13 +42,10 @@ export const editQuestion = (question) => async (dispatch) => {
 
 export const requestToAddNewQuestion = (question) => async (dispatch) => {
   const data = await addNewQuestion(question);
-debugger;
   dispatch(setEditedQuestion(data));
 };
 
 export const archiveQuestion = (Id, level, module) => async (dispatch) => {
-  debugger;
   await requestToArchiveQuestion(Id);
-  debugger;
   dispatch(requestQuestionsList(level, module));
 };

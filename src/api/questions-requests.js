@@ -25,6 +25,5 @@ export const getQuestionsList = async (level, module, status) => {
 };
 
 export const getListeningQuestionsList = async (level, status) => {
-  debugger;
   return axiosInstance.get(`/question/listening?level=${level}&status=${status}`).then((response) => response.data);
 };

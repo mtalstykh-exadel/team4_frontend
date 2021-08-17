@@ -47,7 +47,6 @@ export const EditTestsTable = (props) => {
     }
     filteredRows.push(el);
   });
-  debugger;
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
