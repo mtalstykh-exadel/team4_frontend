@@ -1,4 +1,6 @@
-const assignTest = (id) => {
+import { postAssignCoach, postDeassignCoach } from '../../api/unverifiedTests-fetch';
+
+const changeButtonStyle = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');
   const selectNames = document.getElementById('item-' + id + '-select');
   
@@ -13,4 +15,14 @@ const assignTest = (id) => {
 
 };
 
-export { assignTest };
+const assignCoachTest = (testId, coachId) => {
+  if (coachId !== 'placeholder') {
+    postAssignCoach(testId, coachId);
+  }
+};
+
+const deassignCoachTest = (testId) => {
+  postDeassignCoach(testId);
+};
+
+export { changeButtonStyle, assignCoachTest, deassignCoachTest };
