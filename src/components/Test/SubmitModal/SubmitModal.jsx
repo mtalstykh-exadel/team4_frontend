@@ -15,7 +15,7 @@ export const SubmitModal = ({handleClose}) => {
         <Button color='primary' variant='outlined' className='cancel-button' onClick={handleClose}>
           <Trans>Cancel</Trans>
         </Button>
-        <Button color='primary' variant='contained' className='submit-button' onClick={() => sendingHandler()}>
+        <Button color='primary' variant='contained' className='submit-button' onClick={() => {sendingHandler();}}>
           <Trans>Submit</Trans>
         </Button>
       </div>

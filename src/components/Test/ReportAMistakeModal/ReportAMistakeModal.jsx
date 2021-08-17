@@ -62,6 +62,7 @@ export const ReportAMistakeModal = ({ question, questionId, level, module, handl
           onClick={() => {
             if (JSON.parse(saveDataArray) !== null) {
               deleteReport(questionId, testId);
+              localStorage.removeItem(reportModule);
               handleClose();
             }
           }}
