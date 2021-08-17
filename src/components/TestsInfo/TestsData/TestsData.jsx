@@ -18,6 +18,8 @@ import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 
+import { getTest } from '../../../api/get-test';
+
 const TestsData = (props) => {
   const history = useHistory();
 
@@ -156,6 +158,8 @@ const TestsData = (props) => {
                                     :
                                     <Button className='button-standard' color='primary' variant='contained'
                                       onClick={() => {
+                                        getTest(row.testId)
+                                          .then((response) => localStorage.setItem(currentTest, JSON.stringify(response)));
                                         history.push('/test');
                                       }} >
                                       <Trans>Continue</Trans>
