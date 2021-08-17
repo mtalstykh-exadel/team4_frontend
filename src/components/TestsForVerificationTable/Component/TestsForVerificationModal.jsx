@@ -81,9 +81,9 @@ export const TestsForVerificationModal = (props) => {
       .then((response) => {
         if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
           saveTestGrades(essay)
-            .then(() => saveTestGrades(speaking)
-              .then(() => submitTestGrades(test.testId)
-                .then(() => props.handleClose())));
+            .then(() => saveTestGrades(speaking))
+            .then(() => submitTestGrades(test.testId))
+            .then(() => props.handleClose());
         }
       });
   };
