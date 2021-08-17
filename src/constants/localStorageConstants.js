@@ -12,6 +12,7 @@ export const testListeningUserAnswers = 'test=listeningUserAnswers';
 export const testEassyUserAnswers = 'test=essayUserAnswers';
 export const testSpeakingAnswers = 'test=speakingUserAnswers';
 export const testSpeakingFile = 'test=speakingFile';
+export const testAudioAttempts = 'test=AudioAttemps';
 export const reportAMistakeSpeaking = 'report=Speaking';
 export const reportAMistakeEssay = 'report=Essay';
 export const reportAMistakeListening = 'report=Listening';
