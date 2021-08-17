@@ -22,28 +22,26 @@ export const Grammar = ({ tasks, testModule }) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
         <div key={questionItem.answer} className='test-question-option'>
-          <input
-            id={domID}
-            type='radio'
-            name={'group-' + questionCount}
-            value={questionItem.answer}
-          />
-          <label
-            onClick={() =>
-              testController({
-                testModule,
-                tasks,
-                questionID: question.id,
-                answerID: questionItem.id,
-                domID,
-              })
-            }
-            htmlFor={domID}
-            className='question-answer'
-          >
-            {' '}
-            {questionItem.answer}
-          </label>
+          <span onClick={() =>
+            testController({
+              testModule,
+              tasks,
+              questionID: question.id,
+              answerID: questionItem.id,
+              domID,
+            })
+          }>
+            <input
+              id={domID}
+              type='radio'
+              name={'group-' + questionCount}
+              value={questionItem.answer}
+            />
+            <label htmlFor={domID} className='question-answer'>
+              {' '}
+              {questionItem.answer}
+            </label>
+          </span>
         </div>
       );
     });
