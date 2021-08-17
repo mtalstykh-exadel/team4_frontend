@@ -61,7 +61,7 @@ export const Test = () => {
     <ReportAMistakeModal
       key='4'
       tasks={grammarTasks}
-      level={'A1'}
+      level={level}
       module={['Grammar', 'Грамматика']}
       handleClose={handleClose}
       testID={testID}
@@ -102,7 +102,6 @@ export const Test = () => {
     const checkData = async () => {
       const testData = JSON.parse(localStorage.getItem(currentTest));
       if (testData !== null) {
-        console.log(testData);
         setGrammarTasks(testData.questions.Grammar);
         setListeningTasks(testData.questions.Listening);
         setEssayTask(testData.questions.Essay);
