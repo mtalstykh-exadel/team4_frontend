@@ -7,14 +7,14 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 import { errorReport, deleteReport } from '../../../api/mistake-reports';
 
-const SelectorHTML = ({ tasks, index, reportModule }) => {
+const SelectorHTML = ({ tasks, index, reportModule, isReported }) => {
   const saveDataArray = localStorage.getItem(reportModule);
   const [select, setSelect] = useState('');
   const [characters, setCharacters] = useState('');
-  const localeStorageArray = saveDataArray !== null ? JSON.parse(saveDataArray) : [];
+  const localeStorageArray = saveDataArray !== null ? JSON.parse(saveDataArray).localeStorageArray : [];
 
   setTimeout(() => {
-    if (saveDataArray !== null && JSON.parse(saveDataArray).length > index) {
+    if (saveDataArray !== null && JSON.parse(saveDataArray).localeStorageArray.length > index) {
       setSelect(localeStorageArray[index].select);
       setCharacters(localeStorageArray[index].textarea);
     }
@@ -36,7 +36,10 @@ const SelectorHTML = ({ tasks, index, reportModule }) => {
     }
     localStorage.setItem(
       reportModule,
-      JSON.stringify(localeStorageArray)
+      JSON.stringify({
+        localeStorageArray,
+        isReported
+      })
     );
   };
 
@@ -55,7 +58,10 @@ const SelectorHTML = ({ tasks, index, reportModule }) => {
     }
     localStorage.setItem(
       reportModule,
-      JSON.stringify(localeStorageArray)
+      JSON.stringify({
+        localeStorageArray,
+        isReported
+      })
     );
   };
 
@@ -82,6 +88,7 @@ const SelectorHTML = ({ tasks, index, reportModule }) => {
           label='Enter your report'
           value={characters}
           onChange={handleInput}
+          disabled={isReported}
         />
       </div>
     </div>
@@ -91,7 +98,8 @@ const SelectorHTML = ({ tasks, index, reportModule }) => {
 SelectorHTML.propTypes = {
   tasks: PropTypes.array,
   index: PropTypes.number,
-  reportModule: PropTypes.string
+  reportModule: PropTypes.string,
+  isReported: PropTypes.bool
 };
 
 export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, testID, reportModule }) => {
@@ -101,12 +109,17 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
   const [isReported, setIsReported] = useState(false);
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
+    setTimeout(() => {
+      if (saveDataArray !== null) {
+        setIsReported(JSON.parse(saveDataArray).isReported);
+      }
+    }, 0);
     const tmpSelector = [];
     if (JSON.parse(saveDataArray) === null) {
-      tmpSelector.push(<SelectorHTML key={0} tasks={tasks} index={0} reportModule={reportModule}/>);
+      tmpSelector.push(<SelectorHTML key={0} tasks={tasks} index={0} reportModule={reportModule} isReported={isReported}/>);
     } else {
-      for (let i = 0; i < JSON.parse(saveDataArray).length; i++) {
-        tmpSelector.push(<SelectorHTML key={i} tasks={tasks} index={i} reportModule={reportModule}/>);
+      for (let i = 0; i < JSON.parse(saveDataArray).localeStorageArray.length; i++) {
+        tmpSelector.push(<SelectorHTML key={i} tasks={tasks} index={i} reportModule={reportModule} isReported={isReported}/>);
       }
     }
 
@@ -191,12 +204,12 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
               if (module[0] === 'Essay' || module[0] === 'Speaking') {
                 deleteReport(topic[0].id, testID);
               } else {
-                if (JSON.parse(saveDataArray).length > 1) {
-                  JSON.parse(saveDataArray).map((item) => {
+                if (JSON.parse(saveDataArray).localeStorageArray.length > 1) {
+                  JSON.parse(saveDataArray).localeStorageArray.map((item) => {
                     deleteReport(item.questionID, testID);
                   });
                 } else {
-                  deleteReport(JSON.parse(saveDataArray)[0].questionID, testID);
+                  deleteReport(JSON.parse(saveDataArray).localeStorageArray[0].questionID, testID);
                 }
               }
               localStorage.removeItem(reportModule);
@@ -231,8 +244,15 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
                   })
                 );
               } else {
-                if (JSON.parse(saveDataArray).length > 1) {
-                  JSON.parse(saveDataArray).map((item) => {
+                localStorage.setItem(
+                  reportModule,
+                  JSON.stringify({
+                    localeStorageArray: JSON.parse(saveDataArray).localeStorageArray,
+                    isReported: true
+                  })
+                );
+                if (JSON.parse(saveDataArray).localeStorageArray.length > 1) {
+                  JSON.parse(saveDataArray).localeStorageArray.map((item) => {
                     errorReport({
                       questionId: item.questionID,
                       reportBody: item.textarea,
@@ -241,8 +261,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
                   });
                 } else {
                   errorReport({
-                    questionId: JSON.parse(saveDataArray)[0].questionID,
-                    reportBody: JSON.parse(saveDataArray)[0].textarea,
+                    questionId: JSON.parse(saveDataArray).localeStorageArray[0].questionID,
+                    reportBody: JSON.parse(saveDataArray).localeStorageArray[0].textarea,
                     testId: testID
                   });
                 }
