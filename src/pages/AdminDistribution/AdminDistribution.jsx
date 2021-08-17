@@ -12,6 +12,7 @@ import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
+import { formatDate } from '../../utils/data-formatter';
 
 const AdminDistribution = (props) => {
 
@@ -19,8 +20,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'startedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'completedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
+    { id: 'StartedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'CompletedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -132,6 +133,18 @@ const AdminDistribution = (props) => {
                             width={column.width + 'px'}
                             size='small'
                           >
+                            {column.id === 'StartedAt' ? (
+                              <>
+                                {formatDate(row.startedAt)}
+                              </>
+                            ) : null}
+
+                            {column.id === 'CompletedAt' ? (
+                              <>
+                                {formatDate(row.completedAt)}
+                              </>
+                            ) : null}
+
                             {column.id === 'Coach' ? (
                               <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
@@ -148,6 +161,7 @@ const AdminDistribution = (props) => {
                                 })}
                               </Select>
                             ) : null}
+                            
                             {column.id === 'action' ? (
                               <Button
                                 id={'item-' + row.testId + '-button'}
