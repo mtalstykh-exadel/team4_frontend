@@ -80,10 +80,10 @@ export const TestsForVerificationModal = (props) => {
     dispatch(requestUnverifiedTests())
       .then((response) => {
         if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
-          saveTestGrades(essay);
-          saveTestGrades(speaking);
-          submitTestGrades(test.testId)
-            .then(() => props.handleClose());
+          saveTestGrades(essay)
+            .then(() => saveTestGrades(speaking)
+              .then(() => submitTestGrades(test.testId)
+                .then(() => props.handleClose())));
         }
       });
   };
@@ -111,7 +111,9 @@ export const TestsForVerificationModal = (props) => {
     async function () {
       setUrl(
         await getAudioFile(test.speakingUrl).then((response) => {
-          console.log(response);
+          return URL.createObjectURL(
+            new Blob([response.data], { type: 'audio/ogg' })
+          );
         })
       );
     },
@@ -157,7 +159,7 @@ export const TestsForVerificationModal = (props) => {
     <div className='essay-wrapper'>
       <div className='topic-title'><Trans>Topic</Trans></div>
       <div className='topic-text'>{test.essayQuestion.questionBody}</div>
-      <div className='users-essay'>{test.essayQuestion.answers}</div>
+      <div className='users-essay'>{test.essayText}</div>
       <div className='grades-wrapper'>
         {
           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
