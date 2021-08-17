@@ -27,7 +27,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const AudioController = () => {
     if (document.getElementById(id)) {
-      if (document.getElementById(id) && parseInt(localStorage.getItem(testAudioAttempts)) < 2){
+      if (document.getElementById('listening-player') === true && parseInt(localStorage.getItem(testAudioAttempts)) < 2){
         AudioStart();
         localStorage.setItem(testAudioAttempts, parseInt(localStorage.getItem(testAudioAttempts)) + 1);
       } else {
