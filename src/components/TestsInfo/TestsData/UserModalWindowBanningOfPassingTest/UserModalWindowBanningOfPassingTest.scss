@@ -1,0 +1,20 @@
+.user-modal {
+  width: 440px;
+  height: 126px;
+
+  .close-icon-wrapper {
+    display: block;
+    margin-left: auto;
+    padding: 0;
+
+    .MuiIconButton-root {
+      height: 15px;
+    }
+  }
+
+  .banning-text {
+    text-align: center;
+    font-size: 18px;
+    padding: 20px 0;
+  }
+}
