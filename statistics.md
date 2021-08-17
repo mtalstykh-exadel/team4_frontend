@@ -26,39 +26,39 @@
   7) [post] /grades/        - status:  ~~in project~~
   
   8) [get] /grades/{testId} - status:  ~~in project~~
-
-## Error Reports Controller
-  9) [post] /error_reports/   - status: <ins>in progress</ins>
   
- 10) [delete] /error_reports/ - status: <ins>in progress</ins>
+  9) [put] /grades/submit/{testId} - status:  ~~in project~~
+ 
+## Error Reports Controller
+ 10) [post] /error_reports/   - status: <ins>in progress</ins>
+  
+ 11) [delete] /error_reports/ - status: <ins>in progress</ins>
 
 ## File Controller [all]
- 11) [get] /files/{url} - status:  ~~in project~~
+ 12) [get] /files/{url} - status:  ~~in project~~
 
 ## Question Controller
- 12) [get]  /question/          - status: <ins>in progress</ins>
+ 13) [get]  /question/          - status: <ins>in progress</ins>
   
- 13) [post] /question/          - status: <ins>in progress</ins>
+ 14) [post] /question/          - status: <ins>in progress</ins>
   
- 14) [put]  /question/{id}      - status: <ins>in progress</ins>
+ 15) [put]  /question/{id}      - status: <ins>in progress</ins>
   
- 15) [delete]  /question/{id}   - status: <ins>in progress</ins>
+ 16) [delete]  /question/{id}   - status: <ins>in progress</ins>
 
- 16) [get] /question/listening  - status: <ins>in progress</ins>
+ 17) [get] /question/listening  - status: <ins>in progress</ins>
   
- 17) [post] /question/listening - status: <ins>in progress</ins>
+ 18) [post] /question/listening - status: <ins>in progress</ins>
 
- 18) [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 19) [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
   
- 19) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 20) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
 ## Tests Controller [all]
- 20) [get] /tests/         - status:  ~~in project~~
+ 21) [get] /tests/         - status:  ~~in project~~
   
- 21) [get] /tests/{id}     - status:  ~~in project~~
+ 22) [get] /tests/{id}     - status:  ~~in project~~
   
- 22) [put] /tests/{testId} - status: ~~in project~~
-
  23) [post] /tests/assign_coach/{testId}   - status:  ~~in project~~
   
  24) [post] /tests/assign/{userId}         - status:  ~~in project~~
