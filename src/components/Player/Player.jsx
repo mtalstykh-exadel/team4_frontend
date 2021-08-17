@@ -27,7 +27,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const AudioController = () => {
     if (document.getElementById(id)) {
-      if (document.getElementById(id) === 'listening-player' && parseInt(localStorage.getItem(testAudioAttempts)) < 2){
+      if (document.getElementById(id) && parseInt(localStorage.getItem(testAudioAttempts)) < 2){
         AudioStart();
         localStorage.setItem(testAudioAttempts, parseInt(localStorage.getItem(testAudioAttempts)) + 1);
       } else {
@@ -44,7 +44,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
   };
 
   const AudioStop = () => {
-    if (document.getElementById(id) !== 'listening-player') {
+    if (document.getElementById('listening-player') === null) {
       audioDomElement.pause();
       setAudioOn(false);
     }
@@ -79,7 +79,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const setAudioProgressBar = (e) => {
     if (audioElement.currentTime !== null) {
-      if (document.getElementById(id) !== 'listening-player') {
+      if (document.getElementById('listening-player') === null) {
         audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
       }
     }
