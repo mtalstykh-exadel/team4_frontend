@@ -1,5 +1,5 @@
 .hr-modal {
-  min-width: 450px;
+  min-width: 500px;
   min-height: 268px;
 
   .close-icon-wrapper {
@@ -40,7 +40,7 @@
 
     .setting {
       height: 80px;
-      width: 180px;
+      width: 240px;
 
       .setting-select {
         padding-top: 0;
@@ -52,12 +52,20 @@
         }
       }
 
+      .settings-date {
+        width: 100%;
+      }
+
       input[type="date" i] {
         border: 1px solid var(--secondary-color);
         border-radius: 4px;
         color: var(--font-color-primary);
         background-color: var(--base-color);
         height: 40px;
+      }
+
+      ::-webkit-calendar-picker-indicator {
+        filter: invert(0.5);
       }
     }
   }
