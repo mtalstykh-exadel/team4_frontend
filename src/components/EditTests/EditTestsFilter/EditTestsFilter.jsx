@@ -1,5 +1,4 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React, { useEffect } from 'react';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -50,7 +49,7 @@ export const EditTestsFilter = (props) => {
         dispatch(requestQuestionsList(values.level, values.module.toUpperCase(), values.status));
       }
     }
-    if (values.questionId) {
+    if (values.questionId && values.module) {
       dispatch(requestQuestion(values.questionId));
     }
     props.setStatus(values.status);
@@ -62,6 +61,10 @@ export const EditTestsFilter = (props) => {
     initialValues: { level: null, module: null, status: 'UNARCHIVED', questionId: '' },
     validationSchema: validation, onSubmit
   });
+
+  useEffect(() => {
+    formik.submitForm();
+  }, [formik.values]);
 
   return (
     <>
@@ -91,11 +94,6 @@ export const EditTestsFilter = (props) => {
         <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'
           value={formik.values.questionId} inputProps={{ name: 'questionId' }} onChange={formik.handleChange} />
 
-        <Button disabled={(!!formik.errors.questionId || !formik.values.questionId) && !formik.values.level || !formik.values.module}
-          color='primary' variant='contained'
-          type='search' className='btn-search button-standard'>
-          <Trans>Search</Trans>
-        </Button>
       </form>
       {formik.errors.questionId ? <div><Trans>In field 'Question Id' must be a number</Trans></div> : null}
     </>

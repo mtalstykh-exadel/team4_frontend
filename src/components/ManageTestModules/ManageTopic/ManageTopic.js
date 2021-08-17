@@ -30,7 +30,7 @@ export const ManageTopic = (props) => {
         className='listening-topic'
         required
         size='small'
-        value={moduleData.questionBody ? moduleData.questionBody : moduleData}
+        value={typeof(moduleData) === 'object' ? moduleData.questionBody : moduleData}
         onChange={handleField}
         id='outlined-required'
         name='questionName'

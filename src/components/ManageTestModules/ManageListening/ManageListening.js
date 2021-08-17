@@ -70,7 +70,7 @@ export const ManageListening = (props) => {
           moduleData={moduleData.topic} />
         <div className='audio-wrapper'>{audio ?
           <Player
-            id={moduleData.id}
+            id='player-editTests'
             src={audio}
           /> :
           <p><Trans>Upload an audio file for listening task</Trans></p>}

@@ -12,7 +12,7 @@ import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevelsLong, filterModules } from '../../constants/filterConstants';
+import { filterLevelsShort, filterModules } from '../../constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
@@ -34,6 +34,7 @@ export const ManageModule = (props) => {
   const [moduleData, setModuleData] = useState('');
   const [audioFile, setAduioFile] = useState();
   const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -44,7 +45,10 @@ export const ManageModule = (props) => {
   };
 
   const onSubmit = () => {
-    props.sendQuestionToEditOrAdd(moduleData);
+    if (submitting) {
+      props.sendQuestionToEditOrAdd(moduleData);
+      setSubmitting(false);
+    }
   };
 
   const formik = useFormik({
@@ -87,7 +91,7 @@ export const ManageModule = (props) => {
               <FilterFormControl
                 value={formik.values.level}
                 filterName='level'
-                filterData={filterLevelsLong}
+                filterData={filterLevelsShort}
                 onChange={formik.handleChange} />
               <FilterFormControl
                 value={formik.values.module}
@@ -152,7 +156,12 @@ export const ManageModule = (props) => {
           </Button>
           {formik.values.module !== '' ?
             <Button
-              onClick={handleOpen}
+              onClick={
+                () => {
+                  handleOpen();
+                  setSubmitting(true);
+                }
+              }
               className='module-buttons'
               color='primary'
               variant='contained'

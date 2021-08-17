@@ -42,7 +42,7 @@ export const EditTestsTable = (props) => {
     if (props.status === 'ARCHIVED' && arg === 'Archive') {
       return;
     }
-    if (module !== 'Listening' && arg === 'Player') {
+    if (props.module !== 'Listening' && arg === 'Player') {
       return;
     }
     filteredRows.push(el);
@@ -92,7 +92,11 @@ export const EditTestsTable = (props) => {
     <div className='edit-tests-data-wrapper'>
       <Button color='primary' variant='contained' type='search' onClick={() => handleClickEdit('/add-test-modules')}
         className='btn-add-question button-standard'>
-        <Trans>Add question</Trans>
+        {
+          props.module === 'Grammar'
+            ? <Trans>Add question</Trans>
+            : <Trans>Add topic</Trans>
+        }
       </Button>
       <Modal
         open={open}
@@ -113,9 +117,12 @@ export const EditTestsTable = (props) => {
               <TableRow>
                 {filteredRows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='center' className='tableRowHeading'>{Array.isArray(rowName)
+                    rowName[0] === 'Question' ? <TableCell key={rowName} align='left' className='tableRowHeading'>{Array.isArray(rowName)
                       ? <Trans>{rowName[0]}{rowName[1]}</Trans>
                       : rowName}</TableCell>
+                      : <TableCell key={rowName} align='center' className='tableRowHeading'>{Array.isArray(rowName)
+                        ? <Trans>{rowName[0]}{rowName[1]}</Trans>
+                        : rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -138,7 +145,7 @@ export const EditTestsTable = (props) => {
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
+                  <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' color='primary'
                     onClick={() => {
                       setArchiveId(row.id);
                       handleOpen();
