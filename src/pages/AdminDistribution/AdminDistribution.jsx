@@ -50,10 +50,9 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
+    window.scrollTo(0, 0);
     setPage(newPage);
-    setTimeout(() => {
-      handleChangeDeassignTest(rows);
-    }, 0);
+    handleChangeDeassignTest(rows);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -61,11 +60,18 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+  let assignSelect;
+
   const handleChangeDeassignTest = (rows) => {
     rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
-        document.getElementById('item-' + unverifiedTest.testId + '-select').value = unverifiedTest.coach.name,
-        assignTest(unverifiedTest.testId)
+        assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
+        assignSelect !== null ? (
+          assignSelect.value = unverifiedTest.coach.name,
+          assignTest(unverifiedTest.testId)
+        ) : (
+          null
+        )
       ) : (null);
     });
   };
