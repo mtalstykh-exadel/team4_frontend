@@ -98,6 +98,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
   let HTMLCodeForStep;
   const saveDataArray = localStorage.getItem(reportModule);
   const [characters, setCharacters] = useState('');
+  const [isReported, setIsReported] = useState(false);
 
   if (module[0] === 'Grammar' || module[0] === 'Listening') {
     const tmpSelector = [];
@@ -123,8 +124,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
       <div className={selector.length >= 3 ? 'scroll-container visible' : 'scroll-container'}>
         {selector}
         <div className={'add-delete-question'}>
-          <div className={selector.length === tasks.length ? 'add-question-to-report invisible' : 'add-question-to-report'} onClick={addSelector}><Trans>Add question</Trans></div>
-          <div className={selector.length === 1 ? 'delete-question-to-report invisible' : 'delete-question-to-report'} onClick={deleteSelector}><Trans>Delete question</Trans></div>
+          <div className={selector.length === tasks.length || isReported ? 'add-question-to-report invisible' : 'add-question-to-report'} onClick={addSelector}><Trans>Add question</Trans></div>
+          <div className={selector.length === 1 || isReported ? 'delete-question-to-report invisible' : 'delete-question-to-report'} onClick={deleteSelector}><Trans>Delete question</Trans></div>
         </div>
       </div>;
   } else {
@@ -134,7 +135,8 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
         JSON.stringify({
           questionId: topic[0].id,
           reportBody: event.target.value,
-          testId: testID
+          testId: testID,
+          isReported: false
         })
       );
       setCharacters(event.target.value);
@@ -143,6 +145,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
     setTimeout(() => {
       if (saveDataArray !== null) {
         setCharacters(JSON.parse(saveDataArray).reportBody);
+        setIsReported(JSON.parse(saveDataArray).isReported);
       }
     }, 0);
 
@@ -160,6 +163,7 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
             label='Enter your report'
             value={characters}
             onChange={handleChange}
+            disabled={isReported}
           />
         </div>
       </>;
@@ -181,17 +185,24 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
           className='delete-button'
           color='primary'
           variant='outlined'
+          disabled={!isReported}
           onClick={() => {
             if (JSON.parse(saveDataArray) !== null) {
               if (module[0] === 'Essay' || module[0] === 'Speaking') {
-                deleteReport(JSON.parse(saveDataArray).questionId, JSON.parse(saveDataArray).testId);
+                deleteReport(topic[0].id, testID);
               } else {
-                JSON.parse(saveDataArray).map((item) => {
-                  deleteReport(item.questionId, item.testId);
-                });
+                if (JSON.parse(saveDataArray).length > 1) {
+                  JSON.parse(saveDataArray).map((item) => {
+                    deleteReport(item.questionID, testID);
+                  });
+                } else {
+                  deleteReport(JSON.parse(saveDataArray)[0].questionID, testID);
+                }
               }
-              handleClose();
+              localStorage.removeItem(reportModule);
+              setIsReported(false);
               setCharacters('');
+              handleClose();
             }
           }}
         >
@@ -201,18 +212,40 @@ export const ReportAMistakeModal = ({ tasks, topic, level, module, handleClose, 
           className='report-button'
           color='primary'
           variant='contained'
+          disabled={isReported}
           onClick={() => {
             if (JSON.parse(saveDataArray) !== null) {
               if (module[0] === 'Essay' || module[0] === 'Speaking') {
-                errorReport(JSON.parse(saveDataArray));
+                errorReport({
+                  questionId: topic[0].id,
+                  reportBody: JSON.parse(saveDataArray).reportBody,
+                  testId: testID
+                });
+                localStorage.setItem(
+                  reportModule,
+                  JSON.stringify({
+                    questionId: topic[0].id,
+                    reportBody: characters,
+                    testId: testID,
+                    isReported: true
+                  })
+                );
               } else {
-                JSON.parse(saveDataArray).map((item) => {
+                if (JSON.parse(saveDataArray).length > 1) {
+                  JSON.parse(saveDataArray).map((item) => {
+                    errorReport({
+                      questionId: item.questionID,
+                      reportBody: item.textarea,
+                      testId: testID
+                    });
+                  });
+                } else {
                   errorReport({
-                    questionId: item.questionID,
-                    reportBody: item.textarea,
+                    questionId: JSON.parse(saveDataArray)[0].questionID,
+                    reportBody: JSON.parse(saveDataArray)[0].textarea,
                     testId: testID
                   });
-                });
+                }
               }
               handleClose();
             }
