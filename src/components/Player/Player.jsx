@@ -33,7 +33,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
       } else {
         AudioStart();
       }
-      
+
       setProgressPercent(0);
       setAudioCurrent(0);
       setAudioOn(true);
@@ -44,8 +44,10 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
   };
 
   const AudioStop = () => {
-    audioDomElement.pause();
-    setAudioOn(false);
+    if (document.getElementById(id) !== 'listening-player') {
+      audioDomElement.pause();
+      setAudioOn(false);
+    }
   };
 
   const AudioProgressBar = (e) => {
@@ -77,7 +79,9 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const setAudioProgressBar = (e) => {
     if (audioElement.currentTime !== null) {
-      audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+      if (document.getElementById(id) !== 'listening-player') {
+        audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+      }
     }
   };
 
