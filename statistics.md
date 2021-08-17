@@ -1,7 +1,8 @@
 # Statistics of executed requests
-## in project   - 25
-## in progress  - 14
-## all requests - 39
+
+### in project   - 25
+### in progress  - 14
+### all requests - 39
 
 ## completed by 61% [ in project / all requests * 100]
 
