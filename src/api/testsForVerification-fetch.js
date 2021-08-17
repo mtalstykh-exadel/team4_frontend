@@ -10,7 +10,7 @@ const getTestForVerification = (testId) => {
 };
 
 const submitTestGrades = (testId) => {
-  return axiosInstance.put(`/tests/${testId}`);
+  return axiosInstance.put(`/grades/submit/${testId}`);
 };
 
 const getTestGrades = (testId) => {
