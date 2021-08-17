@@ -12,6 +12,7 @@ import {
   Box,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
@@ -19,7 +20,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import './header.scss';
 
 import logo from '../../assets/images/logo/logo.svg';
-import avatar from '../../assets/images/goose.svg';
 
 import AccountMenu from './accountDropdown/accountDropdown';
 import LogoutModal from './logoutModal/logoutModal';
@@ -32,6 +32,7 @@ import { userLanguageKey } from '../../constants/localStorageConstants';
 import { language_russian } from '../../constants/languageConstants';
 
 const Header = () => {
+  const avatar = useSelector((state) => state.jwt.avatar);
   const matches = useMediaQuery('(min-width:1024px)');
   const [states, setState] = useState({
     accumulatorEl: null,
