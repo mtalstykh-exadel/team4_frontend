@@ -1,15 +1,28 @@
-const assignTest = (id) => {
+import { postAssignCoach, postDeassignCoach } from '../../api/unverifiedTests-fetch';
+
+const changeButtonStyle = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');
   const selectNames = document.getElementById('item-' + id + '-select');
-  const divSelect = document.querySelectorAll('.selectCoachNames')[id];
+  
   if (selectNames.value !== 'placeholder') {
     buttonAssign.textContent = 'DEASSIGN';
     if (buttonAssign.classList.contains('buttonDeassign')) {
       buttonAssign.textContent = 'assign';
     }
-    divSelect.classList.toggle('selectCoachNames--disabled');
     buttonAssign.classList.toggle('buttonDeassign');
+    selectNames.classList.toggle('selectCoachNames--disabled');
+  }
+
+};
+
+const assignCoachTest = (testId, coachId) => {
+  if (coachId !== 'placeholder') {
+    postAssignCoach(testId, coachId);
   }
 };
 
-export { assignTest };
+const deassignCoachTest = (testId) => {
+  postDeassignCoach(testId);
+};
+
+export { changeButtonStyle, assignCoachTest, deassignCoachTest };

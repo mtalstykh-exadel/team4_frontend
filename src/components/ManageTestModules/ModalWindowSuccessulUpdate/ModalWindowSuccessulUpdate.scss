@@ -1,0 +1,31 @@
+.modal-remove-post {
+  width: 440px;
+  height: 160px;
+
+  .close-icon-wrapper {
+    display: block;
+    margin-left: 95%;
+
+    .MuiIconButton-root {
+      height: 15px;
+
+      .close-icon {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .text {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 130%;
+    text-align: center;
+  }
+
+  .MuiButton-label {
+    padding-top: 2px;
+  }
+}

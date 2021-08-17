@@ -1,26 +1,42 @@
 import React, {useEffect, useState} from 'react';
+
+import { CircularProgress } from '@material-ui/core';
+
+import { getResultTest } from '../../api/result-test';
+import { getTest } from '../../api/get-test';
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
-import PropTypes from 'prop-types';
-import { getResultTest } from '../../api/result-test';
-import { getTest } from '../../api/get-status-test';
 import { Trans } from '@lingui/macro';
+import { currentTest } from '../../constants/localStorageConstants';
 
-
-const Results = ({idTest}) => {
+const Results = () => {
   const [result, setResult] = useState();
   const [test, setTest] = useState(0);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(async function () {
-    setTest(await getTest(idTest).then((res) => res));
-    setResult(await getResultTest(idTest).then((res) => res));
+  const getResults = async () => {
+    setLoading(true);
+    const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
+
+    if ( test === 0 ) {
+      await getTest(idTest).then((res) => setTest(res));
+    }
+
+    if ( result === undefined ) {
+      await getResultTest(idTest).then((res) => setResult(res));
+    }
+    setLoading(false);
+  };
+
+  useEffect( () => {
+    getResults();
   });
 
   let resultQuote = [
     <><p>Your level of English knowledge will be confirmed after checking by the coach.</p><p>You will receive a message
-      in your personal account and by e-mail</p></>,
+      in your personal account and by e-mail</p><p onClick={() => window.location.href = './profile'} className='go-back'>Go back to your personal account</p></>,
     <><p>Ваш уровень знания английского будет подтвержден после проверки тренером.</p><p>Вы получите сообщение в личном
-      кабинете и на электронную почту.</p></>
+      кабинете и на электронную почту.</p><p onClick = {() => window.location.href = './profile'} className='go-back'>Вернуться на свой аккаунт</p></>
   ];
 
   const headerQuote = [
@@ -29,15 +45,10 @@ const Results = ({idTest}) => {
   ];
 
   const stepTest = [
-    {en: 'Grammar', ru: 'Грамматика'},
-    {en: 'Listening', ru: 'Прослушивание'},
-    {en: 'Essay', ru: 'Эссе'},
-    {en: 'Speaking', ru: 'Говорение'}].map((step, key) => {
-    return (
-      <div key={key}><Trans>{step.en}{step.ru}</Trans></div>
-    );
-  });
-
+    { en: 'Grammar', ru: 'Грамматика' },
+    { en: 'Listening', ru: 'Прослушивание' },
+    { en: 'Essay', ru: 'Эссе' },
+    { en: 'Speaking', ru: 'Говорение' }].map((step, key) => { return (<div key={key}><Trans>{step.en}{step.ru}</Trans></div>); });
   const setStyle = (res) => {
     if (res === 'waiting') return 'res-waiting';
     else if (res === 0) return 'res-null';
@@ -59,38 +70,15 @@ const Results = ({idTest}) => {
     arrayResult[3] = (result.speaking);
   }
 
-  const htmlResultGrammarAndListening = [...arrayResult].splice(0, 2).map((res, key) => {
-    return (
-      <div key={key} className={setStyle(res)}>
-        <p className='result'>{res}/10</p>
-      </div>
-    );
-  });
-
-  const htmlResultEssayAndSpeaking = [...arrayResult].splice(2, 2).map((res, key) => {
-    let htmlRes = ['waiting', 'ожидать'];
-    if (test.status === 'COMPLETED') {
-      htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
-      res = 'waiting';
-    } else {
-      htmlRes = res.toString() + '/10';
-    }
-    return (
-      <div key={key} className={setStyle(res)}>
-        <p className='result'>{htmlRes}</p>
-      </div>
-    );
-  });
-
   if (test.status === 'VERIFIED') {
     const level = test.level;
     const essayComments = test.essayComment;
     const speakingComments = test.speakingComments;
     resultQuote = [
       <><p>You have passed the English language test at the + {level.toString()} + level.</p><p>{essayComments}</p>
-        <p>{speakingComments}</p></>,
+        <p>{speakingComments}</p><p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
       <><p>Вы сдали тест по английскому языку на уровне ' + {level.toString()}</p><p>{essayComments}</p>
-        <p>{speakingComments}</p></>
+        <p>{speakingComments}</p><p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
     ];
   }
 
@@ -99,21 +87,40 @@ const Results = ({idTest}) => {
       <div className='result-header'>
         <Trans>{headerQuote[0]}{headerQuote[1]}</Trans>
       </div>
-      <div className='result-body'>
-        {htmlResultGrammarAndListening}
-        {htmlResultEssayAndSpeaking}
-      </div>
-      <div className='step-test'> {stepTest} </div>
-      <div className='result-quote'>
-        <Trans>{resultQuote[0]}{resultQuote[1]}</Trans>
-      </div>
+      {loading ? (
+        <CircularProgress className='border-primary'/>
+      ) : (
+        <>
+          <div className='result-body'>
+            {[...arrayResult].splice(0, 2).map((res, key) => {
+              return (
+                <div key={key} className={setStyle(res)}>
+                  <p className='result'>{res}/10</p>
+                </div>
+              );
+            })}
+            {[...arrayResult].splice(2, 2).map((res, key) => {
+              let htmlRes = ['waiting', 'ожидать'];
+              if (test.status === 'COMPLETED') {
+                htmlRes = <Trans>{htmlRes[0]}{htmlRes[1]}</Trans>;
+                res = 'waiting';
+              } else {
+                htmlRes = res.toString() + '/10';
+              }
+              return (
+                <div key={key} className={setStyle(res)}>
+                  <p className='result'>{htmlRes}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className='step-test'> {stepTest} </div>
+          <div className='result-quote'>
+            <Trans>{resultQuote[0]}{resultQuote[1]}</Trans>
+          </div>
+        </>)}
     </Layout>
   );
 };
-
-Results.propTypes = {
-    level: PropTypes.string,
-    idTest: PropTypes.number,
-  };
 
 export default Results;

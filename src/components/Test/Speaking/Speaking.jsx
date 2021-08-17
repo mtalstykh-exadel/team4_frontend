@@ -8,7 +8,7 @@ import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import './Speaking.scss';
 
-export const Speaking = ({task, testModule}) => {
+export const Speaking = ({ task, testModule }) => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -47,7 +47,7 @@ export const Speaking = ({task, testModule}) => {
             setInvisible('off');
             setBlobURL(offRecAudio());
             setAudioDuration(stopTimer('speaking-timer'));
-            saveBlobUrl({testModule: testModule, duration: stopTimer('speaking-timer')});
+            saveBlobUrl({ testModule, duration: stopTimer('speaking-timer') });
           } else {
             setInvisible('on');
             onRecAudio();
@@ -67,6 +67,7 @@ export const Speaking = ({task, testModule}) => {
           id='player-speaking'
           src={blobURL}
           audioDuration={audioDuration}
+          speaking={true}
         />
       </div>
     </div>

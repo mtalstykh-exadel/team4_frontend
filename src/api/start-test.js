@@ -1,7 +1,9 @@
 import axiosInstance from './axios';
 
-const startTest = (level) => {
+export const startTestByLevel = (level) => {
   return axiosInstance.post('/tests/start?level=' + level).then((response) => response.data);
 };
 
-export { startTest };
+export const startTestById = (testId) => {
+  return axiosInstance.post(`/tests/start/${testId}`).then((response) => response.data);
+};

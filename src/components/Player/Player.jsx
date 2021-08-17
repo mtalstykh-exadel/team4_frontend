@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
-import { Paper } from '@material-ui/core';
+import React, {useState} from 'react';
+import {Paper} from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
+import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './Player.scss';
 
-export const Player = ({ src, audioDuration, id }) => {
+export const Player = ({src, audioDuration, id, speaking = false}) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -14,6 +15,7 @@ export const Player = ({ src, audioDuration, id }) => {
   const [audioElement, setAudioElement] = useState({});
   const audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
+  const [loading, setloading] = useState(true);
 
   const AudioController = () => {
     if (document.getElementById(id)) {
@@ -37,7 +39,7 @@ export const Player = ({ src, audioDuration, id }) => {
   };
 
   const AudioProgressBar = (e) => {
-    const { currentTime, duration } = e.srcElement;
+    const {currentTime, duration} = e.srcElement;
     setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
 
@@ -78,8 +80,10 @@ export const Player = ({ src, audioDuration, id }) => {
   setTimeout(() => {
     document.getElementById(id).addEventListener('loadeddata', () => {
       setLocaleDuration(document.getElementById(id).duration);
+      setloading(false);
     });
   }, 0);
+
 
   return (
     <Paper
@@ -110,9 +114,13 @@ export const Player = ({ src, audioDuration, id }) => {
         }}
       >
         {audioOn === false ? (
-          <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
+          loading && !speaking ? (
+            <CircularProgress className='border-primary' size='23px' />
+          ) : (
+            <PlayArrowIcon className='icons-color-primary' fontSize='medium'/>
+          )
         ) : (
-          <PauseIcon className='icons-color-primary' fontSize='medium' />
+          <PauseIcon className='icons-color-primary' fontSize='medium'/>
         )}
       </button>
       <div className='player-time font-primary'>
@@ -122,12 +130,12 @@ export const Player = ({ src, audioDuration, id }) => {
           : checkTime(audioDuration)}
       </div>
       <div className='progress-container' onClick={setAudioProgressBar}>
-        <audio id={id} src={src} />
+        <audio id={id} src={src}/>
         <div
-          style={{ width: progressPercent + '%' }}
+          style={{width: progressPercent + '%'}}
           className='progress-line border-primary'
         />
-        <div className='progress border-secondary' />
+        <div className='progress border-secondary'/>
       </div>
       <button
         className='player-button'
@@ -139,7 +147,7 @@ export const Player = ({ src, audioDuration, id }) => {
           }
         }}
       >
-        <VolumeUpIcon className='icons-color' fontSize='medium' />
+        <VolumeUpIcon className='icons-color' fontSize='medium'/>
       </button>
     </Paper>
   );
@@ -149,4 +157,5 @@ Player.propTypes = {
   src: PropTypes.string,
   audioDuration: PropTypes.number,
   id: PropTypes.string,
+  speaking: PropTypes.bool,
 };

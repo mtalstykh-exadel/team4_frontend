@@ -1,15 +1,19 @@
-import { REQUEST_EMPLOYEES_LIST } from '../actions/actionTypes';
+import { REQUEST_EMPLOYEES_LIST, REQUEST_EMPLOYEE_HISTORY } from '../actions/actionTypes';
 
-const initialState = {
-  filteredEmployees: null
-};
 
-export const employeesReducer = (state = initialState, action) => {
+export const employeesReducer = (state = null, action) => {
   switch (action.type) {
     case REQUEST_EMPLOYEES_LIST:
-      return Object.assign({}, state, {
-        filteredEmployees: action.filteredEmployees,
-      });
+      return action.employee;
+    default:
+      return state;
+  }
+};
+
+export const employeeHistoryReducer = (state = [], action) => {
+  switch (action.type) {
+    case REQUEST_EMPLOYEE_HISTORY:
+      return action.employee;
     default:
       return state;
   }

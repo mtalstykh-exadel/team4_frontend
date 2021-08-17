@@ -20,6 +20,7 @@ export const ManageTest = () => {
   const parsed = queryString.parse(history.location.search.substr(1));
 
   const sendQuestionToEditOrAdd = (moduleData) => {
+    // debugger;
     // if (location === '/edit-test-modules') {
     //   dispatch(editQuestion(moduleData));
     // }

@@ -7,11 +7,12 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
-import { assignTest } from './ScriptsAdminDistributtion';
+import { changeButtonStyle, assignCoachTest, deassignCoachTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
+import { formatDate } from '../../utils/data-formatter';
 
 const AdminDistribution = (props) => {
 
@@ -19,18 +20,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    {
-      id: 'assigned',
-      label: ['Assigned', 'Назначенный'],
-      width: 237,
-      align: 'right',
-    },
-    {
-      id: 'deadline',
-      label: ['Deadline', 'Срок сдачи'],
-      width: 237,
-      align: 'right',
-    },
+    { id: 'StartedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'CompletedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -56,11 +47,14 @@ const AdminDistribution = (props) => {
   let coachNames = [];
 
   if (coaches !== undefined) {
-    coachNames = coaches.map((coach) => coach.name);
+    coachNames = coaches.map((coach) => { return { name: coach.name, id: coach.id }; });
   }
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+      dispatch(requestQuestionsList());
+      window.scrollTo(0, 0);
+      setPage(newPage);
+      handleChangeDeassignTest(rows);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -68,11 +62,38 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+  let assignSelect;
+  let assignButton;
+
+  const handleChangeDeassignTest = (rows) => {
+    rows.map((unverifiedTest) => {
+      unverifiedTest?.coach ? (
+        assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'), 
+        assignSelect !== null ? (
+          assignSelect.value = unverifiedTest.coach.id,
+          assignButton.textContent.toLowerCase() !== 'deassign' ? (
+            changeButtonStyle(unverifiedTest.testId)
+          ) : (
+            null
+          )
+        ) : (
+          null
+        )
+      ) : (null);
+    });
+  };
+
   useEffect(() => {
     dispatch(requestQuestionsList());
   }, []);
 
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
+
+  setTimeout(() => {
+    handleChangeDeassignTest(rows);
+  }, 0);
+
   return (
     <Layout pageWrapperClass='AdminDistribution'>
       <Paper elevation={2} className='paper'>
@@ -98,17 +119,34 @@ const AdminDistribution = (props) => {
             <TableBody>
               {filteredRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
+                .map((row) => {
                   return (
-                    <TableRow hover role='checkbox' tabIndex={-1} key={index} >
+                    <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
                         return (
-                          <TableCell className='font-primary' key={keysForColumns} align={column.align}
-                            width={column.width + 'px'} size='small' >
+                          <TableCell
+                            className='font-primary'
+                            key={keysForColumns}
+                            align={column.align}
+                            width={column.width + 'px'}
+                            size='small'
+                          >
+                            {column.id === 'StartedAt' ? (
+                              <>
+                                {formatDate(row.startedAt)}
+                              </>
+                            ) : null}
+
+                            {column.id === 'CompletedAt' ? (
+                              <>
+                                {formatDate(row.completedAt)}
+                              </>
+                            ) : null}
+
                             {column.id === 'Coach' ? (
-                              <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
+                              <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
                                 <option aria-label='None' value='placeholder' >
                                   name
@@ -116,27 +154,31 @@ const AdminDistribution = (props) => {
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
                                   return (
-                                    <option key={keysForOptions} value={coachName} >
-                                      {coachName}
+                                    <option key={keysForOptions} value={coachName.id} id={coachName.id}>
+                                      {coachName.name}
                                     </option>
                                   );
                                 })}
                               </Select>
                             ) : null}
-
+                            
                             {column.id === 'action' ? (
                               <Button
-                                id={'item-' + index + '-button'}
+                                id={'item-' + row.testId + '-button'}
                                 className='buttonAssign button-standard'
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {
-                                  assignTest(index);
+                                  changeButtonStyle(row.testId);
+                                  if (document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase() !== 'assign') {
+                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
+                                  } else {
+                                    deassignCoachTest(row.testId);
+                                  }
                                 }}
                               >
                                 <Trans>
-                                  {value[0]}
-                                  {value[1]}
+                                  Assign
                                 </Trans>
                               </Button>
                             ) : (

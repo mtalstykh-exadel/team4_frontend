@@ -14,12 +14,12 @@ export const testController = ({ tasks, testModule, questionID, answerID, domID 
           const currentElement = JSON.stringify(el.qID);
           return index === JSON.parse(localStorage.getItem(testModule)).findIndex((obj) => {
             if (JSON.stringify(obj.qID) === currentElement) {
-              return [{qID: questionID, aID: answerID, domID}];
+              return [{ qID: questionID, aID: answerID, domID }];
             }
           });
         });
 
-        localStorage.setItem(testModule, JSON.stringify([ ...uniqueArray ]));
+        localStorage.setItem(testModule, JSON.stringify([...uniqueArray]));
 
       } else {
         localStorage.setItem(
