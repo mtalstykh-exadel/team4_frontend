@@ -13,20 +13,20 @@ import {
   currentTest,
 } from '../../../constants/localStorageConstants';
 
-const dataURItoBlob = (dataURI) => {  
+const dataURItoBlob = (dataURI) => {
   if (dataURI !== null) {
     const byteString = atob(dataURI.split(',')[1]);
     const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
     const ab = new ArrayBuffer(byteString.length);
     const dw = new DataView(ab);
-  
+
     for (let i = 0; i < byteString.length; i++) {
       dw.setUint8(i, byteString.charCodeAt(i));
     }
-      return new Blob([ab], {type: mimeString});
-    }
-    return null;
-  };
+    return new Blob([ab], { type: mimeString });
+  }
+  return null;
+};
 
 const changeArray = (array) => {
   return array === null ? [] : array.map((element) => ({
@@ -38,7 +38,7 @@ const changeArray = (array) => {
 
 const sendingHandler = () => {
   const essayAnswer = JSON.parse(localStorage.getItem(testEassyUserAnswers));
-  
+
   const promiseEssay = saveEssay(essayAnswer !== null ? essayAnswer.answer : 'The user has not completed this module');
   const promiseListeningAndGrammar = saveListeningAndGrammar([
     ...changeArray(JSON.parse(localStorage.getItem(testListeningUserAnswers))),
@@ -52,4 +52,4 @@ const sendingHandler = () => {
 
 };
 
-export {sendingHandler};
+export { sendingHandler };
