@@ -2,7 +2,6 @@
   .essay-topic {
     font-size: 24px;
     padding-top: 15px;
-    padding-bottom: 20px;
   }
 
   .essay-input {
@@ -16,6 +15,18 @@
     margin-top: 8px;
     margin-left: 17%;
     text-align: right;
+  }
+
+  .report-mistake {
+    font-size: 12px;
+    color: #828282;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .report-mistake:hover {
+    text-decoration: underline;
   }
 
   @media only screen and (max-width: 800px) {

@@ -5,7 +5,6 @@ import {
   Essay,
   Grammar,
   Listening,
-  ReportAMistakeModal,
   SubmitModal,
 } from '../../components';
 import { startTimer, createTimer, stopTimer } from '../../services/timer';
@@ -32,7 +31,6 @@ export const Test = () => {
   const [speakingTask, setSpeakingTask] = useState([]);
   const [grammarTasks, setGrammarTasks] = useState([]);
   const [contentFile, setContentFile] = useState('');
-  const [modalIndex, setModalIndex] = useState(0);
   const [essayTask, setEssayTask] = useState([]);
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState(0);
@@ -51,50 +49,41 @@ export const Test = () => {
   };
 
   const steps = [
-    <Grammar key='0' tasks={grammarTasks} testModule={testGrammarUserAnswers}/>,
-    <Listening key='1' tasks={listeningTasks} contentFile={contentFile} testModule={testListeningUserAnswers}/>,
-    <Essay key='2' task={essayTask} testModule={testEassyUserAnswers}/>,
-    <Speaking key='3' task={speakingTask} testModule={testSpeakingAnswers}/>,
-  ];
-
-  const modals = [
-    <ReportAMistakeModal
-      key='4'
+    <Grammar
+      key='0'
       tasks={grammarTasks}
-      level={level}
-      module={['Grammar', 'Грамматика']}
-      handleClose={handleClose}
-      testID={testID}
+      testModule={testGrammarUserAnswers}
       reportModule={reportAMistakeGrammar}
+      level={level}
+      testID={testID}
+      module={['Grammar','Грамматика']}
     />,
-    <ReportAMistakeModal
-      key='5'
+    <Listening
+      key='1'
       tasks={listeningTasks}
-      level={level}
-      module={['Listening', 'Аудирование']}
-      handleClose={handleClose}
-      testID={testID}
+      contentFile={contentFile}
+      testModule={testListeningUserAnswers}
       reportModule={reportAMistakeListening}
-    />,
-    <ReportAMistakeModal
-      key='6'
       level={level}
-      topic={essayTask}
-      module={['Essay', 'Эссе']}
-      handleClose={handleClose}
       testID={testID}
+      module={['Listening','Аудирование']}
+    />,
+    <Essay
+      key='2'
+      task={essayTask}
+      testModule={testEassyUserAnswers}
       reportModule={reportAMistakeEssay}
-    />,
-    <ReportAMistakeModal
-      key='7'
       level={level}
-      topic={speakingTask}
-      module={['Speaking', 'Говорение']}
-      handleClose={handleClose}
       testID={testID}
-      reportModule={reportAMistakeSpeaking}
     />,
-    <SubmitModal key='8' handleClose={handleClose}/>,
+    <Speaking
+      key='3'
+      task={speakingTask}
+      testModule={testSpeakingAnswers}
+      reportModule={reportAMistakeSpeaking}
+      level={level}
+      testID={testID}
+    />,
   ];
 
   useEffect(() => {
@@ -228,22 +217,10 @@ export const Test = () => {
               className='submit-button button-wide'
               color='primary'
               variant='contained'
-              onClick={() => {
-                setModalIndex(4);
-                handleOpen();
-              }}
+              onClick={handleOpen}
             >
               <Trans>Submit test</Trans>
             </Button>
-          </div>
-          <div
-            className='report-mistake'
-            onClick={() => {
-              setModalIndex(step);
-              handleOpen();
-            }}
-          >
-            <Trans>Report a mistake</Trans>
           </div>
           <Modal
             open={open}
@@ -252,7 +229,7 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content base-color'>
-              {modals[modalIndex]}
+              <SubmitModal key='8' handleClose={handleClose}/>
             </div>
           </Modal>
         </div>
