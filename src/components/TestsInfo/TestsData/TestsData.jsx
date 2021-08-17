@@ -16,6 +16,7 @@ import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListenin
 import { startTestById } from '../../../api/start-test';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 
 const TestsData = (props) => {
   const history = useHistory();
