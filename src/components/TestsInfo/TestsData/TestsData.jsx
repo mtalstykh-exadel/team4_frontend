@@ -18,6 +18,8 @@ import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 
+import { getTest } from '../../../api/get-test';
+
 const TestsData = (props) => {
   const history = useHistory();
 
@@ -38,6 +40,10 @@ const TestsData = (props) => {
     else null;
   };
 
+  const getResult = (testId) => {
+    localStorage.setItem(currentTest, JSON.stringify({id: testId}));
+    history.push('/result');
+  };
 
   const filterRow = (row) => {
     const filteredRow = [];
@@ -116,30 +122,48 @@ const TestsData = (props) => {
                                 ?
                                 <CircularProgress className='border-primary' size='25px' />
                                 :
-                                <Button className='button-standard' color='primary' variant='contained'
-                                  onClick={() => {
-                                    setLoading(true);
-                                    localStorage.removeItem(currentTest);
-                                    localStorage.removeItem(testGrammarUserAnswers);
-                                    localStorage.removeItem(testEassyUserAnswers);
-                                    localStorage.removeItem(testListeningUserAnswers);
-                                    localStorage.removeItem(testSpeakingAnswers);
-                                    startTestById(row.testId)
-                                      .then((response) => {
-                                        localStorage.setItem(currentTest, JSON.stringify(response));
+                                row.status === 'ASSIGNED'
+                                  ?
+                                  <Button className='button-standard' color='primary' variant='contained'
+                                    onClick={() => {
+                                      setLoading(true);
+                                      localStorage.removeItem(currentTest);
+                                      localStorage.removeItem(testGrammarUserAnswers);
+                                      localStorage.removeItem(testEassyUserAnswers);
+                                      localStorage.removeItem(testListeningUserAnswers);
+                                      localStorage.removeItem(testSpeakingAnswers);
+                                      startTestById(row.testId)
+                                        .then((response) => {
+                                          localStorage.setItem(currentTest, JSON.stringify(response));
+                                          history.push('/test');
+                                          window.scrollTo(0, 0);
+                                        })
+                                        .catch((err) => {
+                                          setLoading(false);
+                                          if (err.code === 409) {
+                                            handleOpen();
+                                          }
+                                        });
+                                    }
+                                    } >
+                                    <Trans>Take Test</Trans>
+                                  </Button>
+                                  :
+                                  row.status === 'VERIFIED' ? <Button className='button-standard' color='primary' variant='contained'
+                                    onClick={() => {
+                                      getResult(row.testId);
+                                    }} >
+                                    <Trans>View Results</Trans>
+                                  </Button>
+                                    :
+                                    <Button className='button-standard' color='primary' variant='contained'
+                                      onClick={() => {
+                                        getTest(row.testId)
+                                          .then((response) => localStorage.setItem(currentTest, JSON.stringify(response)));
                                         history.push('/test');
-                                        window.scrollTo(0, 0);
-                                      })
-                                      .catch((err) => {
-                                        setLoading(false);
-                                        if (err.code === 409) {
-                                          handleOpen();
-                                        }
-                                      });
-                                  }
-                                  } >
-                                  <Trans>Take Test</Trans>
-                                </Button>
+                                      }} >
+                                      <Trans>Continue</Trans>
+                                    </Button>
                               : Array.isArray(value) ? <Trans>{value[0]}{value[1]}</Trans> : value
                           }
                         </TableCell>

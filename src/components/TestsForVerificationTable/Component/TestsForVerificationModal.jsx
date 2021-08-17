@@ -83,6 +83,7 @@ export const TestsForVerificationModal = (props) => {
           saveTestGrades(essay)
             .then(() => saveTestGrades(speaking))
             .then(() => submitTestGrades(test.testId))
+            .then(() => dispatch(requestUnverifiedTests()))
             .then(() => props.handleClose());
         }
       });
