@@ -1,96 +1,97 @@
 # Statistics of executed requests
 
-### in project   - 25
-### in progress  - 14
-### all requests - 39
+### in project   - 27
+### in progress  - 13
+### all requests - 40
 
-## completed by 64% [ in project / all requests * 100]
+## completed by 67% [ in project / all requests * 100]
 
 
-## Answer Controller 
-  [get] /answer/essay/{testId}     - status: ~~in project~~
+## Answer Controller [all] 
+  1) [get] /answer/essay/{testId}     - status: ~~in project~~
   
-  [post] /answer/essay/{testId}    - status: ~~in project~~
+  2) [post] /answer/essay/{testId}    - status: ~~in project~~
 
-  [get] /answer/speaking/{testId}  - status: ~~in project~~
+  3) [get] /answer/speaking/{testId}  - status: ~~in project~~
   
-  [post] /answer/speaking/{testId} - status: ~~in project~~
+  4) [post] /answer/speaking/{testId} - status: ~~in project~~
 
-## Authentication Controller
-  [post] /login - status:  ~~in project~~
+## Authentication Controller [all]
+  5) [post] /login - status:  ~~in project~~
 
-## Chosen Option Controller
-  [post] /chosen_option/all - status:  ~~in project~~
+## Chosen Option Controller [all]
+  6) [post] /chosen_option/all - status:  ~~in project~~
 
-## Coach Grade Controller
-  [post] /grades/        - status:  ~~in project~~
+## Coach Grade Controller [all]
+  7) [post] /grades/        - status:  ~~in project~~
   
-  [get] /grades/{testId} - status:  ~~in project~~
-
+  8) [get] /grades/{testId} - status:  ~~in project~~
+  
+  9) [put] /grades/submit/{testId} - status:  ~~in project~~
+ 
 ## Error Reports Controller
-  [post] /error_reports/   - status: <ins>in progress</ins>
+ 10) [post] /error_reports/   - status: <ins>in progress</ins>
   
-  [delete] /error_reports/ - status: <ins>in progress</ins>
+ 11) [delete] /error_reports/ - status: <ins>in progress</ins>
 
-## File Controller
-  [get] /files/{url} - status:  ~~in project~~
+## File Controller [all]
+ 12) [get] /files/{url} - status:  ~~in project~~
 
 ## Question Controller
-  [get]  /question/          - status: <ins>in progress</ins>
+ 13) [get]  /question/          - status: <ins>in progress</ins>
   
-  [post] /question/          - status: <ins>in progress</ins>
-  
-  [put]  /question/{id}      - status: <ins>in progress</ins>
-  
-  [delete]  /question/{id}   - status: <ins>in progress</ins>
+ 14) [post] /question/          - status: <ins>in progress</ins>
+ 
+ 15) [get]  /question/{id}      - status: <ins>in progress</ins>
 
-  [get] /question/listening  - status: <ins>in progress</ins>
+ 16) [put]  /question/{id}      - status: <ins>in progress</ins>
   
-  [post] /question/listening - status: <ins>in progress</ins>
+ 17) [delete]  /question/{id}   - status: <ins>in progress</ins>
 
-  [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 18) [get] /question/listening  - status: <ins>in progress</ins>
   
-  [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 19) [post] /question/listening - status: <ins>in progress</ins>
 
-## Tests Controller
-  [get] /tests/         - status:  ~~in project~~
+ 20) [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
   
-  [get] /tests/{id}     - status:  ~~in project~~
-  
-  [put] /tests/{testId} - status: <ins>in progress</ins>
+ 21) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
-  [post] /tests/assign_coach/{testId}   - status:  ~~in project~~
-  
-  [post] /tests/assign/{userId}         - status:  ~~in project~~
+ 22) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
-  [post] /tests/deassign_coach/{testId} - status:  ~~in project~~
+## Tests Controller [all]
+ 21) [get] /tests/         - status:  ~~in project~~
   
-  [post] /tests/deassign/{testId}       - status:  ~~in project~~
+ 22) [get] /tests/{id}     - status:  ~~in project~~
+  
+ 23) [post] /tests/assign_coach/{testId}   - status:  ~~in project~~
+  
+ 24) [post] /tests/assign/{userId}         - status:  ~~in project~~
 
-  [post] /tests/finish/{testId}  - status:  ~~in project~~
+ 25) [post] /tests/deassign_coach/{testId} - status:  ~~in project~~
   
-  [get]  /tests/grades/{testId}  - status:  ~~in project~~
-  
-  [get]  /tests/history/{userId} - status:  ~~in project~~
+ 26) [post] /tests/deassign/{testId}       - status:  ~~in project~~
 
-  [post] /tests/start          - status:  ~~in project~~
+ 27) [post] /tests/finish/{testId}  - status:  ~~in project~~
   
-  [post] /tests/start/{testId} - status:  ~~in project~~
+ 28) [get]  /tests/grades/{testId}  - status:  ~~in project~~
+  
+ 29) [get]  /tests/history/{userId} - status:  ~~in project~~
 
-  [get] /tests/unverified          - status:  ~~in project~~
+ 30) [post] /tests/start          - status:  ~~in project~~
   
-  [get] /tests/unverified_assigned - status: <ins>in progress</ins>
+ 31) [post] /tests/start/{testId} - status:  ~~in project~~
+
+ 32) [get] /tests/unverified          - status:  ~~in project~~
   
-  [get] /tests/verify/{testId}     - status:  ~~in project~~
+ 33) [get] /tests/unverified_assigned - status: ~~in project~~
+  
+ 34) [get] /tests/verify/{testId}     - status:  ~~in project~~
 
 ## Users Controller
-  [get] /coaches   - status:  ~~in project~~
+ 35) [get] /coaches   - status:  ~~in project~~
   
-  [get] /employees - status:  ~~in project~~ 
+ 36) [get] /employees - status:  ~~in project~~ 
   
-  [put] /language  - status:  ~~in project~~
+ 37) [put] /language  - status:  ~~in project~~
   
-  [get] /users     - status: <ins>in progress</ins>
-
-
-
+ 38) [get] /users     - status: <ins>in progress</ins>

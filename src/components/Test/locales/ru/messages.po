@@ -15,6 +15,10 @@ msgstr ""
 #~ msgid "Add question"
 #~ msgstr "Добавить вопрос"
 
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:49
+#~ msgid "Delete question"
+#~ msgstr "Удалить вопрос"
+
 #: src/pages/SubmitModal/SubmitModal.jsx:11
 #~ msgid "Are you sure you want to finish the test?"
 #~ msgstr "Вы уверены, что хотите завершить тест?"

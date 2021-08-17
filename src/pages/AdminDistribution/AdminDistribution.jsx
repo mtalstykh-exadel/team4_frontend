@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { userLanguageKey } from '../../constants/localStorageConstants';
 import { Redirect } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import {
@@ -51,10 +52,12 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-      dispatch(requestQuestionsList());
-      window.scrollTo(0, 0);
-      setPage(newPage);
+    dispatch(requestQuestionsList());
+    window.scrollTo(0, 0);
+    setPage(newPage);
+    setTimeout(() => {
       handleChangeDeassignTest(rows);
+    }, 0);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -69,10 +72,10 @@ const AdminDistribution = (props) => {
     rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
         assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
-        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'), 
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'),
         assignSelect !== null ? (
           assignSelect.value = unverifiedTest.coach.id,
-          assignButton.textContent.toLowerCase() !== 'deassign' ? (
+          assignButton.textContent.toLowerCase() !== 'deassign' || assignButton.textContent.toLowerCase() !== 'отменить' ? (
             changeButtonStyle(unverifiedTest.testId)
           ) : (
             null
@@ -80,7 +83,19 @@ const AdminDistribution = (props) => {
         ) : (
           null
         )
-      ) : (null);
+      ) : (
+        assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'),
+        assignSelect !== null ? (
+          assignSelect.value === 'placeholder' ? (
+            assignButton.textContent = localStorage.getItem(userLanguageKey) !== 'rus' ? 'ASSIGN' : 'НАЗНАЧИТЬ'
+          ) : (
+            null
+          )
+        ) : (
+          null
+        )
+      );
     });
   };
 
@@ -161,7 +176,7 @@ const AdminDistribution = (props) => {
                                 })}
                               </Select>
                             ) : null}
-                            
+
                             {column.id === 'action' ? (
                               <Button
                                 id={'item-' + row.testId + '-button'}
@@ -169,18 +184,16 @@ const AdminDistribution = (props) => {
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {
-                                  changeButtonStyle(row.testId);
-                                  if (document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase() !== 'assign') {
+                                  const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
+                                  if (currentElement === 'assign' || currentElement === 'назначить') {
                                     assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
+                                    changeButtonStyle(row.testId);
                                   } else {
                                     deassignCoachTest(row.testId);
+                                    changeButtonStyle(row.testId);
                                   }
                                 }}
-                              >
-                                <Trans>
-                                  Assign
-                                </Trans>
-                              </Button>
+                              />
                             ) : (
                               value
                             )}

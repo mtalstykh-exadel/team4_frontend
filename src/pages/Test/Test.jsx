@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal } from '@material-ui/core';
 import {
   Speaking,
@@ -16,12 +16,17 @@ import {
   testEassyUserAnswers,
   testListeningUserAnswers,
   testGrammarUserAnswers,
-  testSpeakingAnswers
+  testSpeakingAnswers,
+  reportAMistakeSpeaking,
+  reportAMistakeEssay,
+  reportAMistakeListening,
+  reportAMistakeGrammar
 } from '../../constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
 export const Test = () => {
+  const [testID, setTestID] = useState(0);
   const [level, setLevel] = useState('');
   const [listeningTasks, setListeningTasks] = useState([]);
   const [speakingTask, setSpeakingTask] = useState([]);
@@ -56,9 +61,11 @@ export const Test = () => {
     <ReportAMistakeModal
       key='4'
       tasks={grammarTasks}
-      level={'A1'}
+      level={level}
       module={['Grammar', 'Грамматика']}
       handleClose={handleClose}
+      testID={testID}
+      reportModule={reportAMistakeGrammar}
     />,
     <ReportAMistakeModal
       key='5'
@@ -66,6 +73,8 @@ export const Test = () => {
       level={level}
       module={['Listening', 'Аудирование']}
       handleClose={handleClose}
+      testID={testID}
+      reportModule={reportAMistakeListening}
     />,
     <ReportAMistakeModal
       key='6'
@@ -73,6 +82,8 @@ export const Test = () => {
       topic={essayTask}
       module={['Essay', 'Эссе']}
       handleClose={handleClose}
+      testID={testID}
+      reportModule={reportAMistakeEssay}
     />,
     <ReportAMistakeModal
       key='7'
@@ -80,6 +91,8 @@ export const Test = () => {
       topic={speakingTask}
       module={['Speaking', 'Говорение']}
       handleClose={handleClose}
+      testID={testID}
+      reportModule={reportAMistakeSpeaking}
     />,
     <SubmitModal key='8' handleClose={handleClose}/>,
   ];
@@ -95,18 +108,24 @@ export const Test = () => {
         setSpeakingTask(testData.questions.Speaking);
         setContentFile(testData.contentFile);
         setLevel(testData.level);
-        setTestDurationInSeconds(2 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
+        setTestID(testData.id);
+        setTestDurationInSeconds(40 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
       }
     };
     checkData();
-    startTimer(
-      createTimer({
-        domId: 'test-timer',
-        seconds: testDurationInSeconds,
-      })
-    );
+    if (testDurationInSeconds > 0) {
+      startTimer(
+        createTimer({
+          domId: 'test-timer',
+          seconds: testDurationInSeconds,
+        })
+      );
+    } else {
+      setTestDurationInSeconds(0);
+      stopTimer('test-timer');
+      document.getElementById('test-timer').textContent = '0:00';
+    }
   }, [testDurationInSeconds]);
-
 
   return (
     <Layout>

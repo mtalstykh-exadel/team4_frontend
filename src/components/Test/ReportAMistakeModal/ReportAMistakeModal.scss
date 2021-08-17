@@ -42,19 +42,31 @@
       }
     }
 
-    .add-question-to-report {
-      margin-left: 5%;
-      margin-top: 10px;
+    .add-delete-question {
+      margin: 10px 5% 0 5%;
       font-size: 14px;
-      cursor: pointer;
-    }
+      display: flex;
+      justify-content: space-between;
 
-    .add-question-to-report.invisible {
-      display: none;
-    }
+      .add-question-to-report {
+        cursor: pointer;
+        color: var(--primary-color);
+      }
 
-    .add-question-to-report:hover {
-      text-decoration: underline;
+      .delete-question-to-report {
+        cursor: pointer;
+        color: var(--secondary-color);
+      }
+
+      .add-question-to-report.invisible,
+      .delete-question-to-report.invisible {
+        display: none;
+      }
+
+      .add-question-to-report:hover,
+      .delete-question-to-report:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -89,9 +101,7 @@
   }
 
   .report-mistake-buttons-wrapper {
-    margin-left: 70%;
-    margin-right: 5%;
-    margin-bottom: 30px;
+    margin: 20px 5% 30px 70%;
     display: flex;
     justify-content: space-between;
     height: 30px;
