@@ -4,6 +4,7 @@ import { postAssignCoach, postDeassignCoach } from '../../api/unverifiedTests-fe
 const changeButtonStyle = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');
   const selectNames = document.getElementById('item-' + id + '-select');
+
   if (selectNames !== null && buttonAssign !== null) {
     if (selectNames.value !== 'placeholder') {
       if (buttonAssign.classList.contains('buttonDeassign')) {

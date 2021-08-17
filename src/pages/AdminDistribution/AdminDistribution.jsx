@@ -52,7 +52,6 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-    console.log('NEW PAGE');
     dispatch(requestQuestionsList());
     window.scrollTo(0, 0);
     setPage(newPage);
@@ -186,14 +185,10 @@ const AdminDistribution = (props) => {
                                 size='small'
                                 onClick={() => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
-                                  // console.log(currentElement);
-                                  // changeButtonStyle(row.testId);
                                   if (currentElement === 'assign' || currentElement === 'назначить') {
                                     assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
-                                    console.log('АСАЙНИМ');
                                     changeButtonStyle(row.testId);
                                   } else {
-                                    console.log('ДЕАСАЙНИМ');
                                     deassignCoachTest(row.testId);
                                     changeButtonStyle(row.testId);
                                   }
