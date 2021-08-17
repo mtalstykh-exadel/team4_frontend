@@ -1,56 +1,135 @@
 import React, { useState } from 'react';
-import '../../../styles/modal.scss';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import '../../../styles/modal.scss';
 import './TestsForVerificationModal.scss';
+
 import { IconButton, Button, TextField, Paper } from '@material-ui/core';
+
 import CloseIcon from '@material-ui/icons/Close';
+import { CircularProgress } from '@material-ui/core';
+
 import { Player } from '../../index';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-export const TestsForVerificationModal = ({ id, level, handleClose }) => {
-  const [essayGrade, setEssayGrade] = useState(-1);
-  const [speakingGrade, setSpeakingGrade] = useState(-1);
+import { getAudioFile } from '../../../api/get-audioFIle';
 
-  const ReportedMistakes = [
-    {
-      module: ['Listening', 'Аудирование'],
-      message: 'Hello! This question contains an error. The correct answer is not so-and-so, but so-and-so.',
-      questionID: 1258454,
-      question: 'An obstetrician/gynecologist at the pre-conception clinic suggests we ............. some further tests.'
+import { submitTestGrades, saveTestGrades } from '../../../api/testsForVerification-fetch';
+import { requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
+
+export const TestsForVerificationModal = (props) => {
+
+  const dispatch = useDispatch();
+
+  const [grammar, setGrammar] = useState([]);
+  const [loadingSubmit, setLoadingSubmit] = useState(false);
+  const [loadingSave, setLoadingSave] = useState(false);
+
+  const test = useSelector((state) => state.unverifiedTest.test);
+  const grades = useSelector((state) => state.unverifiedTest.grades);
+
+  const commentEssay = grades.find((grade) => grade.questionId === test.essayQuestion.id);
+  const [essay, setEssay] = useState({
+    comment: commentEssay ? commentEssay.comment : '',
+    grade: commentEssay ? commentEssay.grade : 0,
+    questionId: test.essayQuestion.id,
+    testId: test.testId
+  });
+
+  const commentSpeaking = grades.find((grade) => grade.questionId === test.speakingQuestion.id);
+  const [speaking, setSpeaking] = useState({
+    comment: commentSpeaking ? commentSpeaking.comment : '',
+    grade: commentSpeaking ? commentSpeaking.grade : 0,
+    questionId: test.speakingQuestion.id,
+    testId: test.testId
+  });
+
+  const handleEssayComment = (event) => {
+    setEssay({
+      ...essay,
+      comment: event.target.value,
+    });
+  };
+
+  const handleEssayGrade = (grade) => {
+    setEssay({
+      ...essay,
+      grade: grade,
+    });
+  };
+
+  const handleSpeakingComment = (event) => {
+    setSpeaking({
+      ...speaking,
+      comment: event.target.value,
+    });
+  };
+
+  const handleSpeakingGrade = (grade) => {
+    setSpeaking({
+      ...speaking,
+      grade: grade,
+    });
+  };
+
+  const handleSubmit = () => {
+    setLoadingSubmit(true);
+    dispatch(requestUnverifiedTests())
+      .then((response) => {
+        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
+          saveTestGrades(essay);
+          saveTestGrades(speaking);
+          submitTestGrades(test.testId)
+            .then(() => props.handleClose());
+        }
+      });
+  };
+
+  const handleSave = () => {
+    setLoadingSave(true);
+    step === 1 && saveTestGrades(essay);
+    step === 2 && saveTestGrades(speaking);
+    dispatch(requestUnverifiedTests())
+      .then(() => setLoadingSave(false));
+  };
+
+  const setGrammarReport = (index) => (event) => {
+    const newGrammar = grammar;
+    newGrammar.push({
+      id: index,
+      report: event.target.value
+    });
+    setGrammar(newGrammar);
+  };
+
+  const [url, setUrl] = useState('');
+
+  useEffect(
+    async function () {
+      setUrl(
+        await getAudioFile(test.speakingUrl).then((response) => {
+          console.log(response);
+        })
+      );
     },
-    {
-      module: ['Essay', 'Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    },
-    {
-      module: ['Essay', 'Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    },
-    {
-      module: ['Essay', 'Эссе'],
-      message: 'Hello! This topic contains an error. It is right to write birTHday.',
-      questionID: 1908632,
-      question: 'Happy birzday to you!'
-    }
-  ];
+    [setUrl]
+  );
 
   const ReportedMistakesHTML =
     <div className='reported-mistake-wrapper'>
       <div className='error-messages'><Trans>Error messages from the user:</Trans></div>
       <div className='scroll-container'>
         {
-          ReportedMistakes.map((item) => {
+          test.reportedQuestions.map((reportedQuestion, index) => {
             return (
-              <>
-                <div className='module-name'><Trans>Module</Trans> <Trans>{item.module[0]}{item.module[1]}</Trans></div>
-                <div className='users-message'>{item.message}</div>
-                <div className='question-id'><Trans>Question ID</Trans> {item.questionID}</div>
-                <div className='question-context'>{item.question}</div>
+              <div key={index}>
+                <div className='module-name'><Trans>Module</Trans> <Trans>{reportedQuestion.question.module}</Trans></div>
+                <div className='users-message'>{reportedQuestion.report}</div>
+                <div className='question-id'><Trans>Question ID</Trans> {reportedQuestion.question.id}</div>
+                <div className='question-context'>{reportedQuestion.question.questionBody}</div>
                 <div className='edit-button-wrapper'>
                   <Button
                     variant='outlined'
@@ -64,10 +143,11 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
                   label='Comment'
                   variant='outlined'
                   className='comment-section'
+                  onChange={setGrammarReport(reportedQuestion.question.id)}
                   multiline
                   rows={3}
                 />
-              </>
+              </div>
             );
           })
         }
@@ -76,13 +156,13 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
   const EssayHTML =
     <div className='essay-wrapper'>
       <div className='topic-title'><Trans>Topic</Trans></div>
-      <div className='topic-text'>Essay topic</div>
-      <div className='users-essay'>User's essay</div>
+      <div className='topic-text'>{test.essayQuestion.questionBody}</div>
+      <div className='users-essay'>{test.essayQuestion.answers}</div>
       <div className='grades-wrapper'>
         {
-          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+          [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
             return (
-              <div key={item} className={essayGrade === item ? 'grade chosen' : 'grade'} onClick={() => { setEssayGrade(item); }}>{item}</div>
+              <div key={grade} className={essay.grade === grade ? 'grade chosen' : 'grade'} onClick={() => {handleEssayGrade(grade);}}>{grade}</div>
             );
           })
         }
@@ -90,6 +170,8 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
       <TextField
         label='Comment'
         variant='outlined'
+        value={essay.comment}
+        onChange={handleEssayComment}
         className='comment-section'
         multiline
         rows={4}
@@ -98,17 +180,22 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
   const SpeakingHTML =
     <div className='speaking-wrapper'>
       <div className='topic-title'><Trans>Topic</Trans></div>
-      <div className='topic-text'>Speaking topic</div>
+      <div className='topic-text'>{test.speakingQuestion.questionBody}</div>
       <div className='audio'>
         <Player
           id='player-speaking'
-          src='https://www.signalogic.com/melp/EngSamples/Orig/male.wav'
+          src={url}
         />
       </div>
       <div className='grades-wrapper'>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item) => {
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
           return (
-            <div key={item} className={speakingGrade === item ? 'grade chosen' : 'grade'} onClick={() => { setSpeakingGrade(item); }}>{item}</div>
+            <div
+              key={grade}
+              className={speaking.grade === grade ? 'grade chosen' : 'grade'}
+              onClick={() => {handleSpeakingGrade(grade);}}>
+              {grade}
+            </div>
           );
         })}
       </div>
@@ -117,6 +204,8 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
         variant='outlined'
         className='comment-section'
         multiline
+        value={speaking.comment}
+        onChange={handleSpeakingComment}
         rows={4}
       />
     </div>;
@@ -134,25 +223,59 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
       <Paper elevation={2}>
         <div className='tests-verification-modal-header'>
           <div className='test-information'>
-            <span className='test-id-verification-modal'><Trans>Test ID</Trans> {id}</span>
-            <span><Trans>Level</Trans> {level}</span>
+            <span className='test-id-verification-modal'><Trans>Test ID</Trans> {test.testId}</span>
+            <span><Trans>Level</Trans> {test.testLevel}</span>
           </div>
-          <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-            <CloseIcon />
+          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
+            <CloseIcon/>
           </IconButton>
         </div>
         <div className='tests-verification-modal-navigation'>
-          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'} onClick={
-            () => { setStep(0); }}><div className='navigation-text'><Trans>Reported mistakes</Trans></div></div>
-          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'} onClick={() => { setStep(1); }}><div className='navigation-text'><Trans>Essay</Trans></div></div>
-          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'} onClick={() => { setStep(2); }}><div className='navigation-text'><Trans>Speaking</Trans></div></div>
+          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'}
+            onClick={() => {setStep(0);}}>
+            <div className='navigation-text'>
+              <Trans>Reported mistakes</Trans>
+            </div>
+          </div>
+          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'}
+            onClick={() => {setStep(1);}}>
+            <div className='navigation-text'>
+              <Trans>Essay</Trans>
+            </div>
+          </div>
+          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'}
+            onClick={() => {setStep(2);}}>
+            <div className='navigation-text'>
+              <Trans>Speaking</Trans>
+            </div>
+          </div>
         </div>
         <div className='tests-verification-modal-context'>
           {steps[step]}
         </div>
         <div className='tests-verification-modal-buttons-wrapper'>
-          <Button variant='contained' color='primary' className='save-button'><Trans>Save</Trans></Button>
-          <Button variant='contained' color='secondary' className='submit-button'><Trans>Submit</Trans></Button>
+          <Button
+            variant='outlined'
+            color='primary'
+            className='save-button'
+            disabled={loadingSave} onClick={() => handleSave()}>
+            {loadingSave ? (
+              <CircularProgress className='border-primary' size='23px'/>
+            ) : (
+              <Trans>Save</Trans>
+            )}</Button>
+          <Button
+            variant='contained'
+            color='primary'
+            className='submit-button'
+            disabled = {loadingSubmit || loadingSave}
+            onClick={() => handleSubmit()}>
+            {loadingSubmit ? (
+              <CircularProgress className='border-primary' size='23px'/>
+            ) : (
+              <Trans>Submit</Trans>
+            )}
+          </Button>
         </div>
       </Paper>
     </div>
@@ -160,7 +283,7 @@ export const TestsForVerificationModal = ({ id, level, handleClose }) => {
 };
 
 TestsForVerificationModal.propTypes = {
-  id: PropTypes.string,
-  level: PropTypes.string,
+  id: PropTypes.number,
+  test: PropTypes.any,
   handleClose: PropTypes.func,
 };
