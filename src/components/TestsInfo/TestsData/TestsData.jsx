@@ -76,10 +76,20 @@ const TestsData = (props) => {
   };
 
   const [loading, setLoading] = useState(false);
+  
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Paper elevation={2}>
       <TableContainer>
+        <UserModalWindowBanningTest open={open} handleClose={handleClose}/>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
@@ -123,7 +133,7 @@ const TestsData = (props) => {
                                       .catch((err) => {
                                         setLoading(false);
                                         if (err.code === 409) {
-                                          alert('Попытки закончились, приходите завтра');
+                                          handleOpen();
                                         }
                                       });
                                   }
