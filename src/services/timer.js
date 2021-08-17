@@ -29,7 +29,7 @@ const createTimer = ({domId, seconds}) => {
         if (localeSeconds < 10) {
           localeSeconds = '0' + localeSeconds;
         }
-        if (localeSeconds <= 0) {
+        if (seconds <= 0) {
           element.textContent = '0:00';
           stopTimer(domId);
         }
