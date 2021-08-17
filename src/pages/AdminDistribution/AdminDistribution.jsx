@@ -52,10 +52,13 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-      dispatch(requestQuestionsList());
-      window.scrollTo(0, 0);
-      setPage(newPage);
+    console.log('NEW PAGE');
+    dispatch(requestQuestionsList());
+    window.scrollTo(0, 0);
+    setPage(newPage);
+    setTimeout(() => {
       handleChangeDeassignTest(rows);
+    }, 0);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -70,7 +73,7 @@ const AdminDistribution = (props) => {
     rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
         assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
-        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'), 
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'),
         assignSelect !== null ? (
           assignSelect.value = unverifiedTest.coach.id,
           assignButton.textContent.toLowerCase() !== 'deassign' || assignButton.textContent.toLowerCase() !== 'отменить' ? (
@@ -83,11 +86,11 @@ const AdminDistribution = (props) => {
         )
       ) : (
         assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
-        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'), 
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'),
         assignSelect !== null ? (
           assignSelect.value === 'placeholder' ? (
             assignButton.textContent = localStorage.getItem(userLanguageKey) !== 'rus' ? 'ASSIGN' : 'НАЗНАЧИТЬ'
-            ) : (
+          ) : (
             null
           )
         ) : (
@@ -174,7 +177,7 @@ const AdminDistribution = (props) => {
                                 })}
                               </Select>
                             ) : null}
-                            
+
                             {column.id === 'action' ? (
                               <Button
                                 id={'item-' + row.testId + '-button'}
@@ -183,13 +186,18 @@ const AdminDistribution = (props) => {
                                 size='small'
                                 onClick={() => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
-                                  changeButtonStyle(row.testId);
-                                  if ( currentElement !== 'assign' || currentElement !== 'назначить') {
+                                  // console.log(currentElement);
+                                  // changeButtonStyle(row.testId);
+                                  if (currentElement === 'assign' || currentElement === 'назначить') {
                                     assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
+                                    console.log('АСАЙНИМ');
+                                    changeButtonStyle(row.testId);
                                   } else {
+                                    console.log('ДЕАСАЙНИМ');
                                     deassignCoachTest(row.testId);
+                                    changeButtonStyle(row.testId);
                                   }
-                                }} 
+                                }}
                               />
                             ) : (
                               value
