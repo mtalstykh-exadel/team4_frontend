@@ -55,6 +55,7 @@ export const ManageModule = (props) => {
       });
     }
   }, [editedQuestion]);
+
   return (
     <form onSubmit={formik.handleSubmit} className='modifyTest'>
       <div className='form-control-wrapper'>

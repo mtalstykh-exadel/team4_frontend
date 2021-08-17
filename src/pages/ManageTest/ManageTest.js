@@ -4,7 +4,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import { ManageModule } from '../../components';
 import Layout from '../../components/Layout/Layout';
-import { editQuestion, requestListeningTopic, requestQuestion, requestToAddNewQuestion } from '../../store/actions/coachActions';
+import { requestListeningTopic, requestQuestion, requestToAddNewQuestion } from '../../store/actions/coachActions';
 import * as queryString from 'querystring';
 
 export const ManageTest = () => {
@@ -20,9 +20,9 @@ export const ManageTest = () => {
   const parsed = queryString.parse(history.location.search.substr(1));
 
   const sendQuestionToEditOrAdd = (moduleData) => {
-    if (location === '/edit-test-modules') {
-      dispatch(editQuestion(moduleData));
-    }
+    // if (location === '/edit-test-modules') {
+    //   dispatch(editQuestion(moduleData));
+    // }
     if (location === '/add-test-modules') {
       dispatch(requestToAddNewQuestion(moduleData));
     }
@@ -49,6 +49,7 @@ export const ManageTest = () => {
     }
   }, []);
   if (role !== 'ROLE_COACH') return <Redirect to='/' />;
+
   return (
     <Layout>
       {location === '/edit-test-modules' && !!question && <ManageModule level={question.level} module={parsed.module}

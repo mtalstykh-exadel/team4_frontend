@@ -24,31 +24,33 @@ export const EditTestsTable = (props) => {
 
   const filteredQuestions = Number(props.questionId) > 0 && questions && question
     ? questions.filter((el) => el.id === question.id) : Number(props.questionId) > 0
-      ? question ? [question] : [] : questions ? questions : [];
+      ? question && question.module === props.module ? [question] : [] : questions ? questions : [];
 
   const rows = ['ID',
     ['Player', 'Проигрователь'],
     ['Question', 'Вопрос'],
     ['Action', 'Действие'],
-    ['Archive', 'Архив']];
+    ['Archive', 'Архив'],
+    ['Dearchive', 'Разархивировать']];
 
   const filteredRows = [];
-  if (props.module !== 'Listening') {
-    rows.filter((el) => {
-      Array.isArray(el)
-        ? el[0] !== 'Player' && filteredRows.push(el)
-        : el !== 'Player' && filteredRows.push(el);
-    });
-  } else {
-    rows.map((el) => filteredRows.push(el));
-  }
+  rows.map((el) => {
+    const arg = Array.isArray(el) ? el[0] : el;
+    if (props.status === 'UNARCHIVED' && arg === 'Dearchive') {
+      return;
+    }
+    if (props.status === 'ARCHIVED' && arg === 'Archive') {
+      return;
+    }
+    if (module !== 'Listening' && arg === 'Player') {
+      return;
+    }
+    filteredRows.push(el);
+  });
+  debugger;
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
-  const archiveTheQuestion = (questionId) => {
-    dispatch(archiveQuestion(questionId));
-  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -75,10 +77,15 @@ export const EditTestsTable = (props) => {
   }, [filteredQuestions]);
 
   const [open, setOpen] = React.useState(false);
+  const [archiveId, setArchiveId] = useState(null);
+
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (archiving) => {
+    if (archiving) {
+      dispatch(archiveQuestion(archiveId, props.level, props.module.toUpperCase()));
+    }
     setOpen(false);
   };
 
@@ -90,7 +97,7 @@ export const EditTestsTable = (props) => {
       </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose(false)}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'>
@@ -115,7 +122,6 @@ export const EditTestsTable = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>{filteredQuestions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-              debugger;
               return (
                 <TableRow key={row.id}>
                   <TableCell component='th' align='center' scope='row'>{row.id}</TableCell>
@@ -135,7 +141,7 @@ export const EditTestsTable = (props) => {
                   </TableCell>
                   <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
                     onClick={() => {
-                      archiveTheQuestion(row.id);
+                      setArchiveId(row.id);
                       handleOpen();
                     }} />}</TableCell>
                 </TableRow>
@@ -160,6 +166,8 @@ export const EditTestsTable = (props) => {
 };
 
 EditTestsTable.propTypes = {
+  level: PropTypes.any,
   module: PropTypes.any,
   questionId: PropTypes.any,
+  status: PropTypes.any,
 };

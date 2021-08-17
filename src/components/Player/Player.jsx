@@ -63,8 +63,8 @@ export const Player = ({ src, audioDuration, id }) => {
     return `${minutes}:${seconds}`;
   };
 
-  const setAudioProgressBar = ( e ) => {
-    if (audioElement.currentTime !== null){
+  const setAudioProgressBar = (e) => {
+    if (audioElement.currentTime !== null) {
       audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
     }
   };
@@ -74,6 +74,12 @@ export const Player = ({ src, audioDuration, id }) => {
       setAudioOn(false);
     };
   }
+
+  setTimeout(() => {
+    document.getElementById(id).addEventListener('loadeddata', () => {
+      setLocaleDuration(document.getElementById(id).duration);
+    });
+  }, 0);
 
   return (
     <Paper

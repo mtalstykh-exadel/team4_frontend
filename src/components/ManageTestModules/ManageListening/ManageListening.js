@@ -8,25 +8,26 @@ import './ManageListening.scss';
 
 import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
-import { Player } from '../../Test/Player/Player';
-import { useDispatch, useSelector } from 'react-redux';
-import { requestListeningAudioFile } from '../../../store/actions/coachActions';
+import { Player } from '../../Player/Player';
+import { getAudioFile } from '../../../api/get-audioFIle';
 
 export const ManageListening = (props) => {
-  const audioFile = useSelector((state) => state.coach.audioFile);
 
-  const dispatch = useDispatch();
-
-  const [audio, setAudio] = useState(audioFile);
   const [moduleData, setModuleData] = useState(props.moduleData);
+  const [audio, setAudio] = useState(moduleData.url);
 
-  useEffect(() => {
-    dispatch(requestListeningAudioFile(moduleData.url));
-  }, []);
-
-  useEffect(() => {
-    setAudio(audioFile);
-  }, [audioFile]);
+  useEffect(
+    async function () {
+      setAudio(
+        await getAudioFile(moduleData.url).then((response) => {
+          return URL.createObjectURL(
+            new Blob([response.data], { type: 'audio/ogg' })
+          );
+        })
+      );
+    },
+    [setAudio]
+  );
 
   useEffect(() => {
     props.handleModule(moduleData);
@@ -69,7 +70,7 @@ export const ManageListening = (props) => {
           moduleData={moduleData.topic} />
         <div className='audio-wrapper'>{audio ?
           <Player
-            id='player-listening'
+            id={moduleData.id}
             src={audio}
           /> :
           <p><Trans>Upload an audio file for listening task</Trans></p>}
