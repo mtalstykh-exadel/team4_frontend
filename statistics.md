@@ -8,7 +8,7 @@
 
 
 ## Answer Controller 
-  [get] /answer/essay/{testId}     - status: in project
+  [get] /answer/essay/{testId}     - status: ~~in project~~
   
   [post] /answer/essay/{testId}    - status: in project
 
