@@ -1,10 +1,10 @@
 # Statistics of executed requests
 
 ### in project   - 27
-### in progress  - 11
-### all requests - 38
+### in progress  - 13
+### all requests - 40
 
-## completed by 71% [ in project / all requests * 100]
+## completed by 67% [ in project / all requests * 100]
 
 
 ## Answer Controller [all] 
@@ -41,18 +41,22 @@
  13) [get]  /question/          - status: <ins>in progress</ins>
   
  14) [post] /question/          - status: <ins>in progress</ins>
-  
- 15) [put]  /question/{id}      - status: <ins>in progress</ins>
-  
- 16) [delete]  /question/{id}   - status: <ins>in progress</ins>
+ 
+ 15) [get]  /question/{id}      - status: <ins>in progress</ins>
 
- 17) [get] /question/listening  - status: <ins>in progress</ins>
+ 16) [put]  /question/{id}      - status: <ins>in progress</ins>
   
- 18) [post] /question/listening - status: <ins>in progress</ins>
+ 17) [delete]  /question/{id}   - status: <ins>in progress</ins>
 
- 19) [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 18) [get] /question/listening  - status: <ins>in progress</ins>
   
- 20) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 19) [post] /question/listening - status: <ins>in progress</ins>
+
+ 20) [get] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+  
+ 21) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+
+ 22) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
 ## Tests Controller [all]
  21) [get] /tests/         - status:  ~~in project~~
