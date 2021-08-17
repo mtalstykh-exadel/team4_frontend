@@ -76,8 +76,7 @@ const TestsData = (props) => {
   };
 
   const [loading, setLoading] = useState(false);
-  
-  const [loading, setLoading] = useState(false);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);

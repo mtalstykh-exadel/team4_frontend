@@ -19,6 +19,7 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const AudioController = () => {
     if (document.getElementById(id)) {
+      if (document.getElementById(id) === 'listening-player')
       document.getElementById(id).play()
         .catch((err) => {
           console.warn(err);
