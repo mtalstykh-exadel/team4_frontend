@@ -5,6 +5,7 @@ import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { testAudioAttempts } from '../../constants/localStorageConstants';
 import './Player.scss';
 
 export const Player = ({src, audioDuration, id, speaking = false}) => {
@@ -17,12 +18,21 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
   const [audioOn, setAudioOn] = useState(false);
   const [loading, setloading] = useState(true);
 
+  const AudioStart = () => {
+    document.getElementById(id).play()
+    .catch((err) => {
+      console.warn(err);
+    });
+  };
+
   const AudioController = () => {
     if (document.getElementById(id)) {
-      document.getElementById(id).play()
-        .catch((err) => {
-          console.warn(err);
-        });
+      if (document.getElementById('listening-player') === true && parseInt(localStorage.getItem(testAudioAttempts)) < 2){
+        AudioStart();
+        localStorage.setItem(testAudioAttempts, parseInt(localStorage.getItem(testAudioAttempts)) + 1);
+      } else {
+        AudioStart();
+      }
 
       setProgressPercent(0);
       setAudioCurrent(0);
@@ -34,8 +44,10 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
   };
 
   const AudioStop = () => {
-    audioDomElement.pause();
-    setAudioOn(false);
+    if (document.getElementById('listening-player') === null) {
+      audioDomElement.pause();
+      setAudioOn(false);
+    }
   };
 
   const AudioProgressBar = (e) => {
@@ -67,7 +79,9 @@ export const Player = ({src, audioDuration, id, speaking = false}) => {
 
   const setAudioProgressBar = (e) => {
     if (audioElement.currentTime !== null) {
-      audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+      if (document.getElementById('listening-player') === null) {
+        audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+      }
     }
   };
 
