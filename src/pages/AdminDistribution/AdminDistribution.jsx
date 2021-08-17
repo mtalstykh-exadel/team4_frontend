@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import './AdminDistribution.scss';
-import { assignTest } from './ScriptsAdminDistributtion';
+import { changeButtonStyle, assignCoachTest, deassignCoachTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
@@ -50,9 +50,10 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-    window.scrollTo(0, 0);
-    setPage(newPage);
-    handleChangeDeassignTest(rows);
+      dispatch(requestQuestionsList());
+      window.scrollTo(0, 0);
+      setPage(newPage);
+      handleChangeDeassignTest(rows);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -61,14 +62,20 @@ const AdminDistribution = (props) => {
   };
 
   let assignSelect;
+  let assignButton;
 
   const handleChangeDeassignTest = (rows) => {
     rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
         assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
+        assignButton = document.getElementById('item-' + unverifiedTest.testId + '-button'), 
         assignSelect !== null ? (
-          assignSelect.value = unverifiedTest.coach.name,
-          assignTest(unverifiedTest.testId)
+          assignSelect.value = unverifiedTest.coach.id,
+          assignButton.textContent.toLowerCase() !== 'deassign' ? (
+            changeButtonStyle(unverifiedTest.testId)
+          ) : (
+            null
+          )
         ) : (
           null
         )
@@ -134,7 +141,7 @@ const AdminDistribution = (props) => {
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
                                   return (
-                                    <option key={keysForOptions} value={coachName.name} id={coachName.id}>
+                                    <option key={keysForOptions} value={coachName.id} id={coachName.id}>
                                       {coachName.name}
                                     </option>
                                   );
@@ -148,7 +155,12 @@ const AdminDistribution = (props) => {
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {
-                                  assignTest(row.testId);
+                                  changeButtonStyle(row.testId);
+                                  if (document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase() !== 'assign') {
+                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
+                                  } else {
+                                    deassignCoachTest(row.testId);
+                                  }
                                 }}
                               >
                                 <Trans>
