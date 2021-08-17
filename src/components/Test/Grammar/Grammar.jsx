@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Grammar.scss';
 import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
+import { Modal } from '@material-ui/core';
+import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
 
-export const Grammar = ({ tasks, testModule }) => {
+export const Grammar = ({ tasks, testModule, reportModule, level, testID, module }) => {
+  const [questionText, setQuestionText] = useState('');
+  const [questionID, setQuestionID] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const saveDataArray = localStorage.getItem(testModule);
 
   setTimeout(() => {
@@ -53,6 +67,13 @@ export const Grammar = ({ tasks, testModule }) => {
           <span className='test-question sentence'>
             {question.questionBody}
           </span>
+          <span className='report-mistake' onClick={() => {
+            setQuestionText(question.questionBody);
+            setQuestionID(question.id);
+            handleOpen();
+          }}>
+            <Trans>Report a mistake</Trans>
+          </span>
         </div>
         {options}
       </div>
@@ -65,6 +86,24 @@ export const Grammar = ({ tasks, testModule }) => {
         <Trans>Choose the correct option to complete the sentence</Trans>
       </div>
       {questions}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <div className='modal-content base-color'>
+          <ReportAMistakeModal
+            question={questionText}
+            questionId={questionID}
+            level={level}
+            module={module}
+            handleClose={handleClose}
+            testId={testID}
+            reportModule={reportModule + questionID}
+          />
+        </div>
+      </Modal>
     </>
   );
 };
@@ -73,4 +112,8 @@ Grammar.propTypes = {
   tasks: PropTypes.array,
   questions: PropTypes.array,
   testModule: PropTypes.string,
+  level: PropTypes.string,
+  testID: PropTypes.number,
+  reportModule: PropTypes.string,
+  module: PropTypes.array
 };

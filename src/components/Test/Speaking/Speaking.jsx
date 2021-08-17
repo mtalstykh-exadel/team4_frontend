@@ -3,15 +3,25 @@ import { offRecAudio, onRecAudio, saveBlobUrl } from '../../../services/voice-re
 import { startTimer, createTimer, stopTimer } from '../../../services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
-import { Player } from '../../index';
+import {Player, ReportAMistakeModal} from '../../index';
 import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import './Speaking.scss';
+import { Modal } from '@material-ui/core';
 
-export const Speaking = ({ task, testModule }) => {
+export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const checkSpeakingTimerHandler = () => {
     const element = document.getElementById('speaking-timer');
@@ -35,6 +45,9 @@ export const Speaking = ({ task, testModule }) => {
     <div className='speaking-step'>
       <div className='step-description'><Trans>Write down record</Trans></div>
       <div className='speaking-topic'>{task[0].questionBody}</div>
+      <div className='report-mistake' onClick={handleOpen}>
+        <Trans>Report a mistake</Trans>
+      </div>
       <div className='audio-speaking-timer' id='speaking-timer'>
         5:00
       </div>
@@ -70,6 +83,24 @@ export const Speaking = ({ task, testModule }) => {
           speaking={true}
         />
       </div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <div className='modal-content base-color'>
+          <ReportAMistakeModal
+            question={task[0].questionBody}
+            questionId={task[0].id}
+            level={level}
+            module={['Speaking', 'Говорение']}
+            handleClose={handleClose}
+            testId={testID}
+            reportModule={reportModule}
+          />
+        </div>
+      </Modal>
     </div>
   );
 };
@@ -77,4 +108,7 @@ export const Speaking = ({ task, testModule }) => {
 Speaking.propTypes = {
   task: PropTypes.array,
   testModule: PropTypes.string,
+  level: PropTypes.string,
+  testID: PropTypes.number,
+  reportModule: PropTypes.string
 };

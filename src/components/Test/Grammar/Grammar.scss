@@ -25,4 +25,15 @@
   .question-answer {
     cursor: pointer;
   }
+
+  .report-mistake {
+    float: right;
+    font-size: 14px;
+    color: #828282;
+    cursor: pointer;
+  }
+
+  .report-mistake:hover {
+    text-decoration: underline;
+  }
 }

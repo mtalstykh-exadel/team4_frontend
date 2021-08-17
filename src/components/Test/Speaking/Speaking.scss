@@ -14,7 +14,6 @@
   .speaking-topic {
     font-size: 24px;
     padding-top: 15px;
-    padding-bottom: 55px;
   }
 
   .invisible-button {
@@ -35,5 +34,17 @@
   .player-speaking {
     width: 66%;
     margin: 0 16.9%;
+  }
+
+  .report-mistake {
+    font-size: 12px;
+    color: #828282;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 55px;
+  }
+
+  .report-mistake:hover {
+    text-decoration: underline;
   }
 }
