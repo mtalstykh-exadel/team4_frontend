@@ -46,11 +46,13 @@ const AdminDistribution = (props) => {
   let coachNames = [];
 
   if (coaches !== undefined) {
-    coachNames = coaches.map((coach) => {return {name: coach.name, id: coach.id};});
+    coachNames = coaches.map((coach) => { return { name: coach.name, id: coach.id }; });
   }
 
   const handleChangePage = (event, newPage) => {
+    window.scrollTo(0, 0);
     setPage(newPage);
+    handleChangeDeassignTest(rows);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -58,12 +60,19 @@ const AdminDistribution = (props) => {
     setPage(0);
   };
 
+  let assignSelect;
+
   const handleChangeDeassignTest = (rows) => {
-    rows.map((unverifiedTest, i) => {
+    rows.map((unverifiedTest) => {
       unverifiedTest?.coach ? (
-        document.getElementById('item-' + i + '-select').value = unverifiedTest.coach.name,
-        assignTest(i)
-      ) : ( null );
+        assignSelect = document.getElementById('item-' + unverifiedTest.testId + '-select'),
+        assignSelect !== null ? (
+          assignSelect.value = unverifiedTest.coach.name,
+          assignTest(unverifiedTest.testId)
+        ) : (
+          null
+        )
+      ) : (null);
     });
   };
 
@@ -72,7 +81,7 @@ const AdminDistribution = (props) => {
   }, []);
 
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
-  
+
   setTimeout(() => {
     handleChangeDeassignTest(rows);
   }, 0);
@@ -102,22 +111,22 @@ const AdminDistribution = (props) => {
             <TableBody>
               {filteredRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
+                .map((row) => {
                   return (
-                    <TableRow hover role='checkbox' tabIndex={-1} key={index} >
+                    <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
                       {columns.map((column) => {
                         const value = row[column.id];
                         keysForColumns++;
                         return (
-                          <TableCell 
-                            className='font-primary' 
-                            key={keysForColumns} 
+                          <TableCell
+                            className='font-primary'
+                            key={keysForColumns}
                             align={column.align}
-                            width={column.width + 'px'} 
+                            width={column.width + 'px'}
                             size='small'
                           >
                             {column.id === 'Coach' ? (
-                              <Select id={'item-' + index + '-select'} className='selectCoachNames font-primary'
+                              <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
                                 <option aria-label='None' value='placeholder' >
                                   name
@@ -134,12 +143,12 @@ const AdminDistribution = (props) => {
                             ) : null}
                             {column.id === 'action' ? (
                               <Button
-                                id={'item-' + index + '-button'}
+                                id={'item-' + row.testId + '-button'}
                                 className='buttonAssign button-standard'
                                 variant='outlined'
                                 size='small'
                                 onClick={() => {
-                                  assignTest(index);
+                                  assignTest(row.testId);
                                 }}
                               >
                                 <Trans>
