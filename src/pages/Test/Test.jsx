@@ -25,6 +25,8 @@ import {
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 
+import moment from 'moment';
+
 export const Test = () => {
   const [testID, setTestID] = useState(0);
   const [level, setLevel] = useState('');
@@ -109,7 +111,7 @@ export const Test = () => {
         setContentFile(testData.contentFile);
         setLevel(testData.level);
         setTestID(testData.id);
-        setTestDurationInSeconds(40 * 60 - Math.floor((new Date().getTime() - testData.startedAt) / 1000));
+        setTestDurationInSeconds(40 * 60 - Math.floor((moment() - testData.startedAt) / 1000));
       }
     };
     checkData();
