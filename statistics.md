@@ -4,7 +4,7 @@
 ### in progress  - 14
 ### all requests - 39
 
-## completed by 61% [ in project / all requests * 100]
+## completed by 64% [ in project / all requests * 100]
 
 
 ## Answer Controller 
@@ -39,9 +39,7 @@
   [get]  /question/          - status: <ins>in progress</ins>
   
   [post] /question/          - status: <ins>in progress</ins>
-  
-  [get]  /question/{id}      - status: <ins>in progress</ins>
-  
+  https://github.com/mtalstykh-exadel/team4_frontend/pull/149
   [put]  /question/{id}      - status: <ins>in progress</ins>
   
   [delete]  /question/{id}   - status: <ins>in progress</ins>
