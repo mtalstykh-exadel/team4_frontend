@@ -15,13 +15,13 @@ export const removeEditedQuestion = () => ({ type: REMOVE_EDITED_QUESTION });
 export const removeQuestionsList = () => ({ type: REMOVE_QUESTION_LIST });
 
 
-export const requestQuestionsList = (level, module, status) => async (dispatch) => {
-  const data = await getQuestionsList(level, module, status);
+export const requestQuestionsList = (level, module, status, pageNum, pageSize) => async (dispatch) => {
+  const data = await getQuestionsList(level, module, status, pageNum, pageSize);
   dispatch(setQuestionsList(data));
 };
 
-export const requestListeningQuestionsList = (level, status) => async (dispatch) => {
-  const data = await getListeningQuestionsList(level, status);
+export const requestListeningQuestionsList = (level, status, pageNum, pageSize) => async (dispatch) => {
+  const data = await getListeningQuestionsList(level, status, pageNum, pageSize);
   dispatch(setQuestionsList(data));
 };
 
