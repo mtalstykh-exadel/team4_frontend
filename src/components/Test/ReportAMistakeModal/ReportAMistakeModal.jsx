@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import '../../../styles/modal.scss';
-import { Button, IconButton, TextField } from '@material-ui/core';
+import {Button, TextField} from '@material-ui/core';
 import './ReportAMistakeModal.scss';
-import CloseIcon from '@material-ui/icons/Close';
-import { Trans } from '@lingui/macro';
-import { errorReport, deleteReport } from '../../../api/mistake-reports';
+import {Trans} from '@lingui/macro';
+import {errorReport, deleteReport} from '../../../api/mistake-reports';
 
-export const ReportAMistakeModal = ({ question, questionId, level, module, handleClose, testId, reportModule }) => {
+export const ReportAMistakeModal = ({question, questionId, level, module, handleClose, testId, reportModule}) => {
   const saveDataArray = localStorage.getItem(reportModule);
   const [characters, setCharacters] = useState('');
 
@@ -31,9 +30,6 @@ export const ReportAMistakeModal = ({ question, questionId, level, module, handl
 
   return (
     <div className='report-mistake-modal'>
-      <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-        <CloseIcon className='close-icon icons-color'/>
-      </IconButton>
       <div className='report-header'><Trans>Report a mistake</Trans></div>
       <div className='level-module-info'>
         <span className='level-info'><Trans>Level</Trans>: {level}</span>
