@@ -11,14 +11,14 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/pages/Page404/Page404.js:18
+#: src/pages/404/404.js:19
 msgid "Either something went wrong or the page doesn't exist anymore."
 msgstr "Либо что-то пошло не так, либо страница больше не существует."
 
-#: src/pages/Page404/Page404.js:21
+#: src/pages/404/404.js:22
 msgid "Go Home"
 msgstr "На главную"
 
-#: src/pages/Page404/Page404.js:17
+#: src/pages/404/404.js:18
 msgid "Oops, this page was not found!"
 msgstr "К сожалению, эта страница не найдена!"
