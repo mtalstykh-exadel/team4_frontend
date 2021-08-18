@@ -33,10 +33,6 @@ export const EmployeesTable = (props) => {
 
   const filteredEmployees = useSelector((state) => state.employees);
 
-  useEffect(() => {
-    dispatch(requestEmployeesList());
-  }, []);
-
   const filterEmployees = filteredEmployees ? filteredEmployees
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
@@ -57,6 +53,10 @@ export const EmployeesTable = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect(() => {
+    dispatch(requestEmployeesList(page, rowsPerPage));
+  }, []);
 
   const [employee, setEmployee] = useState([]);
 
