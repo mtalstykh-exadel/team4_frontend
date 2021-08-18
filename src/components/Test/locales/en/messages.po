@@ -15,10 +15,6 @@ msgstr ""
 #~ msgid "Add question"
 #~ msgstr "Add question"
 
-#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:49
-#~ msgid "Delete question"
-#~ msgstr "Delete question"
-
 #: src/pages/SubmitModal/SubmitModal.jsx:11
 #~ msgid "Are you sure you want to finish the test?"
 #~ msgstr "Are you sure you want to finish the test?"
@@ -35,11 +31,15 @@ msgstr ""
 #~ msgid "Delete"
 #~ msgstr "Delete"
 
-#: src/pages/Test/Test.jsx:97
+#: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:49
+#~ msgid "Delete question"
+#~ msgstr "Delete question"
+
+#: src/pages/Test/Test.jsx:156
 msgid "Essay"
 msgstr "Essay"
 
-#: src/pages/Test/Test.jsx:75
+#: src/pages/Test/Test.jsx:134
 msgid "Grammar"
 msgstr "Grammar"
 
@@ -51,7 +51,7 @@ msgstr "Grammar"
 #~ msgid "Listen and choose an answer option"
 #~ msgstr "Listen and choose an answer option"
 
-#: src/pages/Test/Test.jsx:87
+#: src/pages/Test/Test.jsx:145
 msgid "Listening"
 msgstr "Listening"
 
@@ -59,11 +59,11 @@ msgstr "Listening"
 #~ msgid "Module"
 #~ msgstr "Module"
 
-
-#: src/pages/Test/Test.jsx:152
+#: src/pages/Test/Test.jsx:214
 msgid "Next"
 msgstr "Next"
 
+#: src/pages/Test/Test.jsx:194
 msgid "Previous"
 msgstr "Previous"
 
@@ -72,18 +72,18 @@ msgstr "Previous"
 #~ msgstr "Report"
 
 #: src/pages/Test/Test.jsx:165
-msgid "Report a mistake"
-msgstr "Report a mistake"
+#~ msgid "Report a mistake"
+#~ msgstr "Report a mistake"
 
 #: src/pages/ReportAMistakeModal/ReportAMistakeModal.jsx:17
 #~ msgid "Select a question to report"
 #~ msgstr "Select a question to report"
 
-
-#: src/pages/Test/Test.jsx:107
+#: src/pages/Test/Test.jsx:167
 msgid "Speaking"
 msgstr "Speaking"
 
+#: src/pages/Test/Test.jsx:224
 msgid "Submit test"
 msgstr "Submit test"
 

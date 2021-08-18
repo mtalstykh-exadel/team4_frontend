@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/TestsInfo/TestsData/TestsData.jsx:192
+msgid "Continue"
+msgstr ""
+
 #: src/components/ProfileInfo/ProfileInfo.jsx:18
 #~ msgid "E-mail: "
 #~ msgstr "Ел.почта: "
@@ -19,15 +23,19 @@ msgstr ""
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:89
-#: src/components/TestsInfo/TestsData/TestsData.jsx:107
+#: src/components/TestsInfo/TestsData/TestsData.jsx:176
 msgid "Take Test"
 msgstr ""
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:109
-msgid "{0}{1}"
-msgstr "{1}"
+#: src/components/TestsInfo/TestsData/TestsData.jsx:183
+msgid "View Results"
+msgstr ""
 
-#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:20
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:22
 msgid "You can't take the test anymore today."
 msgstr "Вы не можете пройти тест сегодня"
+
+#: src/components/TestsInfo/TestsData/TestsData.jsx:131
+#: src/components/TestsInfo/TestsData/TestsData.jsx:194
+msgid "{0}{1}"
+msgstr "{1}"
