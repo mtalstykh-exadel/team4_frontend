@@ -23,6 +23,7 @@ import { getTest } from '../../../api/get-test';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { requestUserTestsHistory } from '../../../store/actions/profileActions';
+import getUserTests from '../../../api/user-tests';
 
 const TestsData = (props) => {
   const history = useHistory();
@@ -89,17 +90,17 @@ const TestsData = (props) => {
   }, []);
 
   const handleCount = () => {
-    dispatch(requestUserTestsHistory(page + 1, rowsPerPage))
+    getUserTests(page + 1, rowsPerPage)
       .then((response) => {
-        console.log(response);
         if (response !== []) {
-          setCount(count + response.testsHistory.length);
+          setCount(count + response.length);
         }
       });
   };
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestUserTestsHistory(newPage, rowsPerPage));
+    handleCount();
     setPage(newPage);
   };
 
