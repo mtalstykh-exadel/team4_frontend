@@ -21,9 +21,7 @@ export const ManageTest = () => {
 
   const sendQuestionToEditOrAdd = (moduleData, module) => {
     if (location === '/edit-test-modules') {
-      debugger;
       if (module === 'Listening') {
-        debugger;
         sendEditedListeningQuestion(moduleData);
       } else {
         sendEditedQuestion(moduleData);

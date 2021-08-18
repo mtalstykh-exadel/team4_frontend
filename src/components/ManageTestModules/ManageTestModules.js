@@ -51,7 +51,7 @@ export const ManageModule = (props) => {
       setSubmitting(false);
     }
   };
-  console.log(question);  
+  console.log(question);
   const formik = useFormik({
     initialValues: { level: props.level, module: props.module },
     validationSchema: null, onSubmit

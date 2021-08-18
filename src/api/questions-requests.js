@@ -17,7 +17,6 @@ export const sendEditedQuestion = async (quest) => {
 };
 
 export const sendEditedListeningQuestion = async (quest) => {
-  debugger;
   return axiosInstance.put(`/question/listening/${quest.id}`, quest).then((response) => response.data);
 };
 
@@ -27,7 +26,7 @@ export const addNewQuestion = async (quest) => {
 
 export const getQuestionsList = async (level, module, status) => {
   return axiosInstance.get(`/question/?level=${level}&module=${module}&status=${status}&pageNumb=${1}&pageSize=${10}`)
-  .then((response) => response.data);
+    .then((response) => response.data);
 };
 
 export const getListeningQuestionsList = async (level, status) => {
