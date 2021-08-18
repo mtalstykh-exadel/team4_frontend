@@ -6,10 +6,7 @@ import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
 import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
-import {
-  testAudioAttempts,
-  AudioDurationInBlobUrl,
-} from '../../constants/localStorageConstants';
+import { testAudioAttempts, AudioDurationInBlobUrl } from '../../constants/localStorageConstants';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false }) => {
@@ -121,8 +118,13 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   setTimeout(() => {
     audioDomElement = document.getElementById(id);
     audioDomElement.addEventListener('loadeddata', async () => {
-      const durationBlobLink = await getBlobDuration(src);
-      setLocaleDuration(durationBlobLink);
+      
+      const durationBlobLink = await getBlobDuration(src)
+        .catch((err) => {
+        console.warn(err);
+        });
+      
+        setLocaleDuration(durationBlobLink);
       localStorage.setItem(AudioDurationInBlobUrl, durationBlobLink);
       setloading(false);
     });
