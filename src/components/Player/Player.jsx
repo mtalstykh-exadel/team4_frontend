@@ -49,10 +49,10 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     if (document.getElementById(id)) {
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts), 10) > 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) > 0
       ) {
         AudioStart();
-        const attempts = parseInt(localStorage.getItem(testAudioAttempts), 10) - 1;
+        const attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
         localStorage.setItem(testAudioAttempts, attempts.toString());
       } else {
         AudioStart();
@@ -60,7 +60,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
 
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts), 10) === 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) === 0
       ) {
         audioDomElement.pause();
         setAudioOn(false);
@@ -149,7 +149,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
             <CircularProgress className='border-primary' size='23px' />
           ) : (
             (
-              parseInt(localStorage.getItem(testAudioAttempts), 10) === 0 &&
+              parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
               document.getElementById('player-listening') === null
             ) ? (
                 <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
