@@ -11,6 +11,7 @@ import { TableRowTest } from './Component/tableRowTest/TableRowTest';
 import { ModalWindowRemovedFromYourPost } from './ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost';
 
 import { requestUnverifiedTests, requestGrades, requestReports } from '../../store/actions/unverifiedTestActions';
+import { getTestsForVerification } from '../../api/testsForVerification-fetch';
 
 export const TestsForVerificationTable = () => {
 
@@ -19,21 +20,33 @@ export const TestsForVerificationTable = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [open, setOpen] = useState(false);
   const [test, setTest] = useState('');
+  const [count, setCount] = useState(rowsPerPage);
 
   useEffect(() => {
-    dispatch(requestUnverifiedTests());
+    dispatch(requestUnverifiedTests(page, rowsPerPage));
   }, []);
+
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getTestsForVerification(newPage + 1, rowsPerPage)
+      .then((response) => {
+        if (response !== []) {
+          setCount(count + response.length);
+        }
+      });
+  };
 
   const rows = [['ID','ID'], ['Level','Уровень'], ['Date started','Дата начала'], ['Date completed', 'Дата прохождения'], ['Priority', 'Приоритет'], ['Action','Действие']];
   const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    dispatch(requestUnverifiedTests(newPage, rowsPerPage))
+      .then(() => handleCount(newPage));
   };
-
-  useEffect(() => {
-    unverifiedTests.length < rowsPerPage && setPage(0);
-  }, [unverifiedTests]);
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -41,7 +54,7 @@ export const TestsForVerificationTable = () => {
   };
 
   const handleVerifyTest = (row) => {
-    return dispatch(requestUnverifiedTests())
+    return dispatch(requestUnverifiedTests(page, rowsPerPage))
       .then(() => setTest(row))
       .then(() => dispatch(requestReports(row.id))
         .then(() => dispatch(requestGrades(row.id))
@@ -64,7 +77,7 @@ export const TestsForVerificationTable = () => {
                 {tableHeadCells}
               </TableRow>
             </TableHead>
-            <TableBody>{unverifiedTests.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((test, index) => {
+            <TableBody>{unverifiedTests.map((test, index) => {
               return (
                 <TableRowTest test={test} key={index} handleVerifyTest={handleVerifyTest}/>
               );
@@ -74,9 +87,9 @@ export const TestsForVerificationTable = () => {
         </TableContainer>
         <TablePagination
           labelRowsPerPage={<Trans>Rows per page: </Trans>}
-          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPageOptions={[10]}
           component='div'
-          count={unverifiedTests.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
