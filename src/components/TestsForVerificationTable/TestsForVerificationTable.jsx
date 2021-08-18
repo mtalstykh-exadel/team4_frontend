@@ -56,9 +56,9 @@ export const TestsForVerificationTable = () => {
   const handleVerifyTest = (row) => {
     return dispatch(requestUnverifiedTests(page, rowsPerPage))
       .then(() => setTest(row))
-      .then(() => dispatch(requestReports(row.testId))
-        .then(() => dispatch(requestGrades(row.testId))
-          .then(() => Promise.resolve(setOpen(true)))));
+      .then(() => dispatch(requestReports(row.testId)))
+      .then(() => dispatch(requestGrades(row.testId)))
+      .then(() => Promise.resolve(setOpen(true)));
   };
 
   const tableHeadCells = rows.map((rowName, index) => {
