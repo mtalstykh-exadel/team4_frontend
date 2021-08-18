@@ -8,7 +8,7 @@ import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, removeQuestionForEdit } from '../../../store/actions/coachActions';
+import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
@@ -83,9 +83,28 @@ export const EditTestsTable = (props) => {
   };
   const handleClose = (archiving) => {
     if (archiving) {
+      debugger;
       dispatch(archiveQuestion(archiveId, props.level, props.module.toUpperCase()));
+      if (props.level) {
+        debugger;
+        dispatch(removeQuestionsList());
+        if (props.level && props.module) {
+          debugger;
+          if (props.module === 'Listening') {
+            debugger;
+            dispatch(requestListeningQuestionsList(props.level, props.status));
+          } else {
+            debugger;
+            dispatch(requestQuestionsList(props.level, props.module.toUpperCase(), props.status));
+          }
+        }
+        if (props.questionId && props.module) {
+          debugger;
+          dispatch(requestQuestion(props.questionId));
+        }
+      }
+      setOpen(false);
     }
-    setOpen(false);
   };
 
   return (
@@ -145,11 +164,19 @@ export const EditTestsTable = (props) => {
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' color='primary'
-                    onClick={() => {
-                      setArchiveId(row.id);
-                      handleOpen();
-                    }} />}</TableCell>
+                  {
+                    props.status === 'ARCHIVED'
+                      ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#fbff00' }}
+                        onClick={() => {
+                          setArchiveId(row.id);
+                          handleOpen();
+                        }} />}</TableCell>
+                      : <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#3f51b5' }}
+                        onClick={() => {
+                          setArchiveId(row.id);
+                          handleOpen();
+                        }} />}</TableCell>
+                  }
                 </TableRow>
               );
             })}

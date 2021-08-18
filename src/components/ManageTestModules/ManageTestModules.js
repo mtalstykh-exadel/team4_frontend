@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { Button, Modal, Paper } from '@material-ui/core';
@@ -18,17 +18,15 @@ import { FilterFormControl } from '../FormControl/formControl';
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeEditedQuestion, removeQuestionForEdit } from '../../store/actions/coachActions';
-import * as queryString from 'querystring';
+import { removeQuestionForEdit } from '../../store/actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
 
 export const ManageModule = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-
-  const editedQuestion = useSelector((state) => state.coach.editedQuestion);
 
   const question = useSelector((state) => state.coach.question);
+
+  const history = useHistory();
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
@@ -42,15 +40,18 @@ export const ManageModule = (props) => {
 
   const handleClose = () => {
     setOpen(false);
+    history.push({
+      pathname: 'edit-tests'
+    });
   };
 
   const onSubmit = () => {
     if (submitting) {
-      props.sendQuestionToEditOrAdd(moduleData);
+      props.sendQuestionToEditOrAdd(moduleData, formik.values.module);
       setSubmitting(false);
     }
   };
-
+  console.log(question);  
   const formik = useFormik({
     initialValues: { level: props.level, module: props.module },
     validationSchema: null, onSubmit
@@ -58,18 +59,7 @@ export const ManageModule = (props) => {
 
   const removeQuestion = () => {
     dispatch(removeQuestionForEdit());
-    dispatch(removeEditedQuestion());
   };
-
-  useEffect(() => {
-    const parsedId = queryString.parse(history.location.search.substr(1));
-    if (editedQuestion && +parsedId.id !== editedQuestion.id) {
-      history.push({
-        pathname: '/edit-test-modules',
-        search: queryString.stringify({ id: editedQuestion.id })
-      });
-    }
-  }, [editedQuestion]);
 
   return (
     <>

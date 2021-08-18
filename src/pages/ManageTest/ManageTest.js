@@ -4,12 +4,12 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import { ManageModule } from '../../components';
 import Layout from '../../components/Layout/Layout';
-import { editQuestion, requestListeningTopic, requestQuestion, requestToAddNewQuestion } from '../../store/actions/coachActions';
+import { requestListeningTopic, requestQuestion } from '../../store/actions/coachActions';
 import * as queryString from 'querystring';
+import { addNewQuestion, sendEditedListeningQuestion, sendEditedQuestion } from '../../api/questions-requests';
 
 export const ManageTest = () => {
 
-  const editedQuestion = useSelector((state) => state.coach.editedQuestion);
   const question = useSelector((state) => state.coach.question);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -19,28 +19,27 @@ export const ManageTest = () => {
   const location = history.location.pathname;
   const parsed = queryString.parse(history.location.search.substr(1));
 
-  const sendQuestionToEditOrAdd = (moduleData) => {
+  const sendQuestionToEditOrAdd = (moduleData, module) => {
     if (location === '/edit-test-modules') {
-      dispatch(editQuestion(moduleData));
+      debugger;
+      if (module === 'Listening') {
+        debugger;
+        sendEditedListeningQuestion(moduleData);
+      } else {
+        sendEditedQuestion(moduleData);
+      }
     }
     if (location === '/add-test-modules') {
-      dispatch(requestToAddNewQuestion(moduleData));
+      if (module === 'Listening') {
+        alert(module);
+      } else {
+        addNewQuestion(moduleData);
+      }
     }
   };
 
   useEffect(() => {
-    const parsed = queryString.parse(history.location.search.substr(1));
-    if (editedQuestion && +parsed.id === editedQuestion.id) {
-      if (parsed.module === 'Listening') {
-        dispatch(requestListeningTopic(parsed.id));
-      } else {
-        dispatch(requestQuestion(parsed.id));
-      }
-    }
-  }, [editedQuestion]);
-
-  useEffect(() => {
-    if (location === '/edit-test-modules' || editedQuestion) {
+    if (location === '/edit-test-modules') {
       if (parsed.module === 'Listening') {
         dispatch(requestListeningTopic(parsed.id));
       } else {

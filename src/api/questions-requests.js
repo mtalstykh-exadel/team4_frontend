@@ -16,12 +16,18 @@ export const sendEditedQuestion = async (quest) => {
   return axiosInstance.put(`/question/${quest.id}`, quest).then((response) => response.data);
 };
 
+export const sendEditedListeningQuestion = async (quest) => {
+  debugger;
+  return axiosInstance.put(`/question/listening/${quest.id}`, quest).then((response) => response.data);
+};
+
 export const addNewQuestion = async (quest) => {
   return axiosInstance.post('/question/', quest).then((response) => response.data);
 };
 
 export const getQuestionsList = async (level, module, status) => {
-  return axiosInstance.get(`/question/?level=${level}&module=${module}&status=${status}`).then((response) => response.data);
+  return axiosInstance.get(`/question/?level=${level}&module=${module}&status=${status}&pageNumb=${1}&pageSize=${10}`)
+  .then((response) => response.data);
 };
 
 export const getListeningQuestionsList = async (level, status) => {
