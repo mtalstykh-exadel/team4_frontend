@@ -30,4 +30,3 @@ UserModalWindowBanningTest.propTypes =
     open: PropTypes.bool,
     handleClose: PropTypes.func
   };
-  

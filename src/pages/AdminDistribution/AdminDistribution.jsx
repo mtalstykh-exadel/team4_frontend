@@ -168,8 +168,8 @@ const AdminDistribution = (props) => {
                                 <>
                                   {formatDate(row.assigned)}
                                 </>
-                              ) : ( 
-                                null 
+                              ) : (
+                                null
                               )
                             ) : null}
 
@@ -178,8 +178,8 @@ const AdminDistribution = (props) => {
                                 <>
                                   {formatDate(row.deadline)}
                                 </>
-                              ) : ( 
-                                null 
+                              ) : (
+                                null
                               )
                             ) : null}
 

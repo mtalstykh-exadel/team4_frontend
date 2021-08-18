@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
-  Modal
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Modal,
 } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, removeQuestionForEdit } from '../../../store/actions/coachActions';
+import {
+  archiveQuestion,
+  removeQuestionForEdit,
+} from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
@@ -24,16 +35,25 @@ export const EditTestsTable = (props) => {
   const questions = useSelector((state) => state.coach.questions);
   const question = useSelector((state) => state.coach.question);
 
-  const filteredQuestions = Number(props.questionId) > 0 && questions && question
-    ? questions.filter((el) => el.id === question.id) : Number(props.questionId) > 0
-      ? question && question.module === props.module ? [question] : [] : questions ? questions : [];
+  const filteredQuestions =
+    Number(props.questionId) > 0 && questions && question
+      ? questions.filter((el) => el.id === question.id)
+      : Number(props.questionId) > 0
+        ? question && question.module === props.module
+          ? [question]
+          : []
+        : questions
+          ? questions
+          : [];
 
-  const rows = ['ID',
+  const rows = [
+    'ID',
     ['Player', 'Проигрователь'],
     ['Question', 'Вопрос'],
     ['Action', 'Действие'],
     ['Archive', 'Архив'],
-    ['Dearchive', 'Разархивировать']];
+    ['Dearchive', 'Разархивировать'],
+  ];
 
   const filteredRows = [];
   rows.map((el) => {
@@ -70,8 +90,8 @@ export const EditTestsTable = (props) => {
       pathname: path,
       search: queryString.stringify({
         id: id,
-        module: props.module
-      })
+        module: props.module,
+      }),
     });
   };
 
@@ -83,27 +103,35 @@ export const EditTestsTable = (props) => {
   };
   const handleClose = (archiving) => {
     if (archiving) {
-      dispatch(archiveQuestion(archiveId, props.level, props.module.toUpperCase()));
+      dispatch(
+        archiveQuestion(archiveId, props.level, props.module.toUpperCase())
+      );
     }
     setOpen(false);
   };
 
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button color='primary' variant='contained' type='search' onClick={() => handleClickEdit('/add-test-modules')}
-        className='btn-add-question button-standard'>
-        {
-          props.module === 'Grammar'
-            ? <Trans>Add question</Trans>
-            : <Trans>Add topic</Trans>
-        }
+      <Button
+        color='primary'
+        variant='contained'
+        type='search'
+        onClick={() => handleClickEdit('/add-test-modules')}
+        className='btn-add-question button-standard'
+      >
+        {props.module === 'Grammar' ? (
+          <Trans>Add question</Trans>
+        ) : (
+          <Trans>Add topic</Trans>
+        )}
       </Button>
       <Modal
         open={open}
         onClose={() => handleClose(false)}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
-        className='modal'>
+        className='modal'
+      >
         <Paper elevation={2}>
           <div className='modal-content'>
             <ModalWindowWarningArchive handleClose={handleClose} />
@@ -116,43 +144,91 @@ export const EditTestsTable = (props) => {
             <TableHead>
               <TableRow>
                 {filteredRows.map((rowName) => {
-                  return (
-                    rowName[0] === 'Question' ? <TableCell key={rowName} align='left' className='tableRowHeading'>{Array.isArray(rowName)
-                      ? <Trans>{rowName[0]}{rowName[1]}</Trans>
-                      : rowName}</TableCell>
-                      : <TableCell key={rowName} align='center' className='tableRowHeading'>{Array.isArray(rowName)
-                        ? <Trans>{rowName[0]}{rowName[1]}</Trans>
-                        : rowName}</TableCell>
+                  return rowName[0] === 'Question' ? (
+                    <TableCell
+                      key={rowName}
+                      align='left'
+                      className='tableRowHeading'
+                    >
+                      {Array.isArray(rowName) ? (
+                        <Trans>
+                          {rowName[0]}
+                          {rowName[1]}
+                        </Trans>
+                      ) : (
+                        rowName
+                      )}
+                    </TableCell>
+                  ) : (
+                    <TableCell
+                      key={rowName}
+                      align='center'
+                      className='tableRowHeading'
+                    >
+                      {Array.isArray(rowName) ? (
+                        <Trans>
+                          {rowName[0]}
+                          {rowName[1]}
+                        </Trans>
+                      ) : (
+                        rowName
+                      )}
+                    </TableCell>
                   );
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filteredQuestions.map((row) => {
-              return (
-                <TableRow key={row.id}>
-                  <TableCell component='th' align='center' scope='row'>{row.id}</TableCell>
-                  {
-                    props.module === 'Listening'
-                      ? <TableCell component='th' align='center' scope='row' size='small'>
-                        <PlayCircleOutlineIcon className='icons-color-primary' />
+            <TableBody>
+              {filteredQuestions
+                .map((row) => {
+                  return (
+                    <TableRow key={row.id}>
+                      <TableCell component='th' align='center' scope='row'>
+                        {row.id}
                       </TableCell>
-                      : null
-                  }
-                  <TableCell align='left' size='small'>{row.questionBody ? row.questionBody : row.topic}</TableCell>
-                  <TableCell align='center'>
-                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search'
-                      onClick={() => handleClickEdit('/edit-test-modules', row.id)} className='btn-search button-standard'>
-                      <Trans>Edit</Trans>
-                    </Button>
-                  </TableCell>
-                  <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' color='primary'
-                    onClick={() => {
-                      setArchiveId(row.id);
-                      handleOpen();
-                    }} />}</TableCell>
-                </TableRow>
-              );
-            })}
+                      {props.module === 'Listening' ? (
+                        <TableCell
+                          component='th'
+                          align='center'
+                          scope='row'
+                          size='small'
+                        >
+                          <PlayCircleOutlineIcon className='icons-color-primary' />
+                        </TableCell>
+                      ) : null}
+                      <TableCell align='left' size='small'>
+                        {row.questionBody ? row.questionBody : row.topic}
+                      </TableCell>
+                      <TableCell align='center'>
+                        <Button
+                          color='primary'
+                          variant='outlined'
+                          size='small'
+                          style={{ width: 110 }}
+                          type='search'
+                          onClick={() =>
+                            handleClickEdit('/edit-test-modules', row.id)
+                          }
+                          className='btn-search button-standard'
+                        >
+                          <Trans>Edit</Trans>
+                        </Button>
+                      </TableCell>
+                      <TableCell align='center'>
+                        {
+                          <ArchiveOutlinedIcon
+                            className='archiveBtn'
+                            color='primary'
+                            onClick={() => {
+                              setArchiveId(row.id);
+                              handleOpen();
+                            }}
+                          />
+                        }
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
             </TableBody>
           </Table>
         </TableContainer>
