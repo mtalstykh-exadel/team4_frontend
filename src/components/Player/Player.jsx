@@ -4,8 +4,12 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
+import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
-import { testAudioAttempts } from '../../constants/localStorageConstants';
+import {
+  testAudioAttempts,
+  AudioDurationInBlobUrl,
+} from '../../constants/localStorageConstants';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false }) => {
@@ -14,7 +18,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   const [localeDuration, setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
   const [audioElement, setAudioElement] = useState({});
-  const audioDomElement = document.getElementById(id);
+  let audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
   const [loading, setloading] = useState(true);
 
@@ -70,7 +74,9 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   };
 
   const AudioProgressBar = (e) => {
-    const { currentTime, duration } = e.srcElement;
+    const { currentTime } = e.srcElement;
+    const duration = parseInt(localStorage.getItem(AudioDurationInBlobUrl));
+
     setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
 
@@ -100,7 +106,8 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     if (audioElement.currentTime !== null) {
       if (document.getElementById('player-listening') === null) {
         audioElement.currentTime =
-          (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+          (e.nativeEvent.offsetX / e.target.offsetWidth) *
+          audioElement.duration;
       }
     }
   };
@@ -112,8 +119,11 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   }
 
   setTimeout(() => {
-    document.getElementById(id).addEventListener('loadeddata', () => {
-      setLocaleDuration(document.getElementById(id).duration);
+    audioDomElement = document.getElementById(id);
+    audioDomElement.addEventListener('loadeddata', async () => {
+      const durationBlobLink = await getBlobDuration(src);
+      setLocaleDuration(durationBlobLink);
+      localStorage.setItem(AudioDurationInBlobUrl, durationBlobLink);
       setloading(false);
     });
   }, 0);
@@ -147,15 +157,14 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
         {audioOn === false ? (
           loading && !speaking ? (
             <CircularProgress className='border-primary' size='23px' />
+          ) : parseInt(localStorage.getItem(testAudioAttempts)) === 0 ||
+            document.getElementById('player-listening') === null ? (
+            <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
           ) : (
-            ( 
-              parseInt(localStorage.getItem(testAudioAttempts)) === 0 && 
-              document.getElementById('player-listening') === null
-            ) ? (
-                <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
-              ) : ( 
-                <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
-            )
+            <PlayArrowIcon
+              className='icons-color-secondory'
+              fontSize='medium'
+            />
           )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium' />
