@@ -159,12 +159,12 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
         {audioOn === false ? (
           loading && !speaking ? (
             <CircularProgress className='border-primary' size='23px' />
-          ) : parseInt(localStorage.getItem(testAudioAttempts)) === 0 ||
-            document.getElementById('player-listening') === null ? (
-            <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
+          ) : parseInt(localStorage.getItem(testAudioAttempts)) === 0 &&
+            document.getElementById('player-listening') ? (
+            <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
           ) : (
             <PlayArrowIcon
-              className='icons-color-secondory'
+              className='icons-color-primary'
               fontSize='medium'
             />
           )
