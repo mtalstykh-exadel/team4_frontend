@@ -26,6 +26,7 @@ import { ModalWindowWarningCannotDeassign } from '../ModalWindowWarning/ModalWin
 
 import { TableEmployeeRow } from './TableEmployeeRow/TableEmployeeRow';
 
+import { getEmployeesList } from '../../../api/employees-fetch';
 
 export const EmployeesTable = (props) => {
 
@@ -37,16 +38,24 @@ export const EmployeesTable = (props) => {
     .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
     : [];
 
-  useEffect(() => {
-    filterEmployees.length < rowsPerPage && setPage(0);
-  }, [filterEmployees]);
-
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [count, setCount] = useState(rowsPerPage);
+
+  const handleCount = (newPage = page) => {
+    getEmployeesList(newPage + 1, rowsPerPage)
+      .then((response) => {
+        if (response !== []) {
+          setCount(count + response.length);
+        }
+      });
+  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+    dispatch(requestEmployeesList(newPage, rowsPerPage));
+    handleCount(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -56,6 +65,10 @@ export const EmployeesTable = (props) => {
 
   useEffect(() => {
     dispatch(requestEmployeesList(page, rowsPerPage));
+  }, []);
+
+  useEffect(() => {
+    handleCount();
   }, []);
 
   const [employee, setEmployee] = useState([]);
@@ -125,7 +138,7 @@ export const EmployeesTable = (props) => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPageOptions={[10]}
           component='div'
           count={filterEmployees.length}
           rowsPerPage={rowsPerPage}
