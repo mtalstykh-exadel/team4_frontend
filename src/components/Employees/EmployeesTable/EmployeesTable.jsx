@@ -79,12 +79,12 @@ export const EmployeesTable = (props) => {
   const [openAssigned, setOpenAssigned] = useState(false);
 
   const handleDeassign = (test) => {
-    return dispatch(requestEmployeesList())
+    return dispatch(requestEmployeesList(page, rowsPerPage))
       .then((state) => {
         const newEmployee = state.employee.find((x) => x.name === test.name);
         if (newEmployee && newEmployee.assignedTest) {
           deassignTest(test.assignedTest.testId)
-            .then(() => dispatch(requestEmployeesList()));
+            .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
         } else {
           setOpenDeassigned(true);
         }
@@ -92,7 +92,7 @@ export const EmployeesTable = (props) => {
   };
 
   const handleAssign = (test) => {
-    return dispatch(requestEmployeesList())
+    return dispatch(requestEmployeesList(page, rowsPerPage))
       .then((state) => {
         const newEmployee = state.employee.find((x) => x.name === test.name);
         if (newEmployee && !newEmployee.assignedTest) {
@@ -101,7 +101,8 @@ export const EmployeesTable = (props) => {
         } else {
           setOpenAssigned(true);
         }
-      });
+      })
+      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
   };
 
   const handleHistory = (test) => {
@@ -147,7 +148,7 @@ export const EmployeesTable = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
         {<ModalWindowWarningCannotAssign open={openAssigned} handleClose={() => setOpenAssigned(false)}/>}
-        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)}/>}
+        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)} page={page} rowsPerPage={rowsPerPage}/>}
         {<HRmodalWindowViewingUserInformation test={employee} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
         {<ModalWindowWarningCannotDeassign open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
       </Paper>
