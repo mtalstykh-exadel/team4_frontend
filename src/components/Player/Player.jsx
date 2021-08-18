@@ -31,11 +31,13 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     if (document.getElementById(id)) {
       if (
         document.getElementById('player-listening') === true &&
+        // eslint-disable-next-line radix
         parseInt(localStorage.getItem(testAudioAttempts)) < 2
       ) {
         AudioStart();
         localStorage.setItem(
           testAudioAttempts,
+          // eslint-disable-next-line radix
           parseInt(localStorage.getItem(testAudioAttempts)) + 1
         );
       } else {
