@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CloseIcon from '@material-ui/icons/Close';
-import { IconButton, Paper, Modal } from '@material-ui/core';
+// import CloseIcon from '@material-ui/icons/Close';
+import { Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 import '../../../styles/modal.scss';
@@ -24,9 +24,9 @@ export const ModalWindowTestCanceled = () => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove'>
-            <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+            {/* <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
               <CloseIcon className='close-icon' />
-            </IconButton>
+            </IconButton> */}
             <div className='text'>The test was canceled</div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={handleClose} className='button-standard'>Close</Button>

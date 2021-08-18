@@ -1,6 +1,6 @@
 .modal-remove {
-  width: 440px;
-  height: 140px;
+  width: 340px;
+  height: 105px;
 
   .close-icon-wrapper {
     display: block;
@@ -22,13 +22,14 @@
     font-weight: normal;
     font-size: 18px;
     line-height: 130%;
-    text-align: center;
+    text-align: left;
+    padding-top: 25px;
   }
 
   .MuiButton-root {
     height: 27px;
     width: 90px;
-    margin-left: 325px;
+    margin-left: 230px;
     margin-right: 5px;
     margin-top: 30px;
   }
