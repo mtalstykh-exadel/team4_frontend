@@ -9,25 +9,45 @@ import './ManageListening.scss';
 import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
 import { Player } from '../../Player/Player';
+import { getAudioFile } from '../../../api/get-audioFIle';
 
 export const ManageListening = (props) => {
 
-  const [audio, setAudio] = useState();
   const [moduleData, setModuleData] = useState(props.moduleData);
+  const [audio, setAudio] = useState(moduleData.url);
 
-  useEffect(() => {props.handleModule(moduleData);}, [moduleData]);
-  useEffect(() => {props.handleAudio(audio);}, [audio]);
+  useEffect(
+    async function () {
+      setAudio(
+        await getAudioFile(moduleData.url).then((response) => {
+          return URL.createObjectURL(
+            new Blob([response.data], { type: 'audio/ogg' })
+          );
+        })
+      );
+    },
+    [setAudio]
+  );
+
+  useEffect(() => {
+    props.handleModule(moduleData);
+  }, [moduleData]);
+
+  useEffect(() => {
+    props.handleAudio(audio);
+  }, [audio]);
 
   const handleArr = (index) => (value) => {
     const questionsArray = [...moduleData.questions];
     questionsArray[index] = value;
     setModuleData(Object.assign({}, moduleData, {
-      questions: questionsArray}));
+      questions: questionsArray
+    }));
   };
 
   const handleTopic = (value) => {
     setModuleData(Object.assign({}, moduleData,
-      {topic: value}));
+      { topic: value }));
   };
 
   const importData = () => {
@@ -36,7 +56,7 @@ export const ManageListening = (props) => {
     input.accept = 'audio/*';
     input.required = true;
     input.onchange = () => {
-      input.files[0].type === 'audio/mpeg' ? setAudio( window.URL.createObjectURL(new Blob(input.files, {type: 'audio/ogg; codecs=opus'})) ) : null;
+      input.files[0].type === 'audio/mpeg' ? setAudio(window.URL.createObjectURL(new Blob(input.files, { type: 'audio/ogg; codecs=opus' }))) : null;
     };
     input.click();
   };
@@ -45,20 +65,21 @@ export const ManageListening = (props) => {
     <>
       <div className='listening-topic'>
         <ManageTopic
-          header='Add topic for a Listening'
+          moduleDescription='Add topic for a Listening'
           handleModule={handleTopic}
-          moduleData={moduleData.topic}/>
-        <div className='audio-wrapper'>{ audio ?
+          moduleData={moduleData.topic} />
+        <div className='audio-wrapper'>{audio ?
           <Player
-            id='player-listening'
-            src={audio}/> :
+            id='player-editTests'
+            src={audio}
+          /> :
           <p><Trans>Upload an audio file for listening task</Trans></p>}
         </div>
         <Button color='primary' variant='contained' onClick={importData}><Trans>Upload Audio</Trans></Button>
       </div>
       {moduleData.questions.map((item, index) => {
         return (
-          <ManageGrammar handleModule={handleArr(index)} questionIndex={index + 1} moduleData={item} key={index}/>
+          <ManageGrammar handleModule={handleArr(index)} questionIndex={index + 1} moduleData={item} key={index} />
         );
       })}
     </>

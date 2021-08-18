@@ -9,23 +9,40 @@ export const ManageGrammar = (props) => {
 
   const [question, setQuestion] = useState(props.moduleData);
 
-  useEffect(() => {props.handleModule(question);}, [question]);
+  useEffect(() => {
+    props.handleModule(question);
+  }, [question]);
+
+  useEffect(() => {
+    if (!question.level && !question.module) {
+      setQuestion(Object.assign({}, question, {
+        level: props.level,
+        module: 'Grammar'
+      }));
+    }
+  }, []);
 
   const handleSentence = (event) => {
     setQuestion(Object.assign({}, question, {
-      sentence: event.target.value}));
+      questionBody: event.target.value
+    }));
   };
 
   const handleRadio = (event) => {
+    const optionsArray = [...question.answers];
+
+    optionsArray[event.target.value].correct = true;
     setQuestion(Object.assign({}, question, {
-      radiovalue: event.target.value}));
+      answers: optionsArray
+    }));
   };
 
   const handleAnswersChange = (index) => (event) => {
-    const optionsArray = [...question.options];
-    optionsArray[index].option = event.target.value;
+    const optionsArray = [...question.answers];
+    optionsArray[index].answer = event.target.value;
     setQuestion(Object.assign({}, question, {
-      options: optionsArray}));
+      answers: optionsArray
+    }));
   };
 
   return (
@@ -37,10 +54,10 @@ export const ManageGrammar = (props) => {
         id='outlined-required'
         name='questionName'
         placeholder={`${props.questionIndex ? props.questionIndex + '.' : ''} Question`}
-        value={question.sentence}
+        value={question.questionBody}
         variant='outlined'
       />
-      {question.options.map((values , index) => {
+      {question.answers.map((values, index) => {
         return (
           <div className='manage-option' key={index}>
             <input
@@ -49,12 +66,13 @@ export const ManageGrammar = (props) => {
               required
               name={`answerIndex${props.questionIndex}`}
               value={index}
-              checked={+question.radiovalue === index && question.radiovalue !== '' ? 'checked' : null}
-              onChange={handleRadio}/>
+              checked={values.correct ? 'checked' : null}
+              onChange={handleRadio} />
             <TextField
+              required
               placeholder='Answer'
-              value={values.option}
-              onChange={handleAnswersChange(index)}/>
+              value={values.answer}
+              onChange={handleAnswersChange(index)} />
           </div>);
       })}
     </div>
@@ -64,5 +82,6 @@ export const ManageGrammar = (props) => {
 ManageGrammar.propTypes = {
   handleModule: PropTypes.func,
   questionIndex: PropTypes.any,
-  moduleData: PropTypes.any
+  moduleData: PropTypes.any,
+  level: PropTypes.any
 };

@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
-import moment from 'moment-timezone';
+import moment from 'moment';
 import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { startTestById } from '../../../api/start-test';
 import { CircularProgress } from '@material-ui/core';

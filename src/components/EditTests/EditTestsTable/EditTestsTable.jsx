@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
-  Button,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TablePagination,
-  TableRow,
+  Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Modal
 } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
+import { archiveQuestion, removeQuestionForEdit } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
@@ -24,40 +16,40 @@ import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWind
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(requestQuestionsList());
-  }, []);
-  const questions = useSelector((state) => state.coach.questions);
+  const history = useHistory();
+  const queryString = require('query-string');
 
-  const filteredQuestions = questions ? questions
-    .filter((el) => props.level ? props.level === el.level : el)
-    .filter((el) => props.module ? props.module === el.module : el)
-    .filter((el) => props.questionId && !!Number(props.questionId) ? Number(props.questionId) === el.id : el)
-    : [];
+  const questions = useSelector((state) => state.coach.questions);
+  const question = useSelector((state) => state.coach.question);
+
+  const filteredQuestions = Number(props.questionId) > 0 && questions && question
+    ? questions.filter((el) => el.id === question.id) : Number(props.questionId) > 0
+      ? question && question.module === props.module ? [question] : [] : questions ? questions : [];
 
   const rows = ['ID',
     ['Player', 'Проигрователь'],
     ['Question', 'Вопрос'],
     ['Action', 'Действие'],
-    ['Archive', 'Архив']];
+    ['Archive', 'Архив'],
+    ['Dearchive', 'Разархивировать']];
 
   const filteredRows = [];
-  if (props.module !== 'Listening') {
-    rows.filter((el) => {
-      Array.isArray(el)
-        ? el[0] !== 'Player' && filteredRows.push(el)
-        : el !== 'Player' && filteredRows.push(el);
-    });
-  } else {
-    rows.map((el) => filteredRows.push(el));
-  }
+  rows.map((el) => {
+    const arg = Array.isArray(el) ? el[0] : el;
+    if (props.status === 'UNARCHIVED' && arg === 'Dearchive') {
+      return;
+    }
+    if (props.status === 'ARCHIVED' && arg === 'Archive') {
+      return;
+    }
+    if (props.module !== 'Listening' && arg === 'Player') {
+      return;
+    }
+    filteredRows.push(el);
+  });
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-
-  const archiveTheQuestion = (questionId) => {
-    dispatch(archiveQuestion(questionId));
-  };
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -68,23 +60,47 @@ export const EditTestsTable = (props) => {
     setPage(0);
   };
 
+  const handleClickEdit = (path, id) => {
+    dispatch(removeQuestionForEdit());
+    history.push({
+      pathname: path,
+      search: queryString.stringify({
+        id: id,
+        module: props.module
+      })
+    });
+  };
+
   useEffect(() => {
     filteredQuestions.length < rowsPerPage && setPage(0);
   }, [filteredQuestions]);
 
   const [open, setOpen] = React.useState(false);
+  const [archiveId, setArchiveId] = useState(null);
+
   const handleOpen = () => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (archiving) => {
+    if (archiving) {
+      dispatch(archiveQuestion(archiveId, props.level, props.module.toUpperCase()));
+    }
     setOpen(false);
   };
 
   return (
     <div className='edit-tests-data-wrapper'>
+      <Button color='primary' variant='contained' type='search' onClick={() => handleClickEdit('/add-test-modules')}
+        className='btn-add-question button-standard'>
+        {
+          props.module === 'Grammar'
+            ? <Trans>Add question</Trans>
+            : <Trans>Add topic</Trans>
+        }
+      </Button>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose(false)}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'>
@@ -94,7 +110,6 @@ export const EditTestsTable = (props) => {
           </div>
         </Paper>
       </Modal>
-      <Button color='primary' variant='contained' type='search' component={Link} to='/add-test-modules' className='btn-add-question button-standard'><Trans>Add question</Trans></Button>
       <Paper elevation={2}>
         <TableContainer>
           <Table stickyHeader aria-label='sticky table'>
@@ -102,9 +117,12 @@ export const EditTestsTable = (props) => {
               <TableRow>
                 {filteredRows.map((rowName) => {
                   return (
-                    <TableCell key={rowName} align='left' className='tableRowHeading'>{Array.isArray(rowName)
+                    rowName[0] === 'Question' ? <TableCell key={rowName} align='left' className='tableRowHeading'>{Array.isArray(rowName)
                       ? <Trans>{rowName[0]}{rowName[1]}</Trans>
                       : rowName}</TableCell>
+                      : <TableCell key={rowName} align='center' className='tableRowHeading'>{Array.isArray(rowName)
+                        ? <Trans>{rowName[0]}{rowName[1]}</Trans>
+                        : rowName}</TableCell>
                   );
                 })}
               </TableRow>
@@ -112,23 +130,24 @@ export const EditTestsTable = (props) => {
             <TableBody>{filteredQuestions.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
                 <TableRow key={row.id}>
-                  <TableCell component='th' scope='row'>{row.id}</TableCell>
+                  <TableCell component='th' align='center' scope='row'>{row.id}</TableCell>
                   {
-                    row.module === 'Listening'
-                      ? <TableCell component='th' scope='row' size='small'>
+                    props.module === 'Listening'
+                      ? <TableCell component='th' align='center' scope='row' size='small'>
                         <PlayCircleOutlineIcon className='icons-color-primary' />
                       </TableCell>
                       : null
                   }
-                  <TableCell align='left' size='small'>{row.question}</TableCell>
-                  <TableCell align='left'>
-                    <Button color='primary' variant='outlined' size='small' type='search' component={Link} to='/edit-test-modules' className='btn-search button-standard'>
+                  <TableCell align='left' size='small'>{row.questionBody ? row.questionBody : row.topic}</TableCell>
+                  <TableCell align='center'>
+                    <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search'
+                      onClick={() => handleClickEdit('/edit-test-modules', row.id)} className='btn-search button-standard'>
                       <Trans>Edit</Trans>
                     </Button>
                   </TableCell>
-                  <TableCell align='left'>{<ArchiveOutlinedIcon className='archiveBtn icons-color-primary'
+                  <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' color='primary'
                     onClick={() => {
-                      archiveTheQuestion(row.id);
+                      setArchiveId(row.id);
                       handleOpen();
                     }} />}</TableCell>
                 </TableRow>
@@ -152,9 +171,9 @@ export const EditTestsTable = (props) => {
   );
 };
 
-EditTestsTable.propTypes =
-{
+EditTestsTable.propTypes = {
   level: PropTypes.any,
   module: PropTypes.any,
   questionId: PropTypes.any,
+  status: PropTypes.any,
 };

@@ -8,10 +8,20 @@ export const ManageTopic = (props) => {
   const [moduleData, setModuleData] = useState(props.moduleData);
 
   const handleField = (event) => {
-    setModuleData(event.target.value);
+    setModuleData(Object.assign({}, moduleData, {
+      questionBody: event.target.value
+    }));
   };
 
-  useEffect(() => {props.handleModule(moduleData);}, [moduleData]);
+  useEffect(() => {
+    if (!moduleData.level && !moduleData.module && typeof(moduleData) !== 'string') {
+      setModuleData(Object.assign({}, moduleData, {
+        level: props.level,
+        module: props.module
+      }));
+    }
+  }, []);
+  useEffect(() => { props.handleModule(moduleData); }, [moduleData]);
 
   return (
     <>
@@ -20,7 +30,7 @@ export const ManageTopic = (props) => {
         className='listening-topic'
         required
         size='small'
-        value={moduleData}
+        value={typeof(moduleData) === 'object' ? moduleData.questionBody : moduleData}
         onChange={handleField}
         id='outlined-required'
         name='questionName'
@@ -35,5 +45,7 @@ export const ManageTopic = (props) => {
 ManageTopic.propTypes = {
   handleModule: PropTypes.func,
   moduleData: PropTypes.any,
+  module: PropTypes.any,
+  level: PropTypes.any,
   moduleDescription: PropTypes.string
 };
