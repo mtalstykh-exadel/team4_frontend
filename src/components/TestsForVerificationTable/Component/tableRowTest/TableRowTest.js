@@ -13,8 +13,8 @@ const TableRowTest = (props) => {
   const [loading, setLoading] = useState(false);
 
   return (
-    <TableRow key={props.test.id}>
-      <TableCell component='th' scope='row'>{props.test.id}</TableCell>
+    <TableRow key={props.test.testId}>
+      <TableCell component='th' scope='row'>{props.test.testId}</TableCell>
       <TableCell align='left'>{props.test.level}</TableCell>
       <TableCell align='left'>{formatDate(props.test.startedAt)}</TableCell>
       <TableCell align='left'>{formatDate(props.test.completedAt)}</TableCell>

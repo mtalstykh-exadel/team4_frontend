@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -23,6 +23,8 @@ import {
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
+
+import { requestListeningQuestionsList, requestQuestionsList } from '../../../store/actions/coachActions';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
@@ -68,16 +70,18 @@ export const EditTestsTable = (props) => {
     filteredRows.push(el);
   });
 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
+    props.setPage(newPage);
+    if (props.module === 'Listening') {
+      dispatch(requestListeningQuestionsList(props.level, props.status, newPage, props.rowsPerPage));
+    } else {
+      dispatch(requestQuestionsList(props.level, props.module.toUpperCase(), props.status, newPage, props.rowsPerPage));
+    }
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+    props.setRowsPerPage(+event.target.value);
+    props.setPage(0);
   };
 
   const handleClickEdit = (path, id) => {
@@ -90,10 +94,6 @@ export const EditTestsTable = (props) => {
       }),
     });
   };
-
-  useEffect(() => {
-    filteredQuestions.length < rowsPerPage && setPage(0);
-  }, [filteredQuestions]);
 
   const [open, setOpen] = React.useState(false);
   const [archiveId, setArchiveId] = useState(null);
@@ -180,7 +180,6 @@ export const EditTestsTable = (props) => {
             </TableHead>
             <TableBody>
               {filteredQuestions
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
                     <TableRow key={row.id}>
@@ -235,11 +234,11 @@ export const EditTestsTable = (props) => {
         </TableContainer>
         <TablePagination
           labelRowsPerPage={<Trans>Rows per page: </Trans>}
-          rowsPerPageOptions={[10, 25, 100]}
+          rowsPerPageOptions={[10]}
           component='div'
-          count={filteredQuestions.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
+          count={props.count}
+          rowsPerPage={props.rowsPerPage}
+          page={props.page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
@@ -253,4 +252,9 @@ EditTestsTable.propTypes = {
   module: PropTypes.any,
   questionId: PropTypes.any,
   status: PropTypes.any,
+  page: PropTypes.any,
+  rowsPerPage: PropTypes.any,
+  setPage: PropTypes.any,
+  setRowsPerPage: PropTypes.any,
+  count: PropTypes.any,
 };

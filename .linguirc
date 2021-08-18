@@ -16,8 +16,8 @@
         "path": "src/components/Test/locales/{locale}/messages",
         "include": "src/pages/Test/"
     }, {
-        "path": "src/pages/Page404/locales/{locale}/messages",
-        "include": "src/pages/Page404/"
+        "path": "src/pages/404/locales/{locale}/messages",
+        "include": "src/pages/404/"
     }, {
         "path": "src/components/TestsForVerificationTable/locales/{locale}/messages",
         "include": "src/components/TestsForVerificationTable/"

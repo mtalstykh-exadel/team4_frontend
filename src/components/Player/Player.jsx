@@ -25,42 +25,47 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
       .catch((err) => {
         console.warn(err);
       });
-  };
 
-  const AudioController = () => {
-    if (document.getElementById(id)) {
-      if (
-        document.getElementById('player-listening') === true &&
-        // eslint-disable-next-line radix
-        parseInt(localStorage.getItem(testAudioAttempts)) < 2
-      ) {
-        AudioStart();
-        localStorage.setItem(
-          testAudioAttempts,
-          // eslint-disable-next-line radix
-          parseInt(localStorage.getItem(testAudioAttempts)) + 1
-        );
-      } else {
-        AudioStart();
-      }
+    setProgressPercent(0);
+    setAudioCurrent(0);
+    setAudioOn(true);
 
-      setProgressPercent(0);
-      setAudioCurrent(0);
-      setAudioOn(true);
-
-      document
-        .getElementById(id)
-        .removeEventListener('timeupdate', AudioProgressBar);
-      document
-        .getElementById(id)
-        .addEventListener('timeupdate', AudioProgressBar);
-    }
+    document
+      .getElementById(id)
+      .removeEventListener('timeupdate', AudioProgressBar);
+    document
+      .getElementById(id)
+      .addEventListener('timeupdate', AudioProgressBar);
   };
 
   const AudioStop = () => {
     if (document.getElementById('player-listening') === null) {
       audioDomElement.pause();
       setAudioOn(false);
+    }
+  };
+
+  const AudioController = () => {
+    if (document.getElementById(id)) {
+      if (
+        document.getElementById('player-listening') &&
+        parseInt(localStorage.getItem(testAudioAttempts), 10) > 0
+      ) {
+        AudioStart();
+        const attempts = parseInt(localStorage.getItem(testAudioAttempts), 10) - 1;
+        localStorage.setItem(testAudioAttempts, attempts.toString());
+      } else {
+        AudioStart();
+      }
+
+      if (
+        document.getElementById('player-listening') &&
+        parseInt(localStorage.getItem(testAudioAttempts), 10) === 0
+      ) {
+        audioDomElement.pause();
+        setAudioOn(false);
+        return;
+      }
     }
   };
 
@@ -95,8 +100,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     if (audioElement.currentTime !== null) {
       if (document.getElementById('player-listening') === null) {
         audioElement.currentTime =
-          (e.nativeEvent.offsetX / e.target.offsetWidth) *
-          audioElement.duration;
+          (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
       }
     }
   };
@@ -144,7 +148,14 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
           loading && !speaking ? (
             <CircularProgress className='border-primary' size='23px' />
           ) : (
-            <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
+            (
+              parseInt(localStorage.getItem(testAudioAttempts), 10) === 0 &&
+              document.getElementById('player-listening') === null
+            ) ? (
+                <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
+              ) : (
+                <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
+              )
           )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium' />

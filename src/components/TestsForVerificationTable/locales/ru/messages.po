@@ -11,68 +11,68 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:72
-msgid "Rows per page:"
-msgstr "Строк на странице:"
-
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:62
-msgid "Verify"
-msgstr "Проверить"
-
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:38
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:59
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:50
-msgid "{0}{1}"
-msgstr "{1}"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:153
-msgid "Save"
-msgstr "Сохранить"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:154
-msgid "Submit"
-msgstr "Отправить"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:61
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:143
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:44
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:126
 msgid "Error messages from the user:"
 msgstr "Сообщения об ошибках от пользователя:"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:145
-msgid "Reported mistakes"
-msgstr "Сообщенные ошибки"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:146
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:246
 msgid "Essay"
 msgstr "Эссе"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:147
-msgid "Speaking"
-msgstr "Говорение"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:78
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:100
-msgid "Topic"
-msgstr "Тема"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:50
-msgid "Module"
-msgstr "Модуль"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:52
-msgid "Question ID"
-msgstr "ID вопроса"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:137
-msgid "Test ID"
-msgstr "ID теста"
-
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:138
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:230
 msgid "Level"
 msgstr "Уровень"
 
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:132
+msgid "Module"
+msgstr "Модуль"
 
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:134
+msgid "Question ID"
+msgstr "ID вопроса"
 
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:240
+msgid "Reported mistakes"
+msgstr "Сообщенные ошибки"
+
+#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:89
+msgid "Rows per page:"
+msgstr "Строк на странице:"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:268
+msgid "Save"
+msgstr "Сохранить"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:252
+msgid "Speaking"
+msgstr "Говорение"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:279
+msgid "Submit"
+msgstr "Отправить"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:229
+msgid "Test ID"
+msgstr "ID теста"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:161
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:185
+msgid "Topic"
+msgstr "Тема"
+
+#: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:37
+msgid "Verify"
+msgstr "Проверить"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:132
+#: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
+msgid "{0}"
+msgstr ""
+
+#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:66
+msgid "{0}{1}"
+msgstr "{1}"

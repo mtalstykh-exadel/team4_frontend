@@ -77,13 +77,13 @@ export const TestsForVerificationModal = (props) => {
 
   const handleSubmit = () => {
     setLoadingSubmit(true);
-    dispatch(requestUnverifiedTests())
+    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
       .then((response) => {
-        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.testId)) {
+        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId)) {
           saveTestGrades(essay)
             .then(() => saveTestGrades(speaking))
             .then(() => submitTestGrades(test.testId))
-            .then(() => dispatch(requestUnverifiedTests()))
+            .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
             .then(() => props.handleClose());
         }
       });
@@ -93,7 +93,7 @@ export const TestsForVerificationModal = (props) => {
     setLoadingSave(true);
     step === 1 && saveTestGrades(essay);
     step === 2 && saveTestGrades(speaking);
-    dispatch(requestUnverifiedTests())
+    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
       .then(() => setLoadingSave(false));
   };
 
@@ -111,11 +111,12 @@ export const TestsForVerificationModal = (props) => {
   useEffect(
     async function () {
       setUrl(
-        await getAudioFile(test.speakingUrl).then((response) => {
-          return URL.createObjectURL(
-            new Blob([response.data], { type: 'audio/ogg' })
-          );
-        })
+        await getAudioFile(test.speakingUrl)
+          .then((response) => {
+            return URL.createObjectURL(
+              new Blob([response.data], { type: 'audio/ogg' })
+            );
+          })
       );
     },
     [setUrl]
@@ -289,4 +290,6 @@ TestsForVerificationModal.propTypes = {
   id: PropTypes.number,
   test: PropTypes.any,
   handleClose: PropTypes.func,
+  rowsPerPage: PropTypes.any,
+  page: PropTypes.any
 };
