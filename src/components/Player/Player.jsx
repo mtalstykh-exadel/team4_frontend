@@ -50,10 +50,10 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     if (document.getElementById(id)) {
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts)) > 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) > 0
       ) {
         AudioStart();
-        const attempts = parseInt(localStorage.getItem(testAudioAttempts)) - 1;
+        const attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
         localStorage.setItem(testAudioAttempts, attempts.toString());
       } else {
         AudioStart();
@@ -61,7 +61,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
 
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts)) === 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) === 0
       ) {
         audioDomElement.pause();
         setAudioOn(false);
@@ -72,7 +72,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
 
   const AudioProgressBar = (e) => {
     const { currentTime } = e.srcElement;
-    const duration = parseInt(localStorage.getItem(AudioDurationInBlobUrl));
+    const duration = parseInt(localStorage.getItem(AudioDurationInBlobUrl), 16);
 
     setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
@@ -159,7 +159,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
         {audioOn === false ? (
           loading && !speaking ? (
             <CircularProgress className='border-primary' size='23px' />
-          ) : parseInt(localStorage.getItem(testAudioAttempts)) === 0 &&
+          ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
             document.getElementById('player-listening') ? (
             <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
           ) : (
