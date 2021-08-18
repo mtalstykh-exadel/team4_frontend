@@ -20,8 +20,14 @@ import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTes
 
 import { getTest } from '../../../api/get-test';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { requestUserTestsHistory } from '../../../store/actions/profileActions';
+
 const TestsData = (props) => {
   const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], minWidth: 50, align: 'center' },
@@ -71,9 +77,29 @@ const TestsData = (props) => {
   let keysForColumns = 1;
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(100);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [count, setCount] = useState(rowsPerPage);
+
+  useEffect(() => {
+    dispatch(requestUserTestsHistory(page, rowsPerPage));
+  }, []);
+
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = () => {
+    dispatch(requestUserTestsHistory(page + 1, rowsPerPage))
+      .then((response) => {
+        console.log(response);
+        if (response !== []) {
+          setCount(count + response.testsHistory.length);
+        }
+      });
+  };
 
   const handleChangePage = (event, newPage) => {
+    dispatch(requestUserTestsHistory(newPage, rowsPerPage));
     setPage(newPage);
   };
 
@@ -108,7 +134,7 @@ const TestsData = (props) => {
           </TableHead>
           <TableBody>
             {
-              filteredRows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+              filteredRows.map((row) => {
                 return (
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
                     {columns.map((column) => {
@@ -175,8 +201,13 @@ const TestsData = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination rowsPerPageOptions={[10]} component='div' count={filteredRows.length} rowsPerPage={rowsPerPage}
-        page={page} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+      <TablePagination
+        rowsPerPageOptions={[10]}
+        component='div' count={count}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
   );
 };
