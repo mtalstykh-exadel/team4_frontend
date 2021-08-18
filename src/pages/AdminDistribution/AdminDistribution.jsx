@@ -21,8 +21,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'StartedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'CompletedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
+    { id: 'Assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -148,16 +148,24 @@ const AdminDistribution = (props) => {
                             width={column.width + 'px'}
                             size='small'
                           >
-                            {column.id === 'StartedAt' ? (
-                              <>
-                                {formatDate(row.startedAt)}
-                              </>
+                            {column.id === 'Assigned' ? (
+                              row?.assigned ? (
+                                <>
+                                  {formatDate(row.assigned)}
+                                </>
+                              ) : ( 
+                                null 
+                              )
                             ) : null}
 
-                            {column.id === 'CompletedAt' ? (
-                              <>
-                                {formatDate(row.completedAt)}
-                              </>
+                            {column.id === 'Deadline' ? (
+                              row?.assigned ? (
+                                <>
+                                  {formatDate(row.deadline)}
+                                </>
+                              ) : ( 
+                                null 
+                              )
                             ) : null}
 
                             {column.id === 'Coach' ? (
