@@ -5,7 +5,7 @@ export const setProfileData = (testsHistory) => ({
   type: SET_USER_TESTS_HISTORY, testsHistory
 });
 
-export const requestUserTestsHistory = () => async (dispatch) => {
-  const data = await getUserTests();
-  dispatch(setProfileData(data));
+export const requestUserTestsHistory = (pageNum, pageSize) => async (dispatch) => {
+  return getUserTests(pageNum, pageSize)
+    .then((response) => dispatch(setProfileData(response)));
 };

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
+import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 
@@ -37,13 +38,31 @@ const AdminDistribution = (props) => {
   let keysForOptions = 1;
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(100);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
+  const [count, setCount] = useState(rowsPerPage);
+
+  useEffect(() => {
+    dispatch(requestQuestionsList(page, rowsPerPage));
+  }, []);
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
+
+  const handleCount = () => {
+    getUnverifiedTests(page + 1, rowsPerPage)
+      .then((response) => {
+        if (response !== []) {
+          setCount(count + response.length);
+        }
+      });
+  };
+
+  useEffect(() => {
+    handleCount();
+  }, []);
 
   let coachNames = [];
 
@@ -52,7 +71,8 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-    dispatch(requestQuestionsList());
+    dispatch(requestQuestionsList(newPage, rowsPerPage));
+    handleCount();
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -99,10 +119,6 @@ const AdminDistribution = (props) => {
     });
   };
 
-  useEffect(() => {
-    dispatch(requestQuestionsList());
-  }, []);
-
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
   setTimeout(() => {
@@ -133,7 +149,6 @@ const AdminDistribution = (props) => {
             </TableHead>
             <TableBody>
               {filteredRows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
                     <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
@@ -218,7 +233,7 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
-          count={filteredRows.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
