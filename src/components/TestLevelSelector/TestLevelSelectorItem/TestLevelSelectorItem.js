@@ -44,7 +44,7 @@ export const TestLevelsSelectorItem = ({
           localStorage.removeItem(testEassyUserAnswers);
           localStorage.removeItem(testListeningUserAnswers);
           localStorage.removeItem(testSpeakingAnswers);
-          localStorage.setItem(testAudioAttempts, 0);
+          localStorage.setItem(testAudioAttempts, 3);
           startTestByLevel(level)
             .then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
