@@ -90,7 +90,7 @@ The statistics do not take into account:
   
  36) [get] /tests/verify/{testId}     - status:  ~~in project~~
 
-## Users Controller
+## Users Controller [all]
  37) [get] /coaches   - status:  ~~in project~~
   
  38) [get] /employees - status:  ~~in project~~ 
