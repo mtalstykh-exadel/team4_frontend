@@ -56,14 +56,14 @@ export const TestsForVerificationTable = () => {
   const handleVerifyTest = (row) => {
     return dispatch(requestUnverifiedTests(page, rowsPerPage))
       .then(() => setTest(row))
-      .then(() => dispatch(requestReports(row.id))
-        .then(() => dispatch(requestGrades(row.id))
-          .then(() => Promise.resolve(setOpen(true)))));
+      .then(() => dispatch(requestReports(row.testId)))
+      .then(() => dispatch(requestGrades(row.testId)))
+      .then(() => Promise.resolve(setOpen(true)));
   };
 
-  const tableHeadCells = rows.map((rowName) => {
+  const tableHeadCells = rows.map((rowName, index) => {
     return (
-      <TableCell key={rowName} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
+      <TableCell key={index} align='left'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
     );
   });
 
@@ -79,7 +79,7 @@ export const TestsForVerificationTable = () => {
             </TableHead>
             <TableBody>{unverifiedTests.map((test, index) => {
               return (
-                <TableRowTest test={test} key={index} handleVerifyTest={handleVerifyTest}/>
+                <TableRowTest test={test} index={index} key={index} handleVerifyTest={handleVerifyTest}/>
               );
             })}
             </TableBody>
@@ -102,8 +102,8 @@ export const TestsForVerificationTable = () => {
           aria-describedby='simple-modal-description'
           className='modal'>
           <div className='modal-content'>
-            {unverifiedTests.find((unverifiedTest) => unverifiedTest.id === test.id) ?
-              <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)}/> :
+            {unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId) ?
+              <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)} page={page} rowsPerPage={rowsPerPage}/> :
               <ModalWindowRemovedFromYourPost handleClose={() => setOpen(false)}/>}
           </div>
         </Modal>
