@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Grammar.scss';
 import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 import { Modal } from '@material-ui/core';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
+// saveEssay
+import { saveListeningAndGrammar } from '../../../api/test-set';
+import { changeArray } from '../SubmitModal/SubmitModalHandler';
 
 export const Grammar = ({ tasks, testModule, reportModule, level, testID, module }) => {
   const [questionText, setQuestionText] = useState('');
   const [questionID, setQuestionID] = useState(0);
   const [open, setOpen] = useState(false);
-
+  const [requests, setRequests] = useState([]);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -19,15 +22,28 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     setOpen(false);
   };
 
-  const saveDataArray = localStorage.getItem(testModule);
+  const answersData = localStorage.getItem(testModule);
+  const [saveDataArray, setSaveDataArray] = useState();
 
   setTimeout(() => {
-    if (saveDataArray !== null) {
-      JSON.parse(saveDataArray).map((item) => {
+    if (answersData !== null) {
+      JSON.parse(answersData).map((item) => {
         document.getElementById(item.domID).checked = true;
       });
     }
   }, 0);
+
+  useEffect(async () => {
+    const promise = await saveListeningAndGrammar(changeArray(saveDataArray));
+    if (promise) {
+      setRequests((prev) => {
+        return [promise, ...prev];
+      });
+      Promise.all(requests).then((res) => {
+        console.log(res);
+      });
+    }
+  }, [saveDataArray]);
 
   let questionCount = 0;
   const questions = tasks.map((question) => {
@@ -35,15 +51,17 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     const options = question.answers.map((questionItem) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
-        <div key={questionItem.answer} className='test-question-option'>
-          <span onClick={() =>
-            testController({
-              testModule,
-              tasks,
-              questionID: question.id,
-              answerID: questionItem.id,
-              domID,
-            })
+        <div key={domID} className='test-question-option'>
+          <span onClick={() => {
+              testController({
+                testModule,
+                tasks,
+                questionID: question.id,
+                answerID: questionItem.id,
+                domID,
+              });
+              setSaveDataArray(JSON.parse(localStorage.getItem(testModule)));
+            }
           }>
             <input
               id={domID}
