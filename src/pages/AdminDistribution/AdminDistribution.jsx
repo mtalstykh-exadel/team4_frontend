@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
+import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 
@@ -21,8 +22,8 @@ const AdminDistribution = (props) => {
 
   const columns = [
     { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'StartedAt', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'CompletedAt', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
+    { id: 'Assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
+    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
     { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
     { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
   ];
@@ -37,13 +38,31 @@ const AdminDistribution = (props) => {
   let keysForOptions = 1;
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(100);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
+  const [count, setCount] = useState(rowsPerPage);
+
+  useEffect(() => {
+    dispatch(requestQuestionsList(page, rowsPerPage));
+  }, []);
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
+
+  const handleCount = () => {
+    getUnverifiedTests(page + 1, rowsPerPage)
+      .then((response) => {
+        if (response !== []) {
+          setCount(count + response.length);
+        }
+      });
+  };
+
+  useEffect(() => {
+    handleCount();
+  }, []);
 
   let coachNames = [];
 
@@ -52,7 +71,8 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-    dispatch(requestQuestionsList());
+    dispatch(requestQuestionsList(newPage, rowsPerPage));
+    handleCount();
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -99,10 +119,6 @@ const AdminDistribution = (props) => {
     });
   };
 
-  useEffect(() => {
-    dispatch(requestQuestionsList());
-  }, []);
-
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
   setTimeout(() => {
@@ -133,7 +149,6 @@ const AdminDistribution = (props) => {
             </TableHead>
             <TableBody>
               {filteredRows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
                     <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
@@ -148,16 +163,24 @@ const AdminDistribution = (props) => {
                             width={column.width + 'px'}
                             size='small'
                           >
-                            {column.id === 'StartedAt' ? (
-                              <>
-                                {formatDate(row.startedAt)}
-                              </>
+                            {column.id === 'Assigned' ? (
+                              row?.assigned ? (
+                                <>
+                                  {formatDate(row.assigned)}
+                                </>
+                              ) : (
+                                null
+                              )
                             ) : null}
 
-                            {column.id === 'CompletedAt' ? (
-                              <>
-                                {formatDate(row.completedAt)}
-                              </>
+                            {column.id === 'Deadline' ? (
+                              row?.assigned ? (
+                                <>
+                                  {formatDate(row.deadline)}
+                                </>
+                              ) : (
+                                null
+                              )
                             ) : null}
 
                             {column.id === 'Coach' ? (
@@ -210,7 +233,7 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
-          count={filteredRows.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

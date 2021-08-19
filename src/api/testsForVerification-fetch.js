@@ -1,7 +1,7 @@
 import axiosInstance from './axios';
 
-const getTestsForVerification = () => {
-  return axiosInstance.get('/tests/unverified_assigned').then((response) => response.data);
+const getTestsForVerification = (pageNum, pageSize) => {
+  return axiosInstance.get(`/tests/unverified_assigned?pageNumb=${pageNum}&pageSize=${pageSize}`).then((response) => response.data);
 };
 
 const getTestForVerification = (testId) => {

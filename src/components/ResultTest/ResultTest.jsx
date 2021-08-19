@@ -75,10 +75,10 @@ const Results = () => {
     const essayComments = test.essayComment;
     const speakingComments = test.speakingComments;
     resultQuote = [
-      <><p>You have passed the English language test at the + {level.toString()} + level.</p><p>{essayComments}</p>
-        <p>{speakingComments}</p><p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
-      <><p>Вы сдали тест по английскому языку на уровне ' + {level.toString()}</p><p>{essayComments}</p>
-        <p>{speakingComments}</p><p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
+      <><p>You have passed the English language test at the {level.toString()} level.</p><p>{ essayComments }</p>
+        <p>{ speakingComments }</p><p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
+      <><p>Вы сдали тест по английскому языку на уровне {level.toString()}</p><p>{ essayComments }</p>
+        <p>{ speakingComments }</p><p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
     ];
   }
 

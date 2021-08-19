@@ -15,6 +15,14 @@ export const ManageListening = (props) => {
 
   const [moduleData, setModuleData] = useState(props.moduleData);
   const [audio, setAudio] = useState(moduleData.url);
+  const [grammarReady, setGrammarReady] = useState({});
+  const [topicReady, setTopicReady] = useState(false);
+
+  useEffect(() => {
+    setModuleData(Object.assign({}, moduleData, {
+      level: props.level
+    }));
+  }, []);
 
   useEffect(
     async function () {
@@ -30,11 +38,21 @@ export const ManageListening = (props) => {
   );
 
   useEffect(() => {
+    if (grammarReady) {
+      if (topicReady) {
+        if (audio) {
+          props.handleReady(true);
+        }
+      }
+    }
+
     props.handleModule(moduleData);
   }, [moduleData]);
 
   useEffect(() => {
-    props.handleAudio(audio);
+    setModuleData(Object.assign({}, moduleData, {
+      url: audio
+    }));
   }, [audio]);
 
   const handleArr = (index) => (value) => {
@@ -67,6 +85,8 @@ export const ManageListening = (props) => {
         <ManageTopic
           moduleDescription='Add topic for a Listening'
           handleModule={handleTopic}
+          handleReady={setTopicReady}
+          dataType={props.dataType}
           moduleData={moduleData.topic} />
         <div className='audio-wrapper'>{audio ?
           <Player
@@ -75,11 +95,12 @@ export const ManageListening = (props) => {
           /> :
           <p><Trans>Upload an audio file for listening task</Trans></p>}
         </div>
-        <Button color='primary' variant='contained' onClick={importData}><Trans>Upload Audio</Trans></Button>
+        <Button disabled={props.dataType} color='primary' variant='contained' onClick={importData}><Trans>Upload Audio</Trans></Button>
       </div>
       {moduleData.questions.map((item, index) => {
         return (
-          <ManageGrammar handleModule={handleArr(index)} questionIndex={index + 1} moduleData={item} key={index} />
+          <ManageGrammar level={props.level} module='Listening' handleModule={handleArr(index)} handleReady={setGrammarReady}
+            questionIndex={index + 1} moduleData={item} dataType={props.dataType} key={index} />
         );
       })}
     </>
@@ -88,6 +109,9 @@ export const ManageListening = (props) => {
 
 ManageListening.propTypes = {
   handleModule: PropTypes.func,
-  handleAudio: PropTypes.func,
-  moduleData: PropTypes.any
+  handleReady: PropTypes.func,
+  moduleData: PropTypes.any,
+  dataType: PropTypes.any,
+  ready: PropTypes.any,
+  level: PropTypes.any
 };

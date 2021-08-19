@@ -1,5 +1,5 @@
-import page404En from '@lingui/loader!./Page404/locales/en/messages.po';
-import page404Ru from '@lingui/loader!./Page404/locales/ru/messages.po';
+import page404En from '@lingui/loader!./404/locales/en/messages.po';
+import page404Ru from '@lingui/loader!./404/locales/ru/messages.po';
 
 import adminDistibuteEn from '@lingui/loader!./AdminDistribution/locales/en/messages.po';
 import adminDistibuteRu from '@lingui/loader!./AdminDistribution/locales/ru/messages.po';

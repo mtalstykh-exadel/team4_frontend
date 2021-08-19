@@ -243,4 +243,8 @@ body {
   .MuiBackdrop-root {
     background-color: rgba(var(--backdrop-color), 0.25);
   }
+
+  .MuiTablePagination-caption {
+    display: none;
+  }
 }

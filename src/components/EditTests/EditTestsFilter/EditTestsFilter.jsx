@@ -14,6 +14,7 @@ import {
   removeQuestionsList, requestListeningQuestionsList, requestQuestion,
   requestQuestionsList
 } from '../../../store/actions/coachActions';
+import { getQuestionsList, getListeningQuestionsList } from '../../../api/questions-requests';
 
 const validation = Yup.object({
   questionId: Yup.number()
@@ -42,11 +43,12 @@ export const EditTestsFilter = (props) => {
       dispatch(removeQuestionsList());
     }
     if (values.level && values.module) {
-      props.setLevel(values.level);
       if (values.module === 'Listening') {
-        dispatch(requestListeningQuestionsList(values.level, values.status));
+        dispatch(requestListeningQuestionsList(values.level, values.status, props.page, props.rowsPerPage));
+        handleCount(getListeningQuestionsList(values.level, values.status, props.page, props.rowsPerPage));
       } else {
-        dispatch(requestQuestionsList(values.level, values.module.toUpperCase(), values.status));
+        dispatch(requestQuestionsList(values.level, values.module.toUpperCase(), values.status, props.page, props.rowsPerPage));
+        handleCount(getQuestionsList(values.level, values.module.toUpperCase(), values.status, props.page, props.rowsPerPage));
       }
     }
     if (values.questionId && values.module) {
@@ -54,7 +56,17 @@ export const EditTestsFilter = (props) => {
     }
     props.setStatus(values.status);
     props.setModule(values.module);
+    props.setLevel(values.level);
     props.setQuestionId(values.questionId);
+  };
+
+  const handleCount = (getList) => {
+    getList
+      .then((response) => {
+        if (response !== []) {
+          props.setCount(props.count + response.length);
+        }
+      });
   };
 
   const formik = useFormik({
@@ -105,4 +117,8 @@ EditTestsFilter.propTypes = {
   setLevel: PropTypes.func,
   setQuestionId: PropTypes.func,
   setStatus: PropTypes.func,
+  page: PropTypes.any,
+  rowsPerPage: PropTypes.any,
+  count: PropTypes.any,
+  setCount: PropTypes.any,
 };

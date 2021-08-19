@@ -29,7 +29,7 @@ export const ManageTest = () => {
     }
     if (location === '/add-test-modules') {
       if (module === 'Listening') {
-        alert(module);
+        console.log(moduleData);
       } else {
         addNewQuestion(moduleData);
       }
@@ -50,6 +50,7 @@ export const ManageTest = () => {
   return (
     <Layout>
       {location === '/edit-test-modules' && !!question && <ManageModule level={question.level} module={parsed.module}
+        dataType={ parsed.status === 'UNARCHIVED' ? false : true}
         sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
       {location === '/add-test-modules' && <ManageModule level='' module='' sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
     </Layout>

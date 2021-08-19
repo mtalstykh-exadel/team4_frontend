@@ -30,9 +30,9 @@ export const ManageModule = (props) => {
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
-  const [audioFile, setAduioFile] = useState();
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [ready, setReady] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -51,7 +51,7 @@ export const ManageModule = (props) => {
       setSubmitting(false);
     }
   };
-  console.log(question);
+
   const formik = useFormik({
     initialValues: { level: props.level, module: props.module },
     validationSchema: null, onSubmit
@@ -59,6 +59,11 @@ export const ManageModule = (props) => {
 
   const removeQuestion = () => {
     dispatch(removeQuestionForEdit());
+  };
+
+  const handleModuleChange = () => {
+    setReady(false);
+    setModuleData('');
   };
 
   return (
@@ -87,7 +92,10 @@ export const ManageModule = (props) => {
                 value={formik.values.module}
                 filterName='module'
                 filterData={filterModules}
-                onChange={formik.handleChange} />
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleModuleChange();
+                }} />
             </>
             : question && <>
               <span className='questionInfo'>Level: {question.level}</span>
@@ -100,13 +108,18 @@ export const ManageModule = (props) => {
           {formik.values.module === 'Grammar' ?
             <ManageGrammar
               handleModule={setModuleData}
+              handleReady={setReady}
               level={formik.values.level}
+              dataType={props.dataType}
               moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : question} />
             : null}
           {formik.values.module === 'Listening' ?
             <ManageListening
               handleModule={setModuleData}
-              handleAudio={setAduioFile}
+              handleReady={setReady}
+              ready={ready}
+              dataType={props.dataType}
+              level={formik.values.level}
               moduleData={location.pathname === '/add-test-modules' ? listeningModuleDataEmpty : question}
             /> : null}
           {formik.values.module === 'Speaking' ?
@@ -114,10 +127,13 @@ export const ManageModule = (props) => {
               moduleDescription={
                 location.pathname === '/add-test-modules'
                   ? <Trans>'Add topic for an Speaking'</Trans>
-                  : <Trans>'Edit topic for an Speaking'</Trans>
+                  : props.dataType ? <Trans>'Topic for an Speaking'</Trans>
+                    : <Trans>'Edit topic for an Speaking'</Trans>
               }
               handleModule={setModuleData}
               level={formik.values.level}
+              dataType={props.dataType}
+              handleReady={setReady}
               module={formik.values.module}
               moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
             /> : null}
@@ -126,10 +142,13 @@ export const ManageModule = (props) => {
               moduleDescription={
                 location.pathname === '/add-test-modules'
                   ? <Trans>'Add topic for an Essay'</Trans>
-                  : <Trans>'Edit topic for an Essay'</Trans>
+                  : props.dataType ? <Trans>'Topic for an Essay'</Trans>
+                    : <Trans>'Edit topic for an Essay'</Trans>
               }
               handleModule={setModuleData}
               level={formik.values.level}
+              handleReady={setReady}
+              dataType={props.dataType}
               module={formik.values.module}
               moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
             /> : null}
@@ -157,7 +176,7 @@ export const ManageModule = (props) => {
               variant='contained'
               type='submit'
               value='submit'
-              disabled={formik.values.module === 'Listening' && !audioFile ? true : false}>
+              disabled={props.dataType ? props.dataType : !ready}>
               <Trans>Save</Trans>
             </Button> : null}
         </div>
@@ -168,6 +187,7 @@ export const ManageModule = (props) => {
 
 ManageModule.propTypes = {
   level: PropTypes.any,
+  dataType: PropTypes.any,
   module: PropTypes.any,
   sendQuestionToEditOrAdd: PropTypes.any,
 };

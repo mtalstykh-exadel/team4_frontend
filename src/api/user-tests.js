@@ -1,7 +1,7 @@
 import axiosInstance from './axios';
 
-const getUserTests = () => {
-  return axiosInstance.get('/tests/').then((response) => response.data);
+const getUserTests = (pageNum, pageSize) => {
+  return axiosInstance.get(`/tests/?pageNumb=${pageNum}&pageSize=${pageSize}`).then((response) => response.data);
 };
 
 export default getUserTests;

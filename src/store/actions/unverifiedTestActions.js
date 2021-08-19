@@ -7,8 +7,8 @@ export const setReports = (test) => ({ type: REQUEST_UNVERIFIED_TEST, test });
 
 export const setGrades = (grades) => ({ type: REQUEST_GRADES, grades });
 
-export const requestUnverifiedTests = () => (dispatch) => {
-  return getTestsForVerification()
+export const requestUnverifiedTests = (pageNum, pageSize) => (dispatch) => {
+  return getTestsForVerification(pageNum, pageSize)
     .then((data) => (dispatch(setUnverifiedTests(data))));
 };
 

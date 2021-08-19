@@ -1,11 +1,14 @@
 # Statistics of executed requests
 
-### in project   - 27
-### in progress  - 13
-### all requests - 40
+### in project   - 35
+### in progress  - 4
+### all requests - 39
 
-## completed by 67% [ in project / all requests * 100]
-
+## completed by 89% [ in project / all requests * 100]
+The statistics do not take into account:
+* unzip; 
+* notifications; 
+* save tests on exit;
 
 ## Answer Controller [all] 
   1) [get] /answer/essay/{testId}     - status: ~~in project~~
@@ -30,25 +33,25 @@
   9) [put] /grades/submit/{testId} - status:  ~~in project~~
  
 ## Error Reports Controller
- 10) [post] /error_reports/   - status: <ins>in progress</ins>
+ 10) [post] /error_reports/   - status: ~~in project~~
   
- 11) [delete] /error_reports/ - status: <ins>in progress</ins>
+ 11) [delete] /error_reports/ - status: ~~in project~~
 
 ## File Controller [all]
  12) [get] /files/{url} - status:  ~~in project~~
 
 ## Question Controller
- 13) [get]  /question/          - status: <ins>in progress</ins>
+ 13) [get]  /question/          - status: ~~in project~~
   
- 14) [post] /question/          - status: <ins>in progress</ins>
+ 14) [post] /question/          - status: ~~in project~~
  
- 15) [get]  /question/{id}      - status: <ins>in progress</ins>
+ 15) [get]  /question/{id}      - status: ~~in project~~
 
- 16) [put]  /question/{id}      - status: <ins>in progress</ins>
+ 16) [put]  /question/{id}      - status: ~~in project~~
   
- 17) [delete]  /question/{id}   - status: <ins>in progress</ins>
+ 17) [delete]  /question/{id}   - status: ~~in project~~
 
- 18) [get] /question/listening  - status: <ins>in progress</ins>
+ 18) [get] /question/listening  - status: ~~in project~~
   
  19) [post] /question/listening - status: <ins>in progress</ins>
 
@@ -56,42 +59,40 @@
   
  21) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
- 22) [put] /question/listening/{contentFileId} - status: <ins>in progress</ins>
+ 22) [delete] /question/listening/{contentFileId} - status: <ins>in progress</ins>
 
 ## Tests Controller [all]
- 21) [get] /tests/         - status:  ~~in project~~
+ 23) [get] /tests/         - status:  ~~in project~~
   
- 22) [get] /tests/{id}     - status:  ~~in project~~
+ 24) [get] /tests/{id}     - status:  ~~in project~~
   
- 23) [post] /tests/assign_coach/{testId}   - status:  ~~in project~~
+ 25) [post] /tests/assign_coach/{testId}   - status:  ~~in project~~
   
- 24) [post] /tests/assign/{userId}         - status:  ~~in project~~
+ 26) [post] /tests/assign/{userId}         - status:  ~~in project~~
 
- 25) [post] /tests/deassign_coach/{testId} - status:  ~~in project~~
+ 27) [post] /tests/deassign_coach/{testId} - status:  ~~in project~~
   
- 26) [post] /tests/deassign/{testId}       - status:  ~~in project~~
+ 28) [post] /tests/deassign/{testId}       - status:  ~~in project~~
 
- 27) [post] /tests/finish/{testId}  - status:  ~~in project~~
+ 29) [post] /tests/finish/{testId}  - status:  ~~in project~~
   
- 28) [get]  /tests/grades/{testId}  - status:  ~~in project~~
+ 30) [get]  /tests/grades/{testId}  - status:  ~~in project~~
   
- 29) [get]  /tests/history/{userId} - status:  ~~in project~~
+ 31) [get]  /tests/history/{userId} - status:  ~~in project~~
 
- 30) [post] /tests/start          - status:  ~~in project~~
+ 32) [post] /tests/start          - status:  ~~in project~~
   
- 31) [post] /tests/start/{testId} - status:  ~~in project~~
+ 33) [post] /tests/start/{testId} - status:  ~~in project~~
 
- 32) [get] /tests/unverified          - status:  ~~in project~~
+ 34) [get] /tests/unverified          - status:  ~~in project~~
   
- 33) [get] /tests/unverified_assigned - status: ~~in project~~
+ 35) [get] /tests/unverified_assigned - status: ~~in project~~
   
- 34) [get] /tests/verify/{testId}     - status:  ~~in project~~
+ 36) [get] /tests/verify/{testId}     - status:  ~~in project~~
 
-## Users Controller
- 35) [get] /coaches   - status:  ~~in project~~
+## Users Controller [all]
+ 37) [get] /coaches   - status:  ~~in project~~
   
- 36) [get] /employees - status:  ~~in project~~ 
+ 38) [get] /employees - status:  ~~in project~~ 
   
- 37) [put] /language  - status:  ~~in project~~
-  
- 38) [get] /users     - status: <ins>in progress</ins>
+ 39) [put] /language  - status:  ~~in project~~

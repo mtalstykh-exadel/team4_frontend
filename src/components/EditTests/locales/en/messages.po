@@ -11,15 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:65
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:123
 msgid "Add question"
 msgstr "Add question"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:94
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
+msgid "Add topic"
+msgstr "Add topic"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:214
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:71
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:110
 msgid "In field 'Question Id' must be a number"
 msgstr "In field 'Question Id' must be a number"
 
@@ -27,7 +31,7 @@ msgstr "In field 'Question Id' must be a number"
 #~ msgid "Invalid email"
 #~ msgstr "Invalid email"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:50
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:85
 msgid "Level"
 msgstr "Level"
 
@@ -35,20 +39,24 @@ msgstr "Level"
 #~ msgid "Log in"
 #~ msgstr "Log in"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:57
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:92
 msgid "Module"
 msgstr "Module"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:52
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:59
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:87
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:94
 msgid "None"
 msgstr "None"
+
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
+msgid "Not archived"
+msgstr "Not archived"
 
 #: src/components/LoginForm/LoginForm.jsx:51
 #~ msgid "Password"
 #~ msgstr "Password"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:63
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
 msgid "Question ID"
 msgstr "Question ID"
 
@@ -57,22 +65,27 @@ msgstr "Question ID"
 #~ msgid "Required field"
 #~ msgstr "Required field"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:105
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:236
 msgid "Rows per page:"
 msgstr "Rows per page:"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:68
-msgid "Search"
-msgstr "Search"
+#~ msgid "Search"
+#~ msgstr "Search"
 
 #: src/components/EditTests/EditTests.jsx:20
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Select the option at the top to see the questions."
 
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
+msgid "Status"
+msgstr "Status"
+
 #: src/components/LoginForm/LoginForm.jsx:53
 #~ msgid "Your email or password is incorrect. Please try again"
 #~ msgstr "Your email or password is incorrect. Please try again"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:74
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:154
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:169
 msgid "{0}{1}"
 msgstr "{0}"

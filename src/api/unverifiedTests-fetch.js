@@ -1,7 +1,7 @@
 import axiosInstance from './axios';
 
-const getUnverifiedTests = () => {
-  return axiosInstance.get('/tests/unverified/').then((response) => response.data);
+const getUnverifiedTests = (pageNum, pageSize) => {
+  return axiosInstance.get(`/tests/unverified?pageNumb=${pageNum}&pageSize=${pageSize}`).then((response) => response.data);
 };
 
 const postAssignCoach = (testId, coachId) => {
