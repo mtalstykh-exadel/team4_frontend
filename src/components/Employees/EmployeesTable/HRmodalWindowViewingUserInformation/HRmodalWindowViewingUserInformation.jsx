@@ -9,6 +9,8 @@ import { Trans } from '@lingui/macro';
 
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import {
   InputLabel,
@@ -28,11 +30,40 @@ import { formatDate } from '../../../../utils/data-formatter';
 import './HRmodalWindowViewingUserInformation.scss';
 import { filterLevelsShort, userHistoryHeader } from '../../../../constants/filterConstants';
 
+import { getEmployeeHistory } from '../../../../api/employees-fetch';
+import { requestEmployeeHistory } from '../../../../store/actions/employeesActions';
+
 export const HRmodalWindowViewingUserInformation = (props) => {
+
+  const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(3);
+  const [count, setCount] = useState(rowsPerPage);
+  const [filter, setFilter] = useState('');
+
+  const employee = useSelector((state) => state.employee);
+
+  useEffect(() => handleCount(), [employee]);
+  const handleCount = (newPage = page, filters = filter) => {
+    getEmployeeHistory(props.test.id, filters, newPage + 1, rowsPerPage)
+      .then((response) => {
+        if (response.length > 0 ) {
+          setCount(count + response.length);
+        }
+      });
+  };
+
+  const handleFilter = (filters) => {
+    setFilter(filters);
+    setPage(0);
+    setCount(rowsPerPage);
+    dispatch(requestEmployeeHistory(props.test.id, filters, 0, rowsPerPage));
+    handleCount(0, filters);
+  };
 
   const handleChangePage = (event, newPage) => {
+    dispatch(requestEmployeeHistory(props.test.id, filter, newPage, rowsPerPage));
+    handleCount(newPage);
     setPage(newPage);
   };
 
@@ -40,15 +71,6 @@ export const HRmodalWindowViewingUserInformation = (props) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-
-  const employee = useSelector((state) => state.employee);
-
-  const [filter, setFilter] = React.useState('');
-
-
-  const filterEmployees = employee ? employee
-    .filter((el) => filter ? filter.toLowerCase() === el.level.toLowerCase() : el)
-    : [];
 
   const modalBody = <>
     <div className='info'>
@@ -61,10 +83,10 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       </div>
     </div>
     <FormControl variant='outlined' className='level-select' size='small'>
-      <InputLabel id='select-label'><Trans>Level</Trans></InputLabel>
-      <Select labelId='select-label' label='Select the test level' id='select' className='ggr'>
+      <InputLabel id='select-label' htmlFor='level'><Trans>Level</Trans></InputLabel>
+      <Select labelId='select-label' label='Select the test level' inputProps={{ name: '' }} defaultValue='' id='select'>
         {filterLevelsShort.map((item, index) => {
-          return <MenuItem key={index} value={index} className='item' onClick={() => setFilter(item)}> {item}</MenuItem>;
+          return <MenuItem key={index} value={item} className='item' onClick={() => handleFilter(item)}> {item}</MenuItem>;
         })}
       </Select>
     </FormControl>
@@ -80,7 +102,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
+          {employee.map((row, index) => {
             {
               if (row.status !== 'ASSIGNED') {
                 return (
@@ -114,7 +136,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
     <TablePagination
       className='base-color-elevated font-primary'
       component='div'
-      count={filterEmployees.length}
+      count={count}
       rowsPerPage={rowsPerPage}
       rowsPerPageOptions={[]}
       labelRowsPerPage=''
@@ -131,7 +153,12 @@ export const HRmodalWindowViewingUserInformation = (props) => {
   return (
     <Modal
       open={props.open}
-      onClose={props.handleClose}
+      onClose={() => {
+        props.handleClose();
+        setCount(rowsPerPage);
+        setPage(0);
+        setFilter('');
+      }}
       BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'

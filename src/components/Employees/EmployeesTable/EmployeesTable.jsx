@@ -107,7 +107,7 @@ export const EmployeesTable = (props) => {
 
   const handleHistory = (test) => {
     return Promise.resolve(setEmployee(test))
-      .then(() => dispatch(requestEmployeeHistory(test.id)))
+      .then(() => dispatch(requestEmployeeHistory(test.id, '', 0, 3)))
       .then(() => setOpenHistory(true));
   };
 

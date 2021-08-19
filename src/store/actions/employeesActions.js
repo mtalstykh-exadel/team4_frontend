@@ -9,8 +9,8 @@ export const requestEmployeesList = (pageNum, pageSize) => (dispatch) => {
     .then((data) => (dispatch(setEmployeesList(data))));
 };
 
-export const requestEmployeeHistory = (name) => (dispatch) => {
-  return getEmployeeHistory(name)
+export const requestEmployeeHistory = (name, level, page, rowsPerPage) => (dispatch) => {
+  return getEmployeeHistory(name, level, page, rowsPerPage)
     .then((data) => (dispatch(setEmployee(data))));
 };
 
