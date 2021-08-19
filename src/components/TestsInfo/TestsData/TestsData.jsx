@@ -17,6 +17,7 @@ import { startTestById } from '../../../api/start-test';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
+import { ModalWindowTestCanceled } from '../ModalWindowTestCanceled/ModalWindowTestCanceled';
 
 import { getTest } from '../../../api/get-test';
 
@@ -80,6 +81,8 @@ const TestsData = (props) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [count, setCount] = useState(rowsPerPage);
+  const [open, setOpen] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
 
   useEffect(() => {
     dispatch(requestUserTestsHistory(page, rowsPerPage));
@@ -111,7 +114,6 @@ const TestsData = (props) => {
 
   const [loading, setLoading] = useState(false);
 
-  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -123,6 +125,7 @@ const TestsData = (props) => {
     <Paper elevation={2}>
       <TableContainer>
         <UserModalWindowBanningTest open={open} handleClose={handleClose}/>
+        <ModalWindowTestCanceled open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
@@ -169,6 +172,8 @@ const TestsData = (props) => {
                                           setLoading(false);
                                           if (err.code === 409) {
                                             handleOpen();
+                                          } else if (err.response.status === 404) {
+                                            setOpenDeassigned(true);
                                           }
                                         });
                                     }
