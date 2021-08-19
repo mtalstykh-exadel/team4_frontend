@@ -18,3 +18,20 @@
     margin-top: 30px;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .modal-remove-post {
+    width: 460px;
+
+    .text {
+      font-size: 11px;
+    }
+
+    .MuiButton-root {
+      height: 14px;
+      width: 45px;
+      margin-left: 91%;
+      margin-top: 15px;
+    }
+  }
+}
