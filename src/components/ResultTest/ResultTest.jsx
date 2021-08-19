@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import { CircularProgress } from '@material-ui/core';
 
 import { getResultTest } from '../../api/result-test';
-import { getTest } from '../../api/get-test';
+
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import { Trans } from '@lingui/macro';
@@ -19,7 +19,7 @@ const Results = () => {
     const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
 
     if ( test === 0 ) {
-      await getTest(idTest).then((res) => setTest(res));
+      await getResultTest(idTest).then((res) => setTest(res));
     }
 
     if ( result === undefined ) {
