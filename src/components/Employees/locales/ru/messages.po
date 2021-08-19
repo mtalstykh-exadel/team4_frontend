@@ -17,11 +17,16 @@ msgstr ""
 
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:103
 msgid "Assign"
-msgstr ""
+msgstr "Назначить"
 
 #: src/components/Employees/EmployeesTable/TableEmployeeRow/TableEmployeeRow.js:47
 msgid "Assign test"
 msgstr "Назначить тест"
+
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:26
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:27
+msgid "Close"
+msgstr "Закрыть"
 
 #: src/components/Employees/EmployeesTable/TableEmployeeRow/TableEmployeeRow.js:35
 msgid "Deassign"
@@ -29,7 +34,7 @@ msgstr "Отменить тест"
 
 #: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:28
 msgid "Do you want to deassign?"
-msgstr ""
+msgstr "Вы уверены, что хотите отменить тест?"
 
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:60
 msgid "Email: {0}"
@@ -44,6 +49,10 @@ msgstr "Уровень"
 msgid "Name"
 msgstr "Имя"
 
+#: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:31
+msgid "No"
+msgstr "Нет"
+
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:85
 msgid "Priority:"
 msgstr "Приоритет:"
@@ -56,9 +65,25 @@ msgstr "Выбрать уровень теста:"
 msgid "Test deadline:"
 msgstr "Крайний срок:"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:26
+msgid "Test was deassigned"
+msgstr "Тест был отменен"
+
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:24
+msgid "The test has already been assigned to this employee"
+msgstr "Тест уже был назначен этому сотруднику"
+
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:25
+msgid "The test has already been deassigned"
+msgstr "Тест был отменен"
+
+#: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:30
+msgid "Yes"
+msgstr "Да"
+
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:50
 msgid "You want to assign a test for {0}"
-msgstr ""
+msgstr "Вы хотите назначить тест для {0}"
 
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:15
 #~ msgid "You want to assign a test for {name}"

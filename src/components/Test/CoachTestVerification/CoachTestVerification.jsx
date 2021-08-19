@@ -1,11 +1,14 @@
 import React from 'react';
-import '../../../styles/modal.scss';
-import CloseIcon from '@material-ui/icons/Close';
-import { IconButton, Modal } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+
+import CloseIcon from '@material-ui/icons/Close';
+import { IconButton, Modal, Paper } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+
+import '../../../styles/modal.scss';
 import './CoachTestVerification.scss';
-import { Paper } from '@material-ui/core';
+
+import { Trans } from '@lingui/macro';
 
 export const CoachTestVerification = () => {
   const [open, setOpen] = React.useState(true);
@@ -27,8 +30,8 @@ export const CoachTestVerification = () => {
             <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
               <CloseIcon className='close-icon'/>
             </IconButton>
-            <div className='test-ver'>This test is currently in the verification status</div>
-            <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
+            <div className='test-ver'><Trans>This test is currently in the verification status</Trans></div>
+            <Button variant='outlined' color='primary' onClick={handleClose}><Trans>Close</Trans></Button>
           </div>
         </div>
       </Modal>
@@ -37,6 +40,6 @@ export const CoachTestVerification = () => {
 };
 
 CoachTestVerification.propTypes =
-  {
-    status: PropTypes.bool,
-  };
+{
+  status: PropTypes.bool,
+};

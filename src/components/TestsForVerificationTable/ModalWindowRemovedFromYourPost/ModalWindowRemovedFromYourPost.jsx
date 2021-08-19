@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import '../../../styles/modal.scss';
 import Button from '@material-ui/core/Button';
-import {Paper} from '@material-ui/core';
+import { Paper } from '@material-ui/core';
+
+import '../../../styles/modal.scss';
 import './ModalWindowRemovedFromYourPost.scss';
+
+import { Trans } from '@lingui/macro';
 
 export const ModalWindowRemovedFromYourPost = (props) => {
 
@@ -12,9 +15,9 @@ export const ModalWindowRemovedFromYourPost = (props) => {
     <Paper elevation={2}>
       <div className='modal-content'>
         <div className='modal-remove-post'>
-          <div className='text'>You have been deassigned from the test</div>
+          <div className='text'><Trans>You have been deassigned from the test</Trans></div>
           <div className='btn'>
-            <Button variant='outlined' color='primary' onClick={props.handleClose}>Close</Button>
+            <Button variant='outlined' color='primary' onClick={props.handleClose}><Trans>Close</Trans></Button>
           </div>
         </div>
       </div>

@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Paper, Modal } from '@material-ui/core';
+import { Paper, Modal, Backdrop } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 import '../../../styles/modal.scss';
 import './ModalWindowCannotAssign.scss';
+
+import { Trans } from '@lingui/macro';
+
 
 export const ModalWindowWarningCannotDeassign = (props) => {
 
@@ -13,15 +16,16 @@ export const ModalWindowWarningCannotDeassign = (props) => {
     <Modal
       open={props.open}
       onClose={props.handleClose}
+      BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
       <Paper elevation={2}>
         <div className='modal-content'>
-          <div className='modal-remove-post'>
-            <div className='text'>The test has already been deassigned</div>
+          <div className='modal-remove'>
+            <div className='text'><Trans>The test has already been deassigned</Trans></div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={props.handleClose}>Close</Button>
+              <Button variant='outlined' color='primary' onClick={props.handleClose}><Trans>Close</Trans></Button>
             </div>
           </div>
         </div>
@@ -31,7 +35,7 @@ export const ModalWindowWarningCannotDeassign = (props) => {
 };
 
 ModalWindowWarningCannotDeassign.propTypes =
-  {
-    open: PropTypes.bool,
-    handleClose: PropTypes.func
-  };
+{
+  open: PropTypes.bool,
+  handleClose: PropTypes.func
+};

@@ -57,7 +57,7 @@ export const TestsForVerificationModal = (props) => {
   const handleEssayGrade = (grade) => {
     setEssay({
       ...essay,
-      grade: grade,
+      grade,
     });
   };
 
@@ -71,7 +71,7 @@ export const TestsForVerificationModal = (props) => {
   const handleSpeakingGrade = (grade) => {
     setSpeaking({
       ...speaking,
-      grade: grade,
+      grade,
     });
   };
 

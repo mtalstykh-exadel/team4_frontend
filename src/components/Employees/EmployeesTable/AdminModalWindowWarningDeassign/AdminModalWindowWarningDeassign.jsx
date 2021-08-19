@@ -22,8 +22,8 @@ export const AdminModalWindowWarningDeassign = (props) => {
         <div className='admin-modal-w-warning'>
           <div className='warning-question'><Trans>Do you want to deassign?</Trans></div>
           <div className='choice-buttons'>
-            <Button variant='outlined' color='primary'>Yes</Button>
-            <Button variant='contained' color='primary'>No</Button>
+            <Button variant='outlined' color='primary'><Trans>Yes</Trans></Button>
+            <Button variant='contained' color='primary'><Trans>No</Trans></Button>
           </div>
         </div>
       </div>

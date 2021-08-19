@@ -100,7 +100,7 @@ export const EditTestsFilter = (props) => {
           <InputLabel htmlFor='status'><Trans>Status</Trans></InputLabel>
           <Select name='status' label='module' value={formik.values.status} inputProps={{ name: 'status' }} onChange={formik.handleChange}>
             <MenuItem value='UNARCHIVED' className='edit-tests-option edit-tests-option-none'><Trans>Not archived</Trans></MenuItem>
-            <MenuItem className='edit-tests-option' value='ARCHIVED'>Archived</MenuItem>
+            <MenuItem className='edit-tests-option' value='ARCHIVED'><Trans>Archived</Trans></MenuItem>
           </Select>
         </FormControl>
         <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'
