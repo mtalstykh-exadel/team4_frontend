@@ -18,3 +18,4 @@ export const reportAMistakeEssay = 'report=Essay';
 export const reportAMistakeListening = 'report=Listening';
 export const reportAMistakeGrammar = 'report=Grammar';
 
+export const AudioDurationInBlobUrl = 'audio=durationInBlobUrl';

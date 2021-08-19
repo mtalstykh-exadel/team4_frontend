@@ -38,7 +38,7 @@ const saveBlobUrl = ({ testModule, duration }) => {
 
   localStorage.setItem(
     testModule,
-    JSON.stringify({ blob: blobURL, duration })
+    JSON.stringify({ blob: blobURL })
   );
 
   return duration;
