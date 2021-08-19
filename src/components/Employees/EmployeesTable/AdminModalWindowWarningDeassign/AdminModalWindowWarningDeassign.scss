@@ -21,3 +21,26 @@
     }
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .admin-modal-w-warning {
+    width: 320px;
+    height: 110px;
+
+    .warning-question {
+      font-size: 13px;
+    }
+
+    .choice-buttons {
+      padding-top: 12%;
+      padding-left: 42%;
+
+      .MuiButtonBase-root {
+        width: 55px;
+        height: 12px;
+        margin-right: 5px;
+        font-size: 9px;
+      }
+    }
+  }
+}
