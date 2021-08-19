@@ -83,12 +83,12 @@ export const EmployeesTable = (props) => {
       .then((state) => {
         const newEmployee = state.employee.find((x) => x.name === test.name);
         if (newEmployee && newEmployee.assignedTest) {
-          deassignTest(test.assignedTest.testId)
-            .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
+          deassignTest(test.assignedTest.testId);
         } else {
           setOpenDeassigned(true);
         }
-      });
+      })
+      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
   };
 
   const handleAssign = (test) => {
@@ -147,10 +147,23 @@ export const EmployeesTable = (props) => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        {<ModalWindowWarningCannotAssign open={openAssigned} handleClose={() => setOpenAssigned(false)}/>}
-        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)} page={page} rowsPerPage={rowsPerPage}/>}
-        {<HRmodalWindowViewingUserInformation test={employee} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
-        {<ModalWindowWarningCannotDeassign open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
+        {<ModalWindowWarningCannotAssign
+          open={openAssigned}
+          handleClose={() => setOpenAssigned(false)}/>}
+        {<HRmodalWindowTestAssignment
+          test={employee}
+          open={openAssign}
+          handleClose={() => setOpenAssign(false)}
+          setOpenCantAssign={() => setOpenAssigned(true)}
+          page={page}
+          rowsPerPage={rowsPerPage}/>}
+        {<HRmodalWindowViewingUserInformation
+          test={employee}
+          open={openHistory}
+          handleClose={() => setOpenHistory(false)}/>}
+        {<ModalWindowWarningCannotDeassign
+          open={openDeassigned}
+          handleClose={() => setOpenDeassigned(false)}/>}
       </Paper>
     </div>
   );
