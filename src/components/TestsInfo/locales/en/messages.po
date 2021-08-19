@@ -11,6 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:30
+msgid "Close"
+msgstr "Close"
+
 #: src/components/TestsInfo/TestsData/TestsData.jsx:192
 msgid "Continue"
 msgstr "Continue"
@@ -27,11 +31,15 @@ msgstr "Level"
 msgid "Take Test"
 msgstr "Take Test"
 
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
+msgid "The test was canceled"
+msgstr "The test was canceled"
+
 #: src/components/TestsInfo/TestsData/TestsData.jsx:183
 msgid "View Results"
 msgstr "View Results"
 
-#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:22
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:25
 msgid "You can't take the test anymore today."
 msgstr "You can't take the test anymore today."
 

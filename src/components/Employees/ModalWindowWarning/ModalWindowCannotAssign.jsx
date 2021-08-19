@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import '../../../styles/buttons.scss';
 import './ModalWindowCannotAssign.scss';
 
+import { Trans } from '@lingui/macro';
+
 export const ModalWindowWarningCannotAssign = (props) => {
 
   return (
@@ -19,9 +21,9 @@ export const ModalWindowWarningCannotAssign = (props) => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove'>
-            <div className='text-modal'>The test has already been assigned to this employee</div>
+            <div className='text-modal'><Trans>The test has already been assigned to this employee</Trans></div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'>Close</Button>
+              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close<Trans/></Trans></Button>
             </div>
           </div>
         </div>

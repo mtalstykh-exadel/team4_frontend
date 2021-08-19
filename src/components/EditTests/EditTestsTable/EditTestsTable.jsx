@@ -89,7 +89,7 @@ export const EditTestsTable = (props) => {
     history.push({
       pathname: path,
       search: queryString.stringify({
-        id: id,
+        id,
         module: props.module,
       }),
     });

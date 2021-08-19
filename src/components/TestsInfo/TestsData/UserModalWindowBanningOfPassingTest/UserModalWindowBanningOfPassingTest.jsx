@@ -1,10 +1,13 @@
 import React from 'react';
-import '../../../../styles/modal.scss';
+
 import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { Trans } from '@lingui/macro';
+
+import '../../../../styles/modal.scss';
 import './UserModalWindowBanningOfPassingTest.scss';
+
+import { Trans } from '@lingui/macro';
 
 export const UserModalWindowBanningTest = (props) => {
 
@@ -17,7 +20,7 @@ export const UserModalWindowBanningTest = (props) => {
       className='modal'>
       <div className='modal-content base-color user-modal'>
         <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
-          <CloseIcon className='close-icon icons-color'/>
+          <CloseIcon className='close-icon icons-color' />
         </IconButton>
         <div className='banning-text'><Trans>You can't take the test anymore today.</Trans></div>
       </div>
@@ -26,7 +29,7 @@ export const UserModalWindowBanningTest = (props) => {
 };
 
 UserModalWindowBanningTest.propTypes =
-  {
-    open: PropTypes.bool,
-    handleClose: PropTypes.func
-  };
+{
+  open: PropTypes.bool,
+  handleClose: PropTypes.func
+};

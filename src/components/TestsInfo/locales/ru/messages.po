@@ -11,9 +11,13 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:30
+msgid "Close"
+msgstr "Закрыть"
+
 #: src/components/TestsInfo/TestsData/TestsData.jsx:192
 msgid "Continue"
-msgstr ""
+msgstr "Продолжить"
 
 #: src/components/ProfileInfo/ProfileInfo.jsx:18
 #~ msgid "E-mail: "
@@ -25,13 +29,17 @@ msgstr "Уровень"
 
 #: src/components/TestsInfo/TestsData/TestsData.jsx:176
 msgid "Take Test"
-msgstr ""
+msgstr "Начать тест"
+
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
+msgid "The test was canceled"
+msgstr "Тест был отменен"
 
 #: src/components/TestsInfo/TestsData/TestsData.jsx:183
 msgid "View Results"
-msgstr ""
+msgstr "Смотреть результаты"
 
-#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:22
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:25
 msgid "You can't take the test anymore today."
 msgstr "Вы не можете пройти тест сегодня"
 

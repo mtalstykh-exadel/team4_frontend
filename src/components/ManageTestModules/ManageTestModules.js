@@ -100,9 +100,9 @@ export const ManageModule = (props) => {
                 onChange={formik.handleChange} />
             </>
             : question && <>
-              <span className='questionInfo'>Level: {question.level}</span>
-              <span className='questionInfo'>Module: {question.module}</span>
-              <span className='questionInfo'>Question-ID: {question.id}</span>
+              <span className='questionInfo'><Trans>Level: </Trans>{question.level}</span>
+              <span className='questionInfo'><Trans>Module: </Trans>{question.module}</span>
+              <span className='questionInfo'><Trans>Question-ID: </Trans>{question.id}</span>
             </>
           }
         </div>
