@@ -54,18 +54,18 @@ const AdminDistribution = (props) => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
-  const handleCount = () => {
-    getUnverifiedTests(page + 1, rowsPerPage)
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getUnverifiedTests(newPage + 1, rowsPerPage)
       .then((response) => {
         if (response !== []) {
           setCount(count + response.length);
         }
       });
   };
-
-  useEffect(() => {
-    handleCount();
-  }, []);
 
   let coachNames = [];
 
@@ -75,7 +75,7 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount();
+    handleCount(newPage);
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {

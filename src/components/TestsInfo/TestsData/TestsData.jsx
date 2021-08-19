@@ -92,10 +92,10 @@ const TestsData = (props) => {
     handleCount();
   }, []);
 
-  const handleCount = () => {
-    getUserTests(page + 1, rowsPerPage)
+  const handleCount = (newPage = page) => {
+    getUserTests(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
+        if (response.length > 0) {
           setCount(count + response.length);
         }
       });
@@ -103,7 +103,7 @@ const TestsData = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestUserTestsHistory(newPage, rowsPerPage));
-    handleCount();
+    handleCount(newPage);
     setPage(newPage);
   };
 

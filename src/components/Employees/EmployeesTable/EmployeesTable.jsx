@@ -43,19 +43,26 @@ export const EmployeesTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [count, setCount] = useState(rowsPerPage);
 
+  const [employee, setEmployee] = useState([]);
+
+  const [openAssign, setOpenAssign] = useState(false);
+  const [openHistory, setOpenHistory] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
+  const [openAssigned, setOpenAssigned] = useState(false);
+
   const handleCount = (newPage = page) => {
     getEmployeesList(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
+        if (response.length > 0) {
           setCount(count + response.length);
         }
       });
   };
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-    dispatch(requestEmployeesList(newPage, rowsPerPage));
     handleCount(newPage);
+    dispatch(requestEmployeesList(newPage, rowsPerPage));
+    setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -70,13 +77,6 @@ export const EmployeesTable = (props) => {
   useEffect(() => {
     handleCount();
   }, []);
-
-  const [employee, setEmployee] = useState([]);
-
-  const [openAssign, setOpenAssign] = useState(false);
-  const [openHistory, setOpenHistory] = useState(false);
-  const [openDeassigned, setOpenDeassigned] = useState(false);
-  const [openAssigned, setOpenAssigned] = useState(false);
 
   const handleDeassign = (test) => {
     return dispatch(requestEmployeesList(page, rowsPerPage))
@@ -125,7 +125,7 @@ export const EmployeesTable = (props) => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((filterEmployee, index ) => {
+            <TableBody>{filterEmployees.map((filterEmployee, index ) => {
               return (
                 <TableEmployeeRow
                   key={index}
@@ -141,7 +141,7 @@ export const EmployeesTable = (props) => {
         <TablePagination
           rowsPerPageOptions={[10]}
           component='div'
-          count={filterEmployees.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
