@@ -2,10 +2,9 @@ import React from 'react';
 import '../../../../styles/modal.scss';
 import PropTypes from 'prop-types';
 
-import CloseIcon from '@material-ui/icons/Close';
-import { FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
+import {FormControl, MenuItem, Select} from '@material-ui/core';
 
-import { Trans } from '@lingui/macro';
+import {Trans} from '@lingui/macro';
 
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -26,9 +25,9 @@ import {
   TableRow
 } from '@material-ui/core';
 
-import { formatDate } from '../../../../utils/data-formatter';
+import {formatDate} from '../../../../utils/data-formatter';
 import './HRmodalWindowViewingUserInformation.scss';
-import { filterLevelsShort, userHistoryHeader } from '../../../../constants/filterConstants';
+import {filterLevelsShort, userHistoryHeader} from '../../../../constants/filterConstants';
 
 import { getEmployeeHistory } from '../../../../api/employees-fetch';
 import { requestEmployeeHistory } from '../../../../store/actions/employeesActions';
@@ -90,7 +89,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
         })}
       </Select>
     </FormControl>
-    <TableContainer >
+    <TableContainer>
       <Table stickyHeader aria-label='sticky table'>
         <TableHead>
           <TableRow>
@@ -107,24 +106,80 @@ export const HRmodalWindowViewingUserInformation = (props) => {
               if (row.status !== 'ASSIGNED') {
                 return (
                   <TableRow key={index} className='row'>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.startedAt)}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.level}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {formatDate(row.startedAt)}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.status}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.result}
+                    </TableCell>
                   </TableRow>
                 );
-              } else
-              {
+              } else {
                 return (
                   <TableRow key={index} className='row'>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.assigned)}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.deadline)}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.level}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {formatDate(row.assigned)}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {formatDate(row.deadline)}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.status}
+                    </TableCell>
+                    <TableCell
+                      className='base-color-elevated font-primary'
+                      align='left'
+                      size='small'>
+                      {row.result}
+                    </TableCell>
                   </TableRow>
                 );
               }
@@ -165,9 +220,6 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       className='modal'>
       <div className='modal-content base-color'>
         <div className='hr-modal-view-user-info'>
-          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
-            <CloseIcon className='close-icon icons-color'/>
-          </IconButton>
           {modalBody}
         </div>
       </div>

@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
-import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
+import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers, testAudioAttempts } from '../../../constants/localStorageConstants';
 import { startTestById } from '../../../api/start-test';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
@@ -162,6 +162,7 @@ const TestsData = (props) => {
                                       localStorage.removeItem(testEassyUserAnswers);
                                       localStorage.removeItem(testListeningUserAnswers);
                                       localStorage.removeItem(testSpeakingAnswers);
+                                      localStorage.setItem(testAudioAttempts, 3);
                                       startTestById(row.testId)
                                         .then((response) => {
                                           localStorage.setItem(currentTest, JSON.stringify(response));
@@ -190,9 +191,14 @@ const TestsData = (props) => {
                                     :
                                     <Button className='button-standard' color='primary' variant='contained'
                                       onClick={() => {
+                                        setLoading(true);
                                         getTest(row.testId)
-                                          .then((response) => localStorage.setItem(currentTest, JSON.stringify(response)));
-                                        history.push('/test');
+                                          .then((response) => {
+                                            localStorage.setItem(testAudioAttempts, 1);
+                                            localStorage.setItem(currentTest, JSON.stringify(response));
+                                            history.push('/test');
+                                            setLoading(false);
+                                          });
                                       }} >
                                       <Trans>Continue</Trans>
                                     </Button>
