@@ -11,15 +11,27 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:123
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:124
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:126
 msgid "Add topic"
-msgstr ""
+msgstr "Добавить тему"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:214
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
+msgid "Archived"
+msgstr "Архивированные"
+
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:21
+msgid "Are you sure you want to archive this?"
+msgstr "Вы уверены, что хотите заархивировать это?"
+
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:24
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:215
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -42,13 +54,13 @@ msgstr "Любое"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
 msgid "Not archived"
-msgstr ""
+msgstr "Не архивированные"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:236
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:237
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -62,9 +74,13 @@ msgstr "Строк на странице:"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:154
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:169
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:23
+msgid "Yes,do"
+msgstr "Выполнить"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:155
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:170
 msgid "{0}{1}"
 msgstr "{1}"

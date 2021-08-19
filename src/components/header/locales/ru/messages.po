@@ -18,7 +18,7 @@ msgstr "Темный фон"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:48
 msgid "Deadline:"
-msgstr "Срок сдачи: "
+msgstr "Срок сдачи:"
 
 #: src/components/header/userNavigation/userNavigation.js:65
 msgid "Distribution of tests"
@@ -90,11 +90,11 @@ msgstr "Да"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:42
 msgid "notificationTestAsigned"
-msgstr "Тест на определение уровня знания Английского языка был опрделен на ваше имя"
+msgstr "Тест на определение уровня знания английского языка был опрделен на ваше имя"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:86
 msgid "notificationTestChecked"
-msgstr "Ваш тест по Английскому языку был проверен. Ваш уровень языка установлен:"
+msgstr "Ваш тест по английскому языку был проверен. Ваш уровень языка установлен: "
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:113
 msgid "notificationsEmpty"
