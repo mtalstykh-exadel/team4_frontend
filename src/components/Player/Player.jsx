@@ -6,7 +6,10 @@ import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
 import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
-import { testAudioAttempts, AudioDurationInBlobUrl } from '../../constants/localStorageConstants';
+import {
+  testAudioAttempts,
+  AudioDurationInBlobUrl,
+} from '../../constants/localStorageConstants';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false }) => {
@@ -30,13 +33,6 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     setProgressPercent(0);
     setAudioCurrent(0);
     setAudioOn(true);
-
-    document
-      .getElementById(id)
-      .removeEventListener('timeupdate', AudioProgressBar);
-    document
-      .getElementById(id)
-      .addEventListener('timeupdate', AudioProgressBar);
   };
 
   const AudioStop = () => {
@@ -47,14 +43,14 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   };
 
   const AudioController = () => {
+    let attempts;
     if (document.getElementById(id)) {
       if (
         document.getElementById('player-listening') &&
         parseInt(localStorage.getItem(testAudioAttempts), 16) > 0
       ) {
         AudioStart();
-        const attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
-        localStorage.setItem(testAudioAttempts, attempts.toString());
+        attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
       } else {
         AudioStart();
       }
@@ -68,11 +64,12 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
         return;
       }
     }
+    localStorage.setItem(testAudioAttempts, attempts.toString());
   };
 
   const AudioProgressBar = (e) => {
     const { currentTime } = e.srcElement;
-    const duration = parseInt(localStorage.getItem(AudioDurationInBlobUrl), 16);
+    const duration = localStorage.getItem(AudioDurationInBlobUrl);
 
     setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
@@ -104,7 +101,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
       if (document.getElementById('player-listening') === null) {
         audioElement.currentTime =
           (e.nativeEvent.offsetX / e.target.offsetWidth) *
-          audioElement.duration;
+          Number(localeDuration);
       }
     }
   };
@@ -118,15 +115,19 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   setTimeout(() => {
     audioDomElement = document.getElementById(id);
     audioDomElement.addEventListener('loadeddata', async () => {
-      
-      const durationBlobLink = await getBlobDuration(src)
-        .catch((err) => {
+      const durationBlobLink = await getBlobDuration(src).catch((err) => {
         console.warn(err);
-        });
-      
-        setLocaleDuration(durationBlobLink);
+      });
+
+      setLocaleDuration(durationBlobLink);
       localStorage.setItem(AudioDurationInBlobUrl, durationBlobLink);
       setloading(false);
+      document
+        .getElementById(id)
+        .removeEventListener('timeupdate', AudioProgressBar);
+      document
+        .getElementById(id)
+        .addEventListener('timeupdate', AudioProgressBar);
     });
   }, 0);
 
@@ -161,13 +162,13 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
             <CircularProgress className='border-primary' size='23px' />
           ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
             document.getElementById('player-listening') ? (
-            <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
-          ) : (
-            <PlayArrowIcon
-              className='icons-color-primary'
-              fontSize='medium'
-            />
-          )
+              <PlayArrowIcon
+                className='icons-color-secondory'
+                fontSize='medium'
+              />
+            ) : (
+              <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
+            )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium' />
         )}
