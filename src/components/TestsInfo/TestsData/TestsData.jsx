@@ -171,7 +171,7 @@ const TestsData = (props) => {
                                         })
                                         .catch((err) => {
                                           setLoading(false);
-                                          if (err.code === 409) {
+                                          if (err.response.status === 409) {
                                             handleOpen();
                                           } else if (err.response.status === 404) {
                                             setOpenDeassigned(true);
