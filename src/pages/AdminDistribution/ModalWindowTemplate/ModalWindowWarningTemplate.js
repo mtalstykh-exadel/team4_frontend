@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../styles/modal.scss';
 import CloseIcon from '@material-ui/icons/Close';
-import { IconButton, Modal } from '@material-ui/core';
+import { Backdrop, IconButton, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { Trans } from '@lingui/macro';
 import './ModalWindowWarningTemplate.scss';
@@ -12,6 +12,7 @@ export const ModalWindowWarningTemplate = (props) => {
     <Modal
       open={props.open}
       onClose={props.handleClose}
+      BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>

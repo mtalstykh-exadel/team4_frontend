@@ -11,6 +11,7 @@ import {
   TablePagination,
   TableRow,
   Modal,
+  Backdrop,
 } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
@@ -30,6 +31,7 @@ export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+
   const queryString = require('query-string');
 
   const questions = useSelector((state) => state.coach.questions);
@@ -128,6 +130,7 @@ export const EditTestsTable = (props) => {
       <Modal
         open={open}
         onClose={() => handleClose(false)}
+        BackdropComponent={Backdrop}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
-import { Button, Modal, Paper } from '@material-ui/core';
+import { Backdrop, Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Trans } from '@lingui/macro';
 
@@ -76,6 +76,7 @@ export const ManageModule = (props) => {
       <Modal
         open={open}
         onClose={handleClose}
+        BackdropComponent={Backdrop}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'>

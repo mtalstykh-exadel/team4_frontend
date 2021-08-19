@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CloseIcon from '@material-ui/icons/Close';
-import { IconButton, Modal } from '@material-ui/core';
+import { Backdrop, IconButton, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
 import '../../../../styles/modal.scss';
@@ -15,6 +15,7 @@ export const UserModalWindowBanningTest = (props) => {
     <Modal
       open={props.open}
       onClose={props.handleClose}
+      BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>

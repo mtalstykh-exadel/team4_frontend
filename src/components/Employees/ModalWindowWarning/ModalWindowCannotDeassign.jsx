@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Paper, Modal } from '@material-ui/core';
+import { Paper, Modal, Backdrop } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
 import '../../../styles/modal.scss';
@@ -16,6 +16,7 @@ export const ModalWindowWarningCannotDeassign = (props) => {
     <Modal
       open={props.open}
       onClose={props.handleClose}
+      BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>
