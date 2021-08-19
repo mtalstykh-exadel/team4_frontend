@@ -2,28 +2,12 @@
   width: 440px;
   height: 140px;
 
-  .close-icon-wrapper {
-    display: block;
-    margin-left: 95%;
-    padding: 0;
-
-    .MuiIconButton-root {
-      height: 15px;
-
-      .close-icon {
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-    }
-  }
-
   .text {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 130%;
-    text-align: center;
+    text-align: left;
     padding-top: 20px;
   }
 

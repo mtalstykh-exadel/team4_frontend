@@ -2,24 +2,6 @@
   width: 500px;
   height: 160px;
 
-  .close-icon-wrapper {
-    position: relative;
-    display: block;
-    margin-left: 89%;
-
-    .MuiIconButton-root {
-      height: 15px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-    }
-  }
-
   .warning-text {
     font-style: normal;
     font-weight: normal;

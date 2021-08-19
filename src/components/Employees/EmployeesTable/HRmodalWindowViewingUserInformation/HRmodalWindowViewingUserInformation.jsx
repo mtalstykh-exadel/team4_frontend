@@ -2,13 +2,12 @@ import React from 'react';
 import '../../../../styles/modal.scss';
 import PropTypes from 'prop-types';
 
-import CloseIcon from '@material-ui/icons/Close';
-import { FormControl, IconButton, MenuItem, Select} from '@material-ui/core';
+import {FormControl, MenuItem, Select} from '@material-ui/core';
 
-import { Trans } from '@lingui/macro';
+import {Trans} from '@lingui/macro';
 
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import {useSelector} from 'react-redux';
+import {useState} from 'react';
 
 import {
   InputLabel,
@@ -24,9 +23,9 @@ import {
   TableRow
 } from '@material-ui/core';
 
-import { formatDate } from '../../../../utils/data-formatter';
+import {formatDate} from '../../../../utils/data-formatter';
 import './HRmodalWindowViewingUserInformation.scss';
-import { filterLevelsShort, userHistoryHeader } from '../../../../constants/filterConstants';
+import {filterLevelsShort, userHistoryHeader} from '../../../../constants/filterConstants';
 
 export const HRmodalWindowViewingUserInformation = (props) => {
   const [page, setPage] = useState(0);
@@ -47,7 +46,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
 
 
   const filterEmployees = employee ? employee
-    .filter((el) => filter ? filter.toLowerCase() === el.level.toLowerCase() : el)
+      .filter((el) => filter ? filter.toLowerCase() === el.level.toLowerCase() : el)
     : [];
 
   const modalBody = <>
@@ -64,11 +63,12 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       <InputLabel id='select-label'><Trans>Level</Trans></InputLabel>
       <Select labelId='select-label' label='Select the test level' id='select' className='ggr'>
         {filterLevelsShort.map((item, index) => {
-          return <MenuItem key={index} value={index} className='item' onClick={() => setFilter(item)}> {item}</MenuItem>;
+          return <MenuItem key={index} value={index} className='item'
+                           onClick={() => setFilter(item)}> {item}</MenuItem>;
         })}
       </Select>
     </FormControl>
-    <TableContainer >
+    <TableContainer>
       <Table stickyHeader aria-label='sticky table'>
         <TableHead>
           <TableRow>
@@ -85,24 +85,32 @@ export const HRmodalWindowViewingUserInformation = (props) => {
               if (row.status !== 'ASSIGNED') {
                 return (
                   <TableRow key={index} className='row'>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.startedAt)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.level}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{formatDate(row.startedAt)}</TableCell>
                     <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
                     <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.status}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.result}</TableCell>
                   </TableRow>
                 );
-              } else
-              {
+              } else {
                 return (
                   <TableRow key={index} className='row'>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.level}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.assigned)}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{formatDate(row.deadline)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.level}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{formatDate(row.assigned)}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{formatDate(row.deadline)}</TableCell>
                     <TableCell className='base-color-elevated font-primary' align='left' size='small'></TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.status}</TableCell>
-                    <TableCell className='base-color-elevated font-primary' align='left' size='small'>{row.result}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.status}</TableCell>
+                    <TableCell className='base-color-elevated font-primary' align='left'
+                               size='small'>{row.result}</TableCell>
                   </TableRow>
                 );
               }
@@ -138,9 +146,6 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       className='modal'>
       <div className='modal-content base-color'>
         <div className='hr-modal-view-user-info'>
-          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
-            <CloseIcon className='close-icon icons-color'/>
-          </IconButton>
           {modalBody}
         </div>
       </div>
