@@ -16,22 +16,22 @@ export const CoachTestVerification = () => {
 
   return (
     <Paper elevation={2}>
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby='simple-modal-title'
-      aria-describedby='simple-modal-description'
-      className='modal'>
-      <div className='modal-content'>
-        <div className='coach-modal'>
-          <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-            <CloseIcon className='close-icon'/>
-          </IconButton>
-          <div className='test-ver'>This test is currently in the verification status</div>
-          <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <div className='modal-content'>
+          <div className='coach-modal'>
+            <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
+              <CloseIcon className='close-icon'/>
+            </IconButton>
+            <div className='test-ver'>This test is currently in the verification status</div>
+            <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
+          </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
     </Paper>
   );
 };

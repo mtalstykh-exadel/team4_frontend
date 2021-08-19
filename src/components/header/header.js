@@ -32,6 +32,8 @@ import { userLanguageKey } from '../../constants/localStorageConstants';
 import { language_russian } from '../../constants/languageConstants';
 
 const Header = () => {
+
+  const notifications = useSelector((state) => state.notifications);
   const avatar = useSelector((state) => state.jwt.avatar);
   const matches = useMediaQuery('(min-width:1024px)');
   const [states, setState] = useState({
@@ -136,6 +138,7 @@ const Header = () => {
           <div className='toolbar-sideRight'>
             <Button onClick={handleNotifications}>
               <Badge
+                invisible={notifications.length > 0 ? false : true}
                 classes={{ badge: 'notifications-color' }}
                 overlap='circular'
                 variant='dot'

@@ -118,13 +118,11 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   setTimeout(() => {
     audioDomElement = document.getElementById(id);
     audioDomElement.addEventListener('loadeddata', async () => {
-      
       const durationBlobLink = await getBlobDuration(src)
         .catch((err) => {
-        console.warn(err);
+          console.warn(err);
         });
-      
-        setLocaleDuration(durationBlobLink);
+      setLocaleDuration(durationBlobLink);
       localStorage.setItem(AudioDurationInBlobUrl, durationBlobLink);
       setloading(false);
     });
@@ -161,13 +159,13 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
             <CircularProgress className='border-primary' size='23px' />
           ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
             document.getElementById('player-listening') ? (
-            <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
-          ) : (
-            <PlayArrowIcon
-              className='icons-color-primary'
-              fontSize='medium'
-            />
-          )
+              <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
+            ) : (
+              <PlayArrowIcon
+                className='icons-color-primary'
+                fontSize='medium'
+              />
+            )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium' />
         )}

@@ -5,8 +5,8 @@ const getEmployeesList = (pageNum, pageSize) => {
     .then((response) => response.data);
 };
 
-const getEmployeeHistory = (id) => {
-  return axiosInstance.get(`/tests/history/${id}`)
+const getEmployeeHistory = (id, level, pageNum, pageSize) => {
+  return axiosInstance.get(`/tests/history/${id}?level=${level}&pageNumb=${pageNum}&pageSize=${pageSize}`)
     .then((response) => response.data);
 };
 
