@@ -68,8 +68,8 @@ msgstr "Topic"
 msgid "Verify"
 msgstr "Verify"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:132
 #: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:132
 msgid "{0}"
 msgstr "{0}"
 

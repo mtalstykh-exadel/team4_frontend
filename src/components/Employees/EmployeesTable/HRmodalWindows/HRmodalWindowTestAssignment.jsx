@@ -46,7 +46,7 @@ export const HRmodalWindowTestAssignment = (props) => {
     <form onSubmit={() => {
       props.handleClose();
       assignTest(props.test.id, formik.values)
-        .then(() => dispatch(requestEmployeesList()));}}>
+        .then(() => dispatch(requestEmployeesList(props.page, props.rowsPerPage)));}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
       <div className='level-selector-wrapper'>
         <p className='setting-label bold'><Trans>Select the test level:</Trans></p>
@@ -120,7 +120,7 @@ export const HRmodalWindowTestAssignment = (props) => {
             className='close-icon-wrapper'
             onSubmit={() => {
               props.handleClose();
-              dispatch(requestEmployeesList());
+              dispatch(requestEmployeesList(props.page, props.rowsPerPage));
             }}>
             <CloseIcon className='close-icon icons-color'/>
           </IconButton>
@@ -134,5 +134,7 @@ HRmodalWindowTestAssignment.propTypes =
   {
     test: PropTypes.any,
     open: PropTypes.bool,
-    handleClose: PropTypes.func
+    handleClose: PropTypes.func,
+    page: PropTypes.any,
+    rowsPerPage: PropTypes.any,
   };

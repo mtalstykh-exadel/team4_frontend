@@ -16,7 +16,7 @@ msgstr ""
 msgid "Dark mode"
 msgstr "Темный фон"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:44
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:48
 msgid "Deadline:"
 msgstr "Срок сдачи: "
 
@@ -36,6 +36,10 @@ msgstr "Работники"
 #: src/components/header/languageDropdown/languageDropdown.js:32
 msgid "English"
 msgstr "Английский"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:45
+msgid "Level: {0}"
+msgstr ""
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
@@ -60,7 +64,7 @@ msgstr "Профиль"
 msgid "Russian"
 msgstr "Русский"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:97
 msgid "See More"
 msgstr "Посмотреть больше"
 
@@ -68,7 +72,7 @@ msgstr "Посмотреть больше"
 #~ msgid "Statistics"
 #~ msgstr "Статистика"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:78
 msgid "Take test"
 msgstr "Пройти тест"
 
@@ -76,18 +80,22 @@ msgstr "Пройти тест"
 msgid "Tests for verification"
 msgstr "Тесты на проверку"
 
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:105
+msgid "The test was deassigned"
+msgstr ""
+
 #: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"
 msgstr "Да"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:42
 msgid "notificationTestAsigned"
 msgstr "Тест на определение уровня знания Английского языка был опрделен на ваше имя"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:86
 msgid "notificationTestChecked"
 msgstr "Ваш тест по Английскому языку был проверен. Ваш уровень языка установлен:"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:113
 msgid "notificationsEmpty"
 msgstr "Оповещения отсутсвуют"

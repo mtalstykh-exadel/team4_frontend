@@ -15,6 +15,7 @@ import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
 import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
+import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
 
 const AdminDistribution = (props) => {
 
@@ -42,6 +43,8 @@ const AdminDistribution = (props) => {
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
   const [count, setCount] = useState(rowsPerPage);
+  const [open, setOpen] = useState(false);
+  const [modalText, setModalText] = useState('');
 
   useEffect(() => {
     dispatch(requestQuestionsList(page, rowsPerPage));
@@ -209,8 +212,16 @@ const AdminDistribution = (props) => {
                                 onClick={() => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
                                   if (currentElement === 'assign' || currentElement === 'назначить') {
-                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
-                                    changeButtonStyle(row.testId);
+                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value)
+                                      .then(() => changeButtonStyle(row.testId))
+                                      .catch((err) => {
+                                        setOpen(true);
+                                        if (err.response && err.response.status === 409) {
+                                          setModalText('Coach not allowed to verify his own test');
+                                        } else if (err === 'No coach') {
+                                          setModalText('Choose a coach');
+                                        }
+                                      });
                                   } else {
                                     deassignCoachTest(row.testId);
                                     changeButtonStyle(row.testId);
@@ -240,6 +251,7 @@ const AdminDistribution = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)}/>
     </Layout>
   );
 };

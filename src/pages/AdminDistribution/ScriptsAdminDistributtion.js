@@ -21,9 +21,7 @@ const changeButtonStyle = (id) => {
 };
 
 const assignCoachTest = (testId, coachId) => {
-  if (coachId !== 'placeholder') {
-    postAssignCoach(testId, coachId);
-  }
+  return coachId !== 'placeholder' ? postAssignCoach(testId, coachId) : Promise.reject('No coach');
 };
 
 const deassignCoachTest = (testId) => {
