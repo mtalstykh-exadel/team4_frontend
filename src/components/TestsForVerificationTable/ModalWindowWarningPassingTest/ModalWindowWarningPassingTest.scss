@@ -18,3 +18,21 @@
     margin-top: 30px;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .modal-warning-passing-test {
+    width: 350px;
+
+    .warning-text {
+      font-size: 12px;
+    }
+
+    .MuiButton-root {
+      height: 13px;
+      width: 45px;
+      margin-left: 90%;
+      margin-top: 13px;
+    }
+  }
+}
+
