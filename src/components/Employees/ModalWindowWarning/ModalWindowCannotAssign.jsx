@@ -23,7 +23,7 @@ export const ModalWindowWarningCannotAssign = (props) => {
           <div className='modal-remove'>
             <div className='text-modal'><Trans>The test has already been assigned to this employee</Trans></div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close<Trans/></Trans></Button>
+              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close</Trans></Button>
             </div>
           </div>
         </div>

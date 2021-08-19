@@ -2,21 +2,12 @@
   width: 420px;
   height: 140px;
 
-  .close-icon-wrapper {
-    margin-left: 90%;
-    margin-top: -15px;
-
-    .MuiIconButton-root {
-      height: 21px;
-    }
-  }
-
   .warning-question {
     padding-top: 3%;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
   }
 
   .choice-buttons {
@@ -27,6 +18,29 @@
       width: 110px;
       height: 25px;
       margin-right: 10px;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .admin-modal-w-warning {
+    width: 320px;
+    height: 110px;
+
+    .warning-question {
+      font-size: 13px;
+    }
+
+    .choice-buttons {
+      padding-top: 12%;
+      padding-left: 42%;
+
+      .MuiButtonBase-root {
+        width: 55px;
+        height: 12px;
+        margin-right: 5px;
+        font-size: 9px;
+      }
     }
   }
 }

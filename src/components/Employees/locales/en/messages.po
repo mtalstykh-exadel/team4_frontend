@@ -94,6 +94,6 @@ msgstr "You want to assign a test for {0}"
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:122
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:123
 msgid "{0}{1}"
 msgstr "{0}"

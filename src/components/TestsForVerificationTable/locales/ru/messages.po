@@ -83,6 +83,7 @@ msgstr "Вы были сняты с проверки теста"
 
 #: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
 #: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:133
+
 msgid "{0}"
 msgstr "{0}"
 

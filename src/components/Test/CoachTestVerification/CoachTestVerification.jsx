@@ -28,7 +28,7 @@ export const CoachTestVerification = () => {
         <div className='modal-content'>
           <div className='coach-modal'>
             <IconButton aria-label='close' onClick={handleClose} className='close-icon-wrapper'>
-              <CloseIcon className='close-icon' />
+              <CloseIcon className='close-icon'/>
             </IconButton>
             <div className='test-ver'><Trans>This test is currently in the verification status</Trans></div>
             <Button variant='outlined' color='primary' onClick={handleClose}><Trans>Close</Trans></Button>

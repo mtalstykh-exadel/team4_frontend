@@ -43,6 +43,7 @@
     margin: 28px 10px 0 20px;
     height: 1px;
     width: 74%;
+    cursor: pointer;
   }
 
   .progress {
@@ -91,6 +92,10 @@
     -webkit-appearance: none;
     color: #828282;
     margin-top: -1px;
+  }
+
+  .action {
+    cursor: pointer;
   }
 
   .volume-range[type="range"]::-webkit-slider-thumb {

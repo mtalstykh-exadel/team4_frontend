@@ -16,7 +16,7 @@ msgstr ""
 msgid "Dark mode"
 msgstr "Dark mode"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:44
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:48
 msgid "Deadline:"
 msgstr "Deadline:"
 
@@ -36,6 +36,10 @@ msgstr "Employees"
 #: src/components/header/languageDropdown/languageDropdown.js:32
 msgid "English"
 msgstr "English"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:45
+msgid "Level: {0}"
+msgstr "Level: {0}"
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
@@ -60,7 +64,7 @@ msgstr "Profile"
 msgid "Russian"
 msgstr "Russian"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:30
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:97
 msgid "See More"
 msgstr "See More"
 
@@ -68,7 +72,7 @@ msgstr "See More"
 #~ msgid "Statistics"
 #~ msgstr "Statistics"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:53
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:78
 msgid "Take test"
 msgstr "Take test"
 
@@ -76,18 +80,22 @@ msgstr "Take test"
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:105
+msgid "The test was deassigned"
+msgstr "The test was deassigned"
+
 #: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:17
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:42
 msgid "notificationTestAsigned"
 msgstr "A test to determine the level of English has been asigned to your name"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:38
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:86
 msgid "notificationTestChecked"
 msgstr "Your English language test is checked. Your English level has been set as ."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:60
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:113
 msgid "notificationsEmpty"
 msgstr "No new notificiations for you"

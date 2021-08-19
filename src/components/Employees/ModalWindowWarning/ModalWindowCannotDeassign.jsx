@@ -34,7 +34,7 @@ export const ModalWindowWarningCannotDeassign = (props) => {
 };
 
 ModalWindowWarningCannotDeassign.propTypes =
-  {
-    open: PropTypes.bool,
-    handleClose: PropTypes.func
-  };
+{
+  open: PropTypes.bool,
+  handleClose: PropTypes.func
+};

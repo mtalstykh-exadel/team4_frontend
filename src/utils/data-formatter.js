@@ -9,4 +9,9 @@ const formatDate = (date) => {
   return moment(date).format('DD MMM YYYY, hh:mm');
 };
 
-export { formatDate };
+const formatDateNotifications = (date) => {
+  localStorage.getItem(userLanguageKey) === language_russian ? moment.locale('ru') : moment.locale('en');
+  return moment(date).format('DD MMM YYYY');
+};
+
+export { formatDate, formatDateNotifications };
