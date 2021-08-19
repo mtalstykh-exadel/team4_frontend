@@ -9,14 +9,18 @@ import CloseIcon from '@material-ui/icons/Close';
 import { Trans } from '@lingui/macro';
 
 import { requestNotificationsList, removeNotification } from '../../../store/actions/headerActions';
+import { requestReports, requestGrades, requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
 
 import { startTestById } from '../../../api/start-test';
+import { getTest } from '../../../api/get-test';
+import { Modal } from '@material-ui/core';
 
-import { formatDateNotifications, formatDate } from '../../../utils/data-formatter';
-import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
+import { formatDateNotifications, formatDate, formatDeadline } from '../../../utils/data-formatter';
+import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers, testAudioAttempts } from '../../../constants/localStorageConstants';
 
 import { UserModalWindowBanningTest } from '../../TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 import { ModalWindowTestCanceled } from '../../TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled';
+import { TestsForVerificationModal } from '../../TestsForVerificationTable/Component/TestsForVerificationModal';
 
 const Notifications = (props) => {
 
@@ -29,6 +33,9 @@ const Notifications = (props) => {
   const [openLimit, setOpenLimit] = useState(false);
   const [openDeassigned, setOpenDeassigned] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingAssigned, setLoadingAssigned] = useState(false);
+  const [loadingContinue, setLoadingContinue] = useState(false);
+  const [openVerify, setOpenVerify] = useState(false);
 
   const notificationAssigned = (item) => (
     <div>
@@ -78,6 +85,64 @@ const Notifications = (props) => {
     </div>
   );
 
+  const notificationCoachAssigned = (item) => (
+    <div>
+      <Typography variant='body1' className='font-primary'>
+        <Trans>A test for verification has been asigned to your name</Trans>
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+        <Trans>Level: {item.level},  Test ID: {item.testId}</Trans>
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+        <Trans>Priority: </Trans>{item.priority}
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+      </Typography>
+      <Button
+        color='primary'
+        variant='contained'
+        className='notifications-takeTestBtn button-standard'
+        onClick={() => {
+          setLoadingAssigned(true);
+          dispatch(requestUnverifiedTests(0, 10));
+          dispatch(requestReports(item.testId))
+            .then(() => dispatch(requestGrades(item.testId)))
+            .then(() => Promise.resolve(setOpenVerify(true)))
+            .catch((err) => {
+              if (err.response.status === 403) {
+                dispatch(requestReports(item.testId))
+                  .then(() => dispatch(requestGrades(item.testId)))
+                  .then(() => Promise.resolve(setOpenVerify(true)))
+                  .catch((err) => {
+                    if (err.response.status === 403) {
+                      setOpenDeassigned(true);
+                    }});
+              }}
+            )
+            .then(() => setLoadingAssigned(false));
+          dispatch(removeNotification(item.id));
+        }
+        }>
+        {loadingAssigned ? (
+          <CircularProgress className='border-primary' size='23px'/>
+        ) : (
+          <Trans>Verify test</Trans>
+        )}
+      </Button>
+    </div>
+  );
+
+  const notificationCoachDeassigned = (item) => (
+    <div>
+      <Typography variant='body1' className='font-primary'>
+        <Trans>You have been deassigned from verification of test</Trans>
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+        <Trans>Level: {item.level},  Test ID: {item.testId}</Trans>
+      </Typography>
+    </div>
+  );
+
   const notificationTakeTest = (item) => (
     <div className='notification-result'>
       <Typography variant='body1' className='font-primary'>
@@ -96,6 +161,43 @@ const Notifications = (props) => {
           history.push('/result');
         }}>
         <Trans>See Results</Trans>
+      </Button>
+    </div>
+  );
+
+  const notificationStarted = (item) => (
+    <div className='notification-result'>
+      <Typography variant='body1' className='font-primary'>
+        <Trans>You have test in progress</Trans>
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+        <Trans>Level: {item.level}</Trans>
+      </Typography>
+      <Typography variant='subtitle2' className='bold font-primary'>
+        <Trans>Time limit: {formatDeadline(item.createdAt)} - {formatDeadline(item.finishTime)}</Trans>
+      </Typography>
+      <Button
+        disableElevation
+        color='primary'
+        variant='contained'
+        className='notifications-seemoreBtn button-standard'
+        disabled={loadingContinue}
+        onClick={() => {
+          setLoadingContinue(true);
+          getTest(item.testId)
+            .then((response) => {
+              localStorage.setItem(testAudioAttempts, 1);
+              localStorage.setItem(currentTest, JSON.stringify(response));
+              history.push('/test');
+              setLoadingContinue(false);
+            })
+            .catch(() => dispatch(removeNotification(item.id)));
+        }}>
+        {loadingContinue ? (
+          <CircularProgress className='border-primary' size='23px'/>
+        ) : (
+          <Trans>Continue</Trans>
+        )}
       </Button>
     </div>
   );
@@ -124,6 +226,14 @@ const Notifications = (props) => {
         return notificationTakeTest(item);
       case 'TEST_DEASSIGNED':
         return notificationDeassigned();
+      case 'COACH_ASSIGNED':
+        return notificationCoachAssigned(item);
+      case 'COACH_DEASSIGNED':
+        return notificationCoachDeassigned(item);
+      case 'TEST_STARTED':
+        return notificationStarted(item);
+      default:
+        return '';
     }
   };
 
@@ -166,6 +276,16 @@ const Notifications = (props) => {
         </div>}
       <ModalWindowTestCanceled open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>
       <UserModalWindowBanningTest open={openLimit} handleClose={() => setOpenLimit(false)}/>
+      <Modal
+        open={openVerify}
+        onClose={() => setOpenVerify(false)}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'>
+        <div className='modal-content'>
+          {openVerify && <TestsForVerificationModal handleClose={() => setOpenVerify(false)} page={0} rowsPerPage={10}/>}
+        </div>
+      </Modal>
     </Menu>);
 };
 
