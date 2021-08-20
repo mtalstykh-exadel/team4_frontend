@@ -87,8 +87,8 @@ export const EmployeesTable = (props) => {
         } else {
           setOpenDeassigned(true);
         }
-        dispatch(requestEmployeesList(page, rowsPerPage));
-      });
+      })
+      .then(() => setTimeout(() => dispatch(requestEmployeesList(page, rowsPerPage)), 200));
   };
 
   const handleAssign = (test) => {
@@ -102,7 +102,7 @@ export const EmployeesTable = (props) => {
           setOpenAssigned(true);
         }
       })
-      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
+      .then(() => setTimeout(() => dispatch(requestEmployeesList(page, rowsPerPage)), 200));
   };
 
   const handleHistory = (test) => {

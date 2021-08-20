@@ -50,7 +50,7 @@ export const HRmodalWindowTestAssignment = (props) => {
           }}
         );
       props.handleClose();
-      dispatch(requestEmployeesList(props.page, props.rowsPerPage));}}>
+      setTimeout(() => dispatch(requestEmployeesList(props.page, props.rowsPerPage)), 200);}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
       <div className='level-selector-wrapper'>
         <p className='setting-label bold'><Trans>Select the test level:</Trans></p>
