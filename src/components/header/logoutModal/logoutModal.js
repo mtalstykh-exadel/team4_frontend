@@ -19,17 +19,17 @@ const LogoutModal = (props) => {
       onClose={props.handleAccClose}>
       <Fade in={Boolean(props.logoutEl)}>
         <div className='paper base-color'>
-          <h2><Trans>Log out of account?</Trans></h2>
+          <h3 className='text-logout'><Trans>Log out of account?</Trans></h3>
           <div className='modalBtns'>
             <Button
-              className='button-narrow'
+              className='button-narrow btn-unit'
               color='primary'
               variant='contained'
               onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions());}}>
               <Trans>Yes</Trans>
             </Button>
             <Button
-              className='button-narrow'
+              className='button-narrow btn-unit'
               color='primary'
               variant='outlined'
               onClick={() => {props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose();}}>
