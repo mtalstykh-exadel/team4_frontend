@@ -207,7 +207,6 @@ export const EditTestsTable = (props) => {
                           color='primary'
                           variant='outlined'
                           size='small'
-                          style={{ width: 110 }}
                           type='search'
                           onClick={() =>
                             handleClickEdit('/edit-test-modules', row.id)
