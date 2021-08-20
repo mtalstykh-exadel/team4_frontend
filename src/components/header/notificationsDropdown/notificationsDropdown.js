@@ -102,25 +102,20 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-takeTestBtn button-standard'
+        disabled={loadingAssigned}
         onClick={() => {
           setLoadingAssigned(true);
-          dispatch(requestUnverifiedTests(0, 10));
-          dispatch(requestReports(item.testId))
-            .then(() => dispatch(requestGrades(item.testId)))
-            .then(() => Promise.resolve(setOpenVerify(true)))
-            .catch((err) => {
-              if (err.response.status === 403) {
-                dispatch(requestReports(item.testId))
-                  .then(() => dispatch(requestGrades(item.testId)))
-                  .then(() => Promise.resolve(setOpenVerify(true)))
-                  .catch((err) => {
-                    if (err.response.status === 403) {
-                      setOpenDeassigned(true);
-                    }});
-              }}
-            )
-            .then(() => setLoadingAssigned(false));
-          dispatch(removeNotification(item.id));
+          dispatch(requestUnverifiedTests(0, 10))
+            .then(() => {
+              dispatch(requestReports(item.testId))
+                .then(() => dispatch(requestGrades(item.testId)))
+                .then(() => Promise.resolve(setOpenVerify(true)))
+                .catch((err) => {
+                  if (err.response.status === 409) {
+                    setOpenDeassigned(true);
+                  }})
+                .then(() => setLoadingAssigned(false));
+              dispatch(removeNotification(item.id));});
         }
         }>
         {loadingAssigned ? (
