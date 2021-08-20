@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Grammar.scss';
 import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 import { Modal } from '@material-ui/core';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
-// saveEssay
-import { saveListeningAndGrammar } from '../../../api/test-set';
-import { changeArray } from '../SubmitModal/SubmitModalHandler';
+import { saveHandler } from './saveHandler';
 
 export const Grammar = ({ tasks, testModule, reportModule, level, testID, module }) => {
   const [questionText, setQuestionText] = useState('');
   const [questionID, setQuestionID] = useState(0);
   const [open, setOpen] = useState(false);
-  const [requests, setRequests] = useState([]);
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -23,7 +21,6 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
   };
 
   const answersData = localStorage.getItem(testModule);
-  const [saveDataArray, setSaveDataArray] = useState();
 
   setTimeout(() => {
     if (answersData !== null) {
@@ -33,25 +30,13 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     }
   }, 0);
 
-  useEffect(async () => {
-    const promise = await saveListeningAndGrammar(changeArray(saveDataArray));
-    if (promise) {
-      setRequests((prev) => {
-        return [promise, ...prev];
-      });
-      Promise.all(requests).then((res) => {
-        console.log(res);
-      });
-    }
-  }, [saveDataArray]);
-
   let questionCount = 0;
   const questions = tasks.map((question) => {
     questionCount++;
     const options = question.answers.map((questionItem) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
-        <div key={domID} className='test-question-option'>
+        <div key={domID} className='test-question-option' onClick={saveHandler}> 
           <span onClick={() => {
               testController({
                 testModule,
@@ -60,7 +45,7 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
                 answerID: questionItem.id,
                 domID,
               });
-              setSaveDataArray(JSON.parse(localStorage.getItem(testModule)));
+              saveHandler(JSON.parse(localStorage.getItem(testModule)));
             }
           }>
             <input
