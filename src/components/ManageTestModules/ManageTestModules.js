@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
@@ -26,7 +26,7 @@ export const ManageModule = (props) => {
 
   const question = useSelector((state) => state.coach.question);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
@@ -40,9 +40,9 @@ export const ManageModule = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    history.push({
-      pathname: 'edit-tests'
-    });
+    // history.push({
+    //   pathname: 'edit-tests'
+    // });
   };
 
   const onSubmit = () => {

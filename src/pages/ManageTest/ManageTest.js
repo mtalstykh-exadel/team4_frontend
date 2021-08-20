@@ -22,6 +22,7 @@ export const ManageTest = () => {
   const sendQuestionToEditOrAdd = (moduleData, module) => {
     if (location === '/edit-test-modules') {
       if (module === 'Listening') {
+        console.log(moduleData);
         sendEditedListeningQuestion(moduleData);
       } else {
         sendEditedQuestion(moduleData);
@@ -29,7 +30,7 @@ export const ManageTest = () => {
     }
     if (location === '/add-test-modules') {
       if (module === 'Listening') {
-        console.log(moduleData);
+        // sendEditedListeningQuestion(moduleData);
       } else {
         addNewQuestion(moduleData);
       }
