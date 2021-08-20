@@ -44,8 +44,7 @@ export const TestsForVerificationTable = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    dispatch(requestUnverifiedTests(newPage, rowsPerPage))
-      .then(() => handleCount(newPage));
+    dispatch(requestUnverifiedTests(newPage, rowsPerPage));
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -56,9 +55,15 @@ export const TestsForVerificationTable = () => {
   const handleVerifyTest = (row) => {
     return dispatch(requestUnverifiedTests(page, rowsPerPage))
       .then(() => setTest(row))
-      .then(() => dispatch(requestReports(row.testId)))
-      .then(() => dispatch(requestGrades(row.testId)))
-      .then(() => Promise.resolve(setOpen(true)));
+      .then(() => dispatch(requestReports(row.testId))
+        .then(() => dispatch(requestGrades(row.testId)))
+        .then(() => Promise.resolve(setOpen(true)))
+        .catch((err) => {
+          if (err.response.status === 403) {
+            setOpen(true);
+          }}
+        )
+      );
   };
 
   const tableHeadCells = rows.map((rowName, index) => {
@@ -103,7 +108,7 @@ export const TestsForVerificationTable = () => {
           className='modal'>
           <div className='modal-content'>
             {unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId) ?
-              <TestsForVerificationModal id={test.id} test={test} handleClose={() => setOpen(false)} page={page} rowsPerPage={rowsPerPage}/> :
+              <TestsForVerificationModal handleClose={() => setOpen(false)} page={page} rowsPerPage={rowsPerPage}/> :
               <ModalWindowRemovedFromYourPost handleClose={() => setOpen(false)}/>}
           </div>
         </Modal>

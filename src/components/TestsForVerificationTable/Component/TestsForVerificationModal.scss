@@ -159,6 +159,11 @@
       width: 590px;
       margin-bottom: 40px;
       margin-left: 39px;
+
+      .audio-replacement {
+        display: flex;
+        justify-content: space-around;
+      }
     }
   }
 
