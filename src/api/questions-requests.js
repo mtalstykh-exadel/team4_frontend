@@ -20,14 +20,13 @@ export const sendEditedQuestion = async (quest) => {
 };
 
 export const sendEditedListeningQuestion = async (quest) => {
-  debugger;
-  if (quest !== null) {
-    const formData = new FormData();
-    formData.append('file', quest, 'data');
-    return axiosInstance.put(`/question/update/listening/${quest.id}`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data'}
-    });
-  }
+    return axiosInstance.put(`/question/update/listening/${quest.id}`, quest);
+};
+
+export const sendListeningFile = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file, {type: file.type});
+  return axiosInstance.post('/files/listening/', file);
 };
 
 export const addNewQuestion = async (quest) => {

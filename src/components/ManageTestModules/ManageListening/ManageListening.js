@@ -17,6 +17,7 @@ export const ManageListening = (props) => {
   const [audio, setAudio] = useState(moduleData.url);
   const [grammarReady, setGrammarReady] = useState({});
   const [topicReady, setTopicReady] = useState(false);
+  const [file , setFile] = useState();
 
   useEffect(() => {
     setModuleData(Object.assign({}, moduleData, {
@@ -74,7 +75,14 @@ export const ManageListening = (props) => {
     input.accept = 'audio/*';
     input.required = true;
     input.onchange = () => {
-      input.files[0].type === 'audio/mpeg' ? setAudio(window.URL.createObjectURL(new Blob(input.files, { type: 'audio/ogg; codecs=opus' }))) : null;
+      input.files[0].type === 'audio/mpeg' ? (
+        setFile(new Blob(input.files, { type: 'audio/ogg; codecs=opus' })),
+        setAudio(
+          window.URL.createObjectURL(
+              new Blob(input.files, { type: 'audio/ogg; codecs=opus' }
+            ))
+          )
+        ) : null;
     };
     input.click();
   };
