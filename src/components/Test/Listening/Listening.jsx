@@ -30,10 +30,10 @@ export const Listening = ({ tasks, contentFile, testModule, reportModule, level,
       <div className='audio'>
         <Player id='player-listening' src={url} />
         <p className='step-description'>
-          You have {localStorage.getItem(testAudioAttempts)} attempts left to listen to audio
+          <Trans>You have {localStorage.getItem(testAudioAttempts)} attempts left to listen to audio</Trans>
         </p>
       </div>
-      <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module}/>
+      <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module} />
     </div>
   );
 };

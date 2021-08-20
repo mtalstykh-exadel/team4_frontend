@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:124
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:126
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:127
 msgid "Add topic"
 msgstr "Добавить тему"
 
@@ -31,7 +31,7 @@ msgstr "Вы уверены, что хотите заархивировать э
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:215
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:217
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -60,7 +60,7 @@ msgstr "Не архивированные"
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:237
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:239
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -80,7 +80,7 @@ msgstr "Статус"
 msgid "Yes,do"
 msgstr "Выполнить"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:155
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:170
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:157
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:172
 msgid "{0}{1}"
 msgstr "{1}"

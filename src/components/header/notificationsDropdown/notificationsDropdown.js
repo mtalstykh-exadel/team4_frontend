@@ -146,7 +146,7 @@ const Notifications = (props) => {
   const notificationTakeTest = (item) => (
     <div className='notification-result'>
       <Typography variant='body1' className='font-primary'>
-        <Trans id='notificationTestChecked'>Your English language test is checked. Your English level has been set as .</Trans>
+        <Trans id='notificationTestChecked'>Your English language test is checked.</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}

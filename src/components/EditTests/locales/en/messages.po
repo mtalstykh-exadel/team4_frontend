@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:124
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
 msgid "Add question"
 msgstr "Add question"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:126
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:127
 msgid "Add topic"
 msgstr "Add topic"
 
@@ -31,7 +31,7 @@ msgstr "Are you sure you want to archive this?"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:215
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:217
 msgid "Edit"
 msgstr "Edit"
 
@@ -77,7 +77,7 @@ msgstr "Question ID"
 #~ msgid "Required field"
 #~ msgstr "Required field"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:237
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:239
 msgid "Rows per page:"
 msgstr "Rows per page:"
 
@@ -101,7 +101,7 @@ msgstr "Yes,do"
 #~ msgid "Your email or password is incorrect. Please try again"
 #~ msgstr "Your email or password is incorrect. Please try again"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:155
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:170
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:157
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:172
 msgid "{0}{1}"
 msgstr "{0}"
