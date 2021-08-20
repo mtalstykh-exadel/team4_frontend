@@ -107,7 +107,7 @@
 
   .notifications-takeTestBtn {
     height: 25px;
-    text-transform: none;
+    margin-top: 5px;
   }
 
   .notifications-seemoreBtn {
@@ -124,6 +124,7 @@
     padding: 20px;
 
     .text-logout {
+      font-weight: 400;
       padding-right: 100px;
       margin-bottom: 30px;
     }
@@ -138,10 +139,6 @@
     .btn-unit {
       margin-left: 10px;
       height: 30px;
-
-      .MuiButton-label {
-        padding-top: 2px;
-      }
     }
   }
 }
