@@ -112,33 +112,27 @@
 
   .notifications-seemoreBtn {
     height: 25px;
-    text-transform: none;
   }
 }
 
-.modal {
-  width: 320px;
-  margin: 0 auto;
+.paper {
+  padding: 20px;
 
-  .paper {
-    padding: 20px;
-
-    .text-logout {
-      font-weight: 400;
-      padding-right: 100px;
-      margin-bottom: 30px;
-    }
+  .text-logout {
+    font-weight: 400;
+    padding-right: 100px;
+    margin-bottom: 30px;
   }
+}
 
-  .modalBtns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    padding: 0;
+.modalBtns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 0;
 
-    .btn-unit {
-      margin-left: 10px;
-      height: 30px;
-    }
+  .btn-unit {
+    margin-left: 10px;
+    height: 30px;
   }
 }
