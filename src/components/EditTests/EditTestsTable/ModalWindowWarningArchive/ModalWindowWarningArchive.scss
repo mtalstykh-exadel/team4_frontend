@@ -1,36 +1,18 @@
 .modal-warning-archive {
   width: 440px;
-  height: 160px;
-
-  .close-icon-wrapper {
-    position: relative;
-    display: block;
-    margin-left: 89%;
-
-    .MuiIconButton-root {
-      height: 18px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-      }
-    }
-  }
+  height: 85px;
 
   .text {
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 130%;
-    text-align: center;
+    text-align: left;
+    margin-top: 25px;
   }
 
   .btn {
-    padding-top: 50px;
-    padding-left: 42%;
+    padding-top: 40px;
+    padding-left: 200px;
 
     .MuiButton-root {
       height: 25px;

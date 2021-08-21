@@ -21,7 +21,7 @@ export const ModalWindowRemovedFromYourPost = (props) => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove-post'>
-            <div className='text'><Trans>You have been deassigned from the test</Trans></div>
+            <div className='text font-primary'><Trans>You have been deassigned from the test</Trans></div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={props.handleClose}><Trans>Close</Trans></Button>
             </div>
