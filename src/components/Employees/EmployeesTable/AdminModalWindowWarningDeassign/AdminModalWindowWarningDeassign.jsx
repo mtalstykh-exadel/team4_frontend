@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../../styles/modal.scss';
 import PropTypes from 'prop-types';
-import {Trans} from '@lingui/macro';
+import { Trans } from '@lingui/macro';
 import {
   Modal,
   Backdrop,
@@ -20,7 +20,7 @@ export const AdminModalWindowWarningDeassign = (props) => {
       className='modal'>
       <div className='modal-content base-color'>
         <div className='admin-modal-w-warning'>
-          <div className='warning-question'><Trans>Do you want to deassign?</Trans></div>
+          <div className='warning-question font-primary'><Trans>Do you want to deassign?</Trans></div>
           <div className='choice-buttons'>
             <Button variant='outlined' color='primary'><Trans>Yes</Trans></Button>
             <Button variant='contained' color='primary'><Trans>No</Trans></Button>
@@ -31,7 +31,7 @@ export const AdminModalWindowWarningDeassign = (props) => {
 };
 
 AdminModalWindowWarningDeassign.propTypes =
-  {
-    open: PropTypes.bool,
-    handleClose: PropTypes.func
-  };
+{
+  open: PropTypes.bool,
+  handleClose: PropTypes.func
+};

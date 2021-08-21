@@ -20,7 +20,7 @@ export const HRmodalWindowTestDeassigned = (props) => {
       aria-describedby='simple-modal-description'
       className='modal'>
       <div className='modal-content base-color'>
-        <div className='hr-modal'>
+        <div className='hr-modal font-primary'>
           <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper' onSubmit={() => { props.handleClose(); }}>
             <CloseIcon className='close-icon icons-color' />
           </IconButton><Trans>Test was deassigned</Trans></div>

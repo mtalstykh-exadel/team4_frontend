@@ -23,7 +23,7 @@ export const ModalWindowWarningCannotDeassign = (props) => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove'>
-            <div className='text'><Trans>The test has already been deassigned</Trans></div>
+            <div className='text font-primary'><Trans>The test has already been deassigned</Trans></div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={props.handleClose}><Trans>Close</Trans></Button>
             </div>

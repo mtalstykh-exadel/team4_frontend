@@ -11,10 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:200
+msgid "Audio not found"
+msgstr "Audio not found"
+
 #: src/components/TestsForVerificationTable/ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost.jsx:20
 #: src/components/TestsForVerificationTable/ModalWindowWarningPassingTest/ModalWindowWarningPassingTest.jsx:30
 msgid "Close"
 msgstr "Close"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:181
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:215
+msgid "Comment"
+msgstr "Comment"
 
 #: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:150
 msgid "Edit"

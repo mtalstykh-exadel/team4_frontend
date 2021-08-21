@@ -14,6 +14,7 @@ import {
   Backdrop,
 } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
+import * as queryString from 'querystring';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -32,7 +33,6 @@ export const EditTestsTable = (props) => {
 
   const history = useHistory();
 
-  const queryString = require('query-string');
 
   const questions = useSelector((state) => state.coach.questions);
   const question = useSelector((state) => state.coach.question);
