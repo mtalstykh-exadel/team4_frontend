@@ -2,24 +2,6 @@
   width: 500px;
   height: 160px;
 
-  .close-icon-wrapper {
-    position: relative;
-    display: block;
-    margin-left: 89%;
-
-    .MuiIconButton-root {
-      height: 15px;
-
-      .close-icon {
-        position: absolute;
-        bottom: 0;
-        width: 15px;
-        height: 15px;
-        cursor: pointer;
-      }
-    }
-  }
-
   .warning-text {
     font-style: normal;
     font-weight: normal;
@@ -34,5 +16,22 @@
     margin-left: 337px;
     margin-right: 5px;
     margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .modal-warning-passing-test {
+    width: 350px;
+
+    .warning-text {
+      font-size: 12px;
+    }
+
+    .MuiButton-root {
+      height: 13px;
+      width: 45px;
+      margin-left: 90%;
+      margin-top: 13px;
+    }
   }
 }

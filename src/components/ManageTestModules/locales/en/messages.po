@@ -35,9 +35,29 @@ msgstr "'Edit topic for an Speaking'"
 msgid "Back"
 msgstr "Back"
 
+#: src/components/ManageTestModules/ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate.jsx:15
+msgid "Close"
+msgstr "Close"
+
+#: src/components/ManageTestModules/ManageTestModules.js:103
+msgid "Level:"
+msgstr "Level:"
+
+#: src/components/ManageTestModules/ManageTestModules.js:104
+msgid "Module:"
+msgstr "Module:"
+
+#: src/components/ManageTestModules/ManageTestModules.js:105
+msgid "Question-ID:"
+msgstr "Question-ID:"
+
 #: src/components/ManageTestModules/ManageTestModules.js:171
 msgid "Save"
 msgstr "Save"
+
+#: src/components/ManageTestModules/ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate.jsx:13
+msgid "The data was saved successfully"
+msgstr "The data was saved successfully"
 
 #: src/components/ManageTestModules/ManageTopic/manageTopic.js:16
 #~ msgid "Topic"

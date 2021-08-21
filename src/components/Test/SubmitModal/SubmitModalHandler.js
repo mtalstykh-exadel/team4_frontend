@@ -46,7 +46,7 @@ const sendingHandler = () => {
   ]);
   const promiseSpeaking = saveSpeaking(dataURItoBlob(localStorage.getItem(testSpeakingFile)));
 
-  Promise.all([promiseEssay, promiseListeningAndGrammar, promiseSpeaking]).then(() => {
+  return Promise.all([promiseEssay, promiseListeningAndGrammar, promiseSpeaking]).then(() => {
     testFinish().then(() => window.location.href = '/result');
   });
 

@@ -12,11 +12,12 @@ import { useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
-import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
+import { currentTest, testAudioAttempts, testEassyUserAnswers, testGrammarUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { startTestById } from '../../../api/start-test';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
+import { ModalWindowTestCanceled } from '../ModalWindowTestCanceled/ModalWindowTestCanceled';
 
 import { getTest } from '../../../api/get-test';
 
@@ -36,7 +37,7 @@ const TestsData = (props) => {
     { id: 'deadline', label: ['Deadline', 'Срок прохождения'], minWidth: 130, align: 'center', },
     { id: 'verified', label: ['Date verified', 'Дата проверки'], minWidth: 130, align: 'center', },
     { id: 'status', label: ['Status', 'Статус'], minWidth: 40, align: 'center', },
-    { id: 'evaluation', label: ['Result', 'Результат'], minWidth: 80, align: 'center', },
+    { id: 'totalScore', label: ['Result', 'Результат'], minWidth: 80, align: 'center', },
     { id: 'action', label: ['Action', 'Действие'], minWidth: 100, align: 'center', },
   ];
 
@@ -48,7 +49,7 @@ const TestsData = (props) => {
   };
 
   const getResult = (testId) => {
-    localStorage.setItem(currentTest, JSON.stringify({id: testId}));
+    localStorage.setItem(currentTest, JSON.stringify({ id: testId }));
     history.push('/result');
   };
 
@@ -75,11 +76,13 @@ const TestsData = (props) => {
 
   const filteredRows = formattedTestsHistory.filter((r) => props.filter ? r.level === props.filter : r);
 
-  let keysForColumns = 1;
+  let keysForColumns = 0;
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [count, setCount] = useState(rowsPerPage);
+  const [open, setOpen] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
 
   useEffect(() => {
     dispatch(requestUserTestsHistory(page, rowsPerPage));
@@ -89,10 +92,10 @@ const TestsData = (props) => {
     handleCount();
   }, []);
 
-  const handleCount = () => {
-    getUserTests(page + 1, rowsPerPage)
+  const handleCount = (newPage = page) => {
+    getUserTests(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
+        if (response.length > 0) {
           setCount(count + response.length);
         }
       });
@@ -100,7 +103,7 @@ const TestsData = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestUserTestsHistory(newPage, rowsPerPage));
-    handleCount();
+    handleCount(newPage);
     setPage(newPage);
   };
 
@@ -109,20 +112,20 @@ const TestsData = (props) => {
     setPage(0);
   };
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
 
-  const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
-
+  
   return (
     <Paper elevation={2}>
       <TableContainer>
-        <UserModalWindowBanningTest open={open} handleClose={handleClose}/>
+        <UserModalWindowBanningTest open={open} handleClose={handleClose} />
+        <ModalWindowTestCanceled open={openDeassigned} handleClose={() => setOpenDeassigned(false)} />
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
@@ -139,13 +142,13 @@ const TestsData = (props) => {
                 return (
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
                     {columns.map((column) => {
-                      ++keysForColumns;
+                      keysForColumns++;
                       const value = row[column.id];
                       return (
                         <TableCell key={keysForColumns} align={column.align} size='medium'>
                           {
                             column.id === 'action' && value ?
-                              loading
+                              loading && loading === row.testId
                                 ?
                                 <CircularProgress className='border-primary' size='25px' />
                                 :
@@ -153,12 +156,13 @@ const TestsData = (props) => {
                                   ?
                                   <Button className='button-standard' color='primary' variant='contained'
                                     onClick={() => {
-                                      setLoading(true);
+                                      setLoading(row.testId);
                                       localStorage.removeItem(currentTest);
                                       localStorage.removeItem(testGrammarUserAnswers);
                                       localStorage.removeItem(testEassyUserAnswers);
                                       localStorage.removeItem(testListeningUserAnswers);
                                       localStorage.removeItem(testSpeakingAnswers);
+                                      localStorage.setItem(testAudioAttempts, 3);
                                       startTestById(row.testId)
                                         .then((response) => {
                                           localStorage.setItem(currentTest, JSON.stringify(response));
@@ -166,9 +170,11 @@ const TestsData = (props) => {
                                           window.scrollTo(0, 0);
                                         })
                                         .catch((err) => {
-                                          setLoading(false);
-                                          if (err.code === 409) {
+                                          setLoading(null);
+                                          if (err.response.status === 409) {
                                             handleOpen();
+                                          } else if (err.response.status === 404) {
+                                            setOpenDeassigned(true);
                                           }
                                         });
                                     }
@@ -178,16 +184,24 @@ const TestsData = (props) => {
                                   :
                                   row.status === 'VERIFIED' ? <Button className='button-standard' color='primary' variant='contained'
                                     onClick={() => {
+                                      setLoading(row.testId);
                                       getResult(row.testId);
-                                    }} >
+                                      setLoading(null);
+                                    }}
+                                  >
                                     <Trans>View Results</Trans>
                                   </Button>
                                     :
                                     <Button className='button-standard' color='primary' variant='contained'
                                       onClick={() => {
+                                        setLoading(row.testId);
                                         getTest(row.testId)
-                                          .then((response) => localStorage.setItem(currentTest, JSON.stringify(response)));
-                                        history.push('/test');
+                                          .then((response) => {
+                                            localStorage.setItem(testAudioAttempts, 1);
+                                            localStorage.setItem(currentTest, JSON.stringify(response));
+                                            history.push('/test');
+                                            setLoading(null);
+                                          });
                                       }} >
                                       <Trans>Continue</Trans>
                                     </Button>

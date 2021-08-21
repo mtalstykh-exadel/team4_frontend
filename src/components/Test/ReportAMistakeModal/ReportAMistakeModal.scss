@@ -1,16 +1,6 @@
 .report-mistake-modal {
   width: 949px;
 
-  .close-icon-wrapper {
-    display: block;
-    margin-left: auto;
-    padding: 0;
-
-    .MuiIconButton-root {
-      height: 35px;
-    }
-  }
-
   .report-header {
     font-size: 18px;
     text-align: center;
@@ -116,8 +106,8 @@
 
 @media only screen and (max-width: 800px) {
   .report-mistake-modal {
-    width: 360px;
-    height: 345px;
+    width: 340px;
+    height: 305px;
 
     .MuiIconButton-root {
       height: 20px;
@@ -130,7 +120,7 @@
     }
 
     .report-header {
-      font-size: 16px;
+      font-size: 12px;
     }
 
     .level-module-info {
@@ -172,11 +162,11 @@
       margin-left: 50%;
       margin-right: 5%;
       height: 30px;
-      font-size: 10px;
 
       .delete-button,
       .report-button {
         width: 40px;
+        font-size: 9px;
       }
     }
   }

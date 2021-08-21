@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Paper } from '@material-ui/core';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
+import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
 import { testAudioAttempts } from '../../constants/localStorageConstants';
 import './Player.scss';
@@ -14,14 +15,12 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   const [localeDuration, setLocaleDuration] = useState(0);
   const [audioCurrent, setAudioCurrent] = useState(0);
   const [audioElement, setAudioElement] = useState({});
-  const audioDomElement = document.getElementById(id);
+  let audioDomElement = document.getElementById(id);
   const [audioOn, setAudioOn] = useState(false);
   const [loading, setloading] = useState(true);
 
   const AudioStart = () => {
-    document
-      .getElementById(id)
-      .play()
+    audioDomElement.play()
       .catch((err) => {
         console.warn(err);
       });
@@ -30,12 +29,6 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     setAudioCurrent(0);
     setAudioOn(true);
 
-    document
-      .getElementById(id)
-      .removeEventListener('timeupdate', AudioProgressBar);
-    document
-      .getElementById(id)
-      .addEventListener('timeupdate', AudioProgressBar);
   };
 
   const AudioStop = () => {
@@ -46,39 +39,44 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   };
 
   const AudioController = () => {
+    let attempts;
     if (document.getElementById(id)) {
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts)) > 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) > 0
       ) {
         AudioStart();
-        const attempts = parseInt(localStorage.getItem(testAudioAttempts)) - 1;
-        localStorage.setItem(testAudioAttempts, attempts.toString());
+        attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
       } else {
         AudioStart();
       }
 
       if (
         document.getElementById('player-listening') &&
-        parseInt(localStorage.getItem(testAudioAttempts)) === 0
+        parseInt(localStorage.getItem(testAudioAttempts), 16) === 0
       ) {
         audioDomElement.pause();
         setAudioOn(false);
         return;
       }
+      audioDomElement.removeEventListener('timeupdate', AudioProgressBar);
+      audioDomElement.addEventListener('timeupdate', AudioProgressBar);
+    }
+    if (attempts !== undefined) {
+      localStorage.setItem(testAudioAttempts, attempts.toString());
     }
   };
 
   const AudioProgressBar = (e) => {
-    const { currentTime, duration } = e.srcElement;
+    const { currentTime } = e.srcElement;
+
     setAudioElement(e.srcElement);
     setAudioCurrent(checkTime(currentTime));
 
     if (audioDuration) {
       setProgressPercent((currentTime / audioDuration) * 100);
     } else {
-      setProgressPercent((currentTime / duration) * 100);
-      setLocaleDuration(duration);
+      setProgressPercent((currentTime / localeDuration) * 100);
     }
   };
 
@@ -99,8 +97,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
   const setAudioProgressBar = (e) => {
     if (audioElement.currentTime !== null) {
       if (document.getElementById('player-listening') === null) {
-        audioElement.currentTime =
-          (e.nativeEvent.offsetX / e.target.offsetWidth) * audioElement.duration;
+        audioElement.currentTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * Number(localeDuration);
       }
     }
   };
@@ -111,12 +108,18 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
     };
   }
 
-  setTimeout(() => {
-    document.getElementById(id).addEventListener('loadeddata', () => {
-      setLocaleDuration(document.getElementById(id).duration);
+  useEffect(() => {
+    audioDomElement = document.getElementById(id);
+    audioDomElement.addEventListener('loadeddata', async () => {
+      const durationBlobLink = await getBlobDuration(src).catch((err) => {
+        console.warn(err);
+      });
+      setLocaleDuration(durationBlobLink);
       setloading(false);
     });
-  }, 0);
+    audioDomElement.removeEventListener('timeupdate', AudioProgressBar);
+    audioDomElement.addEventListener('timeupdate', AudioProgressBar);
+  }, [src]);
 
   return (
     <Paper elevation={3} className='player'>
@@ -147,16 +150,15 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
         {audioOn === false ? (
           loading && !speaking ? (
             <CircularProgress className='border-primary' size='23px' />
-          ) : (
-            ( 
-              parseInt(localStorage.getItem(testAudioAttempts)) === 0 && 
-              document.getElementById('player-listening') === null
-            ) ? (
-                <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
-              ) : ( 
-                <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
+          ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
+            document.getElementById('player-listening') ? (
+              <PlayArrowIcon
+                className='icons-color-secondory'
+                fontSize='medium'
+              />
+            ) : (
+              <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
             )
-          )
         ) : (
           <PauseIcon className='icons-color-primary' fontSize='medium' />
         )}
@@ -185,7 +187,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
           }
         }}
       >
-        <VolumeUpIcon className='icons-color' fontSize='medium' />
+        <VolumeUpIcon className='icons-color action' fontSize='medium' />
       </button>
     </Paper>
   );

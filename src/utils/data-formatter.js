@@ -6,7 +6,17 @@ import { language_russian } from '../constants/languageConstants';
 
 const formatDate = (date) => {
   localStorage.getItem(userLanguageKey) === language_russian ? moment.locale('ru') : moment.locale('en');
-  return moment(date).format('DD MMM YYYY, hh:mm');
+  return moment(date).format('DD MMM YYYY, HH:mm');
 };
 
-export { formatDate };
+const formatDateNotifications = (date) => {
+  localStorage.getItem(userLanguageKey) === language_russian ? moment.locale('ru') : moment.locale('en');
+  return moment(date).format('DD MMM YYYY');
+};
+
+const formatDeadline = (date) => {
+  localStorage.getItem(userLanguageKey) === language_russian ? moment.locale('ru') : moment.locale('en');
+  return moment(date).format('HH:mm');
+};
+
+export { formatDate, formatDateNotifications, formatDeadline};

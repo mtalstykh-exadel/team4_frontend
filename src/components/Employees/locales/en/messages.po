@@ -23,6 +23,11 @@ msgstr "Assign"
 msgid "Assign test"
 msgstr "Assign test"
 
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:26
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:27
+msgid "Close"
+msgstr "Close"
+
 #: src/components/Employees/EmployeesTable/TableEmployeeRow/TableEmployeeRow.js:35
 msgid "Deassign"
 msgstr "Deassign"
@@ -35,14 +40,18 @@ msgstr "Do you want to deassign?"
 msgid "Email: {0}"
 msgstr "Email: {0}"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:64
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:54
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:64
 msgid "Level"
 msgstr "Level"
 
 #: src/components/Employees/EmployeesFilter/EmployeesFilter.jsx:26
 msgid "Name"
 msgstr "Name"
+
+#: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:31
+msgid "No"
+msgstr "No"
 
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:85
 msgid "Priority:"
@@ -55,6 +64,22 @@ msgstr "Select the test level:"
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:72
 msgid "Test deadline:"
 msgstr "Test deadline:"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:26
+msgid "Test was deassigned"
+msgstr "Test was deassigned"
+
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:24
+msgid "The test has already been assigned to this employee"
+msgstr "The test has already been assigned to this employee"
+
+#: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:25
+msgid "The test has already been deassigned"
+msgstr "The test has already been deassigned"
+
+#: src/components/Employees/EmployeesTable/AdminModalWindowWarningDeassign/AdminModalWindowWarningDeassign.jsx:30
+msgid "Yes"
+msgstr "Yes"
 
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:50
 msgid "You want to assign a test for {0}"
@@ -69,6 +94,6 @@ msgstr "You want to assign a test for {0}"
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:122
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:123
 msgid "{0}{1}"
 msgstr "{0}"

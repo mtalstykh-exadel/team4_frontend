@@ -43,19 +43,26 @@ export const EmployeesTable = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [count, setCount] = useState(rowsPerPage);
 
+  const [employee, setEmployee] = useState([]);
+
+  const [openAssign, setOpenAssign] = useState(false);
+  const [openHistory, setOpenHistory] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
+  const [openAssigned, setOpenAssigned] = useState(false);
+
   const handleCount = (newPage = page) => {
     getEmployeesList(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
+        if (response.length > 0) {
           setCount(count + response.length);
         }
       });
   };
 
   const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-    dispatch(requestEmployeesList(newPage, rowsPerPage));
     handleCount(newPage);
+    dispatch(requestEmployeesList(newPage, rowsPerPage));
+    setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -71,42 +78,21 @@ export const EmployeesTable = (props) => {
     handleCount();
   }, []);
 
-  const [employee, setEmployee] = useState([]);
-
-  const [openAssign, setOpenAssign] = useState(false);
-  const [openHistory, setOpenHistory] = useState(false);
-  const [openDeassigned, setOpenDeassigned] = useState(false);
-  const [openAssigned, setOpenAssigned] = useState(false);
-
   const handleDeassign = (test) => {
-    return dispatch(requestEmployeesList())
-      .then((state) => {
-        const newEmployee = state.employee.find((x) => x.name === test.name);
-        if (newEmployee && newEmployee.assignedTest) {
-          deassignTest(test.assignedTest.testId)
-            .then(() => dispatch(requestEmployeesList()));
-        } else {
-          setOpenDeassigned(true);
-        }
-      });
+    return deassignTest(test.assignedTest.testId)
+      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
   };
 
   const handleAssign = (test) => {
-    return dispatch(requestEmployeesList())
-      .then((state) => {
-        const newEmployee = state.employee.find((x) => x.name === test.name);
-        if (newEmployee && !newEmployee.assignedTest) {
-          setEmployee(test);
-          setOpenAssign(true);
-        } else {
-          setOpenAssigned(true);
-        }
-      });
+    return dispatch(requestEmployeesList(page, rowsPerPage))
+      .then(() => setEmployee(test))
+      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)))
+      .then(() => setOpenAssign(true));
   };
 
   const handleHistory = (test) => {
     return Promise.resolve(setEmployee(test))
-      .then(() => dispatch(requestEmployeeHistory(test.id)))
+      .then(() => dispatch(requestEmployeeHistory(test.id, '', 0, 3)))
       .then(() => setOpenHistory(true));
   };
 
@@ -124,7 +110,7 @@ export const EmployeesTable = (props) => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filterEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((filterEmployee, index ) => {
+            <TableBody>{filterEmployees.map((filterEmployee, index ) => {
               return (
                 <TableEmployeeRow
                   key={index}
@@ -140,16 +126,29 @@ export const EmployeesTable = (props) => {
         <TablePagination
           rowsPerPageOptions={[10]}
           component='div'
-          count={filterEmployees.length}
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        {<ModalWindowWarningCannotAssign open={openAssigned} handleClose={() => setOpenAssigned(false)}/>}
-        {<HRmodalWindowTestAssignment test={employee} open={openAssign} handleClose={() => setOpenAssign(false)}/>}
-        {<HRmodalWindowViewingUserInformation test={employee} open={openHistory} handleClose={() => setOpenHistory(false)}/>}
-        {<ModalWindowWarningCannotDeassign open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>}
+        {<ModalWindowWarningCannotAssign
+          open={openAssigned}
+          handleClose={() => setOpenAssigned(false)}/>}
+        {<HRmodalWindowTestAssignment
+          test={employee}
+          open={openAssign}
+          handleClose={() => setOpenAssign(false)}
+          setOpenCantAssign={() => setOpenAssigned(true)}
+          page={page}
+          rowsPerPage={rowsPerPage}/>}
+        {<HRmodalWindowViewingUserInformation
+          test={employee}
+          open={openHistory}
+          handleClose={() => setOpenHistory(false)}/>}
+        {<ModalWindowWarningCannotDeassign
+          open={openDeassigned}
+          handleClose={() => setOpenDeassigned(false)}/>}
       </Paper>
     </div>
   );

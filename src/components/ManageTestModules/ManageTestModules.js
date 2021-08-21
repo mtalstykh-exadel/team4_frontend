@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
-import { Button, Modal, Paper } from '@material-ui/core';
+import { Backdrop, Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Trans } from '@lingui/macro';
 
@@ -92,6 +92,7 @@ export const ManageModule = (props) => {
       <Modal
         open={open}
         onClose={handleClose}
+        BackdropComponent={Backdrop}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'>
@@ -119,9 +120,9 @@ export const ManageModule = (props) => {
                 }} />
             </>
             : question && <>
-              <span className='questionInfo'>Level: {question.level}</span>
-              <span className='questionInfo'>Module: {question.module}</span>
-              <span className='questionInfo'>Question-ID: {question.id}</span>
+              <span className='questionInfo'><Trans>Level: </Trans>{question.level}</span>
+              <span className='questionInfo'><Trans>Module: </Trans>{question.module}</span>
+              <span className='questionInfo'><Trans>Question-ID: </Trans>{question.id}</span>
             </>
           }
         </div>

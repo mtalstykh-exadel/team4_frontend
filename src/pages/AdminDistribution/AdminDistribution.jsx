@@ -15,6 +15,7 @@ import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
 import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
+import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
 
 const AdminDistribution = (props) => {
 
@@ -42,6 +43,8 @@ const AdminDistribution = (props) => {
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
   const [count, setCount] = useState(rowsPerPage);
+  const [open, setOpen] = useState(false);
+  const [modalText, setModalText] = useState([]);
 
   useEffect(() => {
     dispatch(requestQuestionsList(page, rowsPerPage));
@@ -51,18 +54,18 @@ const AdminDistribution = (props) => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
-  const handleCount = () => {
-    getUnverifiedTests(page + 1, rowsPerPage)
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getUnverifiedTests(newPage + 1, rowsPerPage)
       .then((response) => {
         if (response !== []) {
           setCount(count + response.length);
         }
       });
   };
-
-  useEffect(() => {
-    handleCount();
-  }, []);
 
   let coachNames = [];
 
@@ -72,7 +75,7 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount();
+    handleCount(newPage);
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -209,8 +212,16 @@ const AdminDistribution = (props) => {
                                 onClick={() => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
                                   if (currentElement === 'assign' || currentElement === 'назначить') {
-                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value);
-                                    changeButtonStyle(row.testId);
+                                    assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value)
+                                      .then(() => changeButtonStyle(row.testId))
+                                      .catch((err) => {
+                                        setOpen(true);
+                                        if (err.response && err.response.status === 409) {
+                                          setModalText(['Coach not allowed to verify his own test', 'Тренеру не разрешено проверять свой тест']);
+                                        } else if (err === 'No coach') {
+                                          setModalText(['Choose a coach', 'Выберите тренера']);
+                                        }
+                                      });
                                   } else {
                                     deassignCoachTest(row.testId);
                                     changeButtonStyle(row.testId);
@@ -240,6 +251,7 @@ const AdminDistribution = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)}/>
     </Layout>
   );
 };

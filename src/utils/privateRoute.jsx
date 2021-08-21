@@ -13,10 +13,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 };
 
 PrivateRoute.propTypes = {
-  children: PropTypes.oneOfType([
-    PrivateRoute.array,
-    PropTypes.object
-  ])
+  children: PropTypes.any
 };
 
 export default PrivateRoute;
