@@ -90,7 +90,7 @@ export const ManageListening = (props) => {
     };
     input.click();
   };
-  console.log(loading);
+  
   return (
     <>
       <div className='listening-topic'>
