@@ -78,16 +78,17 @@ export const TestsForVerificationModal = (props) => {
 
   const handleSubmit = () => {
     setLoadingSubmit(true);
-    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
-      .then((response) => {
-        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId)) {
-          saveTestGrades(essay)
-            .then(() => saveTestGrades(speaking))
-            .then(() => submitTestGrades(test.testId))
-            .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
-            .then(() => props.handleClose());
-        }
-      });
+    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage));
+    saveTestGrades(essay)
+      .then(() => saveTestGrades(speaking))
+      .then(() => submitTestGrades(test.testId))
+      .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
+      .then(() => props.handleClose())
+      .catch((err) => {
+        if (err.response.status === 409) {
+          props.handleOpen();
+          props.handleClose();
+        }});
   };
 
   const handleSave = () => {
@@ -295,6 +296,7 @@ export const TestsForVerificationModal = (props) => {
 };
 
 TestsForVerificationModal.propTypes = {
+  handleOpen: PropTypes.func,
   handleClose: PropTypes.func,
   rowsPerPage: PropTypes.any,
   page: PropTypes.any

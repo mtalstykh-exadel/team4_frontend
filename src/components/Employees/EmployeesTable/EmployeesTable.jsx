@@ -79,30 +79,15 @@ export const EmployeesTable = (props) => {
   }, []);
 
   const handleDeassign = (test) => {
-    return dispatch(requestEmployeesList(page, rowsPerPage))
-      .then((state) => {
-        const newEmployee = state.employee.find((x) => x.name === test.name);
-        if (newEmployee && newEmployee.assignedTest) {
-          deassignTest(test.assignedTest.testId);
-        } else {
-          setOpenDeassigned(true);
-        }
-      })
+    return deassignTest(test.assignedTest.testId)
       .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
   };
 
   const handleAssign = (test) => {
     return dispatch(requestEmployeesList(page, rowsPerPage))
-      .then((state) => {
-        const newEmployee = state.employee.find((x) => x.name === test.name);
-        if (newEmployee && !newEmployee.assignedTest) {
-          setEmployee(test);
-          setOpenAssign(true);
-        } else {
-          setOpenAssigned(true);
-        }
-      })
-      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
+      .then(() => setEmployee(test))
+      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)))
+      .then(() => setOpenAssign(true));
   };
 
   const handleHistory = (test) => {
