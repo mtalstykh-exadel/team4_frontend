@@ -4,9 +4,9 @@ import { Redirect, useHistory } from 'react-router-dom';
 
 import { ManageModule } from '../../components';
 import Layout from '../../components/Layout/Layout';
-import { requestListeningTopic, requestQuestion } from '../../store/actions/coachActions';
+import { addListeningQuestion, editListeningQuestion, requestListeningTopic, requestQuestion } from '../../store/actions/coachActions';
 import * as queryString from 'querystring';
-import { addNewQuestion, sendEditedListeningQuestion, sendEditedQuestion } from '../../api/questions-requests';
+import { addNewQuestion, sendEditedQuestion } from '../../api/questions-requests';
 
 export const ManageTest = () => {
 
@@ -19,18 +19,17 @@ export const ManageTest = () => {
   const location = history.location.pathname;
   const parsed = queryString.parse(history.location.search.substr(1));
 
-  const sendQuestionToEditOrAdd = (moduleData, module) => {
+  const sendQuestionToEditOrAdd = (moduleData, module, audioFile) => {
     if (location === '/edit-test-modules') {
       if (module === 'Listening') {
-        console.log(moduleData);
-        sendEditedListeningQuestion(moduleData);
+        dispatch(editListeningQuestion(audioFile, moduleData));
       } else {
         sendEditedQuestion(moduleData);
       }
     }
     if (location === '/add-test-modules') {
       if (module === 'Listening') {
-        // sendEditedListeningQuestion(moduleData);
+        dispatch(addListeningQuestion(audioFile, moduleData));
       } else {
         addNewQuestion(moduleData);
       }

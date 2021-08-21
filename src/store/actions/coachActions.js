@@ -2,7 +2,8 @@ import {
   REQUEST_QUESTIONS_LIST, REQUEST_QUESTION, REMOVE_QUESTION, REMOVE_EDITED_QUESTION, REMOVE_QUESTION_LIST
 } from './actionTypes';
 import {
-  getListeningQuestionsList, getQuestionsList, getSingleListeningQuestion, getSingleQuestion, requestToArchiveAndDearchive, requestToArchiveAndDearchiveListening,
+  addNewListeningQuestion,
+  getListeningQuestionsList, getQuestionsList, getSingleListeningQuestion, getSingleQuestion, requestToArchiveAndDearchive, requestToArchiveAndDearchiveListening, sendEditedListeningQuestion, sendNewAudio,
 } from '../../api/questions-requests';
 
 export const setQuestionsList = (questions) => ({ type: REQUEST_QUESTIONS_LIST, questions });
@@ -25,6 +26,28 @@ export const requestListeningQuestionsList = (level, status, pageNum, pageSize) 
 export const requestListeningTopic = (id) => async (dispatch) => {
   const data = await getSingleListeningQuestion(id);
   dispatch(setQuestions(data));
+};
+
+export const addListeningQuestion = (file, question) => async () => {
+  const data = await sendNewAudio(file);
+  if (data) {
+    const newQuestion = {
+      ...question,
+      url: data
+    };
+    addNewListeningQuestion(newQuestion);
+  }
+};
+
+export const editListeningQuestion = (file, question) => async () => {
+  const data = await sendNewAudio(file);
+  if (data) {
+    const newQuestion = {
+      ...question,
+      url: data
+    };
+    sendEditedListeningQuestion(newQuestion);
+  }
 };
 
 export const requestQuestion = (id) => async (dispatch) => {

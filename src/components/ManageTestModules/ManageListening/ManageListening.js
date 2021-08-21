@@ -15,7 +15,8 @@ export const ManageListening = (props) => {
 
   const [moduleData, setModuleData] = useState(props.moduleData);
   const [audio, setAudio] = useState(moduleData.url);
-  const [grammarReady, setGrammarReady] = useState({});
+  const [audioToSend, setAudioToSend] = useState(moduleData.url);
+  const [grammarReady, setGrammarReady] = useState(false);
   const [topicReady, setTopicReady] = useState(false);
 
   useEffect(() => {
@@ -45,15 +46,19 @@ export const ManageListening = (props) => {
         }
       }
     }
-
     props.handleModule(moduleData);
   }, [moduleData]);
 
   useEffect(() => {
-    setModuleData(Object.assign({}, moduleData, {
-      url: audio
-    }));
-  }, [audio]);
+    if (grammarReady) {
+      if (topicReady) {
+        if (audio) {
+          props.handleReady(true);
+        }
+      }
+    }
+    props.handleAudio(audioToSend);
+  }, [audioToSend]);
 
   const handleArr = (index) => (value) => {
     const questionsArray = [...moduleData.questions];
@@ -74,7 +79,10 @@ export const ManageListening = (props) => {
     input.accept = 'audio/*';
     input.required = true;
     input.onchange = () => {
-      input.files[0].type === 'audio/mpeg' ? setAudio(window.URL.createObjectURL(new Blob(input.files, { type: 'audio/ogg; codecs=opus' }))) : null;
+      if (input.files[0].type === 'audio/mpeg') {
+        setAudio(window.URL.createObjectURL(new Blob(input.files, { type: 'audio/ogg; codecs=opus' })));
+        setAudioToSend(new Blob(input.files, { type: 'audio/ogg; codecs=opus' }));
+      } else null;
     };
     input.click();
   };
@@ -110,6 +118,7 @@ export const ManageListening = (props) => {
 ManageListening.propTypes = {
   handleModule: PropTypes.func,
   handleReady: PropTypes.func,
+  handleAudio: PropTypes.func,
   moduleData: PropTypes.any,
   dataType: PropTypes.any,
   ready: PropTypes.any,

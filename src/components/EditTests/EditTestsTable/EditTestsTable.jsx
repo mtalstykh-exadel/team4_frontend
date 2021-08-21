@@ -110,7 +110,7 @@ export const EditTestsTable = (props) => {
     }
     setOpen(false);
   };
-
+  
   return (
     <div className='edit-tests-data-wrapper'>
       {

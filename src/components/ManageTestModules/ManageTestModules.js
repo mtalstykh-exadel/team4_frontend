@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import { Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
@@ -20,19 +20,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeQuestionForEdit } from '../../store/actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
+import { testSpeakingFile } from '../../constants/localStorageConstants';
 
 export const ManageModule = (props) => {
   const dispatch = useDispatch();
 
   const question = useSelector((state) => state.coach.question);
 
-  // const history = useHistory();
+  const history = useHistory();
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [ready, setReady] = useState(false);
+  const [readyModules, setReadyModules] = useState(false);
+  const [audio, setAudio] = useState('');
 
   const handleOpen = () => {
     setOpen(true);
@@ -40,14 +43,21 @@ export const ManageModule = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-    // history.push({
-    //   pathname: 'edit-tests'
-    // });
+    history.push({
+      pathname: 'edit-tests'
+    });
   };
 
   const onSubmit = () => {
     if (submitting) {
-      props.sendQuestionToEditOrAdd(moduleData, formik.values.module);
+      if (formik.values.module === 'Listening') {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          localStorage.setItem(testSpeakingFile, event.target.result);
+        };
+        reader.readAsDataURL(audio);
+      }
+      props.sendQuestionToEditOrAdd(moduleData, formik.values.module, audio);
       setSubmitting(false);
     }
   };
@@ -65,6 +75,17 @@ export const ManageModule = (props) => {
     setReady(false);
     setModuleData('');
   };
+
+  useEffect(() => {
+    if (props.module === 'Listening' || formik.values.module === 'Listening') {
+      const isReady = moduleData ? moduleData.questions.every((el) => {
+        return el.questionBody && el.answers.every((el) => {
+          return el.answer && el.correct !== undefined;
+        });
+      }) : null;
+      setReady(isReady);
+    }
+  }, [moduleData]);
 
   return (
     <>
@@ -116,7 +137,8 @@ export const ManageModule = (props) => {
           {formik.values.module === 'Listening' ?
             <ManageListening
               handleModule={setModuleData}
-              handleReady={setReady}
+              handleReady={setReadyModules}
+              handleAudio={setAudio}
               ready={ready}
               dataType={props.dataType}
               level={formik.values.level}
@@ -176,7 +198,8 @@ export const ManageModule = (props) => {
               variant='contained'
               type='submit'
               value='submit'
-              disabled={props.dataType ? props.dataType : !ready}>
+              disabled={props.dataType ? props.dataType : props.module === 'Listening' || formik.values.module === 'Listening' 
+              ? !(ready && readyModules) : !ready}>
               <Trans>Save</Trans>
             </Button> : null}
         </div>
