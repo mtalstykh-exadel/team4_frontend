@@ -179,7 +179,7 @@ export const TestsForVerificationModal = (props) => {
         }
       </div>
       <TextField
-        label='Comment'
+        label={<Trans>Comment</Trans>}
         variant='outlined'
         value={essay.comment}
         onChange={handleEssayComment}
@@ -198,7 +198,7 @@ export const TestsForVerificationModal = (props) => {
             id='player-speaking'
             src={url}
           /> :
-          <div className='bold audio-replacement'>Audio not found</div> }
+          <div className='bold audio-replacement'><Trans>Audio not found</Trans></div> }
       </div>
       <div className='grades-wrapper'>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
@@ -213,7 +213,7 @@ export const TestsForVerificationModal = (props) => {
         })}
       </div>
       <TextField
-        label='Comment'
+        label={<Trans>Comment</Trans>}
         variant='outlined'
         className='comment-section'
         multiline

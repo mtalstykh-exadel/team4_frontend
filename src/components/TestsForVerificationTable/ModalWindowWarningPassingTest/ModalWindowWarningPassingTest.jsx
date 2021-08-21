@@ -25,7 +25,7 @@ export const ModalWindowWarningPassingTest = () => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-warning-passing-test'>
-            <div className='warning-text'><Trans>This functionality will be available to you only after passing the test</Trans></div>
+            <div className='warning-text font-primary'><Trans>This functionality will be available to you only after passing the test</Trans></div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={handleClose}><Trans>Close</Trans></Button>
             </div>

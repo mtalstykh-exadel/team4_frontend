@@ -1,7 +1,7 @@
 .modal-warning-archive {
   width: 440px;
   padding: 0;
-  height: 160px;
+  height: 85px;
 
   .close-icon-wrapper {
     position: relative;
@@ -25,13 +25,13 @@
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
-    line-height: 130%;
-    text-align: center;
+    text-align: left;
+    margin-top: 25px;
   }
 
   .btn {
-    padding-top: 50px;
-    padding-left: 42%;
+    padding-top: 40px;
+    padding-left: 200px;
 
     .MuiButton-root {
       height: 25px;

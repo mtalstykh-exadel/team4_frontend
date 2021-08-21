@@ -10,7 +10,7 @@ export const ModalWindowSuccessulUpdate = ({ handleClose }) => {
 
   return (
     <div className='modal-remove'>
-      <div className='text'><Trans>The data was saved successfully</Trans></div>
+      <div className='text font-primary'><Trans>The data was saved successfully</Trans></div>
       <div className='btn'>
         <Button variant='outlined' color='primary' onClick={handleClose} className='button-standard'><Trans>Close</Trans></Button>
       </div>
