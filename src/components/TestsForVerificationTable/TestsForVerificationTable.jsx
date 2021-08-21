@@ -19,6 +19,7 @@ export const TestsForVerificationTable = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [open, setOpen] = useState(false);
+  const [openDeassigned, setOpenDeassigned] = useState(false);
   const [test, setTest] = useState('');
   const [count, setCount] = useState(rowsPerPage);
 
@@ -59,8 +60,8 @@ export const TestsForVerificationTable = () => {
         .then(() => dispatch(requestGrades(row.testId)))
         .then(() => Promise.resolve(setOpen(true)))
         .catch((err) => {
-          if (err.response.status === 403) {
-            setOpen(true);
+          if (err.response.status === 409) {
+            setOpenDeassigned(true);
           }}
         )
       );
@@ -107,11 +108,11 @@ export const TestsForVerificationTable = () => {
           aria-describedby='simple-modal-description'
           className='modal'>
           <div className='modal-content'>
-            {unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId) ?
-              <TestsForVerificationModal handleClose={() => setOpen(false)} page={page} rowsPerPage={rowsPerPage}/> :
-              <ModalWindowRemovedFromYourPost handleClose={() => setOpen(false)}/>}
+            {unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId) &&
+              <TestsForVerificationModal handleClose={() => setOpen(false)} page={page} rowsPerPage={rowsPerPage} handleOpen={() => setOpenDeassigned(true)}/>}
           </div>
         </Modal>
+        <ModalWindowRemovedFromYourPost open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>
       </Paper>
     </div>
   );

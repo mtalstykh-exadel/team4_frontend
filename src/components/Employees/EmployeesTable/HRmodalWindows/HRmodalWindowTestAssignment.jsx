@@ -48,9 +48,9 @@ export const HRmodalWindowTestAssignment = (props) => {
           if (err.response.status === 409) {
             props.setOpenCantAssign();
           }}
-        );
-      props.handleClose();
-      dispatch(requestEmployeesList(props.page, props.rowsPerPage));}}>
+        )
+        .then(() => dispatch(requestEmployeesList(props.page, props.rowsPerPage)));
+      props.handleClose();}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
       <div className='level-selector-wrapper'>
         <p className='setting-label bold'><Trans>Select the test level:</Trans></p>
