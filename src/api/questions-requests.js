@@ -24,13 +24,11 @@ export const sendEditedListeningQuestion = async (quest) => {
 };
 
 export const sendNewAudio = async (file) => {
-  if (file !== null) {
-    const formData = new FormData();
-    formData.append('file', file, 'data');
-    return axiosInstance.post('files/listening', formData, {
-      headers: { 'Content-Type': 'multipart/form-data' }
-    }).then((response) => response.data);
-  }
+  const formData = new FormData();
+  formData.append('file', file, 'data');
+  return axiosInstance.post('files/listening', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' }
+  }).then((response) => response.data);
 };
 
 export const addNewListeningQuestion = async (quest) => {
