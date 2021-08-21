@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-<<<<<<< HEAD
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Modal, } from '@material-ui/core';
-=======
 import {
   Button,
   Paper,
@@ -16,7 +13,6 @@ import {
   Modal,
   Backdrop,
 } from '@material-ui/core';
->>>>>>> origin/develop
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';

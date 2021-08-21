@@ -10,14 +10,16 @@ import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
 import { Player } from '../../Player/Player';
 import { getAudioFile } from '../../../api/get-audioFIle';
+import { CircularProgress } from '@material-ui/core';
 
 export const ManageListening = (props) => {
 
   const [moduleData, setModuleData] = useState(props.moduleData);
-  const [audio, setAudio] = useState(moduleData.url);
+  const [audio, setAudio] = useState();
   const [audioToSend, setAudioToSend] = useState(moduleData.url);
   const [grammarReady, setGrammarReady] = useState(false);
   const [topicReady, setTopicReady] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setModuleData(Object.assign({}, moduleData, {
@@ -27,6 +29,7 @@ export const ManageListening = (props) => {
 
   useEffect(
     async function () {
+      moduleData.url && setLoading(true);
       setAudio(
         await getAudioFile(moduleData.url).then((response) => {
           return URL.createObjectURL(
@@ -34,6 +37,7 @@ export const ManageListening = (props) => {
           );
         })
       );
+      setLoading(false);
     },
     [setAudio]
   );
@@ -86,7 +90,7 @@ export const ManageListening = (props) => {
     };
     input.click();
   };
-
+  console.log(loading);
   return (
     <>
       <div className='listening-topic'>
@@ -100,8 +104,8 @@ export const ManageListening = (props) => {
           <Player
             id='player-editTests'
             src={audio}
-          /> :
-          <p><Trans>Upload an audio file for listening task</Trans></p>}
+          /> : loading ? <CircularProgress className='border-primary' size='25px' />
+            : <p><Trans>Upload an audio file for listening task</Trans></p>}
         </div>
         <Button disabled={props.dataType} color='primary' variant='contained' onClick={importData}><Trans>Upload Audio</Trans></Button>
       </div>
