@@ -198,8 +198,8 @@ export const ManageModule = (props) => {
               variant='contained'
               type='submit'
               value='submit'
-              disabled={props.dataType ? props.dataType : props.module === 'Listening' || formik.values.module === 'Listening' 
-              ? !(ready && readyModules) : !ready}>
+              disabled={props.dataType ? props.dataType : props.module === 'Listening' || formik.values.module === 'Listening'
+                ? !(ready && readyModules) : !ready}>
               <Trans>Save</Trans>
             </Button> : null}
         </div>

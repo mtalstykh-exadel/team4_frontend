@@ -3,7 +3,8 @@ import {
 } from './actionTypes';
 import {
   addNewListeningQuestion,
-  getListeningQuestionsList, getQuestionsList, getSingleListeningQuestion, getSingleQuestion, requestToArchiveAndDearchive, requestToArchiveAndDearchiveListening, sendEditedListeningQuestion, sendNewAudio,
+  getListeningQuestionsList, getQuestionsList, getSingleListeningQuestion, getSingleQuestion, requestToArchiveAndDearchive,
+  requestToArchiveAndDearchiveListening, sendEditedListeningQuestion, sendNewAudio,
 } from '../../api/questions-requests';
 
 export const setQuestionsList = (questions) => ({ type: REQUEST_QUESTIONS_LIST, questions });
