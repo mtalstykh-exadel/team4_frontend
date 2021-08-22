@@ -6,6 +6,9 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import '../../../../styles/modal.scss';
 
+import { Trans } from '@lingui/macro';
+
+
 export const HRmodalWindowTestDeassigned = (props) => {
 
   return (
@@ -17,18 +20,16 @@ export const HRmodalWindowTestDeassigned = (props) => {
       aria-describedby='simple-modal-description'
       className='modal'>
       <div className='modal-content base-color'>
-        <div className='hr-modal'>
-          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper' onSubmit={() => {props.handleClose();}}>
-            <CloseIcon className='close-icon icons-color'/>
-          </IconButton>
-          Test was deassigned
-        </div>
+        <div className='hr-modal font-primary'>
+          <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper' onSubmit={() => { props.handleClose(); }}>
+            <CloseIcon className='close-icon icons-color' />
+          </IconButton><Trans>Test was deassigned</Trans></div>
       </div>
     </Modal>);
 };
 
 HRmodalWindowTestDeassigned.propTypes =
-  {
-    open: PropTypes.bool,
-    handleClose: PropTypes.func
-  };
+{
+  open: PropTypes.bool,
+  handleClose: PropTypes.func
+};

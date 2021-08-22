@@ -11,8 +11,10 @@ import {
   TablePagination,
   TableRow,
   Modal,
+  Backdrop,
 } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
+import * as queryString from 'querystring';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,7 +32,7 @@ export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
-  const queryString = require('query-string');
+
 
   const questions = useSelector((state) => state.coach.questions);
   const question = useSelector((state) => state.coach.question);
@@ -89,7 +91,7 @@ export const EditTestsTable = (props) => {
     history.push({
       pathname: path,
       search: queryString.stringify({
-        id: id,
+        id,
         module: props.module,
       }),
     });
@@ -128,6 +130,7 @@ export const EditTestsTable = (props) => {
       <Modal
         open={open}
         onClose={() => handleClose(false)}
+        BackdropComponent={Backdrop}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
         className='modal'
@@ -204,7 +207,6 @@ export const EditTestsTable = (props) => {
                           color='primary'
                           variant='outlined'
                           size='small'
-                          style={{ width: 110 }}
                           type='search'
                           onClick={() =>
                             handleClickEdit('/edit-test-modules', row.id)

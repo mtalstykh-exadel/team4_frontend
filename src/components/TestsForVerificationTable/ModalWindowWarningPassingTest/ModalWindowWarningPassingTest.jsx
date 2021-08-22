@@ -1,8 +1,12 @@
 import React from 'react';
-import '../../../styles/modal.scss';
-import { Paper, Modal} from '@material-ui/core';
+
+import { Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+
+import '../../../styles/modal.scss';
 import './ModalWindowWarningPassingTest.scss';
+
+import { Trans } from '@lingui/macro';
 
 export const ModalWindowWarningPassingTest = () => {
   const [open, setOpen] = React.useState(true);
@@ -21,9 +25,9 @@ export const ModalWindowWarningPassingTest = () => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-warning-passing-test'>
-            <div className='warning-text'>This functionality will be available to you only after passing the test</div>
+            <div className='warning-text font-primary'><Trans>This functionality will be available to you only after passing the test</Trans></div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={handleClose}>Close</Button>
+              <Button variant='outlined' color='primary' onClick={handleClose}><Trans>Close</Trans></Button>
             </div>
           </div>
         </div>

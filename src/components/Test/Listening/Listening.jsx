@@ -33,7 +33,7 @@ export const Listening = ({ tasks, contentFile, testModule, reportModule, level,
           You have {countAttempts} attempts left to listen to audio
         </p>
       </div>
-      <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module}/>
+      <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module} />
     </div>
   );
 };

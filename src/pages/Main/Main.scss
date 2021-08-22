@@ -1,3 +1,8 @@
-.subtitle {
-  font-size: 18px;
+.subtitle-wrapper {
+  max-width: 830px;
+  margin: 0 auto;
+
+  .subtitle {
+    font-size: 18px;
+  }
 }
