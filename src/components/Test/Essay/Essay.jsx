@@ -15,9 +15,10 @@ export const Essay = ({ task, testModule, level, testID, reportModule }) => {
       if (saveDataArray !== null) {
         return JSON.parse(saveDataArray).answer;
       }
-      if (JSON.parse(test.essayText)?.answer) {
+      if (test?.essayText) {
         return JSON.parse(test.essayText).answer;
       }
+      return '';
     }
   );
   const [open, setOpen] = useState(false);

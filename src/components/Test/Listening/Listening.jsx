@@ -8,7 +8,7 @@ import { testAudioAttempts } from '../../../constants/localStorageConstants';
 
 export const Listening = ({ tasks, contentFile, testModule, reportModule, level, testID, module }) => {
   const [url, setUrl] = useState('');
-
+  const [countAttempts, setCountAttempts] = useState(Number(localStorage.getItem(testAudioAttempts)));
   useEffect(
     async function () {
       setUrl(
@@ -28,9 +28,9 @@ export const Listening = ({ tasks, contentFile, testModule, reportModule, level,
         <Trans>Listen and choose an answer option</Trans>
       </div>
       <div className='audio'>
-        <Player id='player-listening' src={url} />
+        <Player id='player-listening' src={url} onChangeAttempts={setCountAttempts} />
         <p className='step-description'>
-          You have {localStorage.getItem(testAudioAttempts)} attempts left to listen to audio
+          You have {countAttempts} attempts left to listen to audio
         </p>
       </div>
       <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module}/>
