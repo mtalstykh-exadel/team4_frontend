@@ -153,15 +153,16 @@ export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttem
             <CircularProgress className='border-primary' size='23px' />
           ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
             document.getElementById('player-listening') ? (
-              <PlayArrowIcon
-                className='icons-color-secondory'
-                fontSize='medium'
-              />
+              <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
             ) : (
               <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
             )
         ) : (
-          <PauseIcon className='icons-color-primary' fontSize='medium' />
+          document.getElementById('player-listening') ? (
+            <PauseIcon className='icons-color-secondory' fontSize='medium' />
+          ) : (
+            <PauseIcon className='icons-color-primary' fontSize='medium' />
+          )
         )}
       </button>
       <div className='player-time font-primary'>
