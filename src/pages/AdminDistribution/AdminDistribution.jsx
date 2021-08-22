@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
-import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
+// import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
 
 const AdminDistribution = (props) => {
@@ -42,30 +42,30 @@ const AdminDistribution = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
-  const [count, setCount] = useState(rowsPerPage);
+  // const [count, setCount] = useState(rowsPerPage);
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
 
-  useEffect(() => {
-    dispatch(requestQuestionsList(page, rowsPerPage));
-  }, []);
+
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
-  const handleCount = () => {
-    getUnverifiedTests(page + 1, rowsPerPage)
-      .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
-        }
-      });
-  };
+  // const handleCount = () => {
+  //   getUnverifiedTests(page + 1, rowsPerPage)
+  //     .then((response) => {
+  //       if (response !== []) {
+  //         setCount(count + response.length);
+  //       }
+  //       console.log(response);
+  //       // response.map()
+  //     });
+  // };
 
-  useEffect(() => {
-    handleCount();
-  }, []);
+  // useEffect(() => {
+  //   handleCount();
+  // }, []);
 
   let coachNames = [];
 
@@ -75,7 +75,7 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount();
+    // handleCount();
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -121,6 +121,10 @@ const AdminDistribution = (props) => {
       );
     });
   };
+
+  useEffect(() => {
+    dispatch(requestQuestionsList(page, rowsPerPage));
+  }, []);
 
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
@@ -177,7 +181,7 @@ const AdminDistribution = (props) => {
                             ) : null}
 
                             {column.id === 'Deadline' ? (
-                              row?.assigned ? (
+                              row?.deadline ? (
                                 <>
                                   {formatDate(row.deadline)}
                                 </>
@@ -218,8 +222,11 @@ const AdminDistribution = (props) => {
                                         setOpen(true);
                                         if (err.response && err.response.status === 409) {
                                           setModalText(['Coach not allowed to verify his own test', 'Тренеру не разрешено проверять свой тест']);
+                                          // handleChangeDeassignTest(rows);
                                         } else if (err === 'No coach') {
                                           setModalText(['Choose a coach', 'Выберите тренера']);
+                                          console.log('aaaaaa');
+                                          // handleChangeDeassignTest(rows);
                                         }
                                       });
                                   } else {
@@ -244,14 +251,14 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
-          count={count}
+          // count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)}/>
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)} />
     </Layout>
   );
 };
