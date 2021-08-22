@@ -19,6 +19,7 @@ export const EditTests = () => {
 
   const role = useSelector((state) => state.jwt.role);
   if (role !== 'ROLE_COACH') return <Redirect to='/' />;
+  
   return (
     <Layout pageWrapperClass='edit-tests-selector'>
       <EditTestsFilter
@@ -31,8 +32,8 @@ export const EditTests = () => {
         count={count}
         setCount={setCount}/>
       {
-
         (level || questionId) && module
+
           ? <EditTestsTable
             module={module}
             questionId={questionId}

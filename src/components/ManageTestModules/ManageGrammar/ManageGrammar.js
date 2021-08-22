@@ -10,15 +10,38 @@ export const ManageGrammar = (props) => {
   const [question, setQuestion] = useState(props.moduleData);
 
   useEffect(() => {
+    if (question.questionBody) {
+      let isReady = false;
+      question.answers.map((el) => {
+        el.answer
+          ? el.correct ? isReady = true : null
+          : isReady = false;
+      });
+      if (isReady) {
+        props.handleReady(true);
+      } else {
+        props.handleReady(false);
+      }
+    } else {
+      props.handleReady(false);
+    }
     props.handleModule(question);
   }, [question]);
 
   useEffect(() => {
     if (!question.level && !question.module) {
-      setQuestion(Object.assign({}, question, {
-        level: props.level,
-        module: 'Grammar'
-      }));
+      if (props.module) {
+        setQuestion(Object.assign({}, question, {
+          level: props.level,
+          module: props.module
+        }));
+      } else {
+        setQuestion(Object.assign({}, question, {
+          level: props.level,
+          module: 'Grammar'
+        }));
+      }
+
     }
   }, []);
 
@@ -30,7 +53,7 @@ export const ManageGrammar = (props) => {
 
   const handleRadio = (event) => {
     const optionsArray = [...question.answers];
-
+    optionsArray.map((el) => el.correct = false);
     optionsArray[event.target.value].correct = true;
     setQuestion(Object.assign({}, question, {
       answers: optionsArray
@@ -50,6 +73,7 @@ export const ManageGrammar = (props) => {
       <TextField
         required
         fullWidth
+        disabled={props.dataType}
         onChange={handleSentence}
         id='outlined-required'
         name='questionName'
@@ -64,12 +88,14 @@ export const ManageGrammar = (props) => {
               className='manage-radio'
               type='radio'
               required
+              disabled={props.dataType}
               name={`answerIndex${props.questionIndex}`}
               value={index}
               checked={values.correct ? 'checked' : null}
               onChange={handleRadio} />
             <TextField
               required
+              disabled={props.dataType}
               placeholder='Answer'
               value={values.answer}
               onChange={handleAnswersChange(index)} />
@@ -81,7 +107,10 @@ export const ManageGrammar = (props) => {
 
 ManageGrammar.propTypes = {
   handleModule: PropTypes.func,
+  handleReady: PropTypes.func,
   questionIndex: PropTypes.any,
   moduleData: PropTypes.any,
-  level: PropTypes.any
+  dataType: PropTypes.any,
+  level: PropTypes.any,
+  module: PropTypes.any
 };
