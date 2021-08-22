@@ -5,11 +5,21 @@ import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
 import { saveEssayHandler } from '../saveHandler';
-import { testEassyUserAnswers } from '../../../constants/localStorageConstants';
+import { testEassyUserAnswers, currentTest} from '../../../constants/localStorageConstants';
 
 export const Essay = ({ task, testModule, level, testID, reportModule }) => {
   const saveDataArray = localStorage.getItem(testModule);
-  const [characters, setCharacters] = useState('');
+  const test = JSON.parse(localStorage.getItem(currentTest));
+  const [characters, setCharacters] = useState(
+    () => {
+      if (saveDataArray !== null) {
+        return JSON.parse(saveDataArray).answer;
+      }
+      if (JSON.parse(test.essayText)?.answer) {
+        return JSON.parse(test.essayText).answer;
+      }
+    }
+  );
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -26,16 +36,11 @@ export const Essay = ({ task, testModule, level, testID, reportModule }) => {
       JSON.stringify({ answer: event.target.value })
     );
     setCharacters(event.target.value);
+
     saveEssayHandler({
       essay: JSON.parse(localStorage.getItem(testEassyUserAnswers))
     });
   };
-
-  setTimeout(() => {
-    if (saveDataArray !== null) {
-      setCharacters(JSON.parse(saveDataArray).answer);
-    }
-  }, 0);
 
   return (
     <div className='essay-step'>

@@ -1,13 +1,14 @@
 import { saveListeningAndGrammar, saveEssay } from '../../api/test-set';
 import { changeArray } from './SubmitModal/SubmitModalHandler';
 let checkRequest = false;
-const saveTestHandler = ({grammar = [], listening = []}) => {
+
+const saveTestHandler = async ({grammar = [], listening = []}) => {
   if ( checkRequest === false) {
-    saveListeningAndGrammar([
+    await saveListeningAndGrammar([
         ...changeArray(grammar),
         ...changeArray(listening)
-    ]);    
-    checkRequest = true;
+    ])
+    .then(() => checkRequest = true);
     return ;
   }
   checkRequest = false;
@@ -15,8 +16,8 @@ const saveTestHandler = ({grammar = [], listening = []}) => {
 
 const saveEssayHandler = ({essay = ''}) => {
   if ( checkRequest === false) {
-    saveEssay(essay);
-    checkRequest = true;
+    saveEssay(essay)
+    .then(() => checkRequest = true);
     return ;
   }
   checkRequest = false;

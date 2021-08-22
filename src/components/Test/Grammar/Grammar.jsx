@@ -57,6 +57,7 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
               type='radio'
               name={'group-' + questionCount}
               value={questionItem.answer}
+              defaultChecked = {questionItem?.checked === true ? 'checked' : false}
             />
             <label htmlFor={domID} className='question-answer'>
               {' '}
