@@ -8,6 +8,8 @@ import { Backdrop } from '@material-ui/core';
 import '../../../styles/modal.scss';
 import './ModalWindowTestCanceled.scss';
 
+import { Trans } from '@lingui/macro';
+
 export const ModalWindowTestCanceled = (props) => {
 
   return (
@@ -21,9 +23,9 @@ export const ModalWindowTestCanceled = (props) => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove'>
-            <div className='text'>The test was canceled</div>
+            <div className='text'><Trans>The test was canceled</Trans></div>
             <div className='btn'>
-              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'>Close</Button>
+              <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close</Trans></Button>
             </div>
           </div>
         </div>

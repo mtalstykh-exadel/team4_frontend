@@ -44,7 +44,7 @@ const AdminDistribution = (props) => {
   const [coaches, setCoaches] = useState();
   const [count, setCount] = useState(rowsPerPage);
   const [open, setOpen] = useState(false);
-  const [modalText, setModalText] = useState('');
+  const [modalText, setModalText] = useState([]);
 
   useEffect(() => {
     dispatch(requestQuestionsList(page, rowsPerPage));
@@ -54,18 +54,18 @@ const AdminDistribution = (props) => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
-  const handleCount = () => {
-    getUnverifiedTests(page + 1, rowsPerPage)
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getUnverifiedTests(newPage + 1, rowsPerPage)
       .then((response) => {
         if (response !== []) {
           setCount(count + response.length);
         }
       });
   };
-
-  useEffect(() => {
-    handleCount();
-  }, []);
 
   let coachNames = [];
 
@@ -75,7 +75,7 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount();
+    handleCount(newPage);
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -217,9 +217,9 @@ const AdminDistribution = (props) => {
                                       .catch((err) => {
                                         setOpen(true);
                                         if (err.response && err.response.status === 409) {
-                                          setModalText('Coach not allowed to verify his own test');
+                                          setModalText(['Coach not allowed to verify his own test', 'Тренеру не разрешено проверять свой тест']);
                                         } else if (err === 'No coach') {
-                                          setModalText('Choose a coach');
+                                          setModalText(['Choose a coach', 'Выберите тренера']);
                                         }
                                       });
                                   } else {

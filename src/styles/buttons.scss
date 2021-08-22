@@ -11,6 +11,7 @@ body {
 
   .button-narrow {
     width: 40px;
+    height: 35px;
   }
 
   .MuiButtonBase-root {
@@ -72,4 +73,8 @@ body {
       }
     }
   }
+}
+
+.MuiButton-label {
+  padding-top: 2px;
 }

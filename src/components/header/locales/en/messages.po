@@ -11,14 +11,22 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:91
+msgid "A test for verification has been asigned to your name"
+msgstr "A test for verification has been asigned to your name"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:199
+msgid "Continue"
+msgstr "Continue"
+
 #: src/components/header/accountDropdown/accountDropdown.js:37
 #: src/components/header/drawerMenu/drawerMenu.js:76
 msgid "Dark mode"
 msgstr "Dark mode"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:48
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:49
 msgid "Deadline:"
-msgstr "Deadline:"
+msgstr "Deadline: "
 
 #: src/components/header/userNavigation/userNavigation.js:65
 msgid "Distribution of tests"
@@ -37,9 +45,15 @@ msgstr "Employees"
 msgid "English"
 msgstr "English"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:45
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:46
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:174
 msgid "Level: {0}"
 msgstr "Level: {0}"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:94
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:141
+msgid "Level: {0},  Test ID: {1}"
+msgstr "Level: {0},  Test ID: {1}"
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
@@ -54,6 +68,10 @@ msgstr "Logout"
 msgid "No"
 msgstr "No"
 
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:97
+msgid "Priority:"
+msgstr "Priority: "
+
 #: src/components/header/accountDropdown/accountDropdown.js:34
 #: src/components/header/drawerMenu/drawerMenu.js:66
 msgid "Profile"
@@ -65,14 +83,18 @@ msgid "Russian"
 msgstr "Russian"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:97
-msgid "See More"
-msgstr "See More"
+#~ msgid "See More"
+#~ msgstr "See More"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:163
+msgid "See Results"
+msgstr "See Results"
 
 #: src/components/header/userNavigation/userNavigation.js:48
 #~ msgid "Statistics"
 #~ msgstr "Statistics"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:78
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:82
 msgid "Take test"
 msgstr "Take test"
 
@@ -80,22 +102,38 @@ msgstr "Take test"
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:105
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:208
 msgid "The test was deassigned"
 msgstr "The test was deassigned"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:177
+msgid "Time limit: {0} - {1}"
+msgstr "Time limit: {0} - {1}"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:129
+msgid "Verify test"
+msgstr "Verify test"
 
 #: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:42
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:138
+msgid "You have been deassigned from verification of test"
+msgstr "You have been deassigned from verification of test"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:171
+msgid "You have test in progress"
+msgstr "You have test in progress"
+
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:43
 msgid "notificationTestAsigned"
 msgstr "A test to determine the level of English has been asigned to your name"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:86
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:149
 msgid "notificationTestChecked"
-msgstr "Your English language test is checked. Your English level has been set as ."
+msgstr "Your English language test is checked."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:113
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:216
 msgid "notificationsEmpty"
 msgstr "No new notificiations for you"

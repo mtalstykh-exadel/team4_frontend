@@ -27,11 +27,12 @@ export const TestsForVerificationModal = (props) => {
   const [grammar, setGrammar] = useState([]);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [loadingSave, setLoadingSave] = useState(false);
+  const [audioFile, setAudioFile] = useState(true);
 
   const test = useSelector((state) => state.unverifiedTest.test);
   const grades = useSelector((state) => state.unverifiedTest.grades);
 
-  const commentEssay = grades.find((grade) => grade.questionId === test.essayQuestion.id);
+  const commentEssay = grades && grades.find((grade) => grade.questionId === test.essayQuestion.id);
   const [essay, setEssay] = useState({
     comment: commentEssay ? commentEssay.comment : '',
     grade: commentEssay ? commentEssay.grade : 0,
@@ -39,7 +40,7 @@ export const TestsForVerificationModal = (props) => {
     testId: test.testId
   });
 
-  const commentSpeaking = grades.find((grade) => grade.questionId === test.speakingQuestion.id);
+  const commentSpeaking = grades && grades.find((grade) => grade.questionId === test.speakingQuestion.id);
   const [speaking, setSpeaking] = useState({
     comment: commentSpeaking ? commentSpeaking.comment : '',
     grade: commentSpeaking ? commentSpeaking.grade : 0,
@@ -54,10 +55,10 @@ export const TestsForVerificationModal = (props) => {
     });
   };
 
-  const handleEssayGrade = (grade) => {
+  const handleEssayGrade = (newGrade) => {
     setEssay({
       ...essay,
-      grade: grade,
+      grade: newGrade,
     });
   };
 
@@ -68,25 +69,26 @@ export const TestsForVerificationModal = (props) => {
     });
   };
 
-  const handleSpeakingGrade = (grade) => {
+  const handleSpeakingGrade = (newGrade) => {
     setSpeaking({
       ...speaking,
-      grade: grade,
+      grade: newGrade,
     });
   };
 
   const handleSubmit = () => {
     setLoadingSubmit(true);
-    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
-      .then((response) => {
-        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId)) {
-          saveTestGrades(essay)
-            .then(() => saveTestGrades(speaking))
-            .then(() => submitTestGrades(test.testId))
-            .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
-            .then(() => props.handleClose());
-        }
-      });
+    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage));
+    saveTestGrades(essay)
+      .then(() => saveTestGrades(speaking))
+      .then(() => submitTestGrades(test.testId))
+      .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
+      .then(() => props.handleClose())
+      .catch((err) => {
+        if (err.response.status === 409) {
+          props.handleOpen();
+          props.handleClose();
+        }});
   };
 
   const handleSave = () => {
@@ -116,6 +118,11 @@ export const TestsForVerificationModal = (props) => {
             return URL.createObjectURL(
               new Blob([response.data], { type: 'audio/ogg' })
             );
+          })
+          .catch((err) => {
+            if (err.response.status === 417) {
+              setAudioFile(false);
+            }
           })
       );
     },
@@ -172,7 +179,7 @@ export const TestsForVerificationModal = (props) => {
         }
       </div>
       <TextField
-        label='Comment'
+        label={<Trans>Comment</Trans>}
         variant='outlined'
         value={essay.comment}
         onChange={handleEssayComment}
@@ -186,10 +193,12 @@ export const TestsForVerificationModal = (props) => {
       <div className='topic-title'><Trans>Topic</Trans></div>
       <div className='topic-text'>{test.speakingQuestion.questionBody}</div>
       <div className='audio'>
-        <Player
-          id='player-speaking'
-          src={url}
-        />
+        {audioFile ?
+          <Player
+            id='player-speaking'
+            src={url}
+          /> :
+          <div className='bold audio-replacement'><Trans>Audio not found</Trans></div> }
       </div>
       <div className='grades-wrapper'>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
@@ -204,7 +213,7 @@ export const TestsForVerificationModal = (props) => {
         })}
       </div>
       <TextField
-        label='Comment'
+        label={<Trans>Comment</Trans>}
         variant='outlined'
         className='comment-section'
         multiline
@@ -287,8 +296,7 @@ export const TestsForVerificationModal = (props) => {
 };
 
 TestsForVerificationModal.propTypes = {
-  id: PropTypes.number,
-  test: PropTypes.any,
+  handleOpen: PropTypes.func,
   handleClose: PropTypes.func,
   rowsPerPage: PropTypes.any,
   page: PropTypes.any
