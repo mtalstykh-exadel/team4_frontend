@@ -5,8 +5,20 @@ import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 import { Modal } from '@material-ui/core';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
+import { saveTestHandler } from '../saveHandler';
+import {
+  testGrammarUserAnswers,
+  testListeningUserAnswers,
+} from '../../../constants/localStorageConstants';
 
-export const Grammar = ({ tasks, testModule, reportModule, level, testID, module }) => {
+export const Grammar = ({
+  tasks,
+  testModule,
+  reportModule,
+  level,
+  testID,
+  module,
+}) => {
   const [questionText, setQuestionText] = useState('');
   const [questionID, setQuestionID] = useState(0);
   const [open, setOpen] = useState(false);
@@ -19,11 +31,11 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     setOpen(false);
   };
 
-  const saveDataArray = localStorage.getItem(testModule);
+  const answersData = localStorage.getItem(testModule);
 
   setTimeout(() => {
-    if (saveDataArray !== null) {
-      JSON.parse(saveDataArray).map((item) => {
+    if (answersData !== null) {
+      JSON.parse(answersData).map((item) => {
         document.getElementById(item.domID).checked = true;
       });
     }
@@ -35,21 +47,34 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     const options = question.answers.map((questionItem) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
-        <div key={questionItem.answer} className='test-question-option'>
-          <span onClick={() =>
-            testController({
-              testModule,
-              tasks,
-              questionID: question.id,
-              answerID: questionItem.id,
-              domID,
-            })
-          }>
+        <div key={domID} className='test-question-option'>
+          <span
+            onClick={() => {
+              testController({
+                testModule,
+                tasks,
+                questionID: question.id,
+                answerID: questionItem.id,
+                domID,
+              });
+              saveTestHandler({
+                listening: JSON.parse(
+                  localStorage.getItem(testListeningUserAnswers)
+                ),
+                grammar: JSON.parse(
+                  localStorage.getItem(testGrammarUserAnswers)
+                ),
+              });
+            }}
+          >
             <input
               id={domID}
               type='radio'
               name={'group-' + questionCount}
               value={questionItem.answer}
+              defaultChecked={
+                questionItem?.checked === true ? 'checked' : false
+              }
             />
             <label htmlFor={domID} className='question-answer'>
               {' '}
@@ -67,11 +92,14 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
           <span className='test-question sentence'>
             {question.questionBody}
           </span>
-          <span className='report-mistake' onClick={() => {
-            setQuestionText(question.questionBody);
-            setQuestionID(question.id);
-            handleOpen();
-          }}>
+          <span
+            className='report-mistake'
+            onClick={() => {
+              setQuestionText(question.questionBody);
+              setQuestionID(question.id);
+              handleOpen();
+            }}
+          >
             <Trans>Report a mistake</Trans>
           </span>
         </div>
@@ -91,7 +119,8 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
         onClose={handleClose}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
-        className='modal'>
+        className='modal'
+      >
         <div className='modal-content base-color'>
           <ReportAMistakeModal
             question={questionText}
@@ -115,5 +144,5 @@ Grammar.propTypes = {
   level: PropTypes.string,
   testID: PropTypes.number,
   reportModule: PropTypes.string,
-  module: PropTypes.array
+  module: PropTypes.array,
 };
