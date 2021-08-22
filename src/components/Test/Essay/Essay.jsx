@@ -4,6 +4,8 @@ import {Modal, TextField} from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
+import { saveEssayHandler } from '../saveHandler';
+import { testEassyUserAnswers } from '../../../constants/localStorageConstants';
 
 export const Essay = ({ task, testModule, level, testID, reportModule }) => {
   const saveDataArray = localStorage.getItem(testModule);
@@ -24,6 +26,9 @@ export const Essay = ({ task, testModule, level, testID, reportModule }) => {
       JSON.stringify({ answer: event.target.value })
     );
     setCharacters(event.target.value);
+    saveEssayHandler({
+      essay: JSON.parse(localStorage.getItem(testEassyUserAnswers))
+    });
   };
 
   setTimeout(() => {

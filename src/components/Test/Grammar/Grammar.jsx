@@ -5,7 +5,8 @@ import { Trans } from '@lingui/macro';
 import { testController } from '../test-controller';
 import { Modal } from '@material-ui/core';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
-import { saveHandler } from './saveHandler';
+import { saveTestHandler } from '../saveHandler';
+import { testGrammarUserAnswers, testListeningUserAnswers } from '../../../constants/localStorageConstants';
 
 export const Grammar = ({ tasks, testModule, reportModule, level, testID, module }) => {
   const [questionText, setQuestionText] = useState('');
@@ -36,7 +37,7 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
     const options = question.answers.map((questionItem) => {
       const domID = 'aID-' + questionItem.id + '__qID-' + question.id;
       return (
-        <div key={domID} className='test-question-option' onClick={saveHandler}> 
+        <div key={domID} className='test-question-option'> 
           <span onClick={() => {
               testController({
                 testModule,
@@ -45,7 +46,10 @@ export const Grammar = ({ tasks, testModule, reportModule, level, testID, module
                 answerID: questionItem.id,
                 domID,
               });
-              saveHandler(JSON.parse(localStorage.getItem(testModule)));
+              saveTestHandler({
+                listening: JSON.parse(localStorage.getItem(testListeningUserAnswers)),
+                grammar: JSON.parse(localStorage.getItem(testGrammarUserAnswers))
+              });
             }
           }>
             <input
