@@ -66,7 +66,7 @@ export const HRmodalWindowTestAssignment = (props) => {
             onChange={formik.handleChange}>
             {filterLevelsLong.map((item) => {
               itemKey++;
-              return <MenuItem key={itemKey} value={item}> {item}</MenuItem>;
+              return <MenuItem key={itemKey} value={item}><Trans>{item[0]}{item[1]}</Trans></MenuItem>;
             })}
           </Select>
         </FormControl>
@@ -93,7 +93,7 @@ export const HRmodalWindowTestAssignment = (props) => {
               onChange={formik.handleChange}>
               {priority.map((item) => {
                 itemKey++;
-                return <MenuItem key={itemKey} value={item} className='item'> {item}</MenuItem>;
+                return <MenuItem key={itemKey} value={item[0]} className='item'><Trans>{item[0]}{item[1]}</Trans></MenuItem>;
               })}
             </Select>
           </FormControl>

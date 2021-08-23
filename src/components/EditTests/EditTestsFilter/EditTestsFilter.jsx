@@ -15,6 +15,7 @@ import {
   requestQuestionsList
 } from '../../../store/actions/coachActions';
 import { getQuestionsList, getListeningQuestionsList } from '../../../api/questions-requests';
+import { filterLevelsShort, filterModules } from '../../../constants/filterConstants';
 
 const validation = Yup.object({
   questionId: Yup.number()
@@ -23,18 +24,15 @@ const validation = Yup.object({
 export const EditTestsFilter = (props) => {
   const dispatch = useDispatch();
 
-  const testLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-  const testModules = ['Grammar', 'Listening', 'Essay', 'Speaking'];
-
-  const testLevelsList = testLevels.map((elem) => {
+  const testLevelsList = filterLevelsShort.map((elem, index) => {
     return (
-      <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>
+      <MenuItem className='edit-tests-option item' key={elem, index} value={elem[0]}>{elem[0]}</MenuItem>
     );
   });
 
-  const testModulesList = testModules.map((elem) => {
+  const testModulesList = filterModules.map((elem, index) => {
     return (
-      <MenuItem className='edit-tests-option' key={elem} value={elem}>{elem}</MenuItem>
+      <MenuItem className='edit-tests-option item' key={index} value={elem[0]}><Trans>{elem[0]}{elem[1]}</Trans></MenuItem>
     );
   });
 
@@ -70,7 +68,7 @@ export const EditTestsFilter = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: { level: null, module: null, status: 'UNARCHIVED', questionId: '' },
+    initialValues: { level: null, module: null, status: null, questionId: '' },
     validationSchema: validation, onSubmit
   });
 
@@ -83,24 +81,23 @@ export const EditTestsFilter = (props) => {
       <form className='edit-tests-search-form' onSubmit={formik.handleSubmit} >
         <FormControl variant='outlined' className='edit-tests-search-level' size='small'>
           <InputLabel htmlFor='level'><Trans>Level</Trans></InputLabel>
-          <Select name='level' label='Level' value={formik.values.level} inputProps={{ name: 'level' }} onChange={formik.handleChange}>
-            <MenuItem value='' className='edit-tests-option edit-tests-option-none'><Trans>None</Trans></MenuItem>
+          <Select name='level' label='Level' value={formik.values.level} inputProps={{ name: 'level' }} defaultValue='' onChange={formik.handleChange}>
             {testLevelsList}
           </Select>
         </FormControl>
         <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
           <InputLabel htmlFor='module'><Trans>Module</Trans></InputLabel>
-          <Select name='module' label='module' value={formik.values.module} inputProps={{ name: 'module' }} onChange={formik.handleChange}>
-            <MenuItem value='' className='edit-tests-option edit-tests-option-none'><Trans>None</Trans></MenuItem>
+          <Select name='module' label='module' value={formik.values.module} inputProps={{ name: 'module' }} defaultValue='' onChange={formik.handleChange}>
             {testModulesList}
           </Select>
         </FormControl>
 
         <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
           <InputLabel htmlFor='status'><Trans>Status</Trans></InputLabel>
-          <Select name='status' label='module' value={formik.values.status} inputProps={{ name: 'status' }} onChange={formik.handleChange}>
-            <MenuItem value='UNARCHIVED' className='edit-tests-option edit-tests-option-none'><Trans>Not archived</Trans></MenuItem>
-            <MenuItem className='edit-tests-option' value='ARCHIVED'><Trans>Archived</Trans></MenuItem>
+          <Select name='status' label='module' value={formik.values.status} inputProps={{ name: 'status' }} defaultValue='' onChange={formik.handleChange}>
+            <MenuItem className='edit-tests-option item' value='UNARCHIVED'></MenuItem>
+            <MenuItem className='edit-tests-option item' value='UNARCHIVED'><Trans>Not archived</Trans></MenuItem>
+            <MenuItem className='edit-tests-option item' value='ARCHIVED'><Trans>Archived</Trans></MenuItem>
           </Select>
         </FormControl>
         <TextField label={<Trans>Question ID</Trans>} className='edit-tests-search-id' variant='outlined' size='small'

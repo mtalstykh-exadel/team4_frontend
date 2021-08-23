@@ -92,11 +92,13 @@ export const ManageModule = (props) => {
               <FilterFormControl
                 value={formik.values.level}
                 filterName='level'
+                label={['Level', 'Уровень']}
                 filterData={filterLevelsShort}
                 onChange={formik.handleChange} />
               <FilterFormControl
                 value={formik.values.module}
                 filterName='module'
+                label={['Module', 'Модуль']}
                 filterData={filterModules}
                 onChange={formik.handleChange} />
             </>
