@@ -109,7 +109,7 @@ const Results = () => {
           />
         </div>
         <div className={'comments'}>
-          <div className={'module-text'}>Модуль говорения</div>
+          <div className={'module-text'}>Модуль Говорения</div>
           <TextField
             className={'answer'}
             variant='outlined'
