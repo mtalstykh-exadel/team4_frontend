@@ -12,7 +12,7 @@ const ProfileInfo = () => {
 
   return (
     <div className='profileInfo'>
-      {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
+      <Avatar className='avatar' src={avatar}/>
       <div className='profileData'>
         {fullname ? <h2 className='fullname'>{fullname}</h2> : null}
         {email ? <p className='email'> <b><Trans>E-mail: </Trans></b>{email} </p> : null}
