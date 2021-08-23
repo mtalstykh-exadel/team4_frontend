@@ -12,6 +12,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:24
 msgid "Close"
 msgstr "Close"
 
@@ -39,7 +40,7 @@ msgstr "The test was canceled"
 msgid "View Results"
 msgstr "View Results"
 
-#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:26
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:22
 msgid "You can't take the test anymore today."
 msgstr "You can't take the test anymore today."
 

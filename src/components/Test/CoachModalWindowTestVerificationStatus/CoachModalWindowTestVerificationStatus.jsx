@@ -19,7 +19,7 @@ export const CoachModalWindowTestVerificationStatus = (props) => {
       aria-describedby='simple-modal-description'
       className='modal'>
       <div className='modal-content base-color coach-modal'>
-        <div className='test-ver'><Trans>This test is currently in the verification status</Trans></div>
+        <div className='test-ver font-primary'><Trans>This test is currently in the verification status</Trans></div>
         <Button className='button-medium close-button' variant='outlined' color='primary' onClick={props.handleClose}><Trans>Close</Trans></Button>
       </div>
     </Modal>

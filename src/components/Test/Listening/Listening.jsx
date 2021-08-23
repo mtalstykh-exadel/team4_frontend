@@ -30,7 +30,7 @@ export const Listening = ({ tasks, contentFile, testModule, reportModule, level,
       <div className='audio'>
         <Player id='player-listening' src={url} onChangeAttempts={setCountAttempts} />
         <p className='step-description'>
-          You have {countAttempts} attempts left to listen to audio
+          <Trans>You have {countAttempts} attempts left to listen to audio</Trans>
         </p>
       </div>
       <Grammar tasks={tasks} testModule={testModule} level={level} testID={testID} reportModule={reportModule} module={module} />

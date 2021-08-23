@@ -15,7 +15,7 @@ const ProfileInfo = () => {
       {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
       <div className='profileData'>
         {fullname ? <h2 className='fullname'>{fullname}</h2> : null}
-        {email ? <p className='email'> <b><Trans>E-mail: </Trans></b>{email} </p> : null}
+        {email ? <p className='email'> <b><Trans>E-mail: </Trans></b> {email}</p> : null}
       </div>
     </div>
   );

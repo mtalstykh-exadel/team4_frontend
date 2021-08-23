@@ -23,6 +23,7 @@ msgstr "Назначить"
 msgid "Assign test"
 msgstr "Назначить тест"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:27
 #: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:27
 #: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:28
 msgid "Close"
@@ -53,6 +54,10 @@ msgstr "Имя"
 msgid "No"
 msgstr "Нет"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:91
+msgid "Priority"
+msgstr "Приоритет"
+
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:89
 msgid "Priority:"
 msgstr "Приоритет:"
@@ -65,7 +70,7 @@ msgstr "Выбрать уровень теста:"
 msgid "Test deadline:"
 msgstr "Крайний срок:"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:26
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:24
 msgid "Test was deassigned"
 msgstr "Тест был отменен"
 
@@ -94,6 +99,6 @@ msgstr "Вы хотите назначить тест для {0}"
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:123
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:108
 msgid "{0}{1}"
 msgstr "{1}"
