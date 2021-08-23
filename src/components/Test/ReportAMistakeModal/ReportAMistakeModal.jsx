@@ -44,7 +44,7 @@ export const ReportAMistakeModal = ({question, questionId, level, module, handle
           variant='outlined'
           multiline
           rows={5}
-          label='Enter your report'
+          label={<Trans>Enter your report</Trans>}
           value={characters}
           onChange={handleChange}
         />

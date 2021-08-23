@@ -1,0 +1,36 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:20
+msgid "E-mail:"
+msgstr "E-mail: "
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:23
+msgid "HR-manager"
+msgstr "HR-manager"
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:21
+msgid "Role:"
+msgstr "Role: "
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:25
+msgid "admin"
+msgstr "admin"
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:22
+msgid "coach"
+msgstr "coach"
+
+#: src/components/ProfileInfo/ProfileInfo.jsx:24
+msgid "user"
+msgstr "user"

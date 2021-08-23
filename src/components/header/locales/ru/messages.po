@@ -15,9 +15,9 @@ msgstr ""
 msgid "A test for verification has been asigned to your name"
 msgstr ""
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:199
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:194
 msgid "Continue"
-msgstr ""
+msgstr "Продолжить"
 
 #: src/components/header/accountDropdown/accountDropdown.js:37
 #: src/components/header/drawerMenu/drawerMenu.js:76
@@ -26,7 +26,7 @@ msgstr "Темный фон"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:49
 msgid "Deadline:"
-msgstr "Срок сдачи:"
+msgstr "Срок сдачи: "
 
 #: src/components/header/userNavigation/userNavigation.js:65
 msgid "Distribution of tests"
@@ -46,12 +46,12 @@ msgid "English"
 msgstr "Английский"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:46
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:174
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:169
 msgid "Level: {0}"
-msgstr ""
+msgstr "Уровень: {0}"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:94
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:141
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:136
 msgid "Level: {0},  Test ID: {1}"
 msgstr ""
 
@@ -70,7 +70,7 @@ msgstr "Нет"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:97
 msgid "Priority:"
-msgstr ""
+msgstr "Приоритет: "
 
 #: src/components/header/accountDropdown/accountDropdown.js:34
 #: src/components/header/drawerMenu/drawerMenu.js:66
@@ -86,9 +86,9 @@ msgstr "Русский"
 #~ msgid "See More"
 #~ msgstr "Посмотреть больше"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:163
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:158
 msgid "See Results"
-msgstr ""
+msgstr "Смотреть результаты"
 
 #: src/components/header/userNavigation/userNavigation.js:48
 #~ msgid "Statistics"
@@ -102,15 +102,15 @@ msgstr "Пройти тест"
 msgid "Tests for verification"
 msgstr "Тесты на проверку"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:208
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:203
 msgid "The test was deassigned"
-msgstr ""
+msgstr "Тест был отменен"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:177
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:172
 msgid "Time limit: {0} - {1}"
 msgstr ""
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:129
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:124
 msgid "Verify test"
 msgstr ""
 
@@ -118,22 +118,22 @@ msgstr ""
 msgid "Yes"
 msgstr "Да"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:138
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:133
 msgid "You have been deassigned from verification of test"
-msgstr ""
+msgstr "Вы были отстранены от проверки теста"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:171
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:166
 msgid "You have test in progress"
-msgstr ""
+msgstr "У вас идет тестирование"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:43
 msgid "notificationTestAsigned"
 msgstr "Тест на определение уровня знания английского языка был опрделен на ваше имя"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:149
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:144
 msgid "notificationTestChecked"
-msgstr "Ваш тест по английскому языку был проверен. Ваш уровень языка установлен: "
+msgstr "Ваш тест по английскому языку был проверен."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:216
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:211
 msgid "notificationsEmpty"
 msgstr "Оповещения отсутсвуют"

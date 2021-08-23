@@ -102,25 +102,20 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-takeTestBtn button-standard'
+        disabled={loadingAssigned}
         onClick={() => {
           setLoadingAssigned(true);
-          dispatch(requestUnverifiedTests(0, 10));
-          dispatch(requestReports(item.testId))
-            .then(() => dispatch(requestGrades(item.testId)))
-            .then(() => Promise.resolve(setOpenVerify(true)))
-            .catch((err) => {
-              if (err.response.status === 403) {
-                dispatch(requestReports(item.testId))
-                  .then(() => dispatch(requestGrades(item.testId)))
-                  .then(() => Promise.resolve(setOpenVerify(true)))
-                  .catch((err) => {
-                    if (err.response.status === 403) {
-                      setOpenDeassigned(true);
-                    }});
-              }}
-            )
-            .then(() => setLoadingAssigned(false));
-          dispatch(removeNotification(item.id));
+          dispatch(requestUnverifiedTests(0, 10))
+            .then(() => {
+              dispatch(requestReports(item.testId))
+                .then(() => dispatch(requestGrades(item.testId)))
+                .then(() => Promise.resolve(setOpenVerify(true)))
+                .catch((err) => {
+                  if (err.response.status === 409) {
+                    setOpenDeassigned(true);
+                  }})
+                .then(() => setLoadingAssigned(false));
+              dispatch(removeNotification(item.id));});
         }
         }>
         {loadingAssigned ? (
@@ -146,7 +141,7 @@ const Notifications = (props) => {
   const notificationTakeTest = (item) => (
     <div className='notification-result'>
       <Typography variant='body1' className='font-primary'>
-        <Trans id='notificationTestChecked'>Your English language test is checked. Your English level has been set as .</Trans>
+        <Trans id='notificationTestChecked'>Your English language test is checked.</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
         {item.level}

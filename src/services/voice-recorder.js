@@ -22,6 +22,7 @@ const onRecAudio = () => {
     rec.start(100);
   });
 };
+
 const offRecAudio = () => {
   rec.stop();
   rec.onstop();
@@ -36,10 +37,7 @@ const saveBlobUrl = ({ testModule, duration }) => {
   };
   reader.readAsDataURL(blob);
 
-  localStorage.setItem(
-    testModule,
-    JSON.stringify({ blob: blobURL })
-  );
+  localStorage.setItem(testModule, JSON.stringify({ blob: blobURL }));
 
   return duration;
 };

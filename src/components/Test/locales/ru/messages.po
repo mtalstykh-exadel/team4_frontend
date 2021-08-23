@@ -35,6 +35,10 @@ msgstr ""
 #~ msgid "Delete question"
 #~ msgstr "Удалить вопрос"
 
+#: src/pages/Test/Test.jsx:165
+#~ msgid "Enter your report"
+#~ msgstr "Введите сообщение"
+
 #: src/pages/Test/Test.jsx:156
 msgid "Essay"
 msgstr "Эссе"
@@ -94,6 +98,10 @@ msgstr "Завершить тест"
 #: src/pages/Test/Speaking/Speaking.jsx:28
 #~ msgid "Write down record"
 #~ msgstr "Сделайте запись"
+
+#: src/pages/Test/Listening/Listening.jsx:12
+#~ msgid "You have {countAttempts} attempts left to listen to audio"
+#~ msgstr "У вас осталось {countAttempts} попытки для прослушивания аудио"
 
 #: src/pages/Test/Essay/Essay.jsx:38
 #~ msgid "out of 512 characters"

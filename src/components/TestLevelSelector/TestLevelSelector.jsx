@@ -7,7 +7,7 @@ export const TestLevelSelector = () => {
   const testLevelsDataEN = [
     {
       id: 101,
-      titleEN: 'Beginner и Elementary (A1)',
+      titleEN: 'Beginner and Elementary (A1)',
       descriptionEN: 'I understand and can use familiar phrases and expressions in speech that are necessary for performing specific tasks. I can introduce myself and introduce others, ask questions and answer questions about the place of residence, acquaintances, property. I can participate in a simple conversation if the interlocutor speaks slowly and clearly and is ready to help.',
       titleRU: 'Начальный и элементарный (A1)',
       descriptionRU: 'Я понимаю и могу использовать в речи знакомые фразы и выражения, которые необходимы для выполнения конкретных задач. Могу представиться и познакомить других, задать вопросы и ответить на вопросы о месте жительства, знакомых, собственности. Я могу участвовать в простой беседе, если собеседник говорит медленно и четко и готов помочь.',

@@ -15,7 +15,7 @@ msgstr ""
 msgid "A test for verification has been asigned to your name"
 msgstr "A test for verification has been asigned to your name"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:199
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:194
 msgid "Continue"
 msgstr "Continue"
 
@@ -26,7 +26,7 @@ msgstr "Dark mode"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:49
 msgid "Deadline:"
-msgstr "Deadline:"
+msgstr "Deadline: "
 
 #: src/components/header/userNavigation/userNavigation.js:65
 msgid "Distribution of tests"
@@ -46,12 +46,12 @@ msgid "English"
 msgstr "English"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:46
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:174
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:169
 msgid "Level: {0}"
 msgstr "Level: {0}"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:94
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:141
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:136
 msgid "Level: {0},  Test ID: {1}"
 msgstr "Level: {0},  Test ID: {1}"
 
@@ -70,7 +70,7 @@ msgstr "No"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:97
 msgid "Priority:"
-msgstr "Priority:"
+msgstr "Priority: "
 
 #: src/components/header/accountDropdown/accountDropdown.js:34
 #: src/components/header/drawerMenu/drawerMenu.js:66
@@ -86,7 +86,7 @@ msgstr "Russian"
 #~ msgid "See More"
 #~ msgstr "See More"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:163
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:158
 msgid "See Results"
 msgstr "See Results"
 
@@ -102,15 +102,15 @@ msgstr "Take test"
 msgid "Tests for verification"
 msgstr "Tests for verification"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:208
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:203
 msgid "The test was deassigned"
 msgstr "The test was deassigned"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:177
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:172
 msgid "Time limit: {0} - {1}"
 msgstr "Time limit: {0} - {1}"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:129
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:124
 msgid "Verify test"
 msgstr "Verify test"
 
@@ -118,11 +118,11 @@ msgstr "Verify test"
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:138
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:133
 msgid "You have been deassigned from verification of test"
 msgstr "You have been deassigned from verification of test"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:171
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:166
 msgid "You have test in progress"
 msgstr "You have test in progress"
 
@@ -130,10 +130,10 @@ msgstr "You have test in progress"
 msgid "notificationTestAsigned"
 msgstr "A test to determine the level of English has been asigned to your name"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:149
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:144
 msgid "notificationTestChecked"
-msgstr "Your English language test is checked. Your English level has been set as ."
+msgstr "Your English language test is checked."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:216
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:211
 msgid "notificationsEmpty"
 msgstr "No new notificiations for you"

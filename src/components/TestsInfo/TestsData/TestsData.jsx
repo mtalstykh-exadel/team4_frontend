@@ -37,14 +37,14 @@ const TestsData = (props) => {
     { id: 'deadline', label: ['Deadline', 'Срок прохождения'], minWidth: 130, align: 'center', },
     { id: 'verified', label: ['Date verified', 'Дата проверки'], minWidth: 130, align: 'center', },
     { id: 'status', label: ['Status', 'Статус'], minWidth: 40, align: 'center', },
-    { id: 'evaluation', label: ['Result', 'Результат'], minWidth: 80, align: 'center', },
+    { id: 'totalScore', label: ['Result', 'Результат'], minWidth: 80, align: 'center', },
     { id: 'action', label: ['Action', 'Действие'], minWidth: 100, align: 'center', },
   ];
 
   const testsHistory = useSelector((state) => state.profile.testsHistory);
 
   const getResult = (testId) => {
-    localStorage.setItem(currentTest, JSON.stringify({id: testId}));
+    localStorage.setItem(currentTest, JSON.stringify({ id: testId }));
     history.push('/result');
   };
 
@@ -72,7 +72,7 @@ const TestsData = (props) => {
     props.setPage(0);
   };
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(null);
 
   const handleOpen = () => {
     setOpen(true);
@@ -84,8 +84,8 @@ const TestsData = (props) => {
   return (
     <Paper elevation={2}>
       <TableContainer>
-        <UserModalWindowBanningTest open={open} handleClose={handleClose}/>
-        <ModalWindowTestCanceled open={openDeassigned} handleClose={() => setOpenDeassigned(false)}/>
+        <UserModalWindowBanningTest open={open} handleClose={handleClose} />
+        <ModalWindowTestCanceled open={openDeassigned} handleClose={() => setOpenDeassigned(false)} />
         <Table stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>

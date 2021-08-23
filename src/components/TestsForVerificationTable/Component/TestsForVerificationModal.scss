@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     height: 59px;
-    border-bottom: 2px solid #bdbdbd;
+    border-bottom: 1px solid #8d8d8d;
 
     .test-information {
       text-align: center;
@@ -41,21 +41,24 @@
 
     .reported-mistake-navigation {
       width: 222px;
-      border-right: 2px solid #bdbdbd;
-      border-bottom: 2px solid #bdbdbd;
+      background: #bdbdbd;
+      border-right: 1px solid #8d8d8d;
+      border-bottom: 1px solid #8d8d8d;
       cursor: pointer;
     }
 
     .essay-navigation {
       width: 222px;
-      border-right: 2px solid #bdbdbd;
-      border-bottom: 2px solid #bdbdbd;
+      background: #bdbdbd;
+      border-right: 1px solid #8d8d8d;
+      border-bottom: 1px solid #8d8d8d;
       cursor: pointer;
     }
 
     .speaking-navigation {
       width: 222px;
-      border-bottom: 2px solid #bdbdbd;
+      background: #bdbdbd;
+      border-bottom: 1px solid #8d8d8d;
       cursor: pointer;
     }
 

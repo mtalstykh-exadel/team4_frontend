@@ -1,10 +1,7 @@
 export const topicModuleDataEmpty = {
-  id: '',
   questionBody: '',
-  creator: '',
   level: '',
   module: '',
-  answers: []
 };
 
 export const questionModuleDataEmpty = {

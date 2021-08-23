@@ -29,7 +29,7 @@ const dataURItoBlob = (dataURI) => {
 };
 
 const changeArray = (array) => {
-  return array === null ? [] : array.map((element) => ({
+  return array === null || array === undefined ? [] : array.map((element) => ({
     questionId: element.qID,
     answerId: element.aID,
     testId: JSON.parse(localStorage.getItem(currentTest)).id,
@@ -52,4 +52,4 @@ const sendingHandler = () => {
 
 };
 
-export { sendingHandler };
+export { sendingHandler, changeArray };

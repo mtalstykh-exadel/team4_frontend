@@ -107,26 +107,32 @@
 
   .notifications-takeTestBtn {
     height: 25px;
-    text-transform: none;
+    margin-top: 5px;
   }
 
   .notifications-seemoreBtn {
-    text-transform: none;
+    height: 25px;
   }
 }
 
-.modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.paper {
+  padding: 20px;
 
-  .paper {
-    padding: 30px;
+  .text-logout {
+    font-weight: 400;
+    padding-right: 100px;
+    margin-bottom: 30px;
   }
+}
 
-  .modalBtns {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.modalBtns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 0;
+
+  .btn-unit {
+    margin-left: 10px;
+    height: 30px;
   }
 }
