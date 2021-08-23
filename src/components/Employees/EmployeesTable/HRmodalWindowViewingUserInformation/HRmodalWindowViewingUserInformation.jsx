@@ -42,13 +42,18 @@ export const HRmodalWindowViewingUserInformation = (props) => {
 
   const employee = useSelector((state) => state.employee);
 
-  useEffect(() => handleCount(), [employee]);
+  useEffect(() => {
+    handleCount();
+  }, [employee]);
   const handleCount = (newPage = page, filters = filter) => {
     getEmployeeHistory(props.test.id, filters, newPage + 1, rowsPerPage)
       .then((response) => {
         if (response.length > 0 ) {
           setCount(count + response.length);
         }
+      })
+      .catch(() => {
+        setCount(rowsPerPage);
       });
   };
 
@@ -57,12 +62,10 @@ export const HRmodalWindowViewingUserInformation = (props) => {
     setPage(0);
     setCount(rowsPerPage);
     dispatch(requestEmployeeHistory(props.test.id, filters, 0, rowsPerPage));
-    handleCount(0, filters);
   };
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestEmployeeHistory(props.test.id, filter, newPage, rowsPerPage));
-    handleCount(newPage);
     setPage(newPage);
   };
 

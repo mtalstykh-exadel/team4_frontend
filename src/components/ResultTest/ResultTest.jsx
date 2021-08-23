@@ -46,7 +46,7 @@ const Results = () => {
 
   const stepTest = [
     { en: 'Grammar', ru: 'Грамматика' },
-    { en: 'Listening', ru: 'Прослушивание' },
+    { en: 'Listening', ru: 'Аудирование' },
     { en: 'Essay', ru: 'Эссе' },
     { en: 'Speaking', ru: 'Говорение' }].map((step, key) => { return (<div key={key}><Trans>{step.en}{step.ru}</Trans></div>); });
   const setStyle = (res) => {

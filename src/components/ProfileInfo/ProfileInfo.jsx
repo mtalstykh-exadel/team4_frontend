@@ -9,8 +9,8 @@ const ProfileInfo = () => {
   const avatar = useSelector((state) => state.jwt.avatar);
   const fullname = useSelector((state) => state.jwt.name);
   const email = useSelector((state) => state.jwt.sub);
-
   return (
+
     <div className='profileInfo'>
       {avatar ? <img src={avatar} className='avatar' /> : <Avatar className='defaultAvatar' />}
       <div className='profileData'>

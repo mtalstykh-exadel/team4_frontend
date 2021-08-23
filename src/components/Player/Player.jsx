@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { testAudioAttempts } from '../../constants/localStorageConstants';
 import './Player.scss';
 
-export const Player = ({ src, audioDuration, id, speaking = false }) => {
+export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttempts }) => {
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -47,6 +47,7 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
       ) {
         AudioStart();
         attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
+        onChangeAttempts(attempts);
       } else {
         AudioStart();
       }
@@ -152,15 +153,16 @@ export const Player = ({ src, audioDuration, id, speaking = false }) => {
             <CircularProgress className='border-primary' size='23px' />
           ) : parseInt(localStorage.getItem(testAudioAttempts), 16) === 0 &&
             document.getElementById('player-listening') ? (
-              <PlayArrowIcon
-                className='icons-color-secondory'
-                fontSize='medium'
-              />
+              <PlayArrowIcon className='icons-color-secondory' fontSize='medium' />
             ) : (
               <PlayArrowIcon className='icons-color-primary' fontSize='medium' />
             )
         ) : (
-          <PauseIcon className='icons-color-primary' fontSize='medium' />
+          document.getElementById('player-listening') ? (
+            <PauseIcon className='icons-color-secondory' fontSize='medium' />
+          ) : (
+            <PauseIcon className='icons-color-primary' fontSize='medium' />
+          )
         )}
       </button>
       <div className='player-time font-primary'>
@@ -198,4 +200,5 @@ Player.propTypes = {
   audioDuration: PropTypes.number,
   id: PropTypes.string,
   speaking: PropTypes.bool,
+  onChangeAttempts: PropTypes.func
 };

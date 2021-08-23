@@ -14,25 +14,20 @@ import {
   Backdrop,
 } from '@material-ui/core';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
+import * as queryString from 'querystring';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  archiveQuestion,
-  removeQuestionForEdit,
-} from '../../../store/actions/coachActions';
+import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
-
-import { requestListeningQuestionsList, requestQuestionsList } from '../../../store/actions/coachActions';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
 
   const history = useHistory();
 
-  const queryString = require('query-string');
 
   const questions = useSelector((state) => state.coach.questions);
   const question = useSelector((state) => state.coach.question);
@@ -93,6 +88,7 @@ export const EditTestsTable = (props) => {
       search: queryString.stringify({
         id,
         module: props.module,
+        status: props.status
       }),
     });
   };
@@ -103,30 +99,52 @@ export const EditTestsTable = (props) => {
   const handleOpen = () => {
     setOpen(true);
   };
+
   const handleClose = (archiving) => {
     if (archiving) {
-      dispatch(
-        archiveQuestion(archiveId, props.level, props.module.toUpperCase())
-      );
+      if (props.status === 'UNARCHIVED') {
+        dispatch(archiveQuestion(archiveId, false, props.level, props.module.toUpperCase(), props.status, props.page, props.rowsPerPage));
+      } else {
+        dispatch(archiveQuestion(archiveId, true, props.level, props.module.toUpperCase(), props.status, props.page, props.rowsPerPage));
+      }
+      if (props.level) {
+        dispatch(removeQuestionsList());
+        if (props.level && props.module) {
+          if (props.module === 'Listening') {
+            dispatch(requestListeningQuestionsList(props.level, props.status));
+          } else {
+            dispatch(requestQuestionsList(props.level, props.module.toUpperCase(), props.status, props.page, props.rowsPerPage));
+          }
+        }
+        if (props.questionId && props.module) {
+          dispatch(requestQuestion(props.questionId));
+        }
+      }
     }
     setOpen(false);
   };
-
+  
   return (
     <div className='edit-tests-data-wrapper'>
-      <Button
-        color='primary'
-        variant='contained'
-        type='search'
-        onClick={() => handleClickEdit('/add-test-modules')}
-        className='btn-add-question button-standard'
-      >
-        {props.module === 'Grammar' ? (
-          <Trans>Add question</Trans>
-        ) : (
-          <Trans>Add topic</Trans>
-        )}
-      </Button>
+      {
+        props.status === 'UNARCHIVED' ?
+          <Button
+            color='primary'
+            variant='contained'
+            type='search'
+            onClick={() => handleClickEdit('/add-test-modules')}
+            className='btn-add-question button-standard'
+          >
+            {
+              props.module === 'Grammar' ? (
+                <Trans>Add question</Trans>
+              ) : (
+                <Trans>Add topic</Trans>
+              )
+            }
+          </Button>
+          : null
+      }
       <Modal
         open={open}
         onClose={() => handleClose(false)}
@@ -199,36 +217,31 @@ export const EditTestsTable = (props) => {
                           <PlayCircleOutlineIcon className='icons-color-primary' />
                         </TableCell>
                       ) : null}
-                      <TableCell align='left' size='small'>
-                        {row.questionBody ? row.questionBody : row.topic}
-                      </TableCell>
+
+                      <TableCell align='left' size='small'> {row.questionBody ? row.questionBody : row.topic} </TableCell>
                       <TableCell align='center'>
-                        <Button
-                          color='primary'
-                          variant='outlined'
-                          size='small'
-                          style={{ width: 110 }}
-                          type='search'
-                          onClick={() =>
-                            handleClickEdit('/edit-test-modules', row.id)
+                        <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search'
+                          onClick={() => handleClickEdit('/edit-test-modules', row.id)} className='btn-search button-standard'>
+                          {
+                            props.status === 'UNARCHIVED'
+                              ? <Trans>Edit</Trans>
+                              : <Trans>Show</Trans>
                           }
-                          className='btn-search button-standard'
-                        >
-                          <Trans>Edit</Trans>
                         </Button>
                       </TableCell>
-                      <TableCell align='center'>
-                        {
-                          <ArchiveOutlinedIcon
-                            className='archiveBtn'
-                            color='primary'
+                      {
+                        props.status === 'ARCHIVED'
+                          ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#fbff00' }}
                             onClick={() => {
                               setArchiveId(row.id);
                               handleOpen();
-                            }}
-                          />
-                        }
-                      </TableCell>
+                            }} />}</TableCell>
+                          : <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#3f51b5' }}
+                            onClick={() => {
+                              setArchiveId(row.id);
+                              handleOpen();
+                            }} />}</TableCell>
+                      }
                     </TableRow>
                   );
                 })}

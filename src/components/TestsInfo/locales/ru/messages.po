@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:30
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:192
+#: src/components/TestsInfo/TestsData/TestsData.jsx:206
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -27,23 +27,23 @@ msgstr "Продолжить"
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:176
+#: src/components/TestsInfo/TestsData/TestsData.jsx:182
 msgid "Take Test"
 msgstr "Начать тест"
 
-#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
+#: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:26
 msgid "The test was canceled"
 msgstr "Тест был отменен"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:183
+#: src/components/TestsInfo/TestsData/TestsData.jsx:192
 msgid "View Results"
 msgstr "Смотреть результаты"
 
-#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:25
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:26
 msgid "You can't take the test anymore today."
 msgstr "Вы не можете пройти тест сегодня"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:131
-#: src/components/TestsInfo/TestsData/TestsData.jsx:194
+#: src/components/TestsInfo/TestsData/TestsData.jsx:134
+#: src/components/TestsInfo/TestsData/TestsData.jsx:208
 msgid "{0}{1}"
 msgstr "{1}"

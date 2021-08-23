@@ -2,7 +2,7 @@ import { React } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { Modal, Fade, Button, Backdrop} from '@material-ui/core';
+import { Modal, Fade, Button, Backdrop } from '@material-ui/core';
 
 import { Trans } from '@lingui/macro';
 
@@ -19,20 +19,20 @@ const LogoutModal = (props) => {
       onClose={props.handleAccClose}>
       <Fade in={Boolean(props.logoutEl)}>
         <div className='paper base-color'>
-          <h2><Trans>Log out of account?</Trans></h2>
+          <h3 className='text-logout'><Trans>Log out of account?</Trans></h3>
           <div className='modalBtns'>
             <Button
-              className='button-narrow'
+              className='button-narrow btn-unit'
               color='primary'
-              variant='contained'
-              onClick={() => {props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions());}}>
+              variant='outlined'
+              onClick={() => { props.handleAccClose(); props.handleLangClose(); dispatch(logoutActions()); }}>
               <Trans>Yes</Trans>
             </Button>
             <Button
-              className='button-narrow'
+              className='button-narrow btn-unit'
               color='primary'
-              variant='outlined'
-              onClick={() => {props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose();}}>
+              variant='contained'
+              onClick={() => { props.handleLogoutClose(); props.handleAccClose(); props.handleLangClose(); }}>
               <Trans>No</Trans>
             </Button>
           </div>

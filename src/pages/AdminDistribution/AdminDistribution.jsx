@@ -67,6 +67,7 @@ const AdminDistribution = (props) => {
   //   handleCount();
   // }, []);
 
+
   let coachNames = [];
 
   if (coaches !== undefined) {
@@ -75,7 +76,7 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    // handleCount();
+    // handleCount(newPage);
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
