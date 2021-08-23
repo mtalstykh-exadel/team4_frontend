@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
-// import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
 import { language_russian } from '../../constants/languageConstants';
 
@@ -43,32 +42,12 @@ const AdminDistribution = (props) => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
-  // const [count, setCount] = useState(rowsPerPage);
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
-
-  console.log(modalText);
-
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
-
-  // const handleCount = () => {
-  //   getUnverifiedTests(page + 1, rowsPerPage)
-  //     .then((response) => {
-  //       if (response !== []) {
-  //         setCount(count + response.length);
-  //       }
-  //       console.log(response);
-  //       // response.map()
-  //     });
-  // };
-
-  // useEffect(() => {
-  //   handleCount();
-  // }, []);
-
 
   let coachNames = [];
 
@@ -78,7 +57,6 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    // handleCount(newPage);
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -102,7 +80,6 @@ const AdminDistribution = (props) => {
         assignSelect !== null ? (
           assignSelect.value = unverifiedTest.coach.id,
           assignButton.textContent.toLowerCase() !== 'deassign' || assignButton.textContent.toLowerCase() !== 'отменить' ? (
-            console.log('CHANGE STYLES'),
             changeButtonStyle(unverifiedTest.testId)
           ) : (
             null
@@ -133,7 +110,6 @@ const AdminDistribution = (props) => {
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
   setTimeout(() => {
-    console.log('change state');
     handleChangeDeassignTest(rows);
   }, 0);
 
@@ -172,7 +148,6 @@ const AdminDistribution = (props) => {
                             className='font-primary'
                             key={keysForColumns}
                             align={column.align}
-                            // width={column.width + 'px'}
                             style={{ minWidth: column.minWidth }}
                             size='small'
                           >
@@ -229,21 +204,17 @@ const AdminDistribution = (props) => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
                                   if (currentElement === 'assign' || currentElement === 'назначить') {
                                     assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value)
-                                      .then(() => changeButtonStyle(row.testId))//здесь всё верно
+                                      .then(() => changeButtonStyle(row.testId))
                                       .catch((err) => {
                                         setOpen(true);
                                         if (err.response && err.response.status === 409) {
                                           setModalText(['Coach not allowed to verify his own test', 'Тренеру не разрешено проверять свой тест']);
-                                          // handleChangeDeassignTest(rows);
                                         } else if (err === 'No coach') {
                                           setModalText(['Choose a coach', 'Выберите тренера']);
-                                          // console.log('aaaaaa');
-                                          // handleChangeDeassignTest(rows);
                                         }
                                       });
                                   } else {
                                     deassignCoachTest(row.testId);
-                                    console.log(2);
                                     changeButtonStyle(row.testId);
                                   }
                                 }}
@@ -264,14 +235,13 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
-          // count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => {setOpen(false), handleChangeDeassignTest(rows);}} />
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => { setOpen(false), handleChangeDeassignTest(rows); }} />
     </Layout>
   );
 };

@@ -14,9 +14,9 @@ body[theme='light'] {
   --border-color: 189, 189, 189;
   --backdrop-color: 11, 36, 92;
   --error-color: #eb4034;
-  --background-button-deassign: #FFFFFF;
+  --background-button-deassign: #fff;
   --color-button-deassign: #000;
-  --background-button-assign: #FFFFFF;
+  --background-button-assign: #fff;
   --color-button-assign: #3e6dd7;
 }
 
@@ -34,10 +34,10 @@ body[theme='dark'] {
   --border-color: 189, 189, 189;
   --backdrop-color: 255, 255, 255;
   --error-color: #eb4034;
-  --background-button-deassign: #595C60;
-  --color-button-deassign: #ADB6C3;
+  --background-button-deassign: #595c60;
+  --color-button-deassign: #adb6c3;
   --background-button-assign: #3e6dd7;
-  --color-button-assign: #AAC4FF;
+  --color-button-assign: #aac4ff;
 }
 
 body {
