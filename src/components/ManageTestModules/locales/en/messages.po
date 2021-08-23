@@ -39,7 +39,6 @@ msgstr "'Topic for an Speaking'"
 msgid "Add topic for a Listening"
 msgstr "Add topic for a Listening"
 
->>>>>>> origin/develop
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:56
 #~ msgid "Answer"
 #~ msgstr "Answer"
