@@ -63,8 +63,8 @@ export const EditTestsFilter = (props) => {
   const handleCount = (getList) => {
     getList
       .then((response) => {
-        if (response !== []) {
-          props.setCount(props.count + response.length);
+        if (response.length > 0) {
+          props.setCount(props.rowsPerPage * (props.page + 2));
         }
       });
   };

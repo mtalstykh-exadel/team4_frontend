@@ -34,8 +34,7 @@ export const Employees = () => {
     getEmployeesList(userName, newPage + 1, rowsPerPage)
       .then((response) => {
         if (response.length > 0) {
-          setCount(count + response.length);
-          newPage === 1 ? setCount(rowsPerPage * 2 + response.length) : setCount(count + response.length);
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };

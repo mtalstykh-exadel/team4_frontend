@@ -49,7 +49,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
     getEmployeeHistory(props.test.id, filters, newPage + 1, rowsPerPage)
       .then((response) => {
         if (response.length > 0 ) {
-          setCount(count + response.length);
+          setCount(rowsPerPage * (newPage + 2));
         }
       })
       .catch(() => {

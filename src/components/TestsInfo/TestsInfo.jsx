@@ -22,11 +22,11 @@ const TestsInfo = () => {
     handleCount(0, level, rowsPerPage);
   };
 
-  const handleCount = (newPage = page, newFilter = filter, newCount = count) => {
+  const handleCount = (newPage = page, newFilter = filter) => {
     getUserTests(newFilter, newPage + 1, rowsPerPage)
       .then((response) => {
         if (response.length > 0) {
-          newPage === 1 ? setCount(rowsPerPage * 2 + response.length) : setCount(newCount + response.length);
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };

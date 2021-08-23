@@ -61,8 +61,8 @@ const AdminDistribution = (props) => {
   const handleCount = (newPage = page) => {
     getUnverifiedTests(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };
@@ -75,7 +75,9 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount(newPage);
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
