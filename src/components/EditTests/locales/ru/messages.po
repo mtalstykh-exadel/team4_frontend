@@ -74,7 +74,7 @@ msgstr "Строк на странице:"
 
 #: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:228
 msgid "Show"
-msgstr ""
+msgstr "Показать"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Status"

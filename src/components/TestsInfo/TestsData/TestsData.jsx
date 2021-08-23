@@ -120,7 +120,7 @@ const TestsData = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   return (
     <Paper elevation={2}>
       <TableContainer>

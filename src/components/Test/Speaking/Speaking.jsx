@@ -56,17 +56,23 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
           invisible === 'off' ? 'microphone base-color-primary' : 'microphone base-color-error'
         }
         onClick={() => {
-          if (invisible !== 'off') {
-            setInvisible('off');
-            setBlobURL(offRecAudio());
-            setAudioDuration(stopTimer('speaking-timer'));
-            saveBlobUrl({ testModule, duration: stopTimer('speaking-timer') });
-          } else {
-            setInvisible('on');
-            onRecAudio();
-            startTimer(createTimer({ domId: 'speaking-timer', seconds: 300 }));
-            checkSpeakingTimerHandler();
-          }
+          navigator.permissions.query({ name: 'microphone'}).then(function(result) {
+            if (result.state === 'granted') { 
+              if (invisible !== 'off') {
+                setInvisible('off');
+                setBlobURL(offRecAudio());
+                setAudioDuration(stopTimer('speaking-timer'));
+                saveBlobUrl({ testModule, duration: stopTimer('speaking-timer') });
+              } else {
+                setInvisible('on');
+                onRecAudio();
+                startTimer(createTimer({ domId: 'speaking-timer', seconds: 300 }));
+                checkSpeakingTimerHandler();
+              }
+            } else {
+              alert('please allow this page to use a microphone');
+            }
+          });
         }}
       >
         {invisible === 'off' ? (

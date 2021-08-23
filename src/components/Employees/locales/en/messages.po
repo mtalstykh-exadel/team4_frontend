@@ -23,6 +23,7 @@ msgstr "Assign"
 msgid "Assign test"
 msgstr "Assign test"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:27
 #: src/components/Employees/ModalWindowWarning/ModalWindowCannotAssign.jsx:27
 #: src/components/Employees/ModalWindowWarning/ModalWindowCannotDeassign.jsx:28
 msgid "Close"
@@ -53,6 +54,10 @@ msgstr "Name"
 msgid "No"
 msgstr "No"
 
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:91
+msgid "Priority"
+msgstr "Priority"
+
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:89
 msgid "Priority:"
 msgstr "Priority:"
@@ -65,7 +70,7 @@ msgstr "Select the test level:"
 msgid "Test deadline:"
 msgstr "Test deadline:"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:26
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalTestDeassigned.jsx:24
 msgid "Test was deassigned"
 msgstr "Test was deassigned"
 

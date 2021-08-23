@@ -23,7 +23,7 @@ export const ModalWindowTestCanceled = (props) => {
       <Paper elevation={2}>
         <div className='modal-content'>
           <div className='modal-remove'>
-            <div className='text'><Trans>The test was canceled</Trans></div>
+            <div className='text font-primary'><Trans>The test was canceled</Trans></div>
             <div className='btn'>
               <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close</Trans></Button>
             </div>

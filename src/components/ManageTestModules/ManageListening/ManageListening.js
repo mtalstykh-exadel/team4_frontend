@@ -94,7 +94,7 @@ export const ManageListening = (props) => {
     <>
       <div className='listening-topic'>
         <ManageTopic
-          moduleDescription='Add topic for a Listening'
+          moduleDescription={<Trans>Add topic for a Listening</Trans>}
           handleModule={handleTopic}
           handleReady={setTopicReady}
           dataType={props.dataType}

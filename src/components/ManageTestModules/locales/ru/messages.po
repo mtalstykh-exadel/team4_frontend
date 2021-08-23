@@ -29,11 +29,15 @@ msgstr "Отредактируйте тему на Говорение"
 
 #: src/components/ManageTestModules/ManageTestModules.js:168
 msgid "'Topic for an Essay'"
-msgstr ""
+msgstr "Тема для Эссе"
 
 #: src/components/ManageTestModules/ManageTestModules.js:153
 msgid "'Topic for an Speaking'"
-msgstr ""
+msgstr "Тема для Говорения"
+
+#: src/components/ManageTestModules/ManageListening/ManageListening.js:97
+msgid "Add topic for a Listening"
+msgstr "Отредактируйте тему на Аудирование"
 
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:56
 #~ msgid "Answer"
@@ -78,6 +82,11 @@ msgstr "Загрузить аудио"
 #: src/components/ManageTestModules/ManageListening/ManageListening.js:107
 msgid "Upload an audio file for listening task"
 msgstr "Загрузите аудио файл для аудирования"
+
+#: src/components/ManageTestModules/ManageTestModules.js:157
+#: src/components/ManageTestModules/ManageTestModules.js:160
+msgid "{0}"
+msgstr "{0}"
 
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:40
 #~ msgid "{0} Question"
