@@ -11,19 +11,19 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/ManageTestModules/ManageTestModules.js:138
+#: src/components/ManageTestModules/ManageTestModules.js:141
 msgid "'Add topic for an Essay'"
 msgstr "Добавьте тему на Сочинение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:126
+#: src/components/ManageTestModules/ManageTestModules.js:129
 msgid "'Add topic for an Speaking'"
 msgstr "Добавьте тему на Говорение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:139
+#: src/components/ManageTestModules/ManageTestModules.js:142
 msgid "'Edit topic for an Essay'"
 msgstr "Отредактируйте тему на Сочинение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:127
+#: src/components/ManageTestModules/ManageTestModules.js:130
 msgid "'Edit topic for an Speaking'"
 msgstr "Отредактируйте тему на Говорение"
 
@@ -31,7 +31,7 @@ msgstr "Отредактируйте тему на Говорение"
 #~ msgid "Answer"
 #~ msgstr "Ответ"
 
-#: src/components/ManageTestModules/ManageTestModules.js:155
+#: src/components/ManageTestModules/ManageTestModules.js:158
 msgid "Back"
 msgstr "Назад"
 
@@ -39,19 +39,19 @@ msgstr "Назад"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/components/ManageTestModules/ManageTestModules.js:103
+#: src/components/ManageTestModules/ManageTestModules.js:106
 msgid "Level:"
 msgstr "Уровень:"
 
-#: src/components/ManageTestModules/ManageTestModules.js:104
+#: src/components/ManageTestModules/ManageTestModules.js:107
 msgid "Module:"
 msgstr "Модуль:"
 
-#: src/components/ManageTestModules/ManageTestModules.js:105
+#: src/components/ManageTestModules/ManageTestModules.js:108
 msgid "Question-ID:"
 msgstr "ID вопроса"
 
-#: src/components/ManageTestModules/ManageTestModules.js:171
+#: src/components/ManageTestModules/ManageTestModules.js:174
 msgid "Save"
 msgstr "Сохранить"
 
@@ -63,13 +63,17 @@ msgstr "Данные были успешно сохранены"
 #~ msgid "Topic"
 #~ msgstr "Тема"
 
-#: src/components/ManageTestModules/ManageListening/ManageListening.js:78
+#: src/components/ManageTestModules/ManageListening/ManageListening.js:84
 msgid "Upload Audio"
 msgstr "Загрузить аудио"
 
-#: src/components/ManageTestModules/ManageListening/ManageListening.js:76
+#: src/components/ManageTestModules/ManageListening/ManageListening.js:82
 msgid "Upload an audio file for listening task"
 msgstr "Загрузите аудио файл для аудирования"
+
+#: src/components/FormControl/formControl.js:18
+#~ msgid "msgid {0}{1}"
+#~ msgstr "msgstr {1}"
 
 #: src/components/ManageTestModules/ManageGrammar/manageGrammar.js:40
 #~ msgid "{0} Question"

@@ -11,15 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:124
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:126
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:127
 msgid "Add topic"
 msgstr "Добавить тему"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Archived"
 msgstr "Архивированные"
 
@@ -31,36 +31,36 @@ msgstr "Вы уверены, что хотите заархивировать э
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:215
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:217
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:110
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
 msgid "In field 'Question Id' must be a number"
 msgstr "Поле 'ID Вопроса' должно содердать число"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:85
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:83
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:92
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
 msgid "Module"
 msgstr "Модуль"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:87
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:94
-msgid "None"
-msgstr "Любое"
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
+#~ msgid "None"
+#~ msgstr "Любое"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Not archived"
 msgstr "Не архивированные"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:237
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:239
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -72,7 +72,7 @@ msgstr "Строк на странице:"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
 msgid "Status"
 msgstr "Статус"
 
@@ -80,7 +80,8 @@ msgstr "Статус"
 msgid "Yes,do"
 msgstr "Выполнить"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:155
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:170
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:35
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:157
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:172
 msgid "{0}{1}"
 msgstr "{1}"
