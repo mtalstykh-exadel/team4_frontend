@@ -30,18 +30,24 @@
     max-height: 30px;
   }
 
+  .MuiSelect-root {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
   .buttonAssign {
     max-height: 25px;
     min-width: 127px;
     font-weight: bold;
-    color: #3e6dd7;
+    color: var(--color-button-assign);
+    background-color: var(--background-button-assign);
     border-color: #3e6dd7;
   }
 
   .buttonDeassign {
     min-width: 127px;
     max-height: 25px;
-    color: black;
+    color: var(--color-button-deassign);
+    background-color: var(--background-button-deassign);
     border-color: #828282;
     font-weight: bold;
   }
@@ -54,6 +60,8 @@
   .selectCoachNames--disabled {
     color: #828282;
     pointer-events: none;
+    background-color: rgba(255, 255, 255, 0);
+    height: 100%;
   }
 
   .selectCoachNames--disabled:focus {
