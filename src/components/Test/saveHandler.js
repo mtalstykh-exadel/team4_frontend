@@ -7,8 +7,8 @@ const saveTestHandler = async ({grammar = [], listening = []}) => {
     await saveListeningAndGrammar([
         ...changeArray(grammar),
         ...changeArray(listening)
-    ])
-    .then(() => checkRequest = true);
+    ]);
+    checkRequest = true;
     return ;
   }
   checkRequest = false;
@@ -16,8 +16,8 @@ const saveTestHandler = async ({grammar = [], listening = []}) => {
 
 const saveEssayHandler = ({essay = ''}) => {
   if ( checkRequest === false) {
-    saveEssay(essay)
-    .then(() => checkRequest = true);
+    saveEssay(essay);
+    checkRequest = true;
     return ;
   }
   checkRequest = false;
