@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:125
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:140
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:127
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:142
 msgid "Add topic"
 msgstr "Добавить тему"
 
@@ -23,15 +23,15 @@ msgstr "Добавить тему"
 msgid "Archived"
 msgstr "Архивированные"
 
-#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:17
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:15
 msgid "Are you sure you want to archive this?"
 msgstr "Вы уверены, что хотите заархивировать это?"
 
-#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:20
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:18
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:216
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:227
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -60,7 +60,7 @@ msgstr "Не архивированные"
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:238
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:252
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -72,15 +72,19 @@ msgstr "Строк на странице:"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:228
+msgid "Show"
+msgstr ""
+
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Status"
 msgstr "Статус"
 
-#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:19
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:17
 msgid "Yes"
 msgstr "Да"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:157
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:172
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:175
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:190
 msgid "{0}{1}"
 msgstr "{1}"

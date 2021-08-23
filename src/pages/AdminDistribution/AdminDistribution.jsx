@@ -16,6 +16,7 @@ import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
 // import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
+import { language_russian } from '../../constants/languageConstants';
 
 const AdminDistribution = (props) => {
 
@@ -198,7 +199,13 @@ const AdminDistribution = (props) => {
                               <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
                                 <option aria-label='None' value='placeholder' >
-                                  name
+                                  {localStorage.getItem(userLanguageKey) !== language_russian ?
+                                    (
+                                      'name'
+                                    ) : (
+                                      'имя'
+                                    )
+                                  }
                                 </option>
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
