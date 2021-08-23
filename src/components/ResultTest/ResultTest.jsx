@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import { CircularProgress } from '@material-ui/core';
+import {CircularProgress, TextField} from '@material-ui/core';
 
 import { getResultTest } from '../../api/result-test';
 
@@ -75,10 +75,50 @@ const Results = () => {
     const essayComments = test.essayComment;
     const speakingComments = test.speakingComments;
     resultQuote = [
-      <><p>You have passed the English language test at the {level.toString()} level.</p><p>{ essayComments }</p>
-        <p>{ speakingComments }</p><p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
-      <><p>Вы сдали тест по английскому языку на уровне {level.toString()}</p><p>{ essayComments }</p>
-        <p>{ speakingComments }</p><p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
+      <><p>You have passed the English language test at the {level.toString()} level.</p>
+       <div className={'comments'}>
+       <div className={'module-text'}>Module Essay</div>
+        <TextField
+          className={'answer'}
+          variant='outlined'
+          multiline
+          rows={3}
+          label={essayComments}
+        />
+        </div>
+        <div className={'comments'}>
+          <div className={'module-text'}>Module Speaking</div>
+          <TextField
+            className={'answer'}
+            variant='outlined'
+            multiline
+            rows={3}
+            label={speakingComments}
+          />
+        </div>
+        <p onClick={() => window.location.href = './profile'} className='go-back-full-test'>Go back to your personal account</p></>,
+      <><p>Вы сдали тест по английскому языку на уровне {level.toString()}</p>
+        <div className={'comments'}>
+          <div className={'module-text'}>Модуль Эссе</div>
+          <TextField
+            className={'answer'}
+            variant='outlined'
+            multiline
+            rows={3}
+            label={essayComments}
+          />
+        </div>
+        <div className={'comments'}>
+          <div className={'module-text'}>Модуль говорения</div>
+          <TextField
+            className={'answer'}
+            variant='outlined'
+            multiline
+            rows={3}
+            label={speakingComments}
+          />
+        </div>
+        <p onClick = {() => window.location.href = './profile'} className='go-back-full-test'>Вернуться на свой аккаунт</p></>
     ];
   }
 
