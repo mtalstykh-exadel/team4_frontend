@@ -47,5 +47,5 @@ ManageTopic.propTypes = {
   moduleData: PropTypes.any,
   module: PropTypes.any,
   level: PropTypes.any,
-  moduleDescription: PropTypes.string
+  moduleDescription: PropTypes.any
 };

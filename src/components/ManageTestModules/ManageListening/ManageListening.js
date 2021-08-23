@@ -19,11 +19,17 @@ export const ManageListening = (props) => {
   useEffect(
     async function () {
       setAudio(
-        await getAudioFile(moduleData.url).then((response) => {
-          return URL.createObjectURL(
-            new Blob([response.data], { type: 'audio/ogg' })
-          );
-        })
+        await getAudioFile(moduleData.url)
+          .then((response) => {
+            return URL.createObjectURL(
+              new Blob([response.data], { type: 'audio/ogg' })
+            );
+          })
+          .catch((err) => {
+            if (err.response.status === 404) {
+              setAudio(null);
+            }
+          })
       );
     },
     [setAudio]

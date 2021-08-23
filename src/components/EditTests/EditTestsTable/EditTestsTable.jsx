@@ -220,8 +220,7 @@ export const EditTestsTable = (props) => {
                       <TableCell align='center'>
                         {
                           <ArchiveOutlinedIcon
-                            className='archiveBtn'
-                            color='primary'
+                            className='archiveBtn icons-color-primary'
                             onClick={() => {
                               setArchiveId(row.id);
                               handleOpen();

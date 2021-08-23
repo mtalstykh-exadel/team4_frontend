@@ -88,7 +88,7 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       <InputLabel id='select-label' htmlFor='level'><Trans>Level</Trans></InputLabel>
       <Select labelId='select-label' label='Select the test level' inputProps={{ name: '' }} defaultValue='' id='select'>
         {filterLevelsShort.map((item, index) => {
-          return <MenuItem key={index} value={item} className='item' onClick={() => handleFilter(item)}> {item}</MenuItem>;
+          return <MenuItem key={index} value={item} className='item' align='center' onClick={() => handleFilter(item[0])}> {item[0]}</MenuItem>;
         })}
       </Select>
     </FormControl>
@@ -96,9 +96,9 @@ export const HRmodalWindowViewingUserInformation = (props) => {
       <Table stickyHeader aria-label='sticky table'>
         <TableHead>
           <TableRow>
-            {userHistoryHeader.map((rowName) => {
+            {userHistoryHeader.map((rowName, index) => {
               return (
-                <TableCell className='base-color-elevated font-primary' key={rowName} align='left'>{rowName}</TableCell>
+                <TableCell className='base-color-elevated font-primary' key={index} align='center'><Trans>{rowName[0]}{rowName[1]}</Trans></TableCell>
               );
             })}
           </TableRow>
@@ -106,86 +106,46 @@ export const HRmodalWindowViewingUserInformation = (props) => {
         <TableBody>
           {employee.map((row, index) => {
             {
-              if (row.status !== 'ASSIGNED') {
-                return (
-                  <TableRow key={index} className='row'>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.level}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {formatDate(row.startedAt)}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.status}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.result}
-                    </TableCell>
-                  </TableRow>
-                );
-              } else {
-                return (
-                  <TableRow key={index} className='row'>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.level}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {formatDate(row.assigned)}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {formatDate(row.deadline)}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.status}
-                    </TableCell>
-                    <TableCell
-                      className='base-color-elevated font-primary'
-                      align='left'
-                      size='small'>
-                      {row.result}
-                    </TableCell>
-                  </TableRow>
-                );
-              }
+              return (
+                <TableRow key={index} className='row'>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {row.level}
+                  </TableCell>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {formatDate(row.startedAt)}
+                  </TableCell>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {formatDate(row.deadline)}
+                  </TableCell>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {row.status === 'VERIFIED' && formatDate(row.verified)}
+                  </TableCell>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {row.status}
+                  </TableCell>
+                  <TableCell
+                    className='base-color-elevated font-primary'
+                    align='center'
+                    size='small'>
+                    {row.totalScore}
+                  </TableCell>
+                </TableRow>
+              );
             }
           })}
         </TableBody>
