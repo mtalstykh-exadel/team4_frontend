@@ -41,8 +41,8 @@ msgstr "Do you want to deassign?"
 msgid "Email: {0}"
 msgstr "Email: {0}"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:58
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:88
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:58
 msgid "Level"
 msgstr "Level"
 

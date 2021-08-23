@@ -90,8 +90,8 @@ msgstr "Проверить"
 msgid "You have been deassigned from the test"
 msgstr "Вы были сняты с проверки теста"
 
-#: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
 #: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:140
+#: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
 msgid "{0}"
 msgstr "{0}"
 
