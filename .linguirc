@@ -33,6 +33,9 @@
     }, {
         "path": "src/components/Employees/locales/{locale}/messages",
         "include": "src/components/Employees/"
+    }, {
+        "path": "src/components/ProfileInfo/locales/{locale}/messages",
+        "include": "src/components/ProfileInfo/"
     }],
    "format": "po",
    "sourceLocale": "en"
