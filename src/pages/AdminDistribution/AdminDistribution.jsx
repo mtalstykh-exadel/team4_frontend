@@ -99,6 +99,7 @@ const AdminDistribution = (props) => {
         assignSelect !== null ? (
           assignSelect.value = unverifiedTest.coach.id,
           assignButton.textContent.toLowerCase() !== 'deassign' || assignButton.textContent.toLowerCase() !== 'отменить' ? (
+            console.log('CHANGE STYLES'),
             changeButtonStyle(unverifiedTest.testId)
           ) : (
             null
@@ -129,6 +130,7 @@ const AdminDistribution = (props) => {
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
   setTimeout(() => {
+    console.log('change state');
     handleChangeDeassignTest(rows);
   }, 0);
 
@@ -217,7 +219,7 @@ const AdminDistribution = (props) => {
                                   const currentElement = document.getElementById('item-' + row.testId + '-button').textContent.toLowerCase();
                                   if (currentElement === 'assign' || currentElement === 'назначить') {
                                     assignCoachTest(row.testId, document.getElementById('item-' + row.testId + '-select').value)
-                                      .then(() => changeButtonStyle(row.testId))
+                                      .then(() => changeButtonStyle(row.testId))//здесь всё верно
                                       .catch((err) => {
                                         setOpen(true);
                                         if (err.response && err.response.status === 409) {
@@ -225,12 +227,13 @@ const AdminDistribution = (props) => {
                                           // handleChangeDeassignTest(rows);
                                         } else if (err === 'No coach') {
                                           setModalText(['Choose a coach', 'Выберите тренера']);
-                                          console.log('aaaaaa');
+                                          // console.log('aaaaaa');
                                           // handleChangeDeassignTest(rows);
                                         }
                                       });
                                   } else {
                                     deassignCoachTest(row.testId);
+                                    console.log(2);
                                     changeButtonStyle(row.testId);
                                   }
                                 }}
