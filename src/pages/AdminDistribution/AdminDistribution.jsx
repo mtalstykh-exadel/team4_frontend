@@ -46,6 +46,7 @@ const AdminDistribution = (props) => {
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
 
+  console.log(modalText);
 
 
   useEffect(() => {
@@ -262,7 +263,7 @@ const AdminDistribution = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)} />
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => {setOpen(false), handleChangeDeassignTest(rows);}} />
     </Layout>
   );
 };
