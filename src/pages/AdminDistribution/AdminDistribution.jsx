@@ -23,11 +23,11 @@ const AdminDistribution = (props) => {
   const dispatch = useDispatch();
 
   const columns = [
-    { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'Assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
-    { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
-    { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
+    { id: 'level', label: ['Level', 'Уровень'], minWidth: 73, align: 'right' },
+    { id: 'Assigned', label: ['Assigned', 'Назначенный'], minWidth: 227, align: 'right' },
+    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], minWidth: 227, align: 'right' },
+    { id: 'Coach', label: ['Coach', 'Тренер'], minWidth: 434, align: 'right' },
+    { id: 'action', label: ['Action', 'Действие'], minWidth: 270, align: 'right' },
   ];
 
   const rows = useSelector((state) => state.admin.testsList);
@@ -172,7 +172,8 @@ const AdminDistribution = (props) => {
                             className='font-primary'
                             key={keysForColumns}
                             align={column.align}
-                            width={column.width + 'px'}
+                            // width={column.width + 'px'}
+                            style={{ minWidth: column.minWidth }}
                             size='small'
                           >
                             {column.id === 'Assigned' ? (
