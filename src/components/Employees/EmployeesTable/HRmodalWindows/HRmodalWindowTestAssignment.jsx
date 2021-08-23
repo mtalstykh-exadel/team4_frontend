@@ -86,9 +86,9 @@ export const HRmodalWindowTestAssignment = (props) => {
           />
         </div>
         <div className='setting'>
-          <p className='setting-label bold'><Trans>Priority:</Trans></p>
+          <p className='setting-label bold'><Trans>Priority: </Trans></p>
           <FormControl required variant='outlined' className='setting-select' size='small'>
-            <InputLabel id='select-label'>Priority</InputLabel>
+            <InputLabel id='select-label'><Trans>Priority</Trans></InputLabel>
             <Select labelId='select-label' label='Select priority' id='select' value={formik.values.priority} inputProps={{ name: 'priority'}}
               onChange={formik.handleChange}>
               {priority.map((item) => {

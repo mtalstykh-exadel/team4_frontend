@@ -123,7 +123,7 @@ export const EditTestsTable = (props) => {
     }
     setOpen(false);
   };
-  
+
   return (
     <div className='edit-tests-data-wrapper'>
       {
@@ -220,7 +220,7 @@ export const EditTestsTable = (props) => {
 
                       <TableCell align='left' size='small'> {row.questionBody ? row.questionBody : row.topic} </TableCell>
                       <TableCell align='center'>
-                        <Button color='primary' variant='outlined' size='small' style={{ width: 110 }} type='search'
+                        <Button color='primary' variant='outlined' size='small' type='search'
                           onClick={() => handleClickEdit('/edit-test-modules', row.id)} className='btn-search button-standard'>
                           {
                             props.status === 'UNARCHIVED'

@@ -154,10 +154,10 @@ export const ManageModule = (props) => {
                     : <Trans>'Edit topic for an Speaking'</Trans>
               }
               handleModule={setModuleData}
-              level={formik.values.level}
+              level={<Trans>{formik.values.level}</Trans>}
               dataType={props.dataType}
               handleReady={setReady}
-              module={formik.values.module}
+              module={<Trans>{formik.values.module}</Trans>}
               moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
             /> : null}
           {formik.values.module === 'Essay' ?
