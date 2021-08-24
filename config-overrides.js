@@ -12,7 +12,8 @@ module.exports = function override(config, env) {
     '@assets': 'src/assets',
     '@player': 'src/components/Player',
     '@services': 'src/services',
-    '@pages': 'src/pages'
+    '@pages': 'src/pages',
+    '@hook': 'src/hooks'
   })(config);
 
   return config;

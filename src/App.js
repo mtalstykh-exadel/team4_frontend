@@ -13,13 +13,17 @@ import Profile from '@pages/Profile/Profile';
 import Main from '@pages/Main/Main';
 import { TestsForVerification, EditTests, Employees, Page404, Test, ManageTest } from '@pages/index';
 import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
-
+import { useRedirectHook } from '@hook/redirectHook';
 import { initApp } from '@actions/initActions/initActions';
 import ResultTest from '@components/ResultTest/ResultTest';
+import { redirectTo } from '@constants/localStorageConstants';
 
 const App = () => {
   const dispatch = useDispatch();
   dispatch(initApp());
+  if (useRedirectHook().get('redirect')) {
+    localStorage.setItem(redirectTo, window.location.href.toString());
+  } 
 
   return (
     <div className='App'>
