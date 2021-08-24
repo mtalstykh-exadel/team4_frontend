@@ -4,8 +4,8 @@ import { getEmployeesList, getEmployeeHistory } from '@api/employees-fetch';
 export const setEmployeesList = (employee) => ({ type: REQUEST_EMPLOYEES_LIST, employee });
 export const setEmployee = (employee) => ({ type: REQUEST_EMPLOYEE_HISTORY, employee });
 
-export const requestEmployeesList = (pageNum, pageSize) => (dispatch) => {
-  return getEmployeesList(pageNum, pageSize)
+export const requestEmployeesList = (name, pageNum, pageSize) => (dispatch) => {
+  return getEmployeesList(name, pageNum, pageSize)
     .then((data) => (dispatch(setEmployeesList(data))));
 };
 

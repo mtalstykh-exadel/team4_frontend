@@ -1,7 +1,7 @@
 import axiosInstance from './axios';
 
-const getEmployeesList = (pageNum, pageSize) => {
-  return axiosInstance.get(`/employees?pageNumb=${pageNum}&pageSize=${pageSize}`)
+const getEmployeesList = (name, pageNum, pageSize) => {
+  return axiosInstance.get(`/employees?${name ? `name=${name}` : ''}&pageNumb=${pageNum}&pageSize=${pageSize}`)
     .then((response) => response.data);
 };
 

@@ -15,7 +15,9 @@ import { requestQuestionsList } from '@actions/adminActions';
 import getCoaches from '@api/get-coaches';
 import { formatDate } from '@utils/data-formatter';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
+
 import { language_russian } from '@constants/languageConstants';
+import { getUnverifiedTests } from '@api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 
@@ -40,6 +42,7 @@ const AdminDistribution = (props) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [count, setCount] = useState(rowsPerPage);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
   const [open, setOpen] = useState(false);
@@ -49,6 +52,19 @@ const AdminDistribution = (props) => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
 
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getUnverifiedTests(newPage + 1, rowsPerPage)
+      .then((response) => {
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
+        }
+      });
+  };
+
   let coachNames = [];
 
   if (coaches !== undefined) {
@@ -57,6 +73,9 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -235,6 +254,7 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

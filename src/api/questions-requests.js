@@ -39,10 +39,10 @@ export const addNewQuestion = async (quest) => {
   return axiosInstance.post('/question/', quest).then((response) => response.data);
 };
 
-export const getQuestionsList = async (level, module, status, pageNum, pageSize) => {
-  return axiosInstance.get(`/question/?level=${level}&module=${module}&pageNumb=${pageNum}&pageSize=${pageSize}&status=${status}`).then((response) => response.data);
+export const getQuestionsList = async (level = '', module = '', status = 'UNARCHIVED', pageNum, pageSize) => {
+  return axiosInstance.get(`/question/?level=${level}&module=${module}&pageNumb=${pageNum}&pageSize=${pageSize}&status=${status ? status : 'UNARCHIVED'}`).then((response) => response.data);
 };
 
-export const getListeningQuestionsList = async (level, status, pageNum, pageSize) => {
-  return axiosInstance.get(`/question/listening?level=${level}&pageNumb=${pageNum}&pageSize=${pageSize}&status=${status}`).then((response) => response.data);
+export const getListeningQuestionsList = async (level = '', status = 'UNARCHIVED', pageNum, pageSize) => {
+  return axiosInstance.get(`/question/listening?level=${level}&pageNumb=${pageNum}&pageSize=${pageSize}&status=${status ? status : 'UNARCHIVED'}`).then((response) => response.data);
 };

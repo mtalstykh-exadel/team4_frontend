@@ -23,4 +23,9 @@ const saveTestGrades = (question) => {
     .then((response) => response.data);
 };
 
-export { getTestsForVerification, getTestForVerification, submitTestGrades, saveTestGrades, getTestGrades };
+const saveReports = (grammar) => {
+  return axiosInstance.put('/coach_reports/', grammar)
+    .then((response) => response.data);
+};
+
+export { getTestsForVerification, getTestForVerification, submitTestGrades, saveTestGrades, saveReports, getTestGrades };

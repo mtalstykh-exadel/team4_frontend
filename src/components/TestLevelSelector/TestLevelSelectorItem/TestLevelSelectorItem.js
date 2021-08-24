@@ -53,7 +53,7 @@ export const TestLevelsSelectorItem = ({
             })
             .catch((err) => {
               setLoading(false);
-              if (err.code === 409) {
+              if (err.response.status === 409) {
                 alert('Попытки закончились, приходите завтра');
               }
             });

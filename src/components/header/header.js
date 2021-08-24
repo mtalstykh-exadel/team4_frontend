@@ -152,7 +152,6 @@ const Header = () => {
                   <Avatar
                     className='avatarHeader border-secondary'
                     src={avatar}
-                    alt='avatar'
                   />
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>

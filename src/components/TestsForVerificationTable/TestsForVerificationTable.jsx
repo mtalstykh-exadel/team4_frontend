@@ -34,8 +34,8 @@ export const TestsForVerificationTable = () => {
   const handleCount = (newPage = page) => {
     getTestsForVerification(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };
@@ -44,6 +44,9 @@ export const TestsForVerificationTable = () => {
   const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     setPage(newPage);
     dispatch(requestUnverifiedTests(newPage, rowsPerPage));
   };

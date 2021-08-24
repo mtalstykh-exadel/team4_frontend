@@ -11,9 +11,11 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
-import moment from 'moment';
-import { currentTest, testAudioAttempts, testEassyUserAnswers, testGrammarUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
+
+import { formatDate } from '@utils/data-formatter';
+import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers, testAudioAttempts } from '@constants/localStorageConstants';
 import { startTestById } from '@api/start-test';
+
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
@@ -23,8 +25,9 @@ import { getTest } from '@api/get-test';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { requestUserTestsHistory } from '@actions/profileActions';
-import getUserTests from '@api/user-tests';
+
 
 const TestsData = (props) => {
   const history = useHistory();
@@ -43,73 +46,33 @@ const TestsData = (props) => {
 
   const testsHistory = useSelector((state) => state.profile.testsHistory);
 
-  const dateFormatter = (date) => {
-    if (date) return moment(date).format('DD MMM YYYY, hh:mm');
-    else null;
-  };
-
   const getResult = (testId) => {
     localStorage.setItem(currentTest, JSON.stringify({ id: testId }));
     history.push('/result');
   };
 
-  const filterRow = (row) => {
-    const filteredRow = [];
-    row.map((el) => {
-      filteredRow.push(
-        {
-          ...el,
-          assigned: el.assigned && dateFormatter(el.assigned),
-          deadline: el.deadline && dateFormatter(el.deadline),
-          verified: el.deadline && dateFormatter(el.verified),
-          evaluation: el.evaluation ? el.evaluation > 20 ? 'passed' : 'not passed' : null,
-          action: el.status === 'ASSIGNED' ? ['Take test', 'Пройти тест']
-            : el.status === 'EXPIRED' || el.status === 'VERIFIED' ? ['Try again', 'Пройти заново']
-              : el.status === 'STARTED' ? 'continue' : null
-        }
-      );
-    });
-    return filteredRow;
-  };
-
-  const formattedTestsHistory = testsHistory ? filterRow(testsHistory) : [];
-
-  const filteredRows = formattedTestsHistory.filter((r) => props.filter ? r.level === props.filter : r);
-
-  let keysForColumns = 0;
-
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [count, setCount] = useState(rowsPerPage);
   const [open, setOpen] = useState(false);
   const [openDeassigned, setOpenDeassigned] = useState(false);
 
   useEffect(() => {
-    dispatch(requestUserTestsHistory(page, rowsPerPage));
+    dispatch(requestUserTestsHistory(props.filter, props.page, props.rowsPerPage));
   }, []);
 
   useEffect(() => {
-    handleCount();
+    props.handleCount();
   }, []);
 
-  const handleCount = (newPage = page) => {
-    getUserTests(newPage + 1, rowsPerPage)
-      .then((response) => {
-        if (response.length > 0) {
-          setCount(count + response.length);
-        }
-      });
-  };
-
   const handleChangePage = (event, newPage) => {
-    dispatch(requestUserTestsHistory(newPage, rowsPerPage));
-    handleCount(newPage);
-    setPage(newPage);
+    dispatch(requestUserTestsHistory(props.filter, newPage, props.rowsPerPage));
+    if ( newPage > props.page) {
+      props.handleCount(newPage);
+    }
+    props.setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+    props.setRowsPerPage(+event.target.value);
+    props.setPage(0);
   };
 
   const [loading, setLoading] = useState(null);
@@ -138,78 +101,73 @@ const TestsData = (props) => {
           </TableHead>
           <TableBody>
             {
-              filteredRows.map((row) => {
+              testsHistory && testsHistory.map((row) => {
                 return (
                   <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
-                    {columns.map((column) => {
-                      keysForColumns++;
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={keysForColumns} align={column.align} size='medium'>
-                          {
-                            column.id === 'action' && value ?
-                              loading && loading === row.testId
-                                ?
-                                <CircularProgress className='border-primary' size='25px' />
-                                :
-                                row.status === 'ASSIGNED'
-                                  ?
-                                  <Button className='button-standard' color='primary' variant='contained'
-                                    onClick={() => {
-                                      setLoading(row.testId);
-                                      localStorage.removeItem(currentTest);
-                                      localStorage.removeItem(testGrammarUserAnswers);
-                                      localStorage.removeItem(testEassyUserAnswers);
-                                      localStorage.removeItem(testListeningUserAnswers);
-                                      localStorage.removeItem(testSpeakingAnswers);
-                                      localStorage.setItem(testAudioAttempts, 3);
-                                      startTestById(row.testId)
-                                        .then((response) => {
-                                          localStorage.setItem(currentTest, JSON.stringify(response));
-                                          history.push('/test');
-                                          window.scrollTo(0, 0);
-                                        })
-                                        .catch((err) => {
-                                          setLoading(null);
-                                          if (err.response.status === 409) {
-                                            handleOpen();
-                                          } else if (err.response.status === 404) {
-                                            setOpenDeassigned(true);
-                                          }
-                                        });
+                    <TableCell size='medium' align='center'>{row.level}</TableCell>
+                    <TableCell size='medium' align='center'>{formatDate(row.assigned)}</TableCell>
+                    <TableCell size='medium' align='center'>{formatDate(row.deadline)}</TableCell>
+                    <TableCell size='medium' align='center'>{formatDate(row.verified)}</TableCell>
+                    <TableCell size='medium' align='center'>{row.status}</TableCell>
+                    <TableCell size='medium' align='center'>{row.totalScore}</TableCell>
+                    <TableCell size='medium' align='center'>
+                      {
+                        loading
+                          ?
+                          <CircularProgress className='border-primary' size='25px' />
+                          :
+                          row.status === 'ASSIGNED'
+                            ?
+                            <Button className='button-standard' color='primary' variant='contained'
+                              onClick={() => {
+                                setLoading(true);
+                                localStorage.removeItem(currentTest);
+                                localStorage.removeItem(testGrammarUserAnswers);
+                                localStorage.removeItem(testEassyUserAnswers);
+                                localStorage.removeItem(testListeningUserAnswers);
+                                localStorage.removeItem(testSpeakingAnswers);
+                                localStorage.setItem(testAudioAttempts, 3);
+                                startTestById(row.testId)
+                                  .then((response) => {
+                                    localStorage.setItem(currentTest, JSON.stringify(response));
+                                    history.push('/test');
+                                    window.scrollTo(0, 0);
+                                  })
+                                  .catch((err) => {
+                                    setLoading(false);
+                                    if (err.response.status === 409) {
+                                      handleOpen();
+                                    } else if (err.response.status === 404) {
+                                      setOpenDeassigned(true);
                                     }
-                                    } >
-                                    <Trans>Take Test</Trans>
-                                  </Button>
-                                  :
-                                  row.status === 'VERIFIED' ? <Button className='button-standard' color='primary' variant='contained'
-                                    onClick={() => {
-                                      setLoading(row.testId);
-                                      getResult(row.testId);
-                                      setLoading(null);
-                                    }}
-                                  >
-                                    <Trans>View Results</Trans>
-                                  </Button>
-                                    :
-                                    <Button className='button-standard' color='primary' variant='contained'
-                                      onClick={() => {
-                                        setLoading(row.testId);
-                                        getTest(row.testId)
-                                          .then((response) => {
-                                            localStorage.setItem(testAudioAttempts, 1);
-                                            localStorage.setItem(currentTest, JSON.stringify(response));
-                                            history.push('/test');
-                                            setLoading(null);
-                                          });
-                                      }} >
-                                      <Trans>Continue</Trans>
-                                    </Button>
-                              : Array.isArray(value) ? <Trans>{value[0]}{value[1]}</Trans> : value
-                          }
-                        </TableCell>
-                      );
-                    })}
+                                  });
+                              }
+                              } >
+                              <Trans>Take Test</Trans>
+                            </Button>
+                            :
+                            row.status === 'VERIFIED' ? <Button className='button-standard' color='primary' variant='contained'
+                              onClick={() => {
+                                getResult(row.testId);
+                              } } >
+                              <Trans>View Results</Trans>
+                            </Button>
+                              :
+                              row.status === 'STARTED' ? <Button className='button-standard' color='primary' variant='contained'
+                                onClick={() => {
+                                  setLoading(true);
+                                  getTest(row.testId)
+                                    .then((response) => {
+                                      localStorage.setItem(testAudioAttempts, 1);
+                                      localStorage.setItem(currentTest, JSON.stringify(response));
+                                      history.push('/test');
+                                      setLoading(false);
+                                    });
+                                }} >
+                                <Trans>Continue</Trans>
+                              </Button> : ''
+                      }
+                    </TableCell>
                   </TableRow>
                 );
               })}
@@ -218,9 +176,9 @@ const TestsData = (props) => {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10]}
-        component='div' count={count}
-        rowsPerPage={rowsPerPage}
-        page={page}
+        component='div' count={ props.count}
+        rowsPerPage={props.rowsPerPage}
+        page={props.page}
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage} />
     </Paper>
@@ -228,7 +186,14 @@ const TestsData = (props) => {
 };
 
 TestsData.propTypes = {
-  filter: PropTypes.any
+  filter: PropTypes.any,
+  setFilter: PropTypes.any,
+  handleCount: PropTypes.any,
+  count: PropTypes.any,
+  page: PropTypes.any,
+  setPage: PropTypes.any,
+  rowsPerPage: PropTypes.any,
+  setRowsPerPage: PropTypes.any
 };
 
 export default TestsData;
