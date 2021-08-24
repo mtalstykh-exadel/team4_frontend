@@ -168,7 +168,7 @@ export const TestsForVerificationModal = (props) => {
                   label='Comment'
                   variant='outlined'
                   className='comment-section'
-                  value={reportComment}
+                  defaultValue={reportComment}
                   onChange={setGrammarReport(reportedQuestion.question.id)}
                   multiline
                   rows={3}

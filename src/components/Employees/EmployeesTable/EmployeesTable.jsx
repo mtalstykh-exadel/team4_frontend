@@ -70,7 +70,7 @@ export const EmployeesTable = (props) => {
   const handleAssign = (test) => {
     return dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage))
       .then(() => setEmployee(test))
-      .then(() => dispatch(requestEmployeesList(props.page, props.rowsPerPage)))
+      .then(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)))
       .then(() => setOpenAssign(true));
   };
 
@@ -120,6 +120,7 @@ export const EmployeesTable = (props) => {
           open={openAssigned}
           handleClose={() => setOpenAssigned(false)}/>}
         {<HRmodalWindowTestAssignment
+          userName={props.userName}
           test={employee}
           open={openAssign}
           handleClose={() => setOpenAssign(false)}
