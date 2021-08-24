@@ -106,7 +106,7 @@ export const ManageModule = (props) => {
       }),
     });
   }, [formik.values]);
-  
+
   return (
     <>
       <Modal

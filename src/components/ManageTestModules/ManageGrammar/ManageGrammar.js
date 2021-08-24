@@ -8,7 +8,7 @@ import './ManageGrammar.scss';
 export const ManageGrammar = (props) => {
 
   const [question, setQuestion] = useState(props.moduleData);
-  
+
   useEffect(() => {
     if (question.questionBody) {
       let isReady = false;
@@ -68,7 +68,7 @@ export const ManageGrammar = (props) => {
       answers: optionsArray
     });
   };
-  
+
   return (
     <div className='manage-grammar'>
       <TextField
