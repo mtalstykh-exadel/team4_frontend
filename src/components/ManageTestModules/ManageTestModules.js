@@ -12,7 +12,7 @@ import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterModules } from '../../constants/filterConstants';
+import { filterModules } from '@constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
@@ -20,7 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeQuestionForEdit } from '@actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
-import { testSpeakingFile } from '../../constants/localStorageConstants';
+import { testSpeakingFile } from '@constants/localStorageConstants';
 import * as queryString from 'querystring';
 
 export const ManageModule = (props) => {
