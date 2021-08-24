@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, Modal } from '@material-ui/core';
+import {
+  Backdrop,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Paper,
+  Modal
+} from '@material-ui/core';
 
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
@@ -106,6 +117,7 @@ export const TestsForVerificationTable = () => {
         />
         <Modal
           open={open}
+          BackdropComponent={Backdrop}
           onClose={() => setOpen(false)}
           aria-labelledby='simple-modal-title'
           aria-describedby='simple-modal-description'
