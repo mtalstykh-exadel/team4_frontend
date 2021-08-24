@@ -18,7 +18,7 @@ import * as queryString from 'querystring';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
+import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '@actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
@@ -83,14 +83,25 @@ export const EditTestsTable = (props) => {
 
   const handleClickEdit = (path, id) => {
     dispatch(removeQuestionForEdit());
-    history.push({
-      pathname: path,
-      search: queryString.stringify({
-        id,
-        module: props.module,
-        status: props.status
-      }),
-    });
+    if (path === '/add-test-modules') {
+      history.push({
+        pathname: path,
+        search: queryString.stringify({
+          level: props.level,
+          module: props.module,
+        }),
+      });
+    } else if (path === '/edit-test-modules') {
+      history.push({
+        pathname: path,
+        search: queryString.stringify({
+          id,
+          level: props.level,
+          module: props.module,
+          status: props.status
+        }),
+      });
+    }
   };
 
   const [open, setOpen] = React.useState(false);
@@ -231,7 +242,7 @@ export const EditTestsTable = (props) => {
                       </TableCell>
                       {
                         props.status === 'ARCHIVED'
-                          ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#fbff00' }}
+                          ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: 'rgb(63, 159, 181)' }}
                             onClick={() => {
                               setArchiveId(row.id);
                               handleOpen();

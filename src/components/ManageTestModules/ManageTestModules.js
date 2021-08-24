@@ -12,7 +12,7 @@ import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevelsShort, filterModules } from '@constants/filterConstants';
+import { filterModules } from '@constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
@@ -21,13 +21,18 @@ import PropTypes from 'prop-types';
 import { removeQuestionForEdit } from '@actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
 import { testSpeakingFile } from '@constants/localStorageConstants';
+import * as queryString from 'querystring';
 
 export const ManageModule = (props) => {
-  const dispatch = useDispatch();
 
+  const questionModuleData = questionModuleDataEmpty;
+
+  const dispatch = useDispatch();
   const question = useSelector((state) => state.coach.question);
 
   const history = useHistory();
+
+  const parsed = queryString.parse(history.location.search.substr(1));
 
   const location = useLocation();
   const [moduleData, setModuleData] = useState('');
@@ -48,6 +53,16 @@ export const ManageModule = (props) => {
     });
   };
 
+  const levelList = [
+    ['', ''],
+    ['A1', 'A1'],
+    ['A2', 'A2'],
+    ['B1', 'B1'],
+    ['B2', 'B2'],
+    ['C1', 'C1'],
+    ['C2', 'C2']
+  ];
+
   const onSubmit = () => {
     if (submitting) {
       if (formik.values.module === 'Listening') {
@@ -63,7 +78,7 @@ export const ManageModule = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: { level: props.level, module: props.module },
+    initialValues: { level: parsed.level, module: parsed.module },
     validationSchema: null, onSubmit
   });
 
@@ -77,15 +92,40 @@ export const ManageModule = (props) => {
   };
 
   useEffect(() => {
-    if (props.module === 'Listening' || formik.values.module === 'Listening') {
-      const isReady = moduleData ? moduleData.questions.every((el) => {
-        return el.questionBody && el.answers.every((el) => {
-          return el.answer && el.correct !== undefined;
-        });
-      }) : null;
-      setReady(isReady);
+    const parsed = queryString.parse(history.location.search.substr(1));
+
+    if (parsed.level && parsed.module === 'Listening' && audio) {
+      sorting();
     }
   }, [moduleData]);
+
+  const sorting = () => {
+    const isReady = moduleData ? moduleData.questions.every((el) => {
+      return el.questionBody && el.answers.every((el) => {
+        return el.answer && el.correct !== undefined;
+      });
+    }) : null;
+    setReady(isReady);
+  };
+
+  useEffect(() => {
+    history.push({
+      pathname: 'add-test-modules',
+      search: queryString.stringify({
+        level: formik.values.level,
+        module: formik.values.module,
+      }),
+    });
+
+    const parsed = queryString.parse(history.location.search.substr(1));
+    if (!parsed.level) {
+      setReady(false);
+    } else if (parsed.level && parsed.module === 'Listening' && audio) {
+      sorting();
+    } else {
+      setReady(true);
+    }
+  }, [formik.values]);
 
   return (
     <>
@@ -109,7 +149,7 @@ export const ManageModule = (props) => {
                 value={formik.values.level}
                 filterName='level'
                 label={['Level', 'Уровень']}
-                filterData={filterLevelsShort}
+                filterData={levelList}
                 onChange={formik.handleChange} />
               <FilterFormControl
                 value={formik.values.module}
@@ -132,10 +172,10 @@ export const ManageModule = (props) => {
           {formik.values.module === 'Grammar' ?
             <ManageGrammar
               handleModule={setModuleData}
-              handleReady={setReady}
+              handleReady={setReadyModules}
               level={formik.values.level}
               dataType={props.dataType}
-              moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : question} />
+              moduleData={location.pathname === '/add-test-modules' ? {...questionModuleData} : question} />
             : null}
           {formik.values.module === 'Listening' ?
             <ManageListening
@@ -158,7 +198,7 @@ export const ManageModule = (props) => {
               handleModule={setModuleData}
               level={<Trans>{formik.values.level}</Trans>}
               dataType={props.dataType}
-              handleReady={setReady}
+              handleReady={setReadyModules}
               module={<Trans>{formik.values.module}</Trans>}
               moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
             /> : null}
@@ -172,7 +212,7 @@ export const ManageModule = (props) => {
               }
               handleModule={setModuleData}
               level={formik.values.level}
-              handleReady={setReady}
+              handleReady={setReadyModules}
               dataType={props.dataType}
               module={formik.values.module}
               moduleData={location.pathname === '/add-test-modules' ? topicModuleDataEmpty : question}
@@ -201,8 +241,7 @@ export const ManageModule = (props) => {
               variant='contained'
               type='submit'
               value='submit'
-              disabled={props.dataType ? props.dataType : props.module === 'Listening' || formik.values.module === 'Listening'
-                ? !(ready && readyModules) : !ready}>
+              disabled={props.dataType ? props.dataType : !(ready && readyModules)}>
               <Trans>Save</Trans>
             </Button> : null}
         </div>
