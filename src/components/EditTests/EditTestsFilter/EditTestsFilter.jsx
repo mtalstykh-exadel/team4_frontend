@@ -68,7 +68,7 @@ export const EditTestsFilter = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: { level: null, module: null, status: 'UNARCHIVED', questionId: '' },
+    initialValues: { level: '', module: '', status: 'UNARCHIVED', questionId: '' },
     validationSchema: validation, onSubmit
   });
 

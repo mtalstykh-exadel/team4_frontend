@@ -242,7 +242,7 @@ export const EditTestsTable = (props) => {
                       </TableCell>
                       {
                         props.status === 'ARCHIVED'
-                          ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#fbff00' }}
+                          ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: 'rgb(63, 159, 181)' }}
                             onClick={() => {
                               setArchiveId(row.id);
                               handleOpen();
