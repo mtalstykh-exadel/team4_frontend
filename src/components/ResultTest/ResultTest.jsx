@@ -73,18 +73,18 @@ const Results = () => {
   if (test.status === 'VERIFIED') {
     const level = test.level;
     const essayComments = test.essayComment;
-    const speakingComments = test.speakingComments;
+    const speakingComments = test.speakingComment;
     resultQuote = [
       <><p>You have passed the English language test at the {level.toString()} level.</p>
-       <div className={'comments'}>
-       <div className={'module-text'}>Module Essay</div>
-        <TextField
-          className={'answer'}
-          variant='outlined'
-          multiline
-          rows={3}
-          label={essayComments}
-        />
+        <div className={'comments'}>
+          <div className={'module-text'}>Module Essay</div>
+          <TextField
+            className={'answer'}
+            variant='outlined'
+            multiline
+            rows={3}
+            label={essayComments}
+          />
         </div>
         <div className={'comments'}>
           <div className={'module-text'}>Module Speaking</div>

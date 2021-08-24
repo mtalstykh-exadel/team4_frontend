@@ -15,6 +15,7 @@ import { requestQuestionsList } from '../../store/actions/adminActions';
 import getCoaches from '../../api/get-coaches';
 import { formatDate } from '../../utils/data-formatter';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
+import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
 import { language_russian } from '../../constants/languageConstants';
 
 const AdminDistribution = (props) => {
@@ -44,10 +45,24 @@ const AdminDistribution = (props) => {
   const [coaches, setCoaches] = useState();
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
+  const [count, setCount] = useState(rowsPerPage);
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
   }, [getCoaches]);
+
+  useEffect(() => {
+    handleCount();
+  }, []);
+
+  const handleCount = (newPage = page) => {
+    getUnverifiedTests(newPage + 1, rowsPerPage)
+      .then((response) => {
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
+        }
+      });
+  };
 
   let coachNames = [];
 
@@ -235,6 +250,7 @@ const AdminDistribution = (props) => {
           className='font-primary'
           rowsPerPageOptions={[10]}
           component='div'
+          count={count}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
