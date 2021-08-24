@@ -64,7 +64,7 @@ const TestsData = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestUserTestsHistory(props.filter, newPage, props.rowsPerPage));
-    if ( newPage > props.page) {
+    if (newPage > props.page) {
       props.handleCount(newPage);
     }
     props.setPage(newPage);
@@ -112,7 +112,7 @@ const TestsData = (props) => {
                     <TableCell size='medium' align='center'>{row.totalScore}</TableCell>
                     <TableCell size='medium' align='center'>
                       {
-                        loading
+                        loading && loading === row.testId
                           ?
                           <CircularProgress className='border-primary' size='25px' />
                           :
@@ -120,7 +120,7 @@ const TestsData = (props) => {
                             ?
                             <Button className='button-standard' color='primary' variant='contained'
                               onClick={() => {
-                                setLoading(true);
+                                setLoading(row.testId);
                                 localStorage.removeItem(currentTest);
                                 localStorage.removeItem(testGrammarUserAnswers);
                                 localStorage.removeItem(testEassyUserAnswers);
@@ -134,7 +134,7 @@ const TestsData = (props) => {
                                     window.scrollTo(0, 0);
                                   })
                                   .catch((err) => {
-                                    setLoading(false);
+                                    setLoading(null);
                                     if (err.response.status === 409) {
                                       handleOpen();
                                     } else if (err.response.status === 404) {
@@ -148,20 +148,22 @@ const TestsData = (props) => {
                             :
                             row.status === 'VERIFIED' ? <Button className='button-standard' color='primary' variant='contained'
                               onClick={() => {
+                                setLoading(row.testId);
                                 getResult(row.testId);
-                              } } >
+                                setLoading(null);
+                              }} >
                               <Trans>View Results</Trans>
                             </Button>
                               :
                               row.status === 'STARTED' ? <Button className='button-standard' color='primary' variant='contained'
                                 onClick={() => {
-                                  setLoading(true);
+                                  setLoading(row.testId);
                                   getTest(row.testId)
                                     .then((response) => {
                                       localStorage.setItem(testAudioAttempts, 1);
                                       localStorage.setItem(currentTest, JSON.stringify(response));
                                       history.push('/test');
-                                      setLoading(false);
+                                      setLoading(null);
                                     });
                                 }} >
                                 <Trans>Continue</Trans>
@@ -176,7 +178,7 @@ const TestsData = (props) => {
       </TableContainer>
       <TablePagination
         rowsPerPageOptions={[10]}
-        component='div' count={ props.count}
+        component='div' count={props.count}
         rowsPerPage={props.rowsPerPage}
         page={props.page}
         onPageChange={handleChangePage}
