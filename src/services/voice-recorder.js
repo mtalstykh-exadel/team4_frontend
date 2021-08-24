@@ -1,4 +1,4 @@
-import { testSpeakingFile } from '../constants/localStorageConstants';
+import { testSpeakingFile } from '@constants/localStorageConstants';
 let chunks = [];
 let blobURL;
 let rec = {};

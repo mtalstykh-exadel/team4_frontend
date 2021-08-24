@@ -1,4 +1,4 @@
-import { REQUEST_TESTS_FOR_DISTRIBUTION } from '../actions/actionTypes';
+import { REQUEST_TESTS_FOR_DISTRIBUTION } from '@actions/actionTypes';
 
 const initialState = {
   testsList: []

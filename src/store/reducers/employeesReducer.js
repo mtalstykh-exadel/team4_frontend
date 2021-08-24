@@ -1,4 +1,4 @@
-import { REQUEST_EMPLOYEES_LIST, REQUEST_EMPLOYEE_HISTORY } from '../actions/actionTypes';
+import { REQUEST_EMPLOYEES_LIST, REQUEST_EMPLOYEE_HISTORY } from '@actions/actionTypes';
 
 export const employeesReducer = (state = null, action) => {
   switch (action.type) {

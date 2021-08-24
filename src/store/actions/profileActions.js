@@ -1,4 +1,4 @@
-import getUserTests from '../../api/user-tests';
+import getUserTests from '@api/user-tests';
 import { SET_USER_TESTS_HISTORY } from './actionTypes';
 
 export const setProfileData = (testsHistory) => ({

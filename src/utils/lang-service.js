@@ -1,12 +1,12 @@
 import { i18n } from '@lingui/core';
 import { LangsArray } from './lang-import-data';
 
-import setLanguage from '../api/language_set';
+import setLanguage from '@api/language_set';
 
 import { en, ru } from 'make-plural/plurals';
 
-import { userLanguageKey } from '../constants/localStorageConstants';
-import { language_english, language_russian } from '../constants/languageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
+import { language_english, language_russian } from '@constants/languageConstants';
 
 const saveLanguageToLocalstorage = (responseData) => {
   localStorage.setItem(userLanguageKey, responseData.language);

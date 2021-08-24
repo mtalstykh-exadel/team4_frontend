@@ -1,8 +1,8 @@
-import handleJWT from '../../api/jwt-fetch';
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_ADD, JWT_REMOVE } from '../actions/actionTypes';
-import { getJWTdata, getJWTtoken, removeJWTfromLocalstorage } from '../../utils/jwt-parser';
+import handleJWT from '@api/jwt-fetch';
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE, JWT_ADD, JWT_REMOVE } from '@actions/actionTypes';
+import { getJWTdata, getJWTtoken, removeJWTfromLocalstorage } from '@utils/jwt-parser';
 import { checkTokenTimeout } from './checkTokenTimeout';
-import { defineLang } from '../../utils/lang-service';
+import { defineLang } from '@utils/lang-service';
 
 export const fetchLoginStart = () => {
   return { type: LOGIN_START };
