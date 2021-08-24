@@ -3,7 +3,7 @@ import { offRecAudio, onRecAudio, saveBlobUrl } from '@services/voice-recorder';
 import { startTimer, createTimer, stopTimer } from '@services/timer';
 import MicOffIcon from '@material-ui/icons/MicOff';
 import MicIcon from '@material-ui/icons/Mic';
-import {Player, ReportAMistakeModal} from '../../index';
+import { Player, ReportAMistakeModal } from '../../index';
 import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import './Speaking.scss';
@@ -43,7 +43,9 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
 
   return (
     <div className='speaking-step'>
-      <div className='step-description'><Trans>Write down record</Trans></div>
+      <div className='step-description'>
+        <Trans>Write down record</Trans>
+      </div>
       <div className='speaking-topic'>{task[0].questionBody}</div>
       <div className='report-mistake' onClick={handleOpen}>
         <Trans>Report a mistake</Trans>
@@ -53,26 +55,35 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
       </div>
       <div
         className={
-          invisible === 'off' ? 'microphone base-color-primary' : 'microphone base-color-error'
+          invisible === 'off'
+            ? 'microphone base-color-primary'
+            : 'microphone base-color-error'
         }
         onClick={() => {
-          navigator.permissions.query({ name: 'microphone'}).then(function(result) {
-            if (result.state === 'granted') { 
-              if (invisible !== 'off') {
-                setInvisible('off');
-                setBlobURL(offRecAudio());
-                setAudioDuration(stopTimer('speaking-timer'));
-                saveBlobUrl({ testModule, duration: stopTimer('speaking-timer') });
+          navigator.permissions
+            .query({ name: 'microphone' })
+            .then(function (result) {
+              if (result.state === 'granted') {
+                if (invisible !== 'off') {
+                  setInvisible('off');
+                  setBlobURL(offRecAudio());
+                  setAudioDuration(stopTimer('speaking-timer'));
+                  saveBlobUrl({
+                    testModule,
+                    duration: stopTimer('speaking-timer'),
+                  });
+                } else {
+                  setInvisible('on');
+                  onRecAudio();
+                  startTimer(
+                    createTimer({ domId: 'speaking-timer', seconds: 300 })
+                  );
+                  checkSpeakingTimerHandler();
+                }
               } else {
-                setInvisible('on');
-                onRecAudio();
-                startTimer(createTimer({ domId: 'speaking-timer', seconds: 300 }));
-                checkSpeakingTimerHandler();
+                alert('please allow this page to use a microphone');
               }
-            } else {
-              alert('please allow this page to use a microphone');
-            }
-          });
+            });
         }}
       >
         {invisible === 'off' ? (
@@ -94,7 +105,8 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
         onClose={handleClose}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
-        className='modal'>
+        className='modal'
+      >
         <div className='modal-content base-color'>
           <ReportAMistakeModal
             question={task[0].questionBody}
@@ -116,5 +128,5 @@ Speaking.propTypes = {
   testModule: PropTypes.string,
   level: PropTypes.string,
   testID: PropTypes.number,
-  reportModule: PropTypes.string
+  reportModule: PropTypes.string,
 };
