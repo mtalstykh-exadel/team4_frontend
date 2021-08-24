@@ -47,7 +47,6 @@ const AdminDistribution = (props) => {
   const [coaches, setCoaches] = useState();
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
-  const [count, setCount] = useState(rowsPerPage);
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
