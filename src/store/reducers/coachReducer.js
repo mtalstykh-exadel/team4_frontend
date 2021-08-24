@@ -1,6 +1,6 @@
 import {
   REQUEST_QUESTIONS_LIST, REQUEST_QUESTION, REMOVE_QUESTION, REMOVE_EDITED_QUESTION, REMOVE_QUESTION_LIST
-} from '../actions/actionTypes';
+} from '@actions/actionTypes';
 
 const initialState = {
   questions: null,

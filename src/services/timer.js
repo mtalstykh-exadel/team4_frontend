@@ -1,4 +1,4 @@
-import {sendingHandler} from '../components/Test/SubmitModal/SubmitModalHandler';
+import {sendingHandler} from '@components/Test/SubmitModal/SubmitModalHandler';
 
 let audioDuration = 0;
 const timers = [];

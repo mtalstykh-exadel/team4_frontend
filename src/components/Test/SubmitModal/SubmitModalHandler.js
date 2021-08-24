@@ -3,7 +3,7 @@ import {
   saveListeningAndGrammar,
   saveEssay,
   testFinish
-} from '../../../api/test-set';
+} from '@api/test-set';
 
 import {
   testEassyUserAnswers,
@@ -11,7 +11,7 @@ import {
   testGrammarUserAnswers,
   testSpeakingFile,
   currentTest,
-} from '../../../constants/localStorageConstants';
+} from '@constants/localStorageConstants';
 
 const dataURItoBlob = (dataURI) => {
   if (dataURI !== null) {

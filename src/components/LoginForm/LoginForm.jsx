@@ -5,9 +5,9 @@ import Button from '@material-ui/core/Button';
 import './LoginForm.scss';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLoginData } from '../../store/actions/loginActions';
+import { fetchLoginData } from '@actions/loginActions';
 import { CircularProgress } from '@material-ui/core';
-import { switchLang } from '../../utils/lang-service';
+import { switchLang } from '@utils/lang-service';
 import { Trans } from '@lingui/macro';
 
 // filtering and checking what the user has entered into forms

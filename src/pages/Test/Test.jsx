@@ -6,9 +6,9 @@ import {
   Grammar,
   Listening,
   SubmitModal,
-} from '../../components';
-import { startTimer, createTimer, stopTimer } from '../../services/timer';
-import Layout from '../../components/Layout/Layout';
+} from '@components/index';
+import { startTimer, createTimer, stopTimer } from '@services/timer';
+import Layout from '@components/Layout/Layout';
 import Button from '@material-ui/core/Button';
 import {
   currentTest,
@@ -20,7 +20,7 @@ import {
   reportAMistakeEssay,
   reportAMistakeListening,
   reportAMistakeGrammar
-} from '../../constants/localStorageConstants';
+} from '@constants/localStorageConstants';
 import './Test.scss';
 import { Trans } from '@lingui/macro';
 

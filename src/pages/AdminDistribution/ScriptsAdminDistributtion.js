@@ -1,5 +1,5 @@
-import { userLanguageKey } from '../../constants/localStorageConstants';
-import { postAssignCoach, postDeassignCoach } from '../../api/unverifiedTests-fetch';
+import { userLanguageKey } from '@constants/localStorageConstants';
+import { postAssignCoach, postDeassignCoach } from '@api/unverifiedTests-fetch';
 
 const changeButtonStyle = (id) => {
   const buttonAssign = document.getElementById('item-' + id + '-button');

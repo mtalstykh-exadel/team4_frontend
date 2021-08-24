@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
-import { ManageModule } from '../../components';
-import Layout from '../../components/Layout/Layout';
-import { addListeningQuestion, editListeningQuestion, requestListeningTopic, requestQuestion } from '../../store/actions/coachActions';
+import { ManageModule } from '@components/index';
+import Layout from '@components/Layout/Layout';
+import { addListeningQuestion, editListeningQuestion, requestListeningTopic, requestQuestion } from '@actions/coachActions';
 import * as queryString from 'querystring';
-import { addNewQuestion, sendEditedQuestion } from '../../api/questions-requests';
+import { addNewQuestion, sendEditedQuestion } from '@api/questions-requests';
 
 export const ManageTest = () => {
 

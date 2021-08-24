@@ -5,7 +5,7 @@ import { Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Backdrop } from '@material-ui/core';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ModalWindowTestCanceled.scss';
 
 import { Trans } from '@lingui/macro';

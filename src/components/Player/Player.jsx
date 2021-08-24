@@ -6,7 +6,7 @@ import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
 import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
-import { testAudioAttempts } from '../../constants/localStorageConstants';
+import { testAudioAttempts } from '@constants/localStorageConstants';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttempts }) => {

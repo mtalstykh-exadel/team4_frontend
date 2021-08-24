@@ -1,5 +1,5 @@
 import { REQUEST_UNVERIFIED_TESTS, REQUEST_UNVERIFIED_TEST, REQUEST_GRADES } from './actionTypes';
-import { getTestsForVerification, getTestForVerification, getTestGrades } from '../../api/testsForVerification-fetch';
+import { getTestsForVerification, getTestForVerification, getTestGrades } from '@api/testsForVerification-fetch';
 
 export const setUnverifiedTests = (unverifiedTests) => ({ type: REQUEST_UNVERIFIED_TESTS, unverifiedTests });
 

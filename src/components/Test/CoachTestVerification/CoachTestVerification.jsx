@@ -5,7 +5,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { IconButton, Modal, Paper } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './CoachTestVerification.scss';
 
 import { Trans } from '@lingui/macro';

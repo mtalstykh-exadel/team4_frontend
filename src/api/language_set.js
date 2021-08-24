@@ -1,6 +1,6 @@
 import axiosInstance from './axios';
 
-import { getJWTtoken } from '../utils/jwt-parser';
+import { getJWTtoken } from '@utils/jwt-parser';
 
 const setLanguage = (language) => {
   const token = getJWTtoken();

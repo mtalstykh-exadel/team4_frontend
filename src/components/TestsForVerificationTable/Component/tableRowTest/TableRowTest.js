@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, TableCell, TableRow } from '@material-ui/core';
 import { CircularProgress } from '@material-ui/core';
 
-import { formatDate } from '../../../../utils/data-formatter';
+import { formatDate } from '@utils/data-formatter';
 
 import PropTypes from 'prop-types';
 

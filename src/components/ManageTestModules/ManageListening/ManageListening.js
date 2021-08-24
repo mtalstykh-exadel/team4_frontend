@@ -8,8 +8,8 @@ import './ManageListening.scss';
 
 import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
-import { Player } from '../../Player/Player';
-import { getAudioFile } from '../../../api/get-audioFIle';
+import { Player } from '@player/Player';
+import { getAudioFile } from '@api/get-audioFIle';
 import { CircularProgress } from '@material-ui/core';
 
 export const ManageListening = (props) => {
@@ -31,11 +31,17 @@ export const ManageListening = (props) => {
     async function () {
       moduleData.url && setLoading(true);
       setAudio(
-        await getAudioFile(moduleData.url).then((response) => {
-          return URL.createObjectURL(
-            new Blob([response.data], { type: 'audio/ogg' })
-          );
-        })
+        await getAudioFile(moduleData.url)
+          .then((response) => {
+            return URL.createObjectURL(
+              new Blob([response.data], { type: 'audio/ogg' })
+            );
+          })
+          .catch((err) => {
+            if (err.response.status === 404) {
+              setAudio(null);
+            }
+          })
       );
       setLoading(false);
     },

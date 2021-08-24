@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './TestsForVerificationModal.scss';
 
 import { IconButton, Button, TextField, Paper } from '@material-ui/core';
@@ -15,22 +15,23 @@ import { Player } from '../../index';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-import { getAudioFile } from '../../../api/get-audioFIle';
+import { getAudioFile } from '@api/get-audioFIle';
 
-import { submitTestGrades, saveTestGrades } from '../../../api/testsForVerification-fetch';
-import { requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
+import { submitTestGrades, saveTestGrades, saveReports } from '@api/testsForVerification-fetch';
+import { requestUnverifiedTests } from '@actions/unverifiedTestActions';
 
 export const TestsForVerificationModal = (props) => {
 
   const dispatch = useDispatch();
 
-  const [grammar, setGrammar] = useState([]);
+  const test = useSelector((state) => state.unverifiedTest.test);
+  const grades = useSelector((state) => state.unverifiedTest.grades);
+
+  const coachAnswers = test.coachAnswers ? test.coachAnswers : [];
+  const [grammar, setGrammar] = useState(coachAnswers);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
   const [loadingSave, setLoadingSave] = useState(false);
   const [audioFile, setAudioFile] = useState(true);
-
-  const test = useSelector((state) => state.unverifiedTest.test);
-  const grades = useSelector((state) => state.unverifiedTest.grades);
 
   const commentEssay = grades && grades.find((grade) => grade.questionId === test.essayQuestion.id);
   const [essay, setEssay] = useState({
@@ -78,33 +79,44 @@ export const TestsForVerificationModal = (props) => {
 
   const handleSubmit = () => {
     setLoadingSubmit(true);
-    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage));
-    saveTestGrades(essay)
-      .then(() => saveTestGrades(speaking))
-      .then(() => submitTestGrades(test.testId))
-      .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
-      .then(() => props.handleClose())
-      .catch((err) => {
-        if (err.response.status === 409) {
-          props.handleOpen();
-          props.handleClose();
-        }});
+    dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
+      .then((response) => {
+        if (response.unverifiedTests.find((unverifiedTest) => unverifiedTest.testId === test.testId)) {
+          saveTestGrades(essay)
+            .then(() => saveTestGrades(speaking))
+            .then(() => saveReports(grammar))
+            .then(() => submitTestGrades(test.testId))
+            .then(() => dispatch(requestUnverifiedTests(props.page, props.rowsPerPage)))
+            .then(() => props.handleClose())
+            .catch((err) => {
+              if (err.response.status === 409) {
+                props.handleOpen();
+                props.handleClose();
+              }});
+        }
+      });
   };
 
   const handleSave = () => {
     setLoadingSave(true);
+    step === 0 && saveReports(grammar);
     step === 1 && saveTestGrades(essay);
     step === 2 && saveTestGrades(speaking);
     dispatch(requestUnverifiedTests(props.page, props.rowsPerPage))
       .then(() => setLoadingSave(false));
   };
 
-  const setGrammarReport = (index) => (event) => {
+  const setGrammarReport = (indexs) => (event) => {
     const newGrammar = grammar;
-    newGrammar.push({
-      id: index,
-      report: event.target.value
-    });
+    const index = newGrammar.findIndex((x) => x.questionId === indexs);
+    index === -1 ? newGrammar.push({
+      comment: event.target.value,
+      questionId: indexs,
+      testId: test.testId,
+    }) : newGrammar[index] = {
+      comment: event.target.value,
+      questionId: indexs,
+      testId: test.testId,};
     setGrammar(newGrammar);
   };
 
@@ -135,6 +147,8 @@ export const TestsForVerificationModal = (props) => {
       <div className='scroll-container'>
         {
           test.reportedQuestions.map((reportedQuestion, index) => {
+            let reportComment = grammar && grammar.find((x) => x.questionId === reportedQuestion.question.id);
+            reportComment = reportComment && reportComment.comment ? reportComment.comment : '';
             return (
               <div key={index}>
                 <div className='module-name'><Trans>Module</Trans> <Trans>{reportedQuestion.question.module}</Trans></div>
@@ -154,6 +168,7 @@ export const TestsForVerificationModal = (props) => {
                   label='Comment'
                   variant='outlined'
                   className='comment-section'
+                  defaultValue={reportComment}
                   onChange={setGrammarReport(reportedQuestion.question.id)}
                   multiline
                   rows={3}

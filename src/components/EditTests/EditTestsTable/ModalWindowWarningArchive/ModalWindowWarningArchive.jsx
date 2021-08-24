@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ModalWindowWarningArchive.scss';
 
 import { Trans } from '@lingui/macro';

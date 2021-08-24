@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { TestLevelSelector } from '../../components';
-import Layout from '../../components/Layout/Layout';
+import { TestLevelSelector } from '@components/index';
+import Layout from '@components/Layout/Layout';
 import './Main.scss';
 
 const Main = () => {

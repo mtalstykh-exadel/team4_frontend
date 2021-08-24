@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Modal, Backdrop, Button } from '@material-ui/core';
 
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './HRmodalTestDeassigned.scss';
 
 import { Trans } from '@lingui/macro';

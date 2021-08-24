@@ -8,13 +8,13 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from '@lingui/macro';
 
-import { switchLang } from '../../../utils/lang-service';
+import { switchLang } from '@utils/lang-service';
 import UserNavigation from '../userNavigation/userNavigation';
 import ThemeSwitch from '../themeSwitch/themeSwitch';
 
-import avatar from '../../../assets/images/goose.svg';
+import avatar from '@assets/images/goose.svg';
 
-import { language_english, language_russian } from '../../../constants/languageConstants';
+import { language_english, language_russian } from '@constants/languageConstants';
 
 const DrawerMenu = (props) => {
   const role = useSelector((state) => state.jwt.role);

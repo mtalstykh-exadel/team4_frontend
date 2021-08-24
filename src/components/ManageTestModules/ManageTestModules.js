@@ -5,7 +5,7 @@ import { Backdrop, Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Trans } from '@lingui/macro';
 
-import '../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ManageTestModules.scss';
 
 import { ManageGrammar } from './ManageGrammar/ManageGrammar';
@@ -18,7 +18,7 @@ import { FilterFormControl } from '../FormControl/formControl';
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeQuestionForEdit } from '../../store/actions/coachActions';
+import { removeQuestionForEdit } from '@actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
 import { testSpeakingFile } from '../../constants/localStorageConstants';
 import * as queryString from 'querystring';
@@ -128,14 +128,13 @@ export const ManageModule = (props) => {
               <FilterFormControl
                 value={formik.values.level}
                 filterName='level'
+                label={['Level', 'Уровень']}
                 filterData={levelList}
-                onChange={(e) => {
-                  formik.handleChange(e);
-                }
-                } />
+                onChange={formik.handleChange} />
               <FilterFormControl
                 value={formik.values.module}
                 filterName='module'
+                label={['Module', 'Модуль']}
                 filterData={filterModules}
                 onChange={(e) => {
                   formik.handleChange(e);
