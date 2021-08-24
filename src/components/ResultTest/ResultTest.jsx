@@ -75,7 +75,7 @@ const Results = () => {
     return (
       <div key={key}>
         <Trans>
-          {step.en} 
+          {step.en}
           {step.ru}
         </Trans>
       </div>
@@ -105,7 +105,7 @@ const Results = () => {
   if (test.status === 'VERIFIED') {
     const level = test.level;
     const essayComments = test.essayComment;
-    const speakingComments = test.speakingComments;
+    const speakingComments = test.speakingComment;
     resultQuote = [
       <>
         <p>

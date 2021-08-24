@@ -113,6 +113,10 @@ body {
 
   .icons-color-primary {
     fill: var(--primary-color);
+
+    &:hover {
+      fill: rgba(var(--primary-color-rgb), 0.7);
+    }
   }
 
   .notifications-color {
@@ -176,7 +180,7 @@ body {
   }
 
   .MuiInputBase-input {
-    background-color: var(--base-color);
+    background-color: inherit;
     color: var(--font-color-primary);
   }
 

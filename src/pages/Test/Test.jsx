@@ -100,7 +100,7 @@ export const Test = () => {
         setContentFile(testData.contentFile);
         setLevel(testData.level);
         setTestID(testData.id);
-        setTestDurationInSeconds(40 * 60 - Math.floor((moment() - testData.startedAt) / 1000));
+        setTestDurationInSeconds(Math.floor((testData.finishTime - moment()) / 1000));
       }
     };
     checkData();
