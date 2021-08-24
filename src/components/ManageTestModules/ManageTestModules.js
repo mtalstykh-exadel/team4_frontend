@@ -12,7 +12,7 @@ import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevelsShort, filterModules } from '../../constants/filterConstants';
+import { filterModules } from '../../constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
@@ -21,8 +21,12 @@ import PropTypes from 'prop-types';
 import { removeQuestionForEdit } from '../../store/actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
 import { testSpeakingFile } from '../../constants/localStorageConstants';
+import * as queryString from 'querystring';
 
 export const ManageModule = (props) => {
+
+  const questionModuleData = questionModuleDataEmpty;
+
   const dispatch = useDispatch();
 
   const question = useSelector((state) => state.coach.question);
@@ -47,6 +51,8 @@ export const ManageModule = (props) => {
       pathname: 'edit-tests'
     });
   };
+
+  const levelList = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   const onSubmit = () => {
     if (submitting) {
@@ -77,6 +83,10 @@ export const ManageModule = (props) => {
   };
 
   useEffect(() => {
+    return () => console.log('unmounting...');
+  }, []);
+
+  useEffect(() => {
     if (props.module === 'Listening' || formik.values.module === 'Listening') {
       const isReady = moduleData ? moduleData.questions.every((el) => {
         return el.questionBody && el.answers.every((el) => {
@@ -87,6 +97,16 @@ export const ManageModule = (props) => {
     }
   }, [moduleData]);
 
+  useEffect(() => {
+    history.push({
+      pathname: 'add-test-modules',
+      search: queryString.stringify({
+        level: formik.values.level,
+        module: formik.values.module,
+      }),
+    });
+  }, [formik.values]);
+  
   return (
     <>
       <Modal
@@ -108,8 +128,11 @@ export const ManageModule = (props) => {
               <FilterFormControl
                 value={formik.values.level}
                 filterName='level'
-                filterData={filterLevelsShort}
-                onChange={formik.handleChange} />
+                filterData={levelList}
+                onChange={(e) => {
+                  formik.handleChange(e);
+                }
+                } />
               <FilterFormControl
                 value={formik.values.module}
                 filterName='module'
@@ -133,7 +156,7 @@ export const ManageModule = (props) => {
               handleReady={setReady}
               level={formik.values.level}
               dataType={props.dataType}
-              moduleData={location.pathname === '/add-test-modules' ? questionModuleDataEmpty : question} />
+              moduleData={location.pathname === '/add-test-modules' ? questionModuleData : question} />
             : null}
           {formik.values.module === 'Listening' ?
             <ManageListening

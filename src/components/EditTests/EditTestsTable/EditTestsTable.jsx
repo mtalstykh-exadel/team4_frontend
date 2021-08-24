@@ -83,14 +83,25 @@ export const EditTestsTable = (props) => {
 
   const handleClickEdit = (path, id) => {
     dispatch(removeQuestionForEdit());
-    history.push({
-      pathname: path,
-      search: queryString.stringify({
-        id,
-        module: props.module,
-        status: props.status
-      }),
-    });
+    if (path === '/add-test-modules') {
+      history.push({
+        pathname: path,
+        search: queryString.stringify({
+          level: props.level,
+          module: props.module,
+        }),
+      });
+    } else if (path === '/edit-test-modules') {
+      history.push({
+        pathname: path,
+        search: queryString.stringify({
+          id,
+          level: props.level,
+          module: props.module,
+          status: props.status
+        }),
+      });
+    }
   };
 
   const [open, setOpen] = React.useState(false);

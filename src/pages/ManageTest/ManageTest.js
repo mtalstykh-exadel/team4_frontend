@@ -49,10 +49,10 @@ export const ManageTest = () => {
 
   return (
     <Layout>
-      {location === '/edit-test-modules' && !!question && <ManageModule level={question.level} module={parsed.module}
+      {location === '/edit-test-modules' && !!question && <ManageModule level={parsed.level} module={parsed.module}
         dataType={ parsed.status === 'UNARCHIVED' ? false : true}
         sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
-      {location === '/add-test-modules' && <ManageModule level='' module='' sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
+      {location === '/add-test-modules' && <ManageModule level={parsed.level} module={parsed.module} sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
     </Layout>
   );
 };
