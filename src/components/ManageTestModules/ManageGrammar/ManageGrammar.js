@@ -26,6 +26,7 @@ export const ManageGrammar = (props) => {
       props.handleReady(false);
     }
     props.handleModule(question);
+    console.log(question);
   }, [question]);
 
   useEffect(() => {
@@ -42,7 +43,6 @@ export const ManageGrammar = (props) => {
         }));
       }
     }
-
   }, []);
 
   const handleSentence = (event) => {
@@ -63,10 +63,9 @@ export const ManageGrammar = (props) => {
   const handleAnswersChange = (index) => (event) => {
     const optionsArray = [...question.answers];
     optionsArray[index].answer = event.target.value;
-    setQuestion({
-      ...question,
+    setQuestion(Object.assign({}, question, {
       answers: optionsArray
-    });
+    }));
   };
 
   return (

@@ -68,7 +68,7 @@ export const EditTestsFilter = (props) => {
   };
 
   const formik = useFormik({
-    initialValues: { level: null, module: null, status: null, questionId: '' },
+    initialValues: { level: null, module: null, status: 'UNARCHIVED', questionId: '' },
     validationSchema: validation, onSubmit
   });
 
@@ -95,7 +95,6 @@ export const EditTestsFilter = (props) => {
         <FormControl variant='outlined' className='edit-tests-search-module' size='small'>
           <InputLabel htmlFor='status'><Trans>Status</Trans></InputLabel>
           <Select name='status' label='module' value={formik.values.status} inputProps={{ name: 'status' }} defaultValue='' onChange={formik.handleChange}>
-            <MenuItem className='edit-tests-option item' value='UNARCHIVED'></MenuItem>
             <MenuItem className='edit-tests-option item' value='UNARCHIVED'><Trans>Not archived</Trans></MenuItem>
             <MenuItem className='edit-tests-option item' value='ARCHIVED'><Trans>Archived</Trans></MenuItem>
           </Select>
