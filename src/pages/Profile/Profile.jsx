@@ -1,8 +1,8 @@
 import React from 'react';
 import './Profile.scss';
-import ProfileInfo from '../../components/ProfileInfo/ProfileInfo';
-import TestsInfo from '../../components/TestsInfo/TestsInfo';
-import Layout from '../../components/Layout/Layout';
+import ProfileInfo from '@components/ProfileInfo/ProfileInfo';
+import TestsInfo from '@components/TestsInfo/TestsInfo';
+import Layout from '@/components/Layout/Layout';
 
 const Profile = () => {
   return (
