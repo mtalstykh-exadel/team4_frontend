@@ -26,22 +26,13 @@ import { ModalWindowWarningCannotDeassign } from '../ModalWindowWarning/ModalWin
 
 import { TableEmployeeRow } from './TableEmployeeRow/TableEmployeeRow';
 
-import { getEmployeesList } from '../../../api/employees-fetch';
-
 export const EmployeesTable = (props) => {
 
   const dispatch = useDispatch();
 
   const filteredEmployees = useSelector((state) => state.employees);
 
-  const filterEmployees = filteredEmployees ? filteredEmployees
-    .filter((el) => props.userName ? props.userName.toLowerCase() === el.name.toLowerCase() : el)
-    : [];
-
   const rows = [['Name', 'Имя'], ['Level', 'Уровень'], ['Test deadline', 'Срок сдачи'], ['E-mail', 'Электронная почта'], ['Action', 'Действие'], ['History', 'История']];
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [count, setCount] = useState(rowsPerPage);
 
   const [employee, setEmployee] = useState([]);
 
@@ -50,43 +41,36 @@ export const EmployeesTable = (props) => {
   const [openDeassigned, setOpenDeassigned] = useState(false);
   const [openAssigned, setOpenAssigned] = useState(false);
 
-  const handleCount = (newPage = page) => {
-    getEmployeesList(newPage + 1, rowsPerPage)
-      .then((response) => {
-        if (response.length > 0) {
-          setCount(count + response.length);
-        }
-      });
-  };
-
   const handleChangePage = (event, newPage) => {
-    handleCount(newPage);
-    dispatch(requestEmployeesList(newPage, rowsPerPage));
-    setPage(newPage);
+    if ( newPage > props.page) {
+      props.handleCount(newPage);
+    }
+    dispatch(requestEmployeesList(props.userName, newPage, props.rowsPerPage));
+    props.setPage(newPage);
   };
 
   const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+    props.setRowsPerPage(+event.target.value);
+    props.setPage(0);
   };
 
   useEffect(() => {
-    dispatch(requestEmployeesList(page, rowsPerPage));
+    dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage));
   }, []);
 
   useEffect(() => {
-    handleCount();
+    props.handleCount();
   }, []);
 
   const handleDeassign = (test) => {
     return deassignTest(test.assignedTest.testId)
-      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)));
+      .then(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)));
   };
 
   const handleAssign = (test) => {
-    return dispatch(requestEmployeesList(page, rowsPerPage))
+    return dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage))
       .then(() => setEmployee(test))
-      .then(() => dispatch(requestEmployeesList(page, rowsPerPage)))
+      .then(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)))
       .then(() => setOpenAssign(true));
   };
 
@@ -110,7 +94,7 @@ export const EmployeesTable = (props) => {
                 })}
               </TableRow>
             </TableHead>
-            <TableBody>{filterEmployees.map((filterEmployee, index ) => {
+            <TableBody>{filteredEmployees && filteredEmployees.map((filterEmployee, index ) => {
               return (
                 <TableEmployeeRow
                   key={index}
@@ -126,9 +110,9 @@ export const EmployeesTable = (props) => {
         <TablePagination
           rowsPerPageOptions={[10]}
           component='div'
-          count={count}
-          rowsPerPage={rowsPerPage}
-          page={page}
+          count={props.count}
+          rowsPerPage={props.rowsPerPage}
+          page={props.page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
@@ -136,12 +120,13 @@ export const EmployeesTable = (props) => {
           open={openAssigned}
           handleClose={() => setOpenAssigned(false)}/>}
         {<HRmodalWindowTestAssignment
+          userName={props.userName}
           test={employee}
           open={openAssign}
           handleClose={() => setOpenAssign(false)}
           setOpenCantAssign={() => setOpenAssigned(true)}
-          page={page}
-          rowsPerPage={rowsPerPage}/>}
+          page={props.page}
+          rowsPerPage={props.rowsPerPage}/>}
         {<HRmodalWindowViewingUserInformation
           test={employee}
           open={openHistory}
@@ -155,5 +140,11 @@ export const EmployeesTable = (props) => {
 };
 
 EmployeesTable.propTypes = {
-  userName: PropTypes.string
+  userName: PropTypes.string,
+  page: PropTypes.any,
+  setPage: PropTypes.any,
+  rowsPerPage: PropTypes.any,
+  setRowsPerPage: PropTypes.any,
+  count: PropTypes.any,
+  handleCount: PropTypes.any
 };

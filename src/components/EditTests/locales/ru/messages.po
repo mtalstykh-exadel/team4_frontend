@@ -19,7 +19,7 @@ msgstr "Добавить вопрос"
 msgid "Add topic"
 msgstr "Добавить тему"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Archived"
 msgstr "Архивированные"
 
@@ -35,28 +35,28 @@ msgstr "Отмена"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:110
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
 msgid "In field 'Question Id' must be a number"
 msgstr "Поле 'ID Вопроса' должно содердать число"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:85
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:83
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:92
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
 msgid "Module"
 msgstr "Модуль"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:87
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:94
-msgid "None"
-msgstr "Любое"
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
+#~ msgid "None"
+#~ msgstr "Любое"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Not archived"
 msgstr "Не архивированные"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
 msgid "Question ID"
 msgstr "ID Вопроса"
 
@@ -76,7 +76,7 @@ msgstr "Строк на странице:"
 msgid "Show"
 msgstr "Показать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
 msgid "Status"
 msgstr "Статус"
 
@@ -84,6 +84,7 @@ msgstr "Статус"
 msgid "Yes"
 msgstr "Да"
 
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:35
 #: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:175
 #: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:190
 msgid "{0}{1}"
