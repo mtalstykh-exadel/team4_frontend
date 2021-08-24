@@ -75,7 +75,7 @@ const Results = () => {
     return (
       <div key={key}>
         <Trans>
-          {step.en}
+          {step.en} 
           {step.ru}
         </Trans>
       </div>

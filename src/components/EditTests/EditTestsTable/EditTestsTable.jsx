@@ -18,7 +18,7 @@ import * as queryString from 'querystring';
 import './EditTestsTable.scss';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '../../../store/actions/coachActions';
+import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestListeningQuestionsList, requestQuestion, requestQuestionsList } from '@actions/coachActions';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';

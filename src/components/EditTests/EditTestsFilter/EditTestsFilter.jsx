@@ -14,8 +14,8 @@ import {
   removeQuestionsList, requestListeningQuestionsList, requestQuestion,
   requestQuestionsList
 } from '@actions/coachActions';
-import { getQuestionsList, getListeningQuestionsList } from '../../../api/questions-requests';
-import { filterLevelsShort, filterModules } from '../../../constants/filterConstants';
+import { getQuestionsList, getListeningQuestionsList } from '@api/questions-requests';
+import { filterLevelsShort, filterModules } from '@constants/filterConstants';
 
 const validation = Yup.object({
   questionId: Yup.number()
