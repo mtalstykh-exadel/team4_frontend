@@ -31,13 +31,9 @@ export const HRmodalWindowTestAssignment = (props) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (values) => {
-    return values;
-  };
-
   const formik = useFormik({
     initialValues: {date: '', module: '', priority: ''},
-    validationSchema: null, onSubmit
+    validationSchema: null
   });
 
   let itemKey = 0;
