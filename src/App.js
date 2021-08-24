@@ -23,10 +23,12 @@ const App = () => {
   dispatch(initApp());
   if (useRedirectHook().get('redirect')) {
     localStorage.setItem(redirectTo, window.location.href.toString());
-  } 
+  }
+
   if (useRedirectHook().get('id')) {
     localStorage.setItem(currentTest, JSON.stringify({id: useRedirectHook().get('id')}));
   }
+
   return (
     <div className='App'>
       <Switch>
