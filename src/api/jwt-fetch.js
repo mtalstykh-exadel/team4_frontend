@@ -1,5 +1,5 @@
 import axiosInstance from './axios';
-import { saveDataToLocalStorage } from '../utils/auth-set-data';
+import { saveDataToLocalStorage } from '@utils/auth-set-data';
 
 const handleJWT = async (data) => {
   return axiosInstance.post('/login', data )

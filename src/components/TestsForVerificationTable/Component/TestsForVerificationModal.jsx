@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './TestsForVerificationModal.scss';
 
 import { IconButton, Button, TextField, Paper } from '@material-ui/core';
@@ -15,10 +15,10 @@ import { Player } from '../../index';
 import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
-import { getAudioFile } from '../../../api/get-audioFIle';
+import { getAudioFile } from '@api/get-audioFIle';
 
-import { submitTestGrades, saveTestGrades, saveReports } from '../../../api/testsForVerification-fetch';
-import { requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
+import { submitTestGrades, saveTestGrades, saveReports } from '@api/testsForVerification-fetch';
+import { requestUnverifiedTests } from '@actions/unverifiedTestActions';
 
 export const TestsForVerificationModal = (props) => {
 

@@ -1,4 +1,4 @@
-import { saveListeningAndGrammar, saveEssay } from '../../api/test-set';
+import { saveListeningAndGrammar, saveEssay } from '@api/test-set';
 import { changeArray } from './SubmitModal/SubmitModalHandler';
 let checkRequest = false;
 

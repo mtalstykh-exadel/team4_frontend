@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import PropTypes from 'prop-types';
 
 import {FormControl, MenuItem, Select} from '@material-ui/core';
@@ -25,12 +25,12 @@ import {
   TableRow
 } from '@material-ui/core';
 
-import {formatDate} from '../../../../utils/data-formatter';
+import {formatDate} from '@utils/data-formatter';
 import './HRmodalWindowViewingUserInformation.scss';
-import {filterLevelsShort, userHistoryHeader} from '../../../../constants/filterConstants';
+import {filterLevelsShort, userHistoryHeader} from '@constants/filterConstants';
 
-import { getEmployeeHistory } from '../../../../api/employees-fetch';
-import { requestEmployeeHistory } from '../../../../store/actions/employeesActions';
+import { getEmployeeHistory } from '@api/employees-fetch';
+import { requestEmployeeHistory } from '@actions/employeesActions';
 
 export const HRmodalWindowViewingUserInformation = (props) => {
 

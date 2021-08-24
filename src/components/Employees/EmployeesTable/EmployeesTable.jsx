@@ -15,8 +15,8 @@ import {
 
 import { Trans } from '@lingui/macro';
 
-import { requestEmployeesList, requestEmployeeHistory } from '../../../store/actions/employeesActions';
-import { deassignTest } from '../../../api/employees-fetch';
+import { requestEmployeesList, requestEmployeeHistory } from '@actions/employeesActions';
+import { deassignTest } from '@api/employees-fetch';
 
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';

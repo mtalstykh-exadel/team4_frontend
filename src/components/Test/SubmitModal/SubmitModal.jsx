@@ -1,6 +1,6 @@
 import React from 'react';
 import { sendingHandler } from './SubmitModalHandler';
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import PropTypes from 'prop-types';
 import { Trans } from '@lingui/macro';
 import { Button } from '@material-ui/core';

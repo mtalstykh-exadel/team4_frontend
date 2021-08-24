@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import Layout from '../../components/Layout/Layout';
-import { EmployeesFilter, EmployeesTable } from '../../components';
+import Layout from '@components/Layout/Layout';
+import { EmployeesFilter, EmployeesTable } from '@components/index';
 import './Employees.scss';
 
 import { requestEmployeesList } from '../../store/actions/employeesActions';

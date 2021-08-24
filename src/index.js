@@ -4,13 +4,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import App from './App';
-import './styles/normalize.css';
+import '@globalStyles/normalize.css';
 import './index.scss';
 
 import reportWebVitals from './reportWebVitals';
 import { i18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
-import { defineLang } from './utils/lang-service.js';
+import { defineLang } from '@utils/lang-service.js';
 
 import store from './store/store';
 

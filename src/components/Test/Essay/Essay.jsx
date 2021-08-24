@@ -5,7 +5,7 @@ import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import { ReportAMistakeModal } from '../ReportAMistakeModal/ReportAMistakeModal';
 import { saveEssayHandler } from '../saveHandler';
-import { testEassyUserAnswers, currentTest} from '../../../constants/localStorageConstants';
+import { testEassyUserAnswers, currentTest} from '@constants/localStorageConstants';
 
 export const Essay = ({ task, testModule, level, testID, reportModule }) => {
   const saveDataArray = localStorage.getItem(testModule);

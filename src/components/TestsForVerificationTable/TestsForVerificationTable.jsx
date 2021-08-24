@@ -10,8 +10,8 @@ import { TestsForVerificationModal } from './Component/TestsForVerificationModal
 import { TableRowTest } from './Component/tableRowTest/TableRowTest';
 import { ModalWindowRemovedFromYourPost } from './ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost';
 
-import { requestUnverifiedTests, requestGrades, requestReports } from '../../store/actions/unverifiedTestActions';
-import { getTestsForVerification } from '../../api/testsForVerification-fetch';
+import { requestUnverifiedTests, requestGrades, requestReports } from '@actions/unverifiedTestActions';
+import { getTestsForVerification } from '@api/testsForVerification-fetch';
 
 export const TestsForVerificationTable = () => {
 

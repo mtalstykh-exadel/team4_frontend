@@ -6,7 +6,7 @@ import { Modal, Fade, Button, Backdrop } from '@material-ui/core';
 
 import { Trans } from '@lingui/macro';
 
-import { logoutActions } from '../../../store/actions/logoutActions';
+import { logoutActions } from '@actions/logoutActions';
 
 const LogoutModal = (props) => {
   const dispatch = useDispatch();

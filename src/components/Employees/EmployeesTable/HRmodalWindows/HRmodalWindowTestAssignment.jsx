@@ -16,14 +16,14 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from '@lingui/macro';
 
-import { assignTest } from '../../../../api/employees-fetch';
+import { assignTest } from '@api/employees-fetch';
 import { useDispatch } from 'react-redux';
 
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './HRmodalWindowTestAssignment.scss';
 
-import { filterLevelsLong, priority } from '../../../../constants/filterConstants';
-import { requestEmployeesList } from '../../../../store/actions/employeesActions';
+import { filterLevelsLong, priority } from '@constants/filterConstants';
+import { requestEmployeesList } from '@actions/employeesActions';
 
 import { useFormik } from 'formik';
 

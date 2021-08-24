@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { userLanguageKey } from '../../constants/localStorageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
 import { Redirect } from 'react-router-dom';
-import Layout from '../../components/Layout/Layout';
+import Layout from '@components/Layout/Layout';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
@@ -11,12 +11,13 @@ import './AdminDistribution.scss';
 import { changeButtonStyle, assignCoachTest, deassignCoachTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestQuestionsList } from '../../store/actions/adminActions';
-import getCoaches from '../../api/get-coaches';
-import { formatDate } from '../../utils/data-formatter';
+import { requestQuestionsList } from '@actions/adminActions';
+import getCoaches from '@api/get-coaches';
+import { formatDate } from '@utils/data-formatter';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
-import { language_russian } from '../../constants/languageConstants';
-import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
+
+import { language_russian } from '@constants/languageConstants';
+import { getUnverifiedTests } from '@api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 

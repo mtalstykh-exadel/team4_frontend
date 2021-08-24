@@ -8,8 +8,8 @@ import './ManageListening.scss';
 
 import { ManageTopic } from '../ManageTopic/ManageTopic';
 import { ManageGrammar } from '../ManageGrammar/ManageGrammar';
-import { Player } from '../../Player/Player';
-import { getAudioFile } from '../../../api/get-audioFIle';
+import { Player } from '@player/Player';
+import { getAudioFile } from '@api/get-audioFIle';
 import { CircularProgress } from '@material-ui/core';
 
 export const ManageListening = (props) => {

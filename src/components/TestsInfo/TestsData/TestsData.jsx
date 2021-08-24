@@ -12,19 +12,22 @@ import { useSelector } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 
-import { formatDate } from '../../../utils/data-formatter';
-import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers, testAudioAttempts } from '../../../constants/localStorageConstants';
-import { startTestById } from '../../../api/start-test';
+import { formatDate } from '@utils/data-formatter';
+import { currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers, testAudioAttempts } from '@constants/localStorageConstants';
+import { startTestById } from '@api/start-test';
+
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 import { ModalWindowTestCanceled } from '../ModalWindowTestCanceled/ModalWindowTestCanceled';
 
-import { getTest } from '../../../api/get-test';
+import { getTest } from '@api/get-test';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { requestUserTestsHistory } from '../../../store/actions/profileActions';
+
+import { requestUserTestsHistory } from '@actions/profileActions';
+
 
 const TestsData = (props) => {
   const history = useHistory();
