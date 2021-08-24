@@ -13,18 +13,18 @@ import { Button } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 import moment from 'moment';
 import { currentTest, testAudioAttempts, testEassyUserAnswers, testGrammarUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
-import { startTestById } from '../../../api/start-test';
+import { startTestById } from '@api/start-test';
 import { CircularProgress } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { UserModalWindowBanningTest } from './UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
 import { ModalWindowTestCanceled } from '../ModalWindowTestCanceled/ModalWindowTestCanceled';
 
-import { getTest } from '../../../api/get-test';
+import { getTest } from '@api/get-test';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { requestUserTestsHistory } from '../../../store/actions/profileActions';
-import getUserTests from '../../../api/user-tests';
+import { requestUserTestsHistory } from '@actions/profileActions';
+import getUserTests from '@api/user-tests';
 
 const TestsData = (props) => {
   const history = useHistory();

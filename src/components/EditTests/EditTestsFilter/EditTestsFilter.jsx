@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 import {
   removeQuestionsList, requestListeningQuestionsList, requestQuestion,
   requestQuestionsList
-} from '../../../store/actions/coachActions';
+} from '@actions/coachActions';
 import { getQuestionsList, getListeningQuestionsList } from '../../../api/questions-requests';
 
 const validation = Yup.object({

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import PropTypes from 'prop-types';
 import { Trans } from '@lingui/macro';
 import {

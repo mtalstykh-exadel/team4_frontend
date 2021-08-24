@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 
 import {CircularProgress, TextField} from '@material-ui/core';
 
-import { getResultTest } from '../../api/result-test';
+import { getResultTest } from '@api/result-test';
 
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import { Trans } from '@lingui/macro';
-import { currentTest } from '../../constants/localStorageConstants';
+import { currentTest } from '@constants/localStorageConstants';
 
 const Results = () => {
   const [result, setResult] = useState();

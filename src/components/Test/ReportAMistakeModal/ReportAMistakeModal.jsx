@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import {Button, TextField} from '@material-ui/core';
 import './ReportAMistakeModal.scss';
 import {Trans} from '@lingui/macro';
-import {errorReport, deleteReport} from '../../../api/mistake-reports';
+import {errorReport, deleteReport} from '@api/mistake-reports';
 
 export const ReportAMistakeModal = ({question, questionId, level, module, handleClose, testId, reportModule}) => {
   const saveDataArray = localStorage.getItem(reportModule);

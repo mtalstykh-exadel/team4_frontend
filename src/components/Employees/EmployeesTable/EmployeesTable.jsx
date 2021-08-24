@@ -15,8 +15,8 @@ import {
 
 import { Trans } from '@lingui/macro';
 
-import { requestEmployeesList, requestEmployeeHistory } from '../../../store/actions/employeesActions';
-import { deassignTest } from '../../../api/employees-fetch';
+import { requestEmployeesList, requestEmployeeHistory } from '@actions/employeesActions';
+import { deassignTest } from '@api/employees-fetch';
 
 import { HRmodalWindowViewingUserInformation } from './HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation';
 import { HRmodalWindowTestAssignment } from './HRmodalWindows/HRmodalWindowTestAssignment';
@@ -26,7 +26,7 @@ import { ModalWindowWarningCannotDeassign } from '../ModalWindowWarning/ModalWin
 
 import { TableEmployeeRow } from './TableEmployeeRow/TableEmployeeRow';
 
-import { getEmployeesList } from '../../../api/employees-fetch';
+import { getEmployeesList } from '@api/employees-fetch';
 
 export const EmployeesTable = (props) => {
 

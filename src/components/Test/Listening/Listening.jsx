@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import './Listening.scss';
 import { Grammar, Player } from '../../index';
 import { Trans } from '@lingui/macro';
-import { getAudioFile } from '../../../api/get-audioFIle';
-import { testAudioAttempts } from '../../../constants/localStorageConstants';
+import { getAudioFile } from '@api/get-audioFIle';
+import { testAudioAttempts } from '@constants/localStorageConstants';
 
 export const Listening = ({ tasks, contentFile, testModule, reportModule, level, testID, module }) => {
   const [url, setUrl] = useState('');

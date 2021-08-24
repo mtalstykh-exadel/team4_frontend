@@ -5,22 +5,22 @@ import { Backdrop, Button, Modal, Paper } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { Trans } from '@lingui/macro';
 
-import '../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ManageTestModules.scss';
 
 import { ManageGrammar } from './ManageGrammar/ManageGrammar';
 import { ManageListening } from './ManageListening/ManageListening';
 import { ManageTopic } from './ManageTopic/ManageTopic';
 
-import { filterLevelsShort, filterModules } from '../../constants/filterConstants';
+import { filterLevelsShort, filterModules } from '@constants/filterConstants';
 import { FilterFormControl } from '../FormControl/formControl';
 
 import { questionModuleDataEmpty, listeningModuleDataEmpty, topicModuleDataEmpty } from './data/dummyData';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { removeQuestionForEdit } from '../../store/actions/coachActions';
+import { removeQuestionForEdit } from '@actions/coachActions';
 import { ModalWindowSuccessulUpdate } from './ModalWindowSuccessulUpdate/ModalWindowSuccessulUpdate';
-import { testSpeakingFile } from '../../constants/localStorageConstants';
+import { testSpeakingFile } from '@constants/localStorageConstants';
 
 export const ManageModule = (props) => {
   const dispatch = useDispatch();

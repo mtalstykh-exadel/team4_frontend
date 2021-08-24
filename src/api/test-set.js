@@ -1,5 +1,5 @@
 import axiosInstance from './axios';
-import { currentTest } from '../constants/localStorageConstants';
+import { currentTest } from '@constants/localStorageConstants';
 
 const saveEssay = ( essayAnswer ) => {
   return axiosInstance.post('/answer/essay/' + JSON.parse(localStorage.getItem(currentTest)).id, essayAnswer);
