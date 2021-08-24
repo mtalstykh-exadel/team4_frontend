@@ -240,7 +240,7 @@ export const TestsForVerificationModal = (props) => {
             <span><Trans>Level</Trans> {test.testLevel}</span>
           </div>
           <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
-            <CloseIcon/>
+            <CloseIcon className='icons-color'/>
           </IconButton>
         </div>
         <div className='tests-verification-modal-navigation'>
