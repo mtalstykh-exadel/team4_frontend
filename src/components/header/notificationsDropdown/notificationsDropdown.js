@@ -32,9 +32,7 @@ const Notifications = (props) => {
   const notifications = useSelector((state) => state.notifications);
   const [openLimit, setOpenLimit] = useState(false);
   const [openDeassigned, setOpenDeassigned] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [loadingAssigned, setLoadingAssigned] = useState(false);
-  const [loadingContinue, setLoadingContinue] = useState(false);
+  const [loading, setLoading] = useState(null);
   const [openVerify, setOpenVerify] = useState(false);
 
   const notificationAssigned = (item) => (
@@ -60,7 +58,7 @@ const Notifications = (props) => {
           localStorage.removeItem(testEassyUserAnswers);
           localStorage.removeItem(testListeningUserAnswers);
           localStorage.removeItem(testSpeakingAnswers);
-          dispatch(removeNotification(item.id));
+          localStorage.setItem(testAudioAttempts, 3);
           startTestById(item.testId)
             .then((response) => {
               localStorage.setItem(currentTest, JSON.stringify(response));
@@ -73,10 +71,11 @@ const Notifications = (props) => {
               } else if (err.response.status === 404) {
                 setOpenDeassigned(true);
               }
-              setLoading(false);
+              setLoading(null);
             });
+          dispatch(removeNotification(item.id));
         }}>
-        {loading ? (
+        {loading && loading === item.id ? (
           <CircularProgress className='border-primary' size='23px'/>
         ) : (
           <Trans>Take test</Trans>
@@ -102,9 +101,9 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-takeTestBtn button-standard'
-        disabled={loadingAssigned}
+        disabled={loading}
         onClick={() => {
-          setLoadingAssigned(true);
+          setLoading(item.id);
           dispatch(requestUnverifiedTests(0, 10))
             .then(() => {
               dispatch(requestReports(item.testId))
@@ -114,11 +113,11 @@ const Notifications = (props) => {
                   if (err.response.status === 409) {
                     setOpenDeassigned(true);
                   }})
-                .then(() => setLoadingAssigned(false));
+                .finally(() => setLoading(null));
               dispatch(removeNotification(item.id));});
         }
         }>
-        {loadingAssigned ? (
+        {loading && loading === item.id ? (
           <CircularProgress className='border-primary' size='23px'/>
         ) : (
           <Trans>Verify test</Trans>
@@ -144,7 +143,7 @@ const Notifications = (props) => {
         <Trans id='notificationTestChecked'>Your English language test is checked.</Trans>
       </Typography>
       <Typography variant='subtitle2' className='bold font-primary'>
-        {item.level}
+        <Trans>Level: {item.level}</Trans>
       </Typography>
       <Button
         disableElevation
@@ -176,19 +175,19 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-seemoreBtn button-standard'
-        disabled={loadingContinue}
+        disabled={loading}
         onClick={() => {
-          setLoadingContinue(true);
+          setLoading(item.id);
           getTest(item.testId)
             .then((response) => {
               localStorage.setItem(testAudioAttempts, 1);
               localStorage.setItem(currentTest, JSON.stringify(response));
               history.push('/test');
-              setLoadingContinue(false);
             })
-            .catch(() => dispatch(removeNotification(item.id)));
+            .catch(() => dispatch(removeNotification(item.id)))
+            .finally(() => setLoading(null));
         }}>
-        {loadingContinue ? (
+        {loading && loading === item.id ? (
           <CircularProgress className='border-primary' size='23px'/>
         ) : (
           <Trans>Continue</Trans>
