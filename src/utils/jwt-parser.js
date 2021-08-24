@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { jwtTokenKey, jwtDataKey } from '../constants/localStorageConstants';
+import { jwtTokenKey, jwtDataKey } from '@constants/localStorageConstants';
 
 const saveJWTtoLocalstorage = (responseData) => {
   localStorage.setItem(jwtTokenKey, JSON.stringify(responseData.token));

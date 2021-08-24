@@ -5,7 +5,7 @@ import {
   addNewListeningQuestion,
   getListeningQuestionsList, getQuestionsList, getSingleListeningQuestion, getSingleQuestion, requestToArchiveAndDearchive,
   requestToArchiveAndDearchiveListening, sendEditedListeningQuestion, sendNewAudio,
-} from '../../api/questions-requests';
+} from '@api/questions-requests';
 
 export const setQuestionsList = (questions) => ({ type: REQUEST_QUESTIONS_LIST, questions });
 export const setQuestions = (question) => ({ type: REQUEST_QUESTION, question });

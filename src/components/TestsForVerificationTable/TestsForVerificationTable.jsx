@@ -10,8 +10,8 @@ import { TestsForVerificationModal } from './Component/TestsForVerificationModal
 import { TableRowTest } from './Component/tableRowTest/TableRowTest';
 import { ModalWindowRemovedFromYourPost } from './ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost';
 
-import { requestUnverifiedTests, requestGrades, requestReports } from '../../store/actions/unverifiedTestActions';
-import { getTestsForVerification } from '../../api/testsForVerification-fetch';
+import { requestUnverifiedTests, requestGrades, requestReports } from '@actions/unverifiedTestActions';
+import { getTestsForVerification } from '@api/testsForVerification-fetch';
 
 export const TestsForVerificationTable = () => {
 
@@ -34,8 +34,8 @@ export const TestsForVerificationTable = () => {
   const handleCount = (newPage = page) => {
     getTestsForVerification(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };
@@ -44,6 +44,9 @@ export const TestsForVerificationTable = () => {
   const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     setPage(newPage);
     dispatch(requestUnverifiedTests(newPage, rowsPerPage));
   };

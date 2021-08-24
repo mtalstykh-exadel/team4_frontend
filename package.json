@@ -32,8 +32,8 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "npm run lint:js && npm run lint:css",
@@ -89,6 +89,8 @@
     "eslint-plugin-react": "^7.24.0",
     "husky": "^7.0.1",
     "prop-types": "^15.7.2",
+    "react-app-rewire-alias": "^1.0.3",
+    "react-app-rewired": "^2.1.8",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0"
   }

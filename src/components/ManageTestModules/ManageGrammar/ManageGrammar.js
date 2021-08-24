@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { TextField } from '@material-ui/core';
-
+import { cloneDeep } from 'lodash';
 import './ManageGrammar.scss';
 
 export const ManageGrammar = (props) => {
 
-  const [question, setQuestion] = useState(props.moduleData);
+  const [question, setQuestion] = useState(cloneDeep(props.moduleData));
 
   useEffect(() => {
     if (question.questionBody) {
@@ -26,6 +26,7 @@ export const ManageGrammar = (props) => {
       props.handleReady(false);
     }
     props.handleModule(question);
+    console.log(question);
   }, [question]);
 
   useEffect(() => {
@@ -41,7 +42,6 @@ export const ManageGrammar = (props) => {
           module: 'Grammar'
         }));
       }
-
     }
   }, []);
 

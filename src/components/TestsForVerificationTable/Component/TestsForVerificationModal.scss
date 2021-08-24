@@ -1,5 +1,9 @@
 .tests-verification-modal {
   width: 666px;
+  max-height: 800px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 
   .tests-verification-modal-header {
     display: flex;
@@ -81,7 +85,7 @@
     }
 
     .scroll-container {
-      overflow-y: scroll;
+      overflow-y: auto;
       overflow-x: hidden;
       scroll-behavior: smooth;
 

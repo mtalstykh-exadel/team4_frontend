@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { userLanguageKey } from '../../constants/localStorageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
 import { Redirect } from 'react-router-dom';
-import Layout from '../../components/Layout/Layout';
+import Layout from '@components/Layout/Layout';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
@@ -11,12 +11,13 @@ import './AdminDistribution.scss';
 import { changeButtonStyle, assignCoachTest, deassignCoachTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestQuestionsList } from '../../store/actions/adminActions';
-import getCoaches from '../../api/get-coaches';
-import { formatDate } from '../../utils/data-formatter';
+import { requestQuestionsList } from '@actions/adminActions';
+import getCoaches from '@api/get-coaches';
+import { formatDate } from '@utils/data-formatter';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
-import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
-import { language_russian } from '../../constants/languageConstants';
+
+import { language_russian } from '@constants/languageConstants';
+import { getUnverifiedTests } from '@api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 
@@ -41,6 +42,7 @@ const AdminDistribution = (props) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [count, setCount] = useState(rowsPerPage);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
   const [open, setOpen] = useState(false);
@@ -72,6 +74,9 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {

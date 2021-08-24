@@ -41,8 +41,8 @@ msgstr "Do you want to deassign?"
 msgid "Email: {0}"
 msgstr "Email: {0}"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:88
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:58
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:88
 msgid "Level"
 msgstr "Level"
 
@@ -99,6 +99,9 @@ msgstr "You want to assign a test for {0}"
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:108
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:92
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:69
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:96
+#: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:101
 msgid "{0}{1}"
 msgstr "{0}"

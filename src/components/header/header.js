@@ -19,7 +19,7 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import MenuIcon from '@material-ui/icons/Menu';
 import './header.scss';
 
-import logo from '../../assets/images/logo/logo.svg';
+import logo from '@assets/images/logo/logo.svg';
 
 import AccountMenu from './accountDropdown/accountDropdown';
 import LogoutModal from './logoutModal/logoutModal';
@@ -28,8 +28,8 @@ import LanguageMenu from './languageDropdown/languageDropdown';
 import Notifications from './notificationsDropdown/notificationsDropdown';
 import UserNavigation from './userNavigation/userNavigation';
 
-import { userLanguageKey } from '../../constants/localStorageConstants';
-import { language_russian } from '../../constants/languageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
+import { language_russian } from '@constants/languageConstants';
 
 const Header = () => {
 
@@ -152,7 +152,6 @@ const Header = () => {
                   <Avatar
                     className='avatarHeader border-secondary'
                     src={avatar}
-                    alt='avatar'
                   />
                   <ArrowDropDownIcon className='icons-triangle icons-color' />
                 </Button>

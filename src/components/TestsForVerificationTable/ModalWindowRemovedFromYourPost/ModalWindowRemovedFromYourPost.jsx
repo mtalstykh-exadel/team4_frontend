@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { Paper, Modal } from '@material-ui/core';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ModalWindowRemovedFromYourPost.scss';
 
 import { Trans } from '@lingui/macro';

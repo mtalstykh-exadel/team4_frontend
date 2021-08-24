@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:201
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:216
 msgid "Audio not found"
 msgstr "Audio not found"
 
@@ -20,56 +20,56 @@ msgstr "Audio not found"
 msgid "Close"
 msgstr "Close"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:182
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:216
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:197
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:231
 msgid "Comment"
 msgstr "Comment"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:151
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:165
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:134
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:146
 msgid "Error messages from the user:"
 msgstr "Error messages from the user:"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:256
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:271
 msgid "Essay"
 msgstr "Essay"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:240
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:255
 msgid "Level"
 msgstr "Level"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:140
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:154
 msgid "Module"
 msgstr "Module"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:142
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:156
 msgid "Question ID"
 msgstr "Question ID"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:250
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:265
 msgid "Reported mistakes"
 msgstr "Reported mistakes"
 
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:95
+#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:98
 msgid "Rows per page:"
 msgstr "Rows per page:"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:278
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:293
 msgid "Save"
 msgstr "Save"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:262
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:277
 msgid "Speaking"
 msgstr "Speaking"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:289
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:304
 msgid "Submit"
 msgstr "Submit"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:239
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:254
 msgid "Test ID"
 msgstr "Test ID"
 
@@ -77,8 +77,8 @@ msgstr "Test ID"
 msgid "This functionality will be available to you only after passing the test"
 msgstr "This functionality will be available to you only after passing the test"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:169
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:193
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:184
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:208
 msgid "Topic"
 msgstr "Topic"
 
@@ -90,11 +90,11 @@ msgstr "Verify"
 msgid "You have been deassigned from the test"
 msgstr "You have been deassigned from the test"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:140
 #: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:154
 msgid "{0}"
 msgstr "{0}"
 
-#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:72
+#: src/components/TestsForVerificationTable/TestsForVerificationTable.jsx:75
 msgid "{0}{1}"
 msgstr "{0}"

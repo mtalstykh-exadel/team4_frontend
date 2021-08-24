@@ -11,8 +11,8 @@ import { Trans } from '@lingui/macro';
 import { requestNotificationsList, removeNotification } from '../../../store/actions/headerActions';
 import { requestReports, requestGrades, requestUnverifiedTests } from '../../../store/actions/unverifiedTestActions';
 
-import { startTestById } from '../../../api/start-test';
-import { getTest } from '../../../api/get-test';
+import { startTestById } from '@api/start-test';
+import { getTest } from '@api/get-test';
 import { Modal } from '@material-ui/core';
 
 import { formatDateNotifications, formatDate, formatDeadline } from '../../../utils/data-formatter';

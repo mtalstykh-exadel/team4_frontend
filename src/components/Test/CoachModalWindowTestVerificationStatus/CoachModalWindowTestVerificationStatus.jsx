@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './CoachModalWindowTestVerificationStatus.scss';
 
 import { Trans } from '@lingui/macro';

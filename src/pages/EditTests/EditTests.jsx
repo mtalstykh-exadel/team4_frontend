@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 
-import Layout from '../../components/Layout/Layout';
-import { EditTestsFilter, EditTestsTable } from '../../components';
-import imageSrc from '../../assets/images/goose.svg';
+import Layout from '@components/Layout/Layout';
+import { EditTestsFilter, EditTestsTable } from '@components/index';
+import imageSrc from '@assets/images/goose.svg';
 import './EditTests.scss';
 import { Trans } from '@lingui/macro';
 

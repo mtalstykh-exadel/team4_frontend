@@ -1,12 +1,12 @@
 import { i18n } from '@lingui/core';
 import { LangsArray } from './lang-import-data';
 
-import setLanguage from '../api/language_set';
+import setLanguage from '@api/language_set';
 
 import { en, ru } from 'make-plural/plurals';
 
-import { userLanguageKey } from '../constants/localStorageConstants';
-import { language_english, language_russian } from '../constants/languageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
+import { language_english, language_russian } from '@constants/languageConstants';
 
 const saveLanguageToLocalstorage = (responseData) => {
   localStorage.setItem(userLanguageKey, responseData.language);
@@ -15,6 +15,7 @@ const saveLanguageToLocalstorage = (responseData) => {
 const switchLang = (lang) => {
   switch (lang) {
     case language_russian:
+      i18n.loadLocaleData('ru', { plurals: ru });
       LangsArray.forEach((langs) => {
         i18n.load('ru', langs.ru.messages);
       });
@@ -22,6 +23,7 @@ const switchLang = (lang) => {
       setLanguage(language_russian);
       break;
     case language_english:
+      i18n.loadLocaleData('en', { plurals: en });
       LangsArray.forEach((langs) => {
         i18n.load('en', langs.en.messages);
       });
@@ -33,10 +35,6 @@ const switchLang = (lang) => {
       lang = language_english;
       break;
   }
-  i18n.loadLocaleData({
-    en: { plurals: en },
-    ru: { plurals: ru },
-  });
   localStorage.setItem(userLanguageKey, lang);
 };
 

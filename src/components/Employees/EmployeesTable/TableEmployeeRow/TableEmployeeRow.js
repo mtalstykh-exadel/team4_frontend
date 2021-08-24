@@ -9,7 +9,7 @@ import {
 import { CircularProgress } from '@material-ui/core';
 import { Trans } from '@lingui/macro';
 
-import { formatDate } from '../../../../utils/data-formatter';
+import { formatDate } from '@utils/data-formatter';
 import RestoreOutlinedIcon from '@material-ui/icons/RestoreOutlined';
 import { useSelector } from 'react-redux';
 
