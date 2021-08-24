@@ -16,7 +16,7 @@ import AdminDistribution from './pages/AdminDistribution/AdminDistribution';
 import { useRedirectHook } from '@hook/redirectHook';
 import { initApp } from '@actions/initActions/initActions';
 import ResultTest from '@components/ResultTest/ResultTest';
-import { redirectTo } from '@constants/localStorageConstants';
+import { redirectTo, currentTest } from '@constants/localStorageConstants';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,9 @@ const App = () => {
   if (useRedirectHook().get('redirect')) {
     localStorage.setItem(redirectTo, window.location.href.toString());
   } 
-
+  if (useRedirectHook().get('id')) {
+    localStorage.setItem(currentTest, JSON.stringify({id: useRedirectHook().get('id')}));
+  }
   return (
     <div className='App'>
       <Switch>
