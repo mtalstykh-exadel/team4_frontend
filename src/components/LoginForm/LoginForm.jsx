@@ -37,7 +37,7 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit} noValidate autoComplete='off' >
             {/* field for email */}
             <div className='fieldsWrapper'>
-              <TextField id='outlined-basic' label='Email' variant='outlined' type='email' name='email' error={error ? true : false}
+              <TextField label='Email' variant='outlined' type='email' name='email' error={error ? true : false}
                 onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
             </div>
             {errors.email && touched.email ? errors.email === 'R'
@@ -46,8 +46,8 @@ const LoginForm = () => {
 
             {/* field for password */}
             <div className='fieldsWrapper'>
-              <TextField id='outlined-basic' label='Password' variant='outlined' type='password' name='password' error={error ? true : false}
-                onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' />
+              <TextField label='Password' variant='outlined' type='password' name='password' error={error ? true : false}
+                onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' autoComplete='on' />
             </div>
             {errors.password && touched.password ? <Trans>Required field</Trans> : null}
             {error && <Trans>Your email or password is incorrect. Please try again</Trans>}
