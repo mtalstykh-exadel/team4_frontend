@@ -13,7 +13,12 @@ const Results = () => {
 
   const getResults = async () => {
     setLoading(true);
-    const idTest = JSON.parse(localStorage.getItem(currentTest)).id;
+    let idTest;
+    try {
+      idTest = JSON.parse(localStorage.getItem(currentTest)).id;
+    } catch (e) {
+      window.location.href = '/';
+    }
 
     if (test === 0) {
       await getResultTest(idTest).then((res) => setTest(res));
