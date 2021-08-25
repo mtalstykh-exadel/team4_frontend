@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
-import { CircularProgress, TextField } from '@material-ui/core';
-
+import { CircularProgress } from '@material-ui/core';
 import { getResultTest } from '@api/result-test';
-
 import Layout from '../Layout/Layout';
 import './ResultTest.scss';
 import { Trans } from '@lingui/macro';
@@ -81,6 +78,7 @@ const Results = () => {
       </div>
     );
   });
+
   const setStyle = (res) => {
     if (res === 'waiting') return 'res-waiting';
     else if (res === 0) return 'res-null';
@@ -106,6 +104,7 @@ const Results = () => {
     const level = test.level;
     const essayComments = test.essayComment;
     const speakingComments = test.speakingComment;
+
     resultQuote = [
       <>
         <p>
@@ -114,23 +113,11 @@ const Results = () => {
         </p>
         <div className={'comments'}>
           <div className={'module-text'}>Module Essay</div>
-          <TextField
-            className={'answer'}
-            variant='outlined'
-            multiline
-            rows={3}
-            label={essayComments}
-          />
+          <div className={'answer'}>{essayComments}</div>
         </div>
         <div className={'comments'}>
           <div className={'module-text'}>Module Speaking</div>
-          <TextField
-            className={'answer'}
-            variant='outlined'
-            multiline
-            rows={3}
-            label={speakingComments}
-          />
+          <div className={'answer'}>{speakingComments}</div>
         </div>
         <p
           onClick={() => (window.location.href = './profile')}
@@ -143,23 +130,11 @@ const Results = () => {
         <p>Вы сдали тест по английскому языку на уровне {level.toString()}</p>
         <div className={'comments'}>
           <div className={'module-text'}>Модуль Эссе</div>
-          <TextField
-            className={'answer'}
-            variant='outlined'
-            multiline
-            rows={3}
-            label={essayComments}
-          />
+          <div className={'answer'}>{essayComments}</div>
         </div>
         <div className={'comments'}>
           <div className={'module-text'}>Модуль Говорения</div>
-          <TextField
-            className={'answer'}
-            variant='outlined'
-            multiline
-            rows={3}
-            label={speakingComments}
-          />
+          <div className={'answer'}>{speakingComments}</div>
         </div>
         <p
           onClick={() => (window.location.href = './profile')}
@@ -186,8 +161,11 @@ const Results = () => {
           <div className='result-body'>
             {[...arrayResult].splice(0, 2).map((res, key) => {
               return (
-                <div key={key} className={setStyle(res)}>
-                  <p className='result'>{res}/10</p>
+                <div key={key} className='result-item-wrapper'>
+                  <div className={setStyle(res)}>
+                    <p className='result'>{res}/10</p>
+                  </div>
+                  {stepTest[key]}
                 </div>
               );
             })}
@@ -205,13 +183,15 @@ const Results = () => {
                 htmlRes = res.toString() + '/10';
               }
               return (
-                <div key={key} className={setStyle(res)}>
-                  <p className='result'>{htmlRes}</p>
+                <div key={key} className='result-item-wrapper'>
+                  <div className={setStyle(res)}>
+                    <p className='result'>{htmlRes}</p>
+                  </div>
+                  {stepTest[key + 2]}
                 </div>
               );
             })}
           </div>
-          <div className='step-test'> {stepTest} </div>
           <div className='result-quote'>
             <Trans>
               {resultQuote[0]}

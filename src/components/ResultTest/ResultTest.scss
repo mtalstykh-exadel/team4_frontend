@@ -4,8 +4,7 @@
   font-size: 24px;
   color: var(--font-color-primary);
   text-align: center;
-  margin: 30px auto;
-  padding-top: 40px;
+  margin: 70px auto 0 auto;
 }
 
 .result-body {
@@ -14,8 +13,7 @@
   width: 500px;
   justify-items: center;
   align-items: center;
-  margin: 0 auto 0 auto;
-  padding-top: 100px;
+  margin: 70px auto 0 auto;
 
   .res-red-under-five {
     height: 100px;
@@ -24,6 +22,8 @@
     background-color: #eb575733;
     border: 5px solid #eb575733;
     border-right: 5px solid #eb5757;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -39,6 +39,8 @@
     border: 5px solid #eb575733;
     border-right: 5px solid #eb5757;
     border-bottom: 5px solid #eb5757;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -53,6 +55,8 @@
     background-color: #21965333;
     border: 5px solid #219653;
     border-top-color: #21965333;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -66,6 +70,8 @@
     border-radius: 50%;
     background-color: #e2e9f9;
     border: 5px solid #e2e9f9;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -80,6 +86,8 @@
     border-radius: 50%;
     background-color: #eb575733;
     border: 5px solid #eb575733;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -93,6 +101,8 @@
     border-radius: 50%;
     background-color: #21965333;
     border: 5px solid #219653;
+    margin-bottom: 15px;
+    margin-top: 30px;
 
     .result {
       text-align: center;
@@ -106,35 +116,34 @@
   height: 90px;
   font-size: 18px;
   text-align: center;
-  margin: 30px 0;
-  padding-top: 100px;
+  margin-top: 100px;
   font-style: normal;
 
-  .essay-input {
-    width: 55%;
-    padding-top: 10px;
-  }
-
-  .go-back {
-    color: var(--primary-color);
-    text-decoration: underline;
-    cursor: pointer;
-    padding-top: 20%;
-  }
-
+  .go-back,
   .go-back-full-test {
     color: var(--primary-color);
-    text-decoration: underline;
     cursor: pointer;
-    padding-top: 3%;
+    margin-top: 40px;
+    padding-bottom: 30px;
+  }
+
+  .go-back:hover,
+  .go-back-full-test:hover {
+    text-decoration: underline;
   }
 
   .comments {
-    padding-top: 45px;
+    margin-top: 45px;
 
     .answer {
-      width: 55%;
+      margin: 0 22%;
+      width: 56%;
+      height: 92px;
       border: 1px solid #bdbdbd;
+      text-align: left;
+      color: #828282;
+      padding: 5px;
+      white-space: pre-line;
     }
 
     .module-text {
@@ -145,34 +154,24 @@
       line-height: 19px;
       text-align: left;
       margin-left: 23%;
+      margin-bottom: 5px;
     }
   }
 }
 
-.step-test {
-  display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  width: 500px;
-  justify-items: center;
-  align-items: center;
-  margin: 0 auto 0 auto;
-  padding-top: 8px;
-}
-
 @media only screen and (max-width: 800px) {
   .result-body {
+    width: 80%;
     grid-template-columns: 50% 50%;
     grid-template-rows: 50% 50%;
-    width: 80%;
-    height: 250px;
   }
 
   .result-quote {
     height: 60px;
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .result-header {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
