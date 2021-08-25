@@ -26,7 +26,6 @@ export const ManageGrammar = (props) => {
       props.handleReady(false);
     }
     props.handleModule(question);
-    console.log(question);
   }, [question]);
 
   useEffect(() => {
