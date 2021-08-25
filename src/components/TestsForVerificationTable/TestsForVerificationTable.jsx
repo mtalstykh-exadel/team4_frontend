@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow, Paper, Modal } from '@material-ui/core';
+import {
+  Backdrop,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Paper,
+  Modal
+} from '@material-ui/core';
 
 import './TestsForVerificationTable.scss';
 import { Trans } from '@lingui/macro';
@@ -10,8 +21,8 @@ import { TestsForVerificationModal } from './Component/TestsForVerificationModal
 import { TableRowTest } from './Component/tableRowTest/TableRowTest';
 import { ModalWindowRemovedFromYourPost } from './ModalWindowRemovedFromYourPost/ModalWindowRemovedFromYourPost';
 
-import { requestUnverifiedTests, requestGrades, requestReports } from '../../store/actions/unverifiedTestActions';
-import { getTestsForVerification } from '../../api/testsForVerification-fetch';
+import { requestUnverifiedTests, requestGrades, requestReports } from '@actions/unverifiedTestActions';
+import { getTestsForVerification } from '@api/testsForVerification-fetch';
 
 export const TestsForVerificationTable = () => {
 
@@ -34,8 +45,8 @@ export const TestsForVerificationTable = () => {
   const handleCount = (newPage = page) => {
     getTestsForVerification(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };
@@ -44,6 +55,9 @@ export const TestsForVerificationTable = () => {
   const unverifiedTests = useSelector((state) => state.unverifiedTests);
 
   const handleChangePage = (event, newPage) => {
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     setPage(newPage);
     dispatch(requestUnverifiedTests(newPage, rowsPerPage));
   };
@@ -103,6 +117,7 @@ export const TestsForVerificationTable = () => {
         />
         <Modal
           open={open}
+          BackdropComponent={Backdrop}
           onClose={() => setOpen(false)}
           aria-labelledby='simple-modal-title'
           aria-describedby='simple-modal-description'

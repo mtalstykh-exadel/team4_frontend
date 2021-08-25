@@ -5,9 +5,9 @@ import Button from '@material-ui/core/Button';
 import './LoginForm.scss';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLoginData } from '../../store/actions/loginActions';
+import { fetchLoginData } from '@actions/loginActions';
 import { CircularProgress } from '@material-ui/core';
-import { switchLang } from '../../utils/lang-service';
+import { switchLang } from '@utils/lang-service';
 import { Trans } from '@lingui/macro';
 
 // filtering and checking what the user has entered into forms
@@ -37,7 +37,7 @@ const LoginForm = () => {
           <form onSubmit={handleSubmit} noValidate autoComplete='off' >
             {/* field for email */}
             <div className='fieldsWrapper'>
-              <TextField id='outlined-basic' label='Email' variant='outlined' type='email' name='email' error={error ? true : false}
+              <TextField label='Email' variant='outlined' type='email' name='email' error={error ? true : false}
                 onChange={handleChange} onBlur={handleBlur} value={values.email} className='textFields' />
             </div>
             {errors.email && touched.email ? errors.email === 'R'
@@ -46,8 +46,8 @@ const LoginForm = () => {
 
             {/* field for password */}
             <div className='fieldsWrapper'>
-              <TextField id='outlined-basic' label='Password' variant='outlined' type='password' name='password' error={error ? true : false}
-                onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' />
+              <TextField label='Password' variant='outlined' type='password' name='password' error={error ? true : false}
+                onChange={handleChange} onBlur={handleBlur} value={values.password} className='textFields' autoComplete='on' />
             </div>
             {errors.password && touched.password ? <Trans>Required field</Trans> : null}
             {error && <Trans>Your email or password is incorrect. Please try again</Trans>}

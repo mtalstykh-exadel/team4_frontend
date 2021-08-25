@@ -9,7 +9,7 @@ import { saveTestHandler } from '../saveHandler';
 import {
   testGrammarUserAnswers,
   testListeningUserAnswers,
-} from '../../../constants/localStorageConstants';
+} from '@constants/localStorageConstants';
 
 export const Grammar = ({
   tasks,

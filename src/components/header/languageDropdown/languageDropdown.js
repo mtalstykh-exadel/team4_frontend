@@ -5,9 +5,9 @@ import { Menu, MenuItem } from '@material-ui/core';
 
 import { Trans } from '@lingui/macro';
 
-import { switchLang } from '../../../utils/lang-service';
+import { switchLang } from '@utils/lang-service';
 
-import { language_english, language_russian } from '../../../constants/languageConstants';
+import { language_english, language_russian } from '@constants/languageConstants';
 
 const LanguageMenu = (props) => {
 

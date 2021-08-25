@@ -3,7 +3,7 @@ import React from 'react';
 import { Backdrop, Button, Modal } from '@material-ui/core';
 import PropTypes from 'prop-types';
 
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './UserModalWindowBanningOfPassingTest.scss';
 
 import { Trans } from '@lingui/macro';

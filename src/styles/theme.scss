@@ -14,6 +14,10 @@ body[theme='light'] {
   --border-color: 189, 189, 189;
   --backdrop-color: 11, 36, 92;
   --error-color: #eb4034;
+  --background-button-deassign: #fff;
+  --color-button-deassign: #000;
+  --background-button-assign: #fff;
+  --color-button-assign: #3e6dd7;
 }
 
 body[theme='dark'] {
@@ -30,6 +34,10 @@ body[theme='dark'] {
   --border-color: 189, 189, 189;
   --backdrop-color: 255, 255, 255;
   --error-color: #eb4034;
+  --background-button-deassign: #595c60;
+  --color-button-deassign: #adb6c3;
+  --background-button-assign: #3e6dd7;
+  --color-button-assign: #aac4ff;
 }
 
 body {
@@ -105,6 +113,10 @@ body {
 
   .icons-color-primary {
     fill: var(--primary-color);
+
+    &:hover {
+      fill: rgba(var(--primary-color-rgb), 0.7);
+    }
   }
 
   .notifications-color {
@@ -168,7 +180,7 @@ body {
   }
 
   .MuiInputBase-input {
-    background-color: var(--base-color);
+    background-color: inherit;
     color: var(--font-color-primary);
   }
 

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Paper, Modal, Backdrop } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/buttons.scss';
+import '@globalStyles/buttons.scss';
 import './ModalWindowCannotAssign.scss';
 
 import { Trans } from '@lingui/macro';

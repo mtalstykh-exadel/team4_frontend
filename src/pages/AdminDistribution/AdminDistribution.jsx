@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { userLanguageKey } from '../../constants/localStorageConstants';
+import { userLanguageKey } from '@constants/localStorageConstants';
 import { Redirect } from 'react-router-dom';
-import Layout from '../../components/Layout/Layout';
+import Layout from '@components/Layout/Layout';
 import {
   Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow,
   Select, Button,
@@ -11,22 +11,24 @@ import './AdminDistribution.scss';
 import { changeButtonStyle, assignCoachTest, deassignCoachTest } from './ScriptsAdminDistributtion';
 import { Trans } from '@lingui/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { requestQuestionsList } from '../../store/actions/adminActions';
-import getCoaches from '../../api/get-coaches';
-import { formatDate } from '../../utils/data-formatter';
-import { getUnverifiedTests } from '../../api/unverifiedTests-fetch';
+import { requestQuestionsList } from '@actions/adminActions';
+import getCoaches from '@api/get-coaches';
+import { formatDate } from '@utils/data-formatter';
 import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWarningTemplate';
+
+import { language_russian } from '@constants/languageConstants';
+import { getUnverifiedTests } from '@api/unverifiedTests-fetch';
 
 const AdminDistribution = (props) => {
 
   const dispatch = useDispatch();
 
   const columns = [
-    { id: 'level', label: ['Level', 'Уровень'], width: 83, align: 'right' },
-    { id: 'Assigned', label: ['Assigned', 'Назначенный'], width: 237, align: 'right' },
-    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], width: 237, align: 'right' },
-    { id: 'Coach', label: ['Coach', 'Тренер'], width: 444, align: 'right' },
-    { id: 'action', label: ['Action', 'Действие'], width: 270, align: 'right' },
+    { id: 'level', label: ['Level', 'Уровень'], minWidth: 73, align: 'right' },
+    { id: 'Assigned', label: ['Assigned', 'Назначенный'], minWidth: 227, align: 'right' },
+    { id: 'Deadline', label: ['Deadline', 'Срок сдачи'], minWidth: 227, align: 'right' },
+    { id: 'Coach', label: ['Coach', 'Тренер'], minWidth: 434, align: 'right' },
+    { id: 'action', label: ['Action', 'Действие'], minWidth: 270, align: 'right' },
   ];
 
   const rows = useSelector((state) => state.admin.testsList);
@@ -40,15 +42,11 @@ const AdminDistribution = (props) => {
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [count, setCount] = useState(rowsPerPage);
   const role = useSelector((state) => state.jwt.role);
   const [coaches, setCoaches] = useState();
-  const [count, setCount] = useState(rowsPerPage);
   const [open, setOpen] = useState(false);
   const [modalText, setModalText] = useState([]);
-
-  useEffect(() => {
-    dispatch(requestQuestionsList(page, rowsPerPage));
-  }, []);
 
   useEffect(() => {
     getCoaches().then((response) => setCoaches(response));
@@ -61,8 +59,8 @@ const AdminDistribution = (props) => {
   const handleCount = (newPage = page) => {
     getUnverifiedTests(newPage + 1, rowsPerPage)
       .then((response) => {
-        if (response !== []) {
-          setCount(count + response.length);
+        if (response.length > 0) {
+          setCount(rowsPerPage * (newPage + 2));
         }
       });
   };
@@ -75,7 +73,9 @@ const AdminDistribution = (props) => {
 
   const handleChangePage = (event, newPage) => {
     dispatch(requestQuestionsList(newPage, rowsPerPage));
-    handleCount(newPage);
+    if ( newPage > page) {
+      handleCount(newPage);
+    }
     window.scrollTo(0, 0);
     setPage(newPage);
     setTimeout(() => {
@@ -122,6 +122,10 @@ const AdminDistribution = (props) => {
     });
   };
 
+  useEffect(() => {
+    dispatch(requestQuestionsList(page, rowsPerPage));
+  }, []);
+
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
 
   setTimeout(() => {
@@ -163,7 +167,7 @@ const AdminDistribution = (props) => {
                             className='font-primary'
                             key={keysForColumns}
                             align={column.align}
-                            width={column.width + 'px'}
+                            style={{ minWidth: column.minWidth }}
                             size='small'
                           >
                             {column.id === 'Assigned' ? (
@@ -177,7 +181,7 @@ const AdminDistribution = (props) => {
                             ) : null}
 
                             {column.id === 'Deadline' ? (
-                              row?.assigned ? (
+                              row?.deadline ? (
                                 <>
                                   {formatDate(row.deadline)}
                                 </>
@@ -190,7 +194,13 @@ const AdminDistribution = (props) => {
                               <Select id={'item-' + row.testId + '-select'} className='selectCoachNames font-primary'
                                 native variant='outlined' defaultValue='placeholder'>
                                 <option aria-label='None' value='placeholder' >
-                                  name
+                                  {localStorage.getItem(userLanguageKey) !== language_russian ?
+                                    (
+                                      'name'
+                                    ) : (
+                                      'имя'
+                                    )
+                                  }
                                 </option>
                                 {coachNames.map((coachName) => {
                                   keysForOptions++;
@@ -251,7 +261,7 @@ const AdminDistribution = (props) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
-      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => setOpen(false)}/>
+      <ModalWindowWarningTemplate open={open} text={modalText} handleClose={() => { setOpen(false), handleChangeDeassignTest(rows); }} />
     </Layout>
   );
 };

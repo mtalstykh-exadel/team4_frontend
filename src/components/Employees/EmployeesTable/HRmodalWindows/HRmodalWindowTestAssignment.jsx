@@ -16,14 +16,14 @@ import CloseIcon from '@material-ui/icons/Close';
 
 import { Trans } from '@lingui/macro';
 
-import { assignTest } from '../../../../api/employees-fetch';
+import { assignTest } from '@api/employees-fetch';
 import { useDispatch } from 'react-redux';
 
-import '../../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './HRmodalWindowTestAssignment.scss';
 
-import { filterLevelsLong, priority } from '../../../../constants/filterConstants';
-import { requestEmployeesList } from '../../../../store/actions/employeesActions';
+import { filterLevelsLong, priority } from '@constants/filterConstants';
+import { requestEmployeesList } from '@actions/employeesActions';
 
 import { useFormik } from 'formik';
 
@@ -31,13 +31,9 @@ export const HRmodalWindowTestAssignment = (props) => {
 
   const dispatch = useDispatch();
 
-  const onSubmit = (values) => {
-    return values;
-  };
-
   const formik = useFormik({
     initialValues: {date: '', module: '', priority: ''},
-    validationSchema: null, onSubmit
+    validationSchema: null
   });
 
   let itemKey = 0;
@@ -48,8 +44,8 @@ export const HRmodalWindowTestAssignment = (props) => {
           if (err.response.status === 409) {
             props.setOpenCantAssign();
           }}
-        )
-        .then(() => dispatch(requestEmployeesList(props.page, props.rowsPerPage)));
+        );
+      dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage));
       props.handleClose();}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
       <div className='level-selector-wrapper'>
@@ -66,7 +62,7 @@ export const HRmodalWindowTestAssignment = (props) => {
             onChange={formik.handleChange}>
             {filterLevelsLong.map((item) => {
               itemKey++;
-              return <MenuItem key={itemKey} value={item}> {item}</MenuItem>;
+              return <MenuItem key={itemKey} value={item[0]}><Trans>{item[0]}{item[1]}</Trans></MenuItem>;
             })}
           </Select>
         </FormControl>
@@ -86,14 +82,14 @@ export const HRmodalWindowTestAssignment = (props) => {
           />
         </div>
         <div className='setting'>
-          <p className='setting-label bold'><Trans>Priority: </Trans></p>
+          <p className='setting-label bold'><Trans>Priority:</Trans></p>
           <FormControl required variant='outlined' className='setting-select' size='small'>
-            <InputLabel id='select-label'><Trans>Priority</Trans></InputLabel>
+            <InputLabel id='select-label'>Priority</InputLabel>
             <Select labelId='select-label' label='Select priority' id='select' value={formik.values.priority} inputProps={{ name: 'priority'}}
               onChange={formik.handleChange}>
               {priority.map((item) => {
                 itemKey++;
-                return <MenuItem key={itemKey} value={item} className='item'> {item}</MenuItem>;
+                return <MenuItem key={itemKey} value={item[0]} className='item'><Trans>{item[0]}{item[1]}</Trans></MenuItem>;
               })}
             </Select>
           </FormControl>
@@ -136,6 +132,7 @@ export const HRmodalWindowTestAssignment = (props) => {
 
 HRmodalWindowTestAssignment.propTypes =
   {
+    userName: PropTypes.any,
     test: PropTypes.any,
     open: PropTypes.bool,
     setOpenCantAssign: PropTypes.func,

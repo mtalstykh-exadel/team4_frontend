@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 
-import { ManageModule } from '../../components';
-import Layout from '../../components/Layout/Layout';
-import { addListeningQuestion, editListeningQuestion, requestListeningTopic, requestQuestion } from '../../store/actions/coachActions';
+import { ManageModule } from '@components/index';
+import Layout from '@components/Layout/Layout';
+import { addListeningQuestion, editListeningQuestion, requestListeningTopic, requestQuestion } from '@actions/coachActions';
 import * as queryString from 'querystring';
-import { addNewQuestion, sendEditedQuestion } from '../../api/questions-requests';
+import { addNewQuestion, sendEditedQuestion } from '@api/questions-requests';
 
 export const ManageTest = () => {
 
@@ -49,10 +49,9 @@ export const ManageTest = () => {
 
   return (
     <Layout>
-      {location === '/edit-test-modules' && !!question && <ManageModule level={question.level} module={parsed.module}
-        dataType={ parsed.status === 'UNARCHIVED' ? false : true}
+      {location === '/edit-test-modules' && !!question && <ManageModule dataType={ parsed.status === 'UNARCHIVED' ? false : true}
         sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
-      {location === '/add-test-modules' && <ManageModule level='' module='' sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
+      {location === '/add-test-modules' && <ManageModule sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
     </Layout>
   );
 };

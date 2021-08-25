@@ -1,4 +1,4 @@
-import { REQUEST_UNVERIFIED_TESTS, REQUEST_UNVERIFIED_TEST, REQUEST_GRADES } from '../actions/actionTypes';
+import { REQUEST_UNVERIFIED_TESTS, REQUEST_UNVERIFIED_TEST, REQUEST_GRADES } from '@actions/actionTypes';
 
 export const unverifiedTestsReducer = (state = [], action) => {
   switch (action.type) {

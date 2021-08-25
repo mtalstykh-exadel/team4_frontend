@@ -1,4 +1,4 @@
-import { getJWTdata } from '../../utils/jwt-parser';
+import { getJWTdata } from '@utils/jwt-parser';
 import { logoutActions } from './logoutActions';
 
 export const checkTokenTimeout = () => (dispatch, getState) => {

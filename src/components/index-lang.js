@@ -25,6 +25,9 @@ import manageTestRu from '@lingui/loader!./ManageTestModules/locales/ru/messages
 import EmployeesEn from '@lingui/loader!./Employees/locales/en/messages.po';
 import EmployeesRu from '@lingui/loader!./Employees/locales/ru/messages.po';
 
+import ProfileInfoEn from '@lingui/loader!./ProfileInfo/locales/en/messages.po';
+import ProfileInfoRu from '@lingui/loader!./ProfileInfo/locales/ru/messages.po';
+
 export const componentsLangsArray = [
   {
     en: testVerifyEn,
@@ -61,5 +64,9 @@ export const componentsLangsArray = [
   {
     en: EmployeesEn,
     ru: EmployeesRu,
-  }
+  },
+  {
+    en: ProfileInfoEn,
+    ru: ProfileInfoRu,
+  },
 ];

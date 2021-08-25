@@ -1,6 +1,6 @@
 import { REQUEST_NOTIFICATIONS } from './actionTypes';
-import { getNotifications, deleteNotification } from '../../api/notifications';
-// import { getNotifications } from '../../api/notifications';
+import { getNotifications, deleteNotification } from '@api/notifications';
+// import { getNotifications } from '@api/notifications';
 
 export const setNotificationsList = (notifications) => ({ type: REQUEST_NOTIFICATIONS, notifications });
 

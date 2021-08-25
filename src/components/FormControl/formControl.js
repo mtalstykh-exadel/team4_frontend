@@ -9,13 +9,13 @@ import { Trans } from '@lingui/macro';
 
 export const FilterFormControl = (props) => {
 
-  const filterList = props.filterData.map((elem) => {
+  const filterList = props.filterData.map((elem, index) => {
     return (
       <MenuItem
-        className='edit-tests-option'
-        key={elem}
-        value={elem}>
-        {elem}
+        className='edit-tests-option item'
+        key={index}
+        value={elem[0]}>
+        <Trans>{elem[0]}{elem[1]}</Trans>
       </MenuItem>
     );
   });
@@ -28,7 +28,7 @@ export const FilterFormControl = (props) => {
         required
         size='small'>
         <InputLabel htmlFor={props.filterName}>
-          <Trans>{props.filterName}</Trans>
+          <Trans>{props.label[0]}{props.label[1]}</Trans>
         </InputLabel>
         <Select
           name={props.filterName}
@@ -36,9 +36,6 @@ export const FilterFormControl = (props) => {
           value={props.value}
           inputProps={{ name: props.filterName }}
           onChange={props.onChange}>
-          <MenuItem value=''>
-            <Trans>None</Trans>
-          </MenuItem>
           {filterList}
         </Select>
       </FormControl>
@@ -49,6 +46,7 @@ export const FilterFormControl = (props) => {
 FilterFormControl.propTypes = {
   filterData: PropTypes.array,
   filterName: PropTypes.string,
+  label: PropTypes.array,
   onChange: PropTypes.func,
   submitForm: PropTypes.func,
   value: PropTypes.string

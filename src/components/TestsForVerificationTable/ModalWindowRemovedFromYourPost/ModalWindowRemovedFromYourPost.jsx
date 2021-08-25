@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
-import { Paper, Modal } from '@material-ui/core';
+import { Paper, Modal, Backdrop } from '@material-ui/core';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ModalWindowRemovedFromYourPost.scss';
 
 import { Trans } from '@lingui/macro';
@@ -15,6 +15,7 @@ export const ModalWindowRemovedFromYourPost = (props) => {
     <Modal
       open={props.open}
       onClose={props.handleClose}
+      BackdropComponent={Backdrop}
       aria-labelledby='simple-modal-title'
       aria-describedby='simple-modal-description'
       className='modal'>

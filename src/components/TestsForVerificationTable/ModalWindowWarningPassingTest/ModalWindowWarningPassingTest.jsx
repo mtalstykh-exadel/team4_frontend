@@ -3,7 +3,7 @@ import React from 'react';
 import { Paper, Modal } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 
-import '../../../styles/modal.scss';
+import '@globalStyles/modal.scss';
 import './ModalWindowWarningPassingTest.scss';
 
 import { Trans } from '@lingui/macro';
