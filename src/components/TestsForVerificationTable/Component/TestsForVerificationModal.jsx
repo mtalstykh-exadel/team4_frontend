@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import '@globalStyles/modal.scss';
 import './TestsForVerificationModal.scss';
 
-import { IconButton, Button, TextField, Paper } from '@material-ui/core';
+import { IconButton, Button, TextField, Paper, Tabs, Tab } from '@material-ui/core';
 
 import CloseIcon from '@material-ui/icons/Close';
 import { CircularProgress } from '@material-ui/core';
@@ -21,6 +21,13 @@ import { submitTestGrades, saveTestGrades, saveReports } from '@api/testsForVeri
 import { requestUnverifiedTests } from '@actions/unverifiedTestActions';
 
 export const TestsForVerificationModal = (props) => {
+
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   const dispatch = useDispatch();
 
@@ -188,7 +195,7 @@ export const TestsForVerificationModal = (props) => {
         {
           [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
             return (
-              <div key={grade} className={essay.grade === grade ? 'grade chosen' : 'grade'} onClick={() => {handleEssayGrade(grade);}}>{grade}</div>
+              <div key={grade} className={essay.grade === grade ? 'grade chosen' : 'grade'} onClick={() => { handleEssayGrade(grade); }}>{grade}</div>
             );
           })
         }
@@ -213,7 +220,7 @@ export const TestsForVerificationModal = (props) => {
             id='player-speaking'
             src={url}
           /> :
-          <div className='bold audio-replacement'><Trans>Audio not found</Trans></div> }
+          <div className='bold audio-replacement'><Trans>Audio not found</Trans></div>}
       </div>
       <div className='grades-wrapper'>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((grade) => {
@@ -221,7 +228,7 @@ export const TestsForVerificationModal = (props) => {
             <div
               key={grade}
               className={speaking.grade === grade ? 'grade chosen' : 'grade'}
-              onClick={() => {handleSpeakingGrade(grade);}}>
+              onClick={() => { handleSpeakingGrade(grade); }}>
               {grade}
             </div>
           );
@@ -258,25 +265,20 @@ export const TestsForVerificationModal = (props) => {
             <CloseIcon className='icons-color'/>
           </IconButton>
         </div>
-        <div className='tests-verification-modal-navigation'>
-          <div className={step === 0 ? 'reported-mistake-navigation chosen' : 'reported-mistake-navigation'}
-            onClick={() => {setStep(0);}}>
-            <div className='navigation-text'>
-              <Trans>Reported mistakes</Trans>
-            </div>
-          </div>
-          <div className={step === 1 ? 'essay-navigation chosen' : 'essay-navigation'}
-            onClick={() => {setStep(1);}}>
-            <div className='navigation-text'>
-              <Trans>Essay</Trans>
-            </div>
-          </div>
-          <div className={step === 2 ? 'speaking-navigation chosen' : 'speaking-navigation'}
-            onClick={() => {setStep(2);}}>
-            <div className='navigation-text'>
-              <Trans>Speaking</Trans>
-            </div>
-          </div>
+        <div className='test-verification-modal-tabs'>
+          <Paper>
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              indicatorColor='primary'
+              textColor='primary'
+              centered
+            >
+              <Tab onClick={() => { setStep(0); }} label={<Trans>Reported mistakes</Trans>} />
+              <Tab onClick={() => { setStep(1); }} label={<Trans>Essay</Trans>} />
+              <Tab onClick={() => { setStep(2); }} label={<Trans>Speaking</Trans>} />
+            </Tabs>
+          </Paper>
         </div>
         <div className='tests-verification-modal-context'>
           {steps[step]}
@@ -288,7 +290,7 @@ export const TestsForVerificationModal = (props) => {
             className='save-button'
             disabled={loadingSave} onClick={() => handleSave()}>
             {loadingSave ? (
-              <CircularProgress className='border-primary' size='23px'/>
+              <CircularProgress className='border-primary' size='23px' />
             ) : (
               <Trans>Save</Trans>
             )}</Button>
@@ -296,10 +298,10 @@ export const TestsForVerificationModal = (props) => {
             variant='contained'
             color='primary'
             className='submit-button'
-            disabled = {loadingSubmit || loadingSave}
+            disabled={loadingSubmit || loadingSave}
             onClick={() => handleSubmit()}>
             {loadingSubmit ? (
-              <CircularProgress className='border-primary' size='23px'/>
+              <CircularProgress className='border-primary' size='23px' />
             ) : (
               <Trans>Submit</Trans>
             )}
