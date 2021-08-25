@@ -18,6 +18,7 @@ body {
     &.MuiButton-containedPrimary {
       background-color: var(--primary-color);
       color: var(--font-color-secondary);
+      box-shadow: none;
 
       &:hover {
         background-color: rgba(var(--primary-color-rgb), 0.8);
@@ -32,6 +33,7 @@ body {
     &.MuiButton-outlinedPrimary {
       border-color: var(--primary-color);
       color: var(--primary-color);
+      box-shadow: none;
 
       &:hover {
         border-color: var(--primary-color);
@@ -47,6 +49,7 @@ body {
     &.MuiButton-containedSecondary {
       background-color: var(--secondary-color);
       color: var(--font-color-secondary);
+      box-shadow: none;
 
       &:hover {
         background-color: rgba(var(--primary-color-rgb), 0.8);
@@ -61,6 +64,7 @@ body {
     &.MuiButton-outlinedSecondary {
       border-color: var(--secondary-color);
       color: var(--secondary-color);
+      box-shadow: none;
 
       &:hover {
         border-color: var(--secondary-color);
