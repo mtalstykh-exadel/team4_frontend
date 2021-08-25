@@ -14,8 +14,8 @@ export const ModalWindowWarningArchive = ({ handleClose }) => {
     <div className='modal-warning-archive'>
       <div className='text font-primary'><Trans>Are you sure you want to archive this?</Trans></div>
       <div className='btn'>
-        <Button variant='outlined' color='primary' onClick={() => handleClose(true)}><Trans>Yes</Trans></Button>
-        <Button variant='contained' color='primary' onClick={() => handleClose(false)}><Trans>Cancel</Trans></Button>
+        <Button variant='outlined' color='primary' onClick={() => handleClose(true, 'archivation')}><Trans>Yes</Trans></Button>
+        <Button variant='contained' color='primary' onClick={() => handleClose(false, 'archivation')}><Trans>Cancel</Trans></Button>
       </div>
     </div>
   );

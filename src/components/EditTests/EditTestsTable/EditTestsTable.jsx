@@ -22,6 +22,7 @@ import { archiveQuestion, removeQuestionForEdit, removeQuestionsList, requestLis
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 import { Trans } from '@lingui/macro';
 import { ModalWindowWarningArchive } from './ModalWindowWarningArchive/ModalWindowWarningArchive';
+import { ModalWindowListeningPlayer } from './ModalWindowListeningPlayer/ModalWindowListeningPlayer';
 
 export const EditTestsTable = (props) => {
   const dispatch = useDispatch();
@@ -104,14 +105,21 @@ export const EditTestsTable = (props) => {
     }
   };
 
-  const [open, setOpen] = React.useState(false);
+  const [openArchive, setOpenArchive] = React.useState(false);
+  const [openPlayer, setOpenPlayer] = React.useState(false);
+  const [playerQuestion, setPlayerQuestion] = React.useState(null);
   const [archiveId, setArchiveId] = useState(null);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleOpen = (type, question) => {
+    if (type === 'archivation') {
+      setOpenArchive(true);
+    } else if (type === 'player') {
+      setOpenPlayer(true);
+      setPlayerQuestion(question);
+    }
   };
 
-  const handleClose = (archiving) => {
+  const handleClose = (archiving, type) => {
     if (archiving) {
       if (props.status === 'UNARCHIVED') {
         dispatch(archiveQuestion(archiveId, false, props.level, props.module.toUpperCase(), props.status, props.page, props.rowsPerPage));
@@ -132,7 +140,13 @@ export const EditTestsTable = (props) => {
         }
       }
     }
-    setOpen(false);
+
+    if (type === 'archivation') {
+      setOpenArchive(false);
+    } else if (type === 'player') {
+      setOpenPlayer(false);
+      setPlayerQuestion(null);
+    }
   };
 
   return (
@@ -157,8 +171,8 @@ export const EditTestsTable = (props) => {
           : null
       }
       <Modal
-        open={open}
-        onClose={() => handleClose(false)}
+        open={openArchive}
+        onClose={() => handleClose(false, 'archivation')}
         BackdropComponent={Backdrop}
         aria-labelledby='simple-modal-title'
         aria-describedby='simple-modal-description'
@@ -167,6 +181,20 @@ export const EditTestsTable = (props) => {
         <Paper elevation={2}>
           <div className='modal-content'>
             <ModalWindowWarningArchive handleClose={handleClose} />
+          </div>
+        </Paper>
+      </Modal>
+      <Modal
+        open={openPlayer}
+        onClose={() => handleClose(false, 'player')}
+        BackdropComponent={Backdrop}
+        aria-labelledby='simple-modal-title'
+        aria-describedby='simple-modal-description'
+        className='modal'
+      >
+        <Paper elevation={2}>
+          <div className='modal-content'>
+            <ModalWindowListeningPlayer handleClose={handleClose} question={playerQuestion} />
           </div>
         </Paper>
       </Modal>
@@ -224,11 +252,13 @@ export const EditTestsTable = (props) => {
                           align='center'
                           scope='row'
                           size='small'
+                          onClick={() => {
+                            handleOpen('player', row);
+                          }}
                         >
                           <PlayCircleOutlineIcon className='icons-color-primary' />
                         </TableCell>
                       ) : null}
-
                       <TableCell align='left' size='small'> {row.questionBody ? row.questionBody : row.topic} </TableCell>
                       <TableCell align='center'>
                         <Button color='primary' variant='outlined' size='small' type='search'
@@ -245,12 +275,12 @@ export const EditTestsTable = (props) => {
                           ? <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: 'rgb(63, 159, 181)' }}
                             onClick={() => {
                               setArchiveId(row.id);
-                              handleOpen();
+                              handleOpen('archivation');
                             }} />}</TableCell>
                           : <TableCell align='center'>{<ArchiveOutlinedIcon className='archiveBtn' style={{ color: '#3f51b5' }}
                             onClick={() => {
                               setArchiveId(row.id);
-                              handleOpen();
+                              handleOpen('archivation');
                             }} />}</TableCell>
                       }
                     </TableRow>
