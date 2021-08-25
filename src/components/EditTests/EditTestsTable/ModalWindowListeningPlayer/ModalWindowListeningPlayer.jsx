@@ -51,7 +51,7 @@ export const ModalWindowListeningPlayer = ({ handleClose, question }) => {
         }
       </div>
       <div className='btn'>
-        <Button variant='contained' color='primary' onClick={() => handleClose(false, 'player')}><Trans>Cancel</Trans></Button>
+        <Button variant='contained' color='primary' onClick={() => handleClose(false, 'player')}><Trans>Close</Trans></Button>
       </div>
     </div>
   );  
