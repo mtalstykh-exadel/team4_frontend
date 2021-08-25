@@ -12,7 +12,7 @@ export const EditTests = () => {
   const [module, setModule] = useState(null);
   const [level, setLevel] = useState(null);
   const [questionId, setQuestionId] = useState(null);
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState('UNARCHIVED');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [count, setCount] = useState(rowsPerPage);
