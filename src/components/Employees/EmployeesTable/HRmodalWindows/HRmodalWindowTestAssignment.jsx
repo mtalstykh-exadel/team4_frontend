@@ -44,14 +44,14 @@ export const HRmodalWindowTestAssignment = (props) => {
           if (err.response.status === 409) {
             props.setOpenCantAssign();
           }}
-        );
-      dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage));
+        )
+        .finally(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)));
       props.handleClose();}}>
       <div className='assign-level'><Trans>You want to assign a test for {props.test.name}</Trans></div>
       <div className='level-selector-wrapper'>
         <p className='setting-label bold'><Trans>Select the test level:</Trans></p>
         <FormControl required variant='outlined' className='level-selector' size='small'>
-          <InputLabel id='test-level-selector-label' shrink={false}><Trans>Level</Trans></InputLabel>
+          <InputLabel id='test-level-selector-label'><Trans>{formik.values.date === '' && 'Level'}</Trans></InputLabel>
           <Select
             labelId='test-level-selector-label'
             label='Select the test level'
@@ -84,7 +84,7 @@ export const HRmodalWindowTestAssignment = (props) => {
         <div className='setting'>
           <p className='setting-label bold'><Trans>Priority:</Trans></p>
           <FormControl required variant='outlined' className='setting-select' size='small'>
-            <InputLabel id='select-label' shrink={false}>Priority</InputLabel>
+            <InputLabel id='select-label'>{formik.values.priority === '' && 'Priority'}</InputLabel>
             <Select labelId='select-label' label='Select priority' id='select' value={formik.values.priority} inputProps={{ name: 'priority'}}
               onChange={formik.handleChange}>
               {priority.map((item) => {
