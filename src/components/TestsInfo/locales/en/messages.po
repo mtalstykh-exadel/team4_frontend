@@ -12,6 +12,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/components/TestsInfo/ModalWindowTestCanceled/ModalWindowTestCanceled.jsx:28
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningDoubleOpeningTest.jsx:24
 #: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:24
 msgid "Close"
 msgstr "Close"
@@ -43,6 +44,10 @@ msgstr "View Results"
 #: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest.jsx:22
 msgid "You can't take the test anymore today."
 msgstr "You can't take the test anymore today."
+
+#: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningDoubleOpeningTest.jsx:22
+msgid "You can't take two tests at the same time!"
+msgstr "You can't take two tests at the same time!"
 
 #: src/components/TestsInfo/TestsData/TestsData.jsx:97
 msgid "{0}{1}"

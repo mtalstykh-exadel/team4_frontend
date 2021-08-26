@@ -17,7 +17,7 @@ export const ModalWindowWarningTemplate = (props) => {
       className='modal'>
       <div className='modal-content base-color user-modal'>
         <div className='banning-text'><Trans>{props.text[0]}{props.text[1]}</Trans></div>
-        <div className='btn'>
+        <div className='btn-warning-temlate'>
           <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close</Trans></Button>
         </div>
       </div>

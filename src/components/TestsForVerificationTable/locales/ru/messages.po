@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:223
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:228
 msgid "Audio not found"
 msgstr "Аудио не найдено"
 
@@ -20,36 +20,36 @@ msgstr "Аудио не найдено"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:204
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:238
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:209
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:243
 msgid "Comment"
 msgstr "Комментарий"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:172
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:171
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:153
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:188
 msgid "Error messages from the user:"
 msgstr "Сообщения об ошибках от пользователя:"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:278
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:283
 msgid "Essay"
 msgstr "Эссе"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:262
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:267
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:161
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:160
 msgid "Module"
 msgstr "Модуль"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:163
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:162
 msgid "Question ID"
 msgstr "ID вопроса"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:277
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:282
 msgid "Reported mistakes"
 msgstr "Сообщенные ошибки"
 
@@ -57,28 +57,32 @@ msgstr "Сообщенные ошибки"
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:295
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:300
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:279
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:284
 msgid "Speaking"
 msgstr "Говорение"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:306
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:311
 msgid "Submit"
 msgstr "Отправить"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:261
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:266
 msgid "Test ID"
 msgstr "ID теста"
+
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:189
+msgid "There are no reports from the user"
+msgstr "Нет сообщений от пользователя"
 
 #: src/components/TestsForVerificationTable/ModalWindowWarningPassingTest/ModalWindowWarningPassingTest.jsx:28
 msgid "This functionality will be available to you only after passing the test"
 msgstr "Данный функционал будет доступен вам только после прохождения теста"
 
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:191
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:215
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:196
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:220
 msgid "Topic"
 msgstr "Тема"
 
@@ -91,7 +95,7 @@ msgid "You have been deassigned from the test"
 msgstr "Вы были сняты с проверки теста"
 
 #: src/components/TestsForVerificationTable/Component/tableRowTest/TableRowTest.js:21
-#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:161
+#: src/components/TestsForVerificationTable/Component/TestsForVerificationModal.jsx:160
 msgid "{0}"
 msgstr "{0}"
 

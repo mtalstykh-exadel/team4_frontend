@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:65
+#: src/components/TestLevelSelector/TestLevelSelectorItem/TestLevelSelectorItem.js:88
 msgid "Take test"
 msgstr "Пройти тест"
 

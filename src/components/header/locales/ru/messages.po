@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:90
 msgid "A test for verification has been asigned to your name"
-msgstr ""
+msgstr "На ваше имя назначен тест на проверку"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:193
 msgid "Continue"
@@ -54,7 +54,7 @@ msgstr "Уровень: {0}"
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:93
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:135
 msgid "Level: {0},  Test ID: {1}"
-msgstr ""
+msgstr "Уровень: {0},  ID теста: {1}"
 
 #: src/components/header/logoutModal/logoutModal.js:22
 msgid "Log out of account?"
@@ -109,11 +109,11 @@ msgstr "Тест был отменен"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:171
 msgid "Time limit: {0} - {1}"
-msgstr ""
+msgstr "Срок: {0} - {1}"
 
 #: src/components/header/notificationsDropdown/notificationsDropdown.js:123
 msgid "Verify test"
-msgstr ""
+msgstr "Проверить тест"
 
 #: src/components/header/logoutModal/logoutModal.js:29
 msgid "Yes"

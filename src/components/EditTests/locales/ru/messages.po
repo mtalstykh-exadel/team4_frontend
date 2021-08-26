@@ -23,11 +23,15 @@ msgstr "Добавить тему"
 msgid "Archived"
 msgstr "Архивированные"
 
-#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:15
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:19
 msgid "Are you sure you want to archive this?"
 msgstr "Вы уверены, что хотите заархивировать это?"
 
 #: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:18
+msgid "Are you sure you want to dearchive this?"
+msgstr "Вы уверены, что хотите разархивировать это?"
+
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:24
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -88,7 +92,7 @@ msgstr "Статус"
 msgid "Topic:"
 msgstr "Тема: "
 
-#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:17
+#: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:23
 msgid "Yes"
 msgstr "Да"
 
