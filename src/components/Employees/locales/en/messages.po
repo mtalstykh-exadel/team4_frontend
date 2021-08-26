@@ -15,7 +15,7 @@ msgstr ""
 #~ msgid "Are you sure you want to be removed from your position?"
 #~ msgstr "Are you sure you want to be removed from your position?"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:107
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:103
 msgid "Assign"
 msgstr "Assign"
 
@@ -41,7 +41,7 @@ msgstr "Do you want to deassign?"
 msgid "Email: {0}"
 msgstr "Email: {0}"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:58
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:54
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:88
 msgid "Level"
 msgstr "Level"
@@ -55,18 +55,18 @@ msgid "No"
 msgstr "No"
 
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:91
-msgid "Priority"
-msgstr "Priority"
+#~ msgid "Priority"
+#~ msgstr "Priority"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:89
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:85
 msgid "Priority:"
 msgstr "Priority:"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:56
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:52
 msgid "Select the test level:"
 msgstr "Select the test level:"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:76
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:72
 msgid "Test deadline:"
 msgstr "Test deadline:"
 
@@ -86,7 +86,7 @@ msgstr "The test has already been deassigned"
 msgid "Yes"
 msgstr "Yes"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:54
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:50
 msgid "You want to assign a test for {0}"
 msgstr "You want to assign a test for {0}"
 
@@ -99,9 +99,9 @@ msgstr "You want to assign a test for {0}"
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
 
-#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:92
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:69
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:96
+#: src/components/Employees/EmployeesTable/EmployeesTable.jsx:97
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:65
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:92
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:101
 msgid "{0}{1}"
 msgstr "{0}"

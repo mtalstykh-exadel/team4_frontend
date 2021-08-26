@@ -11,15 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:140
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:165
 msgid "Add question"
 msgstr "Add question"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:142
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:167
 msgid "Add topic"
 msgstr "Add topic"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Archived"
 msgstr "Archived"
 
@@ -31,11 +31,15 @@ msgstr "Are you sure you want to archive this?"
 msgid "Cancel"
 msgstr "Cancel"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:227
+#: src/components/EditTests/EditTestsTable/ModalWindowListeningPlayer/ModalWindowListeningPlayer.jsx:54
+msgid "Close"
+msgstr "Close"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:268
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
 msgid "In field 'Question Id' must be a number"
 msgstr "In field 'Question Id' must be a number"
 
@@ -60,7 +64,7 @@ msgstr "Module"
 #~ msgid "None"
 #~ msgstr "None"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:98
 msgid "Not archived"
 msgstr "Not archived"
 
@@ -68,7 +72,7 @@ msgstr "Not archived"
 #~ msgid "Password"
 #~ msgstr "Password"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
 msgid "Question ID"
 msgstr "Question ID"
 
@@ -77,7 +81,7 @@ msgstr "Question ID"
 #~ msgid "Required field"
 #~ msgstr "Required field"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:252
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:293
 msgid "Rows per page:"
 msgstr "Rows per page:"
 
@@ -89,13 +93,17 @@ msgstr "Rows per page:"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Select the option at the top to see the questions."
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:228
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:269
 msgid "Show"
 msgstr "Show"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
 msgid "Status"
 msgstr "Status"
+
+#: src/components/EditTests/EditTestsTable/ModalWindowListeningPlayer/ModalWindowListeningPlayer.jsx:44
+msgid "Topic:"
+msgstr "Topic: "
 
 #: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:17
 msgid "Yes"
@@ -106,7 +114,7 @@ msgstr "Yes"
 #~ msgstr "Your email or password is incorrect. Please try again"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:35
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:175
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:190
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:214
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:229
 msgid "{0}{1}"
 msgstr "{0}"

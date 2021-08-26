@@ -16,7 +16,7 @@ msgstr ""
 msgid "Close"
 msgstr "Close"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:164
+#: src/components/TestsInfo/TestsData/TestsData.jsx:169
 msgid "Continue"
 msgstr "Continue"
 
@@ -28,7 +28,7 @@ msgstr "Continue"
 msgid "Level"
 msgstr "Level"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:143
+#: src/components/TestsInfo/TestsData/TestsData.jsx:146
 msgid "Take Test"
 msgstr "Take Test"
 
@@ -36,7 +36,7 @@ msgstr "Take Test"
 msgid "The test was canceled"
 msgstr "The test was canceled"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:150
+#: src/components/TestsInfo/TestsData/TestsData.jsx:155
 msgid "View Results"
 msgstr "View Results"
 
@@ -44,6 +44,6 @@ msgstr "View Results"
 msgid "You can't take the test anymore today."
 msgstr "You can't take the test anymore today."
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:94
+#: src/components/TestsInfo/TestsData/TestsData.jsx:97
 msgid "{0}{1}"
 msgstr "{0}"

@@ -89,13 +89,19 @@
 
     .error-messages {
       font-size: 16px;
-      margin: 20px 0 13px 40px;
+      margin: 20px 0 20px 40px;
     }
 
     .scroll-container {
       overflow-y: auto;
       overflow-x: hidden;
       scroll-behavior: smooth;
+
+      .goose-modal {
+        width: 40%;
+        margin-top: 10px;
+        margin-left: 29%;
+      }
 
       .module-name {
         margin: 13px 0 10px 39px;
@@ -259,6 +265,10 @@
       }
     }
 
+    .label-text span {
+      font-size: 12px;
+    }
+
     .tests-verification-modal-navigation {
       height: 30px;
       font-size: 10px;
@@ -270,12 +280,12 @@
     }
 
     .reported-mistake-wrapper {
-      .scroll-container {
-        height: 500px;
+      .edit-button-wrapper {
+        margin: 0 37px 0 130px;
+      }
 
-        .edit-button-wrapper {
-          margin: 0 37px 0 130px;
-        }
+      .error-messages {
+        margin-bottom: 50px;
       }
     }
 

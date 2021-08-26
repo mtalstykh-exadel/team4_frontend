@@ -20,6 +20,8 @@ import { getAudioFile } from '@api/get-audioFIle';
 import { submitTestGrades, saveTestGrades, saveReports } from '@api/testsForVerification-fetch';
 import { requestUnverifiedTests } from '@actions/unverifiedTestActions';
 
+import imageSrc from '@assets/images/goose.svg';
+
 export const TestsForVerificationModal = (props) => {
 
 
@@ -99,7 +101,8 @@ export const TestsForVerificationModal = (props) => {
               if (err.response.status === 409) {
                 props.handleOpen();
                 props.handleClose();
-              }});
+              }
+            });
         }
       });
   };
@@ -123,7 +126,8 @@ export const TestsForVerificationModal = (props) => {
     }) : newGrammar[index] = {
       comment: event.target.value,
       questionId: indexs,
-      testId: test.testId,};
+      testId: test.testId,
+    };
     setGrammar(newGrammar);
   };
 
@@ -148,42 +152,43 @@ export const TestsForVerificationModal = (props) => {
     [setUrl]
   );
 
+  const reportTxt = test.reportedQuestions.map((reportedQuestion, index) => {
+    let reportComment = grammar && grammar.find((x) => x.questionId === reportedQuestion.question.id);
+    reportComment = reportComment && reportComment.comment ? reportComment.comment : '';
+    return (
+      <div key={index}>
+        <div className='module-name'><Trans>Module</Trans> <Trans>{reportedQuestion.question.module}</Trans></div>
+        <div className='users-message'>{reportedQuestion.report}</div>
+        <div className='question-id'><Trans>Question ID</Trans> {reportedQuestion.question.id}</div>
+        <div className='question-context'>{reportedQuestion.question.questionBody}</div>
+        <div className='edit-button-wrapper'>
+          <Button
+            variant='outlined'
+            color='primary'
+            className='edit-button'
+            component={Link}
+            to='/edit-test-modules'
+          ><Trans>Edit</Trans></Button>
+        </div>
+        <TextField
+          label='Comment'
+          variant='outlined'
+          className='comment-section'
+          defaultValue={reportComment}
+          onChange={setGrammarReport(reportedQuestion.question.id)}
+          multiline
+          rows={3}
+        />
+      </div>
+    );
+  });
+
   const ReportedMistakesHTML =
     <div className='reported-mistake-wrapper'>
-      <div className='error-messages'><Trans>Error messages from the user:</Trans></div>
+      <div className='error-messages'>{reportTxt.length !== 0 ? <span><Trans>Error messages from the user:</Trans></span>
+        : <span className='report-text'><Trans>There are no reports from the user</Trans></span>}</div>
       <div className='scroll-container'>
-        {
-          test.reportedQuestions.map((reportedQuestion, index) => {
-            let reportComment = grammar && grammar.find((x) => x.questionId === reportedQuestion.question.id);
-            reportComment = reportComment && reportComment.comment ? reportComment.comment : '';
-            return (
-              <div key={index}>
-                <div className='module-name'><Trans>Module</Trans> <Trans>{reportedQuestion.question.module}</Trans></div>
-                <div className='users-message'>{reportedQuestion.report}</div>
-                <div className='question-id'><Trans>Question ID</Trans> {reportedQuestion.question.id}</div>
-                <div className='question-context'>{reportedQuestion.question.questionBody}</div>
-                <div className='edit-button-wrapper'>
-                  <Button
-                    variant='outlined'
-                    color='primary'
-                    className='edit-button'
-                    component={Link}
-                    to='/edit-test-modules'
-                  ><Trans>Edit</Trans></Button>
-                </div>
-                <TextField
-                  label='Comment'
-                  variant='outlined'
-                  className='comment-section'
-                  defaultValue={reportComment}
-                  onChange={setGrammarReport(reportedQuestion.question.id)}
-                  multiline
-                  rows={3}
-                />
-              </div>
-            );
-          })
-        }
+        {reportTxt.length !== 0 ? reportTxt : <img title='goose-img' alt='goose-img' src={imageSrc} className='goose-modal' />}
       </div>
     </div>;
   const EssayHTML =
@@ -262,7 +267,7 @@ export const TestsForVerificationModal = (props) => {
             <span><Trans>Level</Trans> {test.testLevel}</span>
           </div>
           <IconButton aria-label='close' onClick={props.handleClose} className='close-icon-wrapper'>
-            <CloseIcon className='icons-color'/>
+            <CloseIcon className='icons-color' />
           </IconButton>
         </div>
         <div className='test-verification-modal-tabs'>
@@ -274,9 +279,9 @@ export const TestsForVerificationModal = (props) => {
               textColor='primary'
               centered
             >
-              <Tab onClick={() => { setStep(0); }} label={<Trans>Reported mistakes</Trans>} />
-              <Tab onClick={() => { setStep(1); }} label={<Trans>Essay</Trans>} />
-              <Tab onClick={() => { setStep(2); }} label={<Trans>Speaking</Trans>} />
+              <Tab onClick={() => { setStep(0); }} label={<Trans>Reported mistakes</Trans>} className='label-text'/>
+              <Tab onClick={() => { setStep(1); }} label={<Trans>Essay</Trans>} className='label-text' />
+              <Tab onClick={() => { setStep(2); }} label={<Trans>Speaking</Trans>} className='label-text' />
             </Tabs>
           </Paper>
         </div>
