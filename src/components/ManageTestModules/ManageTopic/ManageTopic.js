@@ -8,7 +8,7 @@ export const ManageTopic = (props) => {
   const [moduleData, setModuleData] = useState(props.moduleData);
 
   const handleField = (event) => {
-    if (typeof(moduleData) === 'string') {
+    if (typeof (moduleData) === 'string') {
       setModuleData(event.target.value);
     } else {
       setModuleData(Object.assign({}, moduleData, {
@@ -24,9 +24,16 @@ export const ManageTopic = (props) => {
         module: props.module
       }));
     }
+
+    if (moduleData.answers) {
+      const newObj = moduleData;
+      delete newObj.answers;
+      setModuleData(newObj);
+    }
   }, []);
+
   useEffect(() => {
-    if (typeof(moduleData) === 'string' && moduleData) {
+    if (typeof (moduleData) === 'string' && moduleData) {
       props.handleReady(true);
     } else if (moduleData.questionBody) {
       props.handleReady(true);

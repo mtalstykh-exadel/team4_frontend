@@ -49,7 +49,7 @@ export const ManageTest = () => {
 
   return (
     <Layout>
-      {location === '/edit-test-modules' && !!question && <ManageModule dataType={ parsed.status === 'UNARCHIVED' ? false : true}
+      {location === '/edit-test-modules' && !!question && <ManageModule dataType={parsed.status === 'UNARCHIVED' ? false : true}
         sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
       {location === '/add-test-modules' && <ManageModule sendQuestionToEditOrAdd={sendQuestionToEditOrAdd} />}
     </Layout>

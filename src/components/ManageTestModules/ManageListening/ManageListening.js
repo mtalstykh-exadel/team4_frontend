@@ -28,21 +28,24 @@ export const ManageListening = (props) => {
   }, []);
 
   useEffect(
+
     async function () {
-      moduleData.url && setLoading(true);
-      setAudio(
-        await getAudioFile(moduleData.url).then((response) => {
-          return window.URL.createObjectURL(
-            new Blob([response.data], { type: 'audio/ogg' })
-          );
-        })
-          .catch((err) => {
-            if (err.response.status === 404) {
-              setAudio(null);
-            }
+      if (props.audioRequest) {
+        moduleData.url && setLoading(true);
+        setAudio(
+          await getAudioFile(moduleData.url).then((response) => {
+            return window.URL.createObjectURL(
+              new Blob([response.data], { type: 'audio/ogg' })
+            );
           })
-      );
-      setLoading(false);
+            .catch((err) => {
+              if (err.response.status === 404) {
+                setAudio(null);
+              }
+            })
+        );
+        setLoading(false);
+      }
     },
     [setAudio]
   );
@@ -130,5 +133,6 @@ ManageListening.propTypes = {
   moduleData: PropTypes.any,
   dataType: PropTypes.any,
   ready: PropTypes.any,
+  audioRequest: PropTypes.any,
   level: PropTypes.any
 };
