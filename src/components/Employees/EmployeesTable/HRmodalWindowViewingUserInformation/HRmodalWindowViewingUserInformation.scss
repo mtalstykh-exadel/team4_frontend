@@ -34,3 +34,10 @@
 .item {
   height: 35px;
 }
+
+@media only screen and (max-width: 800px) {
+  .modal-content .hr-modal-view-user-info {
+    width: 350px;
+    min-height: 400px;
+  }
+}
