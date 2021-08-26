@@ -11,7 +11,11 @@ import { changeAttempts } from '@api/post-attempts';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttempts }) => {
-  localStorage.setItem(testAudioAttempts, JSON.parse(localStorage.getItem(currentTest)).listeningAttempts);
+
+  if (JSON.parse(localStorage.getItem(currentTest))?.listeningAttempts){
+    localStorage.setItem(testAudioAttempts, JSON.parse(localStorage.getItem(currentTest)).listeningAttempts);
+  }
+
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
