@@ -83,7 +83,6 @@ export const Speaking = ({ task, testModule, level, testID, reportModule, setTes
                     createTimer({ domId: 'speaking-timer', seconds: 300 })
                   );
                   checkSpeakingTimerHandler();
-                  setTestDuration(Math.floor((testData.finishTime - moment()) / 1000));
                 }
               } else {
                 alert('please allow this page to use a microphone');
