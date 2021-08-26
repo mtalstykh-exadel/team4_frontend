@@ -184,6 +184,7 @@ export const ManageModule = (props) => {
               handleModule={setModuleData}
               handleReady={setReadyModules}
               handleAudio={setAudio}
+              audioRequest={location.pathname === '/edit-test-modules'}
               ready={ready}
               dataType={props.dataType}
               level={formik.values.level}
