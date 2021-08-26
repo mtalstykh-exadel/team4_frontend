@@ -54,7 +54,10 @@ export const TestLevelsSelectorItem = ({
             .catch((err) => {
               setLoading(false);
               if (err.response.status === 409) {
-                alert('Попытки закончились, приходите завтра');
+                alert('Вы не можете одновременно проходить 2 теста!');
+              }
+              if (err.response.status === 405) {
+                alert('Попытки закончились, приходите завтра!');
               }
             });
         }}
