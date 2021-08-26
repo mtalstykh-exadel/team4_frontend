@@ -40,7 +40,7 @@ export const EditTestsFilter = (props) => {
     if (!values.level) {
       dispatch(removeQuestionsList());
     }
-    if (values.level && values.module) {
+    if (values.level && values.module && !values.questionId) {
       if (values.module === 'Listening') {
         dispatch(requestListeningQuestionsList(values.level, values.status, props.page, props.rowsPerPage));
         handleCount(getListeningQuestionsList(values.level, values.status, props.page, props.rowsPerPage));
@@ -49,8 +49,9 @@ export const EditTestsFilter = (props) => {
         handleCount(getQuestionsList(values.level, values.module.toUpperCase(), values.status, props.page, props.rowsPerPage));
       }
     }
-    if (values.questionId && values.module) {
-      dispatch(requestQuestion(values.questionId));
+    if (values.questionId) {
+      dispatch(requestQuestion(values.questionId))
+        .then(() => props.setCount(0));
     }
     props.setStatus(values.status);
     props.setModule(values.module);
