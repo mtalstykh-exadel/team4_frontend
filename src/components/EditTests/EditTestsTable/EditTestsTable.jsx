@@ -180,7 +180,7 @@ export const EditTestsTable = (props) => {
       >
         <Paper elevation={2}>
           <div className='modal-content'>
-            <ModalWindowWarningArchive handleClose={handleClose} />
+            <ModalWindowWarningArchive handleClose={handleClose} status={props.status} />
           </div>
         </Paper>
       </Modal>
