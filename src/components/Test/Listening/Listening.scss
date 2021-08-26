@@ -24,4 +24,11 @@
   .step-description.grammar {
     display: none;
   }
+
+  @media only screen and (max-width: 800px) {
+    .audio {
+      width: 90%;
+      margin: 22px 5% 5px 5%;
+    }
+  }
 }
