@@ -39,8 +39,8 @@ export const TestLevelsSelectorItem = ({
 
   return (
     <div className='test-level-selector-item'>
-      <UserModalWindowBanningTest open={open} handleClose={handleClose} />;
-      <UserModalWindowBanningDoubleOpeningTest open={openModalDouble} handleClose={handleCloseModalDouble} />;
+      <UserModalWindowBanningTest open={open} handleClose={handleClose} />
+      <UserModalWindowBanningDoubleOpeningTest open={openModalDouble} handleClose={handleCloseModalDouble} />
       <div className='title'>
         {localStorage.getItem(userLanguageKey) === language_english
           ? titleEN
