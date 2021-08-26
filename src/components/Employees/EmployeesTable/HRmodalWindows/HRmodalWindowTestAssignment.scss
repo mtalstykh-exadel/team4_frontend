@@ -1,5 +1,5 @@
 .hr-modal {
-  min-width: 500px;
+  width: 500px;
   min-height: 268px;
 
   .close-icon-wrapper {
@@ -73,5 +73,21 @@
   .assign-button {
     display: flex;
     margin: 20px 5px 0 auto;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .modal-content .hr-modal {
+    width: 350px;
+
+    .close-icon-wrapper {
+      .MuiIconButton-root {
+        height: 15px;
+      }
+    }
+
+    .setting {
+      margin-left: 2px;
+    }
   }
 }
