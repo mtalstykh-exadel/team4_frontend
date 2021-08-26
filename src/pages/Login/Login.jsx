@@ -9,10 +9,10 @@ import { redirectTo } from '@constants/localStorageConstants';
 const Login = () => {
   const auth = useSelector((state) => state.auth.isAuth);
   if (auth) {
-    if (localStorage.getItem(redirectTo)) {
-      window.location.href = localStorage.getItem(redirectTo);
+    if (sessionStorage.getItem(redirectTo)) {
+      window.location.href = sessionStorage.getItem(redirectTo);
       setTimeout(() => {
-        localStorage.removeItem(redirectTo);
+        sessionStorage.removeItem(redirectTo);
       }, 0);
     } else {
       return <Redirect to='/' />;

@@ -21,12 +21,12 @@ import { redirectTo, currentTest } from '@constants/localStorageConstants';
 const App = () => {
   const dispatch = useDispatch();
   dispatch(initApp());
-  if (useRedirectHook().get('redirect')) {
-    localStorage.setItem(redirectTo, window.location.href.toString());
-  }
 
-  if (useRedirectHook().get('id')) {
-    localStorage.setItem(currentTest, JSON.stringify({id: useRedirectHook().get('id')}));
+  if (useRedirectHook().get('redirect')) {
+    if (useRedirectHook().get('id')) {
+      localStorage.setItem(currentTest, JSON.stringify({id: useRedirectHook().get('id')}));
+    }
+    sessionStorage.setItem(redirectTo, window.location.href.toString());
   }
 
   return (
