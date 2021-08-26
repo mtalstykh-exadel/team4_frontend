@@ -84,6 +84,7 @@ export const Test = () => {
       testModule={testSpeakingAnswers}
       reportModule={reportAMistakeSpeaking}
       level={level}
+      setTestDuration={setTestDurationInSeconds}
       testID={testID}
     />,
   ];

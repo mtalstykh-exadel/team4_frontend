@@ -1,3 +1,4 @@
+import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { offRecAudio, onRecAudio, saveBlobUrl } from '@services/voice-recorder';
 import { startTimer, createTimer, stopTimer } from '@services/timer';
@@ -8,8 +9,10 @@ import { Trans } from '@lingui/macro';
 import PropTypes from 'prop-types';
 import './Speaking.scss';
 import { Modal } from '@material-ui/core';
+import { currentTest } from '@constants/localStorageConstants';
 
-export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
+export const Speaking = ({ task, testModule, level, testID, reportModule, setTestDuration }) => {
+  const testData = JSON.parse(localStorage.getItem(currentTest));
   const [audioDuration, setAudioDuration] = useState(0);
   const [invisible, setInvisible] = useState('off');
   const [blobURL, setBlobURL] = useState('');
@@ -72,6 +75,7 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
                     testModule,
                     duration: stopTimer('speaking-timer'),
                   });
+                  setTestDuration(Math.floor((testData.finishTime - moment()) / 1000));
                 } else {
                   setInvisible('on');
                   onRecAudio();
@@ -79,6 +83,7 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
                     createTimer({ domId: 'speaking-timer', seconds: 300 })
                   );
                   checkSpeakingTimerHandler();
+                  setTestDuration(Math.floor((testData.finishTime - moment()) / 1000));
                 }
               } else {
                 alert('please allow this page to use a microphone');
@@ -129,4 +134,5 @@ Speaking.propTypes = {
   level: PropTypes.string,
   testID: PropTypes.number,
   reportModule: PropTypes.string,
+  setTestDuration: PropTypes.func
 };
