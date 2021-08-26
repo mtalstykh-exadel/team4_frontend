@@ -57,7 +57,7 @@ export const ModalWindowListeningPlayer = ({ handleClose, question }) => {
   );  
 };
 
-ModalWindowListeningPlayer.propTypes =
+ModalWindowListeningPlayer.propTypes = 
 {
   handleClose: PropTypes.func,
   question: PropTypes.any
