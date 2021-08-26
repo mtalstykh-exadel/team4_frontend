@@ -74,7 +74,6 @@ export const ManageGrammar = (props) => {
         fullWidth
         disabled={props.dataType}
         onChange={handleSentence}
-        id='outlined-required'
         name='questionName'
         placeholder={`${props.questionIndex ? props.questionIndex + '.' : ''} Question`}
         value={question.questionBody}

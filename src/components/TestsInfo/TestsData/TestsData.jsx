@@ -160,10 +160,10 @@ const TestsData = (props) => {
                                   setLoading(row.testId);
                                   getTest(row.testId)
                                     .then((response) => {
-                                      localStorage.setItem(testAudioAttempts, 1);
                                       localStorage.setItem(currentTest, JSON.stringify(response));
                                       history.push('/test');
                                       setLoading(null);
+                                      localStorage.setItem(testAudioAttempts, JSON.parse(localStorage.getItem(currentTest)).listeningAttempts);
                                     });
                                 }} >
                                 <Trans>Continue</Trans>

@@ -6,10 +6,12 @@ import PauseIcon from '@material-ui/icons/Pause';
 import { CircularProgress } from '@material-ui/core';
 import getBlobDuration from 'get-blob-duration';
 import PropTypes from 'prop-types';
-import { testAudioAttempts } from '@constants/localStorageConstants';
+import { testAudioAttempts, currentTest } from '@constants/localStorageConstants';
+import { changeAttempts } from '@api/post-attempts';
 import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttempts }) => {
+  localStorage.setItem(testAudioAttempts, JSON.parse(localStorage.getItem(currentTest)).listeningAttempts);
   const [showVolumeChanger, setShowVolumeChanger] = useState(false);
   const [progressPercent, setProgressPercent] = useState(0);
   const [localeDuration, setLocaleDuration] = useState(0);
@@ -45,9 +47,14 @@ export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttem
         document.getElementById('player-listening') &&
         parseInt(localStorage.getItem(testAudioAttempts), 16) > 0
       ) {
-        AudioStart();
-        attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
-        onChangeAttempts(attempts);
+        changeAttempts(JSON.parse(localStorage.getItem(currentTest)).id).then(() => {
+          attempts = parseInt(localStorage.getItem(testAudioAttempts), 16) - 1;
+          onChangeAttempts(attempts);
+          AudioStart();
+        }).catch(() => {
+          onChangeAttempts(0);
+          localStorage.setItem(testAudioAttempts,0);
+        });
       } else {
         AudioStart();
       }
