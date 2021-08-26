@@ -48,7 +48,7 @@ const UserNavigation = (props) => {
             component={Link}
             to='/edit-tests'
           >
-            <Trans>Edit tests</Trans>
+            <Trans>Edit questions</Trans>
           </Button>
         </>
       )}
