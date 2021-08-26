@@ -19,7 +19,7 @@ import { ModalWindowWarningTemplate } from './ModalWindowTemplate/ModalWindowWar
 import { language_russian } from '@constants/languageConstants';
 import { getUnverifiedTests } from '@api/unverifiedTests-fetch';
 
-const AdminDistribution = (props) => {
+const AdminDistribution = () => {
 
   const dispatch = useDispatch();
 
@@ -32,10 +32,6 @@ const AdminDistribution = (props) => {
   ];
 
   const rows = useSelector((state) => state.admin.testsList);
-
-  const filteredRows = rows.filter((r) =>
-    props.filter ? r.level === props.filter : r
-  );
 
   let keysForColumns = 1;
   let keysForOptions = 1;
@@ -72,16 +68,18 @@ const AdminDistribution = (props) => {
   }
 
   const handleChangePage = (event, newPage) => {
-    dispatch(requestQuestionsList(newPage, rowsPerPage));
+    dispatch(requestQuestionsList(newPage, rowsPerPage))
+      .then((response) => handleChangeDeassignTest(response.testsList));
     if ( newPage > page) {
       handleCount(newPage);
     }
     window.scrollTo(0, 0);
     setPage(newPage);
-    setTimeout(() => {
-      handleChangeDeassignTest(rows);
-    }, 0);
   };
+
+
+  useEffect(() => dispatch(requestQuestionsList(page, rowsPerPage))
+    .then((response) => handleChangeDeassignTest(response.testsList)), []);
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
@@ -122,15 +120,7 @@ const AdminDistribution = (props) => {
     });
   };
 
-  useEffect(() => {
-    dispatch(requestQuestionsList(page, rowsPerPage));
-  }, []);
-
   if (role !== 'ROLE_ADMIN') return <Redirect to='/' />;
-
-  setTimeout(() => {
-    handleChangeDeassignTest(rows);
-  }, 0);
 
   return (
     <Layout pageWrapperClass='AdminDistribution'>
@@ -155,7 +145,7 @@ const AdminDistribution = (props) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {filteredRows
+              {rows
                 .map((row) => {
                   return (
                     <TableRow hover role='checkbox' tabIndex={-1} key={row.testId} >
