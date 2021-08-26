@@ -11,11 +11,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:91
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:90
 msgid "A test for verification has been asigned to your name"
 msgstr ""
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:194
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:193
 msgid "Continue"
 msgstr "Продолжить"
 
@@ -24,7 +24,7 @@ msgstr "Продолжить"
 msgid "Dark mode"
 msgstr "Темный фон"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:49
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:47
 msgid "Deadline:"
 msgstr "Срок сдачи: "
 
@@ -45,13 +45,14 @@ msgstr "Работники"
 msgid "English"
 msgstr "Английский"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:46
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:169
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:44
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:146
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:168
 msgid "Level: {0}"
 msgstr "Уровень: {0}"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:94
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:136
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:93
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:135
 msgid "Level: {0},  Test ID: {1}"
 msgstr ""
 
@@ -68,7 +69,7 @@ msgstr "Выход"
 msgid "No"
 msgstr "Нет"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:97
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:96
 msgid "Priority:"
 msgstr "Приоритет: "
 
@@ -86,7 +87,7 @@ msgstr "Русский"
 #~ msgid "See More"
 #~ msgstr "Посмотреть больше"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:158
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:157
 msgid "See Results"
 msgstr "Смотреть результаты"
 
@@ -94,7 +95,7 @@ msgstr "Смотреть результаты"
 #~ msgid "Statistics"
 #~ msgstr "Статистика"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:82
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:81
 msgid "Take test"
 msgstr "Пройти тест"
 
@@ -102,15 +103,15 @@ msgstr "Пройти тест"
 msgid "Tests for verification"
 msgstr "Тесты на проверку"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:203
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:202
 msgid "The test was deassigned"
 msgstr "Тест был отменен"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:172
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:171
 msgid "Time limit: {0} - {1}"
 msgstr ""
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:124
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:123
 msgid "Verify test"
 msgstr ""
 
@@ -118,22 +119,22 @@ msgstr ""
 msgid "Yes"
 msgstr "Да"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:133
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:132
 msgid "You have been deassigned from verification of test"
 msgstr "Вы были отстранены от проверки теста"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:166
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:165
 msgid "You have test in progress"
 msgstr "У вас идет тестирование"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:43
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:41
 msgid "notificationTestAsigned"
 msgstr "Тест на определение уровня знания английского языка был опрделен на ваше имя"
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:144
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:143
 msgid "notificationTestChecked"
 msgstr "Ваш тест по английскому языку был проверен."
 
-#: src/components/header/notificationsDropdown/notificationsDropdown.js:211
+#: src/components/header/notificationsDropdown/notificationsDropdown.js:210
 msgid "notificationsEmpty"
 msgstr "Оповещения отсутсвуют"

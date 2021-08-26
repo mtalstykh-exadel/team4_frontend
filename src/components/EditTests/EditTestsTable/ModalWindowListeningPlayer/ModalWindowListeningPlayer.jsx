@@ -40,8 +40,8 @@ export const ModalWindowListeningPlayer = ({ handleClose, question }) => {
   );
 
   return (
-    <div className='modal-warning-archive'>
-      <div className='text font-primary'><Trans>{question.topic}</Trans></div>
+    <div className='modal-warning-archive-wrapper'>
+      <div className='text font-primary'><Trans>Topic: </Trans>{question.topic}</div>
       <div className='player-modal'>
         {
           audioUrl
@@ -51,10 +51,10 @@ export const ModalWindowListeningPlayer = ({ handleClose, question }) => {
         }
       </div>
       <div className='btn'>
-        <Button variant='contained' color='primary' onClick={() => handleClose(false, 'player')}><Trans>Close</Trans></Button>
+        <Button variant='contained' color='primary' onClick={() => handleClose(false, 'player')} className='button-standard'><Trans>Close</Trans></Button>
       </div>
     </div>
-  );  
+  );
 };
 
 ModalWindowListeningPlayer.propTypes =

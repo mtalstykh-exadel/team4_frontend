@@ -11,15 +11,15 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:140
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:165
 msgid "Add question"
 msgstr "Добавить вопрос"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:142
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:167
 msgid "Add topic"
 msgstr "Добавить тему"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Archived"
 msgstr "Архивированные"
 
@@ -31,11 +31,15 @@ msgstr "Вы уверены, что хотите заархивировать э
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:227
+#: src/components/EditTests/EditTestsTable/ModalWindowListeningPlayer/ModalWindowListeningPlayer.jsx:54
+msgid "Close"
+msgstr "Закрыть"
+
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:268
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
 msgid "In field 'Question Id' must be a number"
 msgstr "Поле 'ID Вопроса' должно содердать число"
 
@@ -52,15 +56,15 @@ msgstr "Модуль"
 #~ msgid "None"
 #~ msgstr "Любое"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:98
 msgid "Not archived"
 msgstr "Не архивированные"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
 msgid "Question ID"
 msgstr "ID Вопроса"
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:252
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:293
 msgid "Rows per page:"
 msgstr "Строк на странице:"
 
@@ -72,7 +76,7 @@ msgstr "Строк на странице:"
 #~ msgid "Select the option at the top to see the questions."
 #~ msgstr "Выберите опцию вверху, чтобы увидеть вопросы."
 
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:228
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:269
 msgid "Show"
 msgstr "Показать"
 
@@ -80,12 +84,16 @@ msgstr "Показать"
 msgid "Status"
 msgstr "Статус"
 
+#: src/components/EditTests/EditTestsTable/ModalWindowListeningPlayer/ModalWindowListeningPlayer.jsx:44
+msgid "Topic:"
+msgstr "Тема: "
+
 #: src/components/EditTests/EditTestsTable/ModalWindowWarningArchive/ModalWindowWarningArchive.jsx:17
 msgid "Yes"
 msgstr "Да"
 
 #: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:35
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:175
-#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:190
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:214
+#: src/components/EditTests/EditTestsTable/EditTestsTable.jsx:229
 msgid "{0}{1}"
 msgstr "{1}"

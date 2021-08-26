@@ -11,27 +11,27 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#: src/components/ManageTestModules/ManageTestModules.js:169
+#: src/components/ManageTestModules/ManageTestModules.js:209
 msgid "'Add topic for an Essay'"
 msgstr "Добавьте тему на Сочинение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:154
+#: src/components/ManageTestModules/ManageTestModules.js:194
 msgid "'Add topic for an Speaking'"
 msgstr "Добавьте тему на Говорение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:171
+#: src/components/ManageTestModules/ManageTestModules.js:211
 msgid "'Edit topic for an Essay'"
 msgstr "Отредактируйте тему на Сочинение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:156
+#: src/components/ManageTestModules/ManageTestModules.js:196
 msgid "'Edit topic for an Speaking'"
 msgstr "Отредактируйте тему на Говорение"
 
-#: src/components/ManageTestModules/ManageTestModules.js:170
+#: src/components/ManageTestModules/ManageTestModules.js:210
 msgid "'Topic for an Essay'"
 msgstr "Тема для Эссе"
 
-#: src/components/ManageTestModules/ManageTestModules.js:155
+#: src/components/ManageTestModules/ManageTestModules.js:195
 msgid "'Topic for an Speaking'"
 msgstr "Тема для Говорения"
 
@@ -43,7 +43,7 @@ msgstr "Отредактируйте тему на Аудирование"
 #~ msgid "Answer"
 #~ msgstr "Ответ"
 
-#: src/components/ManageTestModules/ManageTestModules.js:189
+#: src/components/ManageTestModules/ManageTestModules.js:229
 msgid "Back"
 msgstr "Назад"
 
@@ -51,19 +51,19 @@ msgstr "Назад"
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/components/ManageTestModules/ManageTestModules.js:125
+#: src/components/ManageTestModules/ManageTestModules.js:165
 msgid "Level:"
 msgstr "Уровень:"
 
-#: src/components/ManageTestModules/ManageTestModules.js:126
+#: src/components/ManageTestModules/ManageTestModules.js:166
 msgid "Module:"
 msgstr "Модуль:"
 
-#: src/components/ManageTestModules/ManageTestModules.js:127
+#: src/components/ManageTestModules/ManageTestModules.js:167
 msgid "Question-ID:"
 msgstr "ID вопроса"
 
-#: src/components/ManageTestModules/ManageTestModules.js:206
+#: src/components/ManageTestModules/ManageTestModules.js:245
 msgid "Save"
 msgstr "Сохранить"
 
@@ -87,8 +87,8 @@ msgstr "Загрузите аудио файл для аудирования"
 #~ msgid "msgid {0}{1}"
 #~ msgstr "msgstr {1}"
 
-#: src/components/ManageTestModules/ManageTestModules.js:159
-#: src/components/ManageTestModules/ManageTestModules.js:162
+#: src/components/ManageTestModules/ManageTestModules.js:199
+#: src/components/ManageTestModules/ManageTestModules.js:202
 msgid "{0}"
 msgstr "{0}"
 
