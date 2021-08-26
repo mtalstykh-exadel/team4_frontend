@@ -80,6 +80,12 @@
   .modal-content .hr-modal {
     width: 350px;
 
+    .close-icon-wrapper {
+      .MuiIconButton-root {
+        height: 15px;
+      }
+    }
+
     .setting {
       margin-left: 2px;
     }
