@@ -20,7 +20,7 @@ export const UserModalWindowBanningTest = (props) => {
       className='modal'>
       <div className='modal-content base-color user-modal'>
         <div className='banning-text'><Trans>You can't take the test anymore today.</Trans></div>
-        <div className='btn'>
+        <div className='btn-modal-banning'>
           <Button variant='outlined' color='primary' onClick={props.handleClose} className='button-standard'><Trans>Close</Trans></Button>
         </div>
       </div>

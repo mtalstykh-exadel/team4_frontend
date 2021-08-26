@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/pages/AdminDistribution/ModalWindowTemplate/ModalWindowWarningTemplate.js:21
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/pages/AdminDistribution/AdminDistribution.jsx:149
 #: src/pages/AdminDistribution/ModalWindowTemplate/ModalWindowWarningTemplate.js:19

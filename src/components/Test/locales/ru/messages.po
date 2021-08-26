@@ -39,11 +39,11 @@ msgstr ""
 #~ msgid "Enter your report"
 #~ msgstr "Введите сообщение"
 
-#: src/pages/Test/Test.jsx:156
+#: src/pages/Test/Test.jsx:157
 msgid "Essay"
 msgstr "Эссе"
 
-#: src/pages/Test/Test.jsx:134
+#: src/pages/Test/Test.jsx:135
 msgid "Grammar"
 msgstr "Грамматика"
 
@@ -55,7 +55,7 @@ msgstr "Грамматика"
 #~ msgid "Listen and choose an answer option"
 #~ msgstr "Послушайте и выберите вариант ответа"
 
-#: src/pages/Test/Test.jsx:145
+#: src/pages/Test/Test.jsx:146
 msgid "Listening"
 msgstr "Аудирование"
 
@@ -63,11 +63,11 @@ msgstr "Аудирование"
 #~ msgid "Module"
 #~ msgstr "Модуль"
 
-#: src/pages/Test/Test.jsx:214
+#: src/pages/Test/Test.jsx:215
 msgid "Next"
 msgstr "Следующий"
 
-#: src/pages/Test/Test.jsx:194
+#: src/pages/Test/Test.jsx:195
 msgid "Previous"
 msgstr "Предыдущий"
 
@@ -83,11 +83,11 @@ msgstr "Предыдущий"
 #~ msgid "Select a question to report"
 #~ msgstr "Выберите вопрос"
 
-#: src/pages/Test/Test.jsx:167
+#: src/pages/Test/Test.jsx:168
 msgid "Speaking"
 msgstr "Говорение"
 
-#: src/pages/Test/Test.jsx:224
+#: src/pages/Test/Test.jsx:225
 msgid "Submit test"
 msgstr "Завершить тест"
 
