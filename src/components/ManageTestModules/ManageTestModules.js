@@ -109,21 +109,23 @@ export const ManageModule = (props) => {
   };
 
   useEffect(() => {
-    history.push({
-      pathname: 'add-test-modules',
-      search: queryString.stringify({
-        level: formik.values.level,
-        module: formik.values.module,
-      }),
-    });
+    if (history.location.pathname === 'add-test-modules') {
+      history.push({
+        pathname: 'add-test-modules',
+        search: queryString.stringify({
+          level: formik.values.level,
+          module: formik.values.module,
+        }),
+      });
 
-    const parsed = queryString.parse(history.location.search.substr(1));
-    if (!parsed.level) {
-      setReady(false);
-    } else if (parsed.level && parsed.module === 'Listening' && audio) {
-      sorting();
-    } else {
-      setReady(true);
+      const parsed = queryString.parse(history.location.search.substr(1));
+      if (!parsed.level) {
+        setReady(false);
+      } else if (parsed.level && parsed.module === 'Listening' && audio) {
+        sorting();
+      } else {
+        setReady(true);
+      }
     }
   }, [formik.values]);
 
@@ -175,7 +177,7 @@ export const ManageModule = (props) => {
               handleReady={setReadyModules}
               level={formik.values.level}
               dataType={props.dataType}
-              moduleData={location.pathname === '/add-test-modules' ? {...questionModuleData} : question} />
+              moduleData={location.pathname === '/add-test-modules' ? { ...questionModuleData } : question} />
             : null}
           {formik.values.module === 'Listening' ?
             <ManageListening
