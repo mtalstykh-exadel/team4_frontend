@@ -12,7 +12,7 @@ import './Player.scss';
 
 export const Player = ({ src, audioDuration, id, speaking = false, onChangeAttempts }) => {
 
-  if (JSON.parse(localStorage.getItem(currentTest)).listeningAttempts){
+  if (JSON.parse(localStorage.getItem(currentTest))?.listeningAttempts){
     localStorage.setItem(testAudioAttempts, JSON.parse(localStorage.getItem(currentTest)).listeningAttempts);
   }
 
