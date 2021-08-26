@@ -109,7 +109,7 @@ export const ManageModule = (props) => {
   };
 
   useEffect(() => {
-    if (history.location.pathname === 'add-test-modules') {
+    if (history.location.pathname === '/add-test-modules') {
       history.push({
         pathname: 'add-test-modules',
         search: queryString.stringify({
@@ -243,7 +243,8 @@ export const ManageModule = (props) => {
               variant='contained'
               type='submit'
               value='submit'
-              disabled={props.dataType ? props.dataType : !(ready && readyModules)}>
+              disabled={props.dataType ? props.dataType : history.location.pathname === '/add-test-modules' 
+              ? !(ready && readyModules) : parsed.module === 'Listening' ? !(ready && readyModules) : !readyModules}>
               <Trans>Save</Trans>
             </Button> : null}
         </div>
