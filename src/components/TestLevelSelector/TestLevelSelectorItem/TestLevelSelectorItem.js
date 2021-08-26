@@ -8,6 +8,8 @@ import { language_english } from '@constants/languageConstants';
 import { testAudioAttempts, userLanguageKey, currentTest, testGrammarUserAnswers, testEassyUserAnswers, testListeningUserAnswers, testSpeakingAnswers } from '../../../constants/localStorageConstants';
 import { Trans } from '@lingui/macro';
 import { CircularProgress } from '@material-ui/core';
+import { UserModalWindowBanningTest } from '../../TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningOfPassingTest';
+import { UserModalWindowBanningDoubleOpeningTest } from '../../TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningDoubleOpeningTest';
 
 export const TestLevelsSelectorItem = ({
   titleEN,
@@ -19,8 +21,26 @@ export const TestLevelsSelectorItem = ({
   const history = useHistory();
   const [loading, setLoading] = useState(false);
 
+  const [open, setOpen] = useState(false);
+  const [openModalDouble, setOpenModalDouble] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpenModalDouble = () => {
+    setOpenModalDouble(true);
+  };
+  const handleCloseModalDouble = () => {
+    setOpenModalDouble(false);
+  };
+
   return (
     <div className='test-level-selector-item'>
+      <UserModalWindowBanningTest open={open} handleClose={handleClose} />;
+      <UserModalWindowBanningDoubleOpeningTest open={openModalDouble} handleClose={handleCloseModalDouble} />;
       <div className='title'>
         {localStorage.getItem(userLanguageKey) === language_english
           ? titleEN
@@ -54,10 +74,10 @@ export const TestLevelsSelectorItem = ({
             .catch((err) => {
               setLoading(false);
               if (err.response.status === 409) {
-                alert('Вы не можете одновременно проходить 2 теста!');
+                handleOpenModalDouble();
               }
               if (err.response.status === 405) {
-                alert('Попытки закончились, приходите завтра!');
+                handleOpen();
               }
             });
         }}
