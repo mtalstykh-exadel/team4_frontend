@@ -104,3 +104,9 @@
   padding-bottom: 5px;
   text-align: center;
 }
+
+@media only screen and (max-width: 800px) {
+  .step-description {
+    font-size: 14px;
+  }
+}

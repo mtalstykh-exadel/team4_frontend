@@ -47,4 +47,11 @@
   .report-mistake:hover {
     text-decoration: underline;
   }
+
+  @media only screen and (max-width: 800px) {
+    .player-speaking {
+      width: 90%;
+      margin: 0 5%;
+    }
+  }
 }
