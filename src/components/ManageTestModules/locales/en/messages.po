@@ -53,15 +53,15 @@ msgstr "Close"
 
 #: src/components/ManageTestModules/ManageTestModules.js:167
 msgid "Level:"
-msgstr "Level:"
+msgstr "Level: "
 
 #: src/components/ManageTestModules/ManageTestModules.js:168
 msgid "Module:"
-msgstr "Module:"
+msgstr "Module: "
 
 #: src/components/ManageTestModules/ManageTestModules.js:169
 msgid "Question-ID:"
-msgstr "Question-ID:"
+msgstr "Question-ID: "
 
 #: src/components/ManageTestModules/ManageTestModules.js:249
 msgid "Save"
