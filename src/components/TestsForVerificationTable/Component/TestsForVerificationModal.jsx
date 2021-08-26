@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
 import '@globalStyles/modal.scss';
@@ -12,7 +13,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import { CircularProgress } from '@material-ui/core';
 
 import { Player } from '../../index';
-import { Link } from 'react-router-dom';
 import { Trans } from '@lingui/macro';
 
 import { getAudioFile } from '@api/get-audioFIle';
@@ -22,16 +22,18 @@ import { requestUnverifiedTests } from '@actions/unverifiedTestActions';
 
 import imageSrc from '@assets/images/goose.svg';
 
+import * as queryString from 'querystring';
+
 export const TestsForVerificationModal = (props) => {
 
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const dispatch = useDispatch();
 
   const test = useSelector((state) => state.unverifiedTest.test);
   const grades = useSelector((state) => state.unverifiedTest.grades);
@@ -166,8 +168,17 @@ export const TestsForVerificationModal = (props) => {
             variant='outlined'
             color='primary'
             className='edit-button'
-            component={Link}
-            to='/edit-test-modules'
+            onClick={() =>
+              history.push({
+                pathname: '/edit-test-modules',
+                search: queryString.stringify({
+                  id: reportedQuestion.question.id,
+                  level: reportedQuestion.question.level,
+                  module: reportedQuestion.question.module,
+                  status: 'UNARCHIVED'
+                }),
+              })
+            }
           ><Trans>Edit</Trans></Button>
         </div>
         <TextField
