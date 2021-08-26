@@ -107,7 +107,7 @@ const TestsData = (props) => {
                     <TableCell size='medium' align='center'>{row.level}</TableCell>
                     <TableCell size='medium' align='center'>{formatDate(row.assigned)}</TableCell>
                     <TableCell size='medium' align='center'>{formatDate(row.deadline)}</TableCell>
-                    <TableCell size='medium' align='center'>{formatDate(row.verified)}</TableCell>
+                    <TableCell size='medium' align='center'>{row.status === 'VERIFIED' && formatDate(row.verified)}</TableCell>
                     <TableCell size='medium' align='center'>{row.status}</TableCell>
                     <TableCell size='medium' align='center'>{row.totalScore}</TableCell>
                     <TableCell size='medium' align='center'>

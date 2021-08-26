@@ -64,7 +64,12 @@ export const EmployeesTable = (props) => {
 
   const handleDeassign = (test) => {
     return deassignTest(test.assignedTest.testId)
-      .then(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)));
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setOpenDeassigned(true);
+        }
+      })
+      .finally(() => dispatch(requestEmployeesList(props.userName, props.page, props.rowsPerPage)));
   };
 
   const handleAssign = (test) => {
