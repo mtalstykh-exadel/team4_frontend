@@ -49,7 +49,7 @@ const Notifications = (props) => {
       <Button
         color='primary'
         variant='contained'
-        disabled={loading}
+        disabled={Boolean(loading)}
         className='notifications-takeTestBtn button-standard'
         onClick={() => {
           setLoading(true);
@@ -101,7 +101,7 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-takeTestBtn button-standard'
-        disabled={loading}
+        disabled={Boolean(loading)}
         onClick={() => {
           setLoading(item.id);
           dispatch(requestUnverifiedTests(0, 10))
@@ -175,7 +175,7 @@ const Notifications = (props) => {
         color='primary'
         variant='contained'
         className='notifications-seemoreBtn button-standard'
-        disabled={loading}
+        disabled={Boolean(loading)}
         onClick={() => {
           setLoading(item.id);
           getTest(item.testId)
