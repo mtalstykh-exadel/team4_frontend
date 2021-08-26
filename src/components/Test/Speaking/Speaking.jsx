@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { offRecAudio, onRecAudio, saveBlobUrl } from '@services/voice-recorder';
 import { startTimer, createTimer, stopTimer } from '@services/timer';
-import MicOffIcon from '@material-ui/icons/MicOff';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import MicIcon from '@material-ui/icons/Mic';
 import { Player, ReportAMistakeModal } from '../../index';
 import { Trans } from '@lingui/macro';
@@ -57,7 +57,7 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
         className={
           invisible === 'off'
             ? 'microphone base-color-primary'
-            : 'microphone base-color-error'
+            : 'microphone wave'
         }
         onClick={() => {
           navigator.permissions
@@ -87,9 +87,9 @@ export const Speaking = ({ task, testModule, level, testID, reportModule }) => {
         }}
       >
         {invisible === 'off' ? (
-          <MicIcon alt='microOn' className='microphone-item' />
+          <MicIcon alt='microOff' className='microphone-item' />
         ) : (
-          <MicOffIcon alt='microOff' className='microphone-item' />
+          <FiberManualRecordIcon alt='microOn' className='microphone-item' />
         )}
       </div>
       <div className='player-speaking'>
