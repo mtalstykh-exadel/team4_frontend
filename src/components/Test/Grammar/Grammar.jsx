@@ -88,10 +88,6 @@ export const Grammar = ({
     return (
       <div key={questionCount} className='grammar-step'>
         <div className='test-question'>
-          <span className='test-question number'>{questionCount}. </span>
-          <span className='test-question sentence'>
-            {question.questionBody}
-          </span>
           <span
             className='report-mistake'
             onClick={() => {
@@ -101,6 +97,10 @@ export const Grammar = ({
             }}
           >
             <Trans>Report a mistake</Trans>
+          </span>
+          <span className='test-question number'>{questionCount}. </span>
+          <span className='test-question sentence'>
+            {question.questionBody}
           </span>
         </div>
         {options}

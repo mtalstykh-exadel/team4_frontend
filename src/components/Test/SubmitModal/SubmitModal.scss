@@ -46,3 +46,9 @@
     }
   }
 }
+
+@media only screen and (max-width: 425px) {
+  .submit-modal {
+    width: 75vw;
+  }
+}

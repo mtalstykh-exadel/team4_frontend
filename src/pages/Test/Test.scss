@@ -42,16 +42,6 @@
     }
   }
 
-  .test-task-wrapper {
-    .step-description {
-      display: inline-block;
-      font-size: 18px;
-      color: #828282;
-      padding-bottom: 5px;
-      text-align: center;
-    }
-  }
-
   .buttons-wrapper {
     width: 100%;
     margin: 0 auto;
@@ -104,5 +94,19 @@
         }
       }
     }
+  }
+}
+
+.step-description {
+  display: inline-block;
+  font-size: 18px;
+  color: #828282;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .step-description {
+    font-size: 14px;
   }
 }
