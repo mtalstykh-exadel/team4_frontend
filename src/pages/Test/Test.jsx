@@ -49,7 +49,15 @@ export const Test = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
+  
+  if (JSON.parse(localStorage.getItem(currentTest))?.essayText ) {
+    const text = JSON.parse(localStorage.getItem(currentTest)).essayText;
+    localStorage.setItem(
+      testEassyUserAnswers,
+      JSON.stringify({ answer: JSON.parse(text).answer })
+    );
+  }
+  
   const steps = [
     <Grammar
       key='0'

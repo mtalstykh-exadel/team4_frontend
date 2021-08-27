@@ -42,7 +42,7 @@ export const Essay = ({ task, testModule, level, testID, reportModule }) => {
       essay: JSON.parse(localStorage.getItem(testEassyUserAnswers))
     });
   };
-
+  
   return (
     <div className='essay-step'>
       <div className='step-description'>
