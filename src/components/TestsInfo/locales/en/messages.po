@@ -17,7 +17,7 @@ msgstr ""
 msgid "Close"
 msgstr "Close"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:169
+#: src/components/TestsInfo/TestsData/TestsData.jsx:171
 msgid "Continue"
 msgstr "Continue"
 
@@ -29,7 +29,7 @@ msgstr "Continue"
 msgid "Level"
 msgstr "Level"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:146
+#: src/components/TestsInfo/TestsData/TestsData.jsx:148
 msgid "Take Test"
 msgstr "Take Test"
 
@@ -37,7 +37,7 @@ msgstr "Take Test"
 msgid "The test was canceled"
 msgstr "The test was canceled"
 
-#: src/components/TestsInfo/TestsData/TestsData.jsx:155
+#: src/components/TestsInfo/TestsData/TestsData.jsx:157
 msgid "View Results"
 msgstr "View Results"
 
@@ -48,6 +48,14 @@ msgstr "You can't take the test anymore today."
 #: src/components/TestsInfo/TestsData/UserModalWindowBanningOfPassingTest/UserModalWindowBanningDoubleOpeningTest.jsx:22
 msgid "You can't take two tests at the same time!"
 msgstr "You can't take two tests at the same time!"
+
+#: src/components/TestsInfo/TestsData/TestsData.jsx:114
+msgid "not passed"
+msgstr "not passed"
+
+#: src/components/TestsInfo/TestsData/TestsData.jsx:113
+msgid "passed"
+msgstr "passed"
 
 #: src/components/TestsInfo/TestsData/TestsData.jsx:97
 msgid "{0}{1}"

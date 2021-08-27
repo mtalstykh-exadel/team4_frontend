@@ -109,7 +109,9 @@ const TestsData = (props) => {
                     <TableCell size='medium' align='center'>{formatDate(row.deadline)}</TableCell>
                     <TableCell size='medium' align='center'>{row.status === 'VERIFIED' && formatDate(row.verified)}</TableCell>
                     <TableCell size='medium' align='center'>{row.status}</TableCell>
-                    <TableCell size='medium' align='center'>{row.totalScore}</TableCell>
+                    <TableCell size='medium' align='center'>{row.totalScore && row.status === 'VERIFIED' ? row.totalScore > 20 
+                    ? <Trans>passed</Trans> 
+                    : <Trans>not passed</Trans> : null }</TableCell>
                     <TableCell size='medium' align='center'>
                       {
                         loading && loading === row.testId

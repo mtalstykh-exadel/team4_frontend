@@ -19,7 +19,7 @@ msgstr "Добавить вопрос"
 msgid "Add topic"
 msgstr "Добавить тему"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Archived"
 msgstr "Архивированные"
 
@@ -43,15 +43,15 @@ msgstr "Закрыть"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
 msgid "In field 'Question Id' must be a number"
 msgstr "Поле 'ID Вопроса' должно содердать число"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:83
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:84
 msgid "Level"
 msgstr "Уровень"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:90
 msgid "Module"
 msgstr "Модуль"
 
@@ -60,11 +60,11 @@ msgstr "Модуль"
 #~ msgid "None"
 #~ msgstr "Любое"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:98
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Not archived"
 msgstr "Не архивированные"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
 msgid "Question ID"
 msgstr "ID Вопроса"
 
@@ -84,7 +84,7 @@ msgstr "Строк на странице:"
 msgid "Show"
 msgstr "Показать"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:97
 msgid "Status"
 msgstr "Статус"
 

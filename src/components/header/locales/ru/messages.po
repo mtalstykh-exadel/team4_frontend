@@ -33,8 +33,12 @@ msgid "Distribution of tests"
 msgstr "Распределение тестов"
 
 #: src/components/header/userNavigation/userNavigation.js:51
-msgid "Edit tests"
-msgstr "Редактировать тесты"
+msgid "Edit questions"
+msgstr ""
+
+#: src/components/header/userNavigation/userNavigation.js:51
+#~ msgid "Edit tests"
+#~ msgstr "Редактировать тесты"
 
 #: src/components/header/userNavigation/userNavigation.js:27
 msgid "Employees"
