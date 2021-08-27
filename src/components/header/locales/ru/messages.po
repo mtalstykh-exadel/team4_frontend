@@ -34,7 +34,11 @@ msgstr "Распределение тестов"
 
 #: src/components/header/userNavigation/userNavigation.js:51
 msgid "Edit questions"
+<<<<<<< HEAD
+msgstr ""
+=======
 msgstr "Редактировать вопросы"
+>>>>>>> origin/develop
 
 #: src/components/header/userNavigation/userNavigation.js:51
 #~ msgid "Edit tests"
