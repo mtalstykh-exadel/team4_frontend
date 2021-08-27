@@ -49,15 +49,15 @@ export const Test = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  
-  if (JSON.parse(localStorage.getItem(currentTest))?.essayText ) {
+
+  if (JSON.parse(localStorage.getItem(currentTest))?.essayText) {
     const text = JSON.parse(localStorage.getItem(currentTest)).essayText;
     localStorage.setItem(
       testEassyUserAnswers,
       JSON.stringify({ answer: JSON.parse(text).answer })
     );
   }
-  
+
   const steps = [
     <Grammar
       key='0'
@@ -66,7 +66,7 @@ export const Test = () => {
       reportModule={reportAMistakeGrammar}
       level={level}
       testID={testID}
-      module={['Grammar','Грамматика']}
+      module={['Grammar', 'Грамматика']}
     />,
     <Listening
       key='1'
@@ -76,7 +76,7 @@ export const Test = () => {
       reportModule={reportAMistakeListening}
       level={level}
       testID={testID}
-      module={['Listening','Аудирование']}
+      module={['Listening', 'Аудирование']}
     />,
     <Essay
       key='2'
@@ -240,7 +240,7 @@ export const Test = () => {
             aria-describedby='simple-modal-description'
             className='modal'>
             <div className='modal-content base-color'>
-              <SubmitModal key='8' handleClose={handleClose}/>
+              <SubmitModal key='8' handleClose={handleClose} />
             </div>
           </Modal>
         </div>
