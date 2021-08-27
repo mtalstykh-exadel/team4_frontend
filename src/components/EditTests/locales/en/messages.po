@@ -19,7 +19,7 @@ msgstr "Add question"
 msgid "Add topic"
 msgstr "Add topic"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:100
 msgid "Archived"
 msgstr "Archived"
 
@@ -43,7 +43,7 @@ msgstr "Close"
 msgid "Edit"
 msgstr "Edit"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:106
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:107
 msgid "In field 'Question Id' must be a number"
 msgstr "In field 'Question Id' must be a number"
 
@@ -51,7 +51,7 @@ msgstr "In field 'Question Id' must be a number"
 #~ msgid "Invalid email"
 #~ msgstr "Invalid email"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:83
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:84
 msgid "Level"
 msgstr "Level"
 
@@ -59,7 +59,7 @@ msgstr "Level"
 #~ msgid "Log in"
 #~ msgstr "Log in"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:89
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:90
 msgid "Module"
 msgstr "Module"
 
@@ -68,7 +68,7 @@ msgstr "Module"
 #~ msgid "None"
 #~ msgstr "None"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:98
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:99
 msgid "Not archived"
 msgstr "Not archived"
 
@@ -76,7 +76,7 @@ msgstr "Not archived"
 #~ msgid "Password"
 #~ msgstr "Password"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:102
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:103
 msgid "Question ID"
 msgstr "Question ID"
 
@@ -101,7 +101,7 @@ msgstr "Rows per page:"
 msgid "Show"
 msgstr "Show"
 
-#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:96
+#: src/components/EditTests/EditTestsFilter/EditTestsFilter.jsx:97
 msgid "Status"
 msgstr "Status"
 
