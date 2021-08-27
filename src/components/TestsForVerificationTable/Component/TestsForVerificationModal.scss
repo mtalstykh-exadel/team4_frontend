@@ -128,9 +128,8 @@
       }
 
       .edit-button-wrapper {
-        display: flex;
         height: 25px;
-        margin: 0 37px 0 490px;
+        margin: 0 37px 0 500px;
       }
     }
   }
@@ -276,10 +275,6 @@
     }
 
     .reported-mistake-wrapper {
-      .edit-button-wrapper {
-        margin: 0 37px 0 130px;
-      }
-
       .error-messages {
         margin-bottom: 50px;
       }
@@ -317,5 +312,9 @@
         width: 90px;
       }
     }
+  }
+
+  .tests-verification-modal .reported-mistake-wrapper .scroll-container .edit-button-wrapper {
+    margin: 0 37px 0 140px;
   }
 }

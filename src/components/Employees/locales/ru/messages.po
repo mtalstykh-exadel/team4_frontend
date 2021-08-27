@@ -41,7 +41,6 @@ msgstr "Вы уверены, что хотите отменить тест?"
 msgid "Email: {0}"
 msgstr "Почта: {0}"
 
-#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:54
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:88
 msgid "Level"
 msgstr "Уровень"
@@ -98,6 +97,10 @@ msgstr "Вы хотите назначить тест для {0}"
 #: src/components/Employees/EmployeesTable/HRmodalWindowViewingUserInformation/HRmodalWindowViewingUserInformation.jsx:54
 #~ msgid "front-end developer"
 #~ msgstr "front-end developer"
+
+#: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:54
+msgid "{0}"
+msgstr ""
 
 #: src/components/Employees/EmployeesTable/EmployeesTable.jsx:97
 #: src/components/Employees/EmployeesTable/HRmodalWindows/HRmodalWindowTestAssignment.jsx:65

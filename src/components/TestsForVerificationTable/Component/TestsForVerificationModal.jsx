@@ -167,7 +167,7 @@ export const TestsForVerificationModal = (props) => {
           <Button
             variant='outlined'
             color='primary'
-            className='edit-button'
+            className='edit-button button-standard'
             onClick={() =>
               history.push({
                 pathname: '/edit-test-modules',
